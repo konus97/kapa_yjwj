@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.appraiser.mapper.AppraiserMapper">
+
+    <insert id="insertOpinion" parameterType="egovframework.kapa.domain.Decision_Opinion">
+    	insert into TB_Decision_Opinion(DecisionId, LandId, type1, type2, type3, type4, type5, type6, type7, type8, type9, type10, type11, type12, type13, type14, type15, type16, type17, type18, type19, type20, type21, type22,
+    	OwnerOpinion, ExecutorOpinion, CorporateOpinionA, CorporateOpinionB, del_check, regdate)
+    	values(#{DecisionId}, #{LandId}, #{type1}, #{type2}, #{type3}, #{type4}, #{type5}, #{type6}, #{type7}, #{type8}, #{type9}, #{type10}, #{type11}, #{type12}, #{type13}, #{type14}, #{type15}, #{type16}, #{type17}, #{type18},
+    	 #{type19}, #{type20}, #{type21}, #{type22}, #{OwnerOpinion}, #{ExecutorOpinion}, #{CorporateOpinionA}, #{CorporateOpinionB}, #{delCheck}, #{regdate})
+    </insert>
+	
+	
+	<select id ="getSeqNo" resultType="Long">
+		select COALESCE(Max(SeqNO),0) from TB_Decision_Opinion 
+	</select>
+	
+	
+		
+	 <!-- 게시글 갯수 -->
+    <select id="getApplicationCnt" resultType="Integer">
+        SELECT count(*) as listCnt
+        FROM TB_Decision AS M
+        <where>
+			DecisionState >= 4
+			AND delCheck = '0'
+        </where>
+    </select>
+
+
+	<select id="getApplicationList" resultType="egovframework.kapa.domain.Decision" >
+		SELECT  
+			*
+		FROM TB_Decision 
+		
+		<where>
+			DecisionState >= 4
+			AND delCheck = '0'
+  		</where>
+		
+		ORDER BY seqNo DESC
+		
+		OFFSET (#{page}-1)*#{listSize} ROW
+		FETCH NEXT #{listSize} ROW ONLY
+	</select> 
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.member.mapper.LoginMapper">
+
+
+
+	<!--사용자 로그인-->
+	<select id="getLoginUserInfo" parameterType="egovframework.kapa.domain.LoginUser" resultType="egovframework.kapa.domain.User">
+        SELECT *
+		FROM TB_User AS M
+		<where>
+			M.userId = #{loginId}
+			AND 
+			M.userPassword = #{loginPwd}
+  		</where>
+    </select>
+	
+	 
+	
+</mapper>

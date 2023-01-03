@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.member.mapper.JoinMapper">
+
+
+
+
+    <insert id="InsertAppraiser" parameterType="egovframework.kapa.member.domain.TB_Appraiser">
+    	insert into TB_Appraiser(userSeqNo, email, company, responsibilityName, phoneNumber)
+    	values(#{userSeqNo}, #{email}, #{company}, #{responsibilityName}, #{phoneNumber})
+    </insert>
+    
+    
+     <insert id="InsertImplementer" parameterType="egovframework.kapa.member.domain.TB_Implementer">
+    	insert into TB_Implementer(userSeqNo, email, docNumber, implementerResponsibilityName, implementerNumber)
+    	values(#{userSeqNo}, #{email}, #{docNumber}, #{implementerResponsibilityName}, #{implementerNumber})
+    </insert>
+    
+    
+    <insert id="InsertCities" parameterType="egovframework.kapa.member.domain.TB_Cities">
+    	insert into TB_Cities(userSeqNo, email, department, representativeName, phoneNumber, code)
+    	values(#{userSeqNo}, #{email}, #{department}, #{representativeName}, #{phoneNumber}, #{code})
+    </insert>
+    
+	<insert id="InsertUser" parameterType="egovframework.kapa.domain.User" useGeneratedKeys="true" keyProperty="seqNo">
+    	insert into TB_User(userType, userId, userPassword, userAuthority, delCheck, regdate, userEnabled)
+    	values(#{userType}, #{userId}, #{userPassword}, #{userAuthority}, #{delCheck}, #{regdate}, #{userEnabled})
+    </insert>
+    
+	<select id="getUserSeqNo" parameterType="egovframework.kapa.domain.User" resultType="long">
+        SELECT seqNo
+		FROM TB_User
+		WHERE userId='${userId}'
+    </select>
+    
+    <select id="countJudgeInfo" parameterType="string" resultType="long">
+        SELECT count(*)
+		FROM tb_ltis2kapa_judg_info
+		WHERE case_no = #{case_no}
+    </select>
+	
+    
+    <!-- SELECT count(*) from tb_ltis2kapa_judg_info tlkji where tlkji .case_no ='19이지0601' -->
+</mapper>

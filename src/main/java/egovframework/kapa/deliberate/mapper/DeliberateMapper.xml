@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.deliberate.mapper.DeliberateMapper">
+
+
+	<select id="getDeliberateDateList" resultType="egovframework.kapa.domain.Decision_Date" >
+		SELECT  
+			*
+		FROM TB_Decision_Date 
+		
+		<where>
+			 delCheck = '0'
+  		</where>
+		
+		ORDER BY seqNo DESC
+		
+		OFFSET (#{page}-1)*#{listSize} ROW
+		FETCH NEXT #{listSize} ROW ONLY
+	</select> 
+	
+	<select id="getDeliberateList" resultType="egovframework.kapa.domain.Decision" >
+		SELECT  
+			*
+		FROM TB_Decision 
+		
+		<where>
+			agendaState = '3'
+			AND delCheck = '0'
+  		</where>
+		
+		ORDER BY seqNo DESC
+		
+		OFFSET (#{page}-1)*#{listSize} ROW
+		FETCH NEXT #{listSize} ROW ONLY
+	</select> 
+	
+	<select id="getDeliberateDecisionList" parameterType="Integer" resultType="egovframework.kapa.domain.Decision_AgendaDate" >
+		SELECT  
+			*
+		FROM TB_Decision_AgendaDate 
+		
+		<where>
+			selectDate = #{selectDate}
+  		</where>
+		
+	</select> 
+	
+	<select id="getDeliberateDecisionDate" parameterType="long" resultType="egovframework.kapa.domain.Decision_AgendaDate" >
+		SELECT  
+			*
+		FROM TB_Decision_AgendaDate 
+		
+		<where>
+			decisionId = #{decisionId}
+  		</where>
+		
+	</select> 
+	
+	
+	
+	
+	<select id="getDeliberateDate" resultType="egovframework.kapa.domain.Decision_Date" >
+		SELECT  
+			*
+		FROM TB_Decision_Date 
+		
+		<where>
+		 	seqNo = #{viewSeq}
+			AND delCheck = '0'
+  		</where>
+
+	</select> 
+	
+	
+	
+	<!-- 게시글 갯수 -->
+    <select id="getDeliberateDateCnt" resultType="Integer">
+        SELECT count(*) as listCnt
+        FROM TB_Decision_Date AS M
+        <where>
+			delCheck = '0'
+        </where>
+    </select>
+	
+	 <!-- 게시글 갯수 -->
+    <select id="getDeliberateCnt" resultType="Integer">
+        SELECT count(*) as listCnt
+        FROM TB_Decision AS M
+        <where>
+			agendaState = '3'
+			AND delCheck = '0'
+        </where>
+    </select>
+
+
+</mapper>

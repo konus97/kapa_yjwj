@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #005dab;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="icon_home" class="cls-1" d="M15.6,17.2H13.2v-4H6.8v4H4.4V8.992L10,3.463l5.6,5.592V17.2Zm4-6.4L10,1.2,0.4,10.8H2.8v8H8.4v-4h3.2v4h5.6v-8h2.4ZM16.4,6.074V2H14V3.674Z"/>
+</svg>

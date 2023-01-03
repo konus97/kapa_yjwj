@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.board.mapper.BoardMapper">
+
+	
+	<insert id="save" parameterType="egovframework.kapa.board.domain.BoardVO">
+		insert into TB_Board_Content(seq_no, board_seq, title, content,search_title,search_content, secret_check, link, regdate,uptdate,del_check, board_hits)
+		 values(#{seqNo}, #{boardSeq}, #{title}, #{content},#{searchTitle}, #{searchContent}, #{secretCheck}, #{link}, #{regdate},#{uptdate},#{delCheck}, #{boardHits})
+	</insert>
+	
+	<insert id="update" parameterType="egovframework.kapa.board.domain.BoardVO">
+		UPDATE TB_Board_Content
+		   SET title = #{title},
+			   content = #{content},
+			   search_title = #{searchTitle},
+			   search_content = #{searchContent},
+  			   secret_check = #{secretCheck},
+		   	   link = #{link},
+		       uptdate = #{uptdate}
+		 WHERE seq_no = #{seqNo}
+	</insert>
+	
+	<insert id="delete" parameterType="egovframework.kapa.board.domain.BoardVO">
+		UPDATE TB_Board_Content
+		   SET 
+		   	   del_check = #{delCheck},
+		       uptdate = #{uptdate}
+		 WHERE seq_no = #{seqNo}
+	</insert>
+	
+	<select id ="getSeq" resultType="Integer">
+		select COALESCE(Max(seq_no),0) from TB_Board_Content 
+	</select>
+	
+	<select id ="getViewContent" parameterType="Integer" resultType="egovframework.kapa.board.domain.BoardVO" >
+		select * from TB_Board_Content 
+		<where>
+			seq_no = #{viewSeq}
+			AND del_check = 0
+  		</where>
+	</select>
+	
+	<select id="getBoardContentList" resultType="egovframework.kapa.board.domain.BoardList" >
+		SELECT seq_no AS seqNo ,title,'관리자' AS userName,regdate,board_hits AS boardHits
+
+		FROM TB_Board_Content 
+		
+		<where>
+			board_seq = #{boardSeq}
+			AND del_check = 0
+  		</where>
+		
+		ORDER BY seq_no DESC
+		
+		OFFSET (#{page}-1)* #{listSize} ROW
+		FETCH NEXT 10 ROW ONLY
+	</select> 
+	
+	
+	 <!-- 게시글 갯수 -->
+    <select id="getBoardContentCnt" resultType="Integer">
+        SELECT count(*) as listCnt
+        FROM TB_Board_Content 
+       <where>
+			board_seq = #{boardSeq}
+			AND del_check = 0
+  		</where>
+    </select>
+	
+
+	
+	
+</mapper>

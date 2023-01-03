@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="80" viewBox="0 0 40 80">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #222326;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <path id="Rectangle_6_copy_2" data-name="Rectangle 6 copy 2" class="cls-1" d="M16,13.5L14.5,15,10,10.5l0.5-.5L10,9.5,14.5,5,16,6.5,12.5,10Z"/>
+    <path id="Rectangle_6_copy_3" data-name="Rectangle 6 copy 3" class="cls-1" d="M10,13.5L8.5,15,4,10.5,4.5,10,4,9.5,8.5,5,10,6.5,6.5,10Z"/>
+  </g>
+  <path id="Rectangle_6_copy" data-name="Rectangle 6 copy" class="cls-1" d="M13,33.5L11.5,35,7,30.5,7.5,30,7,29.5,11.5,25,13,26.5,9.5,30Z"/>
+  <path id="Rectangle_6_copy_4" data-name="Rectangle 6 copy 4" class="cls-1" d="M13,50.5L8.5,55,7,53.5,10.5,50,7,46.5,8.5,45,13,49.5l-0.5.5Z"/>
+  <g>
+    <path id="Rectangle_6_copy_4-2" data-name="Rectangle 6 copy 4" class="cls-1" d="M10,70.5L5.5,75,4,73.5,7.5,70,4,66.5,5.5,65,10,69.5,9.5,70Z"/>
+    <path id="Rectangle_6_copy_4-3" data-name="Rectangle 6 copy 4" class="cls-1" d="M16,70.5L11.5,75,10,73.5,13.5,70,10,66.5,11.5,65,16,69.5l-0.5.5Z"/>
+  </g>
+  <g>
+    <path id="Rectangle_6_copy_2-2" data-name="Rectangle 6 copy 2" class="cls-2" d="M36,13.5L34.5,15,30,10.5l0.5-.5L30,9.5,34.5,5,36,6.5,32.5,10Z"/>
+    <path id="Rectangle_6_copy_3-2" data-name="Rectangle 6 copy 3" class="cls-2" d="M30,13.5L28.5,15,24,10.5l0.5-.5L24,9.5,28.5,5,30,6.5,26.5,10Z"/>
+  </g>
+  <path id="Rectangle_6_copy-2" data-name="Rectangle 6 copy" class="cls-2" d="M33,33.5L31.5,35,27,30.5l0.5-.5L27,29.5,31.5,25,33,26.5,29.5,30Z"/>
+  <path id="Rectangle_6_copy_4-4" data-name="Rectangle 6 copy 4" class="cls-2" d="M33,50.5L28.5,55,27,53.5,30.5,50,27,46.5,28.5,45,33,49.5l-0.5.5Z"/>
+  <g>
+    <path id="Rectangle_6_copy_4-5" data-name="Rectangle 6 copy 4" class="cls-2" d="M30,70.5L25.5,75,24,73.5,27.5,70,24,66.5,25.5,65,30,69.5l-0.5.5Z"/>
+    <path id="Rectangle_6_copy_4-6" data-name="Rectangle 6 copy 4" class="cls-2" d="M36,70.5L31.5,75,30,73.5,33.5,70,30,66.5,31.5,65,36,69.5l-0.5.5Z"/>
+  </g>
+</svg>

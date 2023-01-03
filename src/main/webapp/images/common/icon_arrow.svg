@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #005dab;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="arrow_copy" data-name="arrow copy" class="cls-1" d="M11.5,0.5h3l4,4-4,4h-3l4-4Z"/>
+  <path id="arrow_copy-2" data-name="arrow copy" class="cls-2" d="M1.5,0.5h3l4,4-4,4h-3l4-4Z"/>
+</svg>

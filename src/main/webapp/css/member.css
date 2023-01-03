@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+#header {
+  border-bottom: 1px solid #efefef;
+}
+#footer {
+  border-top: 1px solid #efefef;
+}
+
+.join {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+.join .form {
+  width: auto;
+  padding-top: 3rem;
+  margin-top: 4rem;
+}
+.input-wrap .input-left {
+  width: 15rem;
+}
+.input-wrap .input-right {
+  width: calc(100% - 15rem) !important;
+}
+.with-btn-input.input40 {
+  display:inline-block;
+  vertical-align:top;
+  width: calc(100% - 130px) !important;
+}
+.btn_wrap {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+.btn_wrap .btn {
+  height: 50px;
+  line-height: 48px;
+  margin: 0 3px;
+}
+input {
+  height: 40px;
+  line-height: 38px;
+  border: solid 1px #c2c4c9;
+  padding: 0 1rem;
+}
