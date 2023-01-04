@@ -447,7 +447,7 @@
 
 
             $(document).ready(function(){
-
+				console.log("hi")
             	getApplicationList(1);
 
             });
