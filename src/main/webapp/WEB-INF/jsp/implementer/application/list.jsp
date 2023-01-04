@@ -18,7 +18,8 @@
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
         <meta http-equiv="Cache-Control" content="no-cache" />
-
+		<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
         <title>재결정보지원센터</title>
 
         <meta name="description" content="재결정보지원센터" />
@@ -83,30 +84,8 @@
                                                     >
                                                 </div>
                                                 <div class="ff_wrap">
-                                                    <span class="ff_group">
-                                                        <label
-                                                            for="il_select"
-                                                            class="blind"
-                                                            >선택</label
-                                                        >
-                                                        <select
-                                                            name="il_select"
-                                                            id="il_select"
-                                                            class="select t1"
-                                                            required
-                                                        >
-                                                            <option value="">
-                                                                	전체
-                                                            </option>
-                                                            <option value="00">
-                                                                	중앙토지수용위원회
-                                                            </option>
-                                                            <option value="10">
-                                                                	서울지방토지수용위원회
-                                                            </option>
-                          
-                                                        </select>
-                                                    </span>
+                                                 
+                                                   
                                                     <span class="ff_group w290">
                                                         <input
                                                             type="text"
@@ -447,7 +426,8 @@
 
 
             $(document).ready(function(){
-
+            	document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
+	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10);
             	getApplicationList(1);
 
             });

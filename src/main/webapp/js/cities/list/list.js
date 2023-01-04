@@ -8,6 +8,16 @@ function getCitiesAnnouncementList(cpage) {
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath+"/api/cities/list";
+	
+	
+	var csrfToken = $("meta[name='_csrf']").attr("content");
+	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+	/* 검색 조건 세팅  */
+	var numOrname = document.getElementById('il_input').value; //사건번호
+	var startDate = document.getElementById('il_date1').value; //의뢰날짜 시작
+	var endDate = document.getElementById('il_date2').value; //의뢰날짜 끝
+	
 
 	$("#contentList").attr("data-cpage", cpage);
 	$("#contentList").empty();
@@ -15,12 +25,18 @@ function getCitiesAnnouncementList(cpage) {
 
 	$.ajax({
 		url : url,
-		type : "GET",
+		type : "POST",
 		dataType : "json",
 		async: false,
 		data : {
-			"cpage" : cpage,
+			"cpage" : 1,
+			"numOrname" : numOrname,
+			"startDate" : startDate,
+			"endDate" : endDate
 		},
+		beforeSend : function(xhr){
+    	xhr.setRequestHeader(csrfHeader, csrfToken);
+    	},
 		success : function(data) {
 
 			let list = data.list;
@@ -83,6 +99,7 @@ function getCitiesAnnouncementList(cpage) {
 
 
 }
+
 
 
 function makePageList(){

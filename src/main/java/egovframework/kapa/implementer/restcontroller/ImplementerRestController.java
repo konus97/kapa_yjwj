@@ -1,6 +1,7 @@
 package egovframework.kapa.implementer.restcontroller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,32 +90,70 @@ public class ImplementerRestController {
 	@RequestMapping(value = "/application/searchlist", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getApplicationListSearch(@RequestParam Map<Object, Object> paramMap) {
-		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
+        System.out.println("LTIS 입력정보 조회 SEARCH PARAM :::" + paramMap);
+		//검색 조건값 정의
 		Search search = new Search();
+		//검색 조건값 세팅
+		search.setNumOrname(paramMap.get("numOrname").toString());
+		search.setStartDate(paramMap.get("startDate").toString());
+		search.setEndDate(paramMap.get("endDate").toString());
+		search.setSubject(paramMap.get("subject").toString());
+		search.setCode(paramMap.get("code").toString());
+		search.setPart(paramMap.get("part").toString());
+		search.setName(paramMap.get("name").toString());
+		search.setCheckvalue(paramMap.get("checkvalue").toString());
 		
-        //page cpage
+		System.out.println("search ::: "+search);
+        //페이징 설정
         int pageNum=1;
         int rowItem=10;
 
         try {
-            pageNum = Integer.parseInt(paramMap.get("cpage").toString());
-            System.out.println("getApplicationListSearch::::::"+pageNum);
-            System.out.println(paramMap);
- 
+        
             //페이징 계산
+            pageNum = Integer.parseInt(paramMap.get("cpage").toString());
             int listCnt = implementerService.getImplementerCnt(search);
             
             search.pageInfo(pageNum, rowItem, listCnt);
             
            
-            //값 넣기
+            // 검색 결과
             List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
             List<ApplicationDTO> formatterList = implementerService.getImplementerListFormatter(pagingResult);
-            System.out.println("LIST!" + formatterList);
-            resultFinal.put("list", formatterList);
-            resultFinal.put("totalPage", search.getPageCnt());
-            resultFinal.put("allCount", listCnt);
+            
+            //재결 진행 상황 체크할 경우
+            if(!search.getCheckvalue().equals("") || search.getCheckvalue() == null) {
+            	
+            	String[] checkValue = search.getCheckvalue().split(",");       
+            	System.out.println(checkValue);
+            	List<ApplicationDTO> formatterList2 = new ArrayList<ApplicationDTO>();
+            	
+            	for(int i=0;i<checkValue.length;i++) {
+            	for(int k=0; k<formatterList.size(); k++) {
+            		if(Integer.parseInt(checkValue[i]) == formatterList.get(k).getDecisionState()) {
+            			formatterList2.add(formatterList.get(k));	
+            		}
+            	
+            		}
+            	}
+            	
+            	pageNum = Integer.parseInt(paramMap.get("cpage").toString());
+                int listCnt2 = formatterList2.size();
+                
+                search.pageInfo(pageNum, rowItem, listCnt2);
+            	
+            	resultFinal.put("list", formatterList2);
+                resultFinal.put("totalPage", search.getPageCnt());
+                resultFinal.put("allCount", listCnt2);
+            }else {
+            	resultFinal.put("list", formatterList);
+                resultFinal.put("totalPage", search.getPageCnt());
+                resultFinal.put("allCount", listCnt);
+            }
+            
+            
+            
         }catch (Exception e){
             pageNum=1;
 

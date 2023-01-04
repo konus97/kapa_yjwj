@@ -28,6 +28,8 @@
         <meta property="og:image" content="../css/favicon_1200x630.png" />
         <meta name="twitter:description" content="재결정보지원센터" />
         <meta name="twitter:image" content="../css/favicon_270x270.png" />
+             <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
         <link rel="shortcut icon" href="../css/favicon_seoul.ico" />
         <link rel="icon" href="../css/favicon_seoul.ico" />
 
@@ -77,77 +79,7 @@
                                                     >
                                                 </div>
                                                 <div class="ff_wrap">
-                                                    <span class="ff_group">
-                                                        <label
-                                                            for="il_select"
-                                                            class="blind"
-                                                            >선택</label
-                                                        >
-                                                        <select
-                                                            name="il_select"
-                                                            id="il_select"
-                                                            class="select t1"
-                                                            required
-                                                        >
-                                                            <option value="">
-                                                                전체
-                                                            </option>
-                                                            <option value="000">
-                                                                중앙토지수용위원회
-                                                            </option>
-                                                            <option value="200">
-                                                                서울지방토지수용위원회
-                                                            </option>
-                                                            <option value="201">
-                                                                부산지방토지수용위원회
-                                                            </option>
-                                                            <option value="202">
-                                                                대구지방토지수용위원회
-                                                            </option>
-                                                            <option value="203">
-                                                                인천지방토지수용위원회
-                                                            </option>
-                                                            <option value="204">
-                                                                광주지방토지수용위원회
-                                                            </option>
-                                                            <option value="205">
-                                                                대전지방토지수용위원회
-                                                            </option>
-                                                            <option value="206">
-                                                                울산지방토지수용위원회
-                                                            </option>
-                                                            <option value="207">
-                                                                경기지방토지수용위원회
-                                                            </option>
-                                                            <option value="208">
-                                                                강원지방토지수용위원회
-                                                            </option>
-                                                            <option value="209">
-                                                                충북지방토지수용위원회
-                                                            </option>
-                                                            <option value="210">
-                                                                충남지방토지수용위원회
-                                                            </option>
-                                                            <option value="211">
-                                                                전북지방토지수용위원회
-                                                            </option>
-                                                            <option value="212">
-                                                                전남지방토지수용위원회
-                                                            </option>
-                                                            <option value="213">
-                                                                경북지방토지수용위원회
-                                                            </option>
-                                                            <option value="214">
-                                                                경남지방토지수용위원회
-                                                            </option>
-                                                            <option value="215">
-                                                                제주지방토지수용위원회
-                                                            </option>
-                                                            <option value="216">
-                                                                세종지방토지수용위원회
-                                                            </option>
-                                                        </select>
-                                                    </span>
+                                            
                                                     <span class="ff_group w290">
                                                         <input
                                                             type="text"
@@ -160,10 +92,11 @@
                                                     </span>
                                                     <span class="ff_group">
                                                         <button
-                                                            type="submit"
+                                                            type="button"
                                                             id="il_submit"
                                                             name="il_submit"
                                                             class="btn small ico search"
+															 onclick="getAppraiserApplicationList(1);return false;"
                                                         >
                                                             검색
                                                         </button>
@@ -384,7 +317,8 @@
         <script type="text/javascript">
 	
 		    $(document).ready(function () {
-	
+		    	document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
+	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10);
 		    	getAppraiserApplicationList(1);
 		    	
 		    });

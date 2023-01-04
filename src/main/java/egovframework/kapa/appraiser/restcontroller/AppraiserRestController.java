@@ -47,29 +47,45 @@ public class AppraiserRestController {
 	/*
 	 * application List
 	 */
-	@RequestMapping(value = "/application/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/application/list", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> getOpinionList(@RequestParam("cpage") String cpage) {
-		
+	public Map<String, Object> getOpinionList(@RequestParam Map<Object, Object> paramMap) {
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
+       // System.out.println("재결신청 조회 SEARCH PARAM :::" + paramMap);
+		//검색 조건값 정의
 		Search search = new Search();
-		
+		//검색 조건값 세팅
+		/*
+		 * search.setNumOrname(paramMap.get("numOrname").toString());
+		 * search.setStartDate(paramMap.get("startDate").toString());
+		 * search.setEndDate(paramMap.get("endDate").toString());
+		 * search.setSubject(paramMap.get("subject").toString());
+		 * search.setCode(paramMap.get("code").toString());
+		 * search.setPart(paramMap.get("part").toString());
+		 * search.setName(paramMap.get("name").toString());
+		 * search.setCheckvalue(paramMap.get("checkvalue").toString());
+		 */
+
+
         //page cpage
         int pageNum=1;
         int rowItem=10;
 
         try {
-            pageNum = Integer.parseInt(cpage);
-            System.out.println("getOpinionList::::::"+pageNum);
- 
+
+         //   pageNum = Integer.parseInt(paramMap.get("cpage").toString());
+
             //페이징 계산
             int listCnt = appraiserService.getApplicationCnt(search);
             search.pageInfo(pageNum, rowItem, listCnt);
-            
-            //값 넣기
+
+            // 검색 결과
             List<Decision> pagingResult = appraiserService.getApplicationList(search);
+
+            System.out.println(pagingResult);
             List<AnnouncementDTO> formatterList = implementerService.getOpinionFormatter(pagingResult);
+            
+            System.out.println("formatterList :::" + formatterList);
             
             resultFinal.put("list", formatterList);
             resultFinal.put("totalPage", search.getPageCnt());

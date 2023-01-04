@@ -9,23 +9,13 @@ public class Search extends Pagination {
     private String keyword;
     private int boardSeq;
     
-//    public String getSearchType() {
-//        return searchType;
-//    }
-//    public void setSearchType(String searchType) {
-//        this.searchType = searchType;
-//    }
-//    public String getKeyword() {
-//        return keyword;
-//    }
-//    public void setKeyword(String keyword) {
-//        this.keyword = keyword;
-//    }
-//	public int getBoardSeq() {
-//		return boardSeq;
-//	}
-//	public void setBoardSeq(int boardSeq) {
-//		this.boardSeq = boardSeq;
-//	}
-//    
+    private String numOrname;
+    private String startDate;
+    private String endDate;
+    private String subject;
+    private String code;
+    private String part;
+    private String name;
+    private String checkvalue;
+
 }
