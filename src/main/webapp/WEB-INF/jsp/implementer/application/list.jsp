@@ -426,8 +426,10 @@
 
 
             $(document).ready(function(){
+
             	document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
 	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10);
+
             	getApplicationList(1);
 
             });
