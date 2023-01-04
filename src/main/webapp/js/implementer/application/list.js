@@ -72,6 +72,112 @@ function getApplicationList(cpage) {
 }
 
 
+function getApplicationListSearch() {
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath+"/api/implementer/application/searchlist";
+	
+	/* 검색 조건 세팅  */
+	var numOrname = document.getElementById('il_input').value; //사건번호 or 사업명
+	var startDate = document.getElementById('il_date1').value; //접수일 시작
+	var endDate = document.getElementById('il_date2').value; //접수일 끝
+	var subject = document.getElementById('il_subject').value; //사업명
+	var code = document.getElementById('il_code').value; //사건번호
+	var part = document.getElementById('il_part').value; //소재지
+	var name = document.getElementById('il_name').value; //시행자명
+	
+	var checkvalue = 10; 
+	/*
+	재결진행상황 (10 = 선택안함)
+	
+	LTIS입력정보확인 = 0
+	재결접수 = 1
+	열람공고 = 2
+	심의안건의뢰 = 3
+	재결진행중 = 4
+	반려 = 5
+	재결지연 = 6
+	보류 = 7
+	심사완료 = 8
+	*/
+
+	for(let i=0; i<9; i++){
+	if(document.getElementsByName('checkbox')[i].checked == true){
+		checkvalue = i;
+	}
+	};
+	
+	$("#contentList").empty();
+	$("#pageList").empty();
+
+	$.ajax({
+		url : url,
+		type : "POST",
+		dataType : "json",
+		async: false,
+		data : {
+			"cpage" : 1,
+			"numOrname": numOrname,
+			"startDate" : startDate,
+			"endDate" : endDate,
+			"subject" : subject,
+			"code" : code,
+			"part" : part,
+			"name" : name,
+			"checkvalue" : checkvalue
+		},
+		success : function(data) {
+
+			let list = data.list;
+			let totalPage = data.totalPage;
+			let allCount = data.allCount;
+			
+			if(totalPage=="0")totalPage=1;
+			
+			//전체 게시물 카운트
+			let allCnt = "<mark class=\"cm\">"+allCount+"</mark>";
+			$("#allCount").empty();
+			$("#allCount").append(allCnt);
+			
+			let currentPage ="<mark class=\"cm\">"+cpage+"</mark>/"+totalPage;
+			$("#currentPage").empty();
+			$("#currentPage").append(currentPage);
+
+			let t = Number(totalPage);
+			let c = Number(cpage);
+
+			let startNumber = 0;
+
+			if(t!=c){
+				startNumber = allCount-((c-1)*rowItem);
+			}else{
+				startNumber = list.length;
+			}
+				
+			$("#contentList").attr("data-tpage", totalPage);
+
+			if (list.length != 0) {
+				for( let i = 0; i < list.length; i++) {
+					makeImplementerBlock(startNumber,list[i]);
+					startNumber--;
+				}
+			}
+			
+			makePageList();
+
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+
+}
+
+
+
 
 function makePageList(){
 

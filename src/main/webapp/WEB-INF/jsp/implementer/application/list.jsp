@@ -119,10 +119,11 @@
                                                     </span>
                                                     <span class="ff_group">
                                                         <button
-                                                            type="submit"
+                                                            type="button"
                                                             id="il_submit"
                                                             name="il_submit"
                                                             class="btn small ico search"
+                                                            onclick="getApplicationListSearch();return false;"
                                                         >
                                                             	검색
                                                         </button>
@@ -253,6 +254,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step01"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step01"
@@ -263,6 +265,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step02"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step02"
@@ -273,6 +276,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step03"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step03"
@@ -283,6 +287,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step04"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step04"
@@ -293,9 +298,11 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step05"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step05"
+                                                            
                                                             >재결진행중</label
                                                         >
                                                     </div>
@@ -303,6 +310,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step06"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step06"
@@ -313,6 +321,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step07"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step07"
@@ -323,6 +332,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step08"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step08"
@@ -333,6 +343,7 @@
                                                         <input
                                                             type="checkbox"
                                                             id="decision_step09"
+                                                            name ="checkbox"
                                                         />
                                                         <label
                                                             for="decision_step09"

@@ -84,6 +84,51 @@ public class ImplementerRestController {
 	}
 	
 	/*
+	 * application List Search
+	 */
+	@RequestMapping(value = "/application/searchlist", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getApplicationListSearch(@RequestParam Map<Object, Object> paramMap) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+		Search search = new Search();
+		
+        //page cpage
+        int pageNum=1;
+        int rowItem=10;
+
+        try {
+            pageNum = Integer.parseInt(paramMap.get("cpage").toString());
+            System.out.println("getApplicationListSearch::::::"+pageNum);
+            System.out.println(paramMap);
+ 
+            //페이징 계산
+            int listCnt = implementerService.getImplementerCnt(search);
+            
+            search.pageInfo(pageNum, rowItem, listCnt);
+            
+           
+            //값 넣기
+            List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
+            List<ApplicationDTO> formatterList = implementerService.getImplementerListFormatter(pagingResult);
+            System.out.println("LIST!" + formatterList);
+            resultFinal.put("list", formatterList);
+            resultFinal.put("totalPage", search.getPageCnt());
+            resultFinal.put("allCount", listCnt);
+        }catch (Exception e){
+            pageNum=1;
+
+            System.out.println("\n\ne.getMessage()\n"+e.getMessage());
+            System.out.println("\n\ne.toString()\n"+e.toString());
+            System.out.println("\n\ne.printStackTrace()");
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
+	
+	/*
 	 * application List
 	 */
 	@RequestMapping(value = "/opinion/list", method = RequestMethod.GET)
