@@ -71,11 +71,12 @@
 							</div>
 							<div class="cms_list">
 								<ul>
-									<li><a href="#" onclick="readyAlert();return false;">관련자료
-											업로드</a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/implementer/application.do">나의
-											재결신청현황</a></li>
+										href="${pageContext.request.contextPath}/implementer/application.do">LTIS입력정보확인</a>
+									</li>
+									<li><a
+										href="${pageContext.request.contextPath}/implementer/opinion.do">재결의견작성</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -107,11 +108,9 @@
 							</div>
 							<div class="cms_list">
 								<ul>
-									<li><a href="#" onclick="readyAlert();return false;">관련자료
-											업로드</a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/cities/announcement.do">나의
-											열람공고현황</a></li>
+										href="${pageContext.request.contextPath}/cities/announcement.do">열람공고</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -137,12 +136,12 @@
 							</div>
 							<div class="cms_list">
 								<ul>
-									<li><a
-										href="${pageContext.request.contextPath}/appraiser/agenda.do">나의
-											심의 안건정보</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/appraiser/application.do">나의
-											심의 안건정보</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/appraiser/application.do">재결신청</a>
+							</li>
+							<li><a
+								href="${pageContext.request.contextPath}/appraiser/agenda.do">심의안건
+									정보</a></li>
 								</ul>
 							</div>
 						</div>
