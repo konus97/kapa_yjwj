@@ -287,6 +287,7 @@ public class ImplementerController {
 		return "implementer/opinion/list";
 	}
 	
+	/* 재결의견작성 */
 	@GetMapping("/opinion/write.do")
 	public String opinionDetail(HttpServletRequest request,Model model) {
 		
@@ -299,7 +300,7 @@ public class ImplementerController {
 		//current page
 		model.addAttribute("currentPage", "opinion");
 		
-	    Decision decison = decisionService.getDecisionView(decisionId);
+	    Decision decison = decisionService.getDecisionView(decisionId);  //첫번째 로직
         System.out.println(decison);
         
         if(decison.getDecisionState()>=5) {
@@ -311,7 +312,7 @@ public class ImplementerController {
         int masterId = decison.getMasterID();
         model.addAttribute("masterId", masterId);
         
-		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
+		ApplicationList applicationVo = implementerService.getApplicationView(masterId); //두번째 로직
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
 		

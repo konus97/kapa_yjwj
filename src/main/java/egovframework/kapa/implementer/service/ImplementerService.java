@@ -167,7 +167,7 @@ public class ImplementerService {
     	if(judgDivCd==10) {
     		judeDivCdName="수용";
     	}else if(judgDivCd==20) {
-    		judeDivCdName="의의";
+    		judeDivCdName="이의";
     	}
     	
     	String recvDt = new String();

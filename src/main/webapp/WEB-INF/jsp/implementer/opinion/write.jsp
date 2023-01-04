@@ -817,8 +817,8 @@
             }
             
             $(document).ready(function () {
-            	
-                const owners = document.querySelectorAll(".owner");
+            
+            	const owners = document.querySelectorAll(".owner");
                 owners.forEach((owner) => {
                     owner.addEventListener("click", (e) => {
                         const tr =

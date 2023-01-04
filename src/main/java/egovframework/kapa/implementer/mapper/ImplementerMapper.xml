@@ -212,7 +212,7 @@
 
 	<!-- 토지 소유자 목록 -->
 	<select id="getLandOwnerInfoList" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.LandownerInfo" >
-		 SELECT 
+		 <!-- SELECT 
 	      A.rept_seq,B.rept_addr,B.sido_gungu_cd,B.main_strt_no,B.sub_strt_no,B.strt_other,B.obst_kind_nm,B.obst_stuc1_nm,B.obst_stuc2_nm,b.area_amot,B.bef_unit_cost,B.area_unit,A.ownr_nm,A.land_shre
 		  FROM tb_ltis2kapa_rept_ownr_intr AS A
 		  LEFT JOIN tb_ltis2kapa_rept_info AS B
@@ -220,12 +220,13 @@
 		  WHERE 
  		     A.ownr_seq = #{ownrSeq}
 			 AND A.ownr_intr_yn = 'O'
-			  AND  B.land_obst_kind_cd = 'L'
+			  AND  B.land_obst_kind_cd = 'L' -->
+			  EXEC KAPA_IMPLEMENTER_LAND_OWNER_INFO @ownrSeq = #{ownrSeq}
 	</select> 
 	
     <!-- 지장물 소유자 목록 -->
 	<select id="getGoodsOwnerInfoList" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.GoodsownerInfo" >
-		 SELECT 
+		 <!-- SELECT 
 	      A.rept_seq,B.rept_addr,B.main_strt_no,B.sub_strt_no,B.strt_other,B.obst_kind_nm,B.obst_stuc1_nm,B.obst_stuc2_nm,b.area_amot,B.bef_unit_cost,B.area_unit,A.ownr_nm,A.land_shre
 		  FROM tb_ltis2kapa_rept_ownr_intr AS A
 		  LEFT JOIN tb_ltis2kapa_rept_info AS B
@@ -233,7 +234,9 @@
 		  WHERE 
  		     A.ownr_seq = #{ownrSeq}
 			 AND A.ownr_intr_yn = 'O'
-			  AND  B.land_obst_kind_cd = 'O'
+			  AND  B.land_obst_kind_cd = 'O' -->
+			  EXEC KAPA_IMPLEMENTER_GOODS_OWNER_INFO @ownrSeq = #{ownrSeq}
+			  
 	</select> 
 	
 
@@ -250,15 +253,17 @@
 	</select> 
 
 	<select id="getDecisionOpinion" parameterType="Integer" resultType="egovframework.kapa.implementer.dto.DecisionOpinionDTO" >
-			SELECT tdo.ownerOpinion, tdo.executorOpinion, tdo.type 
+			<!-- SELECT tdo.ownerOpinion, tdo.executorOpinion, tdo.type 
 			from TB_Decision_Opinion tdo where tdo.reptSeq in
-			(SELECT tlkri.rept_seq  from tb_ltis2kapa_rept_info tlkri where tlkri.judg_seq  = (SELECT judg_seq  from tb_ltis2kapa_ownr_intr tlkoi where tlkoi .ownr_intr_seq =#{ownrSeq}))
+			(SELECT tlkri.rept_seq  from tb_ltis2kapa_rept_info tlkri where tlkri.judg_seq  = (SELECT judg_seq  from tb_ltis2kapa_ownr_intr tlkoi where tlkoi .ownr_intr_seq =#{ownrSeq})) -->
+			EXEC KAPA_IMPLEMENTER_DECISION_OPINION @ownrSeq = #{ownrSeq}
 	</select> 
 
 	<select id="getDecisionOpinionFile" parameterType="Integer" resultType="egovframework.kapa.implementer.dto.DecisionOpinionFileDTO" >
-			SELECT tdoi.opinionTitle, tdoi.opinionContent, tdoi.opinionType
+			<!-- SELECT tdoi.opinionTitle, tdoi.opinionContent, tdoi.opinionType
 			from TB_Decision_Opinion_Item tdoi where tdoi.reptSeq  in 
-			(SELECT tlkri.rept_seq  from tb_ltis2kapa_rept_info tlkri where tlkri.judg_seq  = (SELECT judg_seq  from tb_ltis2kapa_ownr_intr tlkoi where tlkoi .ownr_intr_seq =#{ownrSeq}))
+			(SELECT tlkri.rept_seq  from tb_ltis2kapa_rept_info tlkri where tlkri.judg_seq  = (SELECT judg_seq  from tb_ltis2kapa_ownr_intr tlkoi where tlkoi .ownr_intr_seq =#{ownrSeq})) -->
+			EXEC KAPA_IMPLEMENTER_DECISION_OPINION_FILE @ownrSeq = #{ownrSeq}
 	</select> 
 
 

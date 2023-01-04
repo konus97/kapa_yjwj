@@ -174,11 +174,12 @@
     -webkit-transition: 0.2s;
 }
 #contents.c_main .cm_service .cms_form input {
-    background:0;
-    color:inherit;
-    border:0;
-    height:50px;
-    text-indent:0.4em;
+    background: 0;
+	color: inherit;
+	border: 0;
+	height: 50px;
+	text-indent: 0.4em;
+	width: calc(100% - 50px);
 }
 #contents.c_main .cm_service .cms_form input::placeholder {
     color:inherit;
