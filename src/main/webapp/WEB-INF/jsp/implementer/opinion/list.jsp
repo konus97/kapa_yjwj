@@ -26,6 +26,10 @@
         <meta property="og:site_name" content="재결정보지원센터" />
         <meta property="og:description" content="재결정보지원센터" />
         <meta property="og:image" content="../css/favicon_1200x630.png" />
+        
+		<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header"
+			content="${_csrf.headerName}" />
         <meta name="twitter:description" content="재결정보지원센터" />
         <meta name="twitter:image" content="../css/favicon_270x270.png" />
         <link rel="shortcut icon" href="../css/favicon_seoul.ico" />

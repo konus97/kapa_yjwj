@@ -13,9 +13,9 @@
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 
-<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<%-- <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
 <meta id="_csrf_header" name="_csrf_header"
-	content="${_csrf.headerName}" />
+	content="${_csrf.headerName}" /> --%>
 
 <title>재결정보지원센터</title>
 
@@ -635,6 +635,9 @@
 																<th class="info_reg_th">설정</th>
 																<td>
 																	<div class="txt-r">
+																	<span>
+																	*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다
+																	</span>
 																		<button class="btn nohover">
 																			<i class="download white icon"></i> PDF 다운로드
 																		</button>
