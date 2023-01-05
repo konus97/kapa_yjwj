@@ -15,9 +15,9 @@ function addOpinion(getSeq,getItem,getType,getTitle){
 		
 		let addList = new Array();
 		 
+		addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" data-title=\"\" data-content=\"\">");   
 		addList.push("      <input type=\"hidden"+"\" id=\"seqNum"+"\" value=\""+getSeq+"\"/> ");
 		addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+"\" value=\""+getItem+"\"/> ");
-		addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" data-title=\"\" data-content=\"\">");   
 		addList.push(" <div class=\"cbl_wrap\">");        
 		addList.push("	    <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
 	    addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
@@ -122,6 +122,8 @@ function openOpinionPopup(getSeq,getType){
 	
 	$("#popupOwnerOpinion").attr("data-seq",getSeq);
 	$("#popupOwnerOpinion").attr("data-type",getType);
+	document.getElementById('itemNum').value = getType;
+	console.log(document.getElementById('itemNum').value);
 	
 	$("#popupOwnerOpinion").addClass("on");
 	
@@ -204,17 +206,45 @@ function closeOwnerOpinion(){
 function addOpinionItem(){
 	
 	let addList = new Array();
+	let seq = document.getElementById('itemNum').value;
+	alert(seq);
+	/*let contextPath = $("#contextPath").val();
+	var downloadItem = "";
+	if(seq == "1"){
+	downloadItem = 	"1.소유자별재결신청청구및지연필수.hwpx";
+	}else if(seq =="6"){
+	downloadItem = 	"무허가건물부지면적보상.hwpx";
+	}else if(seq =="7"){
+			downloadItem = 	"잔여지(잔여건물)가치하락.hwpx";
+	}else if(seq =="8"){
+			downloadItem = 	"잔여지(잔여건물)가치하락.hwpx";
+	}else if(seq =="9"){
+			downloadItem = 	"9.사도평가 적정성.hwpx";
+	}else if(seq =="10"){
+			downloadItem = 	"10.일단지보상.hwpx";
+	}else if(seq =="12"){
+			downloadItem = 	"12.영업보상적정성.hwpx";
+	}else if(seq =="19"){
+			downloadItem = 	"19.구분지상권.hwpx";
+	}*/
 	
 	addList.push(" <tbody id=\"popupOpinionItem"+popupOpinion+"\" class=\"popupOpinionItem\" >	");					                              
     addList.push("	 <tr>");	
     addList.push("      <th class=\"info_reg_th\">설정</th>");	
 	addList.push("      <td>");	
 	addList.push("        <div class=\"txt-r\">");
+	addList.push("        <span style=\color:red;\>");
+	addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");	
+	addList.push("        </span>");
 	addList.push("          <button class=\"btn nohover\">");
 	addList.push("          	<i class=\"download white icon\"></i> PDF 업로드");
 	addList.push("           </button>");
-	addList.push("          <button class=\"btn nohover\">");
+	/*addList.push("          <button class=\"btn nohover\" >");*/
+	addList.push("          <button class=\"btn nohover\" onclick=\"hwpDownload('"+seq+"');return false;\">");
+	/* onclick=\"hwpDownload('"+seq+"');return false;\"*/
 	addList.push("          	<i class=\"download white icon\"></i> 한글파일 다운로드");
+
+	/*addList.push("	<a href=\""+contextPath+"/files/"+downloadItem+"\"></a>");*/
 	addList.push("           </button>");
 	addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
 	addList.push("          	<i class=\"pluse icon\"></i> 추가");
@@ -268,6 +298,9 @@ function resetOpinionItem(opinion){
     addList.push("      <th class=\"info_reg_th\">설정</th>");	
 	addList.push("      <td>");	
 	addList.push("        <div class=\"txt-r\">");
+	addList.push("        <span>");
+	addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");	
+	addList.push("        </span>");
 	addList.push("          <button class=\"btn nohover\">");
 	addList.push("          	<i class=\"download white icon\"></i> PDF 업로드");
 	addList.push("           </button>");
@@ -323,5 +356,40 @@ function removeOpinionItem(id){
 		$(getId).remove();
 	}
 	
+}
+
+
+function hwpDownload(seq){
+	
+
+let contextPath = $("#contextPath").val();
+
+/*const url = contextPath+'/file/download?seqNo='+seq;*/
+
+
+if(seq == "1"){
+	downloadItem = 	"1.소유자별재결신청청구및지연일수.hwpx";
+	}else if(seq =="6"){
+	downloadItem = 	"무허가건물부지면적보상.hwpx";
+	}else if(seq =="7"){
+			downloadItem = 	"잔여지(잔여건물)가치하락.hwpx";
+	}else if(seq =="8"){
+			downloadItem = 	"잔여지(잔여건물)가치하락.hwpx";
+	}else if(seq =="9"){
+			downloadItem = 	"9.사도평가 적정성.hwpx";
+	}else if(seq =="10"){
+			downloadItem = 	"10.일단지보상.hwpx";
+	}else if(seq =="12"){
+			downloadItem = 	"12.영업보상적정성.hwpx";
+	}else if(seq =="19"){
+			downloadItem = 	"19.구분지상권.hwpx";
+	}else{
+		downloadItem = "19.구분지상권.hwpx";
+	}
+	
+const url = contextPath+'/files/'+downloadItem;
+location.href = url;
+
+
 }
 

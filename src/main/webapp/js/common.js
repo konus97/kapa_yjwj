@@ -678,16 +678,15 @@ function dateFormat(date) {
 
 function month(i){
 
-var now = new Date();	
-var now2 = new Date();	
+let d = new Date();
+let sel_month = -i; // 월을 조절하시면 됩니다. -1이면 전달을 +1이면 다음달을..
+d.setMonth(d.getMonth() + sel_month ); 
 
-console.log("현재 : ", now);
-var monthLater = new Date(now.setMonth(now.getMonth() + i));	// 한달 후
-console.log(i+"달 후 : ", monthLater);
-console.log(dateFormat(now));
+let year    = d.getFullYear();
+let month   = ('0' + (d.getMonth() +  1 )).slice(-2);
+let day     = ('0' + d.getDate()).slice(-2);
+dt = year+"-"+month+"-"+day;
 
-document.getElementById('il_date1').value = dateFormat(now2);
-document.getElementById('il_date2').value = dateFormat(monthLater);
-
+document.getElementById('il_date1').value = dt;
 }
 

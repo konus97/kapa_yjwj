@@ -128,6 +128,9 @@
 
      <mvc:resources mapping="/js/**" location="/js/" />
      
+    <mvc:resources mapping="/files/**" location="/files/" />
+     
+     
      <mvc:resources mapping="/lib/**" location="/lib/" />
 
 
