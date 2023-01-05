@@ -14,7 +14,9 @@ function addOpinion(getSeq,getItem,getType,getTitle){
 		console.log($(getId).length);
 		
 		let addList = new Array();
-		
+		 
+		addList.push("      <input type=\"hidden"+"\" id=\"seqNum"+"\" value=\""+getSeq+"\"/> ");
+		addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+"\" value=\""+getItem+"\"/> ");
 		addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" data-title=\"\" data-content=\"\">");   
 		addList.push(" <div class=\"cbl_wrap\">");        
 		addList.push("	    <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
@@ -57,7 +59,7 @@ function resetSeq(getSeq){
 }
 
 function openOpinionPopup(getSeq,getType){
-	var seqNum = document.getElementById("seqNum").value;
+	/*var seqNum = document.getElementById("seqNum").value;
 	var itemNum = document.getElementById("itemNum").value;
 	if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
 	console.log("hi1");
@@ -70,21 +72,12 @@ function openOpinionPopup(getSeq,getType){
 	var editorId_2 = "editor2_"+seqNum+"-"+itemNum;
 	
 	document.querySelector('#editor2').setAttribute("id", editorId_2);
-	}
+	}*/
 	$(".resetPopupVal").val('');
 	$("#popupOpinionItemList").empty();
 	
-	ClassicEditor
-	      .create( document.querySelector( '#editor1_'+seqNum+"-"+itemNum ) )
-	      .catch( error => {
-	    	  console.log( error );
-	      });
-	      
-	      ClassicEditor
-	      .create( document.querySelector( '#editor2_'+seqNum+"-"+itemNum ) )
-	      .catch( error => {
-	    	  console.log( error );
-	      });
+	
+
 	if(addOpinionItemArray.length>0){
 		console.log('array!');
 		console.log(addOpinionItemArray);
@@ -218,7 +211,7 @@ function addOpinionItem(){
 	addList.push("      <td>");	
 	addList.push("        <div class=\"txt-r\">");
 	addList.push("          <button class=\"btn nohover\">");
-	addList.push("          	<i class=\"download white icon\"></i> PDF 다운로드");
+	addList.push("          	<i class=\"download white icon\"></i> PDF 업로드");
 	addList.push("           </button>");
 	addList.push("          <button class=\"btn nohover\">");
 	addList.push("          	<i class=\"download white icon\"></i> 한글파일 다운로드");
@@ -276,7 +269,7 @@ function resetOpinionItem(opinion){
 	addList.push("      <td>");	
 	addList.push("        <div class=\"txt-r\">");
 	addList.push("          <button class=\"btn nohover\">");
-	addList.push("          	<i class=\"download white icon\"></i> PDF 다운로드");
+	addList.push("          	<i class=\"download white icon\"></i> PDF 업로드");
 	addList.push("           </button>");
 	addList.push("          <button class=\"btn nohover\">");
 	addList.push("          	<i class=\"download white icon\"></i> 한글파일 다운로드");

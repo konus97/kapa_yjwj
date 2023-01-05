@@ -614,14 +614,14 @@
 														<tbody>
 															<tr>
 																<th class="info_reg_th">소유자 의견</th>
-																<td><textarea id="editor1"
+																<td><textarea id="ownerOpinion"
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.ownerOpinion}</textarea></td>
 															</tr>
 
 															<tr>
 																<th class="info_reg_th">사업시행자<br />의견
 																</th>
-																<td><textarea id="editor2"
+																<td><textarea id="executorOpinion"
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.executorOpinion}</textarea></td>
 															</tr>
 
@@ -744,6 +744,7 @@
 
 	<script src="../../js/implementer/popup/block.js"></script>
 	<script src="../../js/implementer/popup/content.js"></script>
+	<script src="../../lib/ckeditor/content.js"></script>
 	<script type="text/javascript">
 
         	let opinionItemList = new Array();
