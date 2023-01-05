@@ -40,8 +40,7 @@
 <link rel="stylesheet" href="../../css/sub.css" />
 <link rel="stylesheet" href="../../css/owl.carousel.min.css" />
 <link rel="stylesheet" href="../../css/jquery-ui.css" />
-<script
-		src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+
 </head>
 <body>
 
@@ -745,6 +744,24 @@
 
 	<script src="../../js/implementer/popup/block.js"></script>
 	<script src="../../js/implementer/popup/content.js"></script>
+<<<<<<< HEAD
+=======
+	<script
+		src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+	<script>
+	      ClassicEditor
+	      .create( document.querySelector( '#editor1' ) )
+	      .catch( error => {
+	    	  console.log( error );
+	      });
+	      
+	      ClassicEditor
+	      .create( document.querySelector( '#editor2' ) )
+	      .catch( error => {
+	    	  console.log( error );
+	      });
+	    </script>
+>>>>>>> branch 'master' of https://github.com/chori112/kapa_seoul.git
 	<script type="text/javascript">
 
         	let opinionItemList = new Array();

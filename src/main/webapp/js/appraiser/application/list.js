@@ -8,20 +8,42 @@ function getAppraiserApplicationList(cpage) {
 	let contextPath = $("#contextPath").val();
 	let url = contextPath+"/api/appraiser/application/list";
 
-	$("#contentList").attr("data-cpage", cpage);
+	var csrfToken = $("meta[name='_csrf']").attr("content");
+	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	
+	/* 검색 조건 세팅  */
+	var numOrname = document.getElementById('il_input').value; //사건번호 or 사업명
+	var startDate = document.getElementById('il_date1').value; //접수일 시작
+	var endDate = document.getElementById('il_date2').value; //접수일 끝
+	var subject = document.getElementById('il_subject').value; //사업명
+	var code = document.getElementById('il_code').value; //사건번호
+	var part = document.getElementById('il_part').value; //소재지
+	var name = document.getElementById('il_name').value; //시행자명
+	
 	
 	$("#contentList").empty();
 	$("#pageList").empty();
 
 	$.ajax({
 		url : url,
-		type : "GET",
+		type : "POST",
 		dataType : "json",
 		async: false,
 		data : {
-			"cpage":cpage,
+			"cpage" : 1,
+			"numOrname": numOrname,
+			"startDate" : startDate,
+			"endDate" : endDate,
+			"subject" : subject,
+			"code" : code,
+			"part" : part,
+			"name" : name
 		},
+		beforeSend : function(xhr){
+    	xhr.setRequestHeader(csrfHeader, csrfToken);
+    	},
 		success : function(data) {
+			console.log(data);
 
 			let list = data.list;
 			let totalPage = data.totalPage;

@@ -20,7 +20,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		// TODO Auto-generated method stub
 
-		System.out.println("호호호");
 		System.out.println("authentication : " + authentication);
 
 		String loginUserName = String.valueOf(authentication.getPrincipal());

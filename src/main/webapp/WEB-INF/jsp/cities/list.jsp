@@ -30,6 +30,8 @@
         <meta name="twitter:image" content="../css/favicon_270x270.png" />
         <link rel="shortcut icon" href="../css/favicon_seoul.ico" />
         <link rel="icon" href="../css/favicon_seoul.ico" />
+        <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
         <link rel="apple-touch-icon" href="../css/favicon_seoul.ico" />
         <link rel="stylesheet" href="../css/init.css" />
@@ -79,48 +81,24 @@
                                                     >
                                                 </div>
                                                 <div class="ff_wrap">
-                                                    <span class="ff_group">
-                                                        <label
-                                                            for="il_select"
-                                                            class="blind"
-                                                            >선택</label
-                                                        >
-                                                        <select
-                                                            name="il_select"
-                                                            id="il_select"
-                                                            class="select t1"
-                                                            required
-                                                        >
-                                                            <option value="">
-                                                                전체
-                                                            </option>
-                                                            <option value="">
-                                                                문서번호
-                                                            </option>
-                                                            <option value="">
-                                                                문서제목
-                                                            </option>
-                                                            <option value="">
-                                                                수신처
-                                                            </option>
-                                                        </select>
-                                                    </span>
+                                                  
                                                     <span class="ff_group w290">
                                                         <input
                                                             type="text"
                                                             id="il_input"
                                                             name="il_input"
                                                             class="input40 t1"
-                                                            placeholder="사건번호 혹은 사업명 입력"
+                                                            placeholder="사건번호"
                                                             required
                                                         />
                                                     </span>
                                                     <span class="ff_group">
                                                         <button
-                                                            type="submit"
+                                                            type="button"
                                                             id="il_submit"
                                                             name="il_submit"
                                                             class="btn small ico search"
+                                                            onclick="getCitiesAnnouncementList(1);return false;"
                                                         >
                                                             검색
                                                         </button>
@@ -305,8 +283,15 @@
         <script type="text/javascript">
 
 	        $(document).ready(function(){
+	        	
+	        	//의뢰날짜 최신화
+	        	document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
+	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10);
 	
 	        	getCitiesAnnouncementList(1);
+	        	
+	        	
+	        
 	
 	        });
         </script>

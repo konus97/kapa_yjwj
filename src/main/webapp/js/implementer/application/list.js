@@ -77,6 +77,9 @@ function getApplicationListSearch() {
 	let contextPath = $("#contextPath").val();
 	let url = contextPath+"/api/implementer/application/searchlist";
 	
+	var csrfToken = $("meta[name='_csrf']").attr("content");
+	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	
 	/* 검색 조건 세팅  */
 	var numOrname = document.getElementById('il_input').value; //사건번호 or 사업명
 	var startDate = document.getElementById('il_date1').value; //접수일 시작
@@ -86,7 +89,7 @@ function getApplicationListSearch() {
 	var part = document.getElementById('il_part').value; //소재지
 	var name = document.getElementById('il_name').value; //시행자명
 	
-	var checkvalue = 10; 
+	var checkvalue = new Array; 
 	/*
 	재결진행상황 (10 = 선택안함)
 	
@@ -103,9 +106,11 @@ function getApplicationListSearch() {
 
 	for(let i=0; i<9; i++){
 	if(document.getElementsByName('checkbox')[i].checked == true){
-		checkvalue = i;
+		checkvalue.push(i+1);
 	}
 	};
+	
+	console.log(checkvalue);
 	
 	$("#contentList").empty();
 	$("#pageList").empty();
@@ -124,8 +129,11 @@ function getApplicationListSearch() {
 			"code" : code,
 			"part" : part,
 			"name" : name,
-			"checkvalue" : checkvalue
+			"checkvalue" : checkvalue.toString()
 		},
+		beforeSend : function(xhr){
+    	xhr.setRequestHeader(csrfHeader, csrfToken);
+    	},
 		success : function(data) {
 
 			let list = data.list;
@@ -139,12 +147,12 @@ function getApplicationListSearch() {
 			$("#allCount").empty();
 			$("#allCount").append(allCnt);
 			
-			let currentPage ="<mark class=\"cm\">"+cpage+"</mark>/"+totalPage;
+			let currentPage ="<mark class=\"cm\">"+1+"</mark>/"+totalPage;
 			$("#currentPage").empty();
 			$("#currentPage").append(currentPage);
 
 			let t = Number(totalPage);
-			let c = Number(cpage);
+			let c = Number(1);
 
 			let startNumber = 0;
 

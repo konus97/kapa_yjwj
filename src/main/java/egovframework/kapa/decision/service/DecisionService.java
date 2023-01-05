@@ -60,7 +60,7 @@ public class DecisionService {
 		try	{
 			
 			
-			 System.out.println(param);
+			 //System.out.println(param);
 			
 			JSONParser parser = new JSONParser();
 			
@@ -101,7 +101,7 @@ public class DecisionService {
 	        insertNotice.setUptdate(LocalDateTime.now());
 	        insertNotice.setDelCheck(0);
 	        
-	        System.out.println(insertNotice);
+	        //System.out.println(insertNotice);
 			
 			//update
 			decisionMapper.insertDecisionNotice(insertNotice);
@@ -359,8 +359,7 @@ public class DecisionService {
 	}
 
 	public DecisionStateDTO getDecisionState(Long judg_seq) {
-		System.out.println("getOne인데 두개나와서??");
-		System.out.println("seq!: " + judg_seq);
+
 		Decision getDecision = decisionMapper.getDecisionViewMasterID(judg_seq);
 		
 		Long decisionId = 0L;
@@ -385,13 +384,13 @@ public class DecisionService {
 			
 			 decisionId=getDecision.getSeqNo();
 		}
-		System.out.println("decisionId" + decisionId);
+		//System.out.println("decisionId" + decisionId);
 		DecisionStateDTO decisionStateDTO = new DecisionStateDTO();
 		decisionStateDTO.setDecisionId(decisionId);
 		decisionStateDTO.setDecisionState(decisionState);
 		decisionStateDTO.setDecisionStateStr(decisionStateStr);
 		
-		System.out.println(decisionStateDTO);
+		//System.out.println(decisionStateDTO);
 		
 		// TODO Auto-generated method stub
 		return decisionStateDTO;
