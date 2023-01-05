@@ -745,20 +745,6 @@
 
 	<script src="../../js/implementer/popup/block.js"></script>
 	<script src="../../js/implementer/popup/content.js"></script>
-	
-	<script>
-	      ClassicEditor
-	      .create( document.querySelector( '#editor1' ) )
-	      .catch( error => {
-	    	  console.log( error );
-	      });
-	      
-	      ClassicEditor
-	      .create( document.querySelector( '#editor2' ) )
-	      .catch( error => {
-	    	  console.log( error );
-	      });
-	    </script>
 	<script type="text/javascript">
 
         	let opinionItemList = new Array();

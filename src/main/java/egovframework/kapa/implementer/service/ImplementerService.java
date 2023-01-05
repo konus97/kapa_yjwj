@@ -852,8 +852,12 @@ public class ImplementerService {
 	    			                    .ownrNnm(goods.getOwnr_nm())
 	    			                    .landShre(goods.getLand_shre())
 	    	                            .build();
-	  
-	    	            
+	    	        	
+						/*
+						 * ApplicationGoodsDTO applicationGoodsDTO2 = ApplicationGoodsDTO.builder()
+						 * .rank(rank) .reptSeq(goods.getRept_seq())
+						 */
+	    	        			
 	    	        	applicationGoodsDTOS.add(applicationGoodsDTO);
 	    	            rank++;
 	    			  

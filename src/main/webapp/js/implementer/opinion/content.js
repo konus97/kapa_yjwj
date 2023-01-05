@@ -59,17 +59,20 @@ function resetSeq(getSeq){
 }
 
 function openOpinionPopup(getSeq,getType){
-	
 	var seqNum = document.getElementById("seqNum").value;
 	var itemNum = document.getElementById("itemNum").value;
-	
+	if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
+	console.log("hi1");
 	var editorId_1 = "editor1_"+seqNum+"-"+itemNum;
-	var editorId_2 = "editor1_"+seqNum+"-"+itemNum;
-	console.log(editorId_1);
-	//document.getElementById("editor1").innerHTML= editorId_1;
 	document.querySelector('#editor1').setAttribute("id", editorId_1);
+	
+	}
+	if(document.getElementById("editor2") != '' || document.getElementById("editor2") != null){
+		console.log("hi2");
+	var editorId_2 = "editor2_"+seqNum+"-"+itemNum;
+	
 	document.querySelector('#editor2').setAttribute("id", editorId_2);
-	//document.getElementById("editor2").innerHTML= editorId_2;
+	}
 	$(".resetPopupVal").val('');
 	$("#popupOpinionItemList").empty();
 	
@@ -81,7 +84,7 @@ function openOpinionPopup(getSeq,getType){
 	      });
 	      
 	      ClassicEditor
-	      .create( document.querySelector( '#'+editorId_1 ) )
+	      .create( document.querySelector( '#editor2_'+seqNum+"-"+itemNum ) )
 	      .catch( error => {
 	    	  console.log( error );
 	      });
