@@ -15,9 +15,9 @@ function addOpinion(getSeq,getItem,getType,getTitle){
 		
 		let addList = new Array();
 		 
-		addList.push("      <input type=\"hidden"+"\" id=\"seqNum"+"\" value=\""+getSeq+"\"/> ");
-		addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+"\" value=\""+getItem+"\"/> ");
 		addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" data-title=\"\" data-content=\"\">");   
+		addList.push("      <input type=\"hidden"+"\" id=\"seqNum"+getSeq+"-"+getItem+"\" value=\""+getSeq+"\"/> ");
+		addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+getSeq+"-"+getItem+"\" value=\""+getItem+"\"/> ");
 		addList.push(" <div class=\"cbl_wrap\">");        
 		addList.push("	    <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
 	    addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
@@ -59,8 +59,13 @@ function resetSeq(getSeq){
 }
 
 function openOpinionPopup(getSeq,getType){
-	/*var seqNum = document.getElementById("seqNum").value;
-	var itemNum = document.getElementById("itemNum").value;
+	/*console.log(getSeq+getType);
+	var seqNum = document.getElementById('seqNum'+getSeq+"-"+getType).value;
+	console.log(seqNum);
+	var itemNum = document.getElementById("itemNum"+getSeq+"-"+getType).value;
+	console.log(itemNum);*/
+	
+	/*
 	if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
 	console.log("hi1");
 	var editorId_1 = "editor1_"+seqNum+"-"+itemNum;
@@ -122,6 +127,13 @@ function openOpinionPopup(getSeq,getType){
 	
 	$("#popupOwnerOpinion").attr("data-seq",getSeq);
 	$("#popupOwnerOpinion").attr("data-type",getType);
+	/*$("#ownerOpinion").attr(getSeq);
+	$("#ownerOpinion").attr("-",getType);*/
+/*	if(document.getElementById(getSeq+"-"+getType) == null){
+	console.log("test ::::::"+getSeq+"-"+getType);
+	document.querySelector('.resetPopupVal').id = getSeq+"-"+getType;
+	}
+	CKEDITOR.appendTo(getSeq+"-"+getType);*/
 	
 	$("#popupOwnerOpinion").addClass("on");
 	
@@ -132,11 +144,11 @@ function submitOwnerOpinion(){
 	let getSeq = $("#popupOwnerOpinion").attr("data-seq");
 	let getType = $("#popupOwnerOpinion").attr("data-type");
 	
-	let ownerOpinion = $("#ownerOpinion").val();
+	/*let ownerOpinion = CKEDITOR.instances.13135436-14.getData();*/
 	let executorOpinion = $("#executorOpinion").val();
 	
 	if (ownerOpinion == null || ownerOpinion == "") {
-		alert("소유자 의견을 입력해주세요");
+//		alert("소유자 의견을 입력해주세요");
 		return false;
 	}
 	
@@ -210,6 +222,7 @@ function addOpinionItem(){
     addList.push("      <th class=\"info_reg_th\">설정</th>");	
 	addList.push("      <td>");	
 	addList.push("        <div class=\"txt-r\">");
+	addList.push("        <span>안녕하세요</span>");
 	addList.push("          <button class=\"btn nohover\">");
 	addList.push("          	<i class=\"download white icon\"></i> PDF 업로드");
 	addList.push("           </button>");

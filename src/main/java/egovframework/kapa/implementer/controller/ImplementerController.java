@@ -101,8 +101,6 @@ public class ImplementerController {
 		List<DecisionFileVO> fileList = new ArrayList();
 		List<Decision> csltList = implementerService.getLtisCslt(masterId);
 		model.addAttribute("csltList", csltList);
-		System.out.println("list ::::::" + csltList.get(0).getCslt_area_amot());
-		
 		for (int i=0; i<decisionFiles.size(); i++) {
 			FileVO file = decisionService.getFileByDeicisionFileSeq(decisionFiles.get(i).getFileSeq());	
 			DecisionFileVO fileVO = new DecisionFileVO();

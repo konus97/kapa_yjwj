@@ -265,7 +265,7 @@
                                                         <tr>
                                                             <th rowspan="2">구 분</th>
                                                             <th colspan="3">총 보상대상</th>
-                                                            <th colspan="3">혐의취득 등</th>
+                                                            <th colspan="3">협의취득 등</th>
                                                             <th colspan="3">재결신청</th>
                                                         </tr>
                                                         <tr>
@@ -783,7 +783,7 @@
                                        </c:if>
                                         
                                         <li>
-                                            <a href="#" class="btn t1 h50 big" onclick="goToAnnouncementList();return false;" >목록</a>
+                                            <a href="#" class="btn t1 h50 big" onclick="goToAnnouncementList();return false;" >확인</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -834,7 +834,49 @@
         let amountC = ${decision.amountC};
 	
         $(document).ready(function(){
-			
+        	$(".reg_table").each(function() {
+				let landCnt = $('#landCnt').text();
+				let landArea = $('#landArea').text();
+				let landPrice = $('#landPrice').text();
+
+				let objCnt = $('#objCnt').text();
+				let objPrice = $('#objPrice').text();
+
+				let goodwillCnt = $('#goodwillCnt').text();
+				let goodwillPrice = $('#goodwillPrice').text();
+
+				landCnt = uncomma(landCnt);
+				objCnt = uncomma(objCnt);
+				goodwillCnt = uncomma(goodwillCnt);
+
+				landArea = uncomma(landArea);
+
+				landPrice = uncomma(landPrice);
+				objPrice = uncomma(objPrice);
+				goodwillPrice = uncomma(goodwillPrice);
+
+				landCnt = Number(landCnt);
+				objCnt = Number(objCnt);
+				goodwillCnt = Number(goodwillCnt);
+
+				landArea = Number(landArea);
+
+				landPrice = Number(landPrice);
+				objPrice = Number(objPrice);
+				goodwillPrice = Number(goodwillPrice);
+
+				let totalCnt = landCnt + objCnt + goodwillCnt;
+				let totalPrice = landPrice + objPrice + goodwillPrice;
+
+				totalCnt = numberWithCommas(totalCnt);
+				landArea = numberWithCommas(landArea);
+				totalPrice = numberWithCommas(totalPrice);
+
+				$('#totalConfer1').text(totalCnt);
+				$('#totalConfer2').text(landArea);
+				$('#totalConfer3').text(totalPrice);
+
+			});
 			
 			const downloadButtons = document.querySelectorAll('.downloadButton');
 			let contextPath = $("#contextPath").val();

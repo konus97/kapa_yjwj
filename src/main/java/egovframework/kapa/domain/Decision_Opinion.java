@@ -13,6 +13,7 @@ public class Decision_Opinion {
     
     private String opinionText;
     private String relatedLaws;
+    private String relatedLaws2;
     private String reviewOpinion;
     
     private Integer type;

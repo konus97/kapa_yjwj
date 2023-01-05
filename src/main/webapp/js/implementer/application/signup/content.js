@@ -132,7 +132,7 @@ function addNewDate(){
     addList.push("   <td>");
     
     addList.push("		<span class=\"w320\">");   
-    addList.push("			<span class=\"consultationDate\"><label for=\"il_date"+targetCount3+"\" class=\"blind\"></label><input type=\"text\" name=\"il_date"+targetCount3+"\" id=\"il_date"+targetCount3+"\" class=\"datepicker input40 t1 consultationDate\" placeholder=\"협의일\" required /><input type=\"text\" name=\"il_date"+targetCount3+"_text\" id=\"il_date"+targetCount3+"_text\" class=\"input40 t1 consultationDateText\" placeholder=\"내용\" required /></span>  ");               
+    addList.push("			<span class=\"consultationDate\"><label for=\"il_date"+targetCount3+"\" class=\"blind\"></label><input type=\"text\" name=\"il_date"+targetCount3+"\" id=\"il_date"+targetCount3+"\" class=\"datepicker input40 t1 consultationDate\" placeholder=\"협의일\" required /><input type=\"text\" name=\"il_date"+targetCount3+"_text\" id=\"il_date"+targetCount3+"_text\" class=\"input40 t1 consultationDateText\" placeholder=\"내용\" required /></span>  ");              
     addList.push("		</span>");
     
     addList.push("   </td>");                                                                                                   

@@ -460,11 +460,12 @@ public class DecisionService {
 			insertAgendaDate.setDelCheck(0);	
 			
 			String relatedLaws = jsonObject.get("relatedLaws").toString();
+			String relatedLaws2 = jsonObject.get("relatedLaws2").toString();
 			String reviewOpinion = jsonObject.get("reviewOpinion").toString();	
 		
 		
 			decisionMapper.insertAgendaDate(insertAgendaDate);
-			decisionMapper.updateStep1(2,relatedLaws,reviewOpinion,decisionId);
+			decisionMapper.updateStep1(2,relatedLaws,relatedLaws2,reviewOpinion,decisionId);
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -486,9 +487,10 @@ public class DecisionService {
 			
 			String content = jsonObject.get("content").toString();
 			String relatedLaws = jsonObject.get("relatedLaws").toString();
+			String relatedLaws2 = jsonObject.get("relatedLaws2").toString();
 			String reviewOpinion = jsonObject.get("reviewOpinion").toString();	
 			
-			decisionMapper.updateStep2(content,relatedLaws,reviewOpinion,seqNo);
+			decisionMapper.updateStep2(content,relatedLaws, relatedLaws2, reviewOpinion,seqNo);
 		
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

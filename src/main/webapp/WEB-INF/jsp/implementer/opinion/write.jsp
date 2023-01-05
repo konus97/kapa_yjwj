@@ -564,7 +564,7 @@
 									</c:if>
 
 									<li><a href="#" class="btn t1 h50 big"
-										onclick="goToImplementerOpinionList();return false;">목록</a>
+										onclick="goToImplementerOpinionList();return false;">확인</a>
 									</li>
 								</ul>
 
@@ -595,7 +595,7 @@
 							<!-- 팝업, 평가사 정보 E -->
 
 							<!-- 소유자의견 팝업 S -->
-							<div id="popupOwnerOpinion" class="popup info_reg">
+							<div id="popupOwnerOpinion" class="popup info_reg" >
 								<div class="p_box">
 									<div class="p_head">
 										<h3 class="p_title">의견입력</h3>
@@ -732,19 +732,20 @@
 	<script src="../../lib/owl.carousel.min.js"></script>
 	<script src="../../lib/jquery-ui.min.js"></script>
 	<script src="../../lib/lib.js"></script>
-
 	<script src="../../lib/form/jquery.form.js"></script>
 
 	<!--common start-->
 	<script src="../../js/common.js"></script>
 
+	<script src="../../lib/ckeditor/ckeditor.js"></script>
 	<script src="../../js/implementer/content.js"></script>
 
 	<script src="../../js/implementer/opinion/content.js"></script>
 
 	<script src="../../js/implementer/popup/block.js"></script>
 	<script src="../../js/implementer/popup/content.js"></script>
-	<script src="../../lib/ckeditor/content.js"></script>
+	
+	
 	<script type="text/javascript">
 
         	let opinionItemList = new Array();

@@ -187,6 +187,9 @@ public class DecisionController {
         int masterId = decison.getMasterID();
         model.addAttribute("masterId", masterId);
         
+        List<Decision> csltList = implementerService.getLtisCslt(masterId);
+      		model.addAttribute("csltList", csltList); 
+      		
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
@@ -213,6 +216,13 @@ public class DecisionController {
       			Long amountA = decision.getAmountA();
       			Long amountB = decision.getAmountB();
       			Long amountC = decision.getAmountC();
+      			Long landCnt = decision.getLandCnt();
+      			Long landArea = decision.getLandArea();
+      			Long landPrice = decision.getLandPrice();
+      			Long objCnt = decision.getObjCnt();
+      			Long objPrice = decision.getObjPrice();
+      			Long goodwillCnt = decision.getGoodwillCnt();
+      			Long goodwillPrice = decision.getGoodwillPrice();
       			
       			double average = (amountA+amountB+amountC)/3;
       			
@@ -220,10 +230,25 @@ public class DecisionController {
       		    String amountAstr = dc.format(amountA);
       		    String amountBstr = dc.format(amountB);
       		    String amountCstr = dc.format(amountC);
+      		  String landCntStr = dc.format(landCnt);
+    		    String landAreaStr = dc.format(landArea);
+        		String landPriceStr = dc.format(landPrice);
+        		String objCntStr = dc.format(objCnt);
+        		String objPriceStr = dc.format(objPrice);
+        		String goodwillCntStr = dc.format(goodwillCnt);
+        		String goodwillPriceStr = dc.format(goodwillPrice);
+        		
       		    
       		    model.addAttribute("amountA", amountAstr);
       		    model.addAttribute("amountB", amountBstr);
       		    model.addAttribute("amountC", amountCstr);
+      		  model.addAttribute("landCnt", landCntStr);
+      		model.addAttribute("landArea", landAreaStr);
+      		model.addAttribute("landPrice", landPriceStr);
+      		model.addAttribute("objCnt", objCntStr);
+      		model.addAttribute("objPrice", objPriceStr);
+      		model.addAttribute("goodwillCnt", goodwillCntStr);
+      		model.addAttribute("goodwillPrice", goodwillPriceStr);
       		    
       		    System.out.println(amountAstr);
       		    System.out.println(amountBstr);
@@ -307,15 +332,54 @@ public class DecisionController {
 		
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
 		System.out.println(decisionId); 
+		
 	    model.addAttribute("decisionId", decisionId);
-	    
+	    try {
+	    	Decision decision = decisionService.getDecisionView(decisionId);
+	    	
+	    	int masterId = decision.getMasterID();
+	    	List<Decision> csltList = implementerService.getLtisCslt(masterId);
+			model.addAttribute("csltList", csltList);
+			Long landCnt = decision.getLandCnt();
+  			Long landArea = decision.getLandArea();
+  			Long landPrice = decision.getLandPrice();
+  			Long objCnt = decision.getObjCnt();
+  			Long objPrice = decision.getObjPrice();
+  			Long goodwillCnt = decision.getGoodwillCnt();
+  			Long goodwillPrice = decision.getGoodwillPrice();
+			
+			DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
+		    String landCntStr = dc.format(landCnt);
+  		    String landAreaStr = dc.format(landArea);
+      		String landPriceStr = dc.format(landPrice);
+      		String objCntStr = dc.format(objCnt);
+      		String objPriceStr = dc.format(objPrice);
+      		String goodwillCntStr = dc.format(goodwillCnt);
+      		String goodwillPriceStr = dc.format(goodwillPrice);
+      		
+   
+		    model.addAttribute("landCnt", landCntStr);
+    		model.addAttribute("landArea", landAreaStr);
+    		model.addAttribute("landPrice", landPriceStr);
+    		model.addAttribute("objCnt", objCntStr);
+    		model.addAttribute("objPrice", objPriceStr);
+    		model.addAttribute("goodwillCnt", goodwillCntStr);
+    		model.addAttribute("goodwillPrice", goodwillPriceStr);
+		    
+			    
+						
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		//current page
 		model.addAttribute("currentPage", "register");
+		
+		
 		
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
 
     	model.addAttribute("formatter", formatter);
-    	
 		return "decision/register/step3";
 	}
 
@@ -382,17 +446,38 @@ public class DecisionController {
 			Long amountA = decision.getAmountA();
 			Long amountB = decision.getAmountB();
 			Long amountC = decision.getAmountC();
-			
+			Long landCnt = decision.getLandCnt();
+  			Long landArea = decision.getLandArea();
+  			Long landPrice = decision.getLandPrice();
+  			Long objCnt = decision.getObjCnt();
+  			Long objPrice = decision.getObjPrice();
+  			Long goodwillCnt = decision.getGoodwillCnt();
+  			Long goodwillPrice = decision.getGoodwillPrice();
 			double average = (amountA+amountB+amountC)/3;
 			
 			DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
 		    String amountAstr = dc.format(amountA);
 		    String amountBstr = dc.format(amountB);
 		    String amountCstr = dc.format(amountC);
-		    
+		    String landCntStr = dc.format(landCnt);
+  		    String landAreaStr = dc.format(landArea);
+      		String landPriceStr = dc.format(landPrice);
+      		String objCntStr = dc.format(objCnt);
+      		String objPriceStr = dc.format(objPrice);
+      		String goodwillCntStr = dc.format(goodwillCnt);
+      		String goodwillPriceStr = dc.format(goodwillPrice);
+      		
+      		
 		    model.addAttribute("amountA", amountAstr);
 		    model.addAttribute("amountB", amountBstr);
 		    model.addAttribute("amountC", amountCstr);
+		    model.addAttribute("landCnt", landCntStr);
+    		model.addAttribute("landArea", landAreaStr);
+    		model.addAttribute("landPrice", landPriceStr);
+    		model.addAttribute("objCnt", objCntStr);
+    		model.addAttribute("objPrice", objPriceStr);
+    		model.addAttribute("goodwillCnt", goodwillCntStr);
+    		model.addAttribute("goodwillPrice", goodwillPriceStr);
 		    
 		    System.out.println(amountAstr);
 		    System.out.println(amountBstr);

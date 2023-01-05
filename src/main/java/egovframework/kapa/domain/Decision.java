@@ -36,6 +36,7 @@ public class Decision {
 	private String amountCstr;
 	
 	private String relatedLaws;
+	private String relatedLaws2;
 	private String reviewOpinion;
 	
 	private Long landCnt;

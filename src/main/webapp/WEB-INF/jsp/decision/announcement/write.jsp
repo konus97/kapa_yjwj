@@ -259,7 +259,7 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <a href="#" class="btn t1 h50 big" onclick="goToAnnouncementList();return false;" >목록</a>
+                                                <a href="#" class="btn t1 h50 big" onclick="goToAnnouncementList();return false;" >확인</a>
                                             </li>
                                         </ul>
                                     </div>

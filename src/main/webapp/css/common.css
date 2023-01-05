@@ -2116,9 +2116,9 @@ div.table table td:last-child {
     color: #365978;
     letter-spacing: -0.04em;
 }
-#header .h_menu .hm_list .gnb > li:hover > a {
-    color: #5A7791;
-	background: #F8F9FB;
+#header .h_menu .hm_list .gnb > li > a:hover {
+    color:#5A7791;
+    background:#F8F9FB;
 }
 #header .h_menu .hm_list .lnb { 
     display:none;
@@ -2858,10 +2858,9 @@ div.table table td:last-child {
 .table_fixed {
     table-layout: fixed;
 }
-
 .consultationDate {
-    display:flex;
-    gap:0.5em;
+	display:flex;
+	gap:0.5em;
 }
 
 @media screen and (max-width: 1200px) {

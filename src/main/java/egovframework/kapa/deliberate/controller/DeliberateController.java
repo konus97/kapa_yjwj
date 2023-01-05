@@ -1,6 +1,6 @@
 package egovframework.kapa.deliberate.controller;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,19 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.kapa.decision.service.DecisionService;
-import egovframework.kapa.deliberate.dto.DeliberateDTO;
-import egovframework.kapa.deliberate.dto.DeliberateDetailDTO;
 import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
-import egovframework.kapa.domain.Decision_Cityplan;
-import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.implementer.domain.ApplicationLand;
-import egovframework.kapa.implementer.domain.ApplicationList;
-import egovframework.kapa.implementer.dto.ApplicationDTO;
-import egovframework.kapa.implementer.dto.ApplicationGoodsDTO;
-import egovframework.kapa.implementer.dto.ApplicationLandDTO;
 import egovframework.kapa.implementer.service.ImplementerService;
 
 @Controller
@@ -72,11 +63,37 @@ public class DeliberateController {
        
     	List<DeliberateViewDTO> formatterList = deliberateService.getDeliberateViewFormatter(pagingResult); 
 
-    	
     	Long decisionId = pagingResult.get(0).getDecisionId();
-    	Decision decison = decisionService.getDecisionView(decisionId);
-    	int masterId = decison.getMasterID();
+    	Decision decision = decisionService.getDecisionView(decisionId);
+    	Long landCnt = decision.getLandCnt();
+			Long landArea = decision.getLandArea();
+			Long landPrice = decision.getLandPrice();
+			Long objCnt = decision.getObjCnt();
+			Long objPrice = decision.getObjPrice();
+			Long goodwillCnt = decision.getGoodwillCnt();
+			Long goodwillPrice = decision.getGoodwillPrice();
+
+			DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
+		    String landCntStr = dc.format(landCnt);
+  		    String landAreaStr = dc.format(landArea);
+      		String landPriceStr = dc.format(landPrice);
+      		String objCntStr = dc.format(objCnt);
+      		String objPriceStr = dc.format(objPrice);
+      		String goodwillCntStr = dc.format(goodwillCnt);
+      		String goodwillPriceStr = dc.format(goodwillPrice);
+
+      		 model.addAttribute("landCnt", landCntStr);
+     		model.addAttribute("landArea", landAreaStr);
+     		model.addAttribute("landPrice", landPriceStr);
+     		model.addAttribute("objCnt", objCntStr);
+     		model.addAttribute("objPrice", objPriceStr);
+     		model.addAttribute("goodwillCnt", goodwillCntStr);
+     		model.addAttribute("goodwillPrice", goodwillPriceStr);
+
+    	int masterId = decision.getMasterID();
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
+		model.addAttribute("csltList", csltList);
+		
 		model.addAttribute("csltList", csltList);
 		
     	model.addAttribute("formatterList", formatterList);

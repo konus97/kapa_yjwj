@@ -2,6 +2,9 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/jsp/components/temp_session.jsp"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 <!DOCTYPE html>
 	<html lang="ko">
@@ -92,7 +95,8 @@
 											<label>심의차수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>-</p>
+											<c:set var = "consultationDate2" value = "${formatter.consultationDate}" />
+											<p>${fn:replace(consultationDate2, '-', '')} -${status.index +1}번</p>
 										</div>
 									</div>
 								</div>
@@ -198,13 +202,13 @@
 							</div>
 							<div class="c_table t3 land">
 								<p class="s_title">- 총물량조서</p>
-								<table>
+								<table class="reg_table">
 									<caption>총물량조서</caption>
 									<thead>
 										<tr>
 											<th rowspan="2">구 분</th>
 											<th colspan="3">총 보상대상</th>
-											<th colspan="3">혐의성립 등</th>
+											<th colspan="3">협의성립 등</th>
 											<th colspan="3">재결신청</th>
 										</tr>
 										<tr>
@@ -220,55 +224,66 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th>토 지</th>
-											<td>71</td>
-											<td>5,535</td>
-											<td>2,471,691</td>
-											<td>4</td>
-											<td>598</td>
-											<td>132,242</td>
-											<td>4</td>
-											<td>598</td>
-											<td>132,242</td>
-										</tr>
-										<tr>
-											<th>물 건</th>
-											<td>90</td>
-											<td>-</td>
-											<td>1,691</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>90</td>
-											<td>-</td>
-											<td>132,242</td>
-										</tr>
-										<tr>
-											<th>기 타</th>
-											<td>2</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>2</td>
-											<td>-</td>
-											<td>-</td>
-										</tr>
-									</tbody>
+														<c:forEach var="csltList" items="${csltList}"
+															varStatus="status">
+															<tr>
+																<th>토 지</th>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+																<td id="landCnt" class="conferVal">${landCnt}</td>
+																<td id="landArea" class="conferVal">${landArea}</td>
+																<td id="landPrice" class="conferVal">${landPrice}</td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+															</tr>
+															<tr>
+																<th>물건</th>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_cnt}" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_amt}" pattern="#,###" /></td>
+																<td id="objCnt" class="conferVal">${objCnt}</td>
+																<td></td>
+																<td id="objPrice" class="conferVal">${objPrice}</td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_cnt}" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_amt}" pattern="#,###" /></td>
+															</tr>
+															<tr>
+																<th>영업권</th>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_cnt }" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_amt }" pattern="#,###" /></td>
+																<td id="goodwillCnt" class="conferVal">${goodwillCnt}</td>
+																<td></td>
+																<td id="goodwillPrice" class="conferVal">${goodwillPrice}</td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_cnt }" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_amt }" pattern="#,###" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
 									<tfoot>
 										<tr>
 											<th>계</th>
-											<td>163</td>
-											<td>5,525</td>
-											<td>565,525</td>
-											<td>4</td>
-											<td>598</td>
-											<td>132,242</td>
-											<td>159</td>
-											<td>4,937</td>
-											<td>2,496,807</td>
+															<td>-</td>
+															<td>-</td>
+															<td>-</td>
+															<td id="totalConfer1"></td>
+															<td id="totalConfer2"></td>
+															<td id="totalConfer3"></td>
+															<td>-</td>
+															<td>-</td>
+															<td>-</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -322,12 +337,22 @@
 				
 							<div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
-                                      	  검토의견
+                                      	  관련 법령
                                     </h4>
                                 </div>
                                 <div class="form">
                                     <div class="f_wrap">
                                         <p class="textarea_view textarea_bd">${formatter.decision.relatedLaws}</p>
+                                    </div>
+                                </div>
+                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                      	  관련 법령 판례
+                                    </h4>
+                                </div>
+                                <div class="form">
+                                    <div class="f_wrap">
+                                        <p class="textarea_view textarea_bd">${formatter.decision.relatedLaws2}</p>
                                     </div>
                                 </div>
 							<div class="cs_title">
@@ -535,17 +560,25 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										${deliberateOpinionDTO.opinionText}
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
 									</div>
 								</div>
 								
 								
 								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 및 판례</h4>
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 								</div>
 								<div class="form">
 									<div class="f_wrap">
 										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
 									</div>
 								</div>
 								
@@ -560,7 +593,7 @@
 								
 								<!-- view code -->
 								
-								 <c:if test="${deliberateOpinionDTO.itemCheck}">
+								 <%-- <c:if test="${deliberateOpinionDTO.itemCheck}">
 									 <c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
 										<div class="c_table t1">
 											<table class="mt40">
@@ -584,7 +617,7 @@
 											</table>
 										</div>
 									</c:forEach>		  
-								 </c:if>
+								 </c:if> --%>
 							
 								
 							
@@ -592,6 +625,9 @@
 							</c:forEach>
 												
 							<!-- 1. 지연가산금 E -->
+							<li><a href="#" class="btn t1 h50 big"
+										onclick="goToImplementerOpinionList();return false;">확인</a>
+									</li>
 							
 					</div>
 					
@@ -622,16 +658,59 @@
 		<!-- 팝업, 로그인 E -->
 
 
-		<script src="../../js/jquery.3.1.0.min.js"></script>
-		<script src="../../js/owl.carousel.min.js"></script>
-		<script src="../../js/charts.js"></script>
-		<script src="../../js/jquery-ui.min.js"></script>
-		<script src="../../js/lib.js"></script>
-
+		<script src="../../lib/jquery.3.1.0.min.js"></script>
+		<script src="../../lib/owl.carousel.min.js"></script>
+		<script src="../../lib/charts.js"></script>
+		<script src="../../lib/jquery-ui.min.js"></script>
+		<script src="../../lib/lib.js"></script>
+<script src="../../js/common.js"></script>
 		<script type="text/javascript">
 
 
 			$(document).ready(function() {
+							$(".reg_table").each(function() {
+								let landCnt = $('#landCnt').text();
+								let landArea = $('#landArea').text();
+								let landPrice = $('#landPrice').text();
+
+								let objCnt = $('#objCnt').text();
+								let objPrice = $('#objPrice').text();
+
+								let goodwillCnt = $('#goodwillCnt').text();
+								let goodwillPrice = $('#goodwillPrice').text();
+
+								landCnt = uncomma(landCnt);
+								objCnt = uncomma(objCnt);
+								goodwillCnt = uncomma(goodwillCnt);
+
+								landArea = uncomma(landArea);
+
+								landPrice = uncomma(landPrice);
+								objPrice = uncomma(objPrice);
+								goodwillPrice = uncomma(goodwillPrice);
+
+								landCnt = Number(landCnt);
+								objCnt = Number(objCnt);
+								goodwillCnt = Number(goodwillCnt);
+
+								landArea = Number(landArea);
+
+								landPrice = Number(landPrice);
+								objPrice = Number(objPrice);
+								goodwillPrice = Number(goodwillPrice);
+
+								let totalCnt = landCnt + objCnt + goodwillCnt;
+								let totalPrice = landPrice + objPrice + goodwillPrice;
+
+								totalCnt = numberWithCommas(totalCnt);
+								landArea = numberWithCommas(landArea);
+								totalPrice = numberWithCommas(totalPrice);
+
+								$('#totalConfer1').text(totalCnt);
+								$('#totalConfer2').text(landArea);
+								$('#totalConfer3').text(totalPrice);
+
+							});
 				
 			});
 			

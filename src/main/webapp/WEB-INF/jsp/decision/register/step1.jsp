@@ -42,6 +42,7 @@
         <link rel="stylesheet" href="../../css/sub.css" />
         <link rel="stylesheet" href="../../css/owl.carousel.min.css" />
         <link rel="stylesheet" href="../../css/jquery-ui.css" />
+        
     </head>
      <body>
         <div id="wrap">
@@ -295,12 +296,14 @@
                                                     <thead>
                                                         <tr>
                                                             <th>협의일</th>
+                                                            <th>내용</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="dateList">
                                                      <c:forEach var="consultationDate" items="${consultationDates}" varStatus="status">
                                                         <tr class="dateItem" id="dateInfo3">
                                                             <td>${consultationDate.consultationDate}</td>
+                                                            <td>${consultationDate.consultationDateText}</td>
                                                         </tr>
                                                      </c:forEach>
                                                     </tbody>
@@ -341,7 +344,7 @@
 	                                                         <th rowspan="2">소재지<br />(소유자)</th>
 	                                                         <th rowspan="2">지번</th>
 	                                                         <th rowspan="2">지목</th>
-	                                                         <th colspan="2">면적(M2)</th>
+	                                                         <th colspan="2">면적(m<sup>2</sup>)</th>
 	                                                         <th rowspan="2">비고</th>
 	                                                     </tr>
 	                                                     <tr>
@@ -429,7 +432,7 @@
                                 
                                 <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
-                                      	  	 관련 법령 및 판례
+                                      	  	 관련 법령
                                     </h4>
                                 </div>
                                 <div class="form">
@@ -437,6 +440,17 @@
                                         <textarea id="relatedLaws" class="textarea mt20"></textarea>
                                     </div>
                                 </div>
+                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                      	  	 관련 법령 판례
+                                    </h4>
+                                </div>
+                                <div class="form">
+                                    <div class="f_wrap">
+                                        <textarea id="relatedLaws2" class="textarea mt20"></textarea>
+                                    </div>
+                                </div> 
+                                               
                                                             
                                 <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
@@ -501,7 +515,7 @@
         <script src="../../lib/owl.carousel.min.js"></script>
         <script src="../../lib/jquery-ui.min.js"></script>
         <script src="../../lib/lib.js"></script>
-
+		<script src="../../lib/ckeditor/ckeditor.js"></script>
      	<!--common start-->
         <script src="../../js/common.js"></script>
 
@@ -522,8 +536,12 @@
 	        	let decisionId = $('#decisionId').val();
 	        	
 	        	let selectDate = $('#selectDate option:selected').val();
-	        	let relatedLaws = $('#relatedLaws').val();
-	        	let reviewOpinion = $('#reviewOpinion').val();
+	       // 	let relatedLaws = $('#relatedLaws').val();
+	        	let relatedLaws = CKEDITOR.instances.relatedLaws.getData();
+	        	let relatedLaws2 = CKEDITOR.instances.relatedLaws2.getData();
+	        	let reviewOpinion = CKEDITOR.instances.reviewOpinion.getData();
+	      //  	let relatedLaws2 = $('#relatedLaws2').val();
+	      //  	let reviewOpinion = $('#reviewOpinion').val();
 	     	
 	        	if (selectDate == null || selectDate == "") {
 	        		alert("심의날짜를 선택해주세요");
@@ -532,6 +550,11 @@
 	        	
 	        	if (relatedLaws == null || relatedLaws == "") {
 	        		alert("관련 법안을 입력해주세요");
+	        		return false;
+	        	}
+	        	
+	        	if (relatedLaws == null || relatedLaws == "") {
+	        		alert("관련 법령 판례을 입력해주세요");
 	        		return false;
 	        	}
 	        	
@@ -544,6 +567,7 @@
 	    			"decisionId" : decisionId,
 	     			"selectDate" : selectDate,
 	     			"relatedLaws" : relatedLaws,
+	     			"relatedLaws2" : relatedLaws2,
 	     			"reviewOpinion" : reviewOpinion,
 	    		}
 	        	
@@ -574,9 +598,17 @@
         
         
         
-        
+	        	$(function () {
+	                CKEDITOR.replace('relatedLaws');
+	            });
+	        	$(function () {
+	                CKEDITOR.replace('relatedLaws2');
+	            });
+	        	
+	        	$(function () {
+	                CKEDITOR.replace('reviewOpinion');
+	            });
 	        $(document).ready(function () {
-		    	
 		    });
 	        
         </script>

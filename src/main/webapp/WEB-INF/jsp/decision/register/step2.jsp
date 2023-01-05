@@ -87,12 +87,22 @@
                                 </div>
                                 <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
-                                        	관련 법령 및 판례
+                                        	관련 법령
                                     </h4>
                                 </div>
                                 <div class="form">
                                     <div class="f_wrap">
                                         <textarea id="relatedLaws" class="textarea mt20"></textarea>
+                                    </div>
+                                </div>
+                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                        	관련 법령 판례
+                                    </h4>
+                                </div>
+                                <div class="form">
+                                    <div class="f_wrap">
+                                        <textarea id="relatedLaws2" class="textarea mt20"></textarea>
                                     </div>
                                 </div>
                                 <div class="cs_title">
@@ -148,10 +158,10 @@
         <script src="../../lib/owl.carousel.min.js"></script>
         <script src="../../lib/jquery-ui.min.js"></script>
         <script src="../../lib/lib.js"></script>
-
+		<script src="../../lib/ckeditor/ckeditor.js"></script>
 		<!--ckeditor5 start-->
-		<script src="../../lib/ckeditor5/build/ckeditor.js"></script>
-		<script src="../../lib/ckeditor5/build/upload.js"></script>
+		<!-- <script src="../../lib/ckeditor5/build/ckeditor.js"></script> -->
+	
 	
      	<!--common start-->
         <script src="../../js/common.js"></script>
@@ -160,7 +170,7 @@
 
         <script type="text/javascript">
 
-	        let editor;
+	/*         let editor;
 	
 	        ClassicEditor
 	        	.create( document.querySelector( '#boardContent' ), {
@@ -213,7 +223,20 @@
 	        		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
 	        		console.warn( 'Build id: 95xpmoz2za9p-z7ulnbnv6nkk' );
 	        		console.error( error );
-	        	} );
+	        	} ); */
+	        	$(function () {
+	                CKEDITOR.replace('boardContent');
+	            });
+	        	$(function () {
+	                CKEDITOR.replace('relatedLaws');
+	            });
+	        	$(function () {
+	                CKEDITOR.replace('relatedLaws2');
+	            });
+	        	
+	        	$(function () {
+	                CKEDITOR.replace('reviewOpinion');
+	            });
         
 	        
 
@@ -228,17 +251,22 @@
 	        	let seqNo = $('#seqNo').val();
 	        	let decisionId = $('#decisionId').val();
 	        	
-	        	let content = editor.getData();	 
-	         	let relatedLaws = $('#relatedLaws').val();
-	        	let reviewOpinion = $('#reviewOpinion').val();
+	        	let content = CKEDITOR.instances.boardContent.getData(); 
+	        	let relatedLaws = CKEDITOR.instances.relatedLaws.getData();
+	        	let relatedLaws2 = CKEDITOR.instances.relatedLaws2.getData();
+	        	let reviewOpinion = CKEDITOR.instances.reviewOpinion.getData();
 	     	
-	           	if (contents == null || contents == "") {
+	           	if (content == null || content == "") {
 	        		alert("내용을 입력해주세요");
 	        		return false;
 	        	}
 	           	
 	        	if (relatedLaws == null || relatedLaws == "") {
-	        		alert("관련 법안을 입력해주세요");
+	        		alert("관련 법령을 입력해주세요");
+	        		return false;
+	        	}
+	        	if (relatedLaws2 == null || relatedLaws2 == "") {
+	        		alert("관련 법령 판례을 입력해주세요");
 	        		return false;
 	        	}
 	        	
@@ -252,6 +280,7 @@
 	         			"decisionId" : decisionId,
         				"content" : content,
         				"relatedLaws" : relatedLaws,
+        				"relatedLaws2" : relatedLaws2,
         				"reviewOpinion" : reviewOpinion,
 		    		}
 

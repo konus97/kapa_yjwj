@@ -27,6 +27,7 @@ public class DeliberateOpinionDTO {
     
     private String opinionText;
     private String relatedLaws;
+    private String relatedLaws2;
     private String reviewOpinion;
     
     private boolean landCheck;

@@ -387,9 +387,9 @@
 																		value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
-																<td><input id = "landCnt" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
-                                                            <td><input id = "landArea" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
-                                                            <td><input id = "landPrice" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+																<td><input id = "landCnt" class="conferVal" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+                                                            <td><input id = "landArea" class="conferVal"  type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+                                                            <td><input id = "landPrice" class="conferVal" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
 																<td><fmt:formatNumber
@@ -404,9 +404,9 @@
 																<td></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_obst_amt}" pattern="#,###" /></td>
-																<td><input id = "objCnt" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+																<td><input id = "objCnt" class="conferVal"  type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
 																<td></td>
-																     <td><input id = "objPrice" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+																     <td><input id = "objPrice" class="conferVal" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_obst_cnt}" pattern="#,###" /></td>
 																<td></td>
@@ -420,9 +420,9 @@
 																<td></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_business_amt }" pattern="#,###" /></td>
-																<td><input id = "goodwillCnt" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+																<td><input id = "goodwillCnt" class="conferVal" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
                                                             <td></td>
-                                                            <td><input id = "goodwillPrice" class="conferVal" style="border:none" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
+                                                            <td><input id = "goodwillPrice" class="conferVal" type="text" onkeyup="inputNumberFormat(this);" onchange="inputNumberFormat(this);" /></td>
 																<td><fmt:formatNumber
 																		value="${csltList.cslt_business_cnt }" pattern="#,###" /></td>
 																<td></td>
@@ -471,7 +471,7 @@
                                                                	 지목
                                                             </th>
                                                             <th colspan="2">
-                                                                	면적(M2)
+                                                                	면적(m<sup>2</sup>)
                                                             </th>
                                                             <th rowspan="2">
                                                                 	비고
@@ -921,13 +921,12 @@
        
            	const DateArr = [];
         		
-       		for (let i=0; i<dateItem.length; i++) {
+       		for (let i=2; i<dateItem.length+2; i++) {
        	    	const ConsultationDateItem = {};
-       	    	let j = i-1;
-       	    	let consultationDate = $(".consultationDate:eq("+j+")").val();  	
+       	    	let consultationDate = $("#il_date"+i).val();  	
        	    	console.log("test ::" + consultationDate);
-       	    	let consultationDateText = $(".consultationDateText:eq("+i+")").val();
-       	    	console.log("test2 ::" + consultationDate);
+       	    	let consultationDateText = $("#il_date"+i+"_text").val();
+       	    	console.log("test2 ::" + consultationDateText);
        	    	if(consultationDate == null || consultationDate == "") {
        	    		alert("협의 날짜를 입력해주세요");
        	    		return false;

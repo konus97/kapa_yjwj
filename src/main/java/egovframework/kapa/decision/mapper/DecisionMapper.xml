@@ -28,11 +28,13 @@
 	</update>
 	
 	<update id="updateStep1">
-		update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
+		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
+		update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
 	</update>
 	
 	<update id="updateStep2">
-		update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
+		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
+		update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws}, relatedLaws2 = #{relatedLaws2} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
 	</update>
 	
 	<update id="updateStep3">

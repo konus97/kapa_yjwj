@@ -71,6 +71,8 @@ function openOpinionViewPopup(viewSeq,reptSeq){
 			
 			$("#popupOwnerOpinion").attr("data-seq",viewSeq);
 			$("#popupOwnerOpinion").addClass("on");
+			
+			
 
 		},
 		error : function(xhr, status, error) {

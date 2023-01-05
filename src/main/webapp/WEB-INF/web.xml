@@ -90,13 +90,13 @@
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/common/error.jsp</location>
 	</error-page>
-	<error-page>
+	<!-- <error-page>
 		<error-code>404</error-code>
 		<location>/common/error.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
 		<location>/common/error.jsp</location>
-	</error-page>
+	</error-page> -->
     
 </web-app>

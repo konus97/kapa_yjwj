@@ -231,8 +231,7 @@
 														</tr>
 													</thead>
 													<tbody id="dateList">
-														<c:forEach var="consultationDates"
-															items="${consultationDates}" varStatus="status">
+														<c:forEach var="consultationDates" items="${consultationDates}" varStatus="status">
 															<tr class="dateItem" id="dateInfo3">
 																<td>${consultationDates.consultationDate}</td>
 																<td>${consultationDates.consultationDateText}</td>
@@ -346,21 +345,15 @@
 															varStatus="status">
 															<tr>
 																<th>토 지</th>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
 																<td id="landCnt" class="conferVal">${landCnt}</td>
 																<td id="landArea" class="conferVal">${landArea}</td>
 																<td id="landPrice" class="conferVal">${landPrice}</td>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
-																<td><fmt:formatNumber
-																		value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
 															</tr>
 															<tr>
 																<th>물건</th>
@@ -1057,7 +1050,7 @@
 
 									<li><a
 										href="${pageContext.request.contextPath}/implementer/application.do"
-										class="btn t1 h50 big">목록</a>
+										class="btn t1 h50 big">확인</a>
 									</li>
 								</ul>
 							</div>

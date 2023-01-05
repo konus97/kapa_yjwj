@@ -200,7 +200,7 @@
 							</div>
 							<div class="c_table t3 land">
 								<p class="s_title">- 총물량조서</p>
-								<table>
+								<table class="reg_table">
 									<caption>총물량조서</caption>
 									<thead>
 										<tr>
@@ -279,15 +279,15 @@
 									<tfoot>
 										<tr>
 											<th>계</th>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td>-</td>
+															<td>-</td>
+															<td>-</td>
+															<td id="totalConfer1"></td>
+															<td id="totalConfer2"></td>
+															<td id="totalConfer3"></td>
+															<td>-</td>
+															<td>-</td>
+															<td>-</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -649,17 +649,60 @@
 		<!-- 팝업, 로그인 E -->
 
 
-		<script src="../../js/jquery.3.1.0.min.js"></script>
-		<script src="../../js/owl.carousel.min.js"></script>
-		<script src="../../js/charts.js"></script>
-		<script src="../../js/jquery-ui.min.js"></script>
-		<script src="../../js/lib.js"></script>
-
+		<script src="../../lib/jquery.3.1.0.min.js"></script>
+		<script src="../../lib/owl.carousel.min.js"></script>
+		<script src="../../lib/charts.js"></script>
+		<script src="../../lib/jquery-ui.min.js"></script>
+		<script src="../../lib/lib.js"></script>
+<script src="../../js/common.js"></script>
 		<script type="text/javascript">
 
-			$(document).ready(function() {
-				
+		$(document).ready(function() {
+			$(".reg_table").each(function() {
+				let landCnt = $('#landCnt').text();
+				let landArea = $('#landArea').text();
+				let landPrice = $('#landPrice').text();
+
+				let objCnt = $('#objCnt').text();
+				let objPrice = $('#objPrice').text();
+
+				let goodwillCnt = $('#goodwillCnt').text();
+				let goodwillPrice = $('#goodwillPrice').text();
+
+				landCnt = uncomma(landCnt);
+				objCnt = uncomma(objCnt);
+				goodwillCnt = uncomma(goodwillCnt);
+
+				landArea = uncomma(landArea);
+
+				landPrice = uncomma(landPrice);
+				objPrice = uncomma(objPrice);
+				goodwillPrice = uncomma(goodwillPrice);
+
+				landCnt = Number(landCnt);
+				objCnt = Number(objCnt);
+				goodwillCnt = Number(goodwillCnt);
+
+				landArea = Number(landArea);
+
+				landPrice = Number(landPrice);
+				objPrice = Number(objPrice);
+				goodwillPrice = Number(goodwillPrice);
+
+				let totalCnt = landCnt + objCnt + goodwillCnt;
+				let totalPrice = landPrice + objPrice + goodwillPrice;
+
+				totalCnt = numberWithCommas(totalCnt);
+				landArea = numberWithCommas(landArea);
+				totalPrice = numberWithCommas(totalPrice);
+
+				$('#totalConfer1').text(totalCnt);
+				$('#totalConfer2').text(landArea);
+				$('#totalConfer3').text(totalPrice);
+
 			});
+
+});
 			
 		</script>
 </body>
