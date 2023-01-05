@@ -77,30 +77,7 @@
                                                 >
                                             </div>
                                             <div class="ff_wrap">
-                                                <span class="ff_group">
-                                                    <label
-                                                        for="il_select"
-                                                        class="blind"
-                                                        >선택</label
-                                                    >
-                                                    <select
-                                                        name="il_select"
-                                                        id="il_select"
-                                                        class="select t1"
-                                                        required
-                                                    >
-                                                        <option value="">
-                                                            전체
-                                                        </option>
-                                                        <option value="000">
-                                                            중앙토지수용위원회
-                                                        </option>
-                                                        <option value="200">
-                                                            서울지방토지수용위원회
-                                                        </option>
-                            
-                                                    </select>
-                                                </span>
+                                               
                                                 <span class="ff_group w290">
                                                     <input
                                                         type="text"

@@ -140,7 +140,7 @@ $(window).on("hashchange", function () {
 });
 $(document).ready(function () {
   var classUrl = location.href.split("#")[1];
-  $("." + classUrl).addClass("on");
+  //$("." + classUrl).addClass("on");
 
   $(function () {
     $.datepicker.regional["ko"] = {

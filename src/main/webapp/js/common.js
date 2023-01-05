@@ -660,3 +660,34 @@ function closePopupUserReg() {
     $("#loginPopup").removeClass("on");
 }
 
+function dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        let second = date.getSeconds();
+
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+        hour = hour >= 10 ? hour : '0' + hour;
+        minute = minute >= 10 ? minute : '0' + minute;
+        second = second >= 10 ? second : '0' + second;
+
+        return date.getFullYear() + '-' + month + '-' + day;
+}
+
+function month(i){
+
+var now = new Date();	
+var now2 = new Date();	
+
+console.log("현재 : ", now);
+var monthLater = new Date(now.setMonth(now.getMonth() + i));	// 한달 후
+console.log(i+"달 후 : ", monthLater);
+console.log(dateFormat(now));
+
+document.getElementById('il_date1').value = dateFormat(now2);
+document.getElementById('il_date2').value = dateFormat(monthLater);
+
+}
+

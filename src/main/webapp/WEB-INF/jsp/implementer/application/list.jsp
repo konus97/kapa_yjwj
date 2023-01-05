@@ -141,16 +141,22 @@
                                                         <a
                                                             href="#"
                                                             class="btn t1 small w60"
+                                                            id="1month"
+                                                            onclick="month(1);return false;"
                                                             >1개월</a
                                                         >
                                                         <a
                                                             href="#"
                                                             class="btn t1 small w60"
+															id="3month"
+                                                            onclick="month(3);return false;"
                                                             >3개월</a
                                                         >
                                                         <a
                                                             href="#"
                                                             class="btn t1 small w60"
+                                                            id="6month"
+                                                            onclick="month(6);return false;"
                                                             >6개월</a
                                                         >
                                                     </span>
