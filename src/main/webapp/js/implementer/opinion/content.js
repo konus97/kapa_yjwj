@@ -57,7 +57,6 @@ function resetSeq(getSeq){
 }
 
 function openOpinionPopup(getSeq,getType){
-<<<<<<< HEAD
 	var seqNum = document.getElementById("seqNum").value;
 	var itemNum = document.getElementById("itemNum").value;
 	if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
@@ -72,13 +71,8 @@ function openOpinionPopup(getSeq,getType){
 	
 	document.querySelector('#editor2').setAttribute("id", editorId_2);
 	}
-=======
-	
->>>>>>> branch 'master' of https://github.com/chori112/kapa_seoul.git
 	$(".resetPopupVal").val('');
 	$("#popupOpinionItemList").empty();
-	
-<<<<<<< HEAD
 	
 	ClassicEditor
 	      .create( document.querySelector( '#editor1_'+seqNum+"-"+itemNum ) )
@@ -91,8 +85,6 @@ function openOpinionPopup(getSeq,getType){
 	      .catch( error => {
 	    	  console.log( error );
 	      });
-=======
->>>>>>> branch 'master' of https://github.com/chori112/kapa_seoul.git
 	if(addOpinionItemArray.length>0){
 		console.log('array!');
 		console.log(addOpinionItemArray);
