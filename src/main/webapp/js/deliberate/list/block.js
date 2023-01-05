@@ -49,7 +49,7 @@ function makeDeliberateBlock(num,info) {
 	addList.push("           href=\"#\" onclick=\"goToDeliberateView('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
 	addList.push("             >보기</a >");
-	addList.push("         <button class=\"btn small\">");
+	addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
 	addList.push("         </button>");
 	addList.push("       <button class=\"btn small\">");
@@ -66,6 +66,10 @@ function makeDeliberateBlock(num,info) {
 
 	$("#contentList").append(addList.join(''));
 
+}
+
+function newEbookOpen() {
+	window.open('./../html/ebooktest.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
 }
 
 function makeAgendaDetail(num,info) {

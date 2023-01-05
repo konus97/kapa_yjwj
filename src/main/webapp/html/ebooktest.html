@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한양도성 산책로 조성사업</title>
+    
+    <link rel="stylesheet" href="../css/epub/epub_init.css">
+    <link rel="stylesheet" href="../css/epub/nice-select.css">
+    <link rel="stylesheet" href="../css/epub/epub_style.css">
+    
+    <!-- Zip js to zip and unzip files -->
+    <script src="../js/epub/zip.min.js"></script>
+    <!-- epub.js for Render -->
+    <script src="../js/epub/epub.js"></script>
+    <!-- jquery for reader.js -->
+    <script src="../js/epub/jquery.min.js"></script>
+    <!-- nice-select -->
+    <script src="../js/epub/jquery.nice-select.min.js"></script>
+
+    
+</head>
+<body>
+    <div class="top">
+        <h1 class="top__tit">한양도성 산책로 조성사업</h1>
+        <div class="top__btn_wr">
+            <div class="top__btn_gr">
+                <button id="btn_font_down" class="top__btn top__btn--font" title="글자 작게">가 -</button>
+                <button id="btn_font_up" class="top__btn top__btn--font" title="글자 크게">가 +</button>
+            </div>
+            <div class="top__btn_gr">
+                <button id="btn_page_one" class="top__btn top__btn--page">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8036 3.25057C11.8585 3.25014 11.9134 3.24996 11.9684 3.25001C11.9943 3.25003 12.0199 3.25137 12.0452 3.25396C15.1263 3.31689 18.1047 4.12752 20.4486 5.57503C20.6698 5.71166 20.8045 5.95313 20.8045 6.21315V19.9728C20.8045 20.2446 20.6574 20.4952 20.4201 20.6277C20.1828 20.7602 19.8924 20.7539 19.661 20.6113C17.5956 19.3385 14.847 18.5383 11.8036 18.5104C8.76023 18.5383 6.01162 19.3385 3.94621 20.6113C3.71483 20.7539 3.4244 20.7602 3.18709 20.6277C2.94978 20.4952 2.80273 20.2446 2.80273 19.9728V6.21315C2.80273 5.95313 2.93741 5.71166 3.15864 5.57503C5.50246 4.12752 8.48092 3.31689 11.562 3.25396C11.5873 3.25137 11.6129 3.25003 11.6388 3.25001C11.6938 3.24996 11.7487 3.25014 11.8036 3.25057ZM11.8036 4.75061C9.03618 4.77375 6.38945 5.45091 4.30273 6.64009V18.7035C6.37644 17.6825 8.87456 17.0706 11.5587 17.014C11.5853 17.0112 11.6122 17.0097 11.6395 17.0097C11.6943 17.0097 11.749 17.0099 11.8036 17.0104C11.8582 17.0099 11.9129 17.0097 11.9677 17.0097C11.995 17.0097 12.0219 17.0112 12.0485 17.014C14.7326 17.0706 17.2308 17.6825 19.3045 18.7035V6.64009C17.2178 5.45091 14.571 4.77375 11.8036 4.75061Z" fill="#555555"/>
+                    </svg>
+                    한쪽 보기
+                </button>
+                <button id="btn_page_two" class="top__btn top__btn--page active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 6.04201C10.3516 4.56337 8.2144 3.74695 6 3.75001C4.948 3.75001 3.938 3.93001 3 4.26201V18.512C3.96362 18.172 4.97816 17.9989 6 18C8.305 18 10.408 18.867 12 20.292M12 6.04201C13.6483 4.56328 15.7856 3.74686 18 3.75001C19.052 3.75001 20.062 3.93001 21 4.26201V18.512C20.0364 18.172 19.0218 17.9989 18 18C15.7856 17.997 13.6484 18.8134 12 20.292M12 6.04201V20.292" stroke="#555555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    양쪽 보기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="btm">
+        <div class="book_wr">
+            <button id="prev" class="btn_arrow btn_arrow--prev">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+            <div id="area_wr" class="area_wr">
+                <div id="area" class="area area--two_page">
+                    <div class="page_div_line"></div>
+                </div>
+            </div>
+            <button id="next" class="btn_arrow btn_arrow--next">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="table_wr">
+            <select id="toc"></select>
+        </div>
+    </div>
+    
+    <script>
+
+        // var params = URLSearchParams && new URLSearchParams(document.location.search.substring(1));
+        // var url = params && params.get("url") && decodeURIComponent(params.get("url"));
+        // var currentSectionIndex = (params && params.get("loc")) ? params.get("loc") : undefined;
+
+        // Load the opf
+        let book = ePub("EPUB_demo.epub");  //파일 불러오기 console.log(book)으로 객체 속성 확인
+
+        //one page
+        let rendition = book.renderTo("area", { //렌더링 대상 DOM객체 지정, 속성 설정
+            manager: "continuous",
+            flow: "paginated",
+            width: "100%",
+            height: "100%",
+            // minSpreadWidth:800  //dafault:800
+        });
+
+        //display
+        // let displayed = rendition.display(currentSectionIndex); //display(1)라고하면 section1 보여줌
+        let displayed = rendition.display(); //display(1)라고하면 section1 보여줌
+
+        displayed.then(function (renderer) {
+            // -- do stuff
+        });
+        
+        //rendition의 속성 확인
+        // console.log(rendition)
+        // console.log(rendition.settings)
+        // console.log(rendition.settings.minSpreadWidth)
+        
+        
+        // Navigation loaded
+        book.loaded.navigation.then(function (toc) {
+            // -- do stuff
+        });
+
+
+        // page, font btn event
+        const btnFontDown = document.querySelector('#btn_font_down')
+        const btnFontUp = document.querySelector('#btn_font_up')
+        const btnPageOne = document.querySelector('#btn_page_one')
+        const btnPageTwo = document.querySelector('#btn_page_two')
+        const pageDivLine = document.querySelector('.page_div_line')
+
+        btnFontDown.addEventListener('click', function () {
+            rendition.themes.default({ "html": { "font-size": "0.75rem !important" } });
+            rendition.start();
+        })
+
+        btnFontUp.addEventListener('click', function () {
+            rendition.themes.default({ "html": { "font-size": "1rem !important" } });
+            rendition.start();
+        })
+
+        btnPageOne.addEventListener('click',function(){
+            rendition.settings.minSpreadWidth = "101%"
+            btnPageTwo.classList.remove('active')
+            this.classList.add('active')
+            visHide(pageDivLine)
+            rendition.start()
+        })
+        btnPageTwo.addEventListener('click',function(){
+            rendition.settings.minSpreadWidth = 800 //default
+            btnPageOne.classList.remove('active')
+            this.classList.add('active')
+            visShow(pageDivLine)
+            rendition.start()
+        })
+
+
+        //function
+        function visShow(target) {
+            target.style.opacity = '1'
+            target.style.pointerEvents = 'initial'
+        }
+        function visHide(target) {
+            target.style.opacity = '0'
+            target.style.pointerEvents = 'none'
+        }
+
+
+        //지정된 크기로 새창 열기
+        // function newWindowOpen() {
+        // window.open('http://127.0.0.1:5500/epub_js_library_test/epub_js_test.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
+        // }
+
+
+        book.ready.then(() => {
+
+            var next = document.getElementById("next");
+
+            next.addEventListener("click", function (e) {
+                book.package.metadata.direction === "rtl" ? rendition.prev() : rendition.next();
+                e.preventDefault();
+            }, false);
+
+            var prev = document.getElementById("prev");
+            prev.addEventListener("click", function (e) {
+                book.package.metadata.direction === "rtl" ? rendition.next() : rendition.prev();
+                e.preventDefault();
+            }, false);
+
+            var keyListener = function (e) {
+
+                // Left Key
+                if ((e.keyCode || e.which) == 37) {
+                    book.package.metadata.direction === "rtl" ? rendition.next() : rendition.prev();
+                }
+
+                // Right Key
+                if ((e.keyCode || e.which) == 39) {
+                    book.package.metadata.direction === "rtl" ? rendition.prev() : rendition.next();
+                }
+
+            };
+
+            rendition.on("keyup", keyListener);
+            document.addEventListener("keyup", keyListener, false);
+
+        });
+
+        rendition.on("selected", function (range) {
+            // console.log("selected", range);
+        });
+
+        rendition.on("layout", function (layout) {
+            let area = document.getElementById("area");
+
+            if (layout.spread) {
+                area.classList.remove('single');
+            } else {
+                area.classList.add('single');
+            }
+        });
+
+        rendition.on("relocated", function (location) {
+            // console.log(location);
+
+            var next = book.package.metadata.direction === "rtl" ? document.getElementById("prev") : document.getElementById("next");
+            var prev = book.package.metadata.direction === "rtl" ? document.getElementById("next") : document.getElementById("prev");
+
+            if (location.atEnd) {
+                next.style.visibility = "hidden";
+            } else {
+                next.style.visibility = "visible";
+            }
+
+            if (location.atStart) {
+                prev.style.visibility = "hidden";
+            } else {
+                prev.style.visibility = "visible";
+            }
+
+        });
+
+
+        book.loaded.navigation.then(function (toc) {
+            var $select = document.getElementById("toc"),
+                docfrag = document.createDocumentFragment();
+
+            toc.forEach(function (chapter) {
+                var option = document.createElement("option");
+                option.textContent = chapter.label;
+                option.ref = chapter.href;
+
+                docfrag.appendChild(option);
+            });
+
+            $select.appendChild(docfrag);
+
+            $select.onchange = function () {
+                var index = $select.selectedIndex,
+                    url = $select.options[index].ref;
+                rendition.display(url);
+                return false;
+            };
+
+            //jquery nice select to nav
+            $('select').niceSelect(); 
+
+        });
+
+
+        //title 태그 내용 입력 
+        // let title = string
+        // document.title = title
+        // $('#book-title').html(title);
+
+    </script>
+    
+</body>
+</html>
