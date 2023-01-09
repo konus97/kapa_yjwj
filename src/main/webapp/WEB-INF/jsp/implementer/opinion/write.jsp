@@ -13,9 +13,9 @@
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 
-<%-- <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
 <meta id="_csrf_header" name="_csrf_header"
-	content="${_csrf.headerName}" /> --%>
+   content="${_csrf.headerName}" />
 
 <title>재결정보지원센터</title>
 
@@ -520,7 +520,7 @@
 																								<div class="cbl_5">사업시행자 의견</div>
 																							</div>
 																						</div>
-																						<div class="cbl_body" style="display: none">
+																						<div class="cbl_body">
 																							<ul id="ownerGoodsItemList${goodsInfo.reptSeq}">
 
 																							</ul>
@@ -528,13 +528,6 @@
 																					</div>
 																				</div>
 																			</td>
-																		</tr>
-																		<tr class="check_wrap opinionData" data-seq="${i}">
-																			<td colspan="2">번호</td>
-																			<td colspan="3">항목</td>
-																			<td colspan="3">제목</td>
-																			<td colspan="3">소유자 의견</td>
-																			<td colspan="3">사업시행자 의견</td>
 																		</tr>
 
 																	</c:forEach>

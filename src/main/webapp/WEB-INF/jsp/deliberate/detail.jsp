@@ -1,7 +1,9 @@
 <%@	page contentType="text/html;charset=utf-8" language="java"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <%@ include file="/WEB-INF/jsp/components/temp_session.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 	<html lang="ko">
@@ -92,7 +94,8 @@
 											<label>심의차수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>-</p>
+											<c:set var = "consultationDate2" value = "${formatter.consultationDate}" />
+											<p>${fn:replace(consultationDate2, '-', '')} -${status.index +1}번</p>
 										</div>
 									</div>
 								</div>
@@ -177,7 +180,7 @@
 											<label>고지사항</label>
 										</div>
 										<div class="ff_wrap">
-											<p></p>
+											<p>-</p>
 										</div>
 									</div>
 									<div class="f_field div2">
@@ -185,7 +188,7 @@
 											<label>기타이력</label>
 										</div>
 										<div class="ff_wrap">
-											<p></p>
+											<p>-</p>
 										</div>
 									</div>
 								</div>
@@ -281,7 +284,7 @@
 											<label>수용할 토지 및 물건의 소유자등</label>
 										</div>
 										<div class="ff_wrap">
-											<p></p>
+											<p>-</p>
 										</div>
 									</div>
 								</div>
@@ -535,17 +538,26 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										${deliberateOpinionDTO.opinionText}
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
 									</div>
 								</div>
 								
 								
 								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 및 판례</h4>
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 								</div>
 								<div class="form">
 									<div class="f_wrap">
 										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
 									</div>
 								</div>
 								

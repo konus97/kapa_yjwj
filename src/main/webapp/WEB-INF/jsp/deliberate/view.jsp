@@ -94,7 +94,7 @@
 										</div>
 										<div class="ff_wrap">
 											<c:set var = "consultationDate2" value = "${formatter.consultationDate}" />
-											<p>${fn:replace(consultationDate2, '-', '')} -${status.index +1}차</p>
+											<p>${fn:replace(consultationDate2, '-', '')} -${status.index +1}번</p>
 										</div>
 									</div>
 								</div>
@@ -554,17 +554,25 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										${deliberateOpinionDTO.opinionText}
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
 									</div>
 								</div>
 								
 								
 								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 및 판례</h4>
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 								</div>
 								<div class="form">
 									<div class="f_wrap">
 										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
 									</div>
 								</div>
 								
@@ -586,12 +594,12 @@
 												<tbody>
 													<tr>
 														<th class="info_reg_th">제목</th>
-														<td><p class="">${deliberateOpinionItemDTO.title }</p></td>
+														<td><p class="">${deliberateOpinionItemDTO.title}</p></td>
 													</tr>
 													<tr>
 														<th class="info_reg_th">내용
 														</th>
-														<td><p class="">${deliberateOpinionItemDTO.content }</p></td>
+														<td><p class="">${deliberateOpinionItemDTO.content}</p></td>
 													</tr>
 												<!-- 	<tr>
 														<th class="info_reg_th">관련자료</th>

@@ -125,7 +125,7 @@
                                                                 name="il_date1"
                                                                 id="il_date1"
                                                                 class="datepicker input40 t1"
-                                                                value="2021-10-05" /><i></i
+                                                                /><i></i
                                                         ></span>
                                                         <span class="side"
                                                             >~</span
@@ -140,7 +140,7 @@
                                                                 name="il_date2"
                                                                 id="il_date2"
                                                                 class="datepicker input40 t1"
-                                                                value="2021-10-05" /><i></i
+                                                                /><i></i
                                                         ></span>
                                                     </span>
                                                     <span class="ff_group">
@@ -285,8 +285,8 @@
 	        $(document).ready(function(){
 	        	
 	        	//의뢰날짜 최신화
-	        	document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
-	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10);
+	        	/* document.getElementById('il_date1').value = new Date().toISOString().substring(0,10);
+	        	document.getElementById('il_date2').value = new Date().toISOString().substring(0,10); */
 	
 	        	getCitiesAnnouncementList(1);
 	        	

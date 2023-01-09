@@ -626,7 +626,7 @@
 												
 							<!-- 1. 지연가산금 E -->
 							<li><a href="#" class="btn t1 h50 big"
-										onclick="goToImplementerOpinionList();return false;">확인</a>
+										onclick="goToDecisionRegisterList();return false;">확인</a>
 									</li>
 							
 					</div>
@@ -664,6 +664,7 @@
 		<script src="../../lib/jquery-ui.min.js"></script>
 		<script src="../../lib/lib.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../js/implementer/content.js"></script>
 		<script type="text/javascript">
 
 
