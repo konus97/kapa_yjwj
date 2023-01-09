@@ -75,6 +75,87 @@ function openOpinionPopup(getSeq,getType){
    $(".resetPopupVal").val('');
    $("#popupOpinionItemList").empty();
    
+	var notice ="";
+	
+	switch (getType) {
+  case "1":
+    notice = '지연가산금';
+    break;
+  case "2":
+    notice = '보상금 증액';
+    break;
+  case "3":
+    notice = '허가건축물 등 불법형질변경';
+    break;
+  case "4":
+    notice = '일단지 보상';
+    break;
+  case "5":
+    notice = '미지금 용지';
+    break;
+  case "6":
+    notice = '사도평가';
+    break;
+  case "7":
+    notice = '잔여지 매수청구';
+    break;
+  case "8":
+    notice = '잔여지 가치하락';
+    break;
+  case "9":
+    notice = '잔여건물 가치감소';
+    break;
+  case "10":
+    notice = '잔여건물 매수청구';
+    break;
+  case "11":
+    notice = '누락 물건 반영';
+    break;
+  case "12":
+    notice = '휴업보상(이전비)평가';
+    break;
+  case "13":
+    notice = '폐업보상';
+    break;
+  case "14":
+    notice = '영농손실보상';
+    break;
+  case "15":
+    notice = '휴직(실직)보상';
+    break;
+  case "16":
+    notice = '사업폐지(취소, 변경, 중단)';
+    break;
+  case "17":
+    notice = '이주대책 수립';
+    break;
+  case "18":
+    notice = '이주정착금, 주거이전비, 이사비';
+    break;
+  case "19":
+    notice = '임료손실';
+    break;
+  case "20":
+    notice = '대토보상';
+    break;
+  case "21":
+    notice = '구분지상권';
+    break;
+  case "22":
+    notice = '10%이상 변동';
+    break;
+  case "23":
+    notice = '기타(그 외)';
+    break;
+  case "24":
+    notice = '소유자 의견 없음';
+    break;
+  default:
+notice='';
+   break;
+}
+	
+	document.getElementById('notice').innerHTML = notice;
    
 
    if(addOpinionItemArray.length>0){
@@ -268,6 +349,88 @@ function resetOpinionItem(opinion){
    let opinionItemFile = opinion.opinionItemFile;
    //추가
    let opinionSeq = opinion.opinionSeq;
+
+	var notice ="";
+	
+	switch (getType) {
+  case "1":
+    notice = '지연가산금';
+    break;
+  case "2":
+    notice = '보상금 증액';
+    break;
+  case "3":
+    notice = '허가건축물 등 불법형질변경';
+    break;
+  case "4":
+    notice = '일단지 보상';
+    break;
+  case "5":
+    notice = '미지금 용지';
+    break;
+  case "6":
+    notice = '사도평가';
+    break;
+  case "7":
+    notice = '잔여지 매수청구';
+    break;
+  case "8":
+    notice = '잔여지 가치하락';
+    break;
+  case "9":
+    notice = '잔여건물 가치감소';
+    break;
+  case "10":
+    notice = '잔여건물 매수청구';
+    break;
+  case "11":
+    notice = '누락 물건 반영';
+    break;
+  case "12":
+    notice = '휴업보상(이전비)평가';
+    break;
+  case "13":
+    notice = '폐업보상';
+    break;
+  case "14":
+    notice = '영농손실보상';
+    break;
+  case "15":
+    notice = '휴직(실직)보상';
+    break;
+  case "16":
+    notice = '사업폐지(취소, 변경, 중단)';
+    break;
+  case "17":
+    notice = '이주대책 수립';
+    break;
+  case "18":
+    notice = '이주정착금, 주거이전비, 이사비';
+    break;
+  case "19":
+    notice = '임료손실';
+    break;
+  case "20":
+    notice = '대토보상';
+    break;
+  case "21":
+    notice = '구분지상권';
+    break;
+  case "22":
+    notice = '10%이상 변동';
+    break;
+  case "23":
+    notice = '기타(그 외)';
+    break;
+  case "24":
+    notice = '소유자 의견 없음';
+    break;
+  default:
+notice='';
+   break;
+}
+	
+	document.getElementById('notice').innerHTML = notice;
    
    addList.push(" <tbody id=\"popupOpinionItem"+popupOpinion+"\" class=\"popupOpinionItem\" >   ");                                             
     addList.push("    <tr>");   
