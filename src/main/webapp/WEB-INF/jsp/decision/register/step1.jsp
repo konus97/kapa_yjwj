@@ -432,6 +432,72 @@
                                 
                                 <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--num">연번</th>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                        <tr>
+	                                        	<td>1</td>
+	                                        	<td>
+	                                        	    소유자
+	                                            	<br><br>
+	                                            	주소주소주소주소노량진동313-31교회
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">수용재결 신청 각하 요청</h5>
+	                                            		<p class="op_list__con">소유자의 요청에도 불구하고, 토지보상법에 규정된 30일 이상의 협의기간을 준수하지 않았으며, 이에 대한 동작구청의</p>
+	                                            	</div>
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">보상금 증액요구</h5>
+	                                            		<p class="op_list__con">해당 재개발 사업으로 인하여 10여년 간 임대업에 대한 소득을 얻지 못하여 손실이 발행하였고, 부동산의 실제가치 및</p>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는 2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+	                                        	<td>2</td>
+	                                        	<td>
+	                                        	    소유자
+	                                            	<br><br>
+	                                            	주소주소주소주소노량진동313-31교회
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">수용재결 신청 각하 요청</h5>
+	                                            		<p class="op_list__con">소유자의 요청에도 불구하고, 토지보상법에 규정된 30일 이상의 협의기간을 준수하지 않았으며, 이에 대한 동작구청의</p>
+	                                            	</div>
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">보상금 증액요구</h5>
+	                                            		<p class="op_list__con">해당 재개발 사업으로 인하여 10여년 간 임대업에 대한 소득을 얻지 못하여 손실이 발행하였고, 부동산의 실제가치 및</p>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는 2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                    </tbody>
+	                                </table>
+                               </div>
+                               
+                                <!-- <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
                                       	  	 관련 법령
                                     </h4>
                                 </div>
@@ -461,7 +527,7 @@
                                     <div class="f_wrap">
                                         <textarea id="reviewOpinion" class="textarea mt20"></textarea>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="mt40 btn_wrap">
                                     <ul class="btns">
                                         <li>

@@ -2213,6 +2213,45 @@
     margin-left: 0;
     margin-right: 0;
 }
+.c_table__th--num {
+	width:3em;
+}
+.c_table__th--owner_name {
+	width:8em;
+}
+.c_table--opinion td {
+	vertical-align: baseline;
+}
+.c_table__td--para {
+	text-align:left;
+}
+.op_list {
+	padding-left:1em;
+	position:relative;
+	line-height:1.4;
+}
+.op_list::before {
+	content:'';
+	position:absolute;
+	width:6px;
+	height:6px;
+	background-color:currentColor;
+	left:2px;
+	top:0.5em;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+	border-radius: 100%;
+}
+.op_list ~ .op_list {
+	margin-top:1.5em;
+}
+.op_list__tit {
+	font-weight:500;
+	margin-bottom:0.5em;
+}
+
 
 .fc .fc-view-harness {
     overflow: auto;
