@@ -602,7 +602,7 @@
 											<!-- 등록 폼 -->
 											<div class="c_table t1">
 												<div class="reg_wrap">
-
+													<h2><span id="notice"></span></h2>
 													<table class="table_editor">
 														<tbody>
 															<tr>

@@ -50,7 +50,7 @@
         
         
 			 <form id="fileForm" style="display: none;'" accept-charset="UTF-8"  enctype="multipart/form-data" method="post" action='${pageContext.request.contextPath}/uploadContentFile/decision'>
-			 
+			 <input type="hidden" name="masterId" id="masterId" value="${masterId}">
 			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			 	<div id="fileDiv1">
 			 	<input type="file" class="fileInput" id="fileInput1-0" name="fileInput1-0"/>
@@ -1049,7 +1049,7 @@
     		});
         	
        
-			/* let fileNameInputs = document.getElementsByClassName('file_name');
+			 let fileNameInputs = document.getElementsByClassName('file_name');
 			
 			for (let i=0; i<fileNameInputs.length; i++) {
 				//fileNameInputs[i].closest('.file_flex').id.split('-')[1]
@@ -1064,9 +1064,8 @@
 				}
 			}
 		
-			
 		       let form = $('#fileForm')[0];
-		       form.submit(); */
+		       form.submit(); 
         }
 
 
