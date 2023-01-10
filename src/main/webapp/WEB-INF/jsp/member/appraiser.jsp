@@ -816,6 +816,7 @@
         $(document).ready(function () {
         	let contextPath = $('#contextPath').val();
         	let url = contextPath + "/api/join/appraiser"
+        	
         	$('#registerForm').on('submit', function(e){
         		e.preventDefault();
 	        	const data = {
@@ -851,6 +852,9 @@
         	$('#cancel').on('click', function(){
         		location.href=contextPath + "/#login"
         	})
+        	
+        	
+        	
         	
         	
         });

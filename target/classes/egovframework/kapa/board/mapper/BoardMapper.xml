@@ -40,7 +40,7 @@
   		</where>
 	</select>
 	
-	<select id="getBoardContentList" resultType="egovframework.kapa.board.domain.BoardList" >
+	<select id="getBoardContentList" resultType="egovframework.kapa.board.domain.BoardList" parameterType="egovframework.kapa.domain.Search" >
 		SELECT seq_no AS seqNo ,title,'관리자' AS userName,regdate,board_hits AS boardHits
 
 		FROM TB_Board_Content 
@@ -49,6 +49,13 @@
 			board_seq = #{boardSeq}
 			AND del_check = 0
   		</where>
+  		
+        <if test = 'keyword neq null and keyword neq ""'>	
+	        <if test = 'keyword neq null and keyword neq ""'>
+	        </if>
+			AND search_content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        
 		
 		ORDER BY seq_no DESC
 		

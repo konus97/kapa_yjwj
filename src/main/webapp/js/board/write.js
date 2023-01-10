@@ -1,60 +1,11 @@
-let editor;
 
-ClassicEditor
-	.create( document.querySelector( '#boardContent' ), {
-		extraPlugins: [ MyCustomUploadAdapterPlugin ],
-		toolbar: {
-			items: [
-				'heading',
-				'|',
-				'bold',
-				'italic',
-				'fontSize',
-				'fontColor',
-				'highlight',
-				'link',
-				'bulletedList',
-				'numberedList',
-				'|',
-				'outdent',
-				'indent',
-				'|',
-				'imageUpload',
-				'insertTable',
-				'mediaEmbed',
-				'undo',
-				'redo'
-			]
-		},
-		language: 'ko',
-		image: {
-			toolbar: [
-				'imageTextAlternative',
-				'imageStyle:full',
-				'imageStyle:side'
-			]
-		},
-		table: {
-			contentToolbar: [
-				'tableColumn',
-				'tableRow',
-				'mergeTableCells'
-			]
-		},
-		licenseKey: '',
-	} )
-	.then( newEditor => {
-		editor = newEditor;
-	} )
-	.catch( error => {
-		console.error( 'Oops, something went wrong!' );
-		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-		console.warn( 'Build id: 95xpmoz2za9p-z7ulnbnv6nkk' );
-		console.error( error );
-	} );
-
+$(function () {
+	CKEDITOR.replace('boardContent');
+});
 
 function saveBoardContent(){
+	let csrfToken = $("meta[name='_csrf']").attr("content");
+    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath+"/api/board/write";
@@ -66,7 +17,8 @@ function saveBoardContent(){
 	//BASE START
 	let option = $('#bw_option')[0].checked;
 	let title = $('#boardTitle').val();
-	let content = editor.getData();
+	/*let content = editor.getData();*/
+	let content = CKEDITOR.instances.boardContent.getData(); 
 	let link = $('#link').val();
 
 	// 제목
@@ -99,6 +51,9 @@ function saveBoardContent(){
 				"searchContent" : searchContent,
 				"link" : link,
 			},
+        	beforeSend : function(xhr){
+        		xhr.setRequestHeader(csrfHeader, csrfToken);
+        	},
 			success : function(data) {
 			
 				goToBoardList();

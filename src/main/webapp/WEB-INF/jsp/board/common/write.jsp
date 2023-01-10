@@ -20,7 +20,9 @@
 	<meta property="og:title" content="재결정보지원센터">
 	<meta property="og:site_name" content="재결정보지원센터">
 	<meta property="og:description" content="재결정보지원센터">
-	
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+		
 	<meta property="og:image" content="../../css/favicon_1200x630.png">
 	<meta name="twitter:description" content="재결정보지원센터">
 	<meta name="twitter:image" content="../../css/favicon_270x270.png">
@@ -184,8 +186,8 @@
 	<script src="../../lib/lib.js"></script>
 	
 	<!--ckeditor5 start-->
-	<script src="../../lib/ckeditor5/build/ckeditor.js"></script>
-	<script src="../../lib/ckeditor5/build/upload.js"></script>
+	<script src="../../lib/ckeditor/ckeditor.js"></script>
+	<!-- <script src="../../lib/ckeditor5/build/upload.js"></script> -->
 
 	<!--board start-->
 	<script src="../../js/common.js"></script>

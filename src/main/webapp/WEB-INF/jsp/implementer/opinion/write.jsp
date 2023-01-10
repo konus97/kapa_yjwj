@@ -743,7 +743,6 @@
 	
 	
 	<script type="text/javascript">
-
         	let opinionItemList = new Array();
         
 	        function triggerFileUpload(){

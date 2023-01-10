@@ -69,7 +69,22 @@
                                         name="id"
                                         id="id"
                                     />
-                                    <button class="btn">인증</button>
+                                    <button type="button" class="btn" id="checkPhone">인증</button>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
+                                    <span class="required">이메일</span>
+                                </div>
+                                <div class="input-right">
+                                    <input type="text" class="wid25 input40" name="email" required />
+                                    @
+                                    <input type="text" class="wid25 input40" name="domain"required />
+                                    <select class="select">
+                                        <option>직접 입력</option>
+                                        <option>naver.com</option>
+                                        <option>naver.com</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="input-wrap">
@@ -94,21 +109,6 @@
                                     name="pwd"
                                     required
                                 />
-                            </div>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">이메일</span>
-                                </div>
-                                <div class="input-right">
-                                    <input type="text" class="wid25 input40" name="email" required />
-                                    @
-                                    <input type="text" class="wid25 input40" name="domain"required />
-                                    <select class="select">
-                                        <option>직접 입력</option>
-                                        <option>naver.com</option>
-                                        <option>naver.com</option>
-                                    </select>
-                                </div>
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
@@ -817,21 +817,21 @@
         <script type="text/javascript">
         var csrfToken = $("meta[name='_csrf']").attr("content");
         var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
+                
         $(document).ready(function (e) {
         	let contextPath = $('#contextPath').val();
-        	let url = contextPath + "/api/join/implementer"
+        	let url = contextPath + "/api/join/implementer";
         	$('#registerForm').on('submit', function(e){
         		e.preventDefault();
 	        	const data = {
-		    			"id" : $("input[name=id]")[0].value,
-		    			"pwd" : $("input[name=pwd]")[0].value,
-		    			"email" : $("input[name=email]")[0].value,
-		    			"domain" : $("input[name=domain]")[0].value,
-		     			"docNumber" : $("input[name=docNumber]")[0].value,
-		     			"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
-		     			"implementerNumber" : $("input[name=implementerNumber]")[0].value,
-		    		}
+		    		"id" : $("input[name=id]")[0].value,
+		    		"pwd" : $("input[name=pwd]")[0].value,
+		    		"email" : $("input[name=email]")[0].value,
+		    		"domain" : $("input[name=domain]")[0].value,
+		     		"docNumber" : $("input[name=docNumber]")[0].value,
+		     		"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
+		     		"implementerNumber" : $("input[name=implementerNumber]")[0].value,
+		    	}
 		        	
         		$.ajax({
         			url : url,
@@ -859,6 +859,43 @@
         	
         	
         });
+        
+
+        $(document).ready(function() {
+        	$("#checkPhone").on("click", function(e) {
+        		e.preventDefault();
+        		fn_checkPhone();
+        	});
+        });
+
+
+        function fn_checkPhone(){
+            let contextPath = $('#contextPath').val();
+        	var phonenumber = document.getElementById("id").value;
+            let url = contextPath + "/api/join/checkphone";
+        	console.log("add");	
+        	console.log(phonenumber);
+        	const data = {
+	    			"id" : $("input[name=id]")[0].value,
+	    		}
+        	
+        	$.ajax({
+        		url : url,
+        		type : "POST",
+    			contentType : "application/json; charset=UTF-8",
+    			data : JSON.stringify(data),
+    			beforeSend : function(xhr){
+    				xhr.setRequestHeader(csrfHeader, csrfToken);
+    			},
+        		success : function(data) {
+        			if (data == 1) {
+        				alert("테스트1");
+        			} else if (data == 0) {
+        				alert("테스트2");
+        			}
+        		}
+        	});
+        }
         </script>
     </body>
 </html>
