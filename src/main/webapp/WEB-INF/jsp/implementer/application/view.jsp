@@ -474,10 +474,8 @@
 																<c:if test="${decisionFiles.fileType eq '1'}">
 																	<c:set var="notExist" value="false" />
 																	<div class="file_flex">
-																		<input class="file_view"
-																			value=${decisionFiles.fileDescription } readonly
-																			disabled /> <input class="file_view"
-																			value=${decisionFiles.fileNameOri } readonly disabled />
+																		<input class="file_view" value=<c:out value=${decisionFiles.fileDescription } />  readonly disabled />
+																		<input class="file_view" value=${decisionFiles.fileNameOri } readonly disabled />
 																		<button type="button"
 																			class="btn small02 t1 nohover downloadButton"
 																			id="${decisionFiles.seqNo}">

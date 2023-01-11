@@ -10,6 +10,9 @@ function getBoardContentList(cpage) {
 	let url = contextPath+"/api/board/list";
 
 	let boardSeq = $("#boardSeq").val();
+	
+	var searchType = $("#cbs_select option:selected").val();
+	var searchKeyword = $("#cbs_input").val();
 
 	$("#contentList").attr("data-cpage", cpage);
 	$("#contentList").empty();
@@ -21,6 +24,8 @@ function getBoardContentList(cpage) {
 		dataType : "json",
 		async: false,
 		data : {
+			"searchType" : searchType,
+			"searchKeyword" : searchKeyword,
 			"cpage" : cpage,
 			"boardSeq" : boardSeq,
 		},
@@ -86,6 +91,90 @@ function getBoardContentList(cpage) {
 
 }
 
+function getSearchBoardContentList() {
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath+"/api/board/search";
+
+	let boardSeq = $("#boardSeq").val();
+	
+	var searchType = $("#cbs_select option:selected").val();
+	var searchKeyword = $("#cbs_input").val();
+
+	$("#contentList").attr("data-cpage", 1);
+	$("#contentList").empty();
+	$("#pageList").empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"searchType" : searchType,
+			"searchKeyword" : searchKeyword,
+			"cpage" : 1,
+			"boardSeq" : boardSeq,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			console.log(list);
+			let totalPage = data.totalPage;
+			let allCount = data.allCount;
+				
+			if(totalPage=="0")totalPage=1;
+			
+			//전체 게시물 카운트
+			let allCnt = "전체 게시물 : <mark>"+allCount+"</mark>";
+			$("#allCount").empty();
+			$("#allCount").append(allCnt);
+			
+
+			if (list.length == 0) {
+
+				let addList = new Array();
+
+ 				addList.push("<li>");
+                addList.push("    <div class=\"cbl_wrap\">");
+                addList.push("       게시글이 존재하지 않습니다..");
+                addList.push("    </div>");
+                addList.push("</li>");
+
+				$("#contentList").append(addList.join(''));
+
+			}else{
+
+				$("#contentList").attr("data-tpage", totalPage);
+
+				let t = Number(totalPage);
+				let c = Number(1);
+
+				let startNumber = 0;
+
+				if(t!=c){
+					startNumber = allCount-((c-1)*rowItem);
+				}else{
+					startNumber = list.length;
+				}
+
+				for( let i = 0; i < list.length; i++) {
+					makeBoardBlock(startNumber,list[i]);
+					startNumber--;
+				}
+
+				makePageList();
+
+			}
+
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+}
 
 function makePageList(){
 

@@ -12,6 +12,10 @@
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
         <meta http-equiv="Cache-Control" content="no-cache" />
+        
+		<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+		
         <title>재결정보지원센터</title>
         <meta name="description" content="재결정보지원센터" />
         <meta name="keywords" content="재결정보지원센터" />
@@ -24,6 +28,8 @@
         <meta property="og:image" content="../css/favicon_1200x630.png" />
         <meta name="twitter:description" content="재결정보지원센터" />
        	<meta name="twitter:image" content="../../css/favicon_270x270.png">
+       	
+		
 		<link rel="shortcut icon" href="../../css/favicon_seoul.ico">
 		<link rel="icon" href="../../css/favicon_seoul.ico">
 

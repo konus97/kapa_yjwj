@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -89,9 +92,23 @@ public class JoinRestController {
 			return ResponseEntity.ok("사건번호가 없습니다.");
 		}
 		
-		
-		
 	}
+
+	@RequestMapping(value = "/checkphone", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public ResponseEntity phoneCheck(@RequestBody String data) {
+		try {
+			System.out.println(data);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, String> result = new HashMap();
+		result.put("message", "success");
+		return ResponseEntity.ok(result);
+	}
+	
 	
 	
 	

@@ -15,8 +15,8 @@ function makeAppraiserApplicationBlock(startNumber,info) {
 	let judgBizNm = info.judgBizNm;
     let caseNo = info.caseNo;
 	let bizOprtNm = info.bizOprtNm;					
-	let reptLoc = info.reptLoc;			
-			
+	let reptLoc = info.reptLoc;	
+				
 	addList.push("<tr>");
     addList.push("    <th>");
     addList.push("       <strong>"+startNumber+"</strong>");

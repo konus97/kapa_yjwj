@@ -9,6 +9,10 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="0">
 	<meta http-equiv="Cache-Control" content="no-cache">
+	
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+		
 	<title>재결정보지원센터</title>
 	<meta name="description" content="재결정보지원센터">
 	<meta name="keywords" content="재결정보지원센터">
@@ -104,7 +108,7 @@
 										<option value="내용">내용</option>
 									</select>
 									<input type="text" id="cbs_input" name="cbs_input" class="input input40" placeholder="검색어를 입력하세요.">
-									<button class="btn" type="submit">검색</button>
+									<button class="btn" type="button" onclick="getSearchBoardContentList();return false;">검색</button>
 								</fieldset>
 							</form>
 							</div>
@@ -152,7 +156,9 @@
 
             //board content list
             getBoardContentList(1);
+            
 
+            
             //enter-event start
           /*   $('#searchInput').keydown(function(event){
                 let keyCode = (event.keyCode ? event.keyCode : event.which);

@@ -67,6 +67,7 @@ function goToBoardEdit(){
 function deleteBoardContent() {
 
 	let contextPath = $("#contextPath").val();
+	console.log(contextPath);
 	let url = contextPath+"/api/board/delete";
 	
 	let viewSeq = $("#viewSeq").val();
@@ -80,6 +81,9 @@ function deleteBoardContent() {
 			data : {
 				"seqNo" : viewSeq,
 			},
+        	beforeSend : function(xhr){
+        		xhr.setRequestHeader(csrfHeader, csrfToken);
+        	},
 			success : function(data) {
 				goToBoardList();
 			},

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,7 +95,8 @@ public class BoardRestController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getBoardContentList(@RequestParam("cpage") String cpage,@RequestParam("boardSeq") int boardSeq) {
+	public Map<String, Object> getBoardContentList(@RequestParam("searchType") String searchType,  @RequestParam("searchKeyword") String searchKeyword,
+												   @RequestParam("cpage") String cpage,@RequestParam("boardSeq") int boardSeq) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
@@ -104,6 +106,68 @@ public class BoardRestController {
         int pageNum=1;
         int rowItem=10;
 
+    	if(searchKeyword != "" && searchKeyword != null){
+
+    		search.setSearchType(searchType);
+    		search.setKeyword(searchKeyword);
+    	}
+        
+        try {
+            pageNum = Integer.parseInt(cpage);
+            search.setBoardSeq(boardSeq);
+            System.out.println("getBoardContentList::::::"+boardSeq);
+ 
+            //페이징 계산
+            int listCnt = boardContentService.getBoardContentCnt(search);
+            search.pageInfo(pageNum, rowItem, listCnt);
+        
+            
+            System.out.println("getBoardContentList::::::"+listCnt);
+            
+            //값 넣기
+            List<BoardList> pagingResult = boardContentService.getBoardContentList(search);
+   
+            resultFinal.put("list", pagingResult);
+            resultFinal.put("totalPage", search.getPageCnt());
+            resultFinal.put("allCount", listCnt);
+
+        }catch (Exception e){
+            pageNum=1;
+
+            System.out.println("\n\ne.getMessage()\n"+e.getMessage());
+            System.out.println("\n\ne.toString()\n"+e.toString());
+            System.out.println("\n\ne.printStackTrace()");
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
+
+	// 공지사항 검색기능
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getSearchBoardContentList(@RequestParam Map<Object, Object> paramMap) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+
+		Search search = new Search();
+
+		String searchType = paramMap.get("searchType").toString();
+		String searchKeyword = paramMap.get("searchKeyword").toString();
+		String cpage = paramMap.get("cpage").toString();
+		int boardSeq = Integer.parseInt(paramMap.get("boardSeq").toString());
+		
+        //page cpage
+        int pageNum=1;
+        int rowItem=10;
+
+    	if(searchKeyword != "" && searchKeyword != null){
+
+    		search.setSearchType(searchType);
+    		search.setKeyword(searchKeyword);
+    	}
+        
         try {
             pageNum = Integer.parseInt(cpage);
             search.setBoardSeq(boardSeq);

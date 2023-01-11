@@ -10,9 +10,9 @@ function makeBoardBlock(num,info) {
 	
 	if(boardSeq==1){
 		boardUrl="notice";
-	}else if(boardSeq==1){
+	}else if(boardSeq==2){
 		boardUrl="inquiry";
-	}else if(boardSeq==1){
+	}else if(boardSeq==3){
 		boardUrl="inquiryLaw";
 	}
 
