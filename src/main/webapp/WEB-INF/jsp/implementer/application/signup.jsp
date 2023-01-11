@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta  charset=UTF-8  http-equiv="Content-Type" content="text/html;"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
         <meta
             name="viewport"
@@ -735,7 +735,7 @@
 	                                                    </div>
 	                                                    
 	                                                    <div id="fileInfo10-2" class="file_flex fileInfo10 fileDiv">                                               	
-	                                                        <input class="input40 file_name fileLabel10" value="시도지사추천"  maxlength="50" readonly>
+	                                                        <input class="input40 file_name fileLabel11" value="시도지사추천"  maxlength="50" readonly>
 	                                                        <div class="file_btn_wrap">
 	                                                            <div style="display: flex">
 	                                                                <div id="fileText10-2" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('10', this);return false;">파일 없음</div>                                              
@@ -743,8 +743,8 @@
 	                                                        </div>
 	                                                    </div>
 	                                                    
-	                                                    <div id="fileInfo10-3" class="file_flex fileInfo10 fileDiv">                                               	
-	                                                        <input class="input40 file_name fileLabel10"  value="토지소유자 추천"  maxlength="50" readonly>
+	                                                    <div id="fileInfo10-3" class="file_flex fileInfo12 fileDiv">                                               	
+	                                                        <input class="input40 file_name fileLabel12"  value="토지소유자 추천"  maxlength="50" readonly>
 	                                                        <div class="file_btn_wrap">
 	                                                            <div style="display: flex">
 	                                                                <div id="fileText10-3" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('10', this);return false;">파일 없음</div>                                                          
@@ -760,7 +760,7 @@
                                                  <div id="fileList11" class="file_wrap upper" >
                                                 
                                                 	<div id="fileInfo11-1" class="file_flex fileInfo11 fileDiv">                                               	
-                                                        <input class="input40 file_name fileLabel11"  maxlength="50">
+                                                        <input class="input40 file_name fileLabel13"  maxlength="50">
                                                         <div class="file_btn_wrap">
                                                             <div style="display: flex">
                                                                 <div id="fileText11-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('11',this);return false;">파일 없음</div>
@@ -846,8 +846,11 @@
     	<script src="../../js/implementer/application/signup/content.js"></script>
     
         <script type="text/javascript">
+
+
         
             function triggerFileUpload(position, arg) {
+        	console.log("triggerFileUpload 실행");
                 const fileForm = document.getElementById('fileForm');
                 const fileDiv = fileForm.querySelector('#fileDiv' + position);
 				
@@ -870,6 +873,29 @@
             }
  
         function saveDecision(){
+            const fileArr = [];
+            // key, value 선언
+        
+            
+        	var allTextLength = document.getElementsByClassName('input40 file_name').length;
+        	
+        	for(let i=1; i<allTextLength+1; i++){	
+        		if($('.fileLabel'+i).val()){ // 1-1, 1-2. 1-3. 2 총 4개를 넣었다?
+            	let len =	document.getElementsByClassName('fileLabel'+i).length; // 1일 때  3, 2일 때 1
+            	for(j=1; j<len+1; j++){
+            	    var fileContent = {};
+                    fileContent.key = '';
+                    fileContent.value = '';
+                    
+            		fileContent.key = i;
+            		fileContent.value = $('.fileLabel'+i).val();
+            		fileArr.push(fileContent);
+        			//alert(i+"-"+j+"번째 값 ::"+$('.fileLabel'+i).val()); //value 여기서 key, value값 생성하기
+            	}
+        		}
+        	}//file 
+        		
+        	
             
         	let contextPath = $("#contextPath").val();
         	let url = contextPath+"/api/implementer/decision";
@@ -1039,8 +1065,9 @@
     				xhr.setRequestHeader(csrfHeader, csrfToken);
     			},
     			success : function(data) {
-    				alert("등록을 성공했습니다.");
-    				goToImplementerList();
+    				/* alert("등록을 성공했습니다.");
+    				goToImplementerList(); */
+    				console.log('성공');
     			},
     			error : function(xhr, status, error) {
     				//에러!
@@ -1066,6 +1093,26 @@
 		
 		       let form = $('#fileForm')[0];
 		       form.submit(); 
+	        	let url2 = contextPath+"/api/implementer/decision/file";
+
+		       $.ajax({
+	    			url : url2,
+	    			type : "POST",
+	    			contentType : "application/json; charset=UTF-8",
+	    			data : fileArr,
+	    			async: false, 
+	    			beforeSend : function(xhr){
+	    				xhr.setRequestHeader(csrfHeader, csrfToken);
+	    			},
+	    			success : function(data) {
+	    				alert("등록을 성공했습니다.");
+	    				goToImplementerList();
+	    			},
+	    			error : function(xhr, status, error) {
+	    				//에러!
+	    				//alert("code:"+xhr.status);
+	    			}
+	    		});
         }
 
 

@@ -948,4 +948,10 @@ public class ImplementerService {
 	public List<DecisionOpinionFileDTO> getDecisionOpinionFile(int ownrSeq) {
 		return implementerMapper.getDecisionOpinionFile(ownrSeq);
 	}
+
+
+	public void saveDecisionFile(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		
+	}
 }

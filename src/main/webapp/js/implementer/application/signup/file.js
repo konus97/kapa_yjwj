@@ -8,7 +8,7 @@ function addNewFileTarget(position) {
 
 	let fileListCount = document.getElementById('fileList'+position).children.length+1;
 											
-	addList.push("<div id=\"fileInfo"+position+"-"+fileListCount+"\" class=\"file_flex fileDiv fileInfo"+position+"\">  ");        
+	addList.push("<div id=\"fileInfo"+position+"-"+fileListCount+"\" class=\"file_flex fileInfo"+position+" fileDiv\">  ");        
 	//addList.push("	<div class=\"file_flex\">");
     addList.push("      <input class=\"input40 file_name fileLabel"+position+"\"  maxlength=\"50\"> ");
     addList.push("      <div class=\"file_btn_wrap\"> ");

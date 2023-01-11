@@ -352,7 +352,7 @@ function resetOpinionItem(opinion){
 
 	var notice ="";
 	
-	switch (getType) {
+	switch (opinionSeq) {
   case "1":
     notice = '지연가산금';
     break;
@@ -438,9 +438,9 @@ notice='';
    addList.push("      <td>");   
    addList.push("        <div class=\"txt-r\">");
 //추가
-addList.push("        <span>");
-addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");
-addList.push("        </span>");
+   addList.push("        <span style=\color:red;\>");
+   addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");   
+   addList.push("        </span>");
 //
    addList.push("          <button class=\"btn nohover\">");
    addList.push("             <i class=\"download white icon\"></i> PDF 업로드");

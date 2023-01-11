@@ -75,8 +75,10 @@ public class FileController {
 		return resultFinal;
 	}
 
+	//LTIS 입력정보 확인 첨부파일 업로드
 	@RequestMapping(value = "/uploadContentFile/decision", method = RequestMethod.POST)
 	public String uploadDecisionFile(MultipartHttpServletRequest req) throws Exception {
+		 System.out.println("===============LTIS 입력정보 확인 첨부파일 업로드===============");
 		req.setCharacterEncoding("UTF-8");
 		HashMap<String, Object> resultFinal = new HashMap<String, Object>();
 		Map<String, String> map = new HashMap();
@@ -114,14 +116,19 @@ public class FileController {
 					String typeAndRank = fileName.substring(9);
 					FileVO getFileInfo = fileService.getFileInfo(newFileInfo);
 					Decision_File decisionFile = new Decision_File();
-					// DecisionId가 없어서 임시 값 넣어둠.
+
 					decisionFile.setDecisionId(masterId);
 					decisionFile.setFileType(Integer.parseInt(typeAndRank.split("-")[0]));
 					decisionFile.setFileSeq((int) (getFileInfo.getSeqNo()));
 					decisionFile.setDelCheck(0);
 					decisionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
 					decisionFile.setRegdate(LocalDate.now().toString());
-					decisionFile.setFileDescription(map.get(typeAndRank));
+					String description = map.get(typeAndRank);
+					System.out.println("====================================================================");
+					System.out.println(new String(description.getBytes("8859_1"),"utf-8"));
+					System.out.println("====================================================================");
+
+					decisionFile.setFileDescription(new String(description.getBytes("8859_1"),"utf-8"));
 					decisionService.insertDecisionFile(decisionFile);
 				}
 			}
