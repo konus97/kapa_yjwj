@@ -1,4 +1,5 @@
 <%@	page contentType="text/html;charset=utf-8" language="java" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 <!DOCTYPE html>
@@ -10,6 +11,8 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="0">
 	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	<title>재결정보지원센터</title>
 	<meta name="description" content="재결정보지원센터">
 	<meta name="keywords" content="재결정보지원센터">
@@ -86,7 +89,7 @@
 											</div>
 											<div class="ff_wrap">
 												<div class="checkbox t2">
-													<input type="checkbox" id="bw_option" name="bw_option" class="checkbox" style="display: none;"/>
+													<input type="checkbox" id="bw_option" name="bw_option" class="checkbox" <c:if test="${bvo.secretCheck eq true}" > checked </c:if> style="display: none;"/>
 													<label for="bw_option"><i></i><span>비밀글</span></label>
 												</div>
 											</div>
@@ -183,8 +186,8 @@
 	<script src="../../lib/lib.js"></script>
 	
 	<!--ckeditor5 start-->
-	<script src="../../lib/ckeditor5/build/ckeditor.js"></script>
-	<script src="../../lib/ckeditor5/build/upload.js"></script>
+	<script src="../../lib/ckeditor/ckeditor.js"></script>
+	<!-- <script src="../../lib/ckeditor5/build/upload.js"></script> -->
 
 	<!--common start-->
 	<script src="../../js/common.js"></script>

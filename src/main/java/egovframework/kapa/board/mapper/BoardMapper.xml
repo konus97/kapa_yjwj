@@ -49,12 +49,12 @@
 			board_seq = #{boardSeq}
 			AND del_check = 0
   		</where>
-  		
-        <if test = 'keyword neq null and keyword neq ""'>	
-	        <if test = 'keyword neq null and keyword neq ""'>
-	        </if>
-			AND search_content LIKE CONCAT('%', #{keyword}, '%')
+  		        
+  		 <if test = 'keyword neq null and keyword neq ""'>   
+         	AND #{searchType} = #{searchType}
+         	AND search_content LIKE CONCAT('%', #{keyword}, '%')
         </if>
+
         
 		
 		ORDER BY seq_no DESC
@@ -72,6 +72,11 @@
 			board_seq = #{boardSeq}
 			AND del_check = 0
   		</where>
+  		
+  		 <if test = 'keyword neq null and keyword neq ""'>   
+         	AND #{searchType} = #{searchType}
+         	AND search_content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
     </select>
 	
 

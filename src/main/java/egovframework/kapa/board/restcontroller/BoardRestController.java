@@ -95,8 +95,7 @@ public class BoardRestController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getBoardContentList(@RequestParam("searchType") String searchType,  @RequestParam("searchKeyword") String searchKeyword,
-												   @RequestParam("cpage") String cpage,@RequestParam("boardSeq") int boardSeq) {
+	public Map<String, Object> getBoardContentList(@RequestParam("cpage") String cpage,@RequestParam("boardSeq") int boardSeq) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
@@ -105,12 +104,6 @@ public class BoardRestController {
         //page cpage
         int pageNum=1;
         int rowItem=10;
-
-    	if(searchKeyword != "" && searchKeyword != null){
-
-    		search.setSearchType(searchType);
-    		search.setKeyword(searchKeyword);
-    	}
         
         try {
             pageNum = Integer.parseInt(cpage);
@@ -163,7 +156,9 @@ public class BoardRestController {
         int rowItem=10;
 
     	if(searchKeyword != "" && searchKeyword != null){
-
+    		if (searchType == "제목") searchType = "search_title";
+    		else					 searchType = "search_content";
+    		
     		search.setSearchType(searchType);
     		search.setKeyword(searchKeyword);
     	}
