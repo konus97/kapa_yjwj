@@ -171,10 +171,14 @@ public class FileController {
 		String storedFileName = getFileInfo.getFileNameChange();
 		String originalFileName = getFileInfo.getFileNameOri();
 		//String path = getFileInfo.getFileFolder();
-		String filePath = request.getServletContext().getRealPath(File.separator)+ "files" + File.separator + "download";
-		String filePath2 = "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
-		System.out.println(filePath);
-       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath2+storedFileName));
+		/*
+		 * String filePath = request.getServletContext().getRealPath(File.separator)+
+		 * "files" + File.separator + "download"; String filePath2 =
+		 * "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
+		 */
+		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+
+       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath+storedFileName));
        
        response.reset();
        response.setHeader("Content-Disposition", "attachment;filename="+originalFileName+"");

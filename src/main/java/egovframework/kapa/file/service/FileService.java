@@ -30,7 +30,10 @@ public class FileService {
 		Long getFileSeq = 0L;
 		
 		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
-		
+		System.out.println("=============================================");
+		System.out.println("FILE PATH ::" + filePath);
+		System.out.println("=============================================");
+
 		File fileFileSaveDir = new File(request.getServletContext().getRealPath(File.separator)+ "file");
 		if (!fileFileSaveDir.exists()) {
 			fileFileSaveDir.mkdir();
