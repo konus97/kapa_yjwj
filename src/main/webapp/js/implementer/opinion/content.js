@@ -1,8 +1,10 @@
 let popupOpinion = 2;
 let addOpinionItemArray = new Array();
 
-function addOpinion(getSeq,getItem,getType,getTitle){
+function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq){
    
+
+console.log("Start"+reptOwnrSeq);
    let opCount = $(".opinion"+getSeq).length+1;
    
    let getId = "#opinion"+getSeq+"-"+getItem;
@@ -22,7 +24,7 @@ function addOpinion(getSeq,getItem,getType,getTitle){
       addList.push("       <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
        addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
        addList.push("      <div class=\"cbl_3\"> ");
-       addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"');return false;\" >의견을 작성해주세요</a>");
+       addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"');return false;\" >의견을 작성해주세요</a>");
        addList.push("      </div> ");
        addList.push("      <div id=\"fileCount"+getSeq+"-"+getItem+"\" class=\"cbl_4\"></div>");
        addList.push("   </div>");
@@ -57,7 +59,7 @@ function resetSeq(getSeq){
    
 }
 
-function openOpinionPopup(getSeq,getType){
+function openOpinionPopup(getSeq,getType,reptOwnrSeq){
    /*var seqNum = document.getElementById("seqNum").value;
    var itemNum = document.getElementById("itemNum").value;
    if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
@@ -167,12 +169,14 @@ notice='';
          
          let reptSeq = addOpinionItemArray[i].reptSeq;
          let type = addOpinionItemArray[i].type;
-         
+		 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;     
+			console.log(reptOwnrSeq);
          if(getSeq==reptSeq&&getType==type){
             
             let ownerOpinion = addOpinionItemArray[i].ownerOpinion;
             let executorOpinion = addOpinionItemArray[i].executorOpinion;
             
+
             ownerOpinion = $("#ownerOpinion").val(ownerOpinion);
             executorOpinion = $("#executorOpinion").val(executorOpinion);
             
@@ -202,7 +206,8 @@ notice='';
    
    $("#popupOwnerOpinion").attr("data-seq",getSeq);
    $("#popupOwnerOpinion").attr("data-type",getType);
-   
+   $("#popupOwnerOpinion").attr("reptOwnrSeq",reptOwnrSeq);
+
    $("#popupOwnerOpinion").addClass("on");
    
 }
@@ -211,7 +216,8 @@ function submitOwnerOpinion(){
 
    let getSeq = $("#popupOwnerOpinion").attr("data-seq");
    let getType = $("#popupOwnerOpinion").attr("data-type");
-   
+   let reptOwnrSeq = $("#popupOwnerOpinion").attr("reptOwnrSeq");
+
    let ownerOpinion = $("#ownerOpinion").val();
    let executorOpinion = $("#executorOpinion").val();
    
@@ -231,7 +237,8 @@ function submitOwnerOpinion(){
    sub['type'] = getType;
    sub['ownerOpinion'] = ownerOpinion;
    sub['executorOpinion'] = executorOpinion;
-   
+   sub['reptOwnrSeq'] = reptOwnrSeq;
+
    let opCount = $(".popupOpinionItem").length;
       let opinionItemList = new Array(); // json의 전체를 가리키는 배열
       
@@ -256,7 +263,7 @@ function submitOwnerOpinion(){
          
          let reptSeq = addOpinionItemArray[i].reptSeq;
          let type = addOpinionItemArray[i].type;
-         
+         let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;
          if(getSeq==reptSeq&&getType==type){            
             addOpinionItemArray.splice(i, 1);
          }
@@ -352,7 +359,7 @@ function resetOpinionItem(opinion){
 
 	var notice ="";
 	
-	switch (getType) {
+	switch (opinionSeq) {
   case "1":
     notice = '지연가산금';
     break;

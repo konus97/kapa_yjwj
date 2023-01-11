@@ -18,6 +18,8 @@ public class ApplicationLandDTO {
     private Long judgSeq;
     
     private int reptSeq;
+    
+    private int reptOwnrSeq;
 
     private String reptAddr;
     

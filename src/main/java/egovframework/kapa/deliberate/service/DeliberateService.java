@@ -318,7 +318,7 @@ public class DeliberateService {
 
 		for (Decision_Opinion opinion : opinionList) {
 
-			Long reptSeq = opinion.getReptSeq();
+			Long reptSeq = opinion.getReptOwnrSeq();
 			System.out.print(reptSeq);
 			// 공고 상태
 			int getType = opinion.getType();

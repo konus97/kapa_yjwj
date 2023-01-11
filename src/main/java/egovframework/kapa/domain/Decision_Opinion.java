@@ -8,6 +8,7 @@ public class Decision_Opinion {
 	private Long seqNo;
     private Long decisionId;
     private Long reptSeq;
+    private Long reptOwnrSeq;
     private String ownerOpinion;
     private String executorOpinion;
     

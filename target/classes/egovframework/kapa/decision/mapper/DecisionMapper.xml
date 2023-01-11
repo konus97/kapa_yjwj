@@ -29,7 +29,8 @@
 	
 	<update id="updateStep1">
 		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
-		update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
+		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
+		update TB_Decision set agendaState = #{agendaState} where seqNo = #{seqNo}
 	</update>
 	
 	<update id="updateStep2">

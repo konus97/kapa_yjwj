@@ -188,8 +188,11 @@ public class DecisionController {
         model.addAttribute("masterId", masterId);
         
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
-      		model.addAttribute("csltList", csltList); 
-      		
+      	model.addAttribute("csltList", csltList); 
+      	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+        System.out.println("opinionList 메서드 타고 있음");
+        model.addAttribute("opinionList", opinionList);
+      	
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);

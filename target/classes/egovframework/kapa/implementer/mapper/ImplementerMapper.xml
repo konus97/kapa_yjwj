@@ -236,8 +236,8 @@
 	
 	<!--의견 저장 -->
 	<insert id="insertOpinion" parameterType="egovframework.kapa.domain.Decision_Opinion">
-		insert into TB_Decision_Opinion( decisionId, reptSeq,type, ownerOpinion, executorOpinion,completionCheck,delCheck,regdate)
-    	values(#{decisionId}, #{reptSeq},#{type}, #{ownerOpinion}, #{executorOpinion},'0', #{delCheck}, #{regdate})
+		insert into TB_Decision_Opinion( decisionId, reptSeq,type, ownerOpinion, executorOpinion,completionCheck,delCheck,regdate, reptOwnrSeq)
+    	values(#{decisionId}, #{reptSeq},#{type}, #{ownerOpinion}, #{executorOpinion},'0', #{delCheck}, #{regdate}, #{reptOwnrSeq})
     </insert>
 	
 	
@@ -310,7 +310,7 @@
 			LEFT JOIN tb_ltis2kapa_rept_info AS B
 			ON A.rept_seq = B.rept_seq
 			WHERE 
-			 	A.rept_seq = #{reptSeq}
+			 	rept_ownr_intr_seq = #{reptSeq}
 				AND A.ownr_intr_yn = 'O'
 	</select> 
 

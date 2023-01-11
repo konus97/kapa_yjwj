@@ -402,6 +402,8 @@ public class ImplementerService {
 					Decision_Opinion opinion = new Decision_Opinion();
 					
 					long reptSeq = Long.parseLong(JSONTarget.get("reptSeq").toString());
+					long reptOwnrSeq = Long.parseLong(JSONTarget.get("reptOwnrSeq").toString());
+					System.out.println("reptOwnrSeq :::::::::" + reptOwnrSeq);
 					Integer type = Integer.parseInt(JSONTarget.get("type").toString()); 
 					
 					System.out.println(type);
@@ -411,6 +413,7 @@ public class ImplementerService {
 					opinion.setExecutorOpinion(JSONTarget.get("executorOpinion").toString());			
 					opinion.setDecisionId(decisionId);
 					opinion.setReptSeq(reptSeq);
+					opinion.setReptOwnrSeq(reptOwnrSeq);
 					opinion.setDelCheck(0);
 					opinion.setRegdate(LocalDateTime.now().toString());				          	
         			
@@ -797,6 +800,7 @@ public class ImplementerService {
 	    	        			ApplicationLandDTO.builder()
 	    	        					.rank(rank)
 	    	        					.reptSeq(land.getRept_seq())
+	    	        					.reptOwnrSeq(land.getRept_ownr_intr_seq())
 	    			                    .reptAddr(land.getRept_addr())
 	    			                    .sidoGunguCd(land.getSido_gungu_cd())
 	    			                    .mainStrtNo(land.getMain_strt_no())
@@ -839,6 +843,7 @@ public class ImplementerService {
 	    	        			ApplicationGoodsDTO.builder()
 	    	        					.rank(rank)
 	    	        					.reptSeq(goods.getRept_seq())
+	    	        					.reptOwnrSeq(goods.getRept_ownr_intr_seq())
 	    			                    .reptAddr(goods.getRept_addr())		          
 	    			                    .mainStrtNo(goods.getMain_strt_no())
 	    			                    .subStrtNo(goods.getSub_strt_no())

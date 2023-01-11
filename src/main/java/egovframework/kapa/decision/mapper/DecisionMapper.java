@@ -31,7 +31,7 @@ public interface DecisionMapper {
 
 	void updateStateFinal(@Param("decisionState")Integer DecisionState, @Param("seqNo")Long seqNo);
 
-	void updateStep1(@Param("agendaState")Integer agendaState,@Param("relatedLaws")String relatedLaws,@Param("relatedLaws2")String relatedLaws2,@Param("reviewOpinion")String reviewOpinion, @Param("seqNo")Long seqNo);
+	void updateStep1(@Param("agendaState")Integer agendaState, @Param("seqNo")Long seqNo);
 
 	void updateStep2(@Param("content") String content,@Param("relatedLaws") String relatedLaws, @Param("relatedLaws2") String relatedLaws2 ,@Param("reviewOpinion") String reviewOpinion,@Param("seqNo") Long seqNo);
 	

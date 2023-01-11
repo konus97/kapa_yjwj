@@ -395,7 +395,7 @@
 																				<div>
 																					<select id="item${landInfo.reptSeq}"
 																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
-																						data-type="land" data-seq="${landInfo.reptSeq}">
+																						data-type="land" data-seq="${landInfo.reptSeq}" reptOwnrSeq ="${landInfo.reptOwnrSeq}">
 																						<option value="">항목선택</option>
 																					</select>
 																				</div></td>
@@ -500,7 +500,7 @@
 																				<div>
 																					<select id="item${goodsInfo.reptSeq}"
 																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
-																						data-type="goods" data-seq="${goodsInfo.reptSeq}">
+																						data-type="goods" data-seq="${goodsInfo.reptSeq}" reptOwnrSeq="${goodsInfo.reptOwnrSeq}">
 																						<option value="">항목선택</option>
 																					</select>
 																				</div></td>
@@ -774,6 +774,7 @@
          			"addOpinionItemArray" : addOpinionItemArray,
         		}
             	
+            	
             	console.log(data);
             	
             	if(confirm(msg)) {            		
@@ -820,10 +821,11 @@
               		let getItem =  $(this).val();
               		let getSeq = $(this).attr("data-seq");
              		let getType = $(this).attr("data-type");
-             		
+             		let reptOwnrSeq = $(this).attr("reptOwnrSeq");
+             		console.log(reptOwnrSeq);
               		if(getItem!=""){
               			let getTitle = $("option:selected", this).text();         			
-              		    addOpinion(getSeq,getItem,getType,getTitle);
+              		    addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq);
               		}      
               	    
               	});

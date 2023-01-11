@@ -445,31 +445,32 @@
 	                                            <th>사업시행자 의견</th>
 	                                        </tr>
 	                                    </thead>
+	                                     <c:forEach var="opinionList" items="${opinionList}" varStatus="status">
 	                                    <tbody>
+	                                    
 	                                        <tr>
 	                                        	<td>1</td>
 	                                        	<td>
-	                                        	    소유자
-	                                            	<br><br>
-	                                            	주소주소주소주소노량진동313-31교회
+	                                        	   ${opinionList.type} - 소유자
 	                                        	</td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
-	                                            		<h5 class="op_list__tit">수용재결 신청 각하 요청</h5>
-	                                            		<p class="op_list__con">소유자의 요청에도 불구하고, 토지보상법에 규정된 30일 이상의 협의기간을 준수하지 않았으며, 이에 대한 동작구청의</p>
+	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
+	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
 	                                            	</div>
 	                                            	<div class="op_list">
-	                                            		<h5 class="op_list__tit">보상금 증액요구</h5>
-	                                            		<p class="op_list__con">해당 재개발 사업으로 인하여 10여년 간 임대업에 대한 소득을 얻지 못하여 손실이 발행하였고, 부동산의 실제가치 및</p>
+	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
+	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
 	                                            	</div>
 	                                            </td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
-	                                            		<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는 2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
+	                                            		<h5 class="op_list__tit">${opinionList.executorOpinion}</h5>
+	                                            		<p class="op_list__con">${opinionList.executorOpinion}</p>
 	                                            	</div>
 	                                            </td>
 	                                        </tr>
-	                                        <tr>
+	                                        <!-- <tr>
 	                                        	<td>2</td>
 	                                        	<td>
 	                                        	    소유자
@@ -491,8 +492,9 @@
 	                                            		<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는 2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
 	                                            	</div>
 	                                            </td>
-	                                        </tr>
+	                                        </tr> -->
 	                                    </tbody>
+	                                    </c:forEach>
 	                                </table>
                                </div>
                                
@@ -603,18 +605,16 @@
 	        	
 	        	let selectDate = $('#selectDate option:selected').val();
 	       // 	let relatedLaws = $('#relatedLaws').val();
-	        	let relatedLaws = CKEDITOR.instances.relatedLaws.getData();
+	        	/* let relatedLaws = CKEDITOR.instances.relatedLaws.getData();
 	        	let relatedLaws2 = CKEDITOR.instances.relatedLaws2.getData();
-	        	let reviewOpinion = CKEDITOR.instances.reviewOpinion.getData();
-	      //  	let relatedLaws2 = $('#relatedLaws2').val();
-	      //  	let reviewOpinion = $('#reviewOpinion').val();
+	        	let reviewOpinion = CKEDITOR.instances.reviewOpinion.getData(); */
 	     	
 	        	if (selectDate == null || selectDate == "") {
 	        		alert("심의날짜를 선택해주세요");
 	        		return false;
 	        	}
 	        	
-	        	if (relatedLaws == null || relatedLaws == "") {
+	        	/* if (relatedLaws == null || relatedLaws == "") {
 	        		alert("관련 법안을 입력해주세요");
 	        		return false;
 	        	}
@@ -627,14 +627,14 @@
 	        	if (reviewOpinion == null || reviewOpinion == "") {
 	        		alert("검토의견을 입력해주세요");
 	        		return false;
-	        	}
+	        	} */
 	        	
 	        	const data = {
 	    			"decisionId" : decisionId,
 	     			"selectDate" : selectDate,
-	     			"relatedLaws" : relatedLaws,
+	     			/* "relatedLaws" : relatedLaws,
 	     			"relatedLaws2" : relatedLaws2,
-	     			"reviewOpinion" : reviewOpinion,
+	     			"reviewOpinion" : reviewOpinion, */
 	    		}
 	        	
 	        	console.log(data);
@@ -664,7 +664,7 @@
         
         
         
-	        	$(function () {
+	        	/* $(function () {
 	                CKEDITOR.replace('relatedLaws');
 	            });
 	        	$(function () {
@@ -673,7 +673,7 @@
 	        	
 	        	$(function () {
 	                CKEDITOR.replace('reviewOpinion');
-	            });
+	            }); */
 	        $(document).ready(function () {
 		    });
 	        

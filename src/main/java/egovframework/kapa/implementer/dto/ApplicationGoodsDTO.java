@@ -19,6 +19,8 @@ public class ApplicationGoodsDTO {
     
     private int reptSeq;
 
+    private int reptOwnrSeq;
+    
     private String reptAddr;
    
     private String mainStrtNo;

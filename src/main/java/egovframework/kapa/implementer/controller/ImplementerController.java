@@ -288,7 +288,6 @@ public class ImplementerController {
 	/* 재결의견작성 */
 	@GetMapping("/opinion/write.do")
 	public String opinionDetail(HttpServletRequest request,Model model) {
-		System.out.println("asdasdasklnmdaskldasjkldjas :"+request.getServletContext().getRealPath("/"));
 	  	boolean opinionCheck = true;
 	  	
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
