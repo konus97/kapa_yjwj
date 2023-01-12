@@ -182,17 +182,16 @@ public class DecisionController {
 		Decision decison = decisionService.getDecisionView(decisionId);
 		model.addAttribute("groupEstablishedDate", decison.getGroupEstablishedDate());
   		
-        System.out.println(decison);
+    //    System.out.println(decison);
         
         int masterId = decison.getMasterID();
         model.addAttribute("masterId", masterId);
         
-        List<Decision> csltList = implementerService.getLtisCslt(masterId);
-      	model.addAttribute("csltList", csltList); 
       	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
-        System.out.println("opinionList 메서드 타고 있음");
         model.addAttribute("opinionList", opinionList);
       	
+        List<Decision> csltList = implementerService.getLtisCslt(masterId);
+        model.addAttribute("csltList", csltList); 
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
@@ -290,22 +289,115 @@ public class DecisionController {
 	    
 		//current page
 		model.addAttribute("currentPage", "register");
+		Decision decison = decisionService.getDecisionView(decisionId);
+		model.addAttribute("groupEstablishedDate", decison.getGroupEstablishedDate());
+        
+        int masterId = decison.getMasterID();
+        
+        //총물량 조서
+		List<Decision> csltList = implementerService.getLtisCslt(masterId);
+        model.addAttribute("csltList", csltList);
+        
+        
+		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
+		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
+        model.addAttribute("avo", applicationDTO);
 		
+        
+        //소유자 및 사업시행자 의견
 		List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
-		System.out.println(opinionList);
 		
-		Decision_Opinion insertNew = new Decision_Opinion();
 		
-		for(Decision_Opinion opinion : opinionList) {
-			
-			if(opinion.getCompletionCheck()==null||opinion.getCompletionCheck()==0) {
-				insertNew=opinion;
-			}
-			
-		}
-		
+		if(decisionId!=0L) {
+	      	
+        	try {
+        		
+        		List<Decision_Date> dateList = decisionService.getDateList();
+        		model.addAttribute("dateList", dateList);
+        		
+      			List<Decision_Cityplan> cityPlans = decisionService.getCityPlan(decisionId);
+      			List<Decision_ConsultationDate> consultationDates =  decisionService.getConsultationDate(decisionId);
+      			List<Decision_Target> targets = decisionService.getTarget(decisionId);
+      			Decision decision = decisionService.getDecisionView(decisionId);
+      			
+      			model.addAttribute("groupEstablishedDate", decision.getGroupEstablishedDate());
+      		
+      	        Decision_Notice decisionNotice = decisionService.getDecisionNoticeView(decisionId);
+      	        model.addAttribute("decisionNotice", decisionNotice);     	        
+      	        
+      			//합계 통계
+
+      			Long amountA = decision.getAmountA();
+      			Long amountB = decision.getAmountB();
+      			Long amountC = decision.getAmountC();
+      			Long landCnt = decision.getLandCnt();
+      			Long landArea = decision.getLandArea();
+      			Long landPrice = decision.getLandPrice();
+      			Long objCnt = decision.getObjCnt();
+      			Long objPrice = decision.getObjPrice();
+      			Long goodwillCnt = decision.getGoodwillCnt();
+      			Long goodwillPrice = decision.getGoodwillPrice();
+      			
+      			double average = (amountA+amountB+amountC)/3;
+      			
+      			DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
+      		    String amountAstr = dc.format(amountA);
+      		    String amountBstr = dc.format(amountB);
+      		    String amountCstr = dc.format(amountC);
+      		  String landCntStr = dc.format(landCnt);
+    		    String landAreaStr = dc.format(landArea);
+        		String landPriceStr = dc.format(landPrice);
+        		String objCntStr = dc.format(objCnt);
+        		String objPriceStr = dc.format(objPrice);
+        		String goodwillCntStr = dc.format(goodwillCnt);
+        		String goodwillPriceStr = dc.format(goodwillPrice);
+        		
+      		    
+      		    model.addAttribute("amountA", amountAstr);
+      		    model.addAttribute("amountB", amountBstr);
+      		    model.addAttribute("amountC", amountCstr);
+      		  model.addAttribute("landCnt", landCntStr);
+      		model.addAttribute("landArea", landAreaStr);
+      		model.addAttribute("landPrice", landPriceStr);
+      		model.addAttribute("objCnt", objCntStr);
+      		model.addAttribute("objPrice", objPriceStr);
+      		model.addAttribute("goodwillCnt", goodwillCntStr);
+      		model.addAttribute("goodwillPrice", goodwillPriceStr);
+      		    
+      		    System.out.println(amountAstr);
+      		    System.out.println(amountBstr);
+      		    System.out.println(amountCstr);
+      			    
+      			model.addAttribute("averageAmount", dc.format(average));
+      						
+      			System.out.println(average);
+      			
+      			System.out.println("조회");
+      			System.out.println(cityPlans);
+      			System.out.println(consultationDates);
+      			System.out.println(targets);	
+      			model.addAttribute("avo", applicationDTO);
+      			model.addAttribute("cityPlans", cityPlans);
+      			model.addAttribute("consultationDates", consultationDates);
+      			model.addAttribute("targets", targets);
+      			model.addAttribute("decision", decision);
+      		}catch (Exception e) {
+      			e.printStackTrace();
+      		}
+        	
+        	Decision_Opinion insertNew = new Decision_Opinion();
+    		
+    		for(Decision_Opinion opinion : opinionList) {
+    			
+    			if(opinion.getCompletionCheck()==null||opinion.getCompletionCheck()==0) {
+    				insertNew=opinion;
+    			}
+    			
+    		}
 		 //공고 상태
       	 int getType = insertNew.getType();
+      	 String ownerOpinion = insertNew.getOwnerOpinion();
+      	 String executorOpinion = insertNew.getExecutorOpinion();
       	 String getTypeStr = "";
 		
 		 for(int i=0 ; i<ItemData.values().length ; i++) {
@@ -320,13 +412,11 @@ public class DecisionController {
 		 
 		model.addAttribute("getType",getType);
 		model.addAttribute("getTypeStr",getTypeStr);
-		
 		model.addAttribute("seqNo",insertNew.getSeqNo());
+		model.addAttribute("ownerOpinion", ownerOpinion);
+		model.addAttribute("executorOpinion", executorOpinion);
 		
-		System.out.println(getTypeStr);
-		 
-		System.out.println(insertNew);
-		
+		}
 		return "decision/register/step2";
 	}
 	
@@ -335,8 +425,9 @@ public class DecisionController {
 		
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
 		System.out.println(decisionId); 
-		
 	    model.addAttribute("decisionId", decisionId);
+	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+        model.addAttribute("opinionList", opinionList);
 	    try {
 	    	Decision decision = decisionService.getDecisionView(decisionId);
 	    	
