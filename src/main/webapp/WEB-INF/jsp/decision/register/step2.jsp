@@ -398,17 +398,15 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>소유자 
+										<td>${ownrNm} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
 												<h5 class="op_list__tit">${ownerOpinion}</h5>
-												<p class="op_list__con">${ownerOpinion}</p>
-											</div>
+											</div><%-- 
 											<div class="op_list">
 												<h5 class="op_list__tit">${ownerOpinion}</h5>
-												<p class="op_list__con">${ownerOpinion}</p>
-											</div>
+											</div> --%>
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">

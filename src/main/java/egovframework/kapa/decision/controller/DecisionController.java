@@ -398,6 +398,7 @@ public class DecisionController {
       	 int getType = insertNew.getType();
       	 String ownerOpinion = insertNew.getOwnerOpinion();
       	 String executorOpinion = insertNew.getExecutorOpinion();
+      	 String ownrNm = insertNew.getOwnrNm();
       	 String getTypeStr = "";
 		
 		 for(int i=0 ; i<ItemData.values().length ; i++) {
@@ -410,6 +411,7 @@ public class DecisionController {
 	   		 }
         }
 		 
+		model.addAttribute("ownrNm", ownrNm);
 		model.addAttribute("getType",getType);
 		model.addAttribute("getTypeStr",getTypeStr);
 		model.addAttribute("seqNo",insertNew.getSeqNo());

@@ -60,7 +60,6 @@ public class DeliberateRestController {
 			List<DeliberateDTO> formatterList = deliberateService.getDeliberateListFormatter(pagingResult); 
             
 			System.out.println(formatterList.size());
-            System.out.println("일단여기서가져오는거맞는지555");
             resultFinal.put("list", formatterList);
             resultFinal.put("totalPage", search.getPageCnt());
             resultFinal.put("allCount", listCnt);
@@ -93,7 +92,6 @@ public class DeliberateRestController {
             List<Decision_AgendaDate> pagingResult = deliberateService.getDeliberateDecisionList(viewSeq);
 			List<DeliberateDetailDTO> formatterList = deliberateService.getDeliberateDetialListFormatter(pagingResult); 
             
-            System.out.println("일단여기서가져오는거맞는지555");
             resultFinal.put("list", formatterList);
 
         }catch (Exception e){

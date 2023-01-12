@@ -460,24 +460,22 @@
 	                                    <tbody>
 	                                    
 	                                        <tr>
-	                                        	<td>${status.index}</td>
+	                                        	<td>${status.index + 1}</td>
 	                                        	<td>
-	                                        	   ${opinionList.type} - 소유자
+	                                        	   ${opinionList.type} - ${opinionList.ownrNm}
 	                                        	</td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
 	                                            	</div>
-	                                            	<div class="op_list">
+	                                            	<%-- <div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
-	                                            	</div>
+	                                            	</div> --%>
 	                                            </td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.executorOpinion}</h5>
-	                                            		<p class="op_list__con">${opinionList.executorOpinion}</p>
+	                                            		<%-- <p class="op_list__con">${opinionList.executorOpinion}</p> --%>
 	                                            	</div>
 	                                            </td>
 	                                        </tr>

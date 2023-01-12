@@ -63,5 +63,7 @@ public class ApplicationDTO {
 	private int decisionState;
 	
 	private boolean nextStepCheck;
+	
+	private String ownrNm;
     
 }

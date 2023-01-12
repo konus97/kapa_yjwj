@@ -236,8 +236,8 @@
 	
 	<!--의견 저장 -->
 	<insert id="insertOpinion" parameterType="egovframework.kapa.domain.Decision_Opinion">
-		insert into TB_Decision_Opinion( decisionId, reptSeq,type, ownerOpinion, executorOpinion,completionCheck,delCheck,regdate, reptOwnrSeq)
-    	values(#{decisionId}, #{reptSeq},#{type}, #{ownerOpinion}, #{executorOpinion},'0', #{delCheck}, #{regdate}, #{reptOwnrSeq})
+		insert into TB_Decision_Opinion( decisionId, reptSeq,type, ownerOpinion, executorOpinion,completionCheck,delCheck,regdate, reptOwnrSeq, ownrNm)
+    	values(#{decisionId}, #{reptSeq},#{type}, #{ownerOpinion}, #{executorOpinion},'0', #{delCheck}, #{regdate}, #{reptOwnrSeq}, #{ownrNm})
     </insert>
 	
 	

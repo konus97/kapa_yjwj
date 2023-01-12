@@ -21,7 +21,7 @@ public class Decision_Opinion {
     private Integer completionCheck;
     private Integer delCheck;
     private String regdate;
-    
+    private String ownrNm;
     
     
 }

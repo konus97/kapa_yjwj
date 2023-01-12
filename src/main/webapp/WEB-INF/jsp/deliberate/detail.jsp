@@ -339,18 +339,16 @@
 								<tbody>
 								<c:forEach var="opinionList" items="${opinionList}" varStatus="status">
 									<tr>
-										<td>1</td>
-										<td>소유자 
+										<td>${status.index + 1}</td>
+										<td>${opinionList.ownrNm} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
 												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-												<p class="op_list__con">${opinionList.ownerOpinion}</p>
-											</div>
+											</div><%-- 
 											<div class="op_list">
 												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-												<p class="op_list__con">${opinionList.ownerOpinion}</p>
-											</div>
+											</div> --%>
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
