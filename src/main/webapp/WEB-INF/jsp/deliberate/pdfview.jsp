@@ -41,7 +41,6 @@
     <link rel="stylesheet" href="../../css/jquery-ui.css" />
 
     <!-- script for pdfmake -->
-    <script type="text/javascript" src="../../js/pdfMake/pdfmake.min.js.map"></script>
     <script type="text/javascript" src="../../js/pdfMake/pdfmake.min.js"></script>
     <script type="text/javascript" src="../../js/pdfMake/vfs_fonts.js"></script>
     <script>
@@ -55,6 +54,7 @@
 <body>
     <h1>PDF 파일 로딩중</h1>
 
+
     <!-- join popup S -->
     <jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">
         <jsp:param name="login" value="login" />
@@ -66,14 +66,10 @@
         <jsp:param name="login" value="login" />
     </jsp:include>
     <!-- 팝업, 로그인 E -->
-
-    <script src="../../lib/jquery.3.1.0.min.js"></script>
-    <script src="../../lib/owl.carousel.min.js"></script>
-    <script src="../../lib/charts.js"></script>
-    <script src="../../lib/jquery-ui.min.js"></script>
-    <script src="../../lib/lib.js"></script>
     <script src="../../js/common.js"></script>
 
+
+	<!-- pdfmake Start -->
     <script type="text/javascript">
 
         //html 문서의 script 태그 내에서 문서 정의
@@ -463,6 +459,7 @@
         };
 
     </script>
+   	<!-- pdfmake End -->
 
 </body>
 
