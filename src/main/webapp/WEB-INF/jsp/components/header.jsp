@@ -240,6 +240,8 @@
             </div>
         </nav>
     </div>
+    <div class="h_admin">
+    	<a href="${pageContext.request.contextPath}/admin/user.do"><h1 class="blind">관리자</h1></a>
+	</div>
 </header>
-
       

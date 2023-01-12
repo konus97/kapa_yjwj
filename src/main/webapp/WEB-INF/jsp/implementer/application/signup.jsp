@@ -64,15 +64,11 @@
             	<div id="fileDiv7"><input type="file" class="fileInput" id="fileInput7-0" name="fileInput7-0"/><input type="text" class="textInput" id="input7-0" name="input7-0"/></div>
             	<div id="fileDiv8"><input type="file" class="fileInput" id="fileInput8-0" name="fileInput8-0"/><input type="text" class="textInput" id="input8-0" name="input8-0"/></div>
             	<div id="fileDiv9"><input type="file" class="fileInput" id="fileInput9-0" name="fileInput9-0"/><input type="text" class="textInput" id="input9-0" name="input9-0"/></div>
-            	<div id="fileDiv10">
-            	<input type="file" class="fileInput" id="fileInput10-0" name="fileInput10-0"/>
-            	<input type="text" class="textInput" id="input10-0" name="input10-0"/>
-            	<input type="file" class="fileInput" id="fileInput10-1" name="fileInput10-1"/>
-            	<input type="text" class="textInput" id="input10-1" name="input10-1"/>
-            	<input type="file" class="fileInput" id="fileInput10-2" name="fileInput10-2"/>
-            	<input type="text" class="textInput" id="input10-2" name="input10-2"/>
-            	</div>
-            	<div id="fileDiv11"><input type="file" class="fileInput" id="fileInput11-0" name="fileInput11-0"/><input type="text" class="textInput" id="input11-0" name="input11-0"/></div>
+            	<div id="fileDiv10"><input type="file" class="fileInput" id="fileInput10-0" name="fileInput10-0"/><input type="text" class="textInput" id="input10-0" name="input10-0"/></div>
+            	<div id="fileDiv11"><input type="file" class="fileInput" id="fileInput11-0" name="fileInput11-0"  /><input type="text" class="textInput" id="input11-0" name="input11-0"/></div>
+            	<div id="fileDiv12"><input type="file" class="fileInput" id="fileInput12-0" name="fileInput12-0" data-input-position="12" data-input-id="0"/><input type="text" class="textInput" id="input12-0" name="input12-0"/></div>
+            	<div id="fileDiv13"><input type="file" class="fileInput" id="fileInput13-0" name="fileInput13-0" data-input-position="13" data-input-id="0"/><input type="text" class="textInput" id="input13-0" name="input13-0"/></div>
+            	
 			</form>
     
             <!-- header start -->
@@ -698,6 +694,10 @@
                                                 	
                                                 </div>   
                                             </div>
+                                            
+                                            
+                                            
+                                            
                                             <div class="ff_wrap ff_wrap_inner ff_wrap_inner03">
                                                 <label><span class="required">9.협의관계서류(보상계획공고,협의요청서,공시송달문서)</span></label>
                                                   <div id="fileList9" class="file_wrap upper" >
@@ -721,7 +721,12 @@
                                                 	
                                                 </div>   
                                             </div>
-                                            <div class="ff_wrap ff_wrap_inner ff_wrap_inner03"  >
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <div class="ff_wrap ff_wrap_inner ff_wrap_inner03">
                                                 <label><span class="required">10. 협의 감정평가서 </span></label>
                                                    <div id="fileList10" class="file_wrap upper" >
                                                 
@@ -731,29 +736,45 @@
 	                                                            <div style="display: flex">
 	                                                                <div id="fileText10-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('10', this);return false;">파일 없음</div>                                                   
 	                                                            </div>
+	                                                            
 	                                                        </div>
 	                                                    </div>
+	                                                    </div>
+	                                                    </div>
+	                                             <div class="ff_wrap ff_wrap_inner ff_wrap_inner03">
+                                                <label><span></span></label>
+	                                                      <div id="fileList12" class="file_wrap upper" >
 	                                                    
-	                                                    <div id="fileInfo10-2" class="file_flex fileInfo10 fileDiv">                                               	
-	                                                        <input class="input40 file_name fileLabel11" value="시도지사추천"  maxlength="50" readonly>
+	                                                    <div id="fileInfo12-1" class="file_flex fileInfo12 fileDiv">                                               	
+	                                                        <input class="input40 file_name fileLabel12" value="시도지사추천"  maxlength="50" readonly>
 	                                                        <div class="file_btn_wrap">
 	                                                            <div style="display: flex">
-	                                                                <div id="fileText10-2" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('10', this);return false;">파일 없음</div>                                              
+	                                                                <div id="fileText12-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('12', this);return false;">파일 없음</div>                                              
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>
-	                                                    
-	                                                    <div id="fileInfo10-3" class="file_flex fileInfo12 fileDiv">                                               	
-	                                                        <input class="input40 file_name fileLabel12"  value="토지소유자 추천"  maxlength="50" readonly>
+	                                                      </div>
+	                                                      
+	                                                      </div>
+	                                                      
+	                                                       
+	                                                       
+	                                                       
+	                                                         <div class="ff_wrap ff_wrap_inner ff_wrap_inner03">
+                                                			<label><span></span></label>
+	                                                      <div id="fileList13" class="file_wrap upper" >
+	                                                    <div id="fileInfo13-1" class="file_flex fileInfo13 fileDiv">                                               	
+	                                                        <input class="input40 file_name fileLabel13"  value="토지소유자 추천"  maxlength="50" readonly>
 	                                                        <div class="file_btn_wrap">
 	                                                            <div style="display: flex">
-	                                                                <div id="fileText10-3" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('10', this);return false;">파일 없음</div>                                                          
+	                                                                <div id="fileText13-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('13', this);return false;">파일 없음</div>                                                          
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>                                         
+                                                	</div>
+                                                	</div>
                                                 	
-                                                </div>   
-                                            </div>
+                                                 
                                             <div class="ff_wrap ff_wrap_inner ff_wrap_inner03">
                                                 <label><span >11. 기타</span></label>
                                                     
@@ -771,6 +792,7 @@
                                                                 <button class="btn nohover t4 small" onclick="addNewFileTarget('11');return false;">
                                                                 	<i class="pluse icon white"></i>추가
                                                                 </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -852,11 +874,21 @@
             function triggerFileUpload(position, arg) {
         	console.log("triggerFileUpload 실행");
                 const fileForm = document.getElementById('fileForm');
+                if(position == "10-2" || position == "10-3"){
+                alert()
+                	
+                	
+                	
+                	
+                	
+                }
                 const fileDiv = fileForm.querySelector('#fileDiv' + position);
-				
+				console.log(fileDiv);
                 const fileWrap = arg.closest('.upper');
 				//const div = fileWrap.closest('.fileDiv');
-                
+				console.log(fileWrap.children);
+
+                console.log("legnth ::" +  fileWrap.children.length);
                 
                
                 let index = 0;
@@ -1272,9 +1304,11 @@
 
                 let fileName = $(this)[0].files[0].name;
                 console.log("this", $(this)[0]);
+                console.log(fileName);
                 let inputPosition = $(this)[0].dataset.inputPosition;
+                console.log('input Position :::>' +inputPosition );
                 let inputId = $(this)[0].dataset.inputId;
-            	
+                console.log('inputId :::>' +inputId );
                 let fullId = inputPosition+"-"+inputId;
 
                 if(iSize > fileSize) {
@@ -1283,7 +1317,11 @@
                 }
                 
                 let fileText = document.getElementById('fileText'+inputPosition+'-'+(Number(inputId)+1)); 
+                // 10-1, 10-2, 10-3 저장할 때 8-0 + 1 > 8번의 1번째 파일 업로드로 인식하는데
+                //10-1, 10-2, 10-3의 경우 이미 생성되어 있기 때문에 문제가 발생
+                console.log(fileText);
                 fileText.innerText=fileName;
+                
             })
             
         });

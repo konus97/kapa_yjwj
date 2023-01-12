@@ -64,65 +64,6 @@
 				</div>
 				<div class="cs_body">
 					<div class="c_board">
-						<div class="cb_lawyer">
-							<div class="cbl_profile">
-								<div class="cblp_pic">
-									<img src="../images/common/pic_lawyer.jpg" alt="안재형 (安 宰 亨) 자문단" />
-								</div>
-								<span class="cblp_name">안재형 (安 宰 亨)</span>
-								<span class="cblp_jop">변호사 / 감정평가사</span>
-							</div>
-							<div class="cbl_info">
-								<ul class="cbli_list t1">
-									<li><a href="tel:025695333">02-569-5333</a></li>
-									<li><a href="mailto:jhahn@yoolhyun.com">jhahn@yoolhyun.com</a></li>
-								</ul>
-								<ul class="cbli_list t2">
-									<li>
-										<strong>학력</strong>
-										<ul class="cbli_sub t1">
-											<li><span><mark>2011</mark>건국대학교 부동산대학원 금육투자학과 졸업</span></li>
-											<li><span><mark>2006</mark>제 48회 사법시험 합격</span></li>
-											<li><span><mark>2003</mark>제 13회 공인중개사 시험합격</span></li>
-											<li><span><mark>2002</mark>한국감정평가협회 부동산경매 컨설턴트과정 수료</span></li>
-											<li><span><mark>2002</mark>한국해양대학교 졸업</span></li>
-											<li><span><mark>2000</mark>제 11회 감정평가시험 합격</span></li>
-										</ul>
-									</li>
-									<li>
-										<strong>경력사항</strong>
-										<ul class="cbli_sub">
-											<li><span>제 48회 사법시험 합격</span></li>
-											<li><span>제 38기 사법연수원 수료</span></li>
-											<li><span>제 11회 감정평가사시험 합격</span></li>
-											<li><span>제 13회 공인중개사시험 합격</span></li>
-											<li><span>現 , 법무법인 율현 구성원 변호사</span></li>
-										</ul>
-									</li>
-									<li>
-										<strong>방송 출현</strong>
-										<ul class="cbli_sub">
-											<li><span>KBS 추적 60분</span></li>
-											<li><span>MBC 아침마당</span></li>
-											<li><span>MBC 리얼스토리 눈</span></li>
-											<li><span>중앙일보 조인스랜드 </span></li>
-											<li><span>  - ‘전문변호사를 만나다’</span></li>
-										</ul>
-									</li>
-									<li>
-										<strong>전문 분야</strong>
-										<ul class="cbli_sub">
-											<li><span>감정평가 관련 분쟁</span></li>
-											<li><span>손실보상 분쟁</span></li>
-											<li><span>어업피해 및 공해소송 분쟁</span></li>
-											<li><span>공익사업 법률 자문</span></li>
-											<li><span>부동산금융 및 투자 자문</span></li>
-											<li><span>각종 건설 및 부동간 관연 분쟁 등</span></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
 						<div class="cb_total">
 							<span id="allCount">전체 게시물 : <mark>0</marK></span>
 						</div>

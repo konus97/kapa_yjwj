@@ -2963,3 +2963,20 @@
     font-size: 20px;
     line-height: 30px;
 }
+
+/* 회원관리 */
+.c_sub_admin {
+	margin-bottom: 80px;
+}
+.c_sub_admin input {
+	height:40px;
+}
+.c_sub_admin select {
+	width:100%;
+}
+.c_sub_admin .form .f_field .ff_wrap {
+	padding: 0 12px;
+}
+.c_sub_admin .ff_group--name {
+	width: 236px;
+}

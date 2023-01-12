@@ -32,7 +32,7 @@ function saveBoardContent(){
 		alert("게시물 내용을 입력해주세요");
 		return false;
 	}
-
+	
 	let searchTitle = removeHtml(title);
 	let searchContent = removeHtml(content);
 

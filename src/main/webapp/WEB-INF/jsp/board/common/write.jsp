@@ -127,21 +127,7 @@
 												<input type="text" id="link" name="link" class="input" />
 											</div>
 										</div>
-									</div>
-									
-									<div class="f_wrap">
-                                        <div class="f_field">
-                                            <div class="ff_title">
-                                                <label for="bw_file">첨부파일</label>
-                                            </div>
-                                            <div class="ff_wrap">
-                                                <input type="file" id="bw_file" name="bw_file" class="file input">
-                                            </div>
-                                        </div>
-                                    </div>
-                                            
-							
-									
+									</div>		
 								</div>
 								<div class="btn_wrap">
 									<ul class="input-wrap" style="justify-content:center;">
