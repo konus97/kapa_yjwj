@@ -1065,8 +1065,8 @@
     				xhr.setRequestHeader(csrfHeader, csrfToken);
     			},
     			success : function(data) {
-    				/* alert("등록을 성공했습니다.");
-    				goToImplementerList(); */
+    				 alert("등록을 성공했습니다.");
+    				goToImplementerList(); 
     				console.log('성공');
     			},
     			error : function(xhr, status, error) {
@@ -1093,7 +1093,7 @@
 		
 		       let form = $('#fileForm')[0];
 		       form.submit(); 
-	        	let url2 = contextPath+"/api/implementer/decision/file";
+	        	/* let url2 = contextPath+"/api/implementer/decision/file";
 
 		       $.ajax({
 	    			url : url2,
@@ -1112,7 +1112,7 @@
 	    				//에러!
 	    				//alert("code:"+xhr.status);
 	    			}
-	    		});
+	    		}); */
         }
 
 

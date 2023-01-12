@@ -16,6 +16,7 @@ import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
+import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.implementer.service.ImplementerService;
 
 @Controller
@@ -113,7 +114,8 @@ public class DeliberateController {
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
-	    
+	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+        model.addAttribute("opinionList", opinionList);
 		//current page
 		model.addAttribute("currentPage", "agenda");
 		
@@ -123,6 +125,13 @@ public class DeliberateController {
     	
 		return "deliberate/detail";
 	}
-
 	
-}
+	@GetMapping("/agenda/pdfview.do")
+	public String deliberatePdfView(HttpServletRequest request,Model model) {
+	
+		return "deliberate/pdfview";
+	}
+	
+	}
+	
+

@@ -231,57 +231,68 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th>토 지</th>
-                                                <td>71</td>
-                                                <td>5,535</td>
-                                                <td>2,471,691</td>
-                                                <td>4</td>
-                                                <td>598</td>
-                                                <td>132,242</td>
-                                                <td>4</td>
-                                                <td>598</td>
-                                                <td>132,242</td>
-                                            </tr>
-                                            <tr>
-                                                <th>물 건</th>
-                                                <td>90</td>
-                                                <td>-</td>
-                                                <td>1,691</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>90</td>
-                                                <td>-</td>
-                                                <td>132,242</td>
-                                            </tr>
-                                            <tr>
-                                                <th>기 타</th>
-                                                <td>2</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>2</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>계</th>
-                                                <td>163</td>
-                                                <td>5,525</td>
-                                                <td>565,525</td>
-                                                <td>4</td>
-                                                <td>598</td>
-                                                <td>132,242</td>
-                                                <td>159</td>
-                                                <td>4,937</td>
-                                                <td>2,496,807</td>
-                                            </tr>
-                                        </tfoot>
+														<c:forEach var="csltList" items="${csltList}"
+															varStatus="status">
+															<tr>
+																<th>토 지</th>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+																<td id="landCnt" class="conferVal">${landCnt}</td>
+																<td id="landArea" class="conferVal">${landArea}</td>
+																<td id="landPrice" class="conferVal">${landPrice}</td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_cnt}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_area_amot}" pattern="#,###" /></td>
+																<td><fmt:formatNumber value="${csltList.cslt_land_amt}" pattern="#,###" /></td>
+															</tr>
+															<tr>
+																<th>물건</th>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_cnt}" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_amt}" pattern="#,###" /></td>
+																<td id="objCnt" class="conferVal">${objCnt}</td>
+																<td></td>
+																<td id="objPrice" class="conferVal">${objPrice}</td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_cnt}" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_obst_amt}" pattern="#,###" /></td>
+															</tr>
+															<tr>
+																<th>영업권</th>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_cnt }" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_amt }" pattern="#,###" /></td>
+																<td id="goodwillCnt" class="conferVal">${goodwillCnt}</td>
+																<td></td>
+																<td id="goodwillPrice" class="conferVal">${goodwillPrice}</td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_cnt }" pattern="#,###" /></td>
+																<td></td>
+																<td><fmt:formatNumber
+																		value="${csltList.cslt_business_amt }" pattern="#,###" /></td>
+															</tr>
+														</c:forEach>
+													</tbody>
+									<tfoot>
+										<tr>
+											<th>계</th>
+															<td>-</td>
+															<td>-</td>
+															<td>-</td>
+															<td id="totalConfer1"></td>
+															<td id="totalConfer2"></td>
+															<td id="totalConfer3"></td>
+															<td>-</td>
+															<td>-</td>
+															<td>-</td>
+										</tr>
+									</tfoot>
                                     </table>
                                 </div>
                                 <div class="form t3 mt40">
@@ -327,7 +338,7 @@
                                                 <label>재결 신청일</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <input type="text" class="input40">
+                                                <p>${avo.recvDt}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -449,7 +460,7 @@
 	                                    <tbody>
 	                                    
 	                                        <tr>
-	                                        	<td>1</td>
+	                                        	<td>${status.index}</td>
 	                                        	<td>
 	                                        	   ${opinionList.type} - 소유자
 	                                        	</td>
@@ -674,8 +685,52 @@
 	        	$(function () {
 	                CKEDITOR.replace('reviewOpinion');
 	            }); */
-	        $(document).ready(function () {
-		    });
+	            $(document).ready(function() {
+					$(".reg_table").each(function() {
+						let landCnt = $('#landCnt').text();
+						let landArea = $('#landArea').text();
+						let landPrice = $('#landPrice').text();
+
+						let objCnt = $('#objCnt').text();
+						let objPrice = $('#objPrice').text();
+
+						let goodwillCnt = $('#goodwillCnt').text();
+						let goodwillPrice = $('#goodwillPrice').text();
+
+						landCnt = uncomma(landCnt);
+						objCnt = uncomma(objCnt);
+						goodwillCnt = uncomma(goodwillCnt);
+
+						landArea = uncomma(landArea);
+
+						landPrice = uncomma(landPrice);
+						objPrice = uncomma(objPrice);
+						goodwillPrice = uncomma(goodwillPrice);
+
+						landCnt = Number(landCnt);
+						objCnt = Number(objCnt);
+						goodwillCnt = Number(goodwillCnt);
+
+						landArea = Number(landArea);
+
+						landPrice = Number(landPrice);
+						objPrice = Number(objPrice);
+						goodwillPrice = Number(goodwillPrice);
+
+						let totalCnt = landCnt + objCnt + goodwillCnt;
+						let totalPrice = landPrice + objPrice + goodwillPrice;
+
+						totalCnt = numberWithCommas(totalCnt);
+						landArea = numberWithCommas(landArea);
+						totalPrice = numberWithCommas(totalPrice);
+
+						$('#totalConfer1').text(totalCnt);
+						$('#totalConfer2').text(landArea);
+						$('#totalConfer3').text(totalPrice);
+
+					});
+		
+	});
 	        
         </script>
     </body>

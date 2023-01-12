@@ -74,6 +74,316 @@
                             <h3 class="title bold cb">심의안건 등록</h3>
                         </div>
 					<div class="cs_body">
+					<div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                        	사업개요</h4>
+                                </div>
+                                <div class="form t1">
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>사업명</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>${avo.judgBizNm}</p>
+                                            </div>
+                                        </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>위치/규모</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                               <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>사업기간</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                              <p>${avo.recmReqStartDate} ~ ${avo.recmReqEndDate}</p>
+                                            </div>
+                                        </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>사업시행자</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                    <p>${avo.bizOprtNm}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">                           
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>협회설립</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                               <p>${groupEstablishedDate}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                     <div class="f_wrap">
+	                                        <div class="f_field">
+	                                            <div class="ff_title">
+	                                                <label class="lineOver"
+	                                                    >도시계획<br />
+	                                                    [사업인정]관계</label
+	                                                >
+	                                            </div>
+	                                            <div class="ff_wrap ff_wrap_inner">
+	                                                <table class="table reg_table">
+	                                                    <thead>
+	                                                        <tr>
+	                                                            <th>제목</th>
+	                                                            <th>내용</th>
+	                                                        </tr>
+	                                                    </thead>
+	                                                    <tbody id="relationList">
+	                                                    <c:forEach var="cityPlan" items="${cityPlans}" varStatus="status">
+	                                                        <tr class="relationItem" id="relationInfo0">
+	                                                            <td>${cityPlan.planTitle}</td>
+	                                                            <td>${cityPlan.planContent}</td>
+	                                                        </tr>
+	                                                    </c:forEach>
+	                                                    </tbody>
+	                                                </table>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    
+                                </div>
+                              
+                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                        	재결신청 내역
+                                    </h4>
+                                </div>
+                                <div class="c_table t3 land">
+                                    <p class="s_title">- 총물량조서</p>
+                                    <table>
+                                        <caption>총물량조서</caption>
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">구 분</th>
+                                            <th colspan="3">총 보상대상</th>
+                                            <th colspan="3">혐의성립 등</th>
+                                            <th colspan="3">재결신청</th>
+                                        </tr>
+                                        <tr>
+                                            <th>필,건</th>
+                                            <th>면적</th>
+                                            <th>금액</th>
+                                            <th>필,건</th>
+                                            <th>면적</th>
+                                            <th>금액</th>
+                                            <th>필,건</th>
+                                            <th>면적</th>
+                                            <th>금액</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>토 지</th>
+                                                <td>71</td>
+                                                <td>5,535</td>
+                                                <td>2,471,691</td>
+                                                <td>4</td>
+                                                <td>598</td>
+                                                <td>132,242</td>
+                                                <td>4</td>
+                                                <td>598</td>
+                                                <td>132,242</td>
+                                            </tr>
+                                            <tr>
+                                                <th>물 건</th>
+                                                <td>90</td>
+                                                <td>-</td>
+                                                <td>1,691</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>90</td>
+                                                <td>-</td>
+                                                <td>132,242</td>
+                                            </tr>
+                                            <tr>
+                                                <th>기 타</th>
+                                                <td>2</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>2</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>계</th>
+                                                <td>163</td>
+                                                <td>5,525</td>
+                                                <td>565,525</td>
+                                                <td>4</td>
+                                                <td>598</td>
+                                                <td>132,242</td>
+                                                <td>159</td>
+                                                <td>4,937</td>
+                                                <td>2,496,807</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="form t3 mt40">
+                      
+                      				 <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label class="lineOver">협의내역 횟수,<br />다수 협의 날짜</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <table class="table reg_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>협의일</th>
+                                                            <th>내용</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="dateList">
+                                                     <c:forEach var="consultationDate" items="${consultationDates}" varStatus="status">
+                                                        <tr class="dateItem" id="dateInfo3">
+                                                            <td>${consultationDate.consultationDate}</td>
+                                                            <td>${consultationDate.consultationDateText}</td>
+                                                        </tr>
+                                                     </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label>재결신청사유</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p class="p_view">${decision.decisionReason}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label>재결 신청일</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>${avo.recvDt}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="f_wrap">
+	                                     <div class="f_field">
+	                                         <div class="ff_title">
+	                                             <label>대상(건축물)</label>
+	                                         </div>
+	                                         <div class="ff_wrap">
+	                                             <table class="table reg_table">
+	                                                 <thead>
+	                                                     <tr>
+	                                                         <th rowspan="2">소재지<br />(소유자)</th>
+	                                                         <th rowspan="2">지번</th>
+	                                                         <th rowspan="2">지목</th>
+	                                                         <th colspan="2">면적(m<sup>2</sup>)</th>
+	                                                         <th rowspan="2">비고</th>
+	                                                     </tr>
+	                                                     <tr>
+	                                                         <th>편입 전<br />면적</th>
+	                                                         <th>편입<br />면적</th>
+	                                                     </tr>
+	                                                 </thead>
+	                                                 <tbody id="targetList">
+	                                                 <c:forEach var="targets" items="${targets}" varStatus="status">
+	                                                     <tr class="targetItem" id="targetInfo0">
+	                                                         <td>${targets.targetInfo}</td>
+	                                                         <td>${targets.BUN1}</td>
+	                                                         <td>${targets.BUN2}</td>
+	                                                         <td>${targets.area_Before_Transfer}</td>
+	                                                         <td>${targets.area_After_Transfer}</td>
+	                                                         <td>${targets.etc}</td>
+	                                                     </tr>
+	                                                 </c:forEach>
+	                                                 </tbody>
+	                                             </table>
+	                                         </div>
+	                                     </div>
+	                                 </div>
+                                 
+                                </div>
+               
+               
+                  
+	                                    
+                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                        	재결심리 준비
+                                    </h4>
+                                </div>
+                                <div class="form t3">
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label>열람공고</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                              	<p>${decisionNotice.docNumber}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label>토지 등 소유자 의견</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>이종언</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title">
+                                                <label>감정평가</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>평가의견서</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>사업시행자 평가기관</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>통일감정평가법인</p>
+                                            </div>
+                                        </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>우리위원회 평가기관</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>통일감정평가법인</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 						<div class="cs_title">
 							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
 						</div>
@@ -81,7 +391,6 @@
 							<table>
 								<thead>
 									<tr>
-										<th class="c_table__th--num">연번</th>
 										<th class="c_table__th--owner_name">소유자</th>
 										<th>소유자의 의견요지</th>
 										<th>사업시행자 의견</th>
@@ -89,50 +398,21 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>1</td>
-										<td>소유자 <br>
-										<br> 주소주소주소주소노량진동313-31교회
+										<td>소유자 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
-												<h5 class="op_list__tit">수용재결 신청 각하 요청</h5>
-												<p class="op_list__con">소유자의 요청에도 불구하고, 토지보상법에 규정된 30일
-													이상의 협의기간을 준수하지 않았으며, 이에 대한 동작구청의</p>
+												<h5 class="op_list__tit">${ownerOpinion}</h5>
+												<p class="op_list__con">${ownerOpinion}</p>
 											</div>
 											<div class="op_list">
-												<h5 class="op_list__tit">보상금 증액요구</h5>
-												<p class="op_list__con">해당 재개발 사업으로 인하여 10여년 간 임대업에 대한
-													소득을 얻지 못하여 손실이 발행하였고, 부동산의 실제가치 및</p>
+												<h5 class="op_list__tit">${ownerOpinion}</h5>
+												<p class="op_list__con">${ownerOpinion}</p>
 											</div>
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
-												<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는
-													2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>소유자 <br>
-										<br> 주소주소주소주소노량진동313-31교회
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<h5 class="op_list__tit">수용재결 신청 각하 요청</h5>
-												<p class="op_list__con">소유자의 요청에도 불구하고, 토지보상법에 규정된 30일
-													이상의 협의기간을 준수하지 않았으며, 이에 대한 동작구청의</p>
-											</div>
-											<div class="op_list">
-												<h5 class="op_list__tit">보상금 증액요구</h5>
-												<p class="op_list__con">해당 재개발 사업으로 인하여 10여년 간 임대업에 대한
-													소득을 얻지 못하여 손실이 발행하였고, 부동산의 실제가치 및</p>
-											</div>
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<p class="op_list__con">본 건 사업시행자인 조합의 최초 조합설립인가 일자는
-													2010년 06년 24일이므로 (구)도정법 제 40조 어쩌구</p>
+												<p class="op_list__con">${executorOpinion}</p>
 											</div>
 										</td>
 									</tr>

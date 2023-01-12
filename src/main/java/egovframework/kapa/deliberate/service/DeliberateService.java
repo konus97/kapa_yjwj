@@ -209,14 +209,17 @@ public class DeliberateService {
 			for (Decision_Opinion opinion : opinionList) {
 
 				Long reptSeq = opinion.getReptSeq();
+				Long reptOwnrSeq = opinion.getReptOwnrSeq();
 				System.out.print(reptSeq);
+				System.out.print("testtest: " + reptOwnrSeq);
 				// 공고 상태
 				int getType = opinion.getType();
 				System.out.print(getType);
 				
-				OwnerViewInfo ownerViewInfo = implementerService.getOwnerInfo(reptSeq);
+				OwnerViewInfo ownerViewInfo = implementerService.getOwnerInfo(reptOwnrSeq);
 				System.out.println(ownerViewInfo);
 				
+				System.out.println("여긴가?");
 				String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd();
 				boolean landCheck = false; 
 				boolean objectCheck = false; 

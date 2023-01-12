@@ -322,7 +322,7 @@
                                             <th>심의번호</th>
                                             <th>차수</th>
                                             <th>진행상황</th>
-                                            <th>심사 진행</th>
+                                            <th style="min-width:300px">심사 진행</th>
                                             <th>심사</th>
                                         </tr>
                                     </thead>

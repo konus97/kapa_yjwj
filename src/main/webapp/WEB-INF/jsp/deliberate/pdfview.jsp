@@ -41,8 +41,9 @@
     <link rel="stylesheet" href="../../css/jquery-ui.css" />
 
     <!-- script for pdfmake -->
-    <script type="text/javascript" src="js/pdfmake.min.js"></script>
-    <script type="text/javascript" src="js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="../../js/pdfMake/pdfmake.min.js.map"></script>
+    <script type="text/javascript" src="../../js/pdfMake/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../../js/pdfMake/vfs_fonts.js"></script>
     <script>
         //윈도우 열리면 현재 창에서 pdf 열리게
         window.onload = function () {
