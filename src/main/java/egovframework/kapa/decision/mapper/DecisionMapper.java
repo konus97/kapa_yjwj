@@ -16,6 +16,7 @@ import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
+import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.util.MsSQLRepository;
@@ -94,5 +95,7 @@ public interface DecisionMapper {
 	List<Decision_Opinion_Item> getDecisionOpinionTypeItemList(Map<String, Object> param);
 
 	int getDecisionOpinionTypeItemCount(Map<String, Object> param);
+
+	void insertOpinionFile(Opinion_File opinionFile);
 
 }

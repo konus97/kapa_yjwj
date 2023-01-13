@@ -45,11 +45,12 @@
 <body>
 
 	<form id="fileForm" style="display: none;'">
-		<input type="file" class="form-control wd-100p" id="fileSeq"
-			name="file">
+		<input type="file" class="form-control wd-100p" id="fileSeq" name="file">
+
 	</form>
 
-
+		<input type="hidden" class="form-control wd-100p" id="reptSeq" name="0">
+		<input type="hidden" class="form-control wd-100p" id="reptOwnerSeq" name="0">
 	<input type="hidden" name="decisionId" id="decisionId"
 		value="${decisionId}">
 	<input type="hidden" name="masterId" id="masterId" value="${masterId}">
@@ -746,8 +747,13 @@
         	let opinionItemList = new Array();
         
 	        function triggerFileUpload(){
+	        	if(document.getElementById('description').value =='' || document.getElementById('description').value == null){
+	        		alert('파일 설명란을 작성해주세요');
+	        		return false;
+	        	}else{
 	        	$('#fileSeq').trigger('click');
-	        }
+	        	}
+	        	}
 
             function saveOpinion(){
 
@@ -875,7 +881,7 @@
             		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
                 	let contextPath = $("#contextPath").val();
-                	let url = contextPath+"/uploadContentFile";
+                	let url = contextPath+"/uploadContentFile/opinion";
                 	
                     let iSize = 0;
                     let total = $("#fileSeq")[0].files.length;
@@ -896,6 +902,95 @@
 
                 	
                     let fullId = inputPosition+"-"+inputId;
+                    
+                    let notice = document.getElementById('notice').innerText;
+					let seq = '';
+					switch (notice) {
+					  case "지연가산금":
+					    seq = '1';
+					    break;
+					  case "보상금 증액":
+						  seq = '2';
+					    break;
+					  case "허가건축물 등 불법형질변경":
+						  seq = '3';
+					    break;
+					  case "일단지 보상":
+						  seq = '4';
+					    break;
+					  case "미지금 용지":
+						  seq = '5';
+					    break;
+					  case "사도평가":
+						  seq = '6';
+					    break;
+					  case "잔여지 매수청구":
+						  seq = '7';
+					    break;
+					  case "잔여지 가치하락":
+						  seq = '8';
+					    break;
+					  case "잔여건물 가치감소":
+						  seq = '9';
+					    break;
+					  case "잔여건물 매수청구":
+						  seq = '10';
+					    break;
+					  case "누락 물건 반영":
+						  seq = '11';
+					    break;
+					  case "휴업보상(이전비)평가":
+						  seq = '12';
+					    break;
+					  case "폐업보상":
+						  seq = '13';
+					    break;
+					  case "영농손실보상":
+						  seq = '14';
+					    break;
+					  case "휴직(실직)보상":
+						  seq = '15';
+					    break;
+					  case "사업폐지(취소, 변경, 중단)":
+						  seq = '16';
+					    break;
+					  case "이주대책 수립":
+						  seq = '17';
+					    break;
+					  case "이주정착금, 주거이전비, 이사비":
+						  seq = '19';
+					    break;
+					  case "임료손실":
+						  seq = '19';
+					    break;
+					  case "대토보상":
+						  seq = '20';
+					    break;
+					  case "구분지상권":
+						  seq = '21';
+					    break;
+					  case "10%이상 변동":
+						  seq = '22';
+					    break;
+					  case "기타(그 외)":
+						  seq = '23';
+					    break;
+					  case "소유자 의견 없음":
+						  seq = '24';
+					    break;
+					  default:
+						  seq='';
+					   break;
+					}
+					
+					let reptSeq = document.getElementById('reptSeq').value;
+					let reptSeqOwner = document.getElementById('reptOwnerSeq').value;
+					
+					let description = document.getElementById('description').value;
+					
+					document.getElementById('fileSeq').name = 'fileInput'+seq+'-0-'+description+'-'+reptSeq+'-'+reptSeqOwner;
+					 
+					console.log(document.getElementById('fileSeq'));
 
                     if(iSize > fileSize) {
                         alert("선택한 파일 총용량은 50MB를 초과할 수 없습니다.");
@@ -913,97 +1008,18 @@
                             //alert("완료");
                         },
                         success: function(data){
-                        	
-                        	let fileInfo = data.fileInfo;
-                        	console.log(fileInfo);
-                        	
-                        	let seqNo = fileInfo.seqNo;
-                        	let fileNameOri = fileInfo.fileNameOri;
+                        	//document.getElementById('fileSeq')
+                        	let seq = document.getElementById('fileSeq').name.substring(9,11);
+                        	seq = parseInt(seq) - 1;
+                        	let fileNameOri = data.fileNameOri;
+                        	                        	
+                        
 							
-							let notice = document.getElementById('notice').innerText;
-							let seq = '';
-							switch (notice) {
-							  case "지연가산금":
-							    seq = '1';
-							    break;
-							  case "보상금 증액":
-								  seq = '2';
-							    break;
-							  case "허가건축물 등 불법형질변경":
-								  seq = '3';
-							    break;
-							  case "일단지 보상":
-								  seq = '4';
-							    break;
-							  case "미지금 용지":
-								  seq = '5';
-							    break;
-							  case "사도평가":
-								  seq = '6';
-							    break;
-							  case "잔여지 매수청구":
-								  seq = '7';
-							    break;
-							  case "잔여지 가치하락":
-								  seq = '8';
-							    break;
-							  case "잔여건물 가치감소":
-								  seq = '9';
-							    break;
-							  case "잔여건물 매수청구":
-								  seq = '10';
-							    break;
-							  case "누락 물건 반영":
-								  seq = '11';
-							    break;
-							  case "휴업보상(이전비)평가":
-								  seq = '12';
-							    break;
-							  case "폐업보상":
-								  seq = '13';
-							    break;
-							  case "영농손실보상":
-								  seq = '14';
-							    break;
-							  case "휴직(실직)보상":
-								  seq = '15';
-							    break;
-							  case "사업폐지(취소, 변경, 중단)":
-								  seq = '16';
-							    break;
-							  case "이주대책 수립":
-								  seq = '17';
-							    break;
-							  case "이주정착금, 주거이전비, 이사비":
-								  seq = '19';
-							    break;
-							  case "임료손실":
-								  seq = '19';
-							    break;
-							  case "대토보상":
-								  seq = '20';
-							    break;
-							  case "구분지상권":
-								  seq = '21';
-							    break;
-							  case "10%이상 변동":
-								  seq = '22';
-							    break;
-							  case "기타(그 외)":
-								  seq = '23';
-							    break;
-							  case "소유자 의견 없음":
-								  seq = '24';
-							    break;
-							  default:
-								  seq='';
-							   break;
-							}
+							
 							console.log(seq);
-							
+							console.log(fileNameOri);
                         	
-							
-                        	document.getElementById('popupOpinionItemFile'+seq).innerText = fileInfo.fileNameOri;
+                        	document.getElementById('popupOpinionItemFile'+seq).innerText = fileNameOri;
                         	$("#fileInfo"+fullId).attr("data-seq",seqNo);
                         	$("#fileText"+fullId).text(fileNameOri);
 
