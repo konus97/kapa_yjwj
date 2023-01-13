@@ -54,6 +54,7 @@ h3::before {display:none;}
     background:#f7f7f7;
     padding:0.5em 1em;
     flex-basis: 200px;
+    position:initial;
 }
 
 .c_sub_pdf .form.t3 .f_field .ff_title {
@@ -71,9 +72,9 @@ h3::before {display:none;}
     flex:1;
 }
 
-.c_sub_pdf .f_wrap,
-.c_sub_pdf .form .f_field.div2, 
-.c_sub_pdf .form .f_field {
+#contents.c_sub_pdf .f_wrap,
+#contents.c_sub_pdf .form .f_field.div2, 
+#contents.c_sub_pdf .form .f_field {
     display:flex;
     align-items: stretch;
 }
