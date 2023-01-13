@@ -18,6 +18,7 @@
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	
+	
 	<title>재결정보지원센터 || 관리자</title>
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
 	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
@@ -123,8 +124,8 @@
 							</form>
 						</div>
 						<div class="cs_title">
-							<h4 class="fl title t1 bold cb s1 bullet">회원
-								(${paging.totalCount}명)</h4>
+							<%-- <h4 class="fl title t1 bold cb s1 bullet">회원
+								(${allCount}명)</h4> --%>
 							<!-- <div class="cs_option">
     <button type="button" class="btn t2 small ico download" onclick="excelDownload();">리스트 다운로드</button>
 </div> -->
@@ -144,13 +145,25 @@
 										<th>옵션</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="userList">
+									
+								
+								
+								
+								
+								
+								
+									
+								
+								
 									<!-- loop S -->
+									
+									<%-- 
 									<c:set var="i" value="${(adminVO.pageIndex - 1) * 10}" />
 									<c:forEach var="result" items="${resultList}"
 										varStatus="status">
 										<c:set var="i" value="${i+1}" />
-										<tr>
+										<tr id="userList2">
 											<th><strong>${i}</strong></th>
 											<td><strong>아이디</strong> <span>${result.userId }</span>
 											</td>
@@ -170,12 +183,12 @@
 													<button type="button" class="btn tiny t1"
 														onclick="deluser('${result.userId}')">삭제</button></span></td>
 										</tr>
-									</c:forEach>
+									</c:forEach> --%>
 								</tbody>
 							</table>
 						</div>
 						<div class="btn_wrap">
-							<a href="<c:url value='/admin/user_add.do'/>"
+							<a href="${pageContext.request.contextPath}/admin/user_add.do"
 								class="fr btn t2 ico plus">회원추가</a>
 						</div>
 
@@ -222,70 +235,18 @@
 		</jsp:include> 
 	    <!-- footer end -->
         </div>
+        
+	<script src="../lib/jquery.min.js"></script>
+	<script src="../lib/owl.carousel.min.js"></script>
+	<script src="../lib/jquery-ui.min.js"></script>
+	<script src="../lib/lib.js"></script>
+	
+	<script src="../js/admin/admin.js"></script>
 	<script>
-        function excelDownload() {
-            document.getElementById('admin_user').method = "post";
-            document.getElementById('admin_user').action = "<c:url value='/admin/excelDownload.do'/>";
-            document.admin_user.submit();
-        }
-        function search() {
-            document.getElementById('admin_user').method = "get";
-            document.getElementById('admin_user').action = "<c:url value='/admin/user.do'/>";
-            document.admin_user.submit();
-        }
-        /* pagination 페이지 링크 function */
-        function paging(pageNo) {
 
-            //페이지 끝인지 체크
-            if (pageNo == 0) {
-                pageNo = pageNo + 1;
-            } else if (pageNo == ${ paginationInfo.totalPageCount } +1) {
-                pageNo = pageNo - 1;
-            }
-
-            var url = new URL(window.location.href);
-            var urlParams = url.searchParams;
-
-            //TODO 검색 파라미터 추가
-
-            location.href = "<c:url value='/admin/user.do'/>?pageIndex=" + pageNo;
-        }
-
-        function deluser(userId) {
-
-            if (!confirm('정말 삭제하시겠습니까?')) {
-                return;
-            }
-
-            var form = document.createElement('form');
-            form.setAttribute('method', 'post'); //POST 메서드 적용
-            form.setAttribute('action', '<c:url value="/admin/user.do"/>');	// 데이터를 전송할 url
-            document.charset = "utf-8";
-
-
-            var hiddenField = document.createElement('input');
-            hiddenField.setAttribute('type', 'hidden'); //값 입력
-            hiddenField.setAttribute('name', 'mode');
-            hiddenField.setAttribute('value', 'deluser');
-            form.appendChild(hiddenField);
-
-            var hiddenField = document.createElement('input');
-            hiddenField.setAttribute('type', 'hidden'); //값 입력
-            hiddenField.setAttribute('name', 'userId');
-            hiddenField.setAttribute('value', userId);
-            form.appendChild(hiddenField);
-
-            document.body.appendChild(form);
-            form.submit();	// 전송
-        }
-
-        function fn_goPage(pageNo) {
-            $('#pageNo').val(pageNo);
-
-            $("#admin_user").attr("action", "<c:url value='/admin/user.do'/>");
-            $("#admin_user").submit();
-        }
-
+		$(document).ready(function () {
+			getUserList();
+		});
 
     </script>
 </body>
