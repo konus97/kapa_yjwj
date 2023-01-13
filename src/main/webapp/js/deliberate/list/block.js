@@ -73,7 +73,7 @@ function makeDeliberateBlock(num,info) {
 }
 
 function newEbookOpen() {
-	window.open('./../html/ebooktest.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
+	window.open('./../html/ebooktest02.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
 }
 
 function makeAgendaDetail(num,info) {
