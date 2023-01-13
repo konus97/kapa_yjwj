@@ -25,7 +25,9 @@ console.log("Start"+ownrNm);
        addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
        addList.push("      <div class=\"cbl_3\"> ");
        addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNm+"');return false;\" >의견을 작성해주세요</a>");
-       addList.push("      </div> ");
+       addList.push("      <div id=\"owner"+getSeq+"-"+getItem+"\" class=\"cbl_4\"> 미작성 </div> ");
+       addList.push("      <div id=\"operator"+getSeq+"-"+getItem+"\" class=\"cbl_5\"> 미작성 </div> ");
+	   addList.push("      </div> ");
        addList.push("      <div id=\"fileCount"+getSeq+"-"+getItem+"\" class=\"cbl_4\"></div>");
        addList.push("   </div>");
        addList.push("</li>");
@@ -211,6 +213,11 @@ notice='';
    $("#popupOwnerOpinion").attr("ownrNm",ownrNm);
 
    $("#popupOwnerOpinion").addClass("on");
+
+document.getElementById('owner'+getSeq+'-'+getType).innerText = '작성';
+document.getElementById('operator'+getSeq+'-'+getType).innerText = '작성';
+
+
    
 }
 
@@ -338,7 +345,7 @@ function addOpinionItem(getType){
    addList.push("     <input class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+popupOpinion+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">파일 없음</div>");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+getType+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">파일 없음</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
    addList.push("                      </button>");   
