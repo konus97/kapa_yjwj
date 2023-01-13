@@ -1,32 +1,31 @@
 package egovframework.kapa.file.controller;
 
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.domain.Decision_File;
-import egovframework.kapa.domain.Decision_Target;
+import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.file.domain.FileVO;
-import egovframework.kapa.file.domain.SignUpFileDTO;
 import egovframework.kapa.file.service.FileService;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class FileController {
@@ -36,7 +35,8 @@ public class FileController {
 
 	@Autowired
 	DecisionService decisionService;
-
+	
+	//일반 첨부파일 업로드 시
 	@RequestMapping("/uploadContentFile")
 	@ResponseBody
 	public Map<String, Object> uploadContentFile(MultipartHttpServletRequest req) throws Exception {
@@ -139,7 +139,7 @@ public class FileController {
 	}
 	
 	
-	// 열람공고 등록 첨부파일 업로드
+		// 열람공고 등록 첨부파일 업로드
 		@RequestMapping(value = "/uploadContentFile/열람공고", method = RequestMethod.POST)
 		public String uploadAnnouncementFile(MultipartHttpServletRequest req) throws Exception {
 			 System.out.println("===============열람공고 등록 첨부파일 업로드===============");
@@ -205,6 +205,83 @@ public class FileController {
 				e.printStackTrace();
 			}	
 			return "redirect:/implementer/application.do";
+		}
+		
+		
+		//재결의견작성 첨부파일 업로드
+		@RequestMapping(value = "/uploadContentFile/opinion", method = RequestMethod.POST)
+		@ResponseBody
+		public  Map<String,Object> uploadOpinionFile(MultipartHttpServletRequest req) throws Exception {
+			 System.out.println("===============재결의견작성 첨부파일 업로드===============");
+			req.setCharacterEncoding("UTF-8");
+			HashMap<String, Object> resultFinal = new HashMap<String, Object>();
+			Map<String, String> map = new HashMap();
+			boolean isLocal = false;
+			String requestUrl = new String(req.getRequestURL());
+			Long masterId = 6050133L;
+			if (requestUrl.contains("localhost") || requestUrl.contains("127.0.0.1")) {
+				isLocal = true;
+			}
+
+			try {
+				Iterator<String> fileNames = req.getFileNames();
+				Enumeration<String> parameters = req.getParameterNames();
+				
+				
+				while (parameters.hasMoreElements()) {
+					String nextElement = parameters.nextElement();
+					
+					System.out.println(nextElement);
+					
+					if (nextElement.trim().length() > 0 && nextElement.equals("_csrf") == false && nextElement.equals("masterId") == false) {
+						map.put(nextElement.substring(5), req.getParameter(nextElement));
+					}
+					if(nextElement.equals("masterId")){
+						masterId = Long.parseLong(req.getParameter("masterId"));
+					}
+				}
+				System.out.println("재결의견작성 ::: " + masterId);
+				while (fileNames.hasNext()) {
+					String fileName = fileNames.next();
+					if (req.getFile(fileName) != null && req.getFile(fileName).getSize() > 0) {
+						FileVO fileVO = new FileVO();
+						fileVO.setRegdate(LocalDateTime.now());
+						MultipartFile mpf = req.getFile(fileName);
+						fileVO.setMpfile(mpf);
+						Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal);
+						String typeAndRank = fileName.substring(9);
+						System.out.println("typeAndRank :::"+typeAndRank);
+
+						FileVO getFileInfo = fileService.getFileInfo(newFileInfo);
+						Opinion_File opinionFile = new Opinion_File();
+
+						opinionFile.setDecisonId(masterId);
+						opinionFile.setFileType(Integer.parseInt(typeAndRank.split("-")[0]));
+						opinionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
+						opinionFile.setFileDescription((typeAndRank.split("-")[2]));
+						opinionFile.setReptOwnrSeq(Integer.parseInt(typeAndRank.split("-")[3]));
+						opinionFile.setReptSeq(Integer.parseInt(typeAndRank.split("-")[4]));
+
+
+						opinionFile.setFileSeq((int) (getFileInfo.getSeqNo()));
+						opinionFile.setDelCheck(0);
+						opinionFile.setRegdate(LocalDate.now().toString());
+
+						resultFinal.put("seqNo", Integer.parseInt(typeAndRank.split("-")[0]));
+						resultFinal.put("fileNameOri", getFileInfo.getFileNameOri());
+				
+						decisionService.insertOpinionFile(opinionFile);
+
+					}
+				}
+			
+			
+			} catch (Exception e) {
+				resultFinal.put("msg", "fail");
+
+				e.printStackTrace();
+			}	
+			return resultFinal;
 		}
 	
 	

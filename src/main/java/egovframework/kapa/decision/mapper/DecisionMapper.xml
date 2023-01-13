@@ -242,6 +242,11 @@
     	values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate}, #{uptdate}, #{fileDescription})
     </insert>
     
+    <insert id="insertOpinionFile" parameterType="egovframework.kapa.domain.Opinion_File">
+    	insert into TB_Decision_File_Opinion(decisonId, reptSeq, opinionType ,fileType, fileSeq, delCheck, rank, regdate, uptdate, fileDescription, reptOwnrSeq)
+    	values(#{decisonId}, #{reptSeq} ,#{opinionType} , #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate}, #{uptdate}, #{fileDescription}, #{reptOwnrSeq})
+    </insert>
+        
     	
 	<select id="getDecisionFileList" resultType="egovframework.kapa.domain.Decision_File" >
 		SELECT *

@@ -28,6 +28,7 @@ import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
+import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.Const.DecisonState;
@@ -534,6 +535,11 @@ public class DecisionService {
 	public void insertDecisionAnnouncementFile(Decision_Announcement_File file) {
 		
 		decisionMapper.insertDecisionAnnoucementFile(file);
+	}
+
+	public void insertOpinionFile(Opinion_File opinionFile) {
+		decisionMapper.insertOpinionFile(opinionFile);
+		
 	}
 
 }
