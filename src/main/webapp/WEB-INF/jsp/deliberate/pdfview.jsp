@@ -793,9 +793,12 @@
 	                }
 
 	                // 파일 저장
-	                doc.save('sample.pdf');
-
-
+	                /* doc.save('sample.pdf'); */
+	                
+	                //새창으로 읽기
+				   window.open(doc.output('bloburl'));
+	                
+	                
 	                //이미지로 표현
 	                //document.write('<img src="'+imgData+'" />');
 	            }
