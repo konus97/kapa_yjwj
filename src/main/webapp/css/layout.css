@@ -2980,3 +2980,13 @@
 .c_sub_admin .ff_group--name {
 	width: 236px;
 }
+.c_sub_admin .btn.t2.ico.list:before {
+	    background-position: right -40px;
+}
+#contents.c_sub_admin .admin_user_add .cs_title {
+	display: flex;
+    gap: 1em;
+}
+.c_sub_admin .admin_user_add .cs_title .select {
+	max-width:12em;
+}
