@@ -20,7 +20,7 @@ public class ApplicationLandDTO {
     private int reptSeq;
     
     private int reptOwnrSeq;
-
+    
     private String reptAddr;
     
     private String sidoGunguCd;

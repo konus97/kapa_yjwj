@@ -1,5 +1,8 @@
 <%@	page contentType="text/html;charset=utf-8" language="java" pageEncoding="utf-8"%>
-
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <%@ include file="/WEB-INF/jsp/components/temp_session.jsp"%> 
 
 <!DOCTYPE html>

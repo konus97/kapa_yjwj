@@ -144,7 +144,7 @@
 											<label>수용재결법인</label>
 										</div>
 										<div class="ff_wrap">
-											<p></p>
+											<p>-</p>
 										</div>
 									</div>
 									<div class="f_field div2">

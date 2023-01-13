@@ -403,14 +403,15 @@ public class ImplementerService {
 					
 					long reptSeq = Long.parseLong(JSONTarget.get("reptSeq").toString());
 					long reptOwnrSeq = Long.parseLong(JSONTarget.get("reptOwnrSeq").toString());
-					System.out.println("reptOwnrSeq :::::::::" + reptOwnrSeq);
+					System.out.println("ownrNm :::::::::" + JSONTarget.get("ownrNm").toString());
 					Integer type = Integer.parseInt(JSONTarget.get("type").toString()); 
 					
 					System.out.println(type);
 					
 					opinion.setType(type);
 					opinion.setOwnerOpinion(JSONTarget.get("ownerOpinion").toString());
-					opinion.setExecutorOpinion(JSONTarget.get("executorOpinion").toString());			
+					opinion.setExecutorOpinion(JSONTarget.get("executorOpinion").toString());
+					opinion.setOwnrNm(JSONTarget.get("ownrNm").toString());
 					opinion.setDecisionId(decisionId);
 					opinion.setReptSeq(reptSeq);
 					opinion.setReptOwnrSeq(reptOwnrSeq);

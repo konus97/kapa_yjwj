@@ -137,32 +137,79 @@ public class FileController {
 		}	
 		return "redirect:/implementer/application.do";
 	}
+	
+	
+	// 열람공고 등록 첨부파일 업로드
+		@RequestMapping(value = "/uploadContentFile/열람공고", method = RequestMethod.POST)
+		public String uploadAnnouncementFile(MultipartHttpServletRequest req) throws Exception {
+			 System.out.println("===============열람공고 등록 첨부파일 업로드===============");
+			req.setCharacterEncoding("UTF-8");
+			HashMap<String, Object> resultFinal = new HashMap<String, Object>();
+			Map<String, String> map = new HashMap();
+			boolean isLocal = false;
+			String requestUrl = new String(req.getRequestURL());
+			Long masterId = 6050133L;
+			if (requestUrl.contains("localhost") || requestUrl.contains("127.0.0.1")) {
+				isLocal = true;
+			}
 
-//	@GetMapping("/file/download")
-//	public void download(HttpServletResponse response, @RequestParam Long seqNo) throws Exception {
-//		System.out.println("실행이된다!");
-//		try {
-//			FileVO getFileInfo = fileService.getFileInfo(seqNo);
-//			System.out.println(getFileInfo);
-//			System.out.println(URLEncoder.encode(getFileInfo.getFileNameOri(),"UTF-8"));
-//				
-//			byte fileByte[] = FileUtils.readFileToByteArray(new File(getFileInfo.getFileFolder()+getFileInfo.getFileNameChange()+getFileInfo.getFileNameExtension()));
-//			System.out.println("여기를 돈다");
-//			System.out.println("sda"+ fileByte.length);
-//			response.setContentType("application/octet-stream");
-//			response.setContentLength(fileByte.length);
-//			response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(getFileInfo.getFileNameOri(),"UTF-8")+"\";");
-//			response.setHeader("Content-Transfer-Encoding", "binary");
-//			response.getOutputStream().write(fileByte);
-//			
-//			response.getOutputStream().flush();
-//			response.getOutputStream().close();
-//		}
-//			
-//		 catch (Exception e) {
-//			throw new Exception("download error");
-//		}
-//	}
+			try {
+				Iterator<String> fileNames = req.getFileNames();
+				Enumeration<String> parameters = req.getParameterNames();
+				
+				
+				while (parameters.hasMoreElements()) {
+					String nextElement = parameters.nextElement();
+					if (nextElement.trim().length() > 0 && nextElement.equals("_csrf") == false && nextElement.equals("masterId") == false) {
+						map.put(nextElement.substring(5), req.getParameter(nextElement));
+					}
+					if(nextElement.equals("masterId")){
+						masterId = Long.parseLong(req.getParameter("masterId"));
+					}
+				}
+				
+				System.out.println("masterId :" +  masterId);
+				
+				while (fileNames.hasNext()) {
+					String fileName = fileNames.next();
+					if (req.getFile(fileName) != null && req.getFile(fileName).getSize() > 0) {
+						FileVO fileVO = new FileVO();
+						fileVO.setRegdate(LocalDateTime.now());
+						MultipartFile mpf = req.getFile(fileName);
+						fileVO.setMpfile(mpf);
+						Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal);
+						
+						String typeAndRank = fileName.substring(9);
+						FileVO getFileInfo = fileService.getFileInfo(newFileInfo);
+						
+						Decision_File decisionFile = new Decision_File();
+
+						decisionFile.setDecisionId(masterId);
+						decisionFile.setFileType(Integer.parseInt(typeAndRank.split("-")[0]));
+						decisionFile.setFileSeq((int) (getFileInfo.getSeqNo()));
+						decisionFile.setDelCheck(0);
+						decisionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
+						decisionFile.setRegdate(LocalDate.now().toString());
+						String description = map.get(typeAndRank);
+						System.out.println("====================================================================");
+						System.out.println(new String(description.getBytes("8859_1"),"utf-8"));
+						System.out.println("====================================================================");
+
+						decisionFile.setFileDescription(new String(description.getBytes("8859_1"),"utf-8"));
+						decisionService.insertDecisionFile(decisionFile);
+						// decisionFile -> 열람공고 바라보는 파일 확인 해야함 
+						
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+			return "redirect:/implementer/application.do";
+		}
+	
+	
+
+
 	
 	@RequestMapping(value = "/file/download")
     public void downFile(@RequestParam Long seqNo, HttpServletResponse response, HttpServletRequest request) throws Exception{

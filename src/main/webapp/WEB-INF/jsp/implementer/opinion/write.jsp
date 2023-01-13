@@ -395,7 +395,7 @@
 																				<div>
 																					<select id="item${landInfo.reptSeq}"
 																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
-																						data-type="land" data-seq="${landInfo.reptSeq}" reptOwnrSeq ="${landInfo.reptOwnrSeq}">
+																						data-type="land" data-seq="${landInfo.reptSeq}" reptOwnrSeq ="${landInfo.reptOwnrSeq}" ownrNm="${landInfo.ownrNnm}">
 																						<option value="">항목선택</option>
 																					</select>
 																				</div></td>
@@ -500,7 +500,7 @@
 																				<div>
 																					<select id="item${goodsInfo.reptSeq}"
 																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
-																						data-type="goods" data-seq="${goodsInfo.reptSeq}" reptOwnrSeq="${goodsInfo.reptOwnrSeq}">
+																						data-type="goods" data-seq="${goodsInfo.reptSeq}" reptOwnrSeq="${goodsInfo.reptOwnrSeq}" ownrNm="${ownrNnm}">
 																						<option value="">항목선택</option>
 																					</select>
 																				</div></td>
@@ -821,10 +821,11 @@
               		let getSeq = $(this).attr("data-seq");
              		let getType = $(this).attr("data-type");
              		let reptOwnrSeq = $(this).attr("reptOwnrSeq");
-             		console.log(reptOwnrSeq);
+             		let ownrNm = $(this).attr("ownrNm");
+             		console.log(ownrNm);
               		if(getItem!=""){
               			let getTitle = $("option:selected", this).text();         			
-              		    addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq);
+              		    addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm);
               		}      
               	    
               	});
@@ -869,6 +870,9 @@
 
                 //파입 업로드
                 $('#fileSeq').on("change", function(){
+                	
+                	let csrfToken = $("meta[name='_csrf']").attr("content");
+            		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
                 	let contextPath = $("#contextPath").val();
                 	let url = contextPath+"/uploadContentFile";
@@ -889,6 +893,7 @@
                     
                     let inputPosition = $('#fileSeq').attr('data-position');
                     let inputId = $('#fileSeq').attr('data-id');
+
                 	
                     let fullId = inputPosition+"-"+inputId;
 
@@ -901,10 +906,9 @@
                         type: "post",
                         dataType: "json",
                         url: url,
-                        beforeSend: function () {
-                            //alert("시작전");
-                            //alert($("input[name=skin_set]").val());
-                        },
+                        beforeSend : function(xhr){
+                        	xhr.setRequestHeader(csrfHeader, csrfToken);
+                        	},
                         complete: function (xhr) {
                             //alert("완료");
                         },
@@ -914,8 +918,92 @@
                         	console.log(fileInfo);
                         	
                         	let seqNo = fileInfo.seqNo;
-                        	let fileNameOri = fileInfo.fileNameOri;           	
+                        	let fileNameOri = fileInfo.fileNameOri;
+							
+							let notice = document.getElementById('notice').innerText;
+							let seq = '';
+							switch (notice) {
+							  case "지연가산금":
+							    seq = '1';
+							    break;
+							  case "보상금 증액":
+								  seq = '2';
+							    break;
+							  case "허가건축물 등 불법형질변경":
+								  seq = '3';
+							    break;
+							  case "일단지 보상":
+								  seq = '4';
+							    break;
+							  case "미지금 용지":
+								  seq = '5';
+							    break;
+							  case "사도평가":
+								  seq = '6';
+							    break;
+							  case "잔여지 매수청구":
+								  seq = '7';
+							    break;
+							  case "잔여지 가치하락":
+								  seq = '8';
+							    break;
+							  case "잔여건물 가치감소":
+								  seq = '9';
+							    break;
+							  case "잔여건물 매수청구":
+								  seq = '10';
+							    break;
+							  case "누락 물건 반영":
+								  seq = '11';
+							    break;
+							  case "휴업보상(이전비)평가":
+								  seq = '12';
+							    break;
+							  case "폐업보상":
+								  seq = '13';
+							    break;
+							  case "영농손실보상":
+								  seq = '14';
+							    break;
+							  case "휴직(실직)보상":
+								  seq = '15';
+							    break;
+							  case "사업폐지(취소, 변경, 중단)":
+								  seq = '16';
+							    break;
+							  case "이주대책 수립":
+								  seq = '17';
+							    break;
+							  case "이주정착금, 주거이전비, 이사비":
+								  seq = '19';
+							    break;
+							  case "임료손실":
+								  seq = '19';
+							    break;
+							  case "대토보상":
+								  seq = '20';
+							    break;
+							  case "구분지상권":
+								  seq = '21';
+							    break;
+							  case "10%이상 변동":
+								  seq = '22';
+							    break;
+							  case "기타(그 외)":
+								  seq = '23';
+							    break;
+							  case "소유자 의견 없음":
+								  seq = '24';
+							    break;
+							  default:
+								  seq='';
+							   break;
+							}
+							console.log(seq);
+							
                         	
+							
+                        	document.getElementById('popupOpinionItemFile'+seq).innerText = fileInfo.fileNameOri;
                         	$("#fileInfo"+fullId).attr("data-seq",seqNo);
                         	$("#fileText"+fullId).text(fileNameOri);
 

@@ -1,10 +1,10 @@
 let popupOpinion = 2;
 let addOpinionItemArray = new Array();
 
-function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq){
+function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
    
 
-console.log("Start"+reptOwnrSeq);
+console.log("Start"+ownrNm);
    let opCount = $(".opinion"+getSeq).length+1;
    
    let getId = "#opinion"+getSeq+"-"+getItem;
@@ -24,8 +24,10 @@ console.log("Start"+reptOwnrSeq);
       addList.push("       <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
        addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
        addList.push("      <div class=\"cbl_3\"> ");
-       addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"');return false;\" >의견을 작성해주세요</a>");
-       addList.push("      </div> ");
+       addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNm+"');return false;\" >의견을 작성해주세요</a>");
+       addList.push("      <div id=\"owner"+getSeq+"-"+getItem+"\" class=\"cbl_4\"> 미작성 </div> ");
+       addList.push("      <div id=\"operator"+getSeq+"-"+getItem+"\" class=\"cbl_5\"> 미작성 </div> ");
+	   addList.push("      </div> ");
        addList.push("      <div id=\"fileCount"+getSeq+"-"+getItem+"\" class=\"cbl_4\"></div>");
        addList.push("   </div>");
        addList.push("</li>");
@@ -59,7 +61,7 @@ function resetSeq(getSeq){
    
 }
 
-function openOpinionPopup(getSeq,getType,reptOwnrSeq){
+function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
    /*var seqNum = document.getElementById("seqNum").value;
    var itemNum = document.getElementById("itemNum").value;
    if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
@@ -169,8 +171,9 @@ notice='';
          
          let reptSeq = addOpinionItemArray[i].reptSeq;
          let type = addOpinionItemArray[i].type;
-		 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;     
-			console.log(reptOwnrSeq);
+		 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq; 
+		 let ownrNm  = addOpinionItemArray[i].ownrNm;    
+			console.log(ownrNm);
          if(getSeq==reptSeq&&getType==type){
             
             let ownerOpinion = addOpinionItemArray[i].ownerOpinion;
@@ -207,8 +210,14 @@ notice='';
    $("#popupOwnerOpinion").attr("data-seq",getSeq);
    $("#popupOwnerOpinion").attr("data-type",getType);
    $("#popupOwnerOpinion").attr("reptOwnrSeq",reptOwnrSeq);
+   $("#popupOwnerOpinion").attr("ownrNm",ownrNm);
 
    $("#popupOwnerOpinion").addClass("on");
+
+document.getElementById('owner'+getSeq+'-'+getType).innerText = '작성';
+document.getElementById('operator'+getSeq+'-'+getType).innerText = '작성';
+
+
    
 }
 
@@ -217,6 +226,7 @@ function submitOwnerOpinion(){
    let getSeq = $("#popupOwnerOpinion").attr("data-seq");
    let getType = $("#popupOwnerOpinion").attr("data-type");
    let reptOwnrSeq = $("#popupOwnerOpinion").attr("reptOwnrSeq");
+   let ownrNm = $("#popupOwnerOpinion").attr("ownrNm");
 
    let ownerOpinion = $("#ownerOpinion").val();
    let executorOpinion = $("#executorOpinion").val();
@@ -238,6 +248,7 @@ function submitOwnerOpinion(){
    sub['ownerOpinion'] = ownerOpinion;
    sub['executorOpinion'] = executorOpinion;
    sub['reptOwnrSeq'] = reptOwnrSeq;
+   sub['ownrNm'] = ownrNm;
 
    let opCount = $(".popupOpinionItem").length;
       let opinionItemList = new Array(); // json의 전체를 가리키는 배열
@@ -264,6 +275,7 @@ function submitOwnerOpinion(){
          let reptSeq = addOpinionItemArray[i].reptSeq;
          let type = addOpinionItemArray[i].type;
          let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;
+		 let ownrNm = addOpinionItemArray[i].ownrNm;
          if(getSeq==reptSeq&&getType==type){            
             addOpinionItemArray.splice(i, 1);
          }
@@ -333,7 +345,7 @@ function addOpinionItem(getType){
    addList.push("     <input class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+popupOpinion+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">파일 없음</div>");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+getType+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">파일 없음</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
    addList.push("                      </button>");   

@@ -64,8 +64,12 @@ public class DeliberateController {
        
     	List<DeliberateViewDTO> formatterList = deliberateService.getDeliberateViewFormatter(pagingResult); 
 
+        
+        
     	Long decisionId = pagingResult.get(0).getDecisionId();
     	Decision decision = decisionService.getDecisionView(decisionId);
+    	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+    	model.addAttribute("opinionList", opinionList);
     	Long landCnt = decision.getLandCnt();
 			Long landArea = decision.getLandArea();
 			Long landPrice = decision.getLandPrice();
