@@ -9,6 +9,10 @@ function goToDeliberateView(selectDate){
 	location.href=contextPath+"/deliberate/agenda/view.do?selectDate="+selectDate;
 }
 
+function goToDeliberatePdf(selectDate){
+	let contextPath = $('#contextPath').val();
+	location.href=contextPath+"/deliberate/agenda/pdfview.do?selectDate="+selectDate;
+}
 
 function goToDeliberateDetail(decisionId){
 	let contextPath = $('#contextPath').val();

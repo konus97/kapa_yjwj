@@ -52,9 +52,13 @@ function makeDeliberateBlock(num,info) {
 	addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
 	addList.push("         </button>");
-	addList.push("       <button class=\"btn small\">");
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >다운로드</a >");	
+/*	addList.push("       <button class=\"btn small\">");
 	addList.push("           다운로드");
-	addList.push("        </button>");
+	addList.push("        </button>");*/
 	addList.push("    </span>");
 	addList.push("  </td>");
 	addList.push("  <td>");
