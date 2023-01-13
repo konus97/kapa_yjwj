@@ -28,6 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		System.out.println("loginPassword : " + loginPassword);
 		
 		UserVO user = (UserVO) userDetailsService.loadUserByUsername(loginUserName);
+		System.out.println(user);
 		System.out.println("loginPassword2 : " + user.getPassword());
 		System.out.println(1);
 
@@ -37,7 +38,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			throw new BadCredentialsException(loginUserName);
 		}
 
-	
+		
 //		if(!user.isEnabled()) {
 //			System.out.println(3);
 //			throw new BadCredentialsException(loginUserName);
@@ -45,6 +46,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		System.out.println("권한문제인가?");
 		System.out.println(user.getAuthorities());
+//		return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, user.getAuthorities());
 		return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, user.getAuthorities());
 	}
 

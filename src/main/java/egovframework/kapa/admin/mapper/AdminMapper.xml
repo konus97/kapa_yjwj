@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.admin.mapper.AdminMapper">
+
+	<!--사용자 가져오기-->
+	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO">
+        SELECT userId, userName, userAuthority, email, company, phoneNumber
+		FROM TB_User A
+		LEFT JOIN TB_Appraiser B
+		ON A.seqNo = B.userSeqNo
+    </select>
+	
+	 
+	
+</mapper>

@@ -14,6 +14,13 @@
 			M.userPassword = #{loginPwd}
   		</where>
     </select>
+    
+    
+	<!--사용자 가져오기-->
+	<select id="getAllUser" resultType="egovframework.kapa.domain.User">
+        SELECT *
+		FROM TB_User
+    </select>
 	
 	 
 	

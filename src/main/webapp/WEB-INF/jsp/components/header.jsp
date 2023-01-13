@@ -1,5 +1,8 @@
 <%@	page contentType="text/html;charset=utf-8" language="java" pageEncoding="utf-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <input type="hidden" name="contextPath" id="contextPath" value="${pageContext.request.contextPath}">	
 	
@@ -107,10 +110,14 @@
                 <h2 class="blind">TOPMENU</h2>
                 <ul>
                     <li>
-                    
-                        <a href="#login"><span>로그인</span></a>
-                    
-					
+                        <c:choose>
+                        <c:when test="${loginId ne null}" >
+                         	<span>${loginId }님 </span>  
+                        </c:when>
+                        <c:otherwise>
+                        	<a href="#login"><span>로그인</span></a>
+                        </c:otherwise>
+                        </c:choose>
                     </li>
                     <li>
                         <a

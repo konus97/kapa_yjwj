@@ -3,14 +3,10 @@ package egovframework.kapa.board.contoller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.kapa.board.domain.BoardVO;
 import egovframework.kapa.board.service.BoardContentService;
@@ -30,6 +26,7 @@ public class BoardController {
 
 	@GetMapping("/notice.do")
 	public String noticeList(Model model) {
+		
 		
 		//boardSeq
 		model.addAttribute("boardSeq", "1");
