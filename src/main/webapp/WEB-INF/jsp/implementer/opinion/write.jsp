@@ -1008,9 +1008,10 @@
                             //alert("완료");
                         },
                         success: function(data){
-                        	//document.getElementById('fileSeq')
+                        	console.log(data);
+                        	
                         	let seq = document.getElementById('fileSeq').name.substring(9,11);
-                        	seq = parseInt(seq) - 1;
+                        	seq = parseInt(seq)-1;
                         	let fileNameOri = data.fileNameOri;
                         	                        	
                         
@@ -1018,9 +1019,9 @@
 							
 							console.log(seq);
 							console.log(fileNameOri);
-                        	
-                        	document.getElementById('popupOpinionItemFile'+seq).innerText = fileNameOri;
-                        	$("#fileInfo"+fullId).attr("data-seq",seqNo);
+                        	let newseq = seq+1;
+                        	document.getElementById('popupOpinionItemFile'+newseq).innerText = fileNameOri;
+                        	$("#fileInfo"+fullId).attr("data-seq",newseq);
                         	$("#fileText"+fullId).text(fileNameOri);
 
                         },

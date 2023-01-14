@@ -269,6 +269,10 @@ public class FileController {
 
 						resultFinal.put("seqNo", Integer.parseInt(typeAndRank.split("-")[0]));
 						resultFinal.put("fileNameOri", getFileInfo.getFileNameOri());
+						System.out.println("====================================");
+						System.out.println(getFileInfo.getFileNameOri());
+						System.out.println("====================================");
+
 				
 						decisionService.insertOpinionFile(opinionFile);
 
