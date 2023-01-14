@@ -98,4 +98,6 @@ public interface DecisionMapper {
 
 	void insertOpinionFile(Opinion_File opinionFile);
 
+	
+
 }

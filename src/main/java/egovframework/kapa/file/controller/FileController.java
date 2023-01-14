@@ -258,7 +258,12 @@ public class FileController {
 						opinionFile.setDecisonId(masterId);
 						opinionFile.setFileType(Integer.parseInt(typeAndRank.split("-")[0]));
 						opinionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
-						opinionFile.setFileDescription((typeAndRank.split("-")[2]));
+						if(typeAndRank.split("-")[2] != null || ! (typeAndRank.split("-")[2].equals(""))) {
+							opinionFile.setFileDescription((typeAndRank.split("-")[2]));
+						}else {
+							opinionFile.setFileDescription("pdf");
+						}
+						
 						opinionFile.setReptOwnrSeq(Integer.parseInt(typeAndRank.split("-")[3]));
 						opinionFile.setReptSeq(Integer.parseInt(typeAndRank.split("-")[4]));
 
@@ -272,8 +277,7 @@ public class FileController {
 						System.out.println("====================================");
 						System.out.println(getFileInfo.getFileNameOri());
 						System.out.println("====================================");
-
-				
+						
 						decisionService.insertOpinionFile(opinionFile);
 
 					}
@@ -309,8 +313,10 @@ public class FileController {
        byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath+storedFileName));
        
        response.reset();
+       originalFileName = new String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");
        response.setHeader("Content-Disposition", "attachment;filename="+originalFileName+"");
        response.setContentType("application/octet-stream");
+       response.setCharacterEncoding("utf-8");
        response.setContentLength(fileByte.length);
        response.getOutputStream().write(fileByte);
        response.getOutputStream().flush();

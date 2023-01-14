@@ -327,20 +327,20 @@ function addOpinionItem(getType){
    addList.push("        <span style=\color:red;\>");
    addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");   
    addList.push("        </span>");
-   //
-   addList.push("          <button class=\"btn nohover\">");
+   //pdf
+   addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfUpload('"+getType+"');return false;\">");
    addList.push("             <i class=\"download white icon\"></i> PDF 업로드");
    addList.push("           </button>");
    //addList.push("          <button class=\"btn nohover\">"); 기존
    addList.push("          <button class=\"btn nohover\" onclick=\"hwpDownload('"+getType+"');return false;\">"); //추가
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
-   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
+/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 추가");
    addList.push("           </button>");
    addList.push("           <button class=\"btn nohover t1\" onclick=\"removeOpinionItem('"+popupOpinion+"');return false;\" >");
    addList.push("               <i class=\"close icon\"></i> 삭제");
-   addList.push("           </button>");
+   addList.push("           </button>");*/
    addList.push("         </div>   ");                                           
    addList.push("        </td>");
    addList.push("   </tr>");                                                     
@@ -366,7 +366,26 @@ function addOpinionItem(getType){
    addList.push("                </div>");   
    addList.push("               </div>");   
    addList.push("          </td>");   
-   addList.push("   </tr>   ");                                                     
+   addList.push("   </tr>   ");         
+
+   addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
+   addList.push("     <td class=\"file_flex\">");   
+   // addList.push("                  <div style=\"display: none\">");   
+   addList.push("     <input id=\"description1"+"\" class=\"input40 file_name\" value=\"PDF\" readonly\>");   
+   addList.push("         <div class=\"file_btn_wrap\">");   
+   addList.push("                  <div style=\"display: flex\">");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFilePDF"+getType+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">pdf 파일만 첨부해주세요</div>");   
+   addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
+   addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
+   addList.push("                      </button>");   
+   addList.push("                </div>");   
+   addList.push("               </div>");  
+   addList.push("               </div>");  
+   addList.push("          </td>");   
+   addList.push("   </tr>   ");          
+
+
+                                            
    addList.push("</tbody>");   
 
    popupOpinion++;
@@ -487,12 +506,12 @@ notice='';
 
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
-   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
+/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 추가");
    addList.push("           </button>");
    addList.push("           <button class=\"btn nohover t1\" onclick=\"removeOpinionItem('"+popupOpinion+"');return false;\" >");
    addList.push("               <i class=\"close icon\"></i> 삭제");
-   addList.push("           </button>");
+   addList.push("           </button>");*/
    addList.push("         </div>   ");                                           
    addList.push("        </td>");
    addList.push("   </tr>");                                                     
@@ -517,6 +536,17 @@ notice='';
    addList.push("                      </button>");   
    addList.push("                </div>");   
    addList.push("               </div>");   
+//pdf용
+   addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
+   addList.push("         <div class=\"file_btn_wrap\">");   
+   addList.push("                  <div style=\"display: flex\">");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+opinionSeq+"\" data-seq=\""+opinionItemFile+"\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpge, png 이미지 파일만 첨부해주세요</div>");   
+   addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
+   addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
+   addList.push("                      </button>");   
+   addList.push("                </div>");   
+   addList.push("               </div>");  
+//
    addList.push("          </td>");   
    addList.push("   </tr>   ");                                                     
    addList.push("</tbody>");   
@@ -582,7 +612,9 @@ location.href = url;
 alert("첨부된 한글파일이 없습니다.");
 }
 
+}
 
 
-
+function pdfUpload(getType){
+	triggerFileUploadPDF(1);
 }

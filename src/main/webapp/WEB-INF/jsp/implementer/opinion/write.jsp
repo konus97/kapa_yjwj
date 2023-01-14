@@ -48,6 +48,7 @@
 		<input type="file" class="form-control wd-100p" id="fileSeq" name="file">
 
 	</form>
+	<input type="file" id="file1" name="file1"> 
 
 		<input type="hidden" class="form-control wd-100p" id="reptSeq" name="0">
 		<input type="hidden" class="form-control wd-100p" id="reptOwnerSeq" name="0">
@@ -747,6 +748,11 @@
         	let opinionItemList = new Array();
         
 	        function triggerFileUpload(){
+	        	if(document.getElementById('description').value.includes('-')){
+	        		alert('파일 설명란에 특수문자 -는 작성이 불가합니다.');
+	        		return false;
+	        	}
+	        	
 	        	if(document.getElementById('description').value =='' || document.getElementById('description').value == null){
 	        		alert('파일 설명란을 작성해주세요');
 	        		return false;
@@ -754,6 +760,13 @@
 	        	$('#fileSeq').trigger('click');
 	        	}
 	        	}
+	        function triggerFileUploadPDF(){
+
+	        	
+	        	$('#fileSeq').trigger('click');
+	        	
+	        	}
+	        
 
             function saveOpinion(){
 
@@ -1019,10 +1032,18 @@
 							
 							console.log(seq);
 							console.log(fileNameOri);
+							console.log(fileNameOri.slice(-3));
                         	let newseq = seq+1;
+                        	if(! fileNameOri.includes('pdf')){
+                        		console.log('false pdf');
                         	document.getElementById('popupOpinionItemFile'+newseq).innerText = fileNameOri;
-                        	$("#fileInfo"+fullId).attr("data-seq",newseq);
-                        	$("#fileText"+fullId).text(fileNameOri);
+                        	}else{
+                        		console.log('true pdf');
+
+                        	document.getElementById('popupOpinionItemFilePDF'+newseq).innerText = fileNameOri;	
+                        	}
+                     /*    	$("#fileInfo"+fullId).attr("data-seq",newseq);
+                        	$("#fileText"+fullId).text(fileNameOri); */
 
                         },
                         error: function(e) {
