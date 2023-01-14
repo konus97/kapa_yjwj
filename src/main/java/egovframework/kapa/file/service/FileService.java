@@ -62,7 +62,7 @@ public class FileService {
 		String fullFileName =fileName +"_"+ new SimpleDateFormat("yyyyMMddhhmm").format(new Date()) + "." + fileExt;
 		
 		try {
-			file.transferTo(new File(filePath + File.separator + fullFileName));
+			file.transferTo(new File(filePath + fullFileName)); // filePath + File.separator
 			fileVO.setFileNameChange(fullFileName);
 			fileVO.setFileNameExtension(fileExt);
 			fileVO.setFileFolder(filePath);
