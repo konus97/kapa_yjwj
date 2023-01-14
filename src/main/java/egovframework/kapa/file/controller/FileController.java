@@ -310,10 +310,14 @@ public class FileController {
 		 */
 		// for local
 		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
-
 		// for server
-		String filePath = "download";
-       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("/"+filePath+storedFileName));
+		String filePath = "file/download/";
+		System.out.println("======================================================");
+		System.out.println(filePath);
+		
+		System.out.println("======================================================");
+
+       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath+storedFileName));
        
        response.reset();
        originalFileName = new String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");
