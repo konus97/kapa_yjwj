@@ -308,9 +308,12 @@ public class FileController {
 		 * "files" + File.separator + "download"; String filePath2 =
 		 * "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
 		 */
-		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+		// for local
+		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
 
-       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath+storedFileName));
+		// for server
+		String filePath = "download";
+       byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("/"+filePath+storedFileName));
        
        response.reset();
        originalFileName = new String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");

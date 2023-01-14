@@ -29,19 +29,23 @@ public class FileService {
 		
 		Long getFileSeq = 0L;
 		
-		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
+		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
+		String filePath = "download/";
 		System.out.println("=============================================");
 		System.out.println("FILE PATH ::" + filePath);
 		System.out.println("=============================================");
 
-		File fileFileSaveDir = new File(request.getServletContext().getRealPath(File.separator)+ "file");
+		File fileFileSaveDir = new File(
+			//	request.getServletContext().getRealPath(File.separator)+ "file"
+				filePath
+				);
 		if (!fileFileSaveDir.exists()) {
 			fileFileSaveDir.mkdir();
 		} 
 		
 		File fileSaveDir = new File(filePath);
 		if (!fileSaveDir.exists()) {
-			fileSaveDir.mkdir();
+			 
 		} 
 		
 		MultipartFile file = fileVO.getMpfile();
