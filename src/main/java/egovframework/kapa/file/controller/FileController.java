@@ -111,7 +111,7 @@ public class FileController {
 					fileVO.setRegdate(LocalDateTime.now());
 					MultipartFile mpf = req.getFile(fileName);
 					fileVO.setMpfile(mpf);
-					Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal);
+					Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal); //error point
 					
 					String typeAndRank = fileName.substring(9);
 					FileVO getFileInfo = fileService.getFileInfo(newFileInfo);
@@ -248,7 +248,7 @@ public class FileController {
 						fileVO.setRegdate(LocalDateTime.now());
 						MultipartFile mpf = req.getFile(fileName);
 						fileVO.setMpfile(mpf);
-						Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal);
+						Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal); //error point
 						String typeAndRank = fileName.substring(9);
 						System.out.println("typeAndRank :::"+typeAndRank);
 
@@ -311,7 +311,9 @@ public class FileController {
 		// for local
 		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
 		// for server
-		String filePath = "file/download/";
+//		String filePath = "file/download/";
+		String filePath = "/usr/local/tomcat/webapps/download/";
+
 		System.out.println("======================================================");
 		System.out.println(filePath);
 		

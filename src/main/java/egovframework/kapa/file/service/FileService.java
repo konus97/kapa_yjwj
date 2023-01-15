@@ -30,7 +30,7 @@ public class FileService {
 		Long getFileSeq = 0L;
 		
 		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
-		String filePath = "/download/";
+		String filePath = "/usr/local/tomcat/webapps/download/";
 		System.out.println("=============================================");
 		System.out.println("FILE PATH ::" + filePath);
 		System.out.println("=============================================");
@@ -62,7 +62,7 @@ public class FileService {
 		String fullFileName =fileName +"_"+ new SimpleDateFormat("yyyyMMddhhmm").format(new Date()) + "." + fileExt;
 		
 		try {
-			file.transferTo(new File(filePath + fullFileName)); // filePath + File.separator
+			file.transferTo(new File(filePath + fullFileName)); // filePath + File.separator error point
 			fileVO.setFileNameChange(fullFileName);
 			fileVO.setFileNameExtension(fileExt);
 			fileVO.setFileFolder(filePath);
