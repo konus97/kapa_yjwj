@@ -14,6 +14,13 @@ function goToDeliberatePdf(selectDate){
 	location.href=contextPath+"/deliberate/agenda/pdfview.do?selectDate="+selectDate;
 }
 
+function ebookViewOpen(selectDate){
+	let contextPath = $('#contextPath').val();
+	location.href=contextPath+"/deliberate/agenda/ebookView.do?selectDate="+selectDate;
+	
+	
+}
+
 function goToDeliberateDetail(decisionId){
 	let contextPath = $('#contextPath').val();
 	location.href=contextPath+"/deliberate/agenda/detail.do?decisionId="+decisionId;

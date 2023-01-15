@@ -30,7 +30,7 @@ public class FileService {
 		Long getFileSeq = 0L;
 		
 		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
-		String filePath = "download/";
+		String filePath = "/download/";
 		System.out.println("=============================================");
 		System.out.println("FILE PATH ::" + filePath);
 		System.out.println("=============================================");

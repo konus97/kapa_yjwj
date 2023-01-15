@@ -15,6 +15,9 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Cache-Control" content="no-cache" />
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+   content="${_csrf.headerName}" />
 
 <title>재결정보지원센터</title>
 
@@ -713,6 +716,8 @@
 <script src="../../js/common.js"></script>
 <script src="../../js/jspdf.js"></script>
 <script src="../../js/html2canvas.js"></script>
+<script src="../../js/ImageCapture.js"></script>
+
 		<script type="text/javascript">
 
 		$(document).ready(function() {
@@ -762,14 +767,18 @@
 
 });
 		 function pdfPrint(){
-
+		console.log('pdf Print start');
 	        // 현재 document.body의 html을 A4 크기에 맞춰 PDF로 변환
 	        html2canvas(document.body, {
 	            onrendered: function (canvas) {
 
 	                // 캔버스를 이미지로 변환
 	                var imgData = canvas.toDataURL('image/png');
-
+	                
+	                console.log(imgData.width);
+	                
+	                
+					
 	                var imgWidth = 210; // 이미지 가로 길이(mm) A4 기준
 	                var pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
 	                var imgHeight = canvas.height * imgWidth / canvas.width;
@@ -795,30 +804,81 @@
 	                /* doc.save('sample.pdf'); */
 	                
 	                //새창으로 읽기
-	            //    getCanvas = canvas;
-	                //upload();
-				   window.open(doc.output('bloburl'));
+	              //  getCanvas = canvas;
+	                
+	                const imgBase64 = canvas.toDataURL('image/jpeg', 'image/octet-stream');
+	              //기존  const decodImg = atob(imgBase64.split(',')[1]);
+	              //여기서 imgData는 기존 pdf를 위한 데이터였다.
+	              // 기존 pdf를 위한 데이터에서 잘라둔 이미지를 다시 decodImg에 파라미터로 넣을 수 있다면 가능
+	                const decodImg = atob(imgData.split(',')[1]);
+
+	                let array = [];
+	                for (let i = 0; i < decodImg .length; i++) {
+	                  array.push(decodImg .charCodeAt(i));
+	                }
+
+	                const file = new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+	                const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
+	                let formData = new FormData();
+	                formData.append('file_give', file, fileName);
+					
+	                let contextPath = $("#contextPath").val();
+                	let url = contextPath+"/uploadContentFile/ebook";
+                	let csrfToken = $("meta[name='_csrf']").attr("content");
+            		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+            		
+            		
+	                  $.ajax({
+	                    type: "POST",
+	                    url: url,
+	                    data: formData,
+	                    cache: false,
+	                    contentType: false,
+	                    processData: false,
+	                    beforeSend : function(xhr){
+            				xhr.setRequestHeader(csrfHeader, csrfToken);
+            			},
+	                    success: function (response) {
+	                   console.log('zz');
+	                    }
+	                  });
+	                }
+
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+				 //  window.open(doc.output('bloburl'));
 	                
 	                
 	                //이미지로 표현
 	                //document.write('<img src="'+imgData+'" />');
-	            }
+	            //}
 	            
 	        });
 	        
 	    }
 		 
-		 /*  function upload() {  
+		  function upload() {  
 			 var imageData = getCanvas.toDataURL("image/png");
 			 //alert(imageData)    // 이미지 데이터가 들어있다. 
 			 //return;
 			 var formData = new FormData();
 			 formData.append('file', imageData);
 
-			 alert(JSON.stringify(getCanvas))  // form 이나 ajax로 전송하여 이미지를 서버에 저장한다. 이미지 저장은 각 언어별로 다르다.
+			// alert(JSON.stringify(getCanvas))  // form 이나 ajax로 전송하여 이미지를 서버에 저장한다. 이미지 저장은 각 언어별로 다르다.
 
 
-			 }  */
+			 } 
+		  
+		  
+		 
+		  
 
 	    window.onload = function(){
 	        pdfPrint();

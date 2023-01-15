@@ -52,6 +52,10 @@ function makeDeliberateBlock(num,info) {
 	addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
 	addList.push("         </button>");
+	/*addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"ebookViewOpen('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >E-Book</a >");*/
 	addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
@@ -72,9 +76,15 @@ function makeDeliberateBlock(num,info) {
 
 }
 
-function newEbookOpen() {
-	window.open('./../html/ebooktest02.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
+function ebookPopupOpen() {
+	let contextPath = $("#contextPath").val();
+	window.open(contextPath+'/deliberate/agenda/ebookPopup.do', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
 }
+function newEbookOpen() {
+	
+	window.open('./../html/ebooktest.html', 'window', 'width=1600, height=920, menubar=no, status=no, toolbar=no'); 
+}
+
 
 function makeAgendaDetail(num,info) {
 
