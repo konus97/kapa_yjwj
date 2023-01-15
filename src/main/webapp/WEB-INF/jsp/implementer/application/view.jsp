@@ -824,7 +824,7 @@
 															<c:set var="notExist" value="true" />
 															<c:forEach var="decisionFiles" items="${decisionFiles}"
 																varStatus="status">
-																<c:if test="${decisionFiles.fileType eq '10'}">
+	                                                					<c:if test="${decisionFiles.fileType eq '10' or decisionFiles.fileType eq '13' or  decisionFiles.fileType eq '12'}">
 																	<c:set var="notExist" value="false" />
 																	<div class="file_flex">
 																		<input class="file_view"
