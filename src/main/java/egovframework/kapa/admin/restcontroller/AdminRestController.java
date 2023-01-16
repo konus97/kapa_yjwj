@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import egovframework.kapa.admin.domain.AdminVO;
 import egovframework.kapa.admin.service.AdminService;
 import egovframework.kapa.domain.Search;
+import egovframework.kapa.member.service.JoinService;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -28,6 +29,9 @@ public class AdminRestController {
 
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	JoinService joinService;
 
 	/*
 	 * write
@@ -138,12 +142,9 @@ public class AdminRestController {
 	public ResponseEntity addUserList(@RequestBody String data) throws Exception {
 
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
-		JSONObject json = new JSONObject(data);
+								
+		joinService.addUser_admin(data);
 		
-		adminService.addUser(data);
-		
-		int a = 0;
 		
         try {
 
@@ -155,6 +156,7 @@ public class AdminRestController {
         return ResponseEntity.ok(resultFinal);
 
 	}
+	
 
 	
 }

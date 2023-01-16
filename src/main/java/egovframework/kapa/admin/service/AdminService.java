@@ -20,6 +20,8 @@ public class AdminService {
 
 	@Autowired
 	AdminMapper adminMapper;
+	
+	
 
     
     public void save(BoardVO save) {
@@ -63,7 +65,7 @@ public class AdminService {
 		
 		JSONObject jsonObject = (JSONObject)parser.parse(param);
 				
-		String searchType = jsonObject.get("searchType").toString();
+		int searchType = Integer.parseInt(jsonObject.get("searchType").toString());
 		
 		String id = jsonObject.get("id").toString();		// 아이디
 		String pwd = jsonObject.get("pwd").toString();		// 패스워드
@@ -77,11 +79,10 @@ public class AdminService {
 		String responsibilityName = jsonObject.get("responsibilityName").toString();	// 담당자명
 		String phoneNumber = jsonObject.get("phoneNumber").toString();	// 전화
 		
-		if(searchType.equals("사업시행자")) {
-			String docNumber = jsonObject.get("docNumber").toString();	// 시행문서번호
-			String implementerResponsibilityName = jsonObject.get("implementerResponsibilityName").toString();	// 시행사 담당자명
-			String implementerNumber = jsonObject.get("implementerNumber").toString();	// 시행사 연락처			
-		}
+		String docNumber = jsonObject.get("docNumber").toString();	// 시행문서번호
+		String implementerResponsibilityName = jsonObject.get("implementerResponsibilityName").toString();	// 시행사 담당자명
+		String implementerNumber = jsonObject.get("implementerNumber").toString();	// 시행사 연락처			
+		
 		 
 		
 	}

@@ -270,21 +270,23 @@
 		$('#admin_user_add').on('submit', function(e){
 			let contextPath = $("#contextPath").val();
 			let url = contextPath + "/api/admin/add.do";
+			var type = document.getElementById("cbs_select").selectedIndex;
 			console.log(url);
 			e.preventDefault();
 			const data = {
-				"searchType" : $("#cbs_select option:selected").val(),
+				"searchType" : type,
 				"id": $("input[name=userId]")[0].value,
 				"pwd": $("input[name=password]")[0].value,
 				"name": $("input[name=userName]")[0].value,
 				"dept" : $("input[name=dept]")[0].value,
 				"email" : $("input[name=userEmail]")[0].value,
+				"domain" : $("input[name=domain]")[0].value,
 				"mobile" : $("input[name=mobile]")[0].value,
 				
 				/* 사업 시행자일때 추가되는 컬럼 */
 				"docNumber" : $("input[name=docNumber]")[0].value,
 				"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
-				"implementerNumber" : $("input[name=implementerResponsibilityName]")[0].value,
+				"implementerNumber" : $("input[name=implementerNumber]")[0].value,
 				
 				/* 감정 평가사일때 추가되는 컬럼 */
 				"company" : $("input[name=company]")[0].value,

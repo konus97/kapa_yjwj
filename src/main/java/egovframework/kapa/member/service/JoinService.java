@@ -52,6 +52,24 @@ public class JoinService {
 	
 	@Autowired
 	JoinMapper joinMapper;
+	
+	public void addUser_admin(String param) throws ParseException {
+		JSONParser parser = new JSONParser();
+		
+		JSONObject jsonObject = (JSONObject)parser.parse(param);
+
+		int searchType = Integer.parseInt(jsonObject.get("searchType").toString());
+		if(searchType==0) {System.out.println("시군구"); }
+		else if (searchType==1) {
+			System.out.println("사업시행자");
+			joinImplementer(param);
+		}
+		else if (searchType==2) {System.out.println("2");}
+		else if (searchType==3) {System.out.println("3");}
+		else if (searchType==4) {System.out.println("4");}
+		else if (searchType==5) {System.out.println("5");}
+		else if (searchType==6) {System.out.println("6");}
+	}
 
 
 	public String joinImplementer(String param) throws ParseException { // 사업시행자
@@ -143,14 +161,18 @@ public class JoinService {
 			
 		String id = jsonObject.get("id").toString();
 		String pwd = jsonObject.get("pwd").toString();
+		String name = jsonObject.get("name").toString();
+		String dept = jsonObject.get("dept").toString();
 		
 		User user = new User();
 		user.setUserId(id);
 		user.setUserPassword(pwd);
 		user.setUserType(3);
 		//user.setUserAuthority("ROLE_USER");
+		user.setUserName(name);
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
+		user.setDept(dept);
 		
 		joinMapper.InsertUser(user);
 		
