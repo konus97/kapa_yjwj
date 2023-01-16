@@ -1,0 +1,127 @@
+body {
+	width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* pdf_loader */
+.pdf__loader {
+	position:absolute;
+	background:#222;
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:center;
+	align-items:center;
+}
+.pdf__loader__txt {
+	font-family:'Noto Sans KR',san-serif;
+	color:#fff;
+	text-align:center;
+}
+.pdf__loader__svg {
+	width:100px;
+}
+.pdf__loader__svg circle {
+	animation: fadeInOut 0.6s linear infinite alternate;
+}
+.pdf__loader__svg circle:nth-child(2) {
+	animation-delay : 0.2s
+}
+.pdf__loader__svg circle:nth-child(3) {
+	animation-delay : 0.4s
+}
+
+@keyframes fadeInOut {
+	0% {
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}
+
+/* pdf__page */
+.pdf__page {
+	width: 100vw;
+    height: 141.4vw;
+    padding: 10em 6em;
+}
+.pdf__page--cover {
+	padding: 16em 12em;
+}
+.pdf__tit {
+	font-family:'Noto Sans KR',san-serif;
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1.5;
+	text-align: center;
+}
+.f_wrap ~ .f_wrap {
+	margin-top: 1.5em;
+}
+.f_wrap__tit {
+	font-family:'Noto Sans KR',san-serif;
+	font-size: 1.5rem;
+	font-weight:700;
+	margin-bottom: 0.5em;
+}
+.f_wrap__tit::before {
+	content: '□';
+	margin-right: 0.3em;
+}
+.f_wrap__list {
+	padding-left: 1em;
+}
+.f_wrap__item {
+	line-height: 2;
+}
+.f_wrap__item::before {
+	content: '○';
+	margin-right: 0.3em;
+}
+.f_wrap__item span {
+}
+.f_wrap__table {
+	width: 100%;
+	border: 2px solid #000;
+}
+.f_wrap__table th {
+	text-align: center;
+}
+.f_wrap__table th,
+.f_wrap__table td {
+	border: 1px solid #000;
+	border-right: 0;
+	border-bottom: 0;
+	word-break: break-all;
+}
+.f_wrap__table p {
+	word-break: break-all;	
+}
+.f_wrap__table--csltList {	
+	width: calc(100% + 1em);
+    position: relative;
+    left: -1em;
+}
+.f_wrap__table--csltList th,
+.f_wrap__table--csltList td {
+	text-align:center;
+}
+.f_wrap__table--csltList td {
+	letter-spacing: -0.05em;
+    font-size: 0.875rem;
+}
+.f_wrap__table--csltList td:nth-child(3n+1) {
+	width: 6em;
+}
+.f_wrap__th--opinion {
+	width:15em;
+}
+.f_wrap__th--num {
+	width:2.5em;
+}
+.f_wrap__th--owner_name {
+	width:6em;
+}
