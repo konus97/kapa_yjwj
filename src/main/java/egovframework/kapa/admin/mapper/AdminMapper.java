@@ -18,6 +18,7 @@ package egovframework.kapa.admin.mapper;
 import java.util.List;
 
 import egovframework.kapa.admin.domain.AdminVO;
+import egovframework.kapa.domain.Search;
 import egovframework.kapa.domain.User;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
@@ -32,6 +33,8 @@ public interface AdminMapper {
 	void delete();
 		
 	//회원 list 보기
-	List<AdminVO> getMemberList();
+	List<AdminVO> getMemberList(Search search);
+	
+	int getAllUserCnt();
 
 }

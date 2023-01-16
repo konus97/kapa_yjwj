@@ -23,8 +23,8 @@
     </insert>
     
 	<insert id="InsertUser" parameterType="egovframework.kapa.domain.User" useGeneratedKeys="true" keyProperty="seqNo">
-    	insert into TB_User(userType, userId, userPassword, userAuthority, delCheck, regdate, userEnabled)
-    	values(#{userType}, #{userId}, #{userPassword}, #{userAuthority}, #{delCheck}, #{regdate}, #{userEnabled})
+    	insert into TB_User(userType, userId, userPassword, userAuthority, delCheck, regdate, userEnabled, dept)
+    	values(#{userType}, #{userId}, #{userPassword}, #{userAuthority}, #{delCheck}, #{regdate}, #{userEnabled}, #{dept})
     </insert>
     
 	<select id="getUserSeqNo" parameterType="egovframework.kapa.domain.User" resultType="long">

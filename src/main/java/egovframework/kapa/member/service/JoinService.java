@@ -64,15 +64,20 @@ public class JoinService {
 			
 		String id = jsonObject.get("id").toString();
 		String pwd = jsonObject.get("pwd").toString();
+		String name = jsonObject.get("name").toString();
+		String dept = jsonObject.get("dept").toString();
 		
 		User user = new User();
 		user.setUserId(id);
 		user.setUserPassword(pwd);
 		user.setUserType(1);
 		user.setUserAuthority("ROLE_USER");
+		user.setUserName(name);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
+		user.setDept(dept);
+		
 		
 		joinMapper.InsertUser(user);
 		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
@@ -98,15 +103,19 @@ public class JoinService {
 			
 		String id = jsonObject.get("id").toString();
 		String pwd = jsonObject.get("pwd").toString();
+		String name = jsonObject.get("name").toString();
+		String dept = jsonObject.get("dept").toString();
 		
 		User user = new User();
 		user.setUserId(id);
 		user.setUserPassword(pwd);
 		user.setUserType(2);
 		user.setUserAuthority("ROLE_USER");
-		user.setRegdate(LocalDateTime.now());
+		user.setUserName(name);
 		user.setUserEnabled("1");
+		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
+		user.setDept(dept);
 		
 		joinMapper.InsertUser(user);
 		
