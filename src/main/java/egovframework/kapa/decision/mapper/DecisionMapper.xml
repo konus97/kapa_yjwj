@@ -54,6 +54,15 @@
   		</where>
 	</select> 
 	
+	<select id="getMasterId" resultType="Long">
+		SELECT masterID
+		
+		FROM TB_Decision 
+		
+		where seqNo = #{decisionId}
+	</select>
+	
+	
    <select id="getDecisionViewMasterID" resultType="egovframework.kapa.domain.Decision" >
 		SELECT *
 		
@@ -246,6 +255,14 @@
     	insert into TB_Decision_File_Opinion(decisonId, reptSeq, opinionType ,fileType, fileSeq, delCheck, rank, regdate, uptdate, fileDescription, reptOwnrSeq)
     	values(#{decisonId}, #{reptSeq} ,#{opinionType} , #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate}, #{uptdate}, #{fileDescription}, #{reptOwnrSeq})
     </insert>
+    
+    <insert id="insertNoticeFile" parameterType="egovframework.kapa.domain.Notice_File">
+    insert into TB_Decision_File_Notice(decisionId, fileType, fileSeq, delCheck, regdate, uptdate, fileDescription) values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription})
+    </insert>
+    
+        <insert id="insertCitesFile" parameterType="egovframework.kapa.domain.Cites_File">
+    insert into TB_Decision_File_Cites(decisionId, fileType, fileSeq, delCheck, regdate, uptdate, fileDescription, rank) values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription}, #{rank})
+    </insert>
         
     	
 	<select id="getDecisionFileList" resultType="egovframework.kapa.domain.Decision_File" >
@@ -256,6 +273,26 @@
 			AND delCheck = '0'
   		</where>
 	</select> 
+	
+		<select id="getNoticeFileList" resultType="egovframework.kapa.domain.Notice_File" >
+		SELECT *
+		FROM TB_Decision_File_Notice 
+		<where>
+			decisionId  = #{decisionId}
+			AND delCheck = '0'
+  		</where>
+	</select> 
+	
+	
+			<select id="getCitesFileList" resultType="egovframework.kapa.domain.Cites_File" >
+		SELECT *
+		FROM TB_Decision_File_Cites 
+		<where>
+			decisionId  = #{decisionId}
+			AND delCheck = '0'
+  		</where>
+	</select> 
+	
 	
 
 	<select id="getAgendaRegisterList" resultType="egovframework.kapa.domain.Decision" >

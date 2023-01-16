@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import egovframework.kapa.decision.dto.AnnouncementDTO;
 import egovframework.kapa.decision.dto.DecisionStateDTO;
 import egovframework.kapa.decision.mapper.DecisionMapper;
+import egovframework.kapa.domain.Cites_File;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Announcement_File;
@@ -28,6 +29,7 @@ import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
+import egovframework.kapa.domain.Notice_File;
 import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
@@ -541,6 +543,29 @@ public class DecisionService {
 		decisionMapper.insertOpinionFile(opinionFile);
 		
 	}
+
+	public void insertNoticeFile(Notice_File noticeFile) {
+		decisionMapper.insertNoticeFile(noticeFile);
+	}
+
+	public List<Notice_File> getNoticeFileList(Long decisionId) {
+		return decisionMapper.getNoticeFileList(decisionId);
+	}
+
+	public Long getMasterId(Long decisionId) {
+		return decisionMapper.getMasterId(decisionId);
+	}
+
+	public void insertCitesFile(Cites_File citesFile) {
+		decisionMapper.insertCitesFile(citesFile);
+		
+	}
+
+	public List<Cites_File> getCitesFileList(Long decisionId) {
+		return decisionMapper.getCitesFileList(decisionId);
+	}
+	
+
 
 
 

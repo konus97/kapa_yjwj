@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import egovframework.kapa.domain.Cites_File;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Announcement_File;
@@ -16,6 +17,7 @@ import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
+import egovframework.kapa.domain.Notice_File;
 import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
@@ -97,6 +99,16 @@ public interface DecisionMapper {
 	int getDecisionOpinionTypeItemCount(Map<String, Object> param);
 
 	void insertOpinionFile(Opinion_File opinionFile);
+
+	void insertNoticeFile(Notice_File noticeFile);
+
+	List<Notice_File> getNoticeFileList(Long decisionId);
+
+	Long getMasterId(Long decisionId);
+
+	void insertCitesFile(Cites_File citesFile);
+
+	List<Cites_File> getCitesFileList(Long decisionId);
 
 	
 

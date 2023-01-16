@@ -44,9 +44,10 @@
     <body>
     
    		<input type="hidden" name="decisionId" id="decisionId" value="${decisionId}">
-       
+       <input type="hidden" name="masterId" id="masterId" value="${masterId}">
 		<form id="fileForm" style="display: none;'">
 		    <input type="file" class="form-control wd-100p" id="fileSeq" name="file"  >
+		           <input type="hidden" name="masterId" id="masterId" value="${masterId}">
 		</form>
 			
         <div id="wrap">
@@ -231,7 +232,7 @@
                                                                                                
 	                                                <div id="fileInfo1-1" class="ff_wrap fileInfo1">
 													  <div class="file_flex">
-													    <input class="input40 file_name fileLabel1" maxlength="50">
+													    <input class="input40 file_name fileLabel1" maxlength="50" id="description">
 													    <div class="file_btn_wrap">
 													      <div style="display: flex">
 													        <div id="fileText1-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('1','1');return false;">파일 없음</div>
@@ -423,7 +424,7 @@
              $('#fileSeq').on("change", function(){
 
              	let contextPath = $("#contextPath").val();
-             	let url = contextPath+"/uploadContentFile";
+             	let url = contextPath+"/uploadContentFile/announcement";
              	
                  let iSize = 0;
                  let total = $("#fileSeq")[0].files.length;
@@ -438,16 +439,28 @@
                  }
 
                  let fileName = $("#fileSeq")[0].files[0].name;
-
+			
                  let inputId = $("#fileSeq").attr("data-id");
                  let inputRank = $('#fileSeq').attr('data-rank');
                  
+                 console.log("fileName ::" + fileName);
+                 console.log("inputId ::" + inputId);
+                 console.log("inputRank ::" + inputRank);
                  if(iSize > fileSize) {
                      alert("선택한 파일 총용량은 50MB를 초과할 수 없습니다.");
                      return false;
                  }
+                 
+            	 document.getElementById('fileText1-'+inputId).innerText = fileName;
+
+                 
+                 
                  var csrfToken = $("meta[name='_csrf']").attr("content");
                  var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+                 
+                 let description = document.getElementById('description').value;
+                 document.getElementById('fileSeq').name = 'file-'+description;
+				 
                  $("#fileForm").ajaxForm({
                      type: "post",
                      dataType: "json",
@@ -465,8 +478,12 @@
                      	
                      	let getId = "#fileInfo"+inputRank+"-"+inputId;
                      	
+                     	
                      	let seqNo = fileInfo.seqNo;
                      	let fileNameOri = fileInfo.fileNameOri;
+                     	
+                     	
+
                      	
                      	$(getId).attr("data-seq",seqNo);
                      	$(getId+">div").text(fileNameOri);

@@ -8,7 +8,7 @@ function addNewFileTarget(position) {
 	
 	addList.push("<div id=\"fileInfo"+position+"-"+targetFileCount+"\" class=\"ff_wrap fileInfo"+position+"\">  ");        
 	addList.push("	<div class=\"file_flex\">");                                        	
-    addList.push("      <input class=\"input40 file_name fileLabel"+position+"\"  maxlength=\"50\"> ");
+    addList.push("      <input class=\"input40 file_name fileLabel"+position+"\" id=\"description"+position+'-'+targetFileCount+"\"  maxlength=\"50\"> ");
     addList.push("      <div class=\"file_btn_wrap\"> ");
     addList.push("           <div style=\"display: flex\"> ");
     addList.push("               <div id=\"fileText"+position+"-"+targetFileCount+"\" class=\"input40 file_btn\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('"+position+"','"+targetFileCount+"');return false;\">파일 없음</div> ");

@@ -29,8 +29,8 @@ public class FileService {
 		
 		Long getFileSeq = 0L;
 		
-		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download";
-		String filePath = "/usr/local/tomcat/webapps/download/";
+		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+		//String filePath = "/usr/local/tomcat/webapps/download/";
 		System.out.println("=============================================");
 		System.out.println("FILE PATH ::" + filePath);
 		System.out.println("=============================================");

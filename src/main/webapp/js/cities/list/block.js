@@ -41,7 +41,14 @@ function makeCitiesAnnouncementBlock(num,info) {
     addList.push("      <strong>문서제목</strong>");
     addList.push("      <span>");
     addList.push("          <a");
-    addList.push("         	href=\""+contextPath+"/cities/announcement/write.do?decisionId="+decisionId+"\"");
+//decisionState = 4 면 완료이기 때문에 view로 들어가고 이외엔 write로 들어가는 로직 추가
+if(decisionState == 4){
+		    addList.push("         	href=\""+contextPath+"/cities/announcement/view.do?decisionId="+decisionId+"\"");
+
+}else{
+	    addList.push("         	href=\""+contextPath+"/cities/announcement/write.do?decisionId="+decisionId+"\"");
+
+}
     addList.push("          >"+docTitle+"</a>");
     addList.push("      </span>");
     addList.push("  </td>");

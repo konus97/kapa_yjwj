@@ -50,6 +50,8 @@
        
 		<form id="fileForm" style="display: none;'">
 		    <input type="file" class="form-control wd-100p" id="fileSeq" name="file"  >
+		    <input type="hidden" name="decisionId" id="decisionId" value="${decisionId}">
+		    
 		</form>
 		
         <div id="wrap">
@@ -148,7 +150,7 @@
                                             </div>
                                             <div class="ff_wrap">
                                             
-                                               <div>
+                                     <!--           <div>
                                                     <div class="file_flex">
                                                         <input class="file_view" value="파일이름" readonly="" disabled="">
                                                         <input class="file_view" value="파일명" readonly="" disabled="">
@@ -157,7 +159,39 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                                                          
+                                      -->             
+                                      <c:choose>
+														<c:when test="${fn:length(noticeFiles) == 0}">
+															<div class="file_flex">
+																<input class="file_view" value="파일이름" readonly disabled />
+																<input class="file_view" value="파일명" readonly disabled />
+															</div>
+														</c:when>
+														<c:otherwise>
+															<c:set var="notExist" value="true" />
+															<c:forEach var="noticeFiles" items="${noticeFiles}"
+																varStatus="status">
+																
+																	<c:set var="notExist" value="false" />
+																	<div class="file_flex">
+																		<input class="file_view" value="${noticeFiles.fileDescription}" readonly disabled />
+																		<input class="file_view" value=${noticeFiles.fileNameOri } readonly disabled />
+																		<button type="button"
+																			class="btn small02 t1 nohover downloadButton"
+																			id="${noticeFiles.seqNo}">
+																			<i class="icon-block download"></i>
+																		</button>
+																	</div>
+															
+															</c:forEach>
+															<c:if test="${notExist}">
+																<div class="file_flex">
+																	<input class="file_view" value="파일이름" readonly disabled />
+																	<input class="file_view" value="파일명" readonly disabled />
+																</div>
+															</c:if>
+														</c:otherwise>
+													</c:choose>                                        
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -203,7 +237,7 @@
                                                     
                                                       <div id="fileInfo2-1" class="ff_wrap fileInfo2">
 														  <div class="file_flex">
-														    <input class="input40 file_name fileLabel2" maxlength="50">
+														    <input class="input40 file_name fileLabel2" id="description2-1" maxlength="50">
 														    <div class="file_btn_wrap">
 														      <div style="display: flex">
 														        <div id="fileText3-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('2','1');return false;">파일 없음</div>
@@ -226,7 +260,7 @@
                                                                                                     
                                                        <div id="fileInfo3-1" class="ff_wrap fileInfo3">
 														  <div class="file_flex">
-														    <input class="input40 file_name fileLabel3" maxlength="50">
+														    <input class="input40 file_name fileLabel3" id="description3-1" maxlength="50">
 														    <div class="file_btn_wrap">
 														      <div style="display: flex">
 														        <div id="fileText3-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('3','1');return false;">파일 없음</div>
@@ -247,7 +281,7 @@
                                                          
                                                         <div id="fileInfo4-1" class="ff_wrap fileInfo4">
 														  <div class="file_flex">
-														    <input class="input40 file_name fileLabel4" maxlength="50">
+														    <input class="input40 file_name fileLabel4" id="description4-1" maxlength="50">
 														    <div class="file_btn_wrap">
 														      <div style="display: flex">
 														        <div id="fileText4-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('4','1');return false;">파일 없음</div>
@@ -318,6 +352,20 @@
         <script src="../../js/cities/content.js"></script>
         
         <script type="text/javascript">
+
+
+        
+    	const downloadButtons = document.querySelectorAll('.downloadButton');
+let contextPath = $("#contextPath").val();
+const downloadurl = contextPath + '/file/download';
+for (let i = 0; i < downloadButtons.length; i++) {
+	downloadButtons[i].addEventListener("click",
+			function(e) {
+				let seqNo = e.currentTarget.id;
+				window.location = downloadurl + "?seqNo=" + seqNo;
+			})
+};
+        
         
             function completeDecisionCities(){
             	let csrfToken = $("meta[name='_csrf']").attr("content");
@@ -354,6 +402,35 @@
             	}
 
             }
+            
+            
+            function triggerFileUpload(fileType, rank){
+            	
+            	console.log("triggerFileUpload start");
+
+    			
+    			let description = document.getElementById('description'+fileType+'-'+rank).value ;
+    			
+    			if(description.includes('-')){
+	        		alert('파일 설명란에 특수문자 -는 작성이 불가합니다.');
+	        		return false;
+	        	}
+	        	
+	        	if(description =='' || description == null){
+	        		alert('파일 설명란을 작성해주세요');
+	        		return false;
+	        	}
+    			
+	        	//파일 정보 데이터 세팅
+    			document.getElementById('fileSeq').name = 'file'+'-'+fileType+'-'+rank+'-'+description;
+    			console.log(document.getElementById('fileSeq').name);
+				
+    			fileType = fileType;
+    			rank = rank;
+    			    			
+
+            	$('#fileSeq').trigger('click');
+            	}
 
             $(document).ready(function () {
             	
@@ -364,11 +441,13 @@
                 //파일 용량 체크
                 let fileSize = 1024*1024*50;
 
-                //드라마 이미지
+                //파일 업로드
                 $('#fileSeq').on("change", function(){
+                
+
 
                 	let contextPath = $("#contextPath").val();
-                	let url = contextPath+"/uploadContentFile";
+                	let url = contextPath+"/uploadContentFile/cities";
                 	
                     let iSize = 0;
                     let total = $("#fileSeq")[0].files.length;
@@ -384,8 +463,14 @@
 
                     let fileName = $("#fileSeq")[0].files[0].name;
 
-                    let inputId = $("#fileSeq").attr("data-id");
-                    let inputRank = $('#fileSeq').attr('data-rank');
+
+	
+               
+
+                	
+                	
+                    
+                    
                     
                     if(iSize > fileSize) {
                         alert("선택한 파일 총용량은 50MB를 초과할 수 없습니다.");
@@ -404,16 +489,12 @@
                         },
                         success: function(data){
                         	
-                        	let fileInfo = data.fileInfo;
-                        	console.log(fileInfo);
+                        	console.log(data);
                         	
-                        	let getId = "#fileInfo"+inputRank+"-"+inputId;
-                        	
-                        	let seqNo = fileInfo.seqNo;
-                        	let fileNameOri = fileInfo.fileNameOri;
-                        	
-                        	$(getId).attr("data-seq",seqNo);
-                        	$(getId+">div").text(fileNameOri);
+                            //         let fileText = document.getElementById('fileText'+Number(fileType+1)+'-'+rank);
+            	            //	console.log(fileText);
+            	                //    fileText.innerText = fileName;
+            				
 
                         },
                         error: function(e) {

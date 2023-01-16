@@ -630,7 +630,9 @@ public class DecisionController {
         System.out.println(decison);
         
         int masterId = decison.getMasterID();
-        
+        System.out.println("master Id : :::: "+masterId);
+        model.addAttribute("masterId", masterId);        
+
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
         model.addAttribute("avo", applicationVo);        
         
