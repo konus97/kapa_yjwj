@@ -3,8 +3,21 @@
 <mapper namespace="egovframework.kapa.admin.mapper.AdminMapper">
 
 	<!--사용자 가져오기-->
-	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO">
+	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="egovframework.kapa.domain.Search">
         SELECT userId, userName, userAuthority, email, company, phoneNumber
+		FROM TB_User A
+		LEFT JOIN TB_Appraiser B
+		ON A.seqNo = B.userSeqNo
+		
+		ORDER BY seqNo DESC
+		
+		OFFSET (#{page}-1)* #{listSize} ROW
+		FETCH NEXT 10 ROW ONLY
+		
+    </select>
+	<!--총사용자 수 가져오기-->
+	<select id="getAllUserCnt" resultType="Integer">
+        SELECT COUNT(*)
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo

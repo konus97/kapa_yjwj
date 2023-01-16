@@ -10,7 +10,7 @@ import lombok.Data;
 public class User {
 
 	private Long seqNo;
-	private int userType;
+	private int userType;	// 1: 사업시행자, 2: 감정평가사, 3: 시군구
 	private String userId;
 	private String userPassword;
 	private String userAuthority;
@@ -19,5 +19,6 @@ public class User {
 	private LocalDateTime regdate;
 	private LocalDateTime uptdate;
 	private String userEnabled;
+	private String dept;	// 소속
 	
 }

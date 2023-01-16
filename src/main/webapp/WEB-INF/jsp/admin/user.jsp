@@ -191,39 +191,13 @@
 							<a href="${pageContext.request.contextPath}/admin/user_add.do"
 								class="fr btn t2 ico plus">회원추가</a>
 						</div>
+						
 
-						<%-- <jsp:include page="/WEB-INF/views/common/paging2.jsp" flush="true">
-                            <jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-                            <jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-                            <jsp:param name="startPageNo" value="${paging.startPageNo}" />
-                            <jsp:param name="pageNo" value="${paging.pageNo}" />
-                            <jsp:param name="endPageNo" value="${paging.endPageNo}" />
-                            <jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-                            <jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
-                            </jsp:include> --%>
-
-
-						<%-- <div class="paging">
-                                <div class="p_wrap">
-                                    <div id="p_prev" class="p_arrow prev">
-                                        <a
-                                            href="javascript:paging(${paginationInfo.currentPageNo-1})"><i>&lt;</i><span
-                                                class="blind">이전</span></a>
-                                    </div>
-                                    <div class="p_btn">
-                                        <ul class="pagination">
-                                            <ui:pagination paginationInfo="${paginationInfo}"
-                                                type="image" jsFunction="paging" />
-                                        </ul>
-                                    </div>
-
-                                    <div id="p_next" class="p_arrow next">
-                                        <a
-                                            href="javascript:paging(${paginationInfo.currentPageNo+1})"><span
-                                                class="blind">다음</span><i>&gt;</i></a>
-                                    </div>
-                                </div>
-                    </div> --%>
+						<div class="paging">
+							<div class="p_wrap" id="pageList">
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -245,7 +219,7 @@
 	<script>
 
 		$(document).ready(function () {
-			getUserList();
+			getUserList(1);
 		});
 
     </script>
