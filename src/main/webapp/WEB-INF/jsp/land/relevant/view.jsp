@@ -481,6 +481,12 @@
                 </div>
             </div>
             <hr />
+            <form name="siseSubForm" method="post" action="http://www.law.go.kr/DRF/lawService.do" target="law" accept-charset="euc-kr">
+				<input type="hidden" name="OC" value="jangok">
+				<input type="hidden" name="target" value="law">
+				<input type="hidden" name="ID" value="9411">
+				<input type="hidden" name="type" value="HTML">
+			</form>
             
 			<!-- footer start -->
             <jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
@@ -511,9 +517,104 @@
 		<script src="../js/common.js"></script>
 
         <script type="text/javascript">
-     
+        
+        var _cPage	= 1;		// 현재페이지
+        var _rows 	= 15;		// 페이지당 항목수
+        var _pager 	= new Pager("divPaginator", "_pager", 1);	// global로 선언해함.  패러미터 :  divPaginator(페이징 div id),  _pager(페이저 객체를 담는 object),  1 (페이저 객체 number)
+        
+        $(document).ready(function(){
+        	
+        	if(location.href.indexOf('https://land.seoul.go.kr:444/land/sltis/relationStatute.do') == 0) {
+        		window.location ='http://land.seoul.go.kr/land/sltis/relationStatute.do';
+        	  	return false;
+        	}
+        	
+        	searchPage(1);
+        	// 엔터키 누른경우
+        	$("#searchContent").keypress(function(e){
+        		if (e.keyCode == 13){
+        			searchPage(1);
+        			return false;
+        		}
+        	});
+        	$("#search").click(function(){searchPage(1);});
+        });
 
-            $(document).ready(function () {});
+
+        function searchPage(cPage){
+        	_cPage = cPage;
+        	getLawList(cPage);
+        }
+
+        function getLawList(pageNo){
+        	g3way.land.common.insertLog("", "11000", "", "relationStatute"); // 로그저장
+
+
+        	$.ajax({
+            	url: "/land/sltis/getLawList.do",
+        		type: "POST",
+        		dataType: "json",
+        		data: {
+        			search		: $("#searchContent").val()				// 검색어
+        			, rows		: _rows									// 페이지당 항목수
+        			, pageNo	: pageNo								// 페이지
+        		},
+        		cache: false,
+        		success: function(data, textStatus, XMLHttpRequest) {
+        			getLawListCallback(data, textStatus);
+        		},
+        		error: function(XMLHttpRequest, textStatus, errorThrown){
+        			getLawListCallback(XMLHttpRequest, textStatus);
+        		}
+        	});
+        }
+
+
+        //CALLBACK : 법령 리스트
+        function getLawListCallback(data, textStatus) {
+        	var htmlStr = "";
+        	if(data.result.length > 0) {
+        		$.each(data.result,function(index, list){
+        			htmlStr += "<tr>";
+        			htmlStr += "	<td align='center' width='60px'>" + g3way.land.common.maskFormat(list.seqNo) + "</td>";
+        			htmlStr += "	<td align='left' width='350px'><a href='javascript:goApi(\""+list.lawId+"\")' onclick='this.href' title='\""+list.lawNm+"\" 새창'>&nbsp;" + g3way.land.common.maskFormat(list.lawNm) + "</a></td>";
+        			htmlStr += "	<td align='center' width='100px'>" + g3way.land.common.maskFormat(list.deptNm) + "</td>";
+        			htmlStr += "	<td align='center' >" +g3way.land.common.maskFormat(list.bigo) + "</td>";
+        			htmlStr += "</tr>";
+        		});
+        		_pager.makePaging(_cPage, data.result[0].totalCount, _rows);
+        	} else {
+        		htmlStr = "<tr><td colspan='5'>조회된 내용이 없습니다.<\/td><\/tr>";
+        		_pager.makePaging(1, 0, _rows);
+        	}
+        	$("#divListBodyPc").html(htmlStr);
+        	$("#divListBodyMb").html(htmlStr);
+        }
+
+        function goApi(id){
+        	
+        	var form = document.siseSubForm;
+        	
+        	form.acceptCharset = 'utf-8';
+
+        	form.OC.value 		= "jangok";
+        	form.target.value 	= "law";
+        	form.ID.value 		= id;
+        	form.type.value 	= "HTML";
+
+        	if(document.all)document.charset = 'utf-8'; // 익스플로러에서는 이렇게 해줘야 됩니다. (버그성 이라고 하네여)
+
+        	var lawpopup = window.open("","law", "width=600,height=550,top=0,left=0");
+        	lawpopup.focus();
+            form.submit();
+
+            // 폼 전송을 새창으로 했을경우 기존 문자셋으로 되돌려 놓기 위한 처리입니다.
+            form.acceptCharset = 'euc-kr';
+            if(document.all)document.charset = 'euc-kr';
+            
+//         	var url="http://www.law.go.kr/DRF/lawService.do?OC=jangok&target=law&ID="+id+"&type=HTML";
+//         	window.open(url, 'law', 'width=600,height=550,top=0,left=0');
+        }
         </script>
     </body>
 </html>
