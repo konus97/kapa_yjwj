@@ -180,8 +180,10 @@ notice='';
 
             ownerOpinion = $("#ownerOpinion").val(ownerOpinion);
             executorOpinion = $("#executorOpinion").val(executorOpinion);
-            
-			if(addOpinionItemArray[i].opinionItemList != "undefined" || addOpinionItemArray[i].opinionItemList == ''){
+			
+			console.log(addOpinionItemArray[i].opinionItemList);
+			
+			if(addOpinionItemArray[i].opinionItemList != undefined){
             let opinionItemList = addOpinionItemArray[i].opinionItemList;      
            // console.log(opinionItemList.length);
             
@@ -193,9 +195,9 @@ notice='';
                resetOpinionItem(opinion);
                checkOpinionItem=true;
             }
-            }
+            
+}
          }
-         
       }
       
       if(checkOpinionItem==false){
