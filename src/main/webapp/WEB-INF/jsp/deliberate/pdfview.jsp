@@ -54,13 +54,14 @@
     </div>
     
     <!-- pdf 출력 영역 시작  -->
-	<div id="pdfWr" class="pdf_wr">
+	<div id="pdfWr" class="pdf_wr">	
+	
+		<c:forEach var="formatter" items="${formatterList}" varStatus="status">	
+		
 		<div class="pdf__page pdf__page--cover">
-			<h1 class="pdf__tit">노량진6재정비촉진구역 주택재개발정비사업(4차)</h1>
+			<h1 class="pdf__tit">${formatter.applicationDTO.judgBizNm}</h1>
 		</div>
 		
-		<c:forEach var="formatter" items="${formatterList}" varStatus="status">	
-			
 		<div class="pdf__page">
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">사업개요</h2>
