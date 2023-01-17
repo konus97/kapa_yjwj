@@ -399,10 +399,10 @@ public class FileController {
 		 * "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
 		 */
 		// for local
-		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
 		
 		// for server
-		//String filePath = "/usr/local/tomcat/webapps/download/";
+		String filePath = "/usr/local/tomcat/webapps/download/";
 
 		System.out.println("======================================================");
 		System.out.println(filePath);
