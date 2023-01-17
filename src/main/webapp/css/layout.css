@@ -2631,6 +2631,14 @@
     float: left;
     width: 100%;
 }
+#contents .c_board .cb_list .cbl_wrap_check {
+	position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
 #contents .c_board .cb_list .cbl_1 {
     display: inline-block;
     vertical-align: middle;
@@ -2658,7 +2666,7 @@
     height: auto;
     overflow: hidden;
     color: #222326;
-    text-align: left;
+    text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
@@ -2678,6 +2686,11 @@
     right: 0;
     top: 0;
     width: 200px;
+}
+#contents .c_board .cb_list .cbl_btn_wr {
+	margin-top: 50px;
+    display: flex;
+    justify-content: end;
 }
 #contents .c_board .cb_list .cbl_no {
     display: inline-block;

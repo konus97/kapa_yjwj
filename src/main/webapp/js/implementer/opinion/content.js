@@ -22,19 +22,21 @@ function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
       addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+"\" value=\""+getItem+"\"/> ");
       addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNm+"\" data-title=\"\" data-content=\"\">");   
       addList.push(" <div class=\"cbl_wrap\">");        
-		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\">");
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
       addList.push("       <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
        addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
        addList.push("      <div class=\"cbl_3\"> ");
        addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNm+"');return false;\" >의견을 작성해주세요</a>");
+       addList.push("  		</div>");
        addList.push("      <div id=\"owner"+getSeq+"-"+getItem+"\" class=\"cbl_4\"> 미작성 </div> ");
        addList.push("      <div id=\"operator"+getSeq+"-"+getItem+"\" class=\"cbl_5\"> 미작성 </div> ");
-	   addList.push("      </div> ");
-addList.push("          <button class=\"btn nohover\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
-   	   addList.push("          	복사</button>");
-	   addList.push("          <button class=\"btn nohover\" onclick=\"opinionRemove('"+getId+"');return false;\">");
-   	   addList.push("          	삭제</button>");
        addList.push("      <div id=\"fileCount"+getSeq+"-"+getItem+"\" class=\"cbl_4\"></div>");
+       addList.push("   </div>");
+       addList.push(" 	<div class=\"cbl_btn_wr\">");     
+	   addList.push("          <button class=\"btn nohover t4\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+   	   addList.push("          	복사</button>");
+	   addList.push("          <button class=\"btn nohover t1\" onclick=\"opinionRemove('"+getId+"');return false;\">");
+   	   addList.push("          	삭제</button>");
        addList.push("   </div>");
        addList.push("</li>");
       
