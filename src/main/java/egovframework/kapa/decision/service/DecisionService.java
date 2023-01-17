@@ -211,6 +211,9 @@ public class DecisionService {
         LocalDateTime today = LocalDateTime.now();
         
         for (Decision decision : decisionList) {
+        	System.out.println("====================================================");
+        	System.out.println(decision);
+        	System.out.println("====================================================");
 
         	//공고 상태
         	 int decisionState = decision.getDecisionState();
@@ -296,9 +299,17 @@ public class DecisionService {
                 noticeFileCount = decisionMapper.getDecisionFileCnt(viewSeq);
                 
                 //시 안건 파일
-                cityFileCount = decisionMapper.getDecisionCityFileCnt(viewSeq);
+                cityFileCount = decisionMapper.getDecisionCityFileCnt(decision.getMasterID());
                 
-              
+                
+           //     citesFileCount = decisionMapper.getCitesFileCount(decesion.)
+                
+                
+                
+				/*
+				 * getDecisionView 로 seqNo 193으로 masterId 가지고 옴 select count(*) from
+				 * dbo.TB_Decision_File_Cites where decisionId = #{masterId}
+				 */
                 
              }
             
@@ -319,6 +330,8 @@ public class DecisionService {
             announcementDTO.setCheckExpriryDate(checkExpriryDate);
             announcementDTO.setDecisionStateStr(decisionStateStr);
             announcementDTO.setDecisionState(decisionState);
+            //회보 첨부파일 수
+           // announcementDTO.setFileSeqNo(citesFileCount);
             
             System.out.println(announcementDTO);
             

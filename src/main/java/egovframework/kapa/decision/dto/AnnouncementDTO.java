@@ -45,4 +45,6 @@ public class AnnouncementDTO{
     
     private int agendaState;
     
+    private int fileSeqNo;
+    
 }
