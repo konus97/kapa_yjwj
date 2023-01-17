@@ -82,7 +82,7 @@ if(decisionState == 4){
     addList.push("  <td >");
     addList.push("      <strong>회보첨부파일</strong>");
 
-	if(cityFileCount>0){
+/*	if(cityFileCount>0){
 		addList.push("<span>");
 	    addList.push("      <button class=\"btn small02 t1 nohover\">");
    	 	addList.push("             <i class=\"icon download\"></i>");
@@ -90,10 +90,18 @@ if(decisionState == 4){
 	    addList.push("      <button class=\"btn small02 t1 nohover\">");
 	    addList.push("</span>");
 	}else{
-	    addList.push("      <span>-</span>");
-	}
-	
-    addList.push("  </td>");
+	  
+	}*/
+	if(cityFileCount ==0){
+	  addList.push("      <span>-</span>");
+   }else{
+	addList.push("<span>");
+ 	addList.push("    	<button class=\"btn small02 t1 nohover\" onclick=\"goCites('"+decisionId+"');return false;\">");
+   	 	addList.push("             <i class=\"icon download\"></i>");
+    	addList.push("      </button>");
+	    addList.push("</span>");
+}
+ addList.push("  </td>");
 
     addList.push("  <td>");
     addList.push("      <strong>연람공고 만료일</strong>");
@@ -129,4 +137,11 @@ if(decisionState == 4){
 	$("#contentList").append(addList.join(''));
 
 }
+
+function goCites(decisionId){
+			let contextPath = $("#contextPath").val();
+			url = contextPath+"/cities/announcement/view.do?decisionId="+decisionId;
+			location.href = url;
+}
+
 

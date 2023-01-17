@@ -14,11 +14,13 @@ function makeDecisionAnnouncementBlock(num,info) {
 	let docTitle = info.docTitle;
 	let receiver = info.receiver;
 	let newsletterDay = info.newsletterDay;
+	let cityFileCount = info.cityFileCount;
 	
 	let requestStartDate = info.requestStartDate;
 	
 	let decisionStateStr = info.decisionStateStr;
 	let decisionState = info.decisionState;
+
 	
 	let addList = new Array();
 	
@@ -69,10 +71,14 @@ function makeDecisionAnnouncementBlock(num,info) {
     addList.push("   <td>");
     addList.push("       <strong>회보첨부파일</strong>");
     addList.push("   <span>");
+if(decisionState ==2 || cityFileCount==0){         
 	addList.push("         - ");
-    //addList.push("    	<button class=\"btn small02 t1 nohover\" >");
-    //addList.push("    	<i class=\"icon download\"></i>");
-    addList.push("    </button>");
+  }else{
+ addList.push("    	<button class=\"btn small02 t1 nohover\" onclick=\"goCites('"+decisonId+"');return false;\">");
+ addList.push("    	<i class=\"icon download\"></i>");
+ addList.push("    </button>");	
+}
+   
     addList.push("   </span>");
     addList.push("   </td>");
 
@@ -100,5 +106,11 @@ function makeDecisionAnnouncementBlock(num,info) {
 
 	$("#contentList").append(addList.join(''));
 
+}
+
+function goCites(decisonId){
+			let contextPath = $("#contextPath").val();
+			url = contextPath+"/cities/announcement/view.do?decisionId="+decisonId;
+			location.href = url;
 }
 

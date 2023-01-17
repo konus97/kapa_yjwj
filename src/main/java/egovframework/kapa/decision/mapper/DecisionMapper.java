@@ -58,7 +58,7 @@ public interface DecisionMapper {
 	
 	List<Decision_ConsultationDate> getConsultationDate(Long decisionId);
 	
-	int getDecisionCityFileCnt(Long decisionId);
+	int getDecisionCityFileCnt(int decisionId);
 
 	void insertDecisionFile(Decision_File file);
 	
