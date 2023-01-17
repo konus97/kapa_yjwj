@@ -316,14 +316,14 @@
                                     <thead>
                                         <tr>
                                             <th>연번</th>
-                                            <th>접수일</th>
+                                            <!-- <th>접수일</th> -->
                                             <th>심의 일자</th>
                                             <th>사업명</th>
-                                            <th>심의번호</th>
-                                            <th>차수</th>
-                                            <th>진행상황</th>
+                                            <!-- <th>심의번호</th> -->
+                                            <th>심의차수</th>
+                                            <!-- <th>진행상황</th> -->
                                             <th style="min-width:300px">심사 진행</th>
-                                            <th>심사</th>
+                                            <!-- <th>심사</th> -->
                                         </tr>
                                     </thead>
                                     <tbody id="contentList">
@@ -344,13 +344,15 @@
                                         <tr>
                                             <th>연번</th>
                                             <th>접수일</th>
-                                            <th>재결기관</th>
+                                            <!-- <th>재결기관</th>
                                             <th>담당자</th>
-                                            <th>사업시행자</th>
+                                            <th>사업시행자</th> -->
                                             <th>사건번호</th>
-                                            <th>사업명</th>
+                                            <th>심의차수</th>
+                                            <th>심의안 보기</th>
+                                            <!-- <th>사업명</th>
                                             <th>소재지</th>
-                                            <th>담당법인</th>
+                                            <th>담당법인</th> -->
                                             <th>심사결과</th>
                                         </tr>
                                     </thead>

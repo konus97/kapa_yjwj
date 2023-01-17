@@ -18,10 +18,10 @@ function makeDeliberateBlock(num,info) {
 	addList.push("  <th>");
 	addList.push("      <strong>"+num+"</strong>");
 	addList.push("   </th>");
-	addList.push("  <td>");
+	/*addList.push("  <td>");
 	addList.push("       <strong>접수일</strong>");
 	addList.push("      <span></span>");
-	addList.push("  </td>");
+	addList.push("  </td>");*/
 	addList.push(" <td>");
 	addList.push("     <strong>심의일자</strong>");
 	addList.push("     <span>"+consultationDate+"</span>");
@@ -30,18 +30,18 @@ function makeDeliberateBlock(num,info) {
 	addList.push("     <strong>사업명</strong>");
 	addList.push("     <span>"+title+"</span>");
 	addList.push("	</td>");
-	addList.push("<td>");
+	/*addList.push("<td>");
 	addList.push("    <strong>심의번호</strong>");
 	addList.push("     <span></span>");
-	addList.push(" </td>");
+	addList.push(" </td>");*/
 	addList.push(" <td>");
 	addList.push("     <strong>차수</strong>");
 	addList.push("     <span></span>");
 	addList.push(" </td>");
-	addList.push("  <td>");
+	/*addList.push("  <td>");
 	addList.push("     <strong>진행상황</strong>");
 	addList.push("      <span>심사대기</span>");
-	addList.push("  </td>");
+	addList.push("  </td>");*/
 	addList.push(" <td>");
 	addList.push("     <strong>심사진행</strong>");
 	addList.push("     <span>");
@@ -49,27 +49,30 @@ function makeDeliberateBlock(num,info) {
 	addList.push("           href=\"#\" onclick=\"goToDeliberateView('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
 	addList.push("             >보기</a >");
-	addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
+	/*addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
-	addList.push("         </button>");
+	addList.push("         </button>");*/
 	/*addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"ebookViewOpen('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
 	addList.push("             >E-Book</a >");*/
-	addList.push("         <a");
+	/*addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >다운로드</a >");	
+	addList.push("             >다운로드</a >");*/
 /*	addList.push("       <button class=\"btn small\">");
 	addList.push("           다운로드");
 	addList.push("        </button>");*/
-	addList.push("    </span>");
-	addList.push("  </td>");
-	addList.push("  <td>");
 	addList.push("      <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
 	addList.push("          심사하기");
 	addList.push("     </button>");
-	addList.push("   </td>");
+	addList.push("    </span>");
+	addList.push("  </td>");
+	/*addList.push("  <td>");
+	addList.push("      <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
+	addList.push("          심사하기");
+	addList.push("     </button>");
+	addList.push("   </td>");*/
     addList.push(" </tr>");
 
 	$("#contentList").append(addList.join(''));
@@ -107,7 +110,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("    <strong>접수일</strong>");
 	addList.push("    <span>"+recvDt+"</span>");
 	addList.push("</td>");
-	addList.push("<td>");
+	/*addList.push("<td>");
 	addList.push("    <strong>재결기관</strong>");
 	addList.push("    <span>");
 	addList.push(judgDivName);
@@ -120,12 +123,32 @@ function makeAgendaDetail(num,info) {
 	addList.push("<td>");
 	addList.push("    <strong>사업시행자</strong>");
 	addList.push("    <span>-</span>");
-	addList.push("</td>");
+	addList.push("</td>");*/
 	addList.push("<td>");
 	addList.push("    <strong>사건번호</strong>");
 	addList.push("    <span>"+caseNo+"</span>");
 	addList.push("</td>");
 	addList.push("<td>");
+	addList.push("    <strong>심의차수</strong>");
+	addList.push("    <span>"+ +"</span>");
+	addList.push("</td>");
+	addList.push("<td>");
+	addList.push("    <strong>심의안 보기</strong>");
+	addList.push("    <span>");
+	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
+	addList.push("            심사하기");
+	addList.push("         </button>");
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"ebookViewOpen('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >E-Book</a >");
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >다운로드</a >");
+	addList.push("    </span>");
+	addList.push("</td>");
+	/*addList.push("<td>");
 	addList.push("    <strong>사업명</strong>");
 	addList.push("    <span>");
 	addList.push("	 	<span><a href=\"#\"  onclick=\"goToDeliberateDetail('"+seqNo+"');return false;\" >"+title+"</a></span>");
@@ -139,16 +162,14 @@ function makeAgendaDetail(num,info) {
 	addList.push("<td>");
 	addList.push("    <strong>담당법인</strong>");
 	addList.push("    <span>-</span>");
-	addList.push("</td>");
+	addList.push("</td>");*/
 	addList.push("<td>");
 	addList.push("    <strong>심사결과</strong>");
-	addList.push("   <button class=\"btn small t4\">");
-	addList.push("   	    승인");
-	addList.push("    </button>");
-	addList.push("   <button class=\"btn small t4\">");
-	addList.push("   	    반려");
-	addList.push("    </button>");
-
+	addList.push("    <span>");
+	addList.push("         <button class=\"btn large t1\" onclick=\"\">");
+	addList.push("            승인 : 2명, 반려 : 1명");
+	addList.push("         </button>");
+	addList.push(" 	  </span>");
 	addList.push("</td>");
 	addList.push("</tr>");
 	
