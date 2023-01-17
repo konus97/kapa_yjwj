@@ -408,9 +408,10 @@ let newSeq = getType + '-0';
    addList.push("          <button class=\"btn nohover\" onclick=\"hwpDownload('"+getType+"');return false;\">"); //추가
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
-   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+getType+"');return false;\" >");
+//임시 주석
+/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+getType+"');return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 파일추가");
-   addList.push("           </button>");
+   addList.push("           </button>");*/
 /*
    addList.push("           <button class=\"btn nohover t1\" onclick=\"removeOpinionItem('"+popupOpinion+"');return false;\" >");
    addList.push("               <i class=\"close icon\"></i> 삭제");
@@ -656,10 +657,10 @@ notice='';
    addList.push("          <button class=\"btn nohover\" onclick=\"hwpDownload('"+opinionSeq+"');return false;\">"); //추가
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
-//파일추가
-   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+opinionSeq+"');return false;\" >");
+//파일추가 임시 주석
+/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+opinionSeq+"');return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 파일추가");
-   addList.push("           </button>");
+   addList.push("           </button>");*/
 /*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 추가");
    addList.push("           </button>");
