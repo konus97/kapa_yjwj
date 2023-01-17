@@ -1,26 +1,27 @@
 let popupOpinion = 2;
 let addOpinionItemArray = new Array();
+var valueArr = new Array();
 
 function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
    
 
-console.log("Start"+ownrNm);
    let opCount = $(".opinion"+getSeq).length+1;
    
    let getId = "#opinion"+getSeq+"-"+getItem;
    
    
-   if($(getId).length>0){
-      $(getId).remove();
-   }else{
+  // if($(getId).length>0){
+  //    $(getId).remove();
+ //  }else{
       console.log($(getId).length);
       
       let addList = new Array();
        
       addList.push("      <input type=\"hidden"+"\" id=\"seqNum"+"\" value=\""+getSeq+"\"/> ");
       addList.push("      <input type=\"hidden"+"\" id=\"itemNum"+"\" value=\""+getItem+"\"/> ");
-      addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" data-title=\"\" data-content=\"\">");   
+      addList.push("<li class=\"opinionGet opinion"+getSeq+"\" id=\"opinion"+getSeq+"-"+getItem+"\" data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNm+"\" data-title=\"\" data-content=\"\">");   
       addList.push(" <div class=\"cbl_wrap\">");        
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\">");
       addList.push("       <div class=\"cbl_1 resetSeq"+getItem+"\">"+opCount+"</div>"); 
        addList.push("      <div class=\"cbl_2\">"+getItem+"-"+getTitle+"</div>");
        addList.push("      <div class=\"cbl_3\"> ");
@@ -28,6 +29,10 @@ console.log("Start"+ownrNm);
        addList.push("      <div id=\"owner"+getSeq+"-"+getItem+"\" class=\"cbl_4\"> 미작성 </div> ");
        addList.push("      <div id=\"operator"+getSeq+"-"+getItem+"\" class=\"cbl_5\"> 미작성 </div> ");
 	   addList.push("      </div> ");
+addList.push("          <button class=\"btn nohover\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+   	   addList.push("          	복사</button>");
+	   addList.push("          <button class=\"btn nohover\" onclick=\"opinionRemove('"+getId+"');return false;\">");
+   	   addList.push("          	삭제</button>");
        addList.push("      <div id=\"fileCount"+getSeq+"-"+getItem+"\" class=\"cbl_4\"></div>");
        addList.push("   </div>");
        addList.push("</li>");
@@ -40,13 +45,20 @@ console.log("Start"+ownrNm);
        }
        
 
-   }   
+  // }   
    
     resetSeq(getSeq);
   
 }
 
 
+function opinionRemove(getId){	
+	$(getId).remove();
+}
+
+function opinionContentCopy(){
+	
+}
 
 function resetSeq(getSeq){
    
@@ -62,20 +74,6 @@ function resetSeq(getSeq){
 }
 
 function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
-   /*var seqNum = document.getElementById("seqNum").value;
-   var itemNum = document.getElementById("itemNum").value;
-   if(document.getElementById("editor1") != '' || document.getElementById("editor1") != null){
-   console.log("hi1");
-   var editorId_1 = "editor1_"+seqNum+"-"+itemNum;
-   document.querySelector('#editor1').setAttribute("id", editorId_1);
-   
-   }
-   if(document.getElementById("editor2") != '' || document.getElementById("editor2") != null){
-      console.log("hi2");
-   var editorId_2 = "editor2_"+seqNum+"-"+itemNum;
-   
-   document.querySelector('#editor2').setAttribute("id", editorId_2);
-   }*/
    $(".resetPopupVal").val('');
    $("#popupOpinionItemList").empty();
    
@@ -172,8 +170,7 @@ notice='';
          let reptSeq = addOpinionItemArray[i].reptSeq;
          let type = addOpinionItemArray[i].type;
 		 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq; 
-		 let ownrNm  = addOpinionItemArray[i].ownrNm;    
-			console.log(ownrNm);
+		 let ownrNm  = addOpinionItemArray[i].ownrNm;
          if(getSeq==reptSeq&&getType==type){
             
             let ownerOpinion = addOpinionItemArray[i].ownerOpinion;
@@ -183,8 +180,10 @@ notice='';
             ownerOpinion = $("#ownerOpinion").val(ownerOpinion);
             executorOpinion = $("#executorOpinion").val(executorOpinion);
             
+			console.log(addOpinionItemArray[i].opinionItemList);
+			if(addOpinionItemArray[i].opinionItemList == "undefined" || addOpinionItemArray[i].opinionItemList == ''){
             let opinionItemList = addOpinionItemArray[i].opinionItemList;      
-            console.log(opinionItemList.length);
+           // console.log(opinionItemList.length);
             
             $("#popupOpinionItemList").empty();
             
@@ -194,7 +193,7 @@ notice='';
                resetOpinionItem(opinion);
                checkOpinionItem=true;
             }
-            
+            }
          }
          
       }
@@ -220,6 +219,9 @@ document.getElementById('reptOwnerSeq').value = reptOwnrSeq;
 
    
 }
+
+
+
 
 function submitOwnerOpinion(){
 
@@ -305,6 +307,79 @@ function submitOwnerOpinion(){
    
 }
 
+/*function searchSeq(element,getSeq,getItem){
+	console.log(getItem);
+	var seqNo = getItem.reptSeq;
+	var itemNo = getItem.type;
+	console.log(seqNo);
+	console.log(itemNo);
+	if(element.reptSeq === seqNo && element.type === itemNo){
+		return true;
+	}
+	
+}*/
+
+function checkSelectedValue(getSeq,getItem){
+	var list = $("input[name='chk_list']");
+	console.log("list.lenght" + list.length);
+	for(var i = 0; i < list.length; i++){
+		if(list[i].checked){
+		valueArr.push(list[i].value);
+		console.log(valueArr[i]);  //opinion13384623-22
+		}
+	}
+	var content1 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).ownerOpinion;
+	var content2 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).executorOpinion;
+	console.log(content1);
+	console.log(content2);
+	// 복사 대상 컨텐츠 받는 부븐 끝
+	
+	// 복사 로직 시작
+	for(var i = 0; i < valueArr.length; i++){
+	console.log(valueArr[i]);
+	let getCopySeq = $('#'+valueArr[i]).attr("data-seq");
+    let getCopyType = $('#'+valueArr[i]).attr("data-type");
+    let reptOwnrSeq = $('#'+valueArr[i]).attr("reptOwnrSeq");
+    let ownrNm = $('#'+valueArr[i]).attr("ownrNm");
+	console.log(getCopySeq);
+	console.log(getCopyType);
+	console.log(reptOwnrSeq);
+	console.log(ownrNm);
+	
+	let ownerOpinion = content1
+    let executorOpinion = content2
+	
+	let sub = new Object();
+    sub['reptSeq'] = getCopySeq;
+    sub['type'] = getCopyType;
+    sub['ownerOpinion'] = content1;
+    sub['executorOpinion'] = content2;
+    sub['reptOwnrSeq'] = reptOwnrSeq;
+    sub['ownrNm'] = ownrNm;
+
+if(addOpinionItemArray.length>0){
+      for ( let i = 0; i < addOpinionItemArray.length; i++) {
+         
+         let reptSeq = addOpinionItemArray[i].reptSeq;
+         let type = addOpinionItemArray[i].type;
+         let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;
+		 let ownrNm = addOpinionItemArray[i].ownrNm;
+         if(getCopySeq==reptSeq&&getCopyType==type){            
+            addOpinionItemArray.splice(i, 1);
+         }
+         
+      }
+   }
+   
+   addOpinionItemArray.push(sub);
+   
+   console.log(addOpinionItemArray);
+
+	// 미작성 -> 작성
+	document.getElementById('owner'+getCopySeq+'-'+getCopyType).innerText = '작성';
+	document.getElementById('operator'+getCopySeq+'-'+getCopyType).innerText = '작성';
+	}
+}
 function closeOwnerOpinion(){
    
    $("#opinionTitle").val("");

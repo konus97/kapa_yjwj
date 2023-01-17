@@ -32,8 +32,8 @@ function getDecisionOpinionInfo(info) {
     addList.push("      <div class=\"cbl_3\"> ");
     addList.push("       	<a href=\"#\" id=\"opinionTitle"+seqNo+"-"+opinionType+"\" onclick=\"openOpinionViewPopup('"+seqNo+"','"+reptSeq+"');return false;\" >상세정보</a>");
     addList.push("      </div> ");
-    addList.push("      <div id=\"fileCount"+seqNo+"-"+opinionType+"\" class=\"cbl_4\">"+ownerOpinion+"</div>");
-    addList.push("      <div id=\"fileCount"+seqNo+"-"+opinionType+"\" class=\"cbl_5\">"+executorOpinion+"</div>");
+    addList.push("      <div id=\"fileCount"+seqNo+"-"+opinionType+"\" class=\"cbl_4\">작성</div>");
+    addList.push("      <div id=\"fileCount"+seqNo+"-"+opinionType+"\" class=\"cbl_5\">작성</div>");
     addList.push("   </div>");
     addList.push("</li>");
     
