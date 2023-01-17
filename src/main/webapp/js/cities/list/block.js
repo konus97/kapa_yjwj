@@ -59,15 +59,15 @@ if(decisionState == 4){
     addList.push("  <td>");
     addList.push("      <strong>의뢰문서파일</strong>");
 
-	if(noticeFileCount>0){
-		addList.push("<span>");
-	    addList.push("      <button class=\"btn small02 t1 nohover\">");
+	if(noticeFileCount==0){
+		  addList.push("      <span>-</span>");
+		
+	}else{
+	  addList.push("<span>");
+ 	addList.push("    	<button class=\"btn small02 t1 nohover\" onclick=\"goCites('"+decisionId+"');return false;\">");
    	 	addList.push("             <i class=\"icon download\"></i>");
     	addList.push("      </button>");
-	    addList.push("      <button class=\"btn small02 t1 nohover\">");
 	    addList.push("</span>");
-	}else{
-	    addList.push("      <span>-</span>");
 	}
 	
     addList.push("  </td>");

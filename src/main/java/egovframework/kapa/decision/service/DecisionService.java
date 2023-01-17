@@ -296,7 +296,7 @@ public class DecisionService {
                 }
                 
                 //열림안건 파일
-                noticeFileCount = decisionMapper.getDecisionFileCnt(viewSeq);
+                noticeFileCount = decisionMapper.getDecisionFileCnt(decision.getMasterID());
                 
                 //시 안건 파일
                 cityFileCount = decisionMapper.getDecisionCityFileCnt(decision.getMasterID());

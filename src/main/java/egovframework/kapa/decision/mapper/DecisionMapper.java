@@ -44,7 +44,7 @@ public interface DecisionMapper {
 
 	int getDecisionAnnouncementCnt(Search search);
 	
-	int getDecisionFileCnt(Long decisionId);
+	int getDecisionFileCnt(int decisionId);
 	
 	Decision getDecisionView(Long decisionId);
 	
