@@ -406,10 +406,26 @@
 	                                </table>
                                </div>
 
+
+                            <!-- 목차 시작 -->
+                            <div class="opinion_index_wr">
+                                <h4 class="title t1 bold s1">
+                                  	 목차
+                                </h4>
+	                            <ul class="opinion_index_list">
+	                            <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+	                            	<li>
+	                            		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
+	                            	</li>
+	                            </c:forEach>
+	                            </ul>
+                            </div>
+                            <!-- 목차 끝 -->
+                            
 							<!-- 1. 지연가산금 S -->
 							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
 								</div>
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
@@ -641,20 +657,23 @@
 											<table class="mt40">
 												<tbody>
 													<tr>
-														<th class="info_reg_th">제목</th>
+														<th class="info_reg_th">소재지</th>
 														<td><p class="">${deliberateOpinionItemDTO.title}</p></td>
 													</tr>
 													<tr>
-														<th class="info_reg_th">내용
-														</th>
+														<th class="info_reg_th">이전비 평가사유</th>
 														<td><p class="">${deliberateOpinionItemDTO.content}</p></td>
 													</tr>
-												<!-- 	<tr>
-														<th class="info_reg_th">관련자료</th>
-														<td class=""><img
+													<tr>
+														<th class="info_reg_th" colspan="2">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="2">
+															<img
 															src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
-															alt=""></td>
-													</tr> -->
+															alt="">
+														</td>
+													</tr>
 												</tbody>
 											</table>
 										</div>
@@ -691,7 +710,7 @@
 
 		</div>
 
-
+	</div>
 		<!-- join popup S -->
 		<jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">
 			<jsp:param name="login" value="login" />
@@ -758,6 +777,17 @@
 				$('#totalConfer2').text(landArea);
 				$('#totalConfer3').text(totalPrice);
 
+			});
+			
+			
+			//목차 스크롤
+			
+			$('.opinion_index_list a').click(function() {
+				var id = $(this).attr("href");
+				var offset = 200;
+				var target = $(id).offset().top - offset;
+				$('html, body').animate({scrollTop:target}, 500);
+				event.preventDefault();
 			});
 
 });
