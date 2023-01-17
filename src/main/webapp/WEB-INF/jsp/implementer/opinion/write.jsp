@@ -1,6 +1,9 @@
-<%@	page contentType="text/html;charset=utf-8" language="java"
-	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@	page contentType="text/html;charset=utf-8" language="java" pageEncoding="utf-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ include file="/WEB-INF/jsp/components/temp_session.jsp"%> 
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -52,8 +55,9 @@
 
 		<input type="hidden" class="form-control wd-100p" id="reptSeq" name="0">
 		<input type="hidden" class="form-control wd-100p" id="reptOwnerSeq" name="0">
-	<input type="hidden" name="decisionId" id="decisionId"
-		value="${decisionId}">
+		<input type="hidden" class="form-control wd-100p" id="fileCount" value="0">
+		
+	<input type="hidden" name="decisionId" id="decisionId"value="${decisionId}">
 	<input type="hidden" name="masterId" id="masterId" value="${masterId}">
 
 	<div id="wrap">
@@ -748,7 +752,7 @@
         	let opinionItemList = new Array();
         
 	        function triggerFileUpload(){
-	        	if(document.getElementById('description').value.includes('-')){
+	        /* 	if(document.getElementById('description').value.includes('-')){
 	        		alert('파일 설명란에 특수문자 -는 작성이 불가합니다.');
 	        		return false;
 	        	}
@@ -758,7 +762,10 @@
 	        		return false;
 	        	}else{
 	        	$('#fileSeq').trigger('click');
-	        	}
+	        	} */
+	        	
+	        	$('#fileSeq').trigger('click');
+
 	        	}
 	        function triggerFileUploadPDF(){
 
@@ -889,7 +896,7 @@
 
                 //파입 업로드
                 $('#fileSeq').on("change", function(){
-                	
+
                 	let csrfToken = $("meta[name='_csrf']").attr("content");
             		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
@@ -912,6 +919,10 @@
                     
                     let inputPosition = $('#fileSeq').attr('data-position');
                     let inputId = $('#fileSeq').attr('data-id');
+                    
+                    console.log(inputPosition);
+                    console.log(inputId);
+
 
                 	
                     let fullId = inputPosition+"-"+inputId;
@@ -1001,7 +1012,10 @@
 					
 					let description = document.getElementById('description').value;
 					
-					document.getElementById('fileSeq').name = 'fileInput'+seq+'-0-'+description+'-'+reptSeq+'-'+reptSeqOwner;
+					//java에 순서를 정해주는 내용을 추가할 필요가 있음 (rank) 가 지금 0으로 하드코딩 되어있음
+					let rank = document.getElementById('fileCount').value;
+					
+					document.getElementById('fileSeq').name = 'fileInput'+seq+'-'+rank+'-'+description+'-'+reptSeq+'-'+reptSeqOwner;
 					 
 					console.log(document.getElementById('fileSeq'));
 
@@ -1022,24 +1036,33 @@
                         },
                         success: function(data){
                         	console.log(data);
-                        	
+                        	console.log(document.getElementById('fileSeq').name);
                         	let seq = document.getElementById('fileSeq').name.substring(9,11);
-                        	seq = parseInt(seq)-1;
+                        	let newseq = parseInt(seq);
+                        	let rank = Number(data.rank);
+                        	rank = parseInt(rank);
                         	let fileNameOri = data.fileNameOri;
-                        	                        	
-                        
-							
-							
+                        	                        			
 							console.log(seq);
 							console.log(fileNameOri);
 							console.log(fileNameOri.slice(-3));
-                        	let newseq = seq+1;
+                    
                         	if(! fileNameOri.includes('pdf')){
                         		console.log('false pdf');
-                        	document.getElementById('popupOpinionItemFile'+newseq).innerText = fileNameOri;
+                        		//첨부파일 업로드 완료 후 지정되기 때문에 java에 던질 때 어떻게 던지냐가 중요함
+                        		console.log("newseq :::>"+newseq);
+                        		console.log("rank :::>"+rank);
+								try{
+                        		console.log(document.getElementById('popupOpinionItemFile'+newseq+'-'+rank));
+                        		document.getElementById('popupOpinionItemFile'+newseq+'-'+rank).innerText = fileNameOri;
+								}catch(error){
+									rank = rank-1;
+	                        		document.getElementById('popupOpinionItemFile'+newseq+'-'+rank).innerText = fileNameOri;
+
+								}
                         	}else{
                         		console.log('true pdf');
-
+							console.log(newseq);
                         	document.getElementById('popupOpinionItemFilePDF'+newseq).innerText = fileNameOri;	
                         	}
                      /*    	$("#fileInfo"+fullId).attr("data-seq",newseq);

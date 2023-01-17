@@ -489,7 +489,13 @@ for (let i = 0; i < downloadButtons.length; i++) {
                         },
                         success: function(data){
                         	
-                        	console.log(data);
+                        	let filename = data.name;
+                        	console.log(name);
+                        	let typeAndRank = data.typeAndRank;
+                        	let seq = Number(typeAndRank.substring(0,1))+1;
+                        	let rank = Number(typeAndRank.substring(2,3));
+                        	
+                        	document.getElementById('fileText'+seq+'-'+rank).innerText = filename;
                         	
                             //         let fileText = document.getElementById('fileText'+Number(fileType+1)+'-'+rank);
             	            //	console.log(fileText);
