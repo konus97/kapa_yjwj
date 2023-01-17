@@ -133,6 +133,12 @@ function makeAgendaDetail(num,info) {
 	addList.push("    <span>"+ +"</span>");
 	addList.push("</td>");
 	addList.push("<td>");
+	addList.push("    <strong>사업명</strong>");
+	addList.push("    <span>");
+	addList.push("	 	<span><a href=\"#\"  onclick=\"goToDeliberateDetail('"+seqNo+"');return false;\" >"+title+"</a></span>");
+	addList.push(" 	  </span>");
+	addList.push("</td>");
+	addList.push("<td>");
 	addList.push("    <strong>심의안 보기</strong>");
 	addList.push("    <span>");
 	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
@@ -149,12 +155,6 @@ function makeAgendaDetail(num,info) {
 	addList.push("    </span>");
 	addList.push("</td>");
 	/*addList.push("<td>");
-	addList.push("    <strong>사업명</strong>");
-	addList.push("    <span>");
-	addList.push("	 	<span><a href=\"#\"  onclick=\"goToDeliberateDetail('"+seqNo+"');return false;\" >"+title+"</a></span>");
-	addList.push(" 	  </span>");
-	addList.push("</td>");
-	addList.push("<td>");
 	addList.push("    <strong>소재지</strong>");
 	addList.push("    <span>"+reptLoc+"</span");
 	addList.push("    >");

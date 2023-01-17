@@ -2691,6 +2691,8 @@
 	margin-top: 50px;
     display: flex;
     justify-content: end;
+    padding-top:15px;
+    border-top:1px solid #eee;
 }
 #contents .c_board .cb_list .cbl_no {
     display: inline-block;
