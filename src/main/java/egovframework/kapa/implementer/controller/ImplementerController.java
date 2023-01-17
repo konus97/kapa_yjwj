@@ -289,7 +289,10 @@ public class ImplementerController {
 	@GetMapping("/opinion/write.do")
 	public String opinionDetail(HttpServletRequest request,Model model) {
 	  	boolean opinionCheck = true;
-	  	
+	  	System.out.println("============================================");
+	  	System.out.println(request.getParameter("decisionId"));
+	  	System.out.println("============================================");
+
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);

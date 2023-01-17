@@ -210,6 +210,7 @@ public class FileController {
 		
 		// 시군구 열람공고 등록 첨부파일 업로드
 				@RequestMapping(value = "/uploadContentFile/cities", method = RequestMethod.POST)
+				@ResponseBody
 				public Map<String,Object> uploadCitiesFile(MultipartHttpServletRequest req) throws Exception {
 					 System.out.println("===============시군구 열람공고 등록 첨부파일 업로드===============");
 					req.setCharacterEncoding("UTF-8");
@@ -251,7 +252,7 @@ public class FileController {
 								String typeAndRank = fileName.substring(5);
 								
 								System.out.println("====================================================================");
-								System.out.println(typeAndRank); //-2-1-ff
+								System.out.println(typeAndRank); 
 								System.out.println("====================================================================");
 
 								
@@ -276,6 +277,7 @@ public class FileController {
 								citesFile.setFileDescription(typeAndRank.split("-")[2]);
 								decisionService.insertCitesFile(citesFile);
 								// decisionFile -> 열람공고 바라보는 파일 확인 해야함 
+								resultFinal.put("name", getFileInfo.getFileNameOri());
 								resultFinal.put("typeAndRank", typeAndRank);
 							} 
 						}
@@ -330,14 +332,21 @@ public class FileController {
 						Long newFileInfo = fileService.fileUpload(req, fileVO, isLocal); //error point
 						String typeAndRank = fileName.substring(9);
 						System.out.println("typeAndRank :::"+typeAndRank);
+						System.out.println(typeAndRank.split("-")[0]); //type
+						System.out.println(typeAndRank.split("-")[1]); //rank
+						System.out.println(typeAndRank.split("-")[2]); // description
+						System.out.println(typeAndRank.split("-")[3]); //rept
+						System.out.println(typeAndRank.split("-")[4]); //reptowner
+						
 
 						FileVO getFileInfo = fileService.getFileInfo(newFileInfo);
 						Opinion_File opinionFile = new Opinion_File();
 
 						opinionFile.setDecisonId(masterId);
 						opinionFile.setFileType(Integer.parseInt(typeAndRank.split("-")[0]));
-			//			opinionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
-						if(typeAndRank.split("-")[2] != null || ! (typeAndRank.split("-")[1].equals(""))) {
+						opinionFile.setRank(Integer.parseInt(typeAndRank.split("-")[1]));
+						
+						if(typeAndRank.split("-")[2] != null || ! (typeAndRank.split("-")[2].equals(""))) {
 							opinionFile.setFileDescription((typeAndRank.split("-")[2]));
 						}else {
 							opinionFile.setFileDescription("pdf");
@@ -353,6 +362,8 @@ public class FileController {
 
 						resultFinal.put("seqNo", Integer.parseInt(typeAndRank.split("-")[0]));
 						resultFinal.put("fileNameOri", getFileInfo.getFileNameOri());
+						resultFinal.put("rank", opinionFile.getRank());
+						
 						System.out.println("====================================");
 						System.out.println(getFileInfo.getFileNameOri());
 						System.out.println("====================================");
