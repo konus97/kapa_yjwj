@@ -156,7 +156,7 @@
 													<div class="file_flex">
 														<input class="file_view"
 															value="${noticeFiles.fileDescription}" readonly disabled />
-														<input class="file_view" value=${noticeFiles.fileNameOri }
+														<input class="file_view" value="${noticeFiles.fileNameOri }"
 															readonly disabled />
 														<button type="button"
 															class="btn small02 t1 nohover downloadButton"
@@ -507,7 +507,16 @@
             
             });
             
-
+            // 파일명 길이 설정
+            let fileDiscriptionsSize =	document.getElementsByClassName('file_view').length;
+            for(let i=0; i<fileDiscriptionsSize; i++){
+            	let fileDiscriptionSize = document.getElementsByClassName('file_view')[i].value.length;
+            	console.log(document.getElementsByClassName('file_view')[i].value + ':::' + fileDiscriptionSize);
+            	if(fileDiscriptionSize > 10){
+            		document.getElementsByClassName('file_view')[i].value = 	document.getElementsByClassName('file_view')[i].value.substring(0,10) + '...';
+            	}
+            	
+            }
         </script>
 </body>
 </html>

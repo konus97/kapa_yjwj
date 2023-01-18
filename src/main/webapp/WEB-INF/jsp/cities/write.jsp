@@ -462,7 +462,7 @@ for (let i = 0; i < downloadButtons.length; i++) {
                     }
 
                     let fileName = $("#fileSeq")[0].files[0].name;
-
+					
 
 	
                
@@ -490,6 +490,12 @@ for (let i = 0; i < downloadButtons.length; i++) {
                         success: function(data){
                         	
                         	let filename = data.name;
+                        	
+                        	//파일이름 길이설정
+                        	if(filename.length > 10){
+                        		filename = filename.substring(0,10) + '...';
+                        	}
+                        	
                         	console.log(name);
                         	let typeAndRank = data.typeAndRank;
                         	let seq = Number(typeAndRank.substring(0,1));
@@ -517,6 +523,17 @@ for (let i = 0; i < downloadButtons.length; i++) {
                 });
             
             });
+            
+            
+            let fileDiscriptionsSize =	document.getElementsByClassName('file_view').length;
+            for(let i=0; i<fileDiscriptionsSize; i++){
+            	let fileDiscriptionSize = document.getElementsByClassName('file_view')[i].value.length;
+            	console.log(document.getElementsByClassName('file_view')[i].value + ':::' + fileDiscriptionSize);
+            	if(fileDiscriptionSize > 10){
+            		document.getElementsByClassName('file_view')[i].value = 	document.getElementsByClassName('file_view')[i].value.substring(0,10) + '...';
+            	}
+            	
+            }
             
 
         </script>

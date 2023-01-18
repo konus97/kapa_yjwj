@@ -893,6 +893,16 @@
 			}
 	     });
         
+        // 파일명 길이 설정
+        let fileDiscriptionsSize =	document.getElementsByClassName('file_view').length;
+        for(let i=0; i<fileDiscriptionsSize; i++){
+        	let fileDiscriptionSize = document.getElementsByClassName('file_view')[i].value.length;
+        	console.log(document.getElementsByClassName('file_view')[i].value + ':::' + fileDiscriptionSize);
+        	if(fileDiscriptionSize > 13){
+        		document.getElementsByClassName('file_view')[i].value = 	document.getElementsByClassName('file_view')[i].value.substring(0,13) + '...';
+        	}
+        	
+        }
         </script>
     </body>
 </html>

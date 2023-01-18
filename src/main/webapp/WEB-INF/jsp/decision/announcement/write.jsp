@@ -439,6 +439,10 @@
                  }
 
                  let fileName = $("#fileSeq")[0].files[0].name;
+                 //파일명 길이 설정
+                 if(fileName.length > 4){
+                	 fileName = fileName.substring(0,4) + '...';
+                 }
 			
                  let inputId = $("#fileSeq").attr("data-id");
                  let inputRank = $('#fileSeq').attr('data-rank');
