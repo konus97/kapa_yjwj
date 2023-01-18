@@ -277,6 +277,10 @@ public class FileController {
 								citesFile.setFileDescription(typeAndRank.split("-")[2]);
 								decisionService.insertCitesFile(citesFile);
 								// decisionFile -> 열람공고 바라보는 파일 확인 해야함 
+								System.out.println("====================================================================");								
+								System.out.println(getFileInfo.getFileNameOri());
+								System.out.println("====================================================================");
+
 								resultFinal.put("name", getFileInfo.getFileNameOri());
 								resultFinal.put("typeAndRank", typeAndRank);
 							} 
@@ -399,10 +403,10 @@ public class FileController {
 		 * "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
 		 */
 		// for local
-		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
 		
 		// for server
-		String filePath = "/usr/local/tomcat/webapps/download/";
+		//String filePath = "/usr/local/tomcat/webapps/download/";
 
 		System.out.println("======================================================");
 		System.out.println(filePath);
