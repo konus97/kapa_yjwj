@@ -580,7 +580,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
 									</div>
 								</div>
 								<div class="cs_title">
