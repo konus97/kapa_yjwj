@@ -650,7 +650,7 @@ notice='';
    addList.push("*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 ");   
    addList.push("        </span>");
 //
-   addList.push("          <button class=\"btn nohover\">");
+   addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfUpload('"+opinionSeq+"');return false;\">");
    addList.push("             <i class=\"download white icon\"></i> PDF 업로드");
    addList.push("           </button>");
 //   addList.push("          <button class=\"btn nohover\">"); 기존
