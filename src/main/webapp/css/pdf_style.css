@@ -45,10 +45,10 @@ body {
 /* pdf__page */
 .pdf__page {
 	width: 100vw;
-    height: 141.4vw;
-    padding: 10em 6em;
+    padding: 8em 4em;
 }
 .pdf__page--cover {
+	height: 141.4vw;
 	padding: 16em 12em;
 }
 .pdf__tit {
@@ -57,6 +57,10 @@ body {
 	font-weight: 700;
 	line-height: 1.5;
 	text-align: center;
+}
+.pdf__tit--sub {
+	font-size:2rem;
+	margin-bottom: 0.8em;
 }
 .f_wrap ~ .f_wrap {
 	margin-top: 1.5em;
@@ -81,14 +85,18 @@ body {
 	content: '○';
 	margin-right: 0.3em;
 }
-.f_wrap__item span {
+.f_wrap__item--sub::before {
+    content: '-';
+}
+.f_wrap__textarea {
+	border: 2px solid #000;
+    padding: 0.8em;
+    word-break: break-all;
 }
 .f_wrap__table {
 	width: 100%;
 	border: 2px solid #000;
-}
-.f_wrap__table th {
-	text-align: center;
+	margin: 0.6em 0 1.2em;
 }
 .f_wrap__table th,
 .f_wrap__table td {
@@ -96,6 +104,19 @@ body {
 	border-right: 0;
 	border-bottom: 0;
 	word-break: break-all;
+	padding: 0.4em 0.2em;
+}
+.f_wrap__table th {
+	text-align: center;
+}
+.f_wrap__table td {
+	vertical-align : baseline;
+}
+.f_wrap__table td.f_wrap__td--cen {
+	text-align:center;
+}
+.f_wrap__table td.f_wrap__td--para {
+	padding: 0.4em 0.8em;
 }
 .f_wrap__table p {
 	word-break: break-all;	

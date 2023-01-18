@@ -177,7 +177,7 @@
         SELECT
 		      count(*)  
 		  FROM tb_ltis2kapa_ownr_intr
-		  WHERE judg_seq = #{masterId} AND ownr_intr_yn = 'O'
+		  WHERE judg_seq = #{masterId} AND ownr_intr_yn = 'L'
     </select>
 
 
