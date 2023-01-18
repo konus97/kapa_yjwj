@@ -240,7 +240,7 @@
 														    <input class="input40 file_name fileLabel2" id="description2-1" maxlength="50">
 														    <div class="file_btn_wrap">
 														      <div style="display: flex">
-														        <div id="fileText3-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('2','1');return false;">파일 없음</div>
+														        <div id="fileText2-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('2','1');return false;">파일 없음</div>
 														        <button class="btn nohover t4 small" onclick="removeFileTarget('2','1');return false;">
 														          <i class="close icon white"></i> 삭제 </button>
 														        <button class="btn nohover t4 small" onclick="addNewFileTarget('2');return false;">
@@ -462,7 +462,7 @@ for (let i = 0; i < downloadButtons.length; i++) {
                     }
 
                     let fileName = $("#fileSeq")[0].files[0].name;
-
+					
 
 	
                
@@ -490,10 +490,20 @@ for (let i = 0; i < downloadButtons.length; i++) {
                         success: function(data){
                         	
                         	let filename = data.name;
+                        	
+                        	//파일이름 길이설정
+                        	if(filename.length > 10){
+                        		filename = filename.substring(0,10) + '...';
+                        	}
+                        	
                         	console.log(name);
                         	let typeAndRank = data.typeAndRank;
-                        	let seq = Number(typeAndRank.substring(0,1))+1;
+                        	let seq = Number(typeAndRank.substring(0,1));
                         	let rank = Number(typeAndRank.substring(2,3));
+                        	
+                        	console.log("typeAndRank:::>"+typeAndRank);
+                        	console.log("seq:::>"+seq);
+                        	console.log("rank:::>"+rank);
                         	
                         	document.getElementById('fileText'+seq+'-'+rank).innerText = filename;
                         	
@@ -513,6 +523,17 @@ for (let i = 0; i < downloadButtons.length; i++) {
                 });
             
             });
+            
+            
+            let fileDiscriptionsSize =	document.getElementsByClassName('file_view').length;
+            for(let i=0; i<fileDiscriptionsSize; i++){
+            	let fileDiscriptionSize = document.getElementsByClassName('file_view')[i].value.length;
+            	console.log(document.getElementsByClassName('file_view')[i].value + ':::' + fileDiscriptionSize);
+            	if(fileDiscriptionSize > 10){
+            		document.getElementsByClassName('file_view')[i].value = 	document.getElementsByClassName('file_view')[i].value.substring(0,10) + '...';
+            	}
+            	
+            }
             
 
         </script>

@@ -124,6 +124,15 @@ function fileCheck_doc(obj) {
 	else return filetype;
 }
 
+// 확장자 검사2
+function fileCheck_doc2(obj) {
+	pathpoint = obj.lastIndexOf('.'); 
+	filepoint = obj.substring(pathpoint+1,obj.length); 
+	filetype = filepoint.toLowerCase(); 
+	if (filetype == 'gif'|| filetype == 'jpg' || filetype == 'jpeg' || filetype == 'png' || filetype == 'pdf') return "ok";
+	else return filetype;
+}
+
 // 확장자 검사
 function fileCheck_csv(obj) {
 	pathpoint = obj.lastIndexOf('.'); 

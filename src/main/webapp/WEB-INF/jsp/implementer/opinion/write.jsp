@@ -908,11 +908,13 @@
 
                     for(let i=0; i<total; i++) {
                         iSize += $("#fileSeq")[0].files[i].size;
-                        let ext=fileCheck_doc($("#fileSeq")[0].files[i].name);
-                        if(ext != "ok") {
+                        let ext=fileCheck_doc2($("#fileSeq")[0].files[i].name); //common.js에서 확장자검사 함수를 통해 return type으로 유효성 검사
+                        if(ext !=="ok") {
                             alert(ext+" 파일은 업로드 하실 수 없습니다.");
                             return false;
                         }
+                        
+                        fileCheck_ext
                     }
 
                     let fileName = $("#fileSeq")[0].files[0].name;

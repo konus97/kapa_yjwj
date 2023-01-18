@@ -1301,8 +1301,12 @@
                         return false;
                     }
                 }
-
+				// 파일명이 길 경우 
                 let fileName = $(this)[0].files[0].name;
+                if(fileName.length > 5){
+                	fileName = fileName.substring(0,5) + '...';
+                }
+                
                 console.log("this", $(this)[0]);
                 console.log(fileName);
                 let inputPosition = $(this)[0].dataset.inputPosition;
