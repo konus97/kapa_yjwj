@@ -52,7 +52,7 @@
 	        잠시만 기다려주세요.
         </p>
     </div>
-    
+  
     <!-- pdf 출력 영역 시작  -->
 	<div id="pdfWr" class="pdf_wr">	
 	
@@ -281,22 +281,21 @@
 			<h2 class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
 			<div class="f_wrap">
 				<!-- 재결관 의견 에디터 내용  -->
-				<p class="f_wrap__textarea">${deliberateOpinionDTO.opinionText}</p>
+				<div class="f_wrap__textarea">${deliberateOpinionDTO.opinionText}</div>
 			</div>
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">관련 법령</h2>
-				<p class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws }</p>
+				<div class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws }</div>
 			</div>
 		
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">관련 법령 판례</h2>
-				<p class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws2 }</p>
+				<div class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws2 }</div>
 			</div>
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">검토 의견</h2>
-				<p class="f_wrap__textarea">${deliberateOpinionDTO.reviewOpinion }</p>
+				<div class="f_wrap__textarea">${deliberateOpinionDTO.reviewOpinion }</div>
 			</div>
-		</div>
 		
 			<!--  소재지, 사유, 관련자료 S -->
 			<c:if test="${deliberateOpinionDTO.itemCheck}">
