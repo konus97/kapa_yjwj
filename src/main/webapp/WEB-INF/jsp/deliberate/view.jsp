@@ -73,8 +73,41 @@
 					
 						<div class="cs_body">
 						
+							<!-- 목차 시작 -->
+							<div class="opinion_index_container">
+		                        <div class="opinion_index_wr">
+		                       		<h4 class="title t1 bold s1">
+		                             	 목차
+		                           	</h4>
+		                        	<ul class="opinion_index_list">
+			                        	<li>
+			                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit01">기본 항목</a>
+			                        	</li>
+			                        	<li>
+			                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit02">사업개요</a>
+			                        	</li>
+			                        	<li>
+			                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit03">재결신청 내역</a>
+			                        	</li>
+			                        	<li>
+			                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit04">소유자 및 사업시행자 의견</a>
+			                        	</li>
+			                        	<li>
+				                          <ul class="opinion_index_list--sub">
+				                          <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+				                          	<li>
+				                          		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
+				                          	</li>
+				                          </c:forEach>
+				                          </ul>
+			                        	</li>
+		                        	</ul>
+		                        </div>
+	                        </div>
+		                    <!-- 목차 끝 -->
+		                    
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">기본 항목
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit01" class="fl title t1 bold cb s1 bullet">기본 항목
 								</h4>
 							</div>
 						
@@ -111,7 +144,7 @@
 							</div>
 							
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">사업개요</h4>
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit02" class="fl title t1 bold cb s1 bullet">사업개요</h4>
 							</div>
 							
 							<div class="form t1">
@@ -196,7 +229,7 @@
 				
 							
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">재결신청 내역</h4>
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit03" class="fl title t1 bold cb s1 bullet">재결신청 내역</h4>
 							</div>
 							<div class="c_table t3 land">
 								<p class="s_title">- 총물량조서</p>
@@ -340,7 +373,7 @@
 							
 				
 							<div class="cs_title">
-                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
                                       	  	 소유자 및 사업시행자 의견
                                     </h4>
                                </div>
@@ -405,22 +438,6 @@
 	                                    </c:forEach>
 	                                </table>
                                </div>
-
-
-                            <!-- 목차 시작 -->
-                            <div class="opinion_index_wr">
-                                <h4 class="title t1 bold s1">
-                                  	 목차
-                                </h4>
-	                            <ul class="opinion_index_list">
-	                            <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
-	                            	<li>
-	                            		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
-	                            	</li>
-	                            </c:forEach>
-	                            </ul>
-                            </div>
-                            <!-- 목차 끝 -->
                             
 							<!-- 1. 지연가산금 S -->
 							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
@@ -600,7 +617,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.ownerOpinion }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</p>
 									</div>
 								</div>
 								
@@ -609,7 +626,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.executorOpinion}</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</p>
 									</div>
 								</div>
 								
@@ -618,7 +635,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
 									</div>
 								</div>
 								
@@ -628,7 +645,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
 									</div>
 								</div>
 								<div class="cs_title">
@@ -636,7 +653,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</p>
 									</div>
 								</div>
 								
@@ -645,7 +662,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.reviewOpinion }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</p>
 									</div>
 								</div>
 								

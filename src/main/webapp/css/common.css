@@ -2847,6 +2847,7 @@ div.table table td:last-child {
     min-height: 100px;
     line-height: 1.5;
     padding: 10px;
+    word-break: break-all;
 }
 .text_view {
     line-height: 1.5;
@@ -2854,6 +2855,8 @@ div.table table td:last-child {
 }
 .textarea_bd {
     border: 1px solid #eee;
+    color: #636363;
+    font-weight: 500;
 }
 .table_fixed {
     table-layout: fixed;
