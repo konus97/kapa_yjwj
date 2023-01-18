@@ -45,11 +45,10 @@ body {
 /* pdf__page */
 .pdf__page {
 	width: 100vw;
-    height: 141.4vw;
     padding: 8em 4em;
-    overflow: hidden;
 }
 .pdf__page--cover {
+	height: 141.4vw;
 	padding: 16em 12em;
 }
 .pdf__tit {

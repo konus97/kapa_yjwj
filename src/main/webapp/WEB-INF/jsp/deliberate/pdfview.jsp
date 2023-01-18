@@ -216,9 +216,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-
-		<div class="pdf__page">
+		
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">재결심리준비</h2>
 				<ul class="f_wrap__list">
@@ -246,6 +244,7 @@
 					</li>
 				</ul>
 			</div>
+			
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
 				<table class="f_wrap__table">
@@ -273,12 +272,12 @@
 					</c:forEach>
 				</table>
 			</div>
-		</div>
+		
 		
 		<!-- 1. 지연가산금 S -->
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								
-		<div class="pdf__page">
+		
 			<h2 class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
 			<div class="f_wrap">
 				<!-- 재결관 의견 에디터 내용  -->
@@ -288,8 +287,7 @@
 				<h2 class="f_wrap__tit">관련 법령</h2>
 				<p class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws }</p>
 			</div>
-		</div>
-		<div class="pdf__page">
+		
 			<div class="f_wrap">
 				<h2 class="f_wrap__tit">관련 법령 판례</h2>
 				<p class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws2 }</p>
@@ -300,11 +298,10 @@
 			</div>
 		</div>
 		
-		<!--  소재지, 사유, 관련자료 S -->
-		<c:if test="${deliberateOpinionDTO.itemCheck}">
-		<c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
-		 
-		<div class="pdf__page">
+			<!--  소재지, 사유, 관련자료 S -->
+			<c:if test="${deliberateOpinionDTO.itemCheck}">
+			<c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
+			 
 			<div class="f_wrap">		
 				<table class="f_wrap__table f_wrap_table--opitem">
 					<tbody>
@@ -329,12 +326,11 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-		</div>	
-		
-		</c:forEach>
-		</c:if>
-		<!--  소재지, 사유, 관련자료 E -->	
+			</div>	
+			
+			</c:forEach>
+			</c:if>
+			<!--  소재지, 사유, 관련자료 E -->	
 		
 		</c:forEach>
 		<!-- 1. 지연가산금 E -->
