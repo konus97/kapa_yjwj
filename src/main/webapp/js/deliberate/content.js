@@ -9,9 +9,9 @@ function goToDeliberateView(selectDate){
 	location.href=contextPath+"/deliberate/agenda/view.do?selectDate="+selectDate;
 }
 
-function goToDeliberatePdf(selectDate){
+function goToDeliberatePdf(seqNo){
 	let contextPath = $('#contextPath').val();
-	location.href=contextPath+"/deliberate/agenda/pdfview.do?selectDate="+selectDate;
+	location.href=contextPath+"/deliberate/agenda/pdfview.do?decisionId="+seqNo;
 }
 
 function ebookViewOpen(selectDate){

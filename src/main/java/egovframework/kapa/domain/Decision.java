@@ -54,7 +54,7 @@ public class Decision {
 	private Long cslt_obst_amt;
 	private Long cslt_business_cnt;
 	private Long cslt_business_amt;
-	
+	private String consultationDate;
 	Decision_Target Decision_Target;
 	
 }

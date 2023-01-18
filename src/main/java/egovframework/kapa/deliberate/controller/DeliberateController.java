@@ -131,6 +131,7 @@ public class DeliberateController {
 	public String deliberateAgendaDetail(HttpServletRequest request,Model model) {
 		
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		Decision decision = decisionService.getDecisionView(decisionId);
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
@@ -139,30 +140,14 @@ public class DeliberateController {
 		model.addAttribute("currentPage", "agenda");
 		
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
-
+		
     	model.addAttribute("formatter", formatter);
-    	
-		return "deliberate/detail";
-	}
-	
-	@GetMapping("/agenda/pdfview.do")
-	public String deliberatePdfView(HttpServletRequest request,Model model) {
-	
-		Long selectDate =  Long.parseLong(request.getParameter("selectDate"));   
 		
+    	int masterId = decision.getMasterID();
+        List<Decision> csltList = implementerService.getLtisCslt(masterId);
+		model.addAttribute("csltList", csltList);
 		
-        //값 넣기
-        List<Decision_AgendaDate> pagingResult = deliberateService.getDeliberateDecisionList(selectDate); //심의날짜에 따른 심의안건 친구들
-       
-    	List<DeliberateViewDTO> formatterList = deliberateService.getDeliberateViewFormatter(pagingResult); 
-
-        
-        
-    	Long decisionId = pagingResult.get(0).getDecisionId();
-    	Decision decision = decisionService.getDecisionView(decisionId);
-    	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
-    	model.addAttribute("opinionList", opinionList);
-    	Long landCnt = decision.getLandCnt();
+		Long landCnt = decision.getLandCnt();
 		Long landArea = decision.getLandArea();
 		Long landPrice = decision.getLandPrice();
 		Long objCnt = decision.getObjCnt();
@@ -172,35 +157,70 @@ public class DeliberateController {
 
 		DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
 	    String landCntStr = dc.format(landCnt);
-	    String landAreaStr = dc.format(landArea);
+		    String landAreaStr = dc.format(landArea);
   		String landPriceStr = dc.format(landPrice);
   		String objCntStr = dc.format(objCnt);
   		String objPriceStr = dc.format(objPrice);
   		String goodwillCntStr = dc.format(goodwillCnt);
   		String goodwillPriceStr = dc.format(goodwillPrice);
 
-  		model.addAttribute("landCnt", landCntStr);
+  		 model.addAttribute("landCnt", landCntStr);
  		model.addAttribute("landArea", landAreaStr);
  		model.addAttribute("landPrice", landPriceStr);
  		model.addAttribute("objCnt", objCntStr);
  		model.addAttribute("objPrice", objPriceStr);
  		model.addAttribute("goodwillCnt", goodwillCntStr);
  		model.addAttribute("goodwillPrice", goodwillPriceStr);
-
+    	
+    	
+		return "deliberate/detail";
+	}
+	
+	@GetMapping("/agenda/pdfview.do")
+	public String deliberatePdfView(HttpServletRequest request,Model model) {
+	
+		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		Decision decision = decisionService.getDecisionView(decisionId);
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+        model.addAttribute("opinionList", opinionList);
+		//current page
+		model.addAttribute("currentPage", "agenda");
+		
+		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
+		
+    	model.addAttribute("formatter", formatter);
+		
     	int masterId = decision.getMasterID();
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
 		model.addAttribute("csltList", csltList);
 		
-		model.addAttribute("csltList", csltList);
-		
-    	model.addAttribute("formatterList", formatterList);
-        
-        //current page
-		model.addAttribute("currentPage", "agenda");
-		// 입력 HTML 문서 로드
-		
-		
-		
+		Long landCnt = decision.getLandCnt();
+		Long landArea = decision.getLandArea();
+		Long landPrice = decision.getLandPrice();
+		Long objCnt = decision.getObjCnt();
+		Long objPrice = decision.getObjPrice();
+		Long goodwillCnt = decision.getGoodwillCnt();
+		Long goodwillPrice = decision.getGoodwillPrice();
+
+		DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
+	    String landCntStr = dc.format(landCnt);
+		    String landAreaStr = dc.format(landArea);
+  		String landPriceStr = dc.format(landPrice);
+  		String objCntStr = dc.format(objCnt);
+  		String objPriceStr = dc.format(objPrice);
+  		String goodwillCntStr = dc.format(goodwillCnt);
+  		String goodwillPriceStr = dc.format(goodwillPrice);
+
+  		 model.addAttribute("landCnt", landCntStr);
+ 		model.addAttribute("landArea", landAreaStr);
+ 		model.addAttribute("landPrice", landPriceStr);
+ 		model.addAttribute("objCnt", objCntStr);
+ 		model.addAttribute("objPrice", objPriceStr);
+ 		model.addAttribute("goodwillCnt", goodwillCntStr);
+ 		model.addAttribute("goodwillPrice", goodwillPriceStr);
+ 		
 		return "deliberate/pdfview";
 	}
 	
