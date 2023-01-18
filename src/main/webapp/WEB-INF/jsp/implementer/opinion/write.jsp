@@ -768,7 +768,7 @@
 
 	        	}
 	        function triggerFileUploadPDF(){
-
+				
 	        	
 	        	$('#fileSeq').trigger('click');
 	        	
@@ -984,7 +984,7 @@
 						  seq = '17';
 					    break;
 					  case "이주정착금, 주거이전비, 이사비":
-						  seq = '19';
+						  seq = '18';
 					    break;
 					  case "임료손실":
 						  seq = '19';
