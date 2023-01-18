@@ -205,7 +205,9 @@ notice='';
       if(checkOpinionItem==false){
          addOpinionItem(getType);
       }
-      
+
+console.log(addOpinionItemArray);    
+  
    }else{            
       addOpinionItem(getType);
    }
@@ -408,29 +410,21 @@ let newSeq = getType + '-0';
    addList.push("          <button class=\"btn nohover\" onclick=\"hwpDownload('"+getType+"');return false;\">"); //추가
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
-//임시 주석
-/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+getType+"');return false;\" >");
+//파일 추가 임시 주석
+   /*
+   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+getType+"');return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 파일추가");
-   addList.push("           </button>");*/
+   addList.push("           </button>");
+*/
 /*
    addList.push("           <button class=\"btn nohover t1\" onclick=\"removeOpinionItem('"+popupOpinion+"');return false;\" >");
    addList.push("               <i class=\"close icon\"></i> 삭제");
    addList.push("           </button>");*/
    addList.push("         </div>   ");                                           
    addList.push("        </td>");
-   addList.push("   </tr>");                                                     
-   addList.push("   <tr>");   
-   addList.push("       <th class=\"info_reg_th\">제목</th>");   
-   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\"></td>");   
    addList.push("   </tr>");   
-   addList.push("    <tr>");   
-   addList.push("       <th class=\"info_reg_th\">내용</th>");   
-   addList.push("      <td>");   
-   addList.push("        <textarea class=\"textarea opinionContent\"></textarea></td>");   
-   addList.push("    </tr>");   
- 
 
-   addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
+ addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
    addList.push("     <td class=\"file_flex\">");   
    // addList.push("                  <div style=\"display: none\">");   
    addList.push("     <input id=\"description1"+"\" class=\"input40 file_name\" value=\"PDF\" readonly\>");   
@@ -447,7 +441,20 @@ let newSeq = getType + '-0';
    addList.push("               </div>");  
    addList.push("               </div>");  
    addList.push("          </td>");   
-   addList.push("   </tr>   ");          
+
+                                                  
+   addList.push("   <tr>");   
+   addList.push("       <th class=\"info_reg_th\">제목</th>");   
+   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\"></td>");   
+   addList.push("   </tr>");   
+   addList.push("    <tr>");   
+   addList.push("       <th class=\"info_reg_th\">내용</th>");   
+   addList.push("      <td>");   
+   addList.push("        <textarea class=\"textarea opinionContent\"></textarea></td>");   
+   addList.push("    </tr>");   
+ 
+
+  
 
    addList.push("      <tr>");   
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
@@ -515,7 +522,21 @@ function addOpinionItemOnlyFile(getType){
 
    let addList = new Array();
 
-   addList.push(" <tbody id=\"popupOpinionItem"+popupOpinion+"\" class=\"popupOpinionItem\" >   ");                                             
+   addList.push(" <tbody id=\"popupOpinionItem"+popupOpinion+"\" class=\"popupOpinionItem\" >   ");     
+
+//제목+내용 추가 수정 요청
+
+  addList.push("   <tr>");   
+   addList.push("       <th class=\"info_reg_th\">제목</th>");   
+   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\"></td>");   
+   addList.push("   </tr>");   
+   addList.push("    <tr>");   
+   addList.push("       <th class=\"info_reg_th\">내용</th>");   
+   addList.push("      <td>");   
+   addList.push("        <textarea class=\"textarea opinionContent\"></textarea></td>");   
+   addList.push("    </tr>");   
+
+                                        
    addList.push("        <div class=\"txt-r\">");
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
    addList.push("     <td class=\"file_flex\">");   
@@ -658,9 +679,11 @@ notice='';
    addList.push("             <i class=\"download white icon\"></i> 한글파일 다운로드");
    addList.push("           </button>");
 //파일추가 임시 주석
-/*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+opinionSeq+"');return false;\" >");
+/*
+   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItemOnlyFile('"+opinionSeq+"');return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 파일추가");
-   addList.push("           </button>");*/
+   addList.push("           </button>");
+*/
 /*   addList.push("          <button class=\"btn nohover t1\"  onclick=\"addOpinionItem();return false;\" >");
    addList.push("             <i class=\"pluse icon\"></i> 추가");
    addList.push("           </button>");
@@ -669,18 +692,8 @@ notice='';
    addList.push("           </button>");*/
    addList.push("         </div>   ");                                           
    addList.push("        </td>");
-   addList.push("   </tr>");                                                     
-   addList.push("   <tr>");   
-   addList.push("       <th class=\"info_reg_th\">제목</th>");   
-   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\"></td>");   
-   addList.push("   </tr>");   
-   addList.push("    <tr>");   
-   addList.push("       <th class=\"info_reg_th\">내용</th>");   
-   addList.push("      <td>");   
-   addList.push("        <textarea class=\"textarea opinionContent\">"+opinionContent+"</textarea></td>");   
-   addList.push("    </tr>");   
+   addList.push("   </tr>");          
 
-         
 addList.push("      <tr>");   
 addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
    addList.push("     <td class=\"file_flex\">");   
@@ -696,7 +709,22 @@ addList.push("    <th class=\"info_reg_th\">PDF파일</th>");
    addList.push("               </div>");  
    addList.push("               </div>");  
    addList.push("          </td>");   
-   addList.push("   </tr>   ");        
+   addList.push("   </tr>   ");  
+
+                                           
+   addList.push("   <tr>");   
+   addList.push("       <th class=\"info_reg_th\">제목</th>");   
+   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\"></td>");   
+   addList.push("   </tr>");   
+   addList.push("    <tr>");   
+   addList.push("       <th class=\"info_reg_th\">내용</th>");   
+   addList.push("      <td>");   
+   addList.push("        <textarea class=\"textarea opinionContent\">"+opinionContent+"</textarea></td>");   
+   addList.push("    </tr>");   
+
+         
+
+      
 
 addList.push("      <tr>");   
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
@@ -704,7 +732,6 @@ addList.push("      <tr>");
    addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-//체크포인트
    addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\""+opinionItemFile+"\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpge, png 이미지 파일만 첨부해주세요</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
