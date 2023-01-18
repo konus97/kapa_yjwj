@@ -23,7 +23,7 @@
 		FROM TB_Decision 
 		
 		<where>
-			decisionState >= '2'
+			decisionState >= '3'
 			AND delCheck = '0'
   		</where>
   		
