@@ -51,7 +51,7 @@
 		<input type="file" class="form-control wd-100p" id="fileSeq" name="file">
 
 	</form>
-	<input type="file" id="file1" name="file1"> 
+	<input type="file" id="file1" name="file1" style="display: none;'"> 
 
 		<input type="hidden" class="form-control wd-100p" id="reptSeq" name="0">
 		<input type="hidden" class="form-control wd-100p" id="reptOwnerSeq" name="0">
