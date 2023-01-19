@@ -20,6 +20,8 @@ public class DeliberateOpinionItemDTO {
     
     private String title;
     private String content;
+    private String fileNameChange;
+    private String fileFolder;
 
     
 }

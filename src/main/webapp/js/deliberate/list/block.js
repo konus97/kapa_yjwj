@@ -7,6 +7,7 @@ function makeDeliberateBlock(num,info) {
 	console.log(info);
 	
 	let contextPath = $("#contextPath").val();
+
 	let seqNo = info.seqNo;
 	let consultationDate = info.consultationDate;
 	consultationDateFormat = consultationDate.replaceAll('-', '');
@@ -37,6 +38,7 @@ function makeDeliberateBlock(num,info) {
 	addList.push(" <td>");
 	addList.push("     <strong>차수</strong>");
 	addList.push("     <span id=\"num1_"+seqNo+"\">"+consultationDateFormat+"-"+num+"차</span>");
+	addList.push("     <input type=\"hidden\" id=\"num1_"+seqNo+"\" value=\"num1_"+seqNo+"\"");
 	addList.push(" </td>");
 	/*addList.push("  <td>");
 	addList.push("     <strong>진행상황</strong>");
@@ -95,14 +97,14 @@ function makeAgendaDetail(num,info) {
 	
 	let consultationDate = info.consultationDate;
 	consultationDate = consultationDate.replaceAll('-', '');
-	consultationDate = consultationDate +"-"+num+"차-"+num+"번";
+	consultationDate = consultationDate +"-"+num+"차";
 	let seqNo = info.seqNo;
 	let title = info.title;	
 	let caseNo = info.caseNo;	
 	let judgDivName = info.judgDivName;	
 	let recvDt = info.recvDt;	
 	
-	let num1 = document.getElementById("num1_"+seqNo).innerHtml;
+	//let num1 = document.getElementById("num1_"+47).innerText;
 	
 	let reptLoc = info.reptLoc;		
 	let addList = new Array();
@@ -135,7 +137,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>심의차수</strong>");
-	addList.push("    <span>"+num1+"-"+num+"번</span>");
+	addList.push("    <span>"+consultationDate+"-"+num+"번</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>사업명</strong>");
@@ -146,7 +148,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("<td>");
 	addList.push("    <strong>심의안 보기</strong>");
 	addList.push("    <span>");
-	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
+/*	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
 	addList.push("            심사하기");
 	addList.push("         </button>");
 	addList.push("         <a");
@@ -156,7 +158,11 @@ function makeAgendaDetail(num,info) {
 	addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >다운로드</a >");
+	addList.push("             >다운로드</a >");*/
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >심사하기</a >");
 	addList.push("    </span>");
 	addList.push("</td>");
 	/*addList.push("<td>");
@@ -181,4 +187,3 @@ function makeAgendaDetail(num,info) {
 	$("#agendaDetailList").append(addList.join(''));
 
 }
-

@@ -40,8 +40,7 @@
 <link rel="stylesheet" href="../../css/pdf_style.css" /> 
 </head>
 <body>
-	<!-- <button type="button" onClick="pdfPrint()" >pdf make Test</button> -->
-    <div class="pdf__loader">
+    <!--<div class="pdf__loader">
         <svg class="pdf__loader__svg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="-25 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
             <circle fill="#fff" stroke="none" cx="6" cy="50" r="6"></circle>
@@ -52,20 +51,67 @@
 	        PDF를 다운로드 중입니다.<br>
 	        잠시만 기다려주세요.
         </p>
-    </div>
+    </div> -->
   
-    <!-- pdf 출력 영역 시작  -->
-	<div id="pdfWr" class="pdf_wr">	
+    <!-- 목차 시작 -->
+	<div class="opinion_index_container">
+            <button type="button" class="opinion_index_btn" id="indexBtn${formatter.applicationDTO.judgSeq}" title="목차보기">
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
+			  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+			</svg> -->
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+				</svg>
+				<span>목<br>차<br>보<br>기</span>
+            </button>
+            <div class="opinion_index_wr">
+           		<h4 class="title t1 bold s1">
+                  	 목차
+               	</h4>
+            	<ul class="opinion_index_list">
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit01">사업개요</a>
+	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit02">사업인정관계</a>
+	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit03">재결신청내역</a>
+	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit04">재결심리준비</a>
+	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit05">소유자 및 사업시행자 의견</a>
+	             	</li>
+	             	<li>
+		                <ul class="opinion_index_list--sub">
+		                <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+		                	<li>
+		                		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
+		                	</li>
+		                </c:forEach>
+		                </ul>
+	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_downBtn">PDF 다운로드</a>
+	             	</li>
+            	</ul>
+            </div>
+    </div>
+   <!-- 목차 끝 -->
+             
+             
+	<!-- pdf 출력 영역 시작  -->
+	<div id="pdfWr" class="pdf_wr">
 	
-
-		
 		<div class="pdf__page pdf__page--cover">
 			<h1 class="pdf__tit">${formatter.applicationDTO.judgBizNm}</h1>
 		</div>
 		
 		<div class="pdf__page">
 			<div class="f_wrap">
-				<h2 class="f_wrap__tit">사업개요</h2>
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit01" class="f_wrap__tit">사업개요</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>사업명 : </span>
@@ -86,7 +132,7 @@
 				</ul>
 			</div>
 			<div class="f_wrap">
-				<h2 class="f_wrap__tit">사업인정관계</h2>
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit02" class="f_wrap__tit">사업인정관계</h2>
 				<ul class="f_wrap__list">
 					<c:forEach var="cityPlan" items="${formatter.cityPlans}" varStatus="status">
 					<li class="f_wrap__item">
@@ -96,7 +142,7 @@
 				</ul>
 			</div>
 			<div class="f_wrap">
-				<h2 class="f_wrap__tit">재결신청내역</h2>
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit03" class="f_wrap__tit">재결신청내역</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>총물량조서</span>
@@ -219,7 +265,7 @@
 			</div>
 		
 			<div class="f_wrap">
-				<h2 class="f_wrap__tit">재결심리준비</h2>
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit04" class="f_wrap__tit">재결심리준비</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>열람공고 : </span>
@@ -247,7 +293,7 @@
 			</div>
 			
 			<div class="f_wrap">
-				<h2 class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit05" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
 				<table class="f_wrap__table">
 					<thead>
 						<tr>
@@ -279,7 +325,7 @@
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								
 		
-			<h2 class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
+			<h2 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
 			<div class="f_wrap">
 				<!-- 재결관 의견 에디터 내용  -->
 				<div class="f_wrap__textarea">${deliberateOpinionDTO.opinionText}</div>
@@ -336,7 +382,14 @@
 		<!-- 1. 지연가산금 E -->
 			
 	</div>
-    <!-- pdf 출력 영역 끝  -->
+</div>
+<!-- pdf 출력 영역 끝  -->
+<div class="btn_wr">
+	<button id="index${formatter.applicationDTO.judgSeq}_downBtn" type="button" class="btn large btn--down" onclick="pdfPrint()">
+		<i class="download white icon"></i>
+		PDF 다운로드
+	</button>
+</div>
 		
 <!-- join popup S -->
 <jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">
@@ -404,6 +457,27 @@
 				$('#totalConfer3').text(totalPrice);
 
 			});
+			
+			//목차 스크롤
+			
+			$('.opinion_index_list a').click(function() {
+				var id = $(this).attr("href");
+				var offset = 30;
+				var target = $(id).offset().top - offset;
+				$('html, body').animate({scrollTop:target}, 500);
+				event.preventDefault();
+			});
+			$('.opinion_index_btn').click(function(){
+				$(this).next('.opinion_index_wr').animate({
+			        width: "toggle"
+			    }, 200, "linear");
+				$(this).toggleClass('on');
+				if($(this).hasClass('on')){
+					$(this).attr('title','목차닫기')
+				}else{
+					$(this).attr('title','목차열기')
+				}
+			})
 
 });
 		
@@ -468,10 +542,6 @@
 
 			 }  */
 
-	    window.onload = function(){
-	       pdfPrint();
-	    }
-			
 		</script>
 </body>
 </html>

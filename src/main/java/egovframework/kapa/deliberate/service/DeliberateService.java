@@ -259,8 +259,11 @@ public class DeliberateService {
 						  DeliberateOpinionItemDTO deliberateOpinionItemDTO = DeliberateOpinionItemDTO.builder()
 								  						.title(opinionItem.getOpinionTitle())
 								  						.content(opinionItem.getOpinionContent())
+								  						.fileNameChange(opinionItem.getFileNameChange())
+								  						.fileFolder(opinionItem.getFileFolder())
 								  						.build();
-						  
+						  System.out.println("ayyayayyay ::::::::::" + opinionItem.getFileNameChange());
+						  System.out.println("ayyayayyay ::::::::::" + opinionItem.getFileFolder());
 						  deliberateOpinionItemDTOS.add(deliberateOpinionItemDTO); 
 					}
 					 System.out.print(opinionItemList);

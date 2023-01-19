@@ -581,7 +581,7 @@
 	                                                      <c:forEach var="landInfo" items="${ownerInfo.landList}" varStatus="status">
 	                                                      <tr>
 	                                                            <th>
-				                                                    <strong>${landInfo.rank}</strong>
+				                                                    <strong>${status.index}</strong>
 				                                                </th>
 				                                                <td>
 				                                                    <strong>소유자</strong>
