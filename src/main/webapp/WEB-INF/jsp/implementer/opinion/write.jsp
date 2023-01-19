@@ -899,9 +899,9 @@
 
                 	let csrfToken = $("meta[name='_csrf']").attr("content");
             		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
+					let decisionIdParam = document.getElementById("decisionId").value;
                 	let contextPath = $("#contextPath").val();
-                	let url = contextPath+"/uploadContentFile/opinion";
+                	let url = contextPath+"/uploadContentFile/opinion?decisionId="+decisionIdParam;
                 	
                     let iSize = 0;
                     let total = $("#fileSeq")[0].files.length;

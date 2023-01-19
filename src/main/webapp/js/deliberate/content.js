@@ -24,3 +24,4 @@ function goToDeliberateDetail(decisionId){
 	let contextPath = $('#contextPath').val();
 	location.href=contextPath+"/deliberate/agenda/detail.do?decisionId="+decisionId;
 }
+
