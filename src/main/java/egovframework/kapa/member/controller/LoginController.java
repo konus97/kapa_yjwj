@@ -58,6 +58,8 @@ public class LoginController {
 
         try {
              context.setAuthentication((Authentication)null);
+             req.getSession().invalidate();
+             
         }catch (Exception e){
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());
             System.out.println("\n\ne.toString()\n"+e.toString());
@@ -65,7 +67,7 @@ public class LoginController {
             e.printStackTrace();
         }
 		System.out.println("return1111");
-        return "redirect:/main";
+        return "redirect:/";
 	}
 	
 }

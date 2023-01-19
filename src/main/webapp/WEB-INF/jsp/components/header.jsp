@@ -111,8 +111,8 @@
                 <ul>
                     <li>
                         <c:choose>
-                        <c:when test="${loginId ne null}" >
-                         	<span>${loginId }님 </span>  
+                        <c:when test="${sessionScope.userId ne null}" >
+                         	<span>${userName }님 </span>  
                         </c:when>
                         <c:otherwise>
                         	<a href="#login"><span>로그인</span></a>
@@ -120,11 +120,14 @@
                         </c:choose>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            onclick="openUserReg();return false;"
-                            ><span>회원가입</span></a
-                        >
+	                    <c:if test="${userName ne null}" >
+	                       	<a href="#" onclick="logout();return false;"><span>로그아웃</span></a>  
+	                    </c:if>
+		                    <a
+		                        href="#"
+		                        onclick="openUserReg();return false;"
+		                        ><span>회원가입</span></a
+		                    >
                     </li>
                 </ul>
             </div>

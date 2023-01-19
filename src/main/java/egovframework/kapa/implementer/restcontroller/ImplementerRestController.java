@@ -72,6 +72,7 @@ public class ImplementerRestController {
             resultFinal.put("totalPage", search.getPageCnt());
             resultFinal.put("allCount", listCnt);
         }catch (Exception e){
+        	
             pageNum=1;
 
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());

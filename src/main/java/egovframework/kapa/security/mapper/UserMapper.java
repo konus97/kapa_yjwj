@@ -7,5 +7,6 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 public interface UserMapper {
 
     public UserVO getUserById(String userName);
+    public int getUserExist(String userName);
 
 }

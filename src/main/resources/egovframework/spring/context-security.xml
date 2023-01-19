@@ -37,7 +37,7 @@
 		/>
 
 		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->
-
+		<logout logout-success-url="/logout" delete-cookies="remember-me" invalidate-session="true"/>
 		
 
 		<remember-me data-source-ref="dataSource"
@@ -48,7 +48,7 @@
 	</http>
 
 	<beans:bean id="userDeniedHandler" class="egovframework.kapa.security.UserDeniedHandler"></beans:bean>
-
+	
 	<authentication-manager>
 		<authentication-provider ref="userAuthProvider"></authentication-provider>
 		<authentication-provider user-service-ref="userService"></authentication-provider>
@@ -56,5 +56,6 @@
 
 	<beans:bean id="userService" class="egovframework.kapa.security.service.CustomUserDetailsService"/>
 	<beans:bean id="userAuthProvider" class="egovframework.kapa.security.CustomAuthenticationProvider"/>
+	
 
 </beans:beans>
