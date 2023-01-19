@@ -307,7 +307,7 @@
                                             </button>
                                         </li>
                                         <li>
-                                            <a href="#" class="btn t1 h50 big" onclick="goToCityAnnouncementList();return false">확인</a>
+                                            <a href="#" class="btn t1 h50 big" onclick="goToCityAnnouncementList();return false">취소</a>
                                         </li>
                                     </ul>
                                 </div>

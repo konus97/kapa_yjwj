@@ -93,6 +93,9 @@ function makeAgendaDetail(num,info) {
 
 	console.log(info);
 	
+	let consultationDate = info.consultationDate;
+	consultationDate = consultationDate.replaceAll('-', '');
+	consultationDate = consultationDate +"-"+num+"차";
 	let seqNo = info.seqNo;
 	let title = info.title;	
 	let caseNo = info.caseNo;	
@@ -130,7 +133,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>심의차수</strong>");
-	addList.push("    <span>"+ +"</span>");
+	addList.push("    <span>"+consultationDate+"</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>사업명</strong>");
