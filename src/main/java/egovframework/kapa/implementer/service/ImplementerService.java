@@ -3,16 +3,29 @@ package egovframework.kapa.implementer.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
+import egovframework.kapa.decision.dto.AnnouncementDTO;
+import egovframework.kapa.decision.dto.DecisionStateDTO;
+import egovframework.kapa.decision.service.DecisionService;
+import egovframework.kapa.deliberate.mapper.DeliberateMapper;
+import egovframework.kapa.domain.Decision;
+import egovframework.kapa.domain.Decision_AgendaDate;
+import egovframework.kapa.domain.Decision_Cityplan;
+import egovframework.kapa.domain.Decision_ConsultationDate;
+import egovframework.kapa.domain.Decision_Date;
+import egovframework.kapa.domain.Decision_Opinion;
+import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.implementer.Const.AgencyData;
@@ -20,7 +33,6 @@ import egovframework.kapa.implementer.Const.BusinessCode;
 import egovframework.kapa.implementer.Const.DecisonState;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationLandRelation;
-import egovframework.kapa.implementer.domain.ApplicationLandowner;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.domain.GoodsownerInfo;
 import egovframework.kapa.implementer.domain.LandownerInfo;
@@ -32,15 +44,6 @@ import egovframework.kapa.implementer.dto.ApplicationLandDTO;
 import egovframework.kapa.implementer.dto.DecisionOpinionDTO;
 import egovframework.kapa.implementer.dto.DecisionOpinionFileDTO;
 import egovframework.kapa.implementer.dto.OwnerInfoDTO;
-import egovframework.kapa.decision.dto.AnnouncementDTO;
-import egovframework.kapa.decision.dto.DecisionStateDTO;
-import egovframework.kapa.decision.service.DecisionService;
-import egovframework.kapa.domain.Decision;
-import egovframework.kapa.domain.Decision_Cityplan;
-import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.domain.Decision_Notice;
-import egovframework.kapa.domain.Decision_Opinion;
-import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.implementer.mapper.ImplementerMapper;
 import egovframework.kapa.util.StrUtil;
 
@@ -62,6 +65,8 @@ public class ImplementerService {
 	
 	@Autowired
 	DecisionService decisionService;
+	@Autowired
+	DeliberateMapper deliberateMapper;
 
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
@@ -421,6 +426,7 @@ public class ImplementerService {
 					saveOpinion(opinion);
 					
 					//항목 의견 추가
+					try {
 					JSONArray opinionItemArray = (JSONArray) JSONTarget.get("opinionItemList");
 					
 					if(opinionItemArray.size()>0) {	
@@ -452,7 +458,9 @@ public class ImplementerService {
 						}
 						
 					}
-
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			
@@ -548,7 +556,15 @@ public class ImplementerService {
 	public List<AnnouncementDTO> getOpinionFormatter(List<Decision> decisionList) throws Exception {
 
         List<AnnouncementDTO> announcementDTOS = new ArrayList<>();
-
+		/*
+		 * Long decisionId = decisionList.get(0).getDecisionId();
+		 * System.out.println("돌아가긴할까요?"); Decision_AgendaDate decisionAgendaDate =
+		 * deliberateMapper.getDeliberateDecisionDate(decisionId); Decision_Date
+		 * decisionDate =
+		 * deliberateMapper.getDeliberateDate(decisionAgendaDate.getSelectDate());
+		 * String consultationDate =
+		 * decisionDate.getConsultationDate().format(formatter);
+		 */
         int rank = 0;
 
         String fDateStr = "yyyy-MM-dd";

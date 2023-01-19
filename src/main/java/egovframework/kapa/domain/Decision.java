@@ -16,7 +16,8 @@ public class Decision {
 	private int judg_seq;
 	private String groupEstablishedDate;
 	private String decisionReason;
-
+	private Long decisionId;
+	
 	private Integer agendaState;
 	
 	private Integer delCheck;
