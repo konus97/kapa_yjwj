@@ -144,7 +144,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("<td>");
 	addList.push("    <strong>심의안 보기</strong>");
 	addList.push("    <span>");
-	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
+/*	addList.push("         <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
 	addList.push("            심사하기");
 	addList.push("         </button>");
 	addList.push("         <a");
@@ -154,7 +154,11 @@ function makeAgendaDetail(num,info) {
 	addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >다운로드</a >");
+	addList.push("             >다운로드</a >");*/
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
+	addList.push("             class=\"btn small\"");
+	addList.push("             >심사하기</a >");
 	addList.push("    </span>");
 	addList.push("</td>");
 	/*addList.push("<td>");
