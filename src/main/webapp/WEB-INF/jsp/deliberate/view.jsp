@@ -64,20 +64,23 @@
 				</jsp:include>
 				<!-- deliberate submenu end -->
 
-				<div class="cs_wrap">
+				<div class="cs_wrap cs_wrap--agenda_view">
 					<div class="cs_head">
 						<h3 class="title bold cb">심의안건 상세</h3>
 					</div>
 					
 					<c:forEach var="formatter" items="${formatterList}" varStatus="status">
 					
-						<div class="cs_body">
-						
-							<!-- 목차 시작 -->
+						<!-- 목차 시작 -->
 							<div class="opinion_index_container">
+	                        	<button type="button" class="opinion_index_btn" id="indexBtn${formatter.applicationDTO.judgSeq}">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
+									  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+									</svg>
+	                        	</button>
 		                        <div class="opinion_index_wr">
 		                       		<h4 class="title t1 bold s1">
-		                             	 목차
+ 		                             	 목차
 		                           	</h4>
 		                        	<ul class="opinion_index_list">
 			                        	<li>
@@ -104,7 +107,9 @@
 		                        	</ul>
 		                        </div>
 	                        </div>
-		                    <!-- 목차 끝 -->
+		                 <!-- 목차 끝 -->
+					
+						<div class="cs_body">
 		                    
 							<div class="cs_title">
 								<h4 id="index${formatter.applicationDTO.judgSeq}_tit01" class="fl title t1 bold cb s1 bullet">기본 항목
@@ -806,6 +811,11 @@
 				$('html, body').animate({scrollTop:target}, 500);
 				event.preventDefault();
 			});
+			$('.opinion_index_btn').click(function(){
+				$(this).next('.opinion_index_wr').animate({
+			        width: "toggle"
+			    }, 200, "linear");
+			})
 
 });
 		/* function pdfPrint(){
