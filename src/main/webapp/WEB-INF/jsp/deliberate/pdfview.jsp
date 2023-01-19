@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/pdf_style.css" />
 </head>
 <body>
-    <div class="pdf__loader">
+    <%-- <div class="pdf__loader">
         <svg class="pdf__loader__svg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="-25 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
             <circle fill="#fff" stroke="none" cx="6" cy="50" r="6"></circle>
@@ -51,7 +51,7 @@
 	        PDF를 불러오는 중입니다.<br>
 	        잠시만 기다려주세요.
         </p>
-    </div>
+    </div> --%>
   
     <!-- pdf 출력 영역 시작  -->
 	<div id="pdfWr" class="pdf_wr">	
@@ -439,12 +439,12 @@
 	                
 
 	                // 파일 저장
-	                /* doc.save('sample.pdf'); */
+	                doc.save('sample.pdf'); 
 	                
 	                //새창으로 읽기
 	            //    getCanvas = canvas;
 	                //upload();
-				   window.open(doc.output('bloburl'),"_self");
+				    //window.open(doc.output('bloburl'),"_self");
 	                
 	                
 	                //이미지로 표현
