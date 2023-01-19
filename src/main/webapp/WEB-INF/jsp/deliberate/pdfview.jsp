@@ -37,10 +37,11 @@
 <link rel="stylesheet" href="../../css/jquery-ui.css" />
 <link rel="stylesheet" href="../../css/pdf_init.css" />
 <link rel="stylesheet" href="../../css/common.css" />
-<link rel="stylesheet" href="../../css/pdf_style.css" />
+<link rel="stylesheet" href="../../css/pdf_style.css" /> 
 </head>
 <body>
-    <%-- <div class="pdf__loader">
+	<!-- <button type="button" onClick="pdfPrint()" >pdf make Test</button> -->
+    <div class="pdf__loader">
         <svg class="pdf__loader__svg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="-25 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
             <circle fill="#fff" stroke="none" cx="6" cy="50" r="6"></circle>
@@ -48,10 +49,10 @@
             <circle fill="#fff" stroke="none" cx="46" cy="50" r="6"></circle>
         </svg>
         <p class="pdf__loader__txt">
-	        PDF를 불러오는 중입니다.<br>
+	        PDF를 다운로드 중입니다.<br>
 	        잠시만 기다려주세요.
         </p>
-    </div> --%>
+    </div>
   
     <!-- pdf 출력 영역 시작  -->
 	<div id="pdfWr" class="pdf_wr">	
