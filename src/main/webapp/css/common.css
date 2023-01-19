@@ -2074,11 +2074,12 @@ div.table table td:last-child {
     flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
+    gap:60px;
 }
 #header .h_logo a {
     display:inline-block;
-    width:335px;
-    height:76px;
+    width:300px;
+    height:100px;
     background-image: url("../images/common/h_logo.svg");
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -2088,8 +2089,7 @@ div.table table td:last-child {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    justify-content: flex-end;
-    gap: 60px;
+    justify-content: space-between;
     vertical-align: middle;
     position: relative;
     width: 100%;
@@ -2171,20 +2171,20 @@ div.table table td:last-child {
     align-items: center;
 }
 #header .h_menu .hm_top ul {
-    display: inline-block;
-    vertical-align: middle;
+    display:flex;
 }
 #header .h_menu .hm_top li {
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    float: left;
-    padding: 0 30px;
+	position: relative;
+    padding-right: 15px;
+    margin-right: 15px;
     font-size: 14px;
     font-weight: 400;
     color: #000;
-    line-height: 34px;
     letter-spacing: -0.5px;
+}
+#header .h_menu .hm_top li:last-child {
+    padding-right: 0;
+    margin-right: 0;
 }
 #header .h_menu .hm_top li:before {
     content: "";
@@ -2201,6 +2201,7 @@ div.table table td:last-child {
 #header .h_menu .hm_top li:last-child:before {
     display: none;
 }
+#header .h_menu .hm_top span,
 #header .h_menu .hm_top a {
     color: #5A7791;
 }

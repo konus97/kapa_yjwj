@@ -109,23 +109,26 @@
             <div class="hm_top">
                 <h2 class="blind">TOPMENU</h2>
                 <ul>
-                    <li>
-                        <c:choose>
-                        <c:when test="${loginId ne null}" >
-                         	<span>${loginId }님 </span>  
-                        </c:when>
-                        <c:otherwise>
-                        	<a href="#login"><span>로그인</span></a>
-                        </c:otherwise>
-                        </c:choose>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            onclick="openUserReg();return false;"
-                            ><span>회원가입</span></a
-                        >
-                    </li>
+					<li>
+					    <c:choose>
+					        <c:when test="${sessionScope.userId ne null}">
+					            <span>${userName }님</span>
+					        </c:when>
+					        <c:otherwise>
+					            <a href="#login"><span>로그인</span></a>
+					        </c:otherwise>
+					    </c:choose>
+					</li>
+					
+				    <c:if test="${userName ne null}">
+					<li>
+					    <a href="#" onclick="logout();return false;"><span>로그아웃</span></a>
+					</li>
+				    </c:if>
+				    
+					<li>
+					    <a href="#" onclick="openUserReg();return false;"><span>회원가입</span></a>
+					</li>
                 </ul>
             </div>
             

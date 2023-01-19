@@ -18,5 +18,11 @@
 		FROM TB_User
 		WHERE userId = #{userId}
 	</select>
+	
+	<select id="getUserExist" parameterType="String" resultType="Integer">
+		SELECT COUNT(*)
+		FROM TB_User
+		WHERE userId = #{userId}
+	</select>
 
 </mapper>

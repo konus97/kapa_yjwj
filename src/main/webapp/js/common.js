@@ -510,14 +510,20 @@ function calDisCoutnRatio(originPrice,rate) {
 //로그아웃
 function logout(){
 
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + "/logout";
+	
 	if(confirm("로그아웃 하시겠습니까?")) {
 
 		$.ajax({
-			url : "/rest/common/logout",
-			type : "POST",
+			//url : "/rest/common/logout",
+			url : url,
+			type : "GET",
 			dataType : "json",
 			success : function(data) {
-				location.href="/login";
+				//location.href="/login";
+				console.log("success");
+				location.href="/";
 			},
 			error : function(xhr, status, error) {
 
@@ -525,6 +531,9 @@ function logout(){
 				//alert("code:"+xhr.status);
 			}
 		});
+		alert("로그아웃 되었습니다.");
+		location.href= contextPath+"/";
+		
 
 	}
 	

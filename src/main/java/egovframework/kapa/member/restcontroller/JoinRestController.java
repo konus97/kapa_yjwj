@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import egovframework.kapa.member.service.JoinService;
 import egovframework.kapa.member.service.LoginService;
+import egovframework.kapa.util.auth.Authenticate;
 
 @RestController
 @RequestMapping("/api/join")
@@ -96,15 +97,16 @@ public class JoinRestController {
 
 	@RequestMapping(value = "/checkphone", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
-	public ResponseEntity phoneCheck(@RequestBody String data) {
+	public ResponseEntity phoneCheck(@RequestBody String data) throws Exception {
 		try {
 			System.out.println(data);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		Authenticate auth = new Authenticate();
 		Map<String, String> result = new HashMap();
+		auth.sendSms(data);
 		result.put("message", "success");
 		return ResponseEntity.ok(result);
 	}
