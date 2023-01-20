@@ -3144,3 +3144,9 @@
 .c_sub_admin .admin_user_add .cs_title .select {
 	max-width:12em;
 }
+.c_sub_admin .form .f_field .ff_wrap--email {
+	display: flex;
+	align-items: center;
+    gap: 0.5em;
+    color: #717171;
+}

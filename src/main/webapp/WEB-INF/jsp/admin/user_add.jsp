@@ -119,8 +119,9 @@
 									<div class="ff_title">
 										<label for="aua_email">이메일</label>
 									</div>
-									<div class="ff_wrap">
+									<div class="ff_wrap ff_wrap--email">
 										<input type="text" id="aua_email" name="userEmail" class="input t1" value="${adminVO.userEmail }"  placeholder="이메일을 입력하세요."/>
+										<span>&#64;</span>
 										<input type="text" id="aua_domain" name="domain" class="input t1" value="${adminVO.userEmail }"  placeholder="메일주소를 입력하세요."/>
 									</div>
 								</div>
