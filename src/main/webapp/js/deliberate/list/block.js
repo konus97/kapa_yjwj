@@ -10,6 +10,7 @@ function makeDeliberateBlock(num,info) {
 
 	let seqNo = info.seqNo;
 	let consultationDate = info.consultationDate;
+	consultationDateFormat = consultationDate.replaceAll('-', '');
 	let title = info.title;	
 		
 	let addList = new Array();
@@ -36,7 +37,8 @@ function makeDeliberateBlock(num,info) {
 	addList.push(" </td>");*/
 	addList.push(" <td>");
 	addList.push("     <strong>차수</strong>");
-	addList.push("     <span></span>");
+	addList.push("     <span id=\"num1_"+seqNo+"\">"+consultationDateFormat+"-"+num+"차</span>");
+	addList.push("     <input type=\"hidden\" id=\"num1_"+seqNo+"\" value=\"num1_"+seqNo+"\"");
 	addList.push(" </td>");
 	/*addList.push("  <td>");
 	addList.push("     <strong>진행상황</strong>");
@@ -102,6 +104,8 @@ function makeAgendaDetail(num,info) {
 	let judgDivName = info.judgDivName;	
 	let recvDt = info.recvDt;	
 	
+	//let num1 = document.getElementById("num1_"+47).innerText;
+	
 	let reptLoc = info.reptLoc;		
 	let addList = new Array();
 	
@@ -133,7 +137,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>심의차수</strong>");
-	addList.push("    <span>"+consultationDate+"</span>");
+	addList.push("    <span>"+consultationDate+"-"+num+"번</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>사업명</strong>");
@@ -183,4 +187,3 @@ function makeAgendaDetail(num,info) {
 	$("#agendaDetailList").append(addList.join(''));
 
 }
-

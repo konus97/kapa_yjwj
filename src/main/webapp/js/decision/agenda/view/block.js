@@ -4,7 +4,7 @@
 let opinionTypeTitle = ['지연가산금', '보상금 증액', '허가건축물 등 불법형질변경','일단지 보상','미지금 용지','사도평가','잔여지 매수청구','잔여지  가치하락','잔여건물 가치감소','잔여건물 매수청구','누락 물건 반영',
 '휴업보상(이전비)평가','폐업보상','영농손실보상','휴직(실직)보상','사업폐지(취소, 변경, 중단)','이주대책 수립','이주정착금, 주거이전비, 이사비','임료손실','대토보상','구분지상권','10%이상 변동','기타(그 외)','소유자 의견 없음']; 
 
-function getDecisionOpinionInfo(info) {
+function getDecisionOpinionInfo(num, info) {
 
 	console.log(info);
 	
@@ -27,7 +27,7 @@ function getDecisionOpinionInfo(info) {
 	
 	addList.push("<li class=\"opinionGet opinion"+seqNo+"\" >");   
 	addList.push(" <div class=\"cbl_wrap\">");        
-	addList.push("	    <div class=\"cbl_1 resetSeq"+seqNo+"\">"+opCount+"</div>"); 
+	addList.push("	    <div class=\"cbl_1 resetSeq"+seqNo+"\">"+num+"</div>"); 
     addList.push("      <div class=\"cbl_2\">"+opinionType+"-"+getTitle+"</div>");
     addList.push("      <div class=\"cbl_3\"> ");
     addList.push("       	<a href=\"#\" id=\"opinionTitle"+seqNo+"-"+opinionType+"\" onclick=\"openOpinionViewPopup('"+seqNo+"','"+reptSeq+"');return false;\" >상세정보</a>");

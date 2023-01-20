@@ -22,11 +22,12 @@ function getDecisionOpinionList() {
 		success : function(data) {
 
 			let list = data.list;
-			
+			let startNumber = 1;
 			if (list.length != 0) {
 
 				for( let i = 0; i < list.length; i++) {
-					getDecisionOpinionInfo(list[i]);
+					getDecisionOpinionInfo(startNumber,list[i]);
+					startNumber++;
 				}
 
 			}

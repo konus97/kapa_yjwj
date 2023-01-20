@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <%@ include file="/WEB-INF/jsp/components/temp_session.jsp"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.net.URLEncoder" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -696,7 +697,7 @@
 													<tr>
 														<td class=""  colspan="2">
 															<img
-															src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
+															src="${deliberateOpinionItemDTO.fileFolder}${deliberateOpinionItemDTO.fileNameChange}"
 															alt="">
 														</td>
 													</tr>

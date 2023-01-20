@@ -15,5 +15,6 @@ public class Decision_Opinion_Item {
     private Integer rank;
     private Integer delCheck;
     private String regdate;
-    
+    private String fileNameChange;
+    private String fileFolder;
 }

@@ -174,10 +174,9 @@
     </select>
 
 	<select id="getApplicationLandRightCount" parameterType="Integer" resultType="Integer">
-        SELECT
-		      count(*)  
-		  FROM tb_ltis2kapa_ownr_intr
-		  WHERE judg_seq = #{masterId} AND ownr_intr_yn = 'L'
+        select count(*) from 
+		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
+		  WHERE judg_seq = #{masterId} AND land_obst_kind_cd = 'L') as a
     </select>
 
 
@@ -186,14 +185,19 @@
 		      count(*)  
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
-		  AND land_obst_kind_cd = 'O'
+		  AND NOT land_obst_kind_cd = 'L'
     </select>
 
 	<select id="getApplicationObjectRightCount" parameterType="Integer" resultType="Integer">
-         SELECT
-		      count(*)  
-		  FROM tb_ltis2kapa_ownr_intr
+         <!-- SELECT
+		      ownr_nm 
+		  FROM tb_ltis2kapa_rept_ownr_intr
 		  WHERE judg_seq = #{masterId}
+		  AND NOT land_obst_kind_cd = 'L' -->
+		  
+		  select count(*) from 
+		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
+		  WHERE judg_seq = #{masterId}  AND NOT land_obst_kind_cd = 'L') as a
     </select>
    
 
@@ -231,7 +235,7 @@
 		    * 
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
-		  AND land_obst_kind_cd = 'O'
+		  AND NOT land_obst_kind_cd = 'L'
 	</select> 
 	
 	<!--의견 저장 -->

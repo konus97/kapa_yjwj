@@ -144,7 +144,7 @@
 	</select> 
 	
 	<select id="getDecisionOpinionTypeItemList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
-		SELECT *
+		<!-- SELECT *
 		
 		FROM TB_Decision_Opinion_Item 
 		
@@ -152,8 +152,33 @@
 			reptSeq = #{viewSeq}
 			AND opinionType = #{type}
 			AND delCheck = '0'
-  		</where>
+  		</where> -->
 
+
+	SELECT DI.seqNo
+  ,DI.decisionId
+  ,DI.reptSeq
+  ,DI.opinionType
+  ,DI.opinionTitle
+  ,DI.opinionContent
+  ,DI.opinionItemFile
+  ,DI.rank
+  ,DI.delCheck
+  ,DI.regdate
+  ,TF.fileNameChange
+  ,TF.fileFolder
+		FROM TB_Decision_Opinion_Item DI
+		LEFT JOIN TB_Decision_File_Opinion DFO 
+		ON DI.decisionId = DFO.decisonId AND DI.opinionType = DFO.fileType
+		LEFT JOIN TB_File TF
+		ON DFO.fileSeq = TF.seqNo
+		<where> 
+			
+			DI.reptSeq = #{viewSeq}
+
+			AND DI.opinionType = #{type}
+			AND DI.delCheck = '0'
+			</where>
 	</select> 
 	
 	<select id="getDecisionOpinionTypeItemCount" parameterType="Map" resultType="Integer" >
