@@ -67,6 +67,48 @@
 				</jsp:include> 
 				<!-- decision submenu end -->
 
+				<!-- 목차 시작 -->
+					<div class="opinion_index_container">
+                       	<button type="button" class="opinion_index_btn" id="indexBtn${formatter.applicationDTO.judgSeq}" title="목차보기">
+							<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
+							  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+							</svg> -->
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" class="w-6 h-6">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+							</svg>
+							<span>목<br>차<br>보<br>기</span>
+                       	</button>
+                        <div class="opinion_index_wr">
+                       		<h4 class="title t1 bold s1">
+	                             	 목차
+                           	</h4>
+                        	<ul class="opinion_index_list">
+	                        	<li>
+	                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit01">기본 항목</a>
+	                        	</li>
+	                        	<li>
+	                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit02">사업개요</a>
+	                        	</li>
+	                        	<li>
+	                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit03">재결신청 내역</a>
+	                        	</li>
+	                        	<li>
+	                        		<a href="#index${formatter.applicationDTO.judgSeq}_tit04">소유자 및 사업시행자 의견</a>
+	                        	</li>
+	                        	<li>
+		                          <ul class="opinion_index_list--sub">
+		                          <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+		                          	<li>
+		                          		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
+		                          	</li>
+		                          </c:forEach>
+		                          </ul>
+	                        	</li>
+                        	</ul>
+                        </div>
+                       </div>
+                 <!-- 목차 끝 -->
+
 				<div class="cs_wrap">
 					<div class="cs_head">
 						<h3 class="title bold cb">심의안건 상세</h3>
@@ -76,7 +118,7 @@
 						<div class="cs_body">
 						
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">기본 항목
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit01" class="fl title t1 bold cb s1 bullet">기본 항목
 								</h4>
 							</div>
 						
@@ -113,7 +155,7 @@
 							</div>
 							
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">사업개요</h4>
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit02" class="fl title t1 bold cb s1 bullet">사업개요</h4>
 							</div>
 							
 							<div class="form t1">
@@ -198,7 +240,7 @@
 				
 							
 							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">재결신청 내역</h4>
+								<h4 id="index${formatter.applicationDTO.judgSeq}_tit03" class="fl title t1 bold cb s1 bullet">재결신청 내역</h4>
 							</div>
 							<div class="c_table t3 land">
 								<p class="s_title">- 총물량조서</p>
@@ -334,7 +376,7 @@
 								</div>
 							</div>
 							<div class="cs_title">
-							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
+							<h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
 						</div>
 						
 						<div class="c_table c_table--opinion">
@@ -377,7 +419,7 @@
 							<!-- 1. 지연가산금 S -->
 							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
 								</div>
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
@@ -552,7 +594,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.ownerOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</div>
 									</div>
 								</div>
 								
@@ -561,7 +603,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.executorOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</div>
 									</div>
 								</div>
 								
@@ -570,7 +612,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
 									</div>
 								</div>
 								
@@ -588,7 +630,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
 									</div>
 								</div>
 								
@@ -597,7 +639,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.reviewOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
 									</div>
 								</div>
 								
@@ -635,9 +677,10 @@
 							</c:forEach>
 												
 							<!-- 1. 지연가산금 E -->
-							<li><a href="#" class="btn t1 h50 big"
+							<div class="btn_wrap mt60 mb60">
+								<a href="#" class="btn t1 h50 big"
 										onclick="goToDecisionRegisterList();return false;">확인</a>
-									</li>
+							</div>
 							
 					</div>
 					
@@ -722,6 +765,38 @@
 								$('#totalConfer3').text(totalPrice);
 
 							});
+							
+							//목차 스크롤
+							
+							$('.opinion_index_list a').click(function() {
+								var id = $(this).attr("href");
+								var offset = 200;
+								var target = $(id).offset().top - offset;
+								$('html, body').animate({scrollTop:target}, 500);
+								event.preventDefault();
+							});
+							$('.opinion_index_btn').click(function(){
+								$(this).next('.opinion_index_wr').animate({
+							        width: "toggle"
+							    }, 200, "linear");
+								$(this).toggleClass('on');
+								if($(this).hasClass('on')){
+									$(this).attr('title','목차닫기')
+								}else{
+									$(this).attr('title','목차열기')
+								}
+							})
+							
+				 			window.addEventListener('scroll',function(){
+								$('.opinion_index_container').each(function(i,el){
+									console.log($(this).offset().top)
+				 					if ($(this).offset().top > ($(this).next().offset().top + $(this).next().height() - 200)) {
+				 						$(this).css('opacity','0')
+									} else {
+										$(this).css('opacity','1')
+									}
+								})
+							})
 				
 			});
 			
