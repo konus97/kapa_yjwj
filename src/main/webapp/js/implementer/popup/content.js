@@ -19,6 +19,8 @@ function openPopup(mode,count){
 			getGoodsInfo();
 		}else if(mode=="checkbox"){			
 			getCheckBox(count);
+		}else if(mode=="checkbox2"){			
+			getCheckBox2();
 		}
 	}
 	
@@ -46,6 +48,8 @@ function closePopup(mode){
 		$('#popupGoods').removeClass("on");
 	}else if(mode=="checkbox"){
 		$('#popupCheck').removeClass("on");
+	}else if(mode=="checkbox2"){
+		$('#popupCheck2').removeClass("on");
 	}
 
 }
@@ -76,6 +80,13 @@ function getCheckBox(ownerInfo){
 	
 	$('#popupCheck').attr("data-owner",ownerInfo);
 	$('#popupCheck').addClass("on");
+}
+
+function getCheckBox2(){
+	
+	$(".opinion_check").prop("checked", false).attr("checked", false);
+	
+	$('#popupCheck2').addClass("on");
 }
 
 function getLandInfo() {

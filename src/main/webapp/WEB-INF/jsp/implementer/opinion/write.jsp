@@ -332,12 +332,11 @@
 											varStatus="status">--%>
 											<%--<c:set var="i" value="${i+1}" /> --%>
 
-											<tr<%-- id="ownerInfo${ownerInfo.ownrSeq}" data-item=""--%>>
-												<%-- <th><strong>${i}</strong></th> --%>
+											<tr>
 												<td>
 													<button>
 														<a href="#" class="btn_check"
-															onclick=" openPopup('checkbox','${ownerInfo.ownrSeq}') ;return false;">
+															onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">
 															항목 선택</a>
 													</button>
 												</td>
@@ -820,6 +819,10 @@
 							<!-- 체크 팝업 S -->
 							<%@ include file="../../implementer/popup/checkbox.jsp"%>
 							<!-- 체크 팝업  E -->
+							
+							<!-- 체크2 팝업 S -->
+							<%@ include file="../../implementer/popup/checkbox2.jsp"%>
+							<!-- 체크2 팝업  E -->
 
 							<!-- 팝업, 지장물수 검색 S -->
 							<%@ include file="../../implementer/popup/goods.jsp"%>
