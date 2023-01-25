@@ -321,8 +321,8 @@
 									<thead>
 										<tr>
 											<!-- <th>연번</th> -->
-											<th>항목</th>
-											<th>소유자</th>
+											<th style="width:50%">항목</th>
+											<th style="width:50%">소유자</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -339,6 +339,7 @@
 															onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">
 															항목 선택</a>
 													</button>
+													<span id="selectedItemTit"> 선택된 항목 없음</span>
 												</td>
 												<td>
 													<%-- <strong>소유자</strong>

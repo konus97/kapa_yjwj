@@ -20,8 +20,8 @@
                                   01
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="1" data-title="지연가산금" id="check1">
-                                  <label for="check1">지연가산금</label>
+                                  <input type="radio" class="opinion_radio" data-type="1" data-title="지연가산금" id="opinion_radio1" name="opinion_radio">
+                                  <label for="opinion_radio1">지연가산금</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -29,8 +29,8 @@
                                   02
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="2" data-title="보상금 증액" id="check2">
-                                  <label for="check2">보상금 증액</label>
+                                  <input type="radio" class="opinion_radio" data-type="2" data-title="보상금 증액" id="opinion_radio2" name="opinion_radio">
+                                  <label for="opinion_radio2">보상금 증액</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -38,8 +38,8 @@
                                   03
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="3" data-title="허가건축물 등 불법형질변경" id="check3">
-                                  <label for="check3">허가건축물 등 불법형질변경</label>
+                                  <input type="radio" class="opinion_radio" data-type="3" data-title="허가건축물 등 불법형질변경" id="opinion_radio3" name="opinion_radio">
+                                  <label for="opinion_radio3">허가건축물 등 불법형질변경</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -47,8 +47,8 @@
                                   04
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="4" data-title="일단지  보상" id="check4">
-                                  <label for="check4">일단지  보상</label>
+                                  <input type="radio" class="opinion_radio" data-type="4" data-title="일단지  보상" id="opinion_radio4" name="opinion_radio">
+                                  <label for="opinion_radio4">일단지  보상</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -56,8 +56,8 @@
                                   05
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check"  data-type="5" data-title="미지금 용지" id="check5">
-                                  <label for="check5">미지금 용지</label>
+                                  <input type="radio" class="opinion_radio"  data-type="5" data-title="미지금 용지" id="opinion_radio5" name="opinion_radio">
+                                  <label for="opinion_radio5">미지금 용지</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -65,8 +65,8 @@
                                   06
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="6" data-title="사도평가" id="check6">
-                                  <label for="check6">사도평가</label>
+                                  <input type="radio" class="opinion_radio" data-type="6" data-title="사도평가" id="opinion_radio6" name="opinion_radio">
+                                  <label for="opinion_radio6">사도평가</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -74,8 +74,8 @@
                                   07
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="7" data-title="잔여지 매수청구" id="check7">
-                                  <label for="check7">잔여지 매수청구</label>
+                                  <input type="radio" class="opinion_radio" data-type="7" data-title="잔여지 매수청구" id="opinion_radio7" name="opinion_radio">
+                                  <label for="opinion_radio7">잔여지 매수청구</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -83,8 +83,8 @@
                                   08
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="8" data-title="잔여지 가치하락" id="check8">
-                                  <label for="check8">잔여지  가치하락</label>
+                                  <input type="radio" class="opinion_radio" data-type="8" data-title="잔여지 가치하락" id="opinion_radio8" name="opinion_radio">
+                                  <label for="opinion_radio8">잔여지  가치하락</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -92,8 +92,8 @@
                                   09
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="9" data-title="잔여건물 가치감소" id="check9">
-                                  <label for="check9">잔여건물 가치감소</label>
+                                  <input type="radio" class="opinion_radio" data-type="9" data-title="잔여건물 가치감소" id="opinion_radio9" name="opinion_radio">
+                                  <label for="opinion_radio9">잔여건물 가치감소</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -101,8 +101,8 @@
                                   10
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="10" data-title="잔여건물 매수청구" id="check10">
-                                  <label for="check10">잔여건물 매수청구</label>
+                                  <input type="radio" class="opinion_radio" data-type="10" data-title="잔여건물 매수청구" id="opinion_radio10" name="opinion_radio">
+                                  <label for="opinion_radio10">잔여건물 매수청구</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -110,8 +110,8 @@
                                   11
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="11" data-title="누락 물건 반영" id="check11">
-                                  <label for="check11">누락 물건 반영</label>
+                                  <input type="radio" class="opinion_radio" data-type="11" data-title="누락 물건 반영" id="opinion_radio11" name="opinion_radio">
+                                  <label for="opinion_radio11">누락 물건 반영</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -119,8 +119,8 @@
                                   12
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="12" data-title="휴업보상(이전비)평가" id="check12">
-                                  <label for="check12">휴업보상(이전비)평가</label>
+                                  <input type="radio" class="opinion_radio" data-type="12" data-title="휴업보상(이전비)평가" id="opinion_radio12" name="opinion_radio">
+                                  <label for="opinion_radio12">휴업보상(이전비)평가</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -128,8 +128,8 @@
                                   13
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="13" data-title="폐업보상" id="check13">
-                                  <label for="check13">폐업보상 </label>
+                                  <input type="radio" class="opinion_radio" data-type="13" data-title="폐업보상" id="opinion_radio13" name="opinion_radio">
+                                  <label for="opinion_radio13">폐업보상 </label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -137,8 +137,8 @@
                                   14
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="14" data-title="영농손실보상" id="check14">
-                                  <label for="check14">영농손실보상</label>
+                                  <input type="radio" class="opinion_radio" data-type="14" data-title="영농손실보상" id="opinion_radio14" name="opinion_radio">
+                                  <label for="opinion_radio14">영농손실보상</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -146,8 +146,8 @@
                                   15
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="15" data-title="휴직(실직)보상" id="check15">
-                                  <label for="check15">휴직(실직)보상</label>
+                                  <input type="radio" class="opinion_radio" data-type="15" data-title="휴직(실직)보상" id="opinion_radio15" name="opinion_radio">
+                                  <label for="opinion_radio15">휴직(실직)보상</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -155,8 +155,8 @@
                                   16
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="16" data-title="사업폐지(취소, 변경, 중단)" id="check16">
-                                  <label for="check16">사업폐지(취소, 변경, 중단)
+                                  <input type="radio" class="opinion_radio" data-type="16" data-title="사업폐지(취소, 변경, 중단)" id="opinion_radio16" name="opinion_radio">
+                                  <label for="opinion_radio16">사업폐지(취소, 변경, 중단)
                                   </label>
                               </div>
                           </div>
@@ -165,8 +165,8 @@
                                   17
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="17" data-title="이주대책 수립 " id="check17">
-                                  <label for="check17">이주대책 수립
+                                  <input type="radio" class="opinion_radio" data-type="17" data-title="이주대책 수립 " id="opinion_radio17" name="opinion_radio">
+                                  <label for="opinion_radio17">이주대책 수립
                                   </label>
                               </div>
                           </div>
@@ -175,8 +175,8 @@
                                   18
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="18" data-title="이주정착금, 주거이전비, 이사비 " id="check18">
-                                  <label for="check18">이주정착금, 주거이전비, 이사비</label>
+                                  <input type="radio" class="opinion_radio" data-type="18" data-title="이주정착금, 주거이전비, 이사비 " id="opinion_radio18" name="opinion_radio">
+                                  <label for="opinion_radio18">이주정착금, 주거이전비, 이사비</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -184,8 +184,8 @@
                                   19
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="19" data-title="임료손실" id="check19">
-                                  <label for="check19">임료손실</label>
+                                  <input type="radio" class="opinion_radio" data-type="19" data-title="임료손실" id="opinion_radio19" name="opinion_radio">
+                                  <label for="opinion_radio19">임료손실</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -193,8 +193,8 @@
                                   20
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="20" data-title="대토보상" id="check20">
-                                  <label for="check20">대토보상</label>
+                                  <input type="radio" class="opinion_radio" data-type="20" data-title="대토보상" id="opinion_radio20" name="opinion_radio">
+                                  <label for="opinion_radio20">대토보상</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -202,8 +202,8 @@
                                   21
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="21" data-title="구분지상권" id="check21">
-                                  <label for="check21">구분지상권</label>
+                                  <input type="radio" class="opinion_radio" data-type="21" data-title="구분지상권" id="opinion_radio21" name="opinion_radio">
+                                  <label for="opinion_radio21">구분지상권</label>
                               </div>
                           </div>
                           <div class="checkbox div2">
@@ -211,8 +211,8 @@
                                   22
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="22" data-title="10%이상 변동" id="check22">
-                                  <label for="check22">10%이상 변동
+                                  <input type="radio" class="opinion_radio" data-type="22" data-title="10%이상 변동" id="opinion_radio22" name="opinion_radio">
+                                  <label for="opinion_radio22">10%이상 변동
                                 </label>
                               </div>
                           </div>
@@ -221,8 +221,8 @@
                                   23
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox"   class="opinion_check" data-type="23" data-title="기타(그 외)" id="check23">
-                                  <label for="check23">기타(그 외)
+                                  <input type="radio"   class="opinion_che2ck" data-type="23" data-title="기타(그 외)" id="opinion_radio23" name="opinion_radio">
+                                  <label for="opinion_radio23">기타(그 외)
                                 </label>
                               </div>
                           </div>
@@ -231,8 +231,8 @@
                                   24
                               </div>
                               <div class="check_input">
-                                  <input type="checkbox" class="opinion_check" data-type="24" data-title="소유자 의견 없음" id="check24">
-                                  <label for="check24">소유자 의견 없음
+                                  <input type="radio" class="opinion_radio" data-type="24" data-title="소유자 의견 없음" id="opinion_radio24" name="opinion_radio">
+                                  <label for="opinion_radio24">소유자 의견 없음
                                   </label>
                               </div>
                           </div>
@@ -241,7 +241,7 @@
                     </div>
                 </div>
                 <div class="p_foot">
-                    <button class="btn h50 mr10" onclick="checkItem();return false;" >확인</button>
+                    <button class="btn h50 mr10" onclick="checkItem2();return false;" >확인</button>
                     <a href="#" class="btn t1 h50" onclick="closePopup('checkbox2');return false;">취소</a>
                 </div>
             </div>

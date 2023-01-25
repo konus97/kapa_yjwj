@@ -377,3 +377,21 @@ function checkItem(){
 	closePopup('checkbox');
 	
 }
+
+function checkItem2(){
+	var ele = document.getElementsByName('opinion_radio');
+	var selectedItemTxt = document.getElementById('selectedItemTit')
+	var selectedItemNum
+	var selectedItemTit
+	
+	for(i = 0; i < ele.length; i++) {
+		if(ele[i].checked){
+			console.log(ele[i])
+			selectedItemNum = ele[i].getAttribute('data-type')
+			selectedItemTit = ele[i].getAttribute('data-title')
+		}
+	}
+
+	selectedItemTxt.innerHTML = '선택된 항목 : '+ selectedItemNum +'.'+ selectedItemTit
+	closePopup('checkbox2');
+}
