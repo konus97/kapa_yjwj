@@ -595,7 +595,7 @@
     padding: 0 30px;
     font-size: 16px;
     font-weight: 400;
-    color: #222326;
+    color: #365978;
     line-height: 56px;
     letter-spacing: -1px;
     text-align: left;
@@ -653,7 +653,7 @@
     background: none;
     font-size: 16px;
     font-weight: 700;
-    color: #222326;
+    color: #365978;
     line-height: 54px;
     letter-spacing: -1px;
     text-align: left;
@@ -667,8 +667,8 @@
     width: 7px;
     height: 7px;
     margin-top: -6px;
-    border-top: #005dab solid 2px;
-    border-right: #005dab solid 2px;
+    border-top: #365978 solid 2px;
+    border-right: #365978 solid 2px;
     transform: rotate(135deg);
     transition: 0.2s;
     -webkit-transition: 0.2s;
@@ -751,9 +751,6 @@
 	max-width: 1200px;
 	margin:0 auto;
 }
-#contents.c_sub .cs_body ~ .cs_body {
-	margin-top: 120px;
-}
 #contents.c_sub .cs_body ~ .cs_body::before {
 	content: '';
 	display: block;
@@ -762,7 +759,7 @@
 	width: 98vw;
 	position: absolute;
 	left: 50%;
-	top: -60px;
+	top: -100px;
 	transform: translateX(-50%);
 }
 
@@ -3001,41 +2998,70 @@
     display:flex;
     justify-content:flex-end;
 }
+.cs_body ~ .opinion_index_container {
+	margin-top: 200px;
+}
 .opinion_index_btn {
-	width:44px;
-	height:44px;
-	background:#365978;
-	display:flex;
-	justify-content:center;
-	align-items:center;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding: 0.6em;
+    gap: 0.5em;
+	position: absolute;
+	z-index: 1;
+    right: 0;
+    top: 10px;
+	width: 44px;
+    height: fit-content;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #365978;
 }
 .opinion_index_btn svg {
-	width:32px;
-	height:32px;
+	width: 24px;
+    height: 24px;
+}
+.opinion_index_btn.on svg {
+	transform: rotate(180deg);
+}
+.opinion_index_btn span {
+	font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+}
+.opinion_index_btn.on span {
+	display:none;
 }
 .opinion_index_wr {
+    display:none; /* script animation */
 	text-align: left;
 	padding: 12px;
 	border-left:2px solid #5A7791;
 	background-color: #f6f8fc;
     border: 1px solid #E7EAF2;
+    border-right: 0;
     box-shadow: 3px 3px 15px rgb(4 80 147 / 4%);
-   /*  border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px; */
-       
-    /* overflow-y: scroll; */
-    overflow-x: clip;
+    overflow-y: auto;
     height: fit-content;
-    max-height: 500px;
+    max-height: 400px;
     white-space: nowrap;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
+.opinion_index_wr::-webkit-scrollbar {width: 5px;}
+.opinion_index_wr::-webkit-scrollbar-track {background: #c7d4e0;}
+.opinion_index_wr::-webkit-scrollbar-thumb {background: #365978;}
 .opinion_index_wr .title {
     color: #365978;
 	margin-bottom:12px;
 	font-size: 20px;
+	padding-left:10px;
 }
 .opinion_index_list a {
     display:inline-block;
@@ -3066,14 +3092,17 @@
 
 /* fr_editor_wr */
 .fr_editor_wr {
-	padding:0.8em 1.6em;
+	padding: 0.8em 1em 1.2em;
 	color: #636363;
 }
 .fr_editor_wr, .fr_editor_wr * {
-	font-family:'Noto Sans KR',sans-serif !important; 
-	font-size: 15px;
-	font-weight: 500;
-	line-height:1.75;
+	font-family: 'Noto Sans KR',sans-serif !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.04em;
+    text-decoration-color: #aaa;
+    text-underline-offset: 4px;
 }
 .fr_editor_wr table {
 	width:100%;
@@ -3082,6 +3111,7 @@
 .fr_editor_wr table td {
 	text-align: center;
 	border: 1px solid #ccc !important;
+    padding: 0.3em 0.5em;
 }
 .fr_editor_wr table th * ,
 .fr_editor_wr table td * {
@@ -3113,4 +3143,10 @@
 }
 .c_sub_admin .admin_user_add .cs_title .select {
 	max-width:12em;
+}
+.c_sub_admin .form .f_field .ff_wrap--email {
+	display: flex;
+	align-items: center;
+    gap: 0.5em;
+    color: #717171;
 }

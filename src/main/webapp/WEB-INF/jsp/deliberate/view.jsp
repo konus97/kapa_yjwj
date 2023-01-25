@@ -74,10 +74,14 @@
 					
 						<!-- 목차 시작 -->
 							<div class="opinion_index_container">
-	                        	<button type="button" class="opinion_index_btn" id="indexBtn${formatter.applicationDTO.judgSeq}">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
+	                        	<button type="button" class="opinion_index_btn" id="indexBtn${formatter.applicationDTO.judgSeq}" title="목차보기">
+									<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
 									  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+									</svg> -->
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" class="w-6 h-6">
+  										<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 									</svg>
+									<span>목<br>차<br>보<br>기</span>
 	                        	</button>
 		                        <div class="opinion_index_wr">
 		                       		<h4 class="title t1 bold s1">
@@ -623,7 +627,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</div>
 									</div>
 								</div>
 								
@@ -632,7 +636,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</div>
 									</div>
 								</div>
 								
@@ -659,7 +663,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
 									</div>
 								</div>
 								
@@ -668,7 +672,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
 									</div>
 								</div>
 								
@@ -816,9 +820,26 @@
 				$(this).next('.opinion_index_wr').animate({
 			        width: "toggle"
 			    }, 200, "linear");
+				$(this).toggleClass('on');
+				if($(this).hasClass('on')){
+					$(this).attr('title','목차닫기')
+				}else{
+					$(this).attr('title','목차열기')
+				}
 			})
-
-});
+			
+ 			window.addEventListener('scroll',function(){
+				$('.opinion_index_container').each(function(i,el){
+					console.log($(this).offset().top)
+ 					if ($(this).offset().top > ($(this).next().offset().top + $(this).next().height() - 200)) {
+ 						$(this).css('opacity','0')
+					} else {
+						$(this).css('opacity','1')
+					}
+				})
+			})
+		});
+		
 		/* function pdfPrint(){
     // 현재 document.body의 html을 A4 크기에 맞춰 PDF로 변환
 	        html2canvas(document.body, {

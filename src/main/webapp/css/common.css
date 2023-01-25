@@ -51,6 +51,7 @@
     line-height: 50px;
     word-wrap: break-word;
     word-break: keep-all;
+    color: #365978;
 }
 .title.thin,
 .title .thin {
@@ -2469,7 +2470,7 @@ div.table table td:last-child {
     background-image: url("../images/common/icon_admin.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: 60%;
     box-shadow: 0 40px 40px rgba(34, 35, 38, 0.06);
 }
 
