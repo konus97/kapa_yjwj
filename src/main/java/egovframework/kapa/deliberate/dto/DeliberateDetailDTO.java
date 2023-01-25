@@ -26,4 +26,6 @@ public class DeliberateDetailDTO {
     private String recvDt;
     
     private String consultationDate;
+    
+    private Long selectDate;
 }

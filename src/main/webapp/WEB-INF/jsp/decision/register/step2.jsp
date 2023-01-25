@@ -170,7 +170,7 @@
                                         <tr>
                                             <th rowspan="2">구 분</th>
                                             <th colspan="3">총 보상대상</th>
-                                            <th colspan="3">혐의성립 등</th>
+                                            <th colspan="3">협의성립 등</th>
                                             <th colspan="3">재결신청</th>
                                         </tr>
                                         <tr>

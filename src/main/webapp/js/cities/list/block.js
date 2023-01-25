@@ -18,7 +18,7 @@ function makeCitiesAnnouncementBlock(num,info) {
 	let decisionState= info.decisionState;
 	let noticeFileCount = info.noticeFileCount;
 	let cityFileCount = info.cityFileCount;
-	
+	let requestEndDate = info.requestEndDate;
 	let checkExpriryDate = info.checkExpriryDate;
 	
 	console.log(checkExpriryDate);
@@ -72,8 +72,8 @@ if(decisionState == 4){
 	
     addList.push("  </td>");
     addList.push("  <td>");
-    addList.push("      <strong>의뢰일</strong>");
-    addList.push("      <span>-</span>");
+    addList.push("      <strong>의뢰마감일</strong>");
+    addList.push("      <span>"+requestEndDate+"</span>");
     addList.push("  </td>");
     addList.push("  <td>");
     addList.push("      <strong>회보일</strong>");
