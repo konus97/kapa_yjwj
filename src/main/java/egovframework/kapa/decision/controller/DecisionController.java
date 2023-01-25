@@ -23,6 +23,7 @@ import egovframework.kapa.domain.Decision_Date;
 import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
+import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
@@ -400,7 +401,8 @@ public class DecisionController {
       	 String executorOpinion = insertNew.getExecutorOpinion();
       	 String ownrNm = insertNew.getOwnrNm();
       	 String getTypeStr = "";
-		
+		 List<Decision_Opinion_Item> opinionFileList = decisionService.getOpinionFileList(decisionId, getType);
+		 model.addAttribute("opinionFileList", opinionFileList);
 		 for(int i=0 ; i<ItemData.values().length ; i++) {
 			 
 	   		 int code = ItemData.values()[i].getCode();

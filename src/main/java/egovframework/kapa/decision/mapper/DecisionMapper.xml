@@ -181,6 +181,18 @@
 			</where>
 	</select> 
 	
+	
+	<select id="getOpinionFileList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
+		
+
+	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange FROM TB_Decision_File_Opinion DFO
+	LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+		<where> 
+			
+			DFO.decisonId = ${decisionId} AND fileType = ${getType}
+			</where>
+	</select> 
+	
 	<select id="getDecisionOpinionTypeItemCount" parameterType="Map" resultType="Integer" >
 		SELECT count(*) as listCnt
 		

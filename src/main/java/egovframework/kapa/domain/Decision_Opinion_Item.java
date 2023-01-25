@@ -17,4 +17,7 @@ public class Decision_Opinion_Item {
     private String regdate;
     private String fileNameChange;
     private String fileFolder;
+    private String fileNameExtension;
+    private String fileDescription;
+    private Long fileSeq;
 }
