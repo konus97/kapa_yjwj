@@ -312,16 +312,262 @@
 							</div>
 
 							<div class="cs_title">
+								<h4 class="fl title t1 bold cb s1 bullet">
+									소유자의견 및 사업시행자 의견 작성 - 작업 중
+								</h4>
+							</div>
+							<div class="c_table t1">
+								<table>
+									<thead>
+										<tr>
+											<!-- <th>연번</th> -->
+											<th>항목</th>
+											<th>소유자</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+										<%--<c:forEach var="ownerInfo" items="${ownerList}"
+											varStatus="status">--%>
+											<%--<c:set var="i" value="${i+1}" /> --%>
+
+											<tr<%-- id="ownerInfo${ownerInfo.ownrSeq}" data-item=""--%>>
+												<%-- <th><strong>${i}</strong></th> --%>
+												<td>
+													<button>
+														<a href="#" class="btn_check"
+															onclick=" openPopup('checkbox','${ownerInfo.ownrSeq}') ;return false;">
+															항목 선택</a>
+													</button>
+												</td>
+												<td>
+													<%-- <strong>소유자</strong>
+													<span><a href="#!" class="cx owner">${ownerInfo.ownrTitle}</a></span>
+													<div></div> --%>
+													<a href="#" class="cx"
+													onclick="openPopup('landsownercheck','${landRightCount}');return false;">필지</a>
+													<a href="#" class="cx"
+													onclick="openPopup('goodsownercheck','${objectRightCount}');return false;">지장물</a>
+												</td>
+											</tr>
+
+											<%--<tr class="inner_table">
+												<td colspan="100%"><c:if test="${ownerInfo.landCheck}">
+
+														<div class="inner_table_div">
+															<p class="title t3 s1 bullet">필지</p>
+															<table>
+																<caption>필지</caption>
+																<thead>
+																	<tr>
+																		<th>연번</th>
+																		<th>소유자</th>
+																		<th>지분</th>
+																		<th>소재지</th>
+																		<th>지번</th>
+																		<th>본번</th>
+																		<th>부번</th>
+																		<th>공</th>
+																		<th>실</th>
+																		<th>면적</th>
+																		<th>단가</th>
+																		<th>항목</th>
+																	</tr>
+																</thead>
+
+
+																<tbody>
+																	<c:forEach var="landInfo" items="${ownerInfo.landList}"
+																		varStatus="status">
+																		<tr>
+																			<th><strong>${landInfo.rank}</strong></th>
+																			<td><strong>소유자</strong> <span> <a
+																					href="#!" class="cx owner">${landInfo.ownrNnm}</a>
+																			</span></td>
+																			<td><strong>지분</strong> <span>${landInfo.landShre}</span>
+																			</td>
+																			<td class="left"><strong>소재지</strong> <span>${landInfo.reptAddr}</span>
+																			</td>
+																			<td><strong>지번</strong> <span>${landInfo.sidoGunguCd}</span>
+																			</td>
+																			<td><strong>본번</strong> <span>${landInfo.mainStrtNo}</span>
+																			</td>
+																			<td><strong>부번</strong> <span>${landInfo.subStrtNo}</span>
+																			</td>
+																			<td><strong>공</strong> <span>${landInfo.obstStuc1Nm}</span>
+																			</td>
+																			<td><strong>실</strong> <span>${landInfo.obstStuc2Nm}</span>
+																			</td>
+																			<td><strong>면적</strong> <span>${landInfo.areaAmot}${landInfo.areaUnit}</span>
+																			</td>
+																			<td><strong>단가</strong> <span>${landInfo.befUnitCost}</span>
+																			</td>
+																			<td><strong>항목</strong>
+																				<div>
+																					<select id="item${landInfo.reptSeq}"
+																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
+																						data-type="land" data-seq="${landInfo.reptSeq}" reptOwnrSeq ="${landInfo.reptOwnrSeq}" ownrNm="${landInfo.ownrNnm}">
+																						<option value="">항목선택</option>
+																					</select>
+																				</div></td>
+																		</tr>
+
+
+																		<tr class="check_wrap opinionData" data-seq="${i}">
+																			<td colspan="14">
+
+																				<div class="c_board checkContentList">
+
+																					<div class="cb_list">
+																						<div class="cbl_head">
+																							<div class="cbl_wrap">
+																								<div class="cbl_1">번호</div>
+																								<div class="cbl_2">항목</div>
+																								<div class="cbl_3">제목</div>
+																								<div class="cbl_4">소유자 의견</div>
+																								<div class="cbl_5">사업시행자 의견</div>
+																							</div>
+																						</div>
+																						<div class="cbl_body">
+																							<ul id="ownerLandItemList${landInfo.reptSeq}">
+
+																							</ul>
+																						</div>
+																					</div>
+
+																				</div>
+
+
+																			</td>
+																		</tr>
+
+
+
+																	</c:forEach>
+
+
+
+																</tbody>
+															</table>
+														</div>
+
+													</c:if>
+													
+													<c:if test="${ownerInfo.goodsCheck}">
+
+														<div class="inner_table_div">
+															<p class="title t3 s1 bullet">지장물</p>
+															<table>
+																<caption>지장물</caption>
+																<thead>
+																	<tr>
+																		<th>연번</th>
+																		<th>소유자</th>
+																		<th>지분</th>
+																		<th>소재지</th>
+																		<th>본번</th>
+																		<th>부번</th>
+																		<th>부번2</th>
+																		<th>물건종류</th>
+																		<th>물건구조</th>
+																		<th>면적/수량</th>
+																		<th>단가</th>
+																		<th>항목</th>
+																	</tr>
+																</thead>
+																<tbody>
+
+																	<c:forEach var="goodsInfo"
+																		items="${ownerInfo.goodsList}" varStatus="status">
+																		<tr>
+																			<th><strong>${goodsInfo.rank}</strong></th>
+																			<td><strong>소유자</strong> <span> <a
+																					href="#!" class="cx owner">${goodsInfo.ownrNnm}</a>
+																			</span></td>
+																			<td><strong>지분</strong> <span>${goodsInfo.landShre}</span>
+																			</td>
+																			<td class="left"><strong>소재지</strong> <span>${goodsInfo.reptAddr}</span>
+																			</td>
+																			<td><strong>본번</strong> <span>${goodsInfo.mainStrtNo}</span>
+																			</td>
+																			<td><strong>부번</strong> <span>${goodsInfo.subStrtNo}</span>
+																			</td>
+																			<td><strong>부번2</strong> <span>${goodsInfo.strtOther}</span>
+																			</td>
+
+																			<td><strong>물건종류</strong> <span>${goodsInfo.obstStuc1Nm}</span>
+																			</td>
+
+																			<td><strong>물건구조</strong> <span>${goodsInfo.obstKindNm}</span>
+																			</td>
+
+																			<td><strong>면적</strong> <span>${goodsInfo.areaAmot}${goodsInfo.areaUnit}</span>
+																			</td>
+																			<td><strong>단가</strong> <span>${goodsInfo.befUnitCost}</span>
+																			</td>
+																			<td><strong>항목</strong>
+																				<div>
+																					<select id="item${goodsInfo.reptSeq}"
+																						class="ownerItem ownerItem${ownerInfo.ownrSeq}"
+																						data-type="goods" data-seq="${goodsInfo.reptSeq}" reptOwnrSeq="${goodsInfo.reptOwnrSeq}" ownrNm="${ownrNnm}">
+																						<option value="">항목선택</option>
+																					</select>
+																				</div></td>
+																		</tr>
+
+																		<tr class="check_wrap opinionData" data-seq="${i}">
+																			<td colspan="14">
+
+																				<div class="c_board checkContentList">
+																					<div class="cb_list">
+																						<div class="cbl_head">
+																							<div class="cbl_wrap">
+																								<div class="cbl_1">번호</div>
+																								<div class="cbl_2">항목</div>
+																								<div class="cbl_3">제목</div>
+																								<div class="cbl_4">소유자 의견</div>
+																								<div class="cbl_5">사업시행자 의견</div>
+																							</div>
+																						</div>
+																						<div class="cbl_body">
+																							<ul id="ownerGoodsItemList${goodsInfo.reptSeq}">
+
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																			</td>
+																		</tr>
+
+																	</c:forEach>
+
+																</tbody>
+															</table>
+														</div>
+
+
+													</c:if>
+												</td>
+											</tr>--%>
+
+										<%-- </c:forEach> --%>
+
+									</tbody>
+								</table>
+							</div>
+							
+							<div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">소유자의견 및 사업시행자 의견
-									작성</h4>
+									작성 - 수정 전</h4>
 							</div>
 							<div class="c_table t1">
 								<table>
 									<thead>
 										<tr>
 											<th>연번</th>
-											<th>소유자</th>
 											<th>항목</th>
+											<th>소유자</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -333,16 +579,17 @@
 
 											<tr id="ownerInfo${ownerInfo.ownrSeq}" data-item="">
 												<th><strong>${i}</strong></th>
-												<td><strong>소유자</strong> <span> <a href="#!"
-														class="cx owner">${ownerInfo.ownrTitle}</a>
-												</span>
-													<div></div></td>
 												<td>
 													<button>
 														<a href="#" class="btn_check"
-															onclick="openPopup('checkbox','${ownerInfo.ownrSeq}');return false;">항목
-															선택</a>
+															onclick="openPopup('checkbox','${ownerInfo.ownrSeq}');return false;">
+															항목 선택</a>
 													</button>
+												</td>
+												<td>
+													<strong>소유자</strong>
+													<span><a href="#!" class="cx owner">${ownerInfo.ownrTitle}</a></span>
+													<div></div>
 												</td>
 											</tr>
 
@@ -543,7 +790,8 @@
 														</div>
 
 
-													</c:if></td>
+													</c:if>
+												</td>
 											</tr>
 
 										</c:forEach>
@@ -584,10 +832,18 @@
 							<!-- 팝업, 지장물 소유자 검색 S -->
 							<%@ include file="../../implementer/popup/goodsowner.jsp"%>
 							<!-- 팝업, 지장물 소유자 검색 E -->
-
+							
+							<!-- 팝업, 지장물 소유자 체크 S -->
+							<%@ include file="../../implementer/popup/goodsownercheck.jsp"%>
+							<!-- 팝업, 지장물 소유자 체크 E -->
+							
 							<!-- 팝업, 필지 소유자 검색 S -->
 							<%@ include file="../../implementer/popup/landsowner.jsp"%>
 							<!-- 팝업, 필지 소유자 검색 E -->
+
+							<!-- 팝업, 필지 소유자 체크 S -->
+							<%@ include file="../../implementer/popup/landsownercheck.jsp"%>
+							<!-- 팝업, 필지 소유자 체크 E -->
 
 							<!-- 팝업, 평가사 정보 S -->
 

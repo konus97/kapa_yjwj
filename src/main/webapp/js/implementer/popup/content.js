@@ -9,8 +9,12 @@ function openPopup(mode,count){
 			getLandInfo();
 		}else if(mode=="goodsowner"){
 			getGoodsowner();
+		}else if(mode=="goodsownercheck"){
+			getGoodsownerCheck();
 		}else if(mode=="landsowner"){
 			getLandownerInfo();	
+		}else if(mode=="landsownercheck"){
+			getLandownerCheck();	
 		}else if(mode=="goods"){
 			getGoodsInfo();
 		}else if(mode=="checkbox"){			
@@ -28,9 +32,15 @@ function closePopup(mode){
 	}else if(mode=="goodsowner"){
 		$("#goodsownerList").empty();
 		$('#popupGoodsowner').removeClass("on");
+	}else if(mode=="goodsownercheck"){
+		$("#goodsownerCheckList").empty();
+		$('#popupGoodsownerCheck').removeClass("on");
 	}else if(mode=="landsowner"){
 		$("#landownerList").empty();
 		$('#popupLandsowner').removeClass("on");
+	}else if(mode=="landsownercheck"){
+		$("#landownerListCheck").empty();
+		$('#popupLandsownerCheck').removeClass("on");
 	}else if(mode=="goods"){
 		$("#goodsList").empty();
 		$('#popupGoods').removeClass("on");
@@ -154,7 +164,48 @@ function getLandownerInfo() {
 
 }
 
+function getLandownerCheck() {
 
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/land";
+
+	$("#landownerCheckList").empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				
+				let rank = 1;
+				
+				for( let i = 0; i < list.length; i++) {
+					makeLandOwnerCheckBlock(rank,list[i]);
+					rank++;
+				}
+			}
+
+			$('#popupLandsownerCheck').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+}
 
 function getGoodsInfo() {
 
@@ -244,6 +295,51 @@ function getGoodsowner() {
 
 
 }
+
+function getGoodsownerCheck() {
+
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/goods";
+
+	$("#goodsownerCheckList").empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				
+				let rank = 1;
+				
+				for( let i = 0; i < list.length; i++) {
+					makeGoodsownerCheckBlock(rank,list[i]);
+					rank++;
+				}
+			}
+
+			$('#popupGoodsownerCheck').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+
+}
+
 
 function checkItem(){
 	
