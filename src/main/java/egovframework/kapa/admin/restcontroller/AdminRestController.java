@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import egovframework.kapa.admin.domain.AdminVO;
 import egovframework.kapa.admin.service.AdminService;
 import egovframework.kapa.domain.Search;
+import egovframework.kapa.domain.User;
 import egovframework.kapa.member.service.JoinService;
 
 @RestController
@@ -76,7 +77,7 @@ public class AdminRestController {
 	/*
 	 * delete
 	 */
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
 	public Map<String,Object> deleteContent() {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
@@ -117,12 +118,7 @@ public class AdminRestController {
 
             //값 넣기
     		List<AdminVO> result = adminService.getAllUser(search);
-            
-            
-    		System.out.println(result);
-    		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    		System.out.println(auth);
-    		
+                		
             resultFinal.put("list", result);
             resultFinal.put("allCount", listCnt);
             resultFinal.put("totalPage", search.getPageCnt());
@@ -134,6 +130,7 @@ public class AdminRestController {
         return resultFinal;
 
 	}
+
 
 
 	// 유저 추가
@@ -155,8 +152,38 @@ public class AdminRestController {
 
         return ResponseEntity.ok(resultFinal);
 
-	}
-	
+	}	
 
-	
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getSearchUserList(@RequestParam("cpage") String cpage, @RequestParam("searchName") String searchName) {		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+
+		Search search = new Search();
+		search.setKeyword(searchName);
+		
+        //page cpage
+        int pageNum=1;
+        int rowItem=10;
+        try {
+
+            pageNum = Integer.parseInt(cpage);
+            int listCnt = adminService.getSearchUserCnt(search);
+
+            search.pageInfo(pageNum, rowItem, listCnt);
+
+            //값 넣기
+    		List<AdminVO> result = adminService.getSearchUser(search);
+                		
+            resultFinal.put("list", result);
+            resultFinal.put("allCount", listCnt);
+            resultFinal.put("totalPage", search.getPageCnt());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
 }

@@ -126,7 +126,7 @@
                                 <div class="btn_wrap">
                                     <ul class="fl div3 input-wrap">
                                         <li>
-                                            <a href="#" class="btn t1"onclick="goToBoardList();return false;" >확인</a>
+                                            <a href="#" class="btn t1"onclick="goToBoardList();return false;" >취소</a>
                                         </li>
 <!--                                         <li> -->
 <!--                                             <a href="#" class="btn">답글</a> -->

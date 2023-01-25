@@ -145,7 +145,7 @@
 								</div>
 								<div class="btn_wrap">
 									<ul class="input-wrap" style="justify-content:center;">
-										<li><a href="#" class="btn" onclick="goToBoardList();return false;">확인</a></li>
+										<li><a href="#" class="btn" onclick="goToBoardList();return false;">취소</a></li>
 										<li><button type="submit" class="btn t1">수정</button></li>
 									</ul>
 								</div>

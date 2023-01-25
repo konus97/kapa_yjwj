@@ -34,7 +34,9 @@ public interface AdminMapper {
 		
 	//회원 list 보기
 	List<AdminVO> getMemberList(Search search);
-	
+
 	int getAllUserCnt();
+
+	int getSearchUserCnt(Search search);
 
 }

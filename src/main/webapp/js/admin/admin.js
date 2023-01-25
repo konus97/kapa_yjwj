@@ -50,8 +50,105 @@ function getUserList(cpage) {
 	});
 }
 
-function makeUserBlock(idx, info) {
 
+function getSearchUserList() {
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + "/api/admin/search.do";
+	let searchName = document.getElementById("au_name").value;
+	let cpage = 1;
+	if (searchName==null || searchName=="") {
+		alert("검색어를 입력하세요.");
+		return ;
+	}
+	
+	$("#userList").attr("data-cpage", cpage);
+	$("#userList").empty();
+	$("#pageList").empty();
+	$(".cs_title").empty();
+	
+
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "json",
+		async: false,
+		data: {
+			"cpage": cpage,
+			"searchName" : searchName,
+		},
+		success: function(data) {
+			let list = data.list;
+			console.log(list);
+			let allCount = data.allCount;
+			let totalPage = data.totalPage;
+
+			if (totalPage == "0") totalPage = 1;
+
+			let addList = new Array();
+			addList.push("<h4 class=\'fl title t1 bold cb s1 bullet'>회원( " + allCount + " )명</h4>");
+			$(".cs_title").append(addList.join(''));
+
+			if (list.length == 0){}
+			else {
+				$("#userList").attr("data-tpage", totalPage);
+	
+				for(let i = 1; i<list.length+1; i++) {
+					makeUserBlock(i, list[i - 1]);
+				}	
+				makeUserPageList();
+			}
+		},
+		error: function(xhr, status, error) {
+		
+		
+		}
+	});
+}
+
+function deleteUser(userId) {
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + "/api/admin/delete.do";
+	console.log(userId);
+	let cpage = 1;
+	
+	if (confirm("삭제 하시겠습니까 ?")) {
+	
+		$("#userList").attr("data-cpage", cpage);
+		$("#userList").empty();
+		$("#pageList").empty();
+		$(".cs_title").empty();
+		
+	
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType: "json",
+			async: false,
+			data: {
+				"cpage": cpage,
+				"searchName" : searchName,
+			},
+			success: function(data) {
+				alert("삭제되었습니다.")
+				if (totalPage == "0") totalPage = 1;
+	
+	
+				if (list.length == 0){}
+				else {
+				}
+			},
+			error: function(xhr, status, error) {
+			
+			
+			}
+		});
+	}
+}
+
+function makeUserBlock(idx, info) {
+	
 	let addList = new Array();
 	let auth = "관리자";
 
@@ -78,7 +175,11 @@ function makeUserBlock(idx, info) {
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("<strong>옵션</strong><span><a href=\'#' class=\'btn tiny'>수정</a>");
-	addList.push("<button type=\'button' class=\'btn tiny t1'>삭제</button></span>")
+	
+	//addList.push("		<div class=\"cbl_subject\"><a href=\""+contextPath+"/board/"+boardUrl+"/view.do?viewSeq="+seq+"\">"+title+"</a></div>");
+	
+	addList.push("<button type=\'button' class=\'btn tiny t1' onclick=\"deleteUser("+ info.userId+")\">삭제</button></span>")
+	//addList.push("<button type=\'button' class=\'btn tiny t1' onclick=\"getUserList("+ info.userId+")\">삭제</button></span>")
 	addList.push("</td>");
 	addList.push("</tr>");
 
@@ -183,8 +284,8 @@ function makeUserPageList() {
 
 		getUserList(selectedPage);
 	});
-
 }
+
 
 
 

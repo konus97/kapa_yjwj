@@ -59,4 +59,12 @@ public class AdminService {
 	public int getAllUserCnt() {
 		return adminMapper.getAllUserCnt();
 	}
+
+	public int getSearchUserCnt(Search search) {
+		return adminMapper.getSearchUserCnt(search);
+	}
+	
+	public List<AdminVO> getSearchUser(Search search) {
+		return adminMapper.getMemberList(search);
+	}
 }
