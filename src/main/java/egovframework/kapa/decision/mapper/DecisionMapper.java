@@ -58,6 +58,8 @@ public interface DecisionMapper {
 	
 	List<Decision_ConsultationDate> getConsultationDate(Long decisionId);
 	
+	List<Decision_Opinion_Item> getOpinionFileList(@Param("decisionId")Long decisionId ,@Param("getType")int getType);
+	
 	int getDecisionCityFileCnt(int decisionId);
 
 	void insertDecisionFile(Decision_File file);

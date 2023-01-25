@@ -8,6 +8,13 @@
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
+		AND A.delCheck = 0
+		
+  		<if test = 'keyword neq null and keyword neq ""'>   
+			<where>
+	         	A.userName LIKE CONCAT('%', #{keyword}, '%')
+	  		</where>
+        </if>
 		
 		ORDER BY seqNo DESC
 		
@@ -21,6 +28,22 @@
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
+		AND A.delCheck = 0
+    </select>
+    
+	<select id="getSearchUserCnt" resultType="Integer" parameterType="egovframework.kapa.domain.Search">
+        SELECT COUNT(*)
+		FROM TB_User A
+		LEFT JOIN TB_Appraiser B
+		ON A.seqNo = B.userSeqNo
+		AND A.delCheck = 0
+  		
+  		<if test = 'keyword neq null and keyword neq ""'>   
+			<where>
+	         	A.userName LIKE CONCAT('%', #{keyword}, '%')
+	  		</where>
+        </if>
+		
     </select>
 	
 	 

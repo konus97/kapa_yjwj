@@ -52,7 +52,15 @@
 			<jsp:param name="login" value="login" />
 		</jsp:include>
 		<!-- header end -->
+		
 		<div id="contents" class="c_sub c_sub_admin">
+		
+	      	<!-- admin submenu start -->
+	        <jsp:include page="includes/submenu.jsp" flush="false">
+				<jsp:param name="currentPage" value="${currentPage}" />
+			</jsp:include> 
+			<!-- admin submenu end -->
+		
 			<div class="wrap">
 				<div class="cs_wrap">
 					<div class="cs_head">
@@ -76,7 +84,7 @@
 													value="${adminVO.userName}" required />
 												</span> <span class="ff_group">
 													<button type="button" id="au_submit" name="au_submit"
-														class="btn t2 small ico search" onclick="search()">검색</button>
+														class="btn t2 small ico search" onclick="getSearchUserList()">검색</button>
 												</span>
 											</div>
 										</div>

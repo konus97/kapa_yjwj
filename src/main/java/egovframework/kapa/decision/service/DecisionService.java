@@ -151,7 +151,9 @@ public class DecisionService {
 		return decisionMapper.getConsultationDate(decisionId);
 	}
 
-
+	public List<Decision_Opinion_Item> getOpinionFileList(Long decisionId ,int getType){
+		return decisionMapper.getOpinionFileList(decisionId, getType);
+	}
 	public int getDecisionAgendaCnt(Search search) {
 		return decisionMapper.getDecisionAgendaCnt(search);
 	}
