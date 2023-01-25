@@ -240,6 +240,7 @@ public class DecisionService {
             String receiver = "-";
             String newsletterDay = "-";
             String requestStartDate = "-";
+            String requestEndDate = "-";
             String publicationExpiryDate = "-";
             
             int noticeFileCount = 0;
@@ -287,7 +288,10 @@ public class DecisionService {
                 if(decisionNotice.getNewsletterDay()!=null) {
                 	newsletterDay=decisionNotice.getNewsletterDay();
                 }
-                
+				/*
+				 * if(decisionNotice.getRequestEndDate()!=null) {
+				 * requestEndDate=decisionNotice.getRequestEndDate(); }
+				 */
                 if(decisionNotice.getPublicationExpiryDate()!=null) {    
                 	
                 	checkExpriryDate=today.isAfter(decisionNotice.getPublicationExpiryDate());
@@ -324,6 +328,7 @@ public class DecisionService {
             announcementDTO.setReceiver(receiver);
             announcementDTO.setNewsletterDay(newsletterDay);
             announcementDTO.setRequestStartDate(requestStartDate);
+            announcementDTO.setRequestEndDate(requestEndDate);
             announcementDTO.setPublicationExpiryDate(publicationExpiryDate);
             announcementDTO.setNoticeFileCount(noticeFileCount);
             announcementDTO.setCityFileCount(cityFileCount);

@@ -95,6 +95,7 @@ function makeAgendaDetail(num,info) {
 
 	console.log(info);
 	
+	let selectDate = info.selectDate;
 	let consultationDate = info.consultationDate;
 	consultationDate = consultationDate.replaceAll('-', '');
 	consultationDate = consultationDate +"-"+num+"차";
@@ -104,7 +105,7 @@ function makeAgendaDetail(num,info) {
 	let judgDivName = info.judgDivName;	
 	let recvDt = info.recvDt;	
 	
-	//let num1 = document.getElementById("num1_"+47).innerText;
+	let num1 = document.getElementById("num1_"+selectDate).innerText;
 	
 	let reptLoc = info.reptLoc;		
 	let addList = new Array();
@@ -137,7 +138,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>심의차수</strong>");
-	addList.push("    <span>"+consultationDate+"-"+num+"번</span>");
+	addList.push("    <span>"+num1+"-"+num+"번</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("    <strong>사업명</strong>");

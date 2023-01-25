@@ -152,6 +152,9 @@ public class DeliberateService {
 			System.out.println("agendadate start");
 			Decision decision = decisionMapper.getDecisionView(decisionAgendaDate.getDecisionId());
 			Decision_Date decisionDate = deliberateMapper.getDeliberateDate(decisionAgendaDate.getSelectDate());
+			Long selectDate = decisionDate.getSeqNo();
+			System.out.println("sdafasdfsa" + selectDate);
+			
 			String consultationDate = decisionDate.getConsultationDate().format(formatter);
 			ApplicationList applicationList = implementerService.getApplicationView(decision.getMasterID());
 			String title = applicationList.getJudg_biz_nm();
@@ -171,7 +174,7 @@ public class DeliberateService {
 			String recvDt = applicationList.getRecv_dt().format(formatter);
 
 			DeliberateDetailDTO deliberateDetailDTO = DeliberateDetailDTO.builder().seqNo(decision.getSeqNo())
-					.title(title).consultationDate(consultationDate).caseNo(applicationList.getCase_no()).judgDivName(judgDivName)
+					.title(title).consultationDate(consultationDate).selectDate(selectDate).caseNo(applicationList.getCase_no()).judgDivName(judgDivName)
 					.reptLoc(applicationList.getRept_loc()).recvDt(recvDt).build();
 
 			deliberateDTOS.add(deliberateDetailDTO);

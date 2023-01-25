@@ -26,6 +26,8 @@ public class AnnouncementDTO{
     private String newsletterDay;
     
     private String requestStartDate;
+
+    private String requestEndDate;
     
     private String publicationExpiryDate;
     
