@@ -435,7 +435,18 @@
 									<c:choose>
 									<c:when test="${opinionFileList.fileNameExtension eq 'PNG'}">
 									<tr>
-										<td class=""  colspan="2">
+										<th class="info_reg_th" >소재지</th>
+										<td colspan="2"><p class="">${opinionFileList.opinionTitle}</p></td>
+									</tr>
+									<tr>
+										<th class="info_reg_th">이전비 평가사유</th>
+										<td colspan="2"><p class="">${opinionFileList.opinionContent}</p></td>
+									</tr>
+									<tr>
+										<th class="info_reg_th" colspan="3">관련자료</th>
+									</tr>
+									<tr>
+										<td class=""  colspan="3">
 											<img
 											src="${opinionFileList.fileFolder}${opinionFileList.fileNameChange}"
 											alt="">
@@ -454,22 +465,30 @@
 									</c:choose>
 									<c:choose>
 									<c:when test="${opinionFileList.fileNameExtension eq 'pdf'}">
+									<tr>
+									<td colspan="3">
 									<div class="file_flex"> 
 								<input class="file_view" value="${opinionFileList.fileDescription}" readonly disabled />	
                          				<input class="file_view" value="${opinionFileList.fileNameChange}" readonly disabled />
                          				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
                              			<i class="icon-block download"></i>
                          			</button>
-                         			</div>									
+                         			</div>	
+                         			</td>
+                         			</tr>								
 									</c:when>
 									<c:when test="${opinionFileList.fileNameExtension eq 'PDF'}">
+									<tr>
+									<td colspan="3">
 									<div class="file_flex"> 
 										<input class="file_view" value="${opinionFileList.fileDescription}" readonly disabled />	
                          				<input class="file_view" value="${opinionFileList.fileNameChange}" readonly disabled />
                          				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
                              			<i class="icon-block download"></i>
                          			</button>
-                         			</div>									
+                         			</div>		
+                         			</td>
+                         			</tr>							
 									</c:when>
 									</c:choose>
 									</c:forEach>
