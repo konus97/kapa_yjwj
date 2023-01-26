@@ -39,7 +39,7 @@
         
     </head>
     <body>
-        <div id="wrap">
+    
         
             <!-- header start -->
         	<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
@@ -48,6 +48,7 @@
 			<!-- header end -->
 
             <hr />
+            
             <div id="contents" class="c_sub">
                 <div class="wrap">
                     <div class="sub_title sub_title01">
@@ -112,381 +113,47 @@
                                 </div>
                             </form>
                         </div>
-                        <div id="divTotalPage">
+                    </div>
+                        <!-- <div id="divTotalPage">
                             검색결과 :
                             <span style="font-weight: bold; color: #d03400"
                                 >52항목 (1/4)</span
                             >&nbsp;페이지
-                        </div>
-                        <table class="basic alt" title="관련법령">
-                            <caption class="hideCaption">
-                                관련법령 - 번호, 법령명, 담당부서, 수용근거
-                                항목으로 구성
-                            </caption>
-                            <colgroup>
-                                <col style="width: 8%" />
-                                <col style="width: 52%" />
-                                <col style="width: 20%" />
-                                <col style="width: 20%" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th scope="col">번호</th>
-                                    <th scope="col">법령명</th>
-                                    <th scope="col">담당부서</th>
-                                    <th scope="col">수용근거</th>
-                                </tr>
-                            </thead>
-                            <tbody id="divListBodyPc">
-                                <tr>
-                                    <td align="center" width="60px">1</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9411")'
-                                            onclick="this.href"
-                                            title='"경제자유구역의 지정 및 운영에 관한 특별법" 새창'
-                                            >&nbsp;경제자유구역의 지정 및 운영에
-                                            관한 특별법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        산업통상자원부
-                                    </td>
-                                    <td align="center">법 제9조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">2</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("240")'
-                                            onclick="this.href"
-                                            title='"골재채취법" 새창'
-                                            >&nbsp;골재채취법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        국토교통부
-                                    </td>
-                                    <td align="center">법 제36조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">3</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("10372")'
-                                            onclick="this.href"
-                                            title='"공공기관 지방이전에 따른 혁신도시 건설 및 지원에 관한 특별법" 새창'
-                                            >&nbsp;공공기관 지방이전에 따른
-                                            혁신도시 건설 및 지원에 관한
-                                            특별법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        건설교통부
-                                    </td>
-                                    <td align="center">법 제15조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">4</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("1744")'
-                                            onclick="this.href"
-                                            title='"관광진흥법" 새창'
-                                            >&nbsp;관광진흥법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        문화체육관광부
-                                    </td>
-                                    <td align="center">법 제61조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">5</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("1865")'
-                                            onclick="this.href"
-                                            title='"광업법" 새창'
-                                            >&nbsp;광업법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        산업통상자원부
-                                    </td>
-                                    <td align="center">법 제70조, 제71조</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">6</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("934")'
-                                            onclick="this.href"
-                                            title='"국방ㆍ군사시설 사업에 관한 법률" 새창'
-                                            >&nbsp;국방ㆍ군사시설 사업에 관한
-                                            법률</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">국방부</td>
-                                    <td align="center">법 제6조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">7</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9294")'
-                                            onclick="this.href"
-                                            title='"국토의 계획 및 이용에 관한 법률" 새창'
-                                            >&nbsp;국토의 계획 및 이용에 관한
-                                            법률</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        국토교통부
-                                    </td>
-                                    <td align="center">법 제95조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">8</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9281")'
-                                            onclick="this.href"
-                                            title='"금강수계 물관리 및 주민지원 등에 관한 법률" 새창'
-                                            >&nbsp;금강수계 물관리 및 주민지원
-                                            등에 관한 법률</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">환경부</td>
-                                    <td align="center">법 제25조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">9</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9848")'
-                                            onclick="this.href"
-                                            title='"기업도시개발 특별법" 새창'
-                                            >&nbsp;기업도시개발 특별법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        국토교통부
-                                    </td>
-                                    <td align="center">법 제14조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">10</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9282")'
-                                            onclick="this.href"
-                                            title='"낙동강수계 물관리 및 주민지원 등에 관한 법률" 새창'
-                                            >&nbsp;낙동강수계 물관리 및 주민지원
-                                            등에 관한 법률</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">환경부</td>
-                                    <td align="center">법 제27조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">11</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("996")'
-                                            onclick="this.href"
-                                            title='"농어촌도로 정비법" 새창'
-                                            >&nbsp;농어촌도로 정비법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        안전행정부
-                                    </td>
-                                    <td align="center">법 제13조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">12</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("478")'
-                                            onclick="this.href"
-                                            title='"농어촌정비법" 새창'
-                                            >&nbsp;농어촌정비법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        농림축산식품부
-                                    </td>
-                                    <td align="center">법 제110조제2항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">13</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("1981")'
-                                            onclick="this.href"
-                                            title='"댐건설 및 주변지역지원 등에 관한 법률" 새창'
-                                            >&nbsp;댐건설 및 주변지역지원 등에
-                                            관한 법률</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        국토교통부
-                                    </td>
-                                    <td align="center">법 제11조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">14</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("1821")'
-                                            onclick="this.href"
-                                            title='"도로법" 새창'
-                                            >&nbsp;도로법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        국토교통부
-                                    </td>
-                                    <td align="center">법 제48조제1항</td>
-                                </tr>
-                                <tr>
-                                    <td align="center" width="60px">15</td>
-                                    <td align="left" width="350px">
-                                        <a
-                                            href='javascript:goApi("9410")'
-                                            onclick="this.href"
-                                            title='"도시 및 주거환경정비법" 새창'
-                                            >&nbsp;도시 및 주거환경정비법</a
-                                        >
-                                    </td>
-                                    <td align="center" width="100px">
-                                        건설교통부
-                                    </td>
-                                    <td align="center">법 제38조</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div
-                            id="divPaginator"
-                            style="margin-top: 10px; text-align: center"
-                        >
-                            <a
-                                id="firstA1"
-                                href="javascript:_pager.firstBtnClick()"
-                                style="display: none"
-                                ><img
-                                    id="firstBtn1"
-                                    src="#"
-                                    alt="목록 처음으로 가기 아이콘"
-                                    title="처음"
-                                    style="cursor: default; display: none" /></a
-                            ><a
-                                id="prevA1"
-                                href="javascript:_pager.prevBtnClick()"
-                                style="display: none"
-                                ><img
-                                    id="prevBtn1"
-                                    src="#"
-                                    alt="이전 페이지그룹으로 가기 아이콘"
-                                    title="이전"
-                                    style="cursor: default; display: none"
-                            /></a>
-                            <div
-                                id="paginator1"
-                                style="display: inline; margin-left: 5px"
-                            >
-                                <a id="a1" href="#" title="선택됨"
-                                    ><span
-                                        style="
-                                            cursor: pointer;
-                                            border: 1px solid #e3e3e3;
-                                            display: inline-block;
-                                            text-align: center;
-                                            padding-top: 6px;
-                                            padding-bottom: 5px;
-                                            width: 30px;
-                                            margin-left: -1px;
-                                            font-weight: bold;
-                                        "
-                                        >1</span
-                                    ></a
-                                ><a id="a2" href="javascript:_pager.goPage(2)"
-                                    ><span
-                                        style="
-                                            cursor: pointer;
-                                            border: 1px solid #e3e3e3;
-                                            display: inline-block;
-                                            text-align: center;
-                                            padding-top: 6px;
-                                            padding-bottom: 5px;
-                                            width: 30px;
-                                            margin-left: -1px;
-                                        "
-                                        >2</span
-                                    ></a
-                                ><a id="a3" href="javascript:_pager.goPage(3)"
-                                    ><span
-                                        style="
-                                            cursor: pointer;
-                                            border: 1px solid #e3e3e3;
-                                            display: inline-block;
-                                            text-align: center;
-                                            padding-top: 6px;
-                                            padding-bottom: 5px;
-                                            width: 30px;
-                                            margin-left: -1px;
-                                        "
-                                        >3</span
-                                    ></a
-                                ><a id="a4" href="javascript:_pager.goPage(4)"
-                                    ><span
-                                        style="
-                                            cursor: pointer;
-                                            border: 1px solid #e3e3e3;
-                                            display: inline-block;
-                                            text-align: center;
-                                            padding-top: 6px;
-                                            padding-bottom: 5px;
-                                            width: 30px;
-                                            margin-left: -1px;
-                                        "
-                                        >4</span
-                                    ></a
-                                >&nbsp;
-                            </div>
-                            <a
-                                id="nextA1"
-                                href="javascript:_pager.nextBtnClick()"
-                                style="display: none"
-                                ><img
-                                    id="nextBtn1"
-                                    src="#"
-                                    alt="다음 페이지그룹으로 가기 아이콘"
-                                    title="다음"
-                                    style="cursor: default; display: none" /></a
-                            ><a
-                                id="lastA1"
-                                href="javascript:_pager.lastBtnClick()"
-                                style="display: none"
-                                ><img
-                                    id="lastBtn1"
-                                    src="#"
-                                    alt="목록 끝으로 가기 아이콘"
-                                    title="끝"
-                                    style="cursor: default; display: none"
-                            /></a>
-                        </div>
-                    </div>
+                        </div> -->
+                        <!-- <table class="basic alt" title="관련법령"> -->
+                        
+                        
+	        			<div class="cs_wrap">
+		            		<div class="cs_body">
+		            		
+	                			<div class="c_table t1">
+		                        <table title="관련법령" id="table00">
+		                            <thead>
+		                                <tr>
+		                                    <th scope="col">번호</th>
+		                                    <th scope="col">법령명</th>
+		                                    <th scope="col">조</th>
+		                                    <th scope="col">항</th>
+		                                    <th scope="col">내용</th>
+		                                </tr>
+		                            </thead>
+									<tbody id="lawList">
+		                            </tbody>
+		                        </table>
+		                        <div class="paging">
+									<div class="p_wrap" id="pageList">
+										
+									</div>
+								</div>
+								
+								
+								
+		            		</div>
+	            		</div>
                 </div>
             </div>
             <hr />
-            <form name="siseSubForm" method="post" action="http://www.law.go.kr/DRF/lawService.do" target="law" accept-charset="euc-kr">
-				<input type="hidden" name="OC" value="jangok">
-				<input type="hidden" name="target" value="law">
-				<input type="hidden" name="ID" value="9411">
-				<input type="hidden" name="type" value="HTML">
-			</form>
+        </div>
             
 			<!-- footer start -->
             <jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
@@ -494,7 +161,7 @@
 			</jsp:include> 
             <!-- footer end -->
             
-        </div>
+        
 
 	    <!-- join popup S -->
 	    <jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">
@@ -508,6 +175,7 @@
 		</jsp:include> 
 	    <!-- 팝업, 로그인 E -->
 
+		<script src="../lib/jquery.min.js"></script>
         <script src="../lib/jquery.3.1.0.min.js"></script>
         <script src="../lib/owl.carousel.min.js"></script>
         <script src="../lib/jquery-ui.min.js"></script>
@@ -515,106 +183,14 @@
         
         <!--common start-->
 		<script src="../js/common.js"></script>
+		
+		<script src="../js/admin/law.js"></script>
+	
+	<script>
+	    $( document ).ready( function(){
+	    	getLawList(1);
+	    });
+	</script>
 
-        <script type="text/javascript">
-        
-        var _cPage	= 1;		// 현재페이지
-        var _rows 	= 15;		// 페이지당 항목수
-        var _pager 	= new Pager("divPaginator", "_pager", 1);	// global로 선언해함.  패러미터 :  divPaginator(페이징 div id),  _pager(페이저 객체를 담는 object),  1 (페이저 객체 number)
-        
-        $(document).ready(function(){
-        	
-        	if(location.href.indexOf('https://land.seoul.go.kr:444/land/sltis/relationStatute.do') == 0) {
-        		window.location ='http://land.seoul.go.kr/land/sltis/relationStatute.do';
-        	  	return false;
-        	}
-        	
-        	searchPage(1);
-        	// 엔터키 누른경우
-        	$("#searchContent").keypress(function(e){
-        		if (e.keyCode == 13){
-        			searchPage(1);
-        			return false;
-        		}
-        	});
-        	$("#search").click(function(){searchPage(1);});
-        });
-
-
-        function searchPage(cPage){
-        	_cPage = cPage;
-        	getLawList(cPage);
-        }
-
-        function getLawList(pageNo){
-        	g3way.land.common.insertLog("", "11000", "", "relationStatute"); // 로그저장
-
-
-        	$.ajax({
-            	url: "/land/sltis/getLawList.do",
-        		type: "POST",
-        		dataType: "json",
-        		data: {
-        			search		: $("#searchContent").val()				// 검색어
-        			, rows		: _rows									// 페이지당 항목수
-        			, pageNo	: pageNo								// 페이지
-        		},
-        		cache: false,
-        		success: function(data, textStatus, XMLHttpRequest) {
-        			getLawListCallback(data, textStatus);
-        		},
-        		error: function(XMLHttpRequest, textStatus, errorThrown){
-        			getLawListCallback(XMLHttpRequest, textStatus);
-        		}
-        	});
-        }
-
-
-        //CALLBACK : 법령 리스트
-        function getLawListCallback(data, textStatus) {
-        	var htmlStr = "";
-        	if(data.result.length > 0) {
-        		$.each(data.result,function(index, list){
-        			htmlStr += "<tr>";
-        			htmlStr += "	<td align='center' width='60px'>" + g3way.land.common.maskFormat(list.seqNo) + "</td>";
-        			htmlStr += "	<td align='left' width='350px'><a href='javascript:goApi(\""+list.lawId+"\")' onclick='this.href' title='\""+list.lawNm+"\" 새창'>&nbsp;" + g3way.land.common.maskFormat(list.lawNm) + "</a></td>";
-        			htmlStr += "	<td align='center' width='100px'>" + g3way.land.common.maskFormat(list.deptNm) + "</td>";
-        			htmlStr += "	<td align='center' >" +g3way.land.common.maskFormat(list.bigo) + "</td>";
-        			htmlStr += "</tr>";
-        		});
-        		_pager.makePaging(_cPage, data.result[0].totalCount, _rows);
-        	} else {
-        		htmlStr = "<tr><td colspan='5'>조회된 내용이 없습니다.<\/td><\/tr>";
-        		_pager.makePaging(1, 0, _rows);
-        	}
-        	$("#divListBodyPc").html(htmlStr);
-        	$("#divListBodyMb").html(htmlStr);
-        }
-
-        function goApi(id){
-        	
-        	var form = document.siseSubForm;
-        	
-        	form.acceptCharset = 'utf-8';
-
-        	form.OC.value 		= "jangok";
-        	form.target.value 	= "law";
-        	form.ID.value 		= id;
-        	form.type.value 	= "HTML";
-
-        	if(document.all)document.charset = 'utf-8'; // 익스플로러에서는 이렇게 해줘야 됩니다. (버그성 이라고 하네여)
-
-        	var lawpopup = window.open("","law", "width=600,height=550,top=0,left=0");
-        	lawpopup.focus();
-            form.submit();
-
-            // 폼 전송을 새창으로 했을경우 기존 문자셋으로 되돌려 놓기 위한 처리입니다.
-            form.acceptCharset = 'euc-kr';
-            if(document.all)document.charset = 'euc-kr';
-            
-//         	var url="http://www.law.go.kr/DRF/lawService.do?OC=jangok&target=law&ID="+id+"&type=HTML";
-//         	window.open(url, 'law', 'width=600,height=550,top=0,left=0');
-        }
-        </script>
     </body>
 </html>

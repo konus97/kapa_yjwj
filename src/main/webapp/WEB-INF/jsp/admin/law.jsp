@@ -91,34 +91,6 @@
 	                        </thead>
 							<tbody id="lawList">
 	                        	
-	                        
-	                        
-	                        
-	                        
-	                        
-	                        <c:forEach var="result" items="${resultList}" varStatus="status">
-	                            <tr>
-	                                <th>
-	                                    <strong>${result.row_num}</strong>
-	                                </th>
-	                                <td>
-	                                    <strong>법령</strong>
-	                                    <span>${result.name}</span>
-	                                </td>
-	                                <td>
-	                                    <strong>조</strong>
-	                                    <span>${result.jo}</span>
-	                                </td>
-	                                <td>
-	                                    <strong>항</strong>
-	                                    <span>${result.hang}</span>
-	                                </td>
-	                                <td>
-	                                    <strong>내용</strong>
-	                                    <span><a href="/admin/law_write.do?id=${result.id}">${result.text}</a></span>
-	                                </td>
-	                            </tr>
-	                        </c:forEach>
 	                        </tbody>
 	                    </table>
 	                </div>
