@@ -3,6 +3,8 @@ package egovframework.kapa.board.contoller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.kapa.board.domain.BoardVO;
 import egovframework.kapa.board.service.BoardContentService;
+import egovframework.kapa.security.mapper.UserMapper;
+import egovframework.kapa.security.service.UserVO;
 
 
 @Controller
@@ -19,13 +23,24 @@ public class BoardController {
 	
 	@Autowired
 	BoardContentService boardContentService;
-	
+
+	@Autowired
+	UserMapper userMapper;
 	/*
 	 * notice - 공지사항
 	 */
 
 	@GetMapping("/notice.do")
-	public String noticeList(Model model) {
+	public String noticeList(Model model, HttpServletRequest req) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		String id = auth.getName();
+		UserVO user = new UserVO();
+		int exist = userMapper.getUserExist(id);
+		if (exist != 0) {
+			user = userMapper.getUserById(id);
+			req.getSession().setAttribute("userName", user.getName());
+			req.getSession().setAttribute("userId", user.getUsername());
+		}
 		
 		
 		//boardSeq

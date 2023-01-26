@@ -93,7 +93,13 @@
 	                            <th>내용</th>
 	                        </tr>
 	                        </thead>
-	                        <tbody>
+							<tbody id="lawList">
+	                        	
+	                        
+	                        
+	                        
+	                        
+	                        
 	                        <c:forEach var="result" items="${resultList}" varStatus="status">
 	                            <tr>
 	                                <th>
@@ -120,32 +126,37 @@
 	                        </tbody>
 	                    </table>
 	                </div>
+	                
+					<div class="paging">
+						<div class="p_wrap" id="pageList">
+							
+						</div>
+					</div>
 	                <div class="btn_wrap">
 	                    <a href="${pageContext.request.contextPath}/admin/addLaw.do" class="fr btn t1 ico plus">등록</a>
 	                </div>
-	                <%-- <jsp:include page="/WEB-INF/views/common/paging2.jsp" flush="true">
-	                    <jsp:param name="firstPageNo" value="${paging.firstPageNo}"/>
-	                    <jsp:param name="prevPageNo" value="${paging.prevPageNo}"/>
-	                    <jsp:param name="startPageNo" value="${paging.startPageNo}"/>
-	                    <jsp:param name="pageNo" value="${paging.pageNo}"/>
-	                    <jsp:param name="endPageNo" value="${paging.endPageNo}"/>
-	                    <jsp:param name="nextPageNo" value="${paging.nextPageNo}"/>
-	                    <jsp:param name="finalPageNo" value="${paging.finalPageNo}"/>
-	                </jsp:include> --%>
 	            </div>
 	        </div>
 	    </div>
 	</div>
 	
+<!-- footer start -->
+<jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
+<jsp:param name="login" value="login" />
+</jsp:include> 
+<!-- footer end -->
+
+
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/owl.carousel.min.js"></script>
+<script src="../lib/jquery-ui.min.js"></script>
+<script src="../lib/lib.js"></script>
+
+<script src="../js/admin/law.js"></script>
 	
 	<script>
-	    function fn_goPage(pageNo) {
-	        $('#pageNo').val(pageNo);
-	        $("#form").attr("action", "<c:url value='/admin/law.do'/>");
-	        $("#form").submit();
-	    }
-	
 	    $( document ).ready( function(){
+	    	getLawList(1);
 	    });
 	</script>
 </body>

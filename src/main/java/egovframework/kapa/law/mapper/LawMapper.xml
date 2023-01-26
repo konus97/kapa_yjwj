@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.kapa.law.mapper.LawMapper">
+    
+    <!-- lawCnt -->
+	<select id="getAllLawCnt" resultType="Integer">
+        SELECT COUNT(*)
+		FROM TB_Law 
+		WHERE del_check = 0
+    </select>
+
+	<select id="getLawList" resultType="egovframework.kapa.law.domain.LawVO"  parameterType="egovframework.kapa.domain.Search">
+        SELECT *
+		FROM TB_Law
+		WHERE del_check = 0
+				
+		ORDER BY seq_no DESC
+		
+		OFFSET (#{page}-1)* #{listSize} ROW
+		FETCH NEXT 10 ROW ONLY
+		
+    </select>
+    
+    <!-- addLaw -->
+	<insert id="addLaw" parameterType="egovframework.kapa.law.domain.LawVO">
+		INSERT INTO TB_Law (article, paragraph, title, content, regdate, del_check)
+		values (#{article}, #{paragraph}, #{title}, #{content}, #{regdate}, 0)
+	</insert>
+	
+	<select id="getViewLaw" resultType="egovframework.kapa.law.domain.LawVO"  parameterType="integer">
+        SELECT *
+		FROM TB_Law
+		WHERE del_check = 0
+		AND seq_no = #{seq_no}
+    </select>
+	
+	 
+	
+</mapper>

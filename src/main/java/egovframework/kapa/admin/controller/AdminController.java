@@ -46,7 +46,7 @@ public class AdminController {
 	public String addLaw(Model model) {
 				
 		//current page
-		model.addAttribute("currentPage", "law");
+		model.addAttribute("currentPage", "addLaw");
 		
 		return "admin/law_write";
 	}

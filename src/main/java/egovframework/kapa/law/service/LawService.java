@@ -1,0 +1,87 @@
+package egovframework.kapa.law.service;
+
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import egovframework.kapa.board.domain.BoardVO;
+import egovframework.kapa.domain.Search;
+import egovframework.kapa.law.domain.LawVO;
+import egovframework.kapa.law.mapper.LawMapper;
+
+
+@Service
+public class LawService {
+
+	@Autowired
+	LawMapper lawMapper;
+    
+    public void save(BoardVO save) {
+    		
+    	try {
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void update(BoardVO update) {
+		
+    	try {
+    		
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    
+    public void delete(BoardVO update) {
+		
+    	try {
+    		
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+
+	public int getAllLawCnt () {
+		int num = lawMapper.getAllLawCnt();
+		return num;
+	}
+	
+	public List<LawVO> getLawList(Search search){
+		return lawMapper.getLawList(search);
+	}
+	
+	public void addLaw (String data) throws ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+		JSONObject jsonObject = (JSONObject)parser.parse(data);
+
+		String article   = jsonObject.get("article")   .toString();
+		String paragraph = jsonObject.get("paragraph") .toString();
+		String title     = jsonObject.get("title")     .toString();
+		String content   = jsonObject.get("content")   .toString();
+		
+		LawVO law = new LawVO();
+		
+		law.setArticle(article);
+		law.setParagraph(paragraph);
+		law.setTitle(title);
+		law.setContent(content);
+		law.setRegdate(LocalDateTime.now());
+		
+		
+		lawMapper.addLaw(law);
+	}
+	
+	public LawVO getViewLaw(int seq_no) {
+		return lawMapper.getViewLaw(seq_no);
+	}
+}

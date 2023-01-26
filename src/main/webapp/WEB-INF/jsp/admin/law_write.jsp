@@ -16,11 +16,11 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
 	
 	<title>재결정보지원센터 || 관리자</title>
-	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
-	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	<meta name="description" content="재결정보지원센터" />
 	<meta name="keywords" content="재결정보지원센터" />
 	<meta name="author" content="재결정보지원센터" />
@@ -65,7 +65,8 @@
 	                <h3 class="title bold cb">관련 법령</h3>
 	            </div>
 	            <div class="cs_body">
-	                <form id="form" name="form" method="post" action ="<c:url value='/admin/law_write.do'/>">
+	                <%-- <form id="form" name="form" method="post" action ="<c:url value='/admin/law_write.do'/>"> --%>
+	                <form id="form" name="form">
 	                    <input type="hidden" id="idDelete" name="idDelete" value="">
 	                    <div class="cs_title">
 	                        <h4 class="fl title t1 bold cb s1 bullet">등록</h4>
@@ -83,23 +84,47 @@
 	                            </thead>
 	                            <tbody>
 	                            <tr>
-	                                <input type="hidden" name="id" value="${law.id}">
-	                                <td>
-	                                    <strong>법령</strong>
-	                                    <span><input type="text" class="input t1 middle" name="name" value="${law.name}" required></span>
-	                                </td>
-	                                <td>
-	                                    <strong>조</strong>
-	                                    <span><input type="text" class="input t1 middle" name="jo" value="${law.jo}" required></span>
-	                                </td>
-	                                <td>
-	                                    <strong>항</strong>
-	                                    <span><input type="text" class="input t1 middle" name="hang" value="${law.hang}" required></span>
-	                                </td>
-	                                <td>
-	                                    <strong>내용</strong>
-	                                    <span><textarea type="text" class="textarea autosize t1 middle" name="text">${law.text}</textarea></span>
-	                                </td>
+	                                <%-- <input type="hidden" name="id" value="${law.id}"> --%>
+	                                <c:choose>
+	                                <c:when test="${currentPage eq 'viewLaw' }">
+		                                <td>
+		                                    <strong>법령</strong>
+		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}" readonly></span>
+		                                </td>
+		                                <td>
+		                                    <strong>조</strong>
+		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}" readonly></span>
+		                                </td>
+		                                <td>
+		                                    <strong>항</strong>
+		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" readonly></span>
+		                                </td>
+		                                <td>
+		                                    <strong>내용</strong>
+		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content" readonly>${law.content}</textarea></span>
+		                                </td>
+	                                </c:when>
+	                                <c:otherwise>
+		                                <td>
+		                                    <strong>법령</strong>
+		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}" required></span>
+		                                </td>
+		                                <td>
+		                                    <strong>조</strong>
+		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}" required></span>
+		                                </td>
+		                                <td>
+		                                    <strong>항</strong>
+		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" required></span>
+		                                </td>
+		                                <td>
+		                                    <strong>내용</strong>
+		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content">${law.content}</textarea></span>
+		                                </td>
+	                                
+	                                </c:otherwise>
+	                                
+	                                </c:choose>
 	                            </tr>
 	                            </tbody>
 	                        </table>
@@ -107,12 +132,13 @@
 	                    <div class="btn_wrap">
 	                        <li class="fl"><a href="<c:url value='/admin/law.do'/>" class="btn ico list">목록</a></li>
 	                        <ul class="fr">
-	<%--                            <li><button type="button" class="btn t2 ico delete" onclick="history.back()">취소</button></li>--%>
+		                        <li><button type="button" class="btn t2 ico delete" onclick="history.back()">취소</button></li>
+	                            <c:if test="${currentPage eq 'law'}">
 	                                <li><button type="button" class="btn t2 ico delete" onclick="deleteLaw('${law.id}')">삭제</button></li>
-	                            <%-- <c:if test="${not empty law.id}">
-	                                <li><button type="button" class="btn t2 ico delete" onclick="deleteLaw('${law.id}')">삭제</button></li>
-	                            </c:if> --%>
-	                            <li><button type="submit" class="btn t1 ico plus">저장</button></li>
+	                            </c:if>
+	                            <c:if test="${currentPage eq 'addLaw'}">
+	                            	<li><button type="button" class="btn t1 ico plus" onclick="addLaw(); return false;">저장</button></li>
+	                            </c:if>
 	                        </ul>
 	                    </div>
 	                </form>
@@ -120,11 +146,28 @@
 	        </div>
 	    </div>
 	</div>
+	
+<!-- footer start -->
+<jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
+<jsp:param name="login" value="login" />
+</jsp:include> 
+<!-- footer end -->
+
+
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/owl.carousel.min.js"></script>
+<script src="../lib/jquery-ui.min.js"></script>
+<script src="../lib/lib.js"></script>
+
+<script src="../js/admin/law.js"></script>
+
 	<script>
 	    $( document ).ready( function(){
+	    	//getLawList(1);
 	    });
 	
 	</script>
+
 </body>
 
 </html>

@@ -1,17 +1,11 @@
-package egovframework.kapa.admin.restcontroller;
+package egovframework.kapa.law.restcontroller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,20 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import egovframework.kapa.admin.domain.AdminVO;
-import egovframework.kapa.admin.service.AdminService;
 import egovframework.kapa.domain.Search;
-import egovframework.kapa.domain.User;
-import egovframework.kapa.member.service.JoinService;
+import egovframework.kapa.law.domain.LawVO;
+import egovframework.kapa.law.service.LawService;
 
 @RestController
-@RequestMapping("/api/admin")
-public class AdminRestController {
+@RequestMapping("/api/law")
+public class LawRestController {
 
 	@Autowired
-	AdminService adminService;
+	LawService lawService;
 	
-	@Autowired
-	JoinService joinService;
 
 	/*
 	 * write
@@ -96,13 +87,10 @@ public class AdminRestController {
 	   return resultFinal;
 	}
 	
-	
-	/*
-	 * List
-	 */
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/lawList.do", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getUserList(@RequestParam("cpage") String cpage) {
+	public Map<String, Object> getLawList(Model model, @RequestParam("cpage") String cpage) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
@@ -114,13 +102,15 @@ public class AdminRestController {
         try {
 
             pageNum = Integer.parseInt(cpage);
-            int listCnt = adminService.getAllUserCnt();
+            int listCnt = lawService.getAllLawCnt();
 
             search.pageInfo(pageNum, rowItem, listCnt);
 
             //값 넣기
-    		List<AdminVO> result = adminService.getAllUser(search);
+    		List<LawVO> result = lawService.getLawList(search);
                 		
+    		model.addAttribute("lawList", result);
+    		
             resultFinal.put("list", result);
             resultFinal.put("allCount", listCnt);
             resultFinal.put("totalPage", search.getPageCnt());
@@ -135,54 +125,22 @@ public class AdminRestController {
 
 
 
-	// 유저 추가
-	@RequestMapping(value = "/add.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	// 법령
+	@RequestMapping(value = "/addLaw.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
-	public ResponseEntity addUserList(@RequestBody String data) throws Exception {
+	public ResponseEntity addLaw(Model model, @RequestBody String data) throws Exception {
 
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-		
+						
         try {
-    		joinService.addUser_admin(data);    		
+        	lawService.addLaw(data);
+    		
         } catch (Exception e){
             e.printStackTrace();
         }
 
+        resultFinal.put("message", "success");
         return ResponseEntity.ok(resultFinal);
 
 	}	
-
-	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
-	@ResponseBody
-	public Map<String, Object> getSearchUserList(@RequestParam("cpage") String cpage, @RequestParam("searchName") String searchName) {		
-		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
-		Search search = new Search();
-		search.setKeyword(searchName);
-		
-        //page cpage
-        int pageNum=1;
-        int rowItem=10;
-        try {
-
-            pageNum = Integer.parseInt(cpage);
-            int listCnt = adminService.getSearchUserCnt(search);
-
-            search.pageInfo(pageNum, rowItem, listCnt);
-
-            //값 넣기
-    		List<AdminVO> result = adminService.getSearchUser(search);
-                		
-            resultFinal.put("list", result);
-            resultFinal.put("allCount", listCnt);
-            resultFinal.put("totalPage", search.getPageCnt());
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        
-        return resultFinal;
-
-	}
-
 }

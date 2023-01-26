@@ -49,7 +49,11 @@ String currentPage = request.getParameter("currentPage");
 	switch(menu){
 		case "manage": element= document.getElementById('subMenuManage');
 				break;
-		case "law":element= document.getElementById('subMenuLaw');
+		case "law"   :element= document.getElementById('subMenuLaw');
+				break;
+		case "addLaw":element= document.getElementById('subMenuLaw');
+				break;
+		case "viewLaw":element= document.getElementById('subMenuLaw');
 				break;
 	}
 	

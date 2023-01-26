@@ -21,31 +21,15 @@ public class MainController {
 
 	@GetMapping("/")
 	public String indexPage(HttpServletRequest req, HttpSession session) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		//String chk = (String)session.getAttribute("loginChk");
-		//String id = "";
-		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
 		String id = auth.getName();
 		UserVO user = new UserVO();
 		int exist = userMapper.getUserExist(id);
-		if (exist == 1) {
+		if (exist != 0) {
 			user = userMapper.getUserById(id);
 			req.getSession().setAttribute("userName", user.getName());
 			req.getSession().setAttribute("userId", user.getUsername());
 		}
-		//userMapper.getUserById(userName)
-		//userMapper.getUserById(id);
-		
-		String name = user.getName();
-		
-		//session.setAttribute("userName", user.getName());
-		//req.getSession().setAttribute("userName", user.getName());
-		//req.getSession().setAttribute("userId", user.getUsername());
-		Object principal = auth.getPrincipal();
-		System.out.println(id);
-		System.out.println(principal);
-		
-		//req.getSession().setAttribute("loginId", principal);
 		return "main";
 	}
 	
