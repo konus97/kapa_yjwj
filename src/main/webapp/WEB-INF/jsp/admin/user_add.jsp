@@ -50,6 +50,13 @@
 	</jsp:include>
 	<!-- header end -->
 	<div id="contents" class="c_sub c_sub_admin">
+	
+	    <!-- admin submenu start -->
+        <jsp:include page="includes/submenu.jsp" flush="false">
+			<jsp:param name="currentPage" value="${currentPage}" />
+		</jsp:include> 
+		<!-- admin submenu end -->
+			
 		<div class="wrap">
 			<div class="cs_wrap">
 				<div class="cs_head">
@@ -221,7 +228,7 @@
 						</div>
 						<div class="mt30 btn_wrap">
 							<ul class="full">
-								<li class="fl"><a href="<c:url value='/admin/user.do'/>" class="btn ico list t2">목록</a></li>
+								<li class="fl"><a href="<c:url value='/admin/user.do'/>" class="btn ico list t1 nohover">목록</a></li>
 								<li class="fr"><button type="submit" class="btn t2 ico write">등록</button></li>
 							</ul>
 						</div>

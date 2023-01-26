@@ -44,30 +44,26 @@
 </head>
 
 <body>
-	<div id="contents" class="c_sub">
-	    <div class="wrap">
-	    
-			<!-- header start -->
-			<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
-				<jsp:param name="login" value="login" />
-			</jsp:include>
-			<!-- header end -->
-			
-			
+	<div id="wrap">
+		<!-- header start -->
+		<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
+			<jsp:param name="login" value="login" />
+		</jsp:include>
+		<!-- header end -->
+		
+		<div id="contents" class="c_sub c_sub_admin">
+		
 	      	<!-- admin submenu start -->
 	        <jsp:include page="includes/submenu.jsp" flush="false">
 				<jsp:param name="currentPage" value="${currentPage}" />
 			</jsp:include> 
 			<!-- admin submenu end -->
 		
-	        <div class="cs_hero">
-	            <h2>통합 관리</h2>
-	        </div>
-	        
-	        <div class="cs_wrap">
-	            <div class="cs_head">
-	                <h3 class="title bold cb">관련 법령</h3>
-	            </div>
+			<div class="wrap">
+				<div class="cs_wrap">
+					<div class="cs_head">
+						<h3 class="title bold cb">관련법령</h3>
+					</div>
 	            <form id="form">
 	                <input type="hidden" id="pageNo" name="pageNo" value="${adminVO.pageIndex}"/>
 	            </form>
@@ -133,7 +129,7 @@
 						</div>
 					</div>
 	                <div class="btn_wrap">
-	                    <a href="${pageContext.request.contextPath}/admin/addLaw.do" class="fr btn t1 ico plus">등록</a>
+	                    <a href="${pageContext.request.contextPath}/admin/addLaw.do" class="fr btn t2 ico plus">등록</a>
 	                </div>
 	            </div>
 	        </div>
@@ -145,6 +141,7 @@
 <jsp:param name="login" value="login" />
 </jsp:include> 
 <!-- footer end -->
+</div>
 
 
 <script src="../lib/jquery.min.js"></script>

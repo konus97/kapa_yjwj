@@ -45,25 +45,26 @@
 </head>
 
 <body>
-	<div id="contents" class="c_sub">
-	    <div class="wrap">
-	    
-			<!-- header start -->
-			<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
-				<jsp:param name="login" value="login" />
-			</jsp:include>
-			<!-- header end -->
-			
+	<div id="wrap">
+		<!-- header start -->
+		<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
+			<jsp:param name="login" value="login" />
+		</jsp:include>
+		<!-- header end -->
+		
+		<div id="contents" class="c_sub c_sub_admin">
+		
 	      	<!-- admin submenu start -->
 	        <jsp:include page="includes/submenu.jsp" flush="false">
 				<jsp:param name="currentPage" value="${currentPage}" />
 			</jsp:include> 
 			<!-- admin submenu end -->
-			
-	        <div class="cs_wrap">
-	            <div class="cs_head">
-	                <h3 class="title bold cb">관련 법령</h3>
-	            </div>
+		
+			<div class="wrap">
+				<div class="cs_wrap">
+					<div class="cs_head">
+						<h3 class="title bold cb">관련법령</h3>
+					</div>
 	            <div class="cs_body">
 	                <%-- <form id="form" name="form" method="post" action ="<c:url value='/admin/law_write.do'/>"> --%>
 	                <form id="form" name="form">
@@ -130,15 +131,32 @@
 	                        </table>
 	                    </div>
 	                    <div class="btn_wrap">
-	                        <li class="fl"><a href="<c:url value='/admin/law.do'/>" class="btn ico list">목록</a></li>
-	                        <ul class="fr">
-		                        <li><button type="button" class="btn t2 ico delete" onclick="history.back()">취소</button></li>
+	                        <ul>
+		                        <li class="fl">
+		                        	<a href="<c:url value='/admin/law.do'/>" class="btn ico t1 nohover list">목록</a>
+		                        </li>
+		                        <c:if test="${currentPage eq 'addLaw'}">
+	                            	<li class="fr">
+	                            		<button type="button" class="btn t4" onclick="addLaw(); return false;">
+	                            			<i class="pluse icon white mr5"></i>
+	                            			저장
+	                            		</button>
+	                            	</li>
+	                            </c:if>
 	                            <c:if test="${currentPage eq 'law'}">
-	                                <li><button type="button" class="btn t2 ico delete" onclick="deleteLaw('${law.id}')">삭제</button></li>
+	                                <li class="fr">
+	                                	<button type="button" class="btn t2" onclick="deleteLaw('${law.id}')">
+	                                		<i class="close icon white mr5"></i>
+	                                		삭제
+	                                	</button>
+	                                </li>
 	                            </c:if>
-	                            <c:if test="${currentPage eq 'addLaw'}">
-	                            	<li><button type="button" class="btn t1 ico plus" onclick="addLaw(); return false;">저장</button></li>
-	                            </c:if>
+	                            <li class="fr">
+		                        	<button type="button" class="btn t2" onclick="history.back()">
+		                        		<i class="close icon white mr5"></i>
+		                        		취소
+		                        	</button>
+		                        </li>
 	                        </ul>
 	                    </div>
 	                </form>
@@ -152,7 +170,7 @@
 <jsp:param name="login" value="login" />
 </jsp:include> 
 <!-- footer end -->
-
+</div>
 
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/owl.carousel.min.js"></script>
