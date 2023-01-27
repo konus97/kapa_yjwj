@@ -1,6 +1,6 @@
 let popupOpinion = 2;
 let addOpinionItemArray = new Array();
-var valueArr = new Array();
+
 let fileCount = 0;
 
 function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
@@ -76,13 +76,13 @@ function addLandOpinion(rank,info,getItem){
 	let ownrNnm = info.ownrNnm;
 	let landShre = info.landShre;
 
-    let getId = "#opinion"+getSeq+"-"+getItem;
+    let getId = "opinion"+getSeq+"-"+getItem;
       
       let addList = new Array();
        
 		addList.push("<tr id="+getId+"\ data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNnm+"\" data-title=\"\" data-content=\"\">");
-		addList.push("<td><strong>체크박스<strong>");
-		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
+		addList.push("<td><strong>체크박스</strong>");
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinionCheck"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
 		addList.push("</td>");
 		addList.push("<th><strong>"+rank+"<strong></th>");
 		addList.push("<td><strong>소유자</strong>");
@@ -149,7 +149,7 @@ function addGoodsOpinion(rank,info,getItem){
 	
 	let getSeq = info.reptSeq;
 	let reptAddr = info.reptAddr;
-
+	let reptOwnrSeq = info.reptOwnrSeq;
 	let mainStrtNo = info.mainStrtNo;
 	let subStrtNo = info.subStrtNo;
 	
@@ -172,8 +172,8 @@ function addGoodsOpinion(rank,info,getItem){
       let addList = new Array();
        
 		addList.push("<tr id="+getId+"\ data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNnm+"\" data-title=\"\" data-content=\"\">");
-		addList.push("<td><strong>체크박스<strong>");
-		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
+		addList.push("<td><strong>체크박스</strong>");
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinionCheck"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
 		addList.push("</td>");
 		addList.push("<th><strong>"+rank+"<strong></th>");
 		addList.push("<td><strong>소유자</strong>");
@@ -360,7 +360,8 @@ notice='';
 		 let ownrNm  = addOpinionItemArray[i].ownrNm;
          if(getSeq==reptSeq&&getType==type){
             
-            let ownerOpinion = addOpinionItemArray[i].ownerOpinion;
+			
+            let ownerOpinion = addOpinionItemArray[i].ownerOpinion;	
             let executorOpinion = addOpinionItemArray[i].executorOpinion;
             
 
@@ -502,6 +503,7 @@ function submitOwnerOpinion(){
 }
 
 function checkSelectedValue(getSeq,getItem){
+	var valueArr = new Array();
 	var list = $("input[name='chk_list']");
 	console.log("list.lenght" + list.length);
 	for(var i = 0; i < list.length; i++){
@@ -510,8 +512,35 @@ function checkSelectedValue(getSeq,getItem){
 		console.log(valueArr[i]);  //opinion13384623-22
 		}
 	}
-	var content1 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).ownerOpinion;
-	var content2 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).executorOpinion;
+	var ownerOpinionCheck = document.getElementById('owner'+getSeq+'-'+getItem).innerText;
+	var executorOpinionCheck = document.getElementById('operator'+getSeq+'-'+getItem).innerText;
+	
+	if(ownerOpinionCheck == '작성'){
+				
+            var content1 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).ownerOpinion;
+			}else if(ownerOpinionCheck == '미작성'){
+				alert("작성된 내용이 없습니다.");
+				return false;
+			}else{
+				alert("부적절한 대상입니다.");
+				return false;
+				
+			}
+			
+			if(executorOpinionCheck == '작성'){
+				
+            var content2 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).executorOpinion;
+            
+			}else if(executorOpinionCheck == '미작성'){
+				alert("작성된 내용이 없습니다.");
+				return false;
+			}else{
+				alert("부적절한 대상입니다.");
+				return false;
+				
+			}
+	
+	
 	console.log(content1);
 	console.log(content2);
 	// 복사 대상 컨텐츠 받는 부븐 끝

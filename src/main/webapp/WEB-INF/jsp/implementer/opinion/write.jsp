@@ -313,7 +313,7 @@
 
 							<div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">
-									소유자의견 및 사업시행자 의견 작성 - 작업 중
+									소유자의견 및 사업시행자 의견 작성
 								</h4>
 							</div>
 							<div class="c_table t1">
@@ -616,7 +616,7 @@
 								</table>
 							</div>
 							
-							<div class="cs_title">
+							<%-- <div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">소유자의견 및 사업시행자 의견
 									작성 - 수정 전</h4>
 							</div>
@@ -858,7 +858,7 @@
 
 									</tbody>
 								</table>
-							</div>
+							</div> --%>
 
 							<div class="mt40 btn_wrap">
 								<ul class="btns">
