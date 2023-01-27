@@ -292,40 +292,37 @@
 				</ul>
 			</div>
 			
-			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit05" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
-				<table class="f_wrap__table">
-					<thead>
-						<tr>
-							<th class="f_wrap__th--num">연번</th>
-							<th class="f_wrap__th--owner_name">소유자</th>
-							<th class="f_wrap__th--opinion">소유자의 의견요지</th>
-							<th class="f_wrap__th--opinion">사업시행자 의견</th>
-						</tr>
-					</thead>
-					<c:forEach var="opinionList" items="${opinionList}" varStatus="status">
-						<tbody>
-							<tr>
-								<td class="f_wrap__td--cen">${status.index + 1}</td>
-								<td class="f_wrap__td--cen">${opinionList.type} - ${opinionList.ownrNm}</td>
-								<td class="f_wrap__td--para">
-									<p>${opinionList.ownerOpinion}</p>
-								</td>
-								<td class="f_wrap__td--para">
-									<p>${opinionList.executorOpinion}</p>
-								</td>
-							</tr>
-						</tbody>
-					</c:forEach>
-				</table>
-			</div>
+			
 		
 		
 		<!-- 1. 지연가산금 S -->
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								
-		
+			
 			<h2 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
+			<div class="f_wrap">
+				<h2 id="index${formatter.applicationDTO.judgSeq}_tit05" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
+				<table class="f_wrap__table">
+					<thead>
+						<tr>
+							<th class="f_wrap__th--owner_name">소유자</th>
+							<th class="f_wrap__th--opinion">소유자의 의견요지</th>
+							<th class="f_wrap__th--opinion">사업시행자 의견</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td class="f_wrap__td--cen">${deliberateOpinionDTO.ownerViewInfo.ownr_nm}</td>
+								<td class="f_wrap__td--para">
+									<p>${deliberateOpinionDTO.ownerOpinion}</p>
+								</td>
+								<td class="f_wrap__td--para">
+									<p>${deliberateOpinionDTO.executorOpinion}</p>
+								</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
 			<div class="f_wrap">
 				<!-- 재결관 의견 에디터 내용  -->
 				<div class="f_wrap__textarea">${deliberateOpinionDTO.opinionText}</div>

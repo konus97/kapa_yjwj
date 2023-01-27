@@ -60,7 +60,6 @@ public class DeliberateController {
 	@GetMapping("/agenda/view.do")
 	public String deliberateAgendaView(HttpServletRequest request,Model model) {
 		
-		System.out.println("여기도도독");
 		Long selectDate =  Long.parseLong(request.getParameter("selectDate"));   
 		
 		

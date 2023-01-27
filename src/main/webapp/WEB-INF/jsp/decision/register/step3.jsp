@@ -375,45 +375,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="cs_title">
-							<h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
-						</div>
-						
-						<div class="c_table c_table--opinion">
-							<table>
-								<thead>
-									<tr>
-										<th class="c_table__th--num">연번</th>
-										<th class="c_table__th--owner_name">소유자</th>
-										<th>소유자의 의견요지</th>
-										<th>사업시행자 의견</th>
-									</tr>
-								</thead>
-								<tbody>
-								<c:forEach var="opinionList" items="${opinionList}" varStatus="status">
-									<tr>
-										<td>${status.index + 1}</td>
-										<td>${opinionList.ownrNm}
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-											</div>
-											<%-- <div class="op_list">
-												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-												<p class="op_list__con">${opinionList.ownerOpinion}</p>
-											</div> --%>
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<p class="op_list__con">${opinionList.executorOpinion}</p>
-											</div>
-										</td>
-									</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</div>
+							
 				
 
 							<!-- 1. 지연가산금 S -->
@@ -423,7 +385,40 @@
 								</div>
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
-									
+									<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
+						</div>
+						
+						<div class="c_table c_table--opinion">
+							<table>
+								<thead>
+									<tr>
+										<th class="c_table__th--owner_name">소유자</th>
+										<th>소유자의 의견요지</th>
+										<th>사업시행자 의견</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										</td>
+										<td class="c_table__td--para">
+											<div class="op_list">
+												<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+											</div><%-- 
+											<div class="op_list">
+												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
+											</div> --%>
+										</td>
+										<td class="c_table__td--para">
+											<div class="op_list">
+												<p class="op_list__con">${deliberateOpinionDTO.executorOpinion}</p>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 									<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
 									</div>
@@ -502,7 +497,40 @@
 								
 								
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
-									
+									<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
+						</div>
+						
+						<div class="c_table c_table--opinion">
+							<table>
+								<thead>
+									<tr>
+										<th class="c_table__th--owner_name">소유자</th>
+										<th>소유자의 의견요지</th>
+										<th>사업시행자 의견</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										</td>
+										<td class="c_table__td--para">
+											<div class="op_list">
+												<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+											</div><%-- 
+											<div class="op_list">
+												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
+											</div> --%>
+										</td>
+										<td class="c_table__td--para">
+											<div class="op_list">
+												<p class="op_list__con">${deliberateOpinionDTO.executorOpinion}</p>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 									<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
 									</div>
@@ -589,7 +617,7 @@
 								</c:if>
 							
 					
-								<div class="cs_title">
+								<%-- <div class="cs_title">
 									<h4 class="fl title t1 bold cb s1 bullet">소유자 의견</h4>
 								</div>
 								<div class="form">
@@ -605,7 +633,7 @@
 									<div class="f_wrap">
 										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</div>
 									</div>
-								</div>
+								</div> --%>
 								
 								<div class="cs_title">
 									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
