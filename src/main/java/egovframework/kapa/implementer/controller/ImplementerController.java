@@ -374,10 +374,13 @@ public class ImplementerController {
         model.addAttribute("totalCost", totalHitsStr);
         
         //공통된 소유자 수 검색
-        List<OwnerInfo> ownerList = implementerService.getOnwerInfoList(masterId);
-        List<OwnerInfoDTO> formatterOwnerList = implementerService.getOwnerListFormatter(masterId,ownerList);
-      
-        model.addAttribute("ownerList", formatterOwnerList);
+		/*
+		 * List<OwnerInfo> ownerList = implementerService.getOnwerInfoList(masterId);
+		 * List<OwnerInfoDTO> formatterOwnerList =
+		 * implementerService.getOwnerListFormatter(masterId,ownerList);
+		 * 
+		 * model.addAttribute("ownerList", formatterOwnerList);
+		 */
         
       
         
