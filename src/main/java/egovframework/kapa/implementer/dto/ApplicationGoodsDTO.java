@@ -19,7 +19,7 @@ public class ApplicationGoodsDTO {
     
     private int reptSeq;
 
-    private int reptOwnrSeq;
+    private Long reptOwnrSeq;
     
     private String reptAddr;
    
@@ -42,6 +42,8 @@ public class ApplicationGoodsDTO {
     private String areaUnit;
 
     private String ownrNnm;
+    
+    private String owrnNm;
     
     private String landShre;
 }

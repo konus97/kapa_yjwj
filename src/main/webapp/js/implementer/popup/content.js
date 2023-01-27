@@ -1,6 +1,8 @@
 
 function openPopup(mode,count){
+	var getItem = document.getElementById('selectedItemTit').innerText;
 	
+		
 	if(count==0){
 		alert("해당 데이터가 존재하지 않습니다.");
 		return false;
@@ -10,11 +12,21 @@ function openPopup(mode,count){
 		}else if(mode=="goodsowner"){
 			getGoodsowner();
 		}else if(mode=="goodsownercheck"){
+			if(getItem == '' || getItem == undefined || getItem == '선택된 항목 없음'){
+					alert("항목을 선택해주세요.");
+					return false;
+				}else{
 			getGoodsownerCheck();
+			}
 		}else if(mode=="landsowner"){
 			getLandownerInfo();	
 		}else if(mode=="landsownercheck"){
+			if(getItem == '' || getItem == undefined || getItem == '선택된 항목 없음'){
+					alert("항목을 선택해주세요.");
+					return false;
+				}else{
 			getLandownerCheck();	
+			}
 		}else if(mode=="goods"){
 			getGoodsInfo();
 		}else if(mode=="checkbox"){			
@@ -174,7 +186,47 @@ function getLandownerInfo() {
 	});
 
 }
+function getLandownerInfoSunmit(chkValueArr) {
 
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/land";
+
+	$("#landownerList").empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				let rank = 1;
+				for( let i = 0; i < chkValueArr.length; i++) {
+					console.log(chkValueArr[i]);
+					submitLandOwnr2(rank,list[chkValueArr[i]]);
+					rank++;
+				}
+			}
+
+		//	$('#popupLandsowner').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+}
 function getLandownerCheck() {
 
 	let contextPath = $("#contextPath").val();
@@ -306,6 +358,50 @@ function getGoodsowner() {
 
 
 }
+function getGoodsownerInfoSunmit(chkValueArr) {
+
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/goods";
+
+	$("#goodsownerList").empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				
+				let rank = 1;
+				
+				for( let i = 0; i < chkValueArr.length; i++) {
+					console.log(chkValueArr[i]);
+					submitGoodsOwnr2(rank,list[chkValueArr[i]]);
+					rank++;
+				}
+			}
+
+			//$('#popupGoodsowner').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+
+}
 
 function getGoodsownerCheck() {
 
@@ -394,4 +490,45 @@ function checkItem2(){
 
 	selectedItemTxt.innerHTML = '선택된 항목 : '+ selectedItemNum +'.'+ selectedItemTit
 	closePopup('checkbox2');
+}
+
+function submitLandOwnr(){
+	var chkValueArr = new Array();
+	var list = $("input[name='checkbox_land']");
+	for(var i=0; i<list.length; i++){
+		if(list[i].checked){
+		chkValueArr.push(list[i].value-1);
+		}
+	}
+	getLandownerInfoSunmit(chkValueArr);
+	
+}
+
+function submitLandOwnr2(rank,info){
+	
+	var getItem = document.getElementById('selectedItemTit').innerText;
+		getItem = getItem.split('.')[0].split(': ')[1];		
+	addLandOpinion(rank,info,getItem);
+	closePopup('landsownercheck');
+}
+
+function submitGoodsOwnr(){
+	var chkValueArr = new Array();
+	var list = $("input[name='checkbox_goods']");
+	for(var i=0; i<list.length; i++){
+		if(list[i].checked){
+		chkValueArr.push(list[i].value-1);
+		}
+	}
+	getGoodsownerInfoSunmit(chkValueArr);
+	
+}
+
+function submitGoodsOwnr2(rank,info){
+	
+	var getItem = document.getElementById('selectedItemTit').innerText;
+		getItem = getItem.split('.')[0].split(': ')[1];		
+		console.log(getItem);
+	addGoodsOpinion(rank,info,getItem);
+	closePopup('goodsownercheck');
 }

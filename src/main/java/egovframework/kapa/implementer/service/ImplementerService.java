@@ -672,6 +672,7 @@ public class ImplementerService {
         	int rept_seq = land.getRept_seq();
         	reptSeqList.add(rept_seq);
         	       
+        
         	String befUnitCost = "0";
         	
         	if(land.getBef_unit_cost()>0) {
@@ -682,6 +683,8 @@ public class ImplementerService {
         	ApplicationLandDTO applicationLandDTO =
         			ApplicationLandDTO.builder()
         					.reptSeq(rept_seq)
+        					.reptOwnrSeq(land.getRept_ownr_intr_seq())
+        				//	.ownrNm(land.getOwnrNm())
 		                    .reptAddr(land.getRept_addr())
 		                    .sidoGunguCd(land.getSido_gungu_cd())
 		                    .mainStrtNo(land.getMain_strt_no())
@@ -740,7 +743,8 @@ public class ImplementerService {
         	ApplicationGoodsDTO applicationGoodsDTO =
         			ApplicationGoodsDTO.builder()
         					.reptSeq(rept_seq)
-		                    .reptAddr(land.getRept_addr())		          
+		                    .reptAddr(land.getRept_addr())
+		                    .reptOwnrSeq(land.getRept_ownr_intr_seq())
 		                    .mainStrtNo(land.getMain_strt_no())
 		                    .subStrtNo(land.getSub_strt_no())
 		                    .strtOther(land.getStrt_other())

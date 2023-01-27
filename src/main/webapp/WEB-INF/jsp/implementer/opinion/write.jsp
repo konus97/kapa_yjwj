@@ -326,7 +326,7 @@
 										</tr>
 									</thead>
 									<tbody>
-
+							
 
 										<%--<c:forEach var="ownerInfo" items="${ownerList}"
 											varStatus="status">--%>
@@ -339,7 +339,7 @@
 															onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">
 															항목 선택</a>
 													</button>
-													<span id="selectedItemTit"> 선택된 항목 없음</span>
+													<span id="selectedItemTit" value=""> 선택된 항목 없음</span>
 												</td>
 												<td>
 													<%-- <strong>소유자</strong>
@@ -351,7 +351,66 @@
 													onclick="openPopup('goodsownercheck','${objectRightCount}');return false;">지장물</a>
 												</td>
 											</tr>
-
+											
+												
+											<table>
+					                             <caption>
+					                           	      토지
+					                             </caption>
+					                             <thead>
+					                                 <tr>
+					                                     <th>선택</th>
+					                                     <th>연번</th>
+					                                     <th>소유자</th>
+					                                     <th>지분</th>
+					                                     <th>소재지</th>
+					                                     <th>지번</th>
+					                                     <th>본번</th>
+					                                     <th>부번</th>
+					                                     <th>공</th>
+					                                     <th>실</th>
+					                                     <th>면적</th>
+					                                     <th>단가</th>
+					                                     <th>소유자 의견</th>
+					                                     <th>사업시행자 의견</th>
+					                                     <th>작성</th>
+					                                     <th>복사</th>
+					                                     <th>삭제</th>
+					                                 </tr>
+					                             </thead>
+                             						<tbody id="ownerLandItemList2">
+                             						
+													</tbody>
+													</table>
+												
+											<table>
+					                             <caption>
+					                           	      토지
+					                             </caption>
+					                             <thead>
+					                                 <tr>
+					                                     <th>선택</th>
+					                                     <th>연번</th>
+					                                     <th>소유자</th>
+					                                     <th>지분</th>
+					                                     <th>소재지</th>
+					                                     <th>본번</th>
+					                                     <th>부번</th>
+					                                     <th>부번2</th>
+					                                     <th>물건종류</th>
+					                                     <th>물건구조</th>
+					                                     <th>면적/수량</th>
+					                                     <th>단가</th>
+					                                     <th>소유자 의견</th>
+					                                     <th>사업시행자 의견</th>
+					                                     <th>작성</th>
+					                                     <th>복사</th>
+					                                     <th>삭제</th>
+					                                 </tr>
+					                             </thead>
+                             						<tbody id="ownerGoodsItemList2">
+                             						</tbody>
+                             						</table>
 											<%--<tr class="inner_table">
 												<td colspan="100%"><c:if test="${ownerInfo.landCheck}">
 
@@ -613,7 +672,8 @@
 																		<th>실</th>
 																		<th>면적</th>
 																		<th>단가</th>
-																		<th>항목</th>
+																		<th>소유자 의견</th>
+																		<th>사업시행자 의견</th>
 																	</tr>
 																</thead>
 

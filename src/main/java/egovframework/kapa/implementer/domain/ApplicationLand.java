@@ -49,6 +49,8 @@ public class ApplicationLand {
   private String obst_stuc1_cd;
   private String obst_stuc2_cd;
   private String omit_yn;
+  private Long rept_ownr_intr_seq;
+  private String ownrNm;
 
 	
 }

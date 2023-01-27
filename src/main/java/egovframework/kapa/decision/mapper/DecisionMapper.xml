@@ -185,8 +185,10 @@
 	<select id="getOpinionFileList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
 		
 
-	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange FROM TB_Decision_File_Opinion DFO
-	LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange ,DOI.opinionTitle, DOI.opinionContent
+FROM TB_Decision_File_Opinion DFO 
+LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo 
+LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO.fileType = DOI.opinionType
 		<where> 
 			
 			DFO.decisonId = ${decisionId} AND fileType = ${getType}

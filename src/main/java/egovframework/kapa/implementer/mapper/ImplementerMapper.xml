@@ -203,11 +203,15 @@
 
 	<!-- 필지 목록 -->
 	<select id="getLandInfo" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.ApplicationLand" >
-		 SELECT
+		 <!-- SELECT
 		    * 
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
- 		  AND land_obst_kind_cd = 'L'
+ 		  AND land_obst_kind_cd = 'L' -->
+ 		  
+ 		 SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info RI
+LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
+WHERE RI.judg_seq = #{masterId} AND RI.land_obst_kind_cd = 'L' 
 	</select> 
 	
 	<!-- 필지 관계  -->
@@ -231,11 +235,14 @@
 	
 	 <!-- 지장물 목록 -->
 	<select id="getGoodsInfo" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.ApplicationLand" >
-		 SELECT
+		 <!-- SELECT
 		    * 
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
-		  AND NOT land_obst_kind_cd = 'L'
+		  AND NOT land_obst_kind_cd = 'L' -->
+		  SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info  RI
+LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
+WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_intr_yn = 'O'
 	</select> 
 	
 	<!--의견 저장 -->

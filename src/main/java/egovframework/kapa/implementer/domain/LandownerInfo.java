@@ -8,7 +8,7 @@ import lombok.Data;
 public class LandownerInfo {
 
 	private int rept_seq;
-	private int rept_ownr_intr_seq;
+	private Long rept_ownr_intr_seq;
 	private String rept_addr;
 	private String sido_gungu_cd;
 	private String main_strt_no;

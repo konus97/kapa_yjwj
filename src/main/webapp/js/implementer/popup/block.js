@@ -188,15 +188,16 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNnm = info.ownrNnm;
+	let ownrNm = info.ownrNnm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
 	
 	addList.push("   <td>");
-	addList.push("		 <input type=\"checkbox\">");
+	addList.push("		 <input type=\"checkbox\" name=\"checkbox_land\" value=\""+startNumber+"\" id=\""+startNumber+"\" data-seq=\""+startNumber+"\">");
 	addList.push("   </td>");
-    
+	let test = $('#'+startNumber).data('seq');
+	console.log(test);
 	addList.push("   <td>");
 	addList.push("		 <strong>연번</strong>");
 	addList.push("		 <span>"+startNumber+"</span>");
@@ -204,7 +205,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+ownrNm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -457,7 +458,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
 	addList.push("<tr>");
 	
 	addList.push("   <td>");
-	addList.push("		 <input type=\"checkbox\">");
+	addList.push("		 <input type=\"checkbox\" name=\"checkbox_goods\" value=\""+startNumber+"\" id=\""+startNumber+"\" data-seq=\""+startNumber+"\">");
 	addList.push("   </td>");
 	
     addList.push("   <td>");

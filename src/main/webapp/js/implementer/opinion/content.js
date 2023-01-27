@@ -7,7 +7,7 @@ function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
    
 
    let opCount = $(".opinion"+getSeq).length+1;
-   
+   console.log(getType);
    let getId = "#opinion"+getSeq+"-"+getItem;
    
    
@@ -54,9 +54,193 @@ function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
   
 }
 
+function addLandOpinion(rank,info,getItem){
+   
+
+	
+	let getSeq = info.reptSeq;
+	let reptOwnrSeq = info.reptOwnrSeq;
+	let reptAddr = info.reptAddr;
+	
+	let sidoGunguCd = info.sidoGunguCd;
+	let mainStrtNo = info.mainStrtNo;
+	let subStrtNo = info.subStrtNo;
+	
+	let obstStuc1Nm = info.obstStuc1Nm;
+	let obstStuc2Nm = info.obstStuc2Nm;
+	
+	let areaAmot = info.areaAmot;
+	let areaUnit = info.areaUnit;
+	let befUnitCost = info.befUnitCost;
+    
+	let ownrNnm = info.ownrNnm;
+	let landShre = info.landShre;
+
+    let getId = "#opinion"+getSeq+"-"+getItem;
+      
+      let addList = new Array();
+       
+		addList.push("<tr id="+getId+"\ data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNnm+"\" data-title=\"\" data-content=\"\">");
+		addList.push("<td><strong>체크박스<strong>");
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
+		addList.push("</td>");
+		addList.push("<th><strong>"+rank+"<strong></th>");
+		addList.push("<td><strong>소유자</strong>");
+		addList.push("<span>"+ownrNnm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>지분</strong>");
+		addList.push("<span>"+landShre+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>소재지</strong>");
+		addList.push("<span>"+reptAddr+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>지번</strong>");
+		addList.push("<span>"+sidoGunguCd+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>본번</strong>");
+		addList.push("<span>"+mainStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>부번</strong>");
+		addList.push("<span>"+subStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>공</strong>");
+		addList.push("<span>"+obstStuc1Nm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>실</strong>");
+		addList.push("<span>"+obstStuc2Nm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>면적</strong>");
+		addList.push("<span>"+areaAmot+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>단가</strong>");
+		addList.push("<span>"+befUnitCost+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>소유자 의견</strong>");
+		addList.push("<span id=\"owner"+getSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>사업시행자 의견</strong>");
+		addList.push("<span id=\"operator"+getSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("</td>");
+		addList.push("<td>");     
+	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" >작성</a>");
+		addList.push("</td>");
+		addList.push("<td>"); 
+	   addList.push("          <button class=\"btn nohover t4\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+   	   addList.push("          	복사</button>");
+       addList.push("</td>");
+		addList.push("<td>"); 
+	   addList.push("          <button class=\"btn nohover t1\" onclick=\"opinionRemove2(this);return false;\">");
+   	   addList.push("          	삭제</button>");
+       addList.push("</td>");
+		addList.push("</tr>");
+        
+           $("#ownerLandItemList2").append(addList.join(''));
+       
+
+  // }   
+   
+    resetSeq(getSeq);
+  
+}
+
+function addGoodsOpinion(rank,info,getItem){
+   
+
+	
+	let getSeq = info.reptSeq;
+	let reptAddr = info.reptAddr;
+
+	let mainStrtNo = info.mainStrtNo;
+	let subStrtNo = info.subStrtNo;
+	
+	let strtOther = info.strtOther;
+	
+	let obstKindNm = info.obstKindNm;
+	let obstStuc1Nm = info.obstStuc1Nm;
+	let obstStuc2Nm = info.obstStuc2Nm;
+	
+	let areaAmot = info.areaAmot;
+	let befUnitCost = info.befUnitCost;
+	let areaUnit = info.areaUnit;
+	
+	let ownrNnm = info.ownrNnm;
+	let landShre = info.landShre;
+
+ let getId = "opinion"+getSeq+"-"+getItem;
+      //console.log($(getId).length);
+      
+      let addList = new Array();
+       
+		addList.push("<tr id="+getId+"\ data-seq=\""+getSeq+"\" data-type=\""+getItem+"\" reptOwnrSeq=\""+reptOwnrSeq+"\" ownrNm=\""+ownrNnm+"\" data-title=\"\" data-content=\"\">");
+		addList.push("<td><strong>체크박스<strong>");
+		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinion"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
+		addList.push("</td>");
+		addList.push("<th><strong>"+rank+"<strong></th>");
+		addList.push("<td><strong>소유자</strong>");
+		addList.push("<span>"+ownrNnm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>지분</strong>");
+		addList.push("<span>"+landShre+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>소재지</strong>");
+		addList.push("<span>"+reptAddr+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>본번</strong>");
+		addList.push("<span>"+mainStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>부번</strong>");
+		addList.push("<span>"+subStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>부번2</strong>");
+		addList.push("<span>"+strtOther+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>물건종류</strong>");
+		addList.push("<span>"+obstStuc1Nm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>물건구조</strong>");
+		addList.push("<span>"+obstKindNm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>면적/수량</strong>");
+		addList.push("<span>"+areaAmot+""+areaUnit+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>단가</strong>");
+		addList.push("<span>"+befUnitCost+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>소유자 의견</strong>");
+		addList.push("<span id=\"owner"+getSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>사업시행자 의견</strong>");
+		addList.push("<span id=\"operator"+getSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("</td>");
+		addList.push("<td>");     
+	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" >작성</a>");
+		addList.push("</td>");
+		addList.push("<td>"); 
+	   addList.push("          <button class=\"btn nohover t4\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+   	   addList.push("          	복사</button>");
+       addList.push("</td>");
+		addList.push("<td>"); 
+	   addList.push("          <button class=\"btn nohover t1\" onclick=\"opinionRemove2(this);return false;\">");
+   	   addList.push("          	삭제</button>");
+       addList.push("</td>") 
+		addList.push("</tr>");
+        
+           $("#ownerGoodsItemList2").append(addList.join(''));
+       
+
+   
+    resetSeq(getSeq);
+  
+}
 
 function opinionRemove(getId){	
 	$(getId).remove();
+}
+
+function opinionRemove2(obj){	
+	var tr = $(obj).parent().parent();
+	
+	tr.remove();
 }
 
 function opinionContentCopy(){
