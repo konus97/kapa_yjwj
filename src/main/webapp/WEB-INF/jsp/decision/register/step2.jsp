@@ -506,9 +506,31 @@
 							<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 						</div>
 						<div class="form">
-							<div class="f_wrap">
-								<textarea id="relatedLaws" class="textarea mt20"></textarea>
+							<a href="#" class="cx"
+								onclick="openPopupLaw();return false;">법령 보기 <i
+								class="icon search"></i>
+							</a>
+
+						<div id="contents" class="c_sub">
+							<div class="c_table t1">
+								<table>
+									<caption>법령</caption>
+									<thead>
+										<tr>
+											<th>법령</th>
+											<th>조</th>
+											<th>항</th>
+											<th>내용</th>
+											<th>삭제</th>
+										</tr>
+									</thead>
+									<tbody id="selectLawList">
+	
+									</tbody>
+								</table>
 							</div>
+						</div>
+
 						</div>
 						<div class="cs_title">
 							<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
@@ -544,6 +566,10 @@
                 </div>
             </div>
             <hr />
+            <!-- 팝업, 법령 검색 S -->
+            <%@ include file="popup/law.jsp"%> 
+            <!-- 팝업, 법령 검색 E -->
+            
             <!-- footer start -->
 		    <jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
 				<jsp:param name="login" value="login" />
@@ -563,6 +589,7 @@
 		</jsp:include> 
 	    <!-- 팝업, 로그인 E -->
 
+		<script src="../../lib/jquery.min.js"></script>
         <script src="../../lib/jquery.3.1.0.min.js"></script>
         <script src="../../lib/owl.carousel.min.js"></script>
         <script src="../../lib/jquery-ui.min.js"></script>

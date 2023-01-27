@@ -2,6 +2,7 @@ package egovframework.kapa.law.service;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -83,5 +84,15 @@ public class LawService {
 	
 	public LawVO getViewLaw(int seq_no) {
 		return lawMapper.getViewLaw(seq_no);
+	}
+	
+	public List<LawVO> getSelectLawList(List<String> list){
+		List<LawVO> result = new ArrayList();
+		for (int i=0; i<list.size(); i++) {
+			int seq_no = Integer.parseInt(list.get(i));
+			result.add(i, lawMapper.getViewLaw(seq_no));
+		}
+		return result;
+		
 	}
 }

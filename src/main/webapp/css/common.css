@@ -1910,6 +1910,12 @@ div.table table td:last-child {
     padding: 20px;
     max-height: calc(100% - 60px);
 }
+.popup .p_body1 {
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+    max-height: calc(100% - 130px);
+}
 .popup.t1 .p_body {
     position: relative;
     top: 70px;

@@ -101,7 +101,7 @@
 		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" readonly></span>
 		                                </td>
 		                                <td>
-		                                    <strong>내용</strong>
+		                                    <!-- <strong>내용</strong> -->
 		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content" readonly>${law.content}</textarea></span>
 		                                </td>
 	                                </c:when>
@@ -119,7 +119,7 @@
 		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" required></span>
 		                                </td>
 		                                <td>
-		                                    <strong>내용</strong>
+		                                    <!-- <strong>내용</strong> -->
 		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content">${law.content}</textarea></span>
 		                                </td>
 	                                

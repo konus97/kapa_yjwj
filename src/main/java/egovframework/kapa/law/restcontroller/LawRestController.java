@@ -143,4 +143,27 @@ public class LawRestController {
         return ResponseEntity.ok(resultFinal);
 
 	}	
+	
+
+	@RequestMapping(value = "/selectLaw.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getSelectLawList(Model model, @RequestParam(value="list[]") List<String> list) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+        try {
+            //값 넣기
+    		List<LawVO> result = lawService.getSelectLawList(list);
+            System.out.println(result);
+            
+    		model.addAttribute("lawList", result);
+    		
+            resultFinal.put("list", result);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
 }
