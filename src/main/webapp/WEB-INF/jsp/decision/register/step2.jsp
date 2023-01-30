@@ -506,15 +506,14 @@
 							<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 						</div>
 						<div class="form">
-						<!--  -->
-							<!-- <a href="#" class="cx"
-								onclick="openPopupLaw();return false;">법령 보기 (테스트) <i
+							<a href="#" class="cx"
+								onclick="openPopupLaw();return false;">법령 찾아보기  <i
 								class="icon search"></i>
-							</a> -->
+							</a>
 
 							<div id="contents" class="c_sub">
 								<div class="c_table t1">
-									<%-- <table>
+									<table>
 										<caption>법령</caption>
 										<thead>
 											<tr>
@@ -528,7 +527,7 @@
 										<tbody id="selectLawList">
 		
 										</tbody>
-									</table> --%>
+									</table>
 								</div>
 							</div>
 							<!--  -->

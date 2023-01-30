@@ -31,8 +31,8 @@ public interface LawMapper {
 	void update();
 	void delete();
 	
-	int  getAllLawCnt ();
-	List<LawVO> getLawList(Search search);
+	int  getLawCnt (LawVO law);
+	List<LawVO> getLawList(LawVO law);
 	void addLaw(LawVO law);
 	
 	LawVO getViewLaw(int seq_no);

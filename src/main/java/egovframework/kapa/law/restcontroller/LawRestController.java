@@ -90,11 +90,15 @@ public class LawRestController {
 
 	@RequestMapping(value = "/lawList.do", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getLawList(Model model, @RequestParam("cpage") String cpage) {
+	public Map<String, Object> getLawList(Model model, @RequestParam("cpage") String cpage, @RequestParam("title") String title
+			, @RequestParam("article") String article, @RequestParam("paragraph") String paragraph) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
-		Search search = new Search();
+		LawVO law = new LawVO();
+		law.setTitle(title);
+		law.setArticle(article);
+		law.setParagraph(paragraph);
 		
         //page cpage
         int pageNum=1;
@@ -102,18 +106,18 @@ public class LawRestController {
         try {
 
             pageNum = Integer.parseInt(cpage);
-            int listCnt = lawService.getAllLawCnt();
+            int listCnt = lawService.getLawCnt(law);
 
-            search.pageInfo(pageNum, rowItem, listCnt);
+            law.pageInfo(pageNum, rowItem, listCnt);
 
             //값 넣기
-    		List<LawVO> result = lawService.getLawList(search);
+    		List<LawVO> result = lawService.getLawList(law);
                 		
     		model.addAttribute("lawList", result);
     		
             resultFinal.put("list", result);
             resultFinal.put("allCount", listCnt);
-            resultFinal.put("totalPage", search.getPageCnt());
+            resultFinal.put("totalPage", law.getPageCnt());
 
         }catch (Exception e){
             e.printStackTrace();

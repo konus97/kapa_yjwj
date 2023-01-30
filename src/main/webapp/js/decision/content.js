@@ -69,8 +69,8 @@ function getLawInfo(cpage) {
 	let url = contextPath+"/api/law/lawList.do";
 	
 	let title = $("#lawTitleList").val();
-	let article = $("#lawTitleList").val();
-	let paragraph = $("#lawTitleList").val();
+	let article = $("#lawArticleList").val();
+	let paragraph = $("#lawParagraphList").val();
 
 	$("#lawList").attr("data-cpage", cpage);
 	$("#lawList").empty();
@@ -83,6 +83,9 @@ function getLawInfo(cpage) {
 		async: false,
 		data : {
 			"cpage": cpage,
+			"title" : title,
+			"article" : article,
+			"paragraph" : paragraph,
 		},
 		success : function(data) {
 			let list = data.list;
@@ -121,12 +124,7 @@ function makeLawBlock_popup(idx, info) {
 	addList.push("   <td>");
 	addList.push("		 <input type=\"checkbox\" value=\""+seq_no+"\" name=\"checkboxLaw\">");
 	addList.push("   </td>");
-	
-	addList.push("	<td>");
-    addList.push("  	  <strong>연번</strong>");
-    addList.push("    	<span>"+idx+"</span>");
-	addList.push("	</td>");
-	
+		
 	addList.push("	<td>");
     addList.push(" 	   <strong>법령</strong>");
     addList.push(" 	   <span>"+info.title+"</span>");
@@ -336,11 +334,19 @@ function getLawTitle (){
 
 	//---------------------------------------
 	// 각 select box 초기화
+	
+	$("#lawTitleList").empty();
+	let initTitle = new Array();
+		
+		initTitle.push("<option selected disabled>법령을 선택하세요.");
+		initTitle.push("</option>");
+		$("#lawTitleList").append(initTitle.join(''));
+						
 	$("#lawArticleList").empty();
 		
 	let initArticle = new Array();
 	
-		initArticle.push("<option>조를 선택하세요");
+		initArticle.push("<option selected disabled>조를 선택하세요");
 		initArticle.push("</option>");
 		$("#lawArticleList").append(initArticle.join(''));
 		
@@ -349,7 +355,7 @@ function getLawTitle (){
 			
 	let initParagraph = new Array();
 	
-		initParagraph.push("<option>항을 선택하세요");
+		initParagraph.push("<option selected disabled>항을 선택하세요");
 		initParagraph.push("</option>");
 		$("#lawParagraphList").append(initParagraph.join(''));
 		
@@ -414,7 +420,7 @@ function getLawArticles (){
 				
 				let init = new Array();
 			
-				init.push("<option>조를 선택하세요");
+				init.push("<option selected disabled>조를 선택하세요");
 				init.push("</option>");
 				$("#lawArticleList").append(init.join(''));
 				
@@ -468,7 +474,7 @@ function getLawParagraph (){
 				
 				let init = new Array();
 			
-				init.push("<option>항을 선택하세요");
+				init.push("<option selected disabled>항을 선택하세요");
 				init.push("</option>");
 				$("#lawParagraphList").append(init.join(''));
 				

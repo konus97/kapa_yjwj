@@ -3,17 +3,48 @@
 <mapper namespace="egovframework.kapa.law.mapper.LawMapper">
     
     <!-- lawCnt -->
-	<select id="getAllLawCnt" resultType="Integer">
+	<select id="getLawCnt" resultType="Integer" parameterType="egovframework.kapa.law.domain.LawVO">
         SELECT COUNT(*)
 		FROM TB_Law 
 		WHERE del_check = 0
+		
+  		<if test = 'title neq null and title neq ""'>     
+	         AND title = #{title}
+	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
+        </if>
+        
+  		<if test = 'article neq null and article neq ""'>     
+	         AND article = #{article}
+	         <!-- AND article LIKE CONCAT('%', #{article}, '%') -->
+        </if>
+        
+  		<if test = 'paragraph neq null and paragraph neq ""'>    
+	         AND paragraph = #{paragraph}
+  			<!-- AND paragraph LIKE CONCAT('%', #{paragraph}, '%') -->
+        </if>
+        
     </select>
 
-	<select id="getLawList" resultType="egovframework.kapa.law.domain.LawVO"  parameterType="egovframework.kapa.domain.Search">
+	<select id="getLawList" resultType="egovframework.kapa.law.domain.LawVO"  parameterType="egovframework.kapa.law.domain.LawVO">
         SELECT *
 		FROM TB_Law
 		WHERE del_check = 0
 				
+  		<if test = 'title neq null and title neq ""'>     
+	         AND title = #{title}
+	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
+        </if>
+        
+  		<if test = 'article neq null and article neq ""'>     
+	         AND article = #{article}
+	         <!-- AND article LIKE CONCAT('%', #{article}, '%') -->
+        </if>
+        
+  		<if test = 'paragraph neq null and paragraph neq ""'>    
+	         AND paragraph = #{paragraph}
+  			<!-- AND paragraph LIKE CONCAT('%', #{paragraph}, '%') -->
+        </if>
+        
 		ORDER BY seq_no DESC
 		
 		OFFSET (#{page}-1)* #{listSize} ROW

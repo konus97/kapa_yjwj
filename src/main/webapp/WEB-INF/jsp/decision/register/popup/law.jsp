@@ -15,7 +15,6 @@
                  <div class="wrap">
 					<thead>
 						<select id="lawTitleList">
-							<option selected disabled>법령을 선택해주세요.</option>
 						</select>
 					</thead>
 
@@ -28,6 +27,7 @@
 						<select id="lawParagraphList">
 						</select>
 					</thead>
+					<button type="button" onclick="reset_law(); return false;">설정 초기화</button>
 					<div class="c_table t1">
                        <table>
                            <caption>
@@ -38,7 +38,6 @@
                             <thead>
                                <tr>
                                    <th>선택</th>
-                                   <th>연번</th>
                                    <th>법령</th>
                                    <th>조</th>
                                    <th>항</th>
@@ -74,9 +73,16 @@
 	
 	$("#lawTitleList").change(function(){
 		getLawArticles();
+		getLawInfo(1);
 	});
 
 	$("#lawArticleList").change(function(){
 		getLawParagraph();
+		getLawInfo(1);
 	});
+	
+	function reset_law(){
+		getLawTitle();
+		getLawInfo(1);
+	}
 </script>

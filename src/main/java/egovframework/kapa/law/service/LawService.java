@@ -51,13 +51,12 @@ public class LawService {
     	}
     }
 
-	public int getAllLawCnt () {
-		int num = lawMapper.getAllLawCnt();
-		return num;
+	public int getLawCnt (LawVO law) {
+		return lawMapper.getLawCnt(law);
 	}
 	
-	public List<LawVO> getLawList(Search search){
-		return lawMapper.getLawList(search);
+	public List<LawVO> getLawList(LawVO law){
+		return lawMapper.getLawList(law);
 	}
 	
 	public void addLaw (String data) throws ParseException {
