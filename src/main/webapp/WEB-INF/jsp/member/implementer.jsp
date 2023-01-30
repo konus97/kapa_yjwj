@@ -131,6 +131,18 @@
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
+                                    <span class="required">시행사 소속</span>
+                                </div>
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="소속을 입력하세요"
+                                    required
+                                    name="implementerDept"
+                                />
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
                                     <span>시행사 연락처</span>
                                 </div>
                                 <input type="text" class="input-right input40" name="implementerNumber"/>
@@ -829,8 +841,10 @@
 		    		"email" : $("input[name=email]")[0].value,
 		    		"domain" : $("input[name=domain]")[0].value,
 		     		"docNumber" : $("input[name=docNumber]")[0].value,
+		     		"name" : $("input[name=implementerResponsibilityName]")[0].value,
 		     		"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
 		     		"implementerNumber" : $("input[name=implementerNumber]")[0].value,
+		     		"dept" : $("input[name=implementerDept]")[0].value,
 		    	}
 		        	
         		$.ajax({
