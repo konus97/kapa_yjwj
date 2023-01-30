@@ -3150,3 +3150,95 @@
     gap: 0.5em;
     color: #717171;
 }
+
+/* 소유자 의견 및 사업시행자 의견작성 */
+.item_result_wr {
+	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+	margin-top: 40px;
+	display: flex;
+    flex-flow: column nowrap;
+}
+.item_result_wr__tit,
+.item_result_wr__con {
+	background: #f6f8fC;
+	border: 1px solid #e7eaf2;
+	border-radius:5px;
+}
+.item_result_wr__tit,
+.item_result_wr__table caption {
+	color: #365978;
+}
+.item_result_wr__tit {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	display: inline-block;
+	padding: 15px 30px 10px 20px;
+	font-weight: 700;
+	font-size: 20px;
+	border-bottom: 0;
+	position: relative;
+    top: 1px;
+    align-self: flex-start;
+}
+.item_result_wr__con {
+	border-top-left-radius: 0;
+	padding: 20px 16px;
+	width:100%;
+}
+.item_result_wr__table {
+	width:100%;
+}
+.item_result_wr__table ~ .item_result_wr__table {
+	margin-top: 20px;
+}
+.item_result_wr__table caption {
+	font-weight: 600;
+	font-size: 18px;
+	text-align: left;
+	margin-bottom:10px;
+}
+.item_result_wr__table,
+.item_result_wr__table th,
+.item_result_wr__table td {
+	border: 1px solid #ddd;
+}
+.item_result_wr__table th,
+.item_result_wr__table td {
+	font-size: 14px;
+	padding: 8px 4px;
+}
+.item_result_wr__table th {
+	background: #f7f7f7;
+	color: #313131;
+	font-weight: 600;
+}
+.item_result_wr__table td {
+	background: #fff;
+	color: #636363;
+}
+.item_result_wr__table td strong {
+	display: none;
+}
+.item_result_wr__btn {
+	display: inline-block;
+    width:100%;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #365978;
+    background: #F3F6FB;
+	border: 1px solid #e7eaf2;
+    font-size: 15px;
+    font-weight: 600;
+}
+.item_result_wr__btn:hover {
+	background: #e4e8ef;
+}
+.item_result_wr__btn--write {
+
+}
+.item_result_wr__btn--copy {
+
+}
+.item_result_wr__btn--del {
+
+}

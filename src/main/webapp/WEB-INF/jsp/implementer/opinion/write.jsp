@@ -316,102 +316,108 @@
 									소유자의견 및 사업시행자 의견 작성
 								</h4>
 							</div>
+							
+							<%-- 항목 소유자 검색 필터 시작 --%>
 							<div class="c_table t1">
 								<table>
 									<thead>
 										<tr>
 											<!-- <th>연번</th> -->
-											<th style="width:50%">항목</th>
-											<th style="width:50%">소유자</th>
+											<th style="width: 50%">항목</th>
+											<th style="width: 50%">소유자</th>
 										</tr>
 									</thead>
 									<tbody>
-							
+
 
 										<%--<c:forEach var="ownerInfo" items="${ownerList}"
 											varStatus="status">--%>
-											<%--<c:set var="i" value="${i+1}" /> --%>
+										<%--<c:set var="i" value="${i+1}" /> --%>
 
-											<tr>
-												<td>
-													<button>
-														<a href="#" class="btn_check"
-															onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">
-															항목 선택</a>
-													</button>
-													<span id="selectedItemTit" value=""> 선택된 항목 없음</span>
-												</td>
-												<td>
-													<%-- <strong>소유자</strong>
+										<tr>
+											<td>
+												<button>
+													<a href="#" class="btn_check" onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">항목 선택</a>
+												</button>
+												<span id="selectedItemTit" value=""> 선택된 항목 없음</span>
+											</td>
+											<td>
+												<%-- <strong>소유자</strong>
 													<span><a href="#!" class="cx owner">${ownerInfo.ownrTitle}</a></span>
-													<div></div> --%>
-													<a href="#" class="cx"
-													onclick="openPopup('landsownercheck','${landRightCount}');return false;">필지</a>
-													<a href="#" class="cx"
-													onclick="openPopup('goodsownercheck','${objectRightCount}');return false;">지장물</a>
-												</td>
+													<div></div> --%> <a href="#" class="cx"
+												onclick="openPopup('landsownercheck','${landRightCount}');return false;">필지</a>
+												<a href="#" class="cx"
+												onclick="openPopup('goodsownercheck','${objectRightCount}');return false;">지장물</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<%-- 항목 소유자 검색 필터 끝 --%>
+							
+							<%-- 항목 결과 시작 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">1. 지연가산금</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
 											</tr>
-											
-												
-											<table>
-					                             <caption>
-					                           	      토지
-					                             </caption>
-					                             <thead>
-					                                 <tr>
-					                                     <th>선택</th>
-					                                     <th>연번</th>
-					                                     <th>소유자</th>
-					                                     <th>지분</th>
-					                                     <th>소재지</th>
-					                                     <th>지번</th>
-					                                     <th>본번</th>
-					                                     <th>부번</th>
-					                                     <th>공</th>
-					                                     <th>실</th>
-					                                     <th>면적</th>
-					                                     <th>단가</th>
-					                                     <th>소유자 의견</th>
-					                                     <th>사업시행자 의견</th>
-					                                     <th>작성</th>
-					                                     <th>복사</th>
-					                                     <th>삭제</th>
-					                                 </tr>
-					                             </thead>
-                             						<tbody id="ownerLandItemList2">
-                             						
-													</tbody>
-													</table>
-												
-											<table>
-					                             <caption>
-					                           	      토지
-					                             </caption>
-					                             <thead>
-					                                 <tr>
-					                                     <th>선택</th>
-					                                     <th>연번</th>
-					                                     <th>소유자</th>
-					                                     <th>지분</th>
-					                                     <th>소재지</th>
-					                                     <th>본번</th>
-					                                     <th>부번</th>
-					                                     <th>부번2</th>
-					                                     <th>물건종류</th>
-					                                     <th>물건구조</th>
-					                                     <th>면적/수량</th>
-					                                     <th>단가</th>
-					                                     <th>소유자 의견</th>
-					                                     <th>사업시행자 의견</th>
-					                                     <th>작성</th>
-					                                     <th>복사</th>
-					                                     <th>삭제</th>
-					                                 </tr>
-					                             </thead>
-                             						<tbody id="ownerGoodsItemList2">
-                             						</tbody>
-                             						</table>
-											<%--<tr class="inner_table">
+										</thead>
+										<tbody id="ownerLandItemList2">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList2">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 --%>
+							
+								<%--<tr class="inner_table">
 												<td colspan="100%"><c:if test="${ownerInfo.landCheck}">
 
 														<div class="inner_table_div">

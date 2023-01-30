@@ -84,7 +84,7 @@ function addLandOpinion(rank,info,getItem){
 		addList.push("<td><strong>체크박스</strong>");
 		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinionCheck"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
 		addList.push("</td>");
-		addList.push("<th><strong>"+rank+"<strong></th>");
+		addList.push("<td>"+rank+"</td>");
 		addList.push("<td><strong>소유자</strong>");
 		addList.push("<span>"+ownrNnm+"</span>");
 		addList.push("</td>");
@@ -122,14 +122,14 @@ function addLandOpinion(rank,info,getItem){
 		addList.push("<span id=\"operator"+getSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td>");     
-	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" >작성</a>");
+	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
 		addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"btn nohover t4\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--copy\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
    	   addList.push("          	복사</button>");
        addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"btn nohover t1\" onclick=\"opinionRemove2(this);return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this);return false;\">");
    	   addList.push("          	삭제</button>");
        addList.push("</td>");
 		addList.push("</tr>");
@@ -175,7 +175,7 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<td><strong>체크박스</strong>");
 		addList.push("<input type=\"checkbox\" name=\"chk_list\" id=\"opinionCheck"+getSeq+"-"+getItem+"\" value=\"opinion"+getSeq+"-"+getItem+"\" class=\"cbl_wrap_check\">");
 		addList.push("</td>");
-		addList.push("<th><strong>"+rank+"<strong></th>");
+		addList.push("<td>"+rank+"</td>");
 		addList.push("<td><strong>소유자</strong>");
 		addList.push("<span>"+ownrNnm+"</span>");
 		addList.push("</td>");
@@ -213,14 +213,14 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<span id=\"operator"+getSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td>");     
-	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" >작성</a>");
+	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
 		addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"btn nohover t4\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--copy\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"');return false;\">");
    	   addList.push("          	복사</button>");
        addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"btn nohover t1\" onclick=\"opinionRemove2(this);return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this);return false;\">");
    	   addList.push("          	삭제</button>");
        addList.push("</td>") 
 		addList.push("</tr>");
