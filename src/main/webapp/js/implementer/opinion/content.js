@@ -134,7 +134,58 @@ function addLandOpinion(rank,info,getItem){
        addList.push("</td>");
 		addList.push("</tr>");
         
-           $("#ownerLandItemList2").append(addList.join(''));
+			             if(getItem == 1){
+			$("#ownerLandItemList1").append(addList.join(''));
+			}else if(getItem  == 2){
+			$("#ownerLandItemList2").append(addList.join(''));
+			}else if(getItem  == 3){
+			$("#ownerLandItemList3").append(addList.join(''));
+			}else if(getItem  == 4){
+			$("#ownerLandItemList4").append(addList.join(''));
+			}else if(getItem  == 5){
+			$("#ownerLandItemList5").append(addList.join(''));
+			}else if(getItem  == 6){
+			$("#ownerLandItemList6").append(addList.join(''));
+			}else if(getItem  == 7){
+			$("#ownerLandItemList7").append(addList.join(''));
+			}else if(getItem  == 8){
+			$("#ownerLandItemList8").append(addList.join(''));
+			}else if(getItem  == 9){
+			$("#ownerLandItemList9").append(addList.join(''));
+			}else if(getItem  == 10){
+			$("#ownerLandItemList10").append(addList.join(''));
+			}else if(getItem  == 11){
+			$("#ownerLandItemList11").append(addList.join(''));
+			}else if(getItem  == 12){
+			$("#ownerLandItemList12").append(addList.join(''));
+			}else if(getItem  == 13){
+			$("#ownerLandItemList13").append(addList.join(''));
+			}else if(getItem  == 14){
+			$("#ownerLandItemList14").append(addList.join(''));
+			}else if(getItem  == 15){
+			$("#ownerLandItemList15").append(addList.join(''));
+			}else if(getItem  == 16){
+			$("#ownerLandItemList16").append(addList.join(''));
+			}else if(getItem  == 17){
+			$("#ownerLandItemList17").append(addList.join(''));
+			}else if(getItem  == 18){
+			$("#ownerLandItemList18").append(addList.join(''));
+			}else if(getItem  == 19){
+			$("#ownerLandItemList19").append(addList.join(''));
+			}else if(getItem  == 20){
+			$("#ownerLandItemList20").append(addList.join(''));
+			}else if(getItem  == 21){
+			$("#ownerLandItemList21").append(addList.join(''));
+			}else if(getItem  == 22){
+			$("#ownerLandItemList22").append(addList.join(''));
+			}else if(getItem  == 23){
+			$("#ownerLandItemList23").append(addList.join(''));
+			}else if(getItem  == 24){
+			$("#ownerLandItemList24").append(addList.join(''));
+			}else{
+			alert("잘못된 접근입니다.");
+			return false;
+			}
        
 
   // }   
@@ -225,7 +276,60 @@ function addGoodsOpinion(rank,info,getItem){
        addList.push("</td>") 
 		addList.push("</tr>");
         
-           $("#ownerGoodsItemList2").append(addList.join(''));
+          // $("#ownerGoodsItemList2").append(addList.join(''));
+
+if(getItem == 1){
+$("#ownerGoodsItemList1").append(addList.join(''));
+}else if(getItem  == 2){
+$("#ownerGoodsItemList2").append(addList.join(''));
+}else if(getItem  == 3){
+$("#ownerGoodsItemList3").append(addList.join(''));
+}else if(getItem  == 4){
+$("#ownerGoodsItemList4").append(addList.join(''));
+}else if(getItem  == 5){
+$("#ownerGoodsItemList5").append(addList.join(''));
+}else if(getItem  == 6){
+$("#ownerGoodsItemList6").append(addList.join(''));
+}else if(getItem  == 7){
+$("#ownerGoodsItemList7").append(addList.join(''));
+}else if(getItem  == 8){
+$("#ownerGoodsItemList8").append(addList.join(''));
+}else if(getItem  == 9){
+$("#ownerGoodsItemList9").append(addList.join(''));
+}else if(getItem  == 10){
+$("#ownerGoodsItemList10").append(addList.join(''));
+}else if(getItem  == 11){
+$("#ownerGoodsItemList11").append(addList.join(''));
+}else if(getItem  == 12){
+$("#ownerGoodsItemList12").append(addList.join(''));
+}else if(getItem  == 13){
+$("#ownerGoodsItemList13").append(addList.join(''));
+}else if(getItem  == 14){
+$("#ownerGoodsItemList14").append(addList.join(''));
+}else if(getItem  == 15){
+$("#ownerGoodsItemList15").append(addList.join(''));
+}else if(getItem  == 16){
+$("#ownerGoodsItemList16").append(addList.join(''));
+}else if(getItem  == 17){
+$("#ownerGoodsItemList17").append(addList.join(''));
+}else if(getItem  == 18){
+$("#ownerGoodsItemList18").append(addList.join(''));
+}else if(getItem  == 19){
+$("#ownerGoodsItemList19").append(addList.join(''));
+}else if(getItem  == 20){
+$("#ownerGoodsItemList20").append(addList.join(''));
+}else if(getItem  == 21){
+$("#ownerGoodsItemList21").append(addList.join(''));
+}else if(getItem  == 22){
+$("#ownerGoodsItemList22").append(addList.join(''));
+}else if(getItem  == 23){
+$("#ownerGoodsItemList23").append(addList.join(''));
+}else if(getItem  == 24){
+$("#ownerGoodsItemList24").append(addList.join(''));
+}else{
+alert("잘못된 접근입니다.");
+return false;
+}
        
 
    
