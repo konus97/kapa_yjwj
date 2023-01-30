@@ -214,7 +214,7 @@ public class DeliberateService {
 			List<Decision_ConsultationDate> consultationDates = decisionService.getConsultationDate(decisionId);
 
 			// DeliberateOpinion
-			List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
+			List<Decision_Opinion> opinionList = decisionService.getPdfOpinionList(decisionId);
 			List<DeliberateOpinionDTO> deliberateOpinionDTOS = new ArrayList<>();
 
 			for (Decision_Opinion opinion : opinionList) {
@@ -286,6 +286,10 @@ public class DeliberateService {
 						.relatedLaws(opinion.getRelatedLaws())
 						.relatedLaws2(opinion.getRelatedLaws2())
 						.reviewOpinion(opinion.getReviewOpinion())
+						.opinionTitle(opinion.getOpinionTitle())
+						.opinionContent(opinion.getOpinionContent())
+						.fileFolder(opinion.getFileFolder())
+						.fileNameChange(opinion.getFileNameChange())
 						.itemCheck(itemCheck)
 						.landCheck(landCheck)
 						.objectCheck(objectCheck)
@@ -384,6 +388,8 @@ public class DeliberateService {
 					  DeliberateOpinionItemDTO deliberateOpinionItemDTO = DeliberateOpinionItemDTO.builder()
 							  						.title(opinionItem.getOpinionTitle())
 							  						.content(opinionItem.getOpinionContent())
+							  						.fileFolder(opinion.getFileFolder())
+							  						.fileNameChange(opinion.getFileNameChange())
 							  						.build();
 					  
 					  deliberateOpinionItemDTOS.add(deliberateOpinionItemDTO); 

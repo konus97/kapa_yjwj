@@ -1,6 +1,12 @@
 
 function openPopup(mode,count){
-	var getItem = document.getElementById('selectedItemTit').innerText;
+	
+	
+	var getItem = '';
+	
+	if(document.getElementById('selectedItemTit') != null || document.getElementById('selectedItemTit') != undefined){
+	 getItem = document.getElementById('selectedItemTit').innerText;
+	}
 	
 		
 	if(count==0){
