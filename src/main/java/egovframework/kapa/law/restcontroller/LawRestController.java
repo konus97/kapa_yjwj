@@ -166,4 +166,67 @@ public class LawRestController {
         return resultFinal;
 
 	}
+
+	@RequestMapping(value = "/lawTitle.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getLawTitle() {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+        try {
+            //값 넣기
+        	List<LawVO> result = lawService.getLawTitles();
+            System.out.println(result);
+            
+            resultFinal.put("list", result);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
+
+	@RequestMapping(value = "/lawArticles.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getLawArticles( @RequestParam("title") String title) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+        try {
+            //값 넣기
+        	List<LawVO> result = lawService.getLawArticles(title);
+            System.out.println(result);
+            
+            resultFinal.put("list", result);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
+
+	@RequestMapping(value = "/lawParagraph.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getLawParagraph(@RequestParam("title") String title,  @RequestParam("article") String article) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+        try {
+            //값 넣기
+        	LawVO search = new LawVO();
+        	search.setTitle(title);
+        	search.setArticle(article);
+        	List<LawVO> result = lawService.getLawParagraph(search);
+            System.out.println(result);
+            
+            resultFinal.put("list", result);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+
+	}
 }

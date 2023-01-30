@@ -67,6 +67,10 @@ function getLawInfo(cpage) {
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath+"/api/law/lawList.do";
+	
+	let title = $("#lawTitleList").val();
+	let article = $("#lawTitleList").val();
+	let paragraph = $("#lawTitleList").val();
 
 	$("#lawList").attr("data-cpage", cpage);
 	$("#lawList").empty();
@@ -323,4 +327,169 @@ function lawRemove(obj){
 	var tr = $(obj).parent().parent();
 	
 	tr.remove();
+}
+
+function getLawTitle (){
+	
+	let contextPath = $("#contextPath").val();
+	let url = contextPath+"/api/law/lawTitle.do";
+
+	//---------------------------------------
+	// 각 select box 초기화
+	$("#lawArticleList").empty();
+		
+	let initArticle = new Array();
+	
+		initArticle.push("<option>조를 선택하세요");
+		initArticle.push("</option>");
+		$("#lawArticleList").append(initArticle.join(''));
+		
+		
+		$("#lawParagraphList").empty();
+			
+	let initParagraph = new Array();
+	
+		initParagraph.push("<option>항을 선택하세요");
+		initParagraph.push("</option>");
+		$("#lawParagraphList").append(initParagraph.join(''));
+		
+	//---------------------------------------
+	
+	$("#lawList").empty();
+	$("#pageList").empty();
+
+		$.ajax({
+			url : url,
+			type : "GET",
+			dataType : "json",
+			async: false,
+			success : function(data) {
+				let list = data.list;
+				
+				for(let i = 0; i<list.length; i++) {
+					makeTitleOption(list[i].TITLE);
+				}
+			},
+			error : function(xhr, status, error) {
+
+				//에러!
+				//alert("code:"+xhr.status);
+			}
+		});
+}
+
+function makeTitleOption(title){
+	let addList = new Array();
+	
+		addList.push("<option value=\"" + title + "\"\>");
+		addList.push(title);
+		addList.push("</option>");
+    
+	$("#lawTitleList").append(addList.join(''));
+}
+
+function getLawArticles (){
+	
+		let contextPath = $("#contextPath").val();
+		let url = contextPath+"/api/law/lawArticles.do";
+		
+		let title = $("#lawTitleList").val();
+		console.log (title);
+
+		$("#lawList").empty();
+		$("#pageList").empty();
+
+		$.ajax({
+			url : url,
+			type : "GET",
+			dataType : "json",
+			async: false,
+			data : {
+				"title": title,
+			},
+			success : function(data) {
+				let list = data.list;
+				
+				$("#lawArticleList").empty();
+				
+				let init = new Array();
+			
+				init.push("<option>조를 선택하세요");
+				init.push("</option>");
+				$("#lawArticleList").append(init.join(''));
+				
+				for(let i = 0; i<list.length; i++) {
+					makeArticlesOption(list[i].article);
+				}
+			},
+			error : function(xhr, status, error) {
+
+				//에러!
+				//alert("code:"+xhr.status);
+			}
+		});
+}
+
+function makeArticlesOption(article){
+	let addList = new Array();
+	
+		addList.push("<option value=\"" + article + "\"\>");
+		addList.push(article);
+		addList.push("</option>");
+    
+	$("#lawArticleList").append(addList.join(''));
+}
+
+function getLawParagraph (){
+	
+		let contextPath = $("#contextPath").val();
+		let url = contextPath+"/api/law/lawParagraph.do";
+		
+		let title = $("#lawTitleList").val();
+		let article = $("#lawArticleList").val();
+		console.log (title);
+
+		$("#lawList").empty();
+		$("#pageList").empty();
+
+		$.ajax({
+			url : url,
+			type : "GET",
+			dataType : "json",
+			async: false,
+			data : {
+				"title": title,
+				"article" : article,
+			},
+			success : function(data) {
+				let list = data.list;
+				
+				$("#lawParagraphList").empty();
+				
+				let init = new Array();
+			
+				init.push("<option>항을 선택하세요");
+				init.push("</option>");
+				$("#lawParagraphList").append(init.join(''));
+				
+				for(let i = 0; i<list.length; i++) {
+					makeParagraphOption(list[i].paragraph);
+				}
+			},
+			error : function(xhr, status, error) {
+
+				//에러!
+				//alert("code:"+xhr.status);
+			}
+		});
+}
+
+function makeParagraphOption(paragraph){
+	let addList = new Array();
+	
+		addList.push("<option value=\"" + paragraph + "\"\>");
+		addList.push(paragraph);
+		addList.push("</option>");
+    
+	$("#lawParagraphList").append(addList.join(''));
 }
