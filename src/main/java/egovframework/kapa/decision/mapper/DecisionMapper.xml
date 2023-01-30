@@ -197,14 +197,25 @@
 	<select id="getOpinionFileList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
 		
 
-	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange ,DOI.opinionTitle, DOI.opinionContent
+<!-- 	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange ,DOI.opinionTitle, DOI.opinionContent
 FROM TB_Decision_File_Opinion DFO 
 LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo 
 LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO.fileType = DOI.opinionType
 		<where> 
 			
 			DFO.decisonId = ${decisionId} AND fileType = ${getType}
-			</where>
+			</where> -->
+			
+ SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq, TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.* 
+ FROM TB_Decision_Opinion DO 
+ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq 
+ LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType and do.reptSeq = DFO.reptOwnrSeq and do.reptOwnrSeq = dfo.reptSeq
+ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
+  		<where>
+			DO.decisionId = #{decisionId} AND type= #{getType}
+			AND DO.delCheck = '0' and do.reptOwnrSeq = dfo.reptSeq
+			 and dfo.reptOwnrSeq = #{reptOwnrSeq} and dfo.reptSeq = #{reptSeq}
+  		</where>
 	</select> 
 	
 	<select id="getDecisionOpinionTypeItemCount" parameterType="Map" resultType="Integer" >
@@ -419,6 +430,21 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
   		</where>
     </select>
 
+	<select id="getStepOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
+         SELECT
+ DOI.opinionTitle,
+ DOI.opinionContent,
+ DFO.fileSeq,
+ TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, 
+ DO.* 
+ FROM TB_Decision_Opinion DO 
+ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
+ LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType 
+ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq 
+  		<where>
+			DO.decisionId = #{decisionId} AND DO.delCheck = '0' and do.reptOwnrSeq = dfo.reptSeq
+  		</where>
+    </select>
 	
 	<!-- 게시글 갯수 -->
     <select id="getOpinionCompletionCount" resultType="Integer">

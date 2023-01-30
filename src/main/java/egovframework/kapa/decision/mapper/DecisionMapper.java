@@ -60,7 +60,7 @@ public interface DecisionMapper {
 	
 	List<Decision_ConsultationDate> getConsultationDate(Long decisionId);
 	
-	List<Decision_Opinion_Item> getOpinionFileList(@Param("decisionId")Long decisionId ,@Param("getType")int getType);
+	List<Decision_Opinion_Item> getOpinionFileList(@Param("decisionId")Long decisionId ,@Param("getType")int getType, @Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
 	
 	int getDecisionCityFileCnt(int decisionId);
 
@@ -92,6 +92,7 @@ public interface DecisionMapper {
 
 	List<Decision_Opinion> getPdfOpinionList(Long decisionId);
 	
+	List<Decision_Opinion> getStepOpinionList(Long decisionId);
 	int getOpinionCompletionCount(long decisionId);
 
 	FileVO getFileByDeicisionFileSeq(Integer seqNo);

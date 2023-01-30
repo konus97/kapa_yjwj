@@ -151,9 +151,10 @@ public class DecisionService {
 		return decisionMapper.getConsultationDate(decisionId);
 	}
 
-	public List<Decision_Opinion_Item> getOpinionFileList(Long decisionId ,int getType){
-		return decisionMapper.getOpinionFileList(decisionId, getType);
+	public List<Decision_Opinion_Item> getOpinionFileList(Long decisionId ,int getType, Long reptSeq, Long reptOwnrSeq){
+		return decisionMapper.getOpinionFileList(decisionId, getType, reptOwnrSeq, reptSeq);
 	}
+	
 	public int getDecisionAgendaCnt(Search search) {
 		return decisionMapper.getDecisionAgendaCnt(search);
 	}
@@ -468,7 +469,11 @@ public class DecisionService {
 	public List<Decision_Opinion> getPdfOpinionList(Long decisionId) {
 		return decisionMapper.getPdfOpinionList(decisionId);
 	}
-
+	
+	public List<Decision_Opinion> getStepOpinionList(Long decisionId) {
+		return decisionMapper.getStepOpinionList(decisionId);
+	}
+	
 	public void registerStep1(String param) {
 		JSONParser parser = new JSONParser();
 		
