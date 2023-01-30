@@ -129,7 +129,7 @@ function addLandOpinion(rank,info,getItem){
    	   addList.push("          	복사</button>");
        addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this);return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this); checkResultWrTbody();; return false;\">");
    	   addList.push("          	삭제</button>");
        addList.push("</td>");
 		addList.push("</tr>");
@@ -271,7 +271,7 @@ function addGoodsOpinion(rank,info,getItem){
    	   addList.push("          	복사</button>");
        addList.push("</td>");
 		addList.push("<td>"); 
-	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this);return false;\">");
+	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--del\" onclick=\"opinionRemove2(this); checkResultWrTbody();return false;\">");
    	   addList.push("          	삭제</button>");
        addList.push("</td>") 
 		addList.push("</tr>");

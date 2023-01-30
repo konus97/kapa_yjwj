@@ -54,7 +54,7 @@
                      </div>
                  </div>
                  <div class="p_foot">
-                    <button class="btn h50 mr10" onclick="submitLandOwnr();return false;" >선택</button>
+                    <button class="btn h50 mr10" onclick="submitLandOwnr(); checkResultWrTbody(); return false;" >선택</button>
                     <a href="#" class="btn t1 h50" onclick="closePopup('landsownercheck');return false;">취소</a>
                  </div>
              </div>

@@ -538,3 +538,36 @@ function submitGoodsOwnr2(rank,info){
 	addGoodsOpinion(rank,info,getItem);
 	closePopup('goodsownercheck');
 }
+
+
+//내용 없는 항목 또는 테이블 확인 후 숨기기
+function checkResultWrTbody(){
+	const resultWr = document.querySelectorAll('.item_result_wr')
+
+	resultWr.forEach(function(target){
+		resultWrCon = target.lastElementChild // '.item_result_wr__con' 두 table 태그(필지,지장물)의 부모 태그
+		resultWrTable1 = resultWrCon.firstElementChild
+		resultWrTable2 = resultWrCon.lastElementChild
+	
+		if(resultWrTable1.lastElementChild.innerHTML == 0){
+			resultWrTable1.style.display = "none"
+		} else {
+			resultWrTable1.style.display = "table"
+		}
+	
+		if(resultWrTable2.lastElementChild.innerHTML == 0){
+			resultWrTable2.style.display = "none"
+		} else {
+			resultWrTable2.style.display = "table"
+		}
+	
+		if(resultWrTable1.lastElementChild.innerHTML == 0 && resultWrTable2.lastElementChild.innerHTML == 0){
+			target.style.display = "none"
+		} else {
+			target.style.display = "flex"
+		}
+	
+	})
+
+
+}
