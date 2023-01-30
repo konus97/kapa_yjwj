@@ -429,11 +429,11 @@
 	                                        </tr>
 	                                        <tr>
 														<th class="info_reg_th">소재지</th>
-														<td colspan="2"><p class="">${deliberateOpinionItemDTO.title}</p></td>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
 													</tr>
 													<tr>
 														<th class="info_reg_th">이전비 평가사유</th>
-														<td colspan="2"><p class="">${deliberateOpinionItemDTO.content}</p></td>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
 													</tr>
 													<tr>
 														<th class="info_reg_th" colspan="3">관련자료</th>
@@ -441,7 +441,7 @@
 													<tr>
 														<td class=""  colspan="3">
 															<img
-															src="${deliberateOpinionItemDTO.fileFolder}${deliberateOpinionItemDTO.fileNameChange}"
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
 															alt="">
 														</td>
 													</tr>

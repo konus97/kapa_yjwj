@@ -38,6 +38,8 @@ public class DeliberateOpinionDTO {
     private String opinionTitle;
     private String opinionContent;
     
+    private String title;
+    private String content;
     private OwnerViewInfo ownerViewInfo;
     
     private boolean itemCheck;
