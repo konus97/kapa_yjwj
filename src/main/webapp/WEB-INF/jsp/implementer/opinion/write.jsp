@@ -355,9 +355,71 @@
 							</div>
 							<%-- 항목 소유자 검색 필터 끝 --%>
 							
-							<%-- 항목 결과 시작 --%>
+							<%-- 항목 결과 시작 01 --%>
 							<div class="item_result_wr">
 								<h5 class="item_result_wr__tit">1. 지연가산금</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList1">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList1">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 01 --%>
+							
+							<%-- 항목 결과 시작 02 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">2. 보상금 증액</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -415,7 +477,1371 @@
 									</table>
 								</div>
 							</div>
-							<%-- 항목 결과 끝 --%>
+							<%-- 항목 결과 끝 02 --%>
+							
+							<%-- 항목 결과 시작 03 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">3. 허가건축물 등 불법형질변경</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList3">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList3">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 03 --%>
+							
+							<%-- 항목 결과 시작 04 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">4. 일단지 보상</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList4">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList4">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 04 --%>
+							
+							<%-- 항목 결과 시작 05 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">5. 미지금 용지</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList5">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList5">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 05 --%>
+							
+							<%-- 항목 결과 시작 06 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">6. 사도평가</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList6">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList6">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 06 --%>
+							
+							<%-- 항목 결과 시작 07 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">7. 잔여지 매수청구</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList7">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList7">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 07 --%>
+							
+							<%-- 항목 결과 시작 08 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">8. 잔여지 가치하락</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList8">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList8">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 08 --%>
+							
+							<%-- 항목 결과 시작 09 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">9. 잔여건물 가치감소</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList9">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList9">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 09 --%>
+							
+							<%-- 항목 결과 시작 10 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">10. 잔여건물 매수청구</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList10">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList10">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 10 --%>
+							
+							<%-- 항목 결과 시작 11 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">11. 누락 물건 반영</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList11">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList11">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 11 --%>
+							
+							<%-- 항목 결과 시작 12 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">12. 휴업보상(이전비)평가</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList12">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList12">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 12 --%>
+							
+							<%-- 항목 결과 시작 13 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">13. 폐업보상</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList13">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList13">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 13 --%>
+							
+							<%-- 항목 결과 시작 14 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">14. 영농손실보상</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList14">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList14">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 14 --%>
+							
+							<%-- 항목 결과 시작 15 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">15. 휴직(실직)보상</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList15">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList15">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 15 --%>
+							
+							<%-- 항목 결과 시작 16 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">16. 사업폐지(취소,변경,중단)</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList16">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList16">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 16 --%>
+							
+							<%-- 항목 결과 시작 17 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">17. 이주대책 수립</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList17">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList17">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 17 --%>
+							
+							<%-- 항목 결과 시작 18 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">18. 이주정착금, 주거이전비, 이사비</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList18">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList18">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 18 --%>
+							
+							<%-- 항목 결과 시작 19 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">19. 임료손실</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList19">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList19">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 19 --%>
+							
+							<%-- 항목 결과 시작 20 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">20. 대토보상</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList20">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList20">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 20 --%>
+							
+							<%-- 항목 결과 시작 21 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">21. 구분지상권</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList21">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList21">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 21 --%>
+							
+							<%-- 항목 결과 시작 22 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">22. 10%이상 변동</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList22">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList22">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 22 --%>
+							
+							<%-- 항목 결과 시작 23 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">23. 기타(그 외)</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList23">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList23">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 23 --%>
+							
+							<%-- 항목 결과 시작 24 --%>
+							<div class="item_result_wr">
+								<h5 class="item_result_wr__tit">24. 소유자 의견 없음</h5>
+								<div class="item_result_wr__con">
+									<table class="item_result_wr__table">
+										<caption>필지</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>지번</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>공</th>
+												<th>실</th>
+												<th>면적</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerLandItemList24">
+	
+										</tbody>
+									</table>
+	
+									<table class="item_result_wr__table">
+										<caption>지장물</caption>
+										<thead>
+											<tr>
+												<th>선택</th>
+												<th>연번</th>
+												<th>소유자</th>
+												<th>지분</th>
+												<th>소재지</th>
+												<th>본번</th>
+												<th>부번</th>
+												<th>부번2</th>
+												<th>물건종류</th>
+												<th>물건구조</th>
+												<th>면적/수량</th>
+												<th>단가</th>
+												<th>소유자 의견</th>
+												<th>사업시행자 의견</th>
+												<th>작성</th>
+												<th>복사</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody id="ownerGoodsItemList24">
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<%-- 항목 결과 끝 24 --%>
 							
 								<%--<tr class="inner_table">
 												<td colspan="100%"><c:if test="${ownerInfo.landCheck}">
