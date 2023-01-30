@@ -54,6 +54,18 @@
   		</where>
 	</select> 
 	
+	<select id="getDecisionAgendaView" resultType="egovframework.kapa.domain.Decision" >
+		SELECT *
+		
+		FROM TB_Decision 
+		
+		<where>
+			seqNo = #{decisionId}
+			AND delCheck = '0'
+			AND agendaState = '3'
+  		</where>
+	</select> 
+	
 	<select id="getMasterId" resultType="Long">
 		SELECT masterID
 		

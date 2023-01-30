@@ -441,7 +441,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="cs_title">
+                                <%-- <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
                                       	  	 소유자 및 사업시행자 의견
                                     </h4>
@@ -468,14 +468,14 @@
 	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
 	                                            	</div>
-	                                            	<%-- <div class="op_list">
+	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-	                                            	</div> --%>
+	                                            	</div>
 	                                            </td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${opinionList.executorOpinion}</h5>
-	                                            		<%-- <p class="op_list__con">${opinionList.executorOpinion}</p> --%>
+	                                            		<p class="op_list__con">${opinionList.executorOpinion}</p>
 	                                            	</div>
 	                                            </td>
 	                                        </tr>
@@ -505,7 +505,7 @@
 	                                    </tbody>
 	                                    </c:forEach>
 	                                </table>
-                               </div>
+                               </div> --%>
                                
                                 <!-- <div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">

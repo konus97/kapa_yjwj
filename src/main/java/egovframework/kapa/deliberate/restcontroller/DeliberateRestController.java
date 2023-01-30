@@ -38,7 +38,6 @@ public class DeliberateRestController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getApplicationList(@RequestParam("cpage") String cpage) {
-		System.out.println("gdgdggdg");
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
 		Search search = new Search();

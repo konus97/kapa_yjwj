@@ -1916,6 +1916,7 @@
 																								<div class="cbl_1">번호</div>
 																								<div class="cbl_2">항목</div>
 																								<div class="cbl_3">제목</div>
+																								
 																								<div class="cbl_4">소유자 의견</div>
 																								<div class="cbl_5">사업시행자 의견</div>
 																							</div>
@@ -2303,7 +2304,7 @@
 									</c:if>
 
 									<li><a href="#" class="btn t1 h50 big"
-										onclick="goToImplementerOpinionList();return false;">확인</a>
+										onclick="goToImplementerOpinionList();return false;">취소</a>
 									</li>
 								</ul>
 
@@ -2407,11 +2408,11 @@
 																</td>
 															</tr>
 															<tr>
-																<th class="info_reg_th">제목</th>
+																<th class="info_reg_th">소재지</th>
 																<td><input type="text" class="input40 opinionTitle"></td>
 															</tr>
 															<tr>
-																<th class="info_reg_th">내용</th>
+																<th class="info_reg_th">이전비 평가 사유</th>
 																<td><textarea class="textarea opinionContent"></textarea></td>
 															</tr>
 															<tr>
