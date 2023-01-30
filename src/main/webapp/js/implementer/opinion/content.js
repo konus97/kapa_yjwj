@@ -659,11 +659,11 @@ let newSeq = getType + '-0';
 
                                                   
    addList.push("   <tr>");   
-   addList.push("       <th class=\"info_reg_th\">제목</th>");   
+   addList.push("       <th class=\"info_reg_th\">소재지</th>");   
    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\"></td>");   
    addList.push("   </tr>");   
    addList.push("    <tr>");   
-   addList.push("       <th class=\"info_reg_th\">내용</th>");   
+   addList.push("       <th class=\"info_reg_th\">이전비 평가 사유</th>");   
    addList.push("      <td>");   
    addList.push("        <textarea class=\"textarea opinionContent\"></textarea></td>");   
    addList.push("    </tr>");   
