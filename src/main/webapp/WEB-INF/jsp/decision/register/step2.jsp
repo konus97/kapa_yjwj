@@ -507,18 +507,18 @@
 						</div>
 						<div class="form">
 						<!--  -->
-							<a href="#" class="cx"
+							<!-- <a href="#" class="cx"
 								onclick="openPopupLaw();return false;">법령 보기 (테스트) <i
 								class="icon search"></i>
-							</a>
+							</a> -->
 
 							<div id="contents" class="c_sub">
 								<div class="c_table t1">
-									<table>
+									<%-- <table>
 										<caption>법령</caption>
 										<thead>
 											<tr>
-												<th>법령(테스트)</th>
+												<th>법령</th>
 												<th>조</th>
 												<th>항</th>
 												<th>내용</th>
@@ -528,7 +528,7 @@
 										<tbody id="selectLawList">
 		
 										</tbody>
-									</table>
+									</table> --%>
 								</div>
 							</div>
 							<!--  -->
@@ -573,9 +573,6 @@
                 </div>
             </div>
             <hr />
-            <!-- 팝업, 법령 검색 S -->
-            <%@ include file="popup/law.jsp"%> 
-            <!-- 팝업, 법령 검색 E -->
             
             <!-- footer start -->
 		    <jsp:include page="/WEB-INF/jsp/components/footer.jsp" flush="false">
@@ -610,6 +607,9 @@
         <script src="../../js/common.js"></script>
 
         <script src="../../js/decision/content.js"></script>
+            <!-- 팝업, 법령 검색 S -->
+            <%@ include file="popup/law.jsp"%> 
+            <!-- 팝업, 법령 검색 E -->
 
         <script type="text/javascript">
 

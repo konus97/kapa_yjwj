@@ -13,12 +13,29 @@
              </div>
              <div class="p_body1">
                  <div class="wrap">
-                   <div class="c_table t1">
+					<thead>
+						<select id="lawTitleList">
+							<option selected disabled>법령을 선택해주세요.</option>
+						</select>
+					</thead>
+
+					<thead>
+						<select id="lawArticleList">
+						</select>
+					</thead>
+
+					<thead>
+						<select id="lawParagraphList">
+						</select>
+					</thead>
+					<div class="c_table t1">
                        <table>
                            <caption>
                               	 관련 법령
                            </caption>
-                           <thead>
+                           
+                           
+                            <thead>
                                <tr>
                                    <th>선택</th>
                                    <th>연번</th>
@@ -31,6 +48,7 @@
                            <tbody id="lawList">
                                
                            </tbody>
+                           
                        </table>
                    </div>
 					<div class="paging">
@@ -46,5 +64,19 @@
            </div>
        </div>
    </div>
-   
 </div>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		getLawTitle();
+	});
+	
+	$("#lawTitleList").change(function(){
+		getLawArticles();
+	});
+
+	$("#lawArticleList").change(function(){
+		getLawParagraph();
+	});
+</script>

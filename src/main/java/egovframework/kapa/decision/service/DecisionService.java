@@ -465,6 +465,9 @@ public class DecisionService {
 		return decisionMapper.getOpinionList(decisionId);
 	}
 
+	public List<Decision_Opinion> getPdfOpinionList(Long decisionId) {
+		return decisionMapper.getPdfOpinionList(decisionId);
+	}
 
 	public void registerStep1(String param) {
 		JSONParser parser = new JSONParser();

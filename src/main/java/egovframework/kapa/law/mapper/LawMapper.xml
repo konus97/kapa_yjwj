@@ -33,6 +33,30 @@
 		WHERE del_check = 0
 		AND seq_no = #{seq_no}
     </select>
+    
+	<select id="getLawTitles" resultType="hashmap">
+        SELECT TITLE
+		FROM TB_Law
+		WHERE del_check = 0
+		GROUP BY TITLE
+    </select>
+    
+	<select id="getLawArticles" resultType="hashmap" parameterType="String">
+        SELECT article
+		FROM TB_Law
+		WHERE del_check = 0
+		AND title = #{title}
+		GROUP BY article
+    </select>
+    
+	<select id="getLawParagraph" resultType="hashmap" parameterType="egovframework.kapa.law.domain.LawVO">
+        SELECT paragraph
+		FROM TB_Law
+		WHERE del_check = 0
+		AND title = #{title}
+		AND article = #{article}
+		GROUP BY paragraph
+    </select>
 	
 	 
 	

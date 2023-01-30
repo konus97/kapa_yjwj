@@ -406,6 +406,18 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 			AND delCheck = '0'
   		</where>
     </select>
+    
+    <!-- PDF 의견 갯수 -->
+    <select id="getPdfOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
+        SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq,TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.* FROM TB_Decision_Opinion  DO
+			LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType
+			LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType
+			LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq 
+  		<where>
+			DO.decisionId = #{decisionId} AND DO.delCheck = '0' 
+			AND (TF.fileNameExtension = 'png' OR TF.fileNameExtension = 'PNG')
+  		</where>
+    </select>
 
 	
 	<!-- 게시글 갯수 -->

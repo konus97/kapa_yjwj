@@ -16,6 +16,7 @@
 package egovframework.kapa.law.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import egovframework.kapa.admin.domain.AdminVO;
 import egovframework.kapa.domain.Search;
@@ -35,5 +36,8 @@ public interface LawMapper {
 	void addLaw(LawVO law);
 	
 	LawVO getViewLaw(int seq_no);
+	List<LawVO> getLawTitles();
+	List<LawVO> getLawArticles(String title);
+	List<LawVO> getLawParagraph(LawVO law);
 
 }

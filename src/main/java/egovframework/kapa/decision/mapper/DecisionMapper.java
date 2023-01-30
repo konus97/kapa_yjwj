@@ -90,6 +90,8 @@ public interface DecisionMapper {
 
 	List<Decision_Opinion> getOpinionList(Long decisionId);
 
+	List<Decision_Opinion> getPdfOpinionList(Long decisionId);
+	
 	int getOpinionCompletionCount(long decisionId);
 
 	FileVO getFileByDeicisionFileSeq(Integer seqNo);

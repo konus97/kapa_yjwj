@@ -23,5 +23,10 @@ public class Decision_Opinion {
     private String regdate;
     private String ownrNm;
     
+    private String fileNameChange;
+    private String fileFolder;
+    private String opinionTitle;
+    private String opinionContent;
+    
     
 }

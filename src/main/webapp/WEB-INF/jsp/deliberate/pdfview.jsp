@@ -340,7 +340,25 @@
 				<h2 class="f_wrap__tit">검토 의견</h2>
 				<div class="f_wrap__textarea">${deliberateOpinionDTO.reviewOpinion }</div>
 			</div>
-		
+			<table class="f_wrap__table">
+						<tr>
+							<td class="f_wrap__th--owner_name">소재지</td>
+							<td class="f_wrap__textarea">${deliberateOpinionDTO.opinionTitle}</td>
+						</tr>
+						<tr>
+							<td class="f_wrap__th--opinion">이전비 평가사유</td>
+							<td class="f_wrap__textarea">${deliberateOpinionDTO.opinionContent}</td>
+						</tr>
+						<tr>
+							<th colspan="2">관련자료</th>
+						 </tr>
+						 <tr>
+							<th colspan="2"><img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt=""></th>
+						 </tr>
+			</table>
+			
 			<!--  소재지, 사유, 관련자료 S -->
 			<c:if test="${deliberateOpinionDTO.itemCheck}">
 			<c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
