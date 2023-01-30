@@ -110,15 +110,16 @@ public class DeliberateService {
 				int rank = 0;
 
 				for (Decision_AgendaDate decisionAgendaDate : decisionAgendaList) {
-					Decision decision = decisionMapper.getDecisionView(decisionAgendaDate.getDecisionId());
-
+					Decision decision = decisionMapper.getDecisionAgendaView(decisionAgendaDate.getDecisionId());
+					System.out.println("testste" + decision);
+					if(decision != null) {
 					if (rank == 0) {
 						ApplicationList applicationList = implementerService.getApplicationView(decision.getMasterID());
 						title = applicationList.getJudg_biz_nm();
 					}
 
 					rank++;
-
+					}
 				}
 
 				System.out.println(rank);
@@ -149,14 +150,16 @@ public class DeliberateService {
 		List<DeliberateDetailDTO> deliberateDTOS = new ArrayList<>();
 
 		for (Decision_AgendaDate decisionAgendaDate : pagingResult) {
-			System.out.println("agendadate start");
-			Decision decision = decisionMapper.getDecisionView(decisionAgendaDate.getDecisionId());
+			try {
+			Decision decision = decisionMapper.getDecisionAgendaView(decisionAgendaDate.getDecisionId());
 			Decision_Date decisionDate = deliberateMapper.getDeliberateDate(decisionAgendaDate.getSelectDate());
 			Long selectDate = decisionDate.getSeqNo();
 			System.out.println("sdafasdfsa" + selectDate);
 			
 			String consultationDate = decisionDate.getConsultationDate().format(formatter);
+			
 			ApplicationList applicationList = implementerService.getApplicationView(decision.getMasterID());
+			
 			String title = applicationList.getJudg_biz_nm();
 
 			int acpt_judg_inst_cd = applicationList.getAcpt_judg_inst_cd();
@@ -178,7 +181,10 @@ public class DeliberateService {
 					.reptLoc(applicationList.getRept_loc()).recvDt(recvDt).build();
 
 			deliberateDTOS.add(deliberateDetailDTO);
-
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
 		}
 
 		return deliberateDTOS;
@@ -196,8 +202,8 @@ public class DeliberateService {
 		
 		for (Decision_AgendaDate decisionAgendaDate : pagingResult) {
 			
-			Decision decision = decisionMapper.getDecisionView(decisionAgendaDate.getDecisionId());
-
+			Decision decision = decisionMapper.getDecisionAgendaView(decisionAgendaDate.getDecisionId());
+			try {
 			Long decisionId = decision.getSeqNo();
 
 			ApplicationList applicationVo = implementerService.getApplicationView(decision.getMasterID());
@@ -302,6 +308,9 @@ public class DeliberateService {
 			deliberateViewDTOS.add(deliberateViewDTO);
 
 			rank++;
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		return deliberateViewDTOS;

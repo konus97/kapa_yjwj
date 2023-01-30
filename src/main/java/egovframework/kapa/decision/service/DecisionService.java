@@ -183,7 +183,9 @@ public class DecisionService {
 	public Decision getDecisionView(Long decisionId) {
 		return decisionMapper.getDecisionView(decisionId);
 	}
-	   
+	public Decision getDecisionAgendaView(Long decisionId) {
+		return decisionMapper.getDecisionView(decisionId);
+	}
 	public Decision_Notice getDecisionNoticeView(Long decisionId) {
 		return decisionMapper.getDecisionNoticeView(decisionId);
 	}

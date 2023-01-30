@@ -48,6 +48,8 @@ public interface DecisionMapper {
 	
 	Decision getDecisionView(Long decisionId);
 	
+	Decision getDecisionAgendaView(Long decisionId);
+	
 	Decision getDecisionViewMasterID(Long masterID);
 	
 	Decision_Notice getDecisionNoticeView(Long decisionId);
