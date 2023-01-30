@@ -33,6 +33,11 @@ public class DeliberateOpinionDTO {
     private boolean landCheck;
     private boolean objectCheck;
     
+    private String fileNameChange;
+    private String fileFolder;
+    private String opinionTitle;
+    private String opinionContent;
+    
     private OwnerViewInfo ownerViewInfo;
     
     private boolean itemCheck;
