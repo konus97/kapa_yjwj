@@ -872,7 +872,7 @@
 									</c:if>
 
 									<li><a href="#" class="btn t1 h50 big"
-										onclick="goToImplementerOpinionList();return false;">확인</a>
+										onclick="goToImplementerOpinionList();return false;">취소</a>
 									</li>
 								</ul>
 
