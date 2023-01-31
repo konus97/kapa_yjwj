@@ -716,6 +716,14 @@
 	        		alert("검토의견을 입력해주세요");
 	        		return false;
 	        	}
+
+	        	/* let list = $("input[name='lawSeqNo']");
+	        	let relatedLawsCB = [];
+
+	        	for (var i=0; i<list.length; i++){
+	        		relatedLawsCB.push(list[i].value);
+	        		console.log (relatedLawsCB);
+	        	}  임시제거*/
 	        	
 	         	const data = {
 	         			"seqNo" : seqNo,
@@ -724,6 +732,7 @@
         				"relatedLaws" : relatedLaws,
         				"relatedLaws2" : relatedLaws2,
         				"reviewOpinion" : reviewOpinion,
+        				/* "relatedLawsCB" : relatedLawsCB, */
 		    		}
 
         		$.ajax({
