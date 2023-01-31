@@ -357,7 +357,7 @@
 							
 							<%-- 항목 결과 시작 01 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">1. 지연가산금</h5>
+								<h5 class="item_result_wr__tit">1. 지연가산금(재결신청 청구)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -481,7 +481,7 @@
 							
 							<%-- 항목 결과 시작 03 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">3. 허가건축물 등 불법형질변경</h5>
+								<h5 class="item_result_wr__tit">3. 협의 미이행(불이행,미준수)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -543,7 +543,7 @@
 							
 							<%-- 항목 결과 시작 04 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">4. 일단지 보상</h5>
+								<h5 class="item_result_wr__tit">4. 사업폐지(취소,중단,변경,보류,제외)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -605,7 +605,7 @@
 							
 							<%-- 항목 결과 시작 05 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">5. 미지금 용지</h5>
+								<h5 class="item_result_wr__tit">5. 재결 보류</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -667,7 +667,7 @@
 							
 							<%-- 항목 결과 시작 06 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">6. 사도평가</h5>
+								<h5 class="item_result_wr__tit">6. 무허가건물 부지면적 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -729,7 +729,7 @@
 							
 							<%-- 항목 결과 시작 07 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">7. 잔여지 매수청구</h5>
+								<h5 class="item_result_wr__tit">7. 잔여지/잔여건물 가치 하락</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -791,7 +791,7 @@
 							
 							<%-- 항목 결과 시작 08 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">8. 잔여지 가치하락</h5>
+								<h5 class="item_result_wr__tit">8. 잔여지/잔여건물 매수 청구(확대보상)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -853,7 +853,7 @@
 							
 							<%-- 항목 결과 시작 09 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">9. 잔여건물 가치감소</h5>
+								<h5 class="item_result_wr__tit">9. 사도평가 적정성</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -915,7 +915,7 @@
 							
 							<%-- 항목 결과 시작 10 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">10. 잔여건물 매수청구</h5>
+								<h5 class="item_result_wr__tit">10. 일단지 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -977,7 +977,7 @@
 							
 							<%-- 항목 결과 시작 11 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">11. 누락 물건 반영</h5>
+								<h5 class="item_result_wr__tit">11. 미지급 용지</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1039,7 +1039,7 @@
 							
 							<%-- 항목 결과 시작 12 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">12. 휴업보상(이전비)평가</h5>
+								<h5 class="item_result_wr__tit">12. 영업보상(이전비) 적정성</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1101,7 +1101,7 @@
 							
 							<%-- 항목 결과 시작 13 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">13. 폐업보상</h5>
+								<h5 class="item_result_wr__tit">13. 누락 물건 반영</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1163,7 +1163,7 @@
 							
 							<%-- 항목 결과 시작 14 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">14. 영농손실보상</h5>
+								<h5 class="item_result_wr__tit">14. 폐업 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1225,7 +1225,7 @@
 							
 							<%-- 항목 결과 시작 15 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">15. 휴직(실직)보상</h5>
+								<h5 class="item_result_wr__tit">15. 영농손실보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1287,7 +1287,7 @@
 							
 							<%-- 항목 결과 시작 16 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">16. 사업폐지(취소,변경,중단)</h5>
+								<h5 class="item_result_wr__tit">16. 휴직(실직)보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1473,7 +1473,7 @@
 							
 							<%-- 항목 결과 시작 19 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">19. 임료손실</h5>
+								<h5 class="item_result_wr__tit">19. 구분지상권</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1535,7 +1535,7 @@
 							
 							<%-- 항목 결과 시작 20 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">20. 대토보상</h5>
+								<h5 class="item_result_wr__tit">20. 10% 변동 내역</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1597,7 +1597,7 @@
 							
 							<%-- 항목 결과 시작 21 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">21. 구분지상권</h5>
+								<h5 class="item_result_wr__tit">21. 기타(임료손실,대토보상 등)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1659,7 +1659,7 @@
 							
 							<%-- 항목 결과 시작 22 --%>
 							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">22. 10%이상 변동</h5>
+								<h5 class="item_result_wr__tit">22. 소유자 의견 없음</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
 										<caption>필지</caption>
@@ -1718,130 +1718,6 @@
 								</div>
 							</div>
 							<%-- 항목 결과 끝 22 --%>
-							
-							<%-- 항목 결과 시작 23 --%>
-							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">23. 기타(그 외)</h5>
-								<div class="item_result_wr__con">
-									<table class="item_result_wr__table">
-										<caption>필지</caption>
-										<thead>
-											<tr>
-												<th>선택</th>
-												<th>연번</th>
-												<th>소유자</th>
-												<th>지분</th>
-												<th>소재지</th>
-												<th>지번</th>
-												<th>본번</th>
-												<th>부번</th>
-												<th>공</th>
-												<th>실</th>
-												<th>면적</th>
-												<th>단가</th>
-												<th>소유자 의견</th>
-												<th>사업시행자 의견</th>
-												<th>작성</th>
-												<th>복사</th>
-												<th>삭제</th>
-											</tr>
-										</thead>
-										<tbody id="ownerLandItemList23">
-	
-										</tbody>
-									</table>
-	
-									<table class="item_result_wr__table">
-										<caption>지장물</caption>
-										<thead>
-											<tr>
-												<th>선택</th>
-												<th>연번</th>
-												<th>소유자</th>
-												<th>지분</th>
-												<th>소재지</th>
-												<th>본번</th>
-												<th>부번</th>
-												<th>부번2</th>
-												<th>물건종류</th>
-												<th>물건구조</th>
-												<th>면적/수량</th>
-												<th>단가</th>
-												<th>소유자 의견</th>
-												<th>사업시행자 의견</th>
-												<th>작성</th>
-												<th>복사</th>
-												<th>삭제</th>
-											</tr>
-										</thead>
-										<tbody id="ownerGoodsItemList23">
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<%-- 항목 결과 끝 23 --%>
-							
-							<%-- 항목 결과 시작 24 --%>
-							<div class="item_result_wr">
-								<h5 class="item_result_wr__tit">24. 소유자 의견 없음</h5>
-								<div class="item_result_wr__con">
-									<table class="item_result_wr__table">
-										<caption>필지</caption>
-										<thead>
-											<tr>
-												<th>선택</th>
-												<th>연번</th>
-												<th>소유자</th>
-												<th>지분</th>
-												<th>소재지</th>
-												<th>지번</th>
-												<th>본번</th>
-												<th>부번</th>
-												<th>공</th>
-												<th>실</th>
-												<th>면적</th>
-												<th>단가</th>
-												<th>소유자 의견</th>
-												<th>사업시행자 의견</th>
-												<th>작성</th>
-												<th>복사</th>
-												<th>삭제</th>
-											</tr>
-										</thead>
-										<tbody id="ownerLandItemList24">
-	
-										</tbody>
-									</table>
-	
-									<table class="item_result_wr__table">
-										<caption>지장물</caption>
-										<thead>
-											<tr>
-												<th>선택</th>
-												<th>연번</th>
-												<th>소유자</th>
-												<th>지분</th>
-												<th>소재지</th>
-												<th>본번</th>
-												<th>부번</th>
-												<th>부번2</th>
-												<th>물건종류</th>
-												<th>물건구조</th>
-												<th>면적/수량</th>
-												<th>단가</th>
-												<th>소유자 의견</th>
-												<th>사업시행자 의견</th>
-												<th>작성</th>
-												<th>복사</th>
-												<th>삭제</th>
-											</tr>
-										</thead>
-										<tbody id="ownerGoodsItemList24">
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<%-- 항목 결과 끝 24 --%>
 							
 								<%--<tr class="inner_table">
 												<td colspan="100%"><c:if test="${ownerInfo.landCheck}">
@@ -2685,77 +2561,71 @@
                     let notice = document.getElementById('notice').innerText;
 					let seq = '';
 					switch (notice) {
-					  case "지연가산금":
-					    seq = '1';
+					case "1":
+					    notice = '지연가산금(재결신청 청구)';
 					    break;
-					  case "보상금 증액":
-						  seq = '2';
+					  case "2":
+					    notice = '보상금 증액';
 					    break;
-					  case "허가건축물 등 불법형질변경":
-						  seq = '3';
+					  case "3":
+					    notice = '협의 미이행(불이행,미준수)';
 					    break;
-					  case "일단지 보상":
-						  seq = '4';
+					  case "4":
+					    notice = '사업폐지(취소,중단,변경,보류,제외)';
 					    break;
-					  case "미지금 용지":
-						  seq = '5';
+					  case "5":
+					    notice = '재결 보류';
 					    break;
-					  case "사도평가":
-						  seq = '6';
+					  case "6":
+					    notice = '무허가건물 부지면적 보상';
 					    break;
-					  case "잔여지 매수청구":
-						  seq = '7';
+					  case "7":
+					    notice = '잔여지/잔여건물 가치 하락';
 					    break;
-					  case "잔여지 가치하락":
-						  seq = '8';
+					  case "8":
+					    notice = '잔여지/잔여건물 매수 청구(확대보상)';
 					    break;
-					  case "잔여건물 가치감소":
-						  seq = '9';
+					  case "9":
+					    notice = '사도평가 적정성';
 					    break;
-					  case "잔여건물 매수청구":
-						  seq = '10';
+					  case "10":
+					    notice = '일단지 보상';
 					    break;
-					  case "누락 물건 반영":
-						  seq = '11';
+					  case "11":
+					    notice = '미지급 용지';
 					    break;
-					  case "휴업보상(이전비)평가":
-						  seq = '12';
+					  case "12":
+					    notice = '영업보상(이전비) 적정성';
 					    break;
-					  case "폐업보상":
-						  seq = '13';
+					  case "13":
+					    notice = '누락 물건 반영';
 					    break;
-					  case "영농손실보상":
-						  seq = '14';
+					  case "14":
+					    notice = '폐업 보상';
 					    break;
-					  case "휴직(실직)보상":
-						  seq = '15';
+					  case "15":
+					    notice = '영농손실보상';
 					    break;
-					  case "사업폐지(취소, 변경, 중단)":
-						  seq = '16';
+					  case "16":
+					    notice = '휴직(실직)보상';
 					    break;
-					  case "이주대책 수립":
-						  seq = '17';
+					  case "17":
+					    notice = '이주대책 수립';
 					    break;
-					  case "이주정착금, 주거이전비, 이사비":
-						  seq = '18';
+					  case "18":
+					    notice = '이주정착금, 주거이전비, 이사비';
 					    break;
-					  case "임료손실":
-						  seq = '19';
+					  case "19":
+					    notice = '구분지상권';
 					    break;
-					  case "대토보상":
-						  seq = '20';
+					  case "20":
+					    notice = '10% 변동 내역';
 					    break;
-					  case "구분지상권":
-						  seq = '21';
+					  case "21":
+					    notice = '기타(임료손실,대토보상 등)';
 					    break;
-					  case "10%이상 변동":
-						  seq = '22';
-					    break;
-					  case "기타(그 외)":
-						  seq = '23';
-					    break;
-					  case "소유자 의견 없음":
-						  seq = '24';
+					  case "22":
+					    notice = '10%이상 변동';
 					    break;
 					  default:
 						  seq='';

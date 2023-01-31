@@ -913,52 +913,48 @@ public class ImplementerService {
 	public String parseType(Integer type) {
 			String parseType = "";
 		if (type == 1) {
-			parseType = "지연가산금";
+			parseType = "지연가산금(재결신청 청구)";
 		} else if (type == 2) {
 			parseType = "보상금 증액";
 		} else if (type == 3) {
-			parseType = "허가건축물 등 불법형질변경";
+			parseType = "협의 미이행(불이행,미준수)";
 		} else if (type == 4) {
-			parseType = "일단지 보상";
+			parseType = "사업폐지(취소,중단,변경,보류,제외)";
 		} else if (type == 5) {
-			parseType = "미지금 용지";
+			parseType = "재결 보류";
 		} else if (type == 6) {
-			parseType = "사도평가";
+			parseType = "무허가건물 부지면적 보상";
 		} else if (type == 7) {
-			parseType = "잔여지 매수청구";
+			parseType = "잔여지/잔여건물 가치 하락";
 		} else if (type == 8) {
-			parseType = "잔여지 가치하락";
+			parseType = "잔여지/잔여건물 매수 청구(확대보상)";
 		} else if (type == 9) {
-			parseType = "잔여건물 가치감소";
+			parseType = "사도평가 적정성";
 		} else if (type == 10) {
-			parseType = "잔여건물 매수청구";
+			parseType = "일단지 보상";
 		} else if (type == 11) {
-			parseType = "누락 물건 반영";
+			parseType = "미지급 용지";
 		} else if (type == 12) {
-			parseType = "휴업보상(이전비)평가";
+			parseType = "영업보상(이전비) 적정성";
 		} else if (type == 13) {
-			parseType = "폐업보상";
+			parseType = "누락 물건 반영";
 		} else if (type == 14) {
-			parseType = "영농손실보상";
+			parseType = "폐업 보상";
 		} else if (type == 15) {
-			parseType = "휴직(실직)보상";
+			parseType = "영농손실보상";
 		} else if (type == 16) {
-			parseType = "사업폐지(취소, 변경, 중단)";
+			parseType = "휴직(실직)보상";
 		} else if (type == 17) {
 			parseType = "이주대책 수립";
 		} else if (type == 18) {
 			parseType = "이주정착금, 주거이전비, 이사비";
 		} else if (type == 19) {
-			parseType = "임료손실";
-		} else if (type == 20) {
-			parseType = "대토보상";
-		} else if (type == 21) {
 			parseType = "구분지상권";
+		} else if (type == 20) {
+			parseType = "10% 변동 내역";
+		} else if (type == 21) {
+			parseType = "기타(임료손실,대토보상 등)";
 		} else if (type == 22) {
-			parseType = "10%이상 변동";
-		} else if (type == 23) {
-			parseType = "기타(그 외)";
-		} else if (type == 24) {
 			parseType = "소유자 의견 없음";
 		}
 		

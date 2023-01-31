@@ -92,7 +92,7 @@
                                     <span class="required">비밀번호</span>
                                 </div>
                                 <input
-                                    type="text"
+                                    type="password"
                                     class="input-right input40"
                                     placeholder="8~12자 영문, 숫자, 특수문자"
                                     required
@@ -103,7 +103,7 @@
                                     <span class="required">비밀번호 확인</span>
                                 </div>
                                 <input
-                                    type="text"
+                                    type="password"
                                     class="input-right input40"
                                     placeholder="8~12자 영문, 숫자, 특수문자"
                                     name="pwd"
