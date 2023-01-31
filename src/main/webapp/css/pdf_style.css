@@ -146,6 +146,9 @@ body {
 .f_wrap__table p {
 	word-break: break-all;	
 }
+.f_wrap__table img {
+	width: 100%;
+}
 .f_wrap__table--csltList {	
 	width: calc(100% + 1em);
     position: relative;
@@ -172,7 +175,108 @@ body {
 	width:6em;
 }
 
-/* 다운로드 버튼 */
+/* 심사하기 */
+.decide_wr {
+	font-size: 16px;
+	padding: 4em 6em;
+	background: #f7f7f9;
+	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+.decide_wr__tit {
+	font-size: 24px;
+	font-weight: 800;
+	color: #54596d;
+	margin-bottom: 32px;
+}
+.decide_wr__conwr ~ .decide_wr__conwr {
+	margin-top: 20px;
+}
+.decide_wr__contit {
+	font-size: 18px;
+	font-weight: 700;
+	color: #666974;
+	margin-bottom: 8px;
+}
+.decide_wr__con {
+	display:flex;
+	padding: 16px 20px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow-y: auto;
+}
+.decide_wr__textarea {
+	width: 100%;
+	min-height: 10em;
+	outline: 0;
+	color: #555;
+	word-break: break-all;
+	padding-right:8px;
+	line-height: 1.4;
+}
+.decide_wr__textarea::-webkit-scrollbar {width: 6px;}
+.decide_wr__textarea::-webkit-scrollbar-track {background: #f1f1f1;}
+.decide_wr__textarea::-webkit-scrollbar-thumb {background: #ccc;}
+.decide_wr__label {
+    color: #666974;
+    text-indent: 8px;
+    line-height: 22px;
+    font-size: 18px;
+}
+.decide_wr__radio {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+.decide_wr__radio::before {
+	content:'';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	background: #fff;
+}
+.decide_wr__radio::after {
+    content: '';
+    width: 5px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    transform: rotate(45deg);
+    border: 2px solid #ddd;
+    border-left: 0;
+    border-top: 0;
+}
+.decide_wr__radio:checked::before {
+	border: 1px solid #365978;
+	background: #365978;
+}
+.decide_wr__radio:checked::after {
+    border-color: #fff;
+}
+.decide_wr__label + .decide_wr__radio {
+	margin-left: 16px;
+}
+.decide_wr__radio:checked + .decide_wr__label {
+	font-weight: 700;
+	color: #365978;
+}
+.decide_wr__btnwr {
+	margin-top: 48px;
+}
+.decide_wr__btn {
+	padding: 12px 24px;
+	background: #54596D;
+	border-radius: 4px;
+	font-weight: 500;
+	font-size: 18px;
+	color: #fff;
+}
+
+/* PDF 다운로드 버튼 */
 .btn_wr {
 	display: flex;
 	justify-content: center;
@@ -180,7 +284,6 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 .btn--down {
-	cursor: pointer;
     font-size: 20px;
     padding: 0.4em 1em;
     height: fit-content;
