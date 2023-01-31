@@ -3128,6 +3128,9 @@
 .c_sub_admin select {
 	width:100%;
 }
+.c_sub_admin textarea {
+	resize: vertical;
+}
 .c_sub_admin .form .f_field .ff_wrap {
 	padding: 0 12px;
 }

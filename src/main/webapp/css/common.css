@@ -2123,7 +2123,7 @@ div.table table td:last-child {
     color: #365978;
     letter-spacing: -0.04em;
 }
-#header .h_menu .hm_list .gnb > li > a:hover {
+#header .h_menu .hm_list .gnb > li:hover > a {
     color:#5A7791;
     background:#F8F9FB;
 }
