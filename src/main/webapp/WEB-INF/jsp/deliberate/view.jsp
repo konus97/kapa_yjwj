@@ -249,7 +249,7 @@
 										<tr>
 											<th rowspan="2">구 분</th>
 											<th colspan="3">총 보상대상</th>
-											<th colspan="3">혐의성립 등</th>
+											<th colspan="3">협의성립 등</th>
 											<th colspan="3">재결신청</th>
 										</tr>
 										<tr>
@@ -381,73 +381,17 @@
 								</div>
 							</div>
 							
-				
-							
-                            
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">1. 지연가산금(재결신청 청구)</h4>
+							</div>
 							<!-- 1. 지연가산금 S -->
 							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 1}">
 								<div class="cs_title">
 									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
 								</div>
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
-									<div class="cs_title">
-                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
-                                      	  	 소유자 및 사업시행자 의견
-                                    </h4>
-                               </div>
-                               <div class="c_table c_table--opinion">
-	             	               <table>
-	                                    <thead>
-	                                        <tr>
-	                                            <th class="c_table__th--owner_name">소유자</th>
-	                                            <th>소유자의 의견요지</th>
-	                                            <th>사업시행자 의견</th>
-	                                        </tr>
-	                                    </thead>
-	                                    <tbody>
-	                                    
-	                                        <tr>
-	                                        	<td>
-	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
-	                                        	</td>
-	                                            <td class="c_table__td--para">
-	                                            	<div class="op_list">
-	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
-	                                            		<%-- <p class="op_list__con">${opinionList.ownerOpinion}</p> --%>
-	                                            	</div>
-	                                            	<%-- <div class="op_list">
-	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
-	                                            	</div> --%>
-	                                            </td>
-	                                            <td class="c_table__td--para">
-	                                            	<div class="op_list">
-	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
-	                                            	</div>
-	                                            </td>
-	                                        </tr>
-	                                        <tr>
-														<th class="info_reg_th">소재지</th>
-														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
-													</tr>
-													<tr>
-														<th class="info_reg_th">이전비 평가사유</th>
-														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
-													</tr>
-													<tr>
-														<th class="info_reg_th" colspan="3">관련자료</th>
-													</tr>
-													<tr>
-														<td class=""  colspan="3">
-															<img
-															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
-															alt="">
-														</td>
-													</tr>
-	                                    </tbody>
-	                                </table>
-                               </div>
 									<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
 									</div>
@@ -527,6 +471,91 @@
 								
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
 									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
                                     <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
                                       	  	 소유자 및 사업시행자 의견
                                     </h4>
@@ -549,12 +578,7 @@
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
 	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
-	                                            		<%-- <p class="op_list__con">${opinionList.ownerOpinion}</p> --%>
 	                                            	</div>
-	                                            	<%-- <div class="op_list">
-	                                            		<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-	                                            		<p class="op_list__con">${opinionList.ownerOpinion}</p>
-	                                            	</div> --%>
 	                                            </td>
 	                                            <td class="c_table__td--para">
 	                                            	<div class="op_list">
@@ -562,9 +586,158 @@
 	                                            	</div>
 	                                            </td>
 	                                        </tr>
-	                                    </tbody>
-	                                </table>
-                               </div>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							<!-- 1. 지연가산금 E -->
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">2. 보상금 증액</h4>
+							</div>
+							<!-- 2 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 2}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
 									<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
 									</div>
@@ -642,32 +815,67 @@
 			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
 			                                       </td>
 				                                        
-				                         		</tr>                       
+				                         		</tr>   
+				                         		                    
 											</tbody>
 											
 										</table>
 									</div>
 								
 								</c:if>
-							
-					
-								<%-- <div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">소유자 의견</h4>
-								</div>
-								<div class="form">
-									<div class="f_wrap">
-										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</div>
-									</div>
-								</div>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
 								
-								<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">사업시행자 의견</h4>
-								</div>
-								<div class="form">
-									<div class="f_wrap">
-										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion}</div>
-									</div>
-								</div> --%>
 								
 								<div class="cs_title">
 									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
@@ -705,49 +913,5349 @@
 									</div>
 								</div>
 								
-								<!-- view code -->
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">3. 협의 미이행(불이행,미준수)</h4>
+							</div>
+							<!-- 3 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 3}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
 								
-								 <%-- <c:if test="${deliberateOpinionDTO.itemCheck}">
-									 <c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
-										<div class="c_table t1">
-											<table class="mt40">
-												<tbody>
-													<tr>
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
 														<th class="info_reg_th">소재지</th>
-														<td><p class="">${deliberateOpinionItemDTO.title}</p></td>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
 													</tr>
 													<tr>
 														<th class="info_reg_th">이전비 평가사유</th>
-														<td><p class="">${deliberateOpinionItemDTO.content}</p></td>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
 													</tr>
 													<tr>
-														<th class="info_reg_th" colspan="2">관련자료</th>
+														<th class="info_reg_th" colspan="3">관련자료</th>
 													</tr>
 													<tr>
-														<td class=""  colspan="2">
+														<td class=""  colspan="3">
 															<img
-															src="${deliberateOpinionItemDTO.fileFolder}${deliberateOpinionItemDTO.fileNameChange}"
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
 															alt="">
 														</td>
 													</tr>
-												</tbody>
-											</table>
-										</div>
-									</c:forEach>		  
-								 </c:if> --%>
-							
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
 								
-							
-							
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
 							</c:forEach>
 							
-						
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">4. 사업폐지(취소,중단,변경,보류,제외)</h4>
+							</div>
+							<!-- 4 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 4}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
 							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">5. 재결 보류(기각,반려,취소)</h4>
+							</div>
+							<!-- 5 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 5}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
 							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">6. 무허가건물 부지면적 보상</h4>
+							</div>
+							<!-- 6 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 6}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
 							
-							<!-- 1. 지연가산금 E -->
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">7. 잔여지/잔여건물 가치 하락</h4>
+							</div>
+							<!-- 7 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 7}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
 							
-			
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">8. 잔여지/잔여건물 매수 청구(확대보상)</h4>
+							</div>
+							<!-- 8 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 8}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">9. 사도평가 적정성</h4>
+							</div>
+							<!-- 9 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 9}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">10. 일단지 보상</h4>
+							</div>
+							<!-- 10 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 10}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">11. 미지급 용지</h4>
+							</div>
+							<!-- 11 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 11}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">12. 영업보상(이전비) 적정성</h4>
+							</div>
+							<!-- 12 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 12}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">13. 누락 물건 반영</h4>
+							</div>
+							<!-- 13 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 13}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">14. 폐업 보상</h4>
+							</div>
+							<!-- 14 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 14}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">15. 영농손실보상</h4>
+							</div>
+							<!-- 15 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 15}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">16. 휴직(실직)보상</h4>
+							</div>
+							<!-- 16 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 16}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">17. 이주대책 수립</h4>
+							</div>
+							<!-- 17 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 17}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">18. 이주정착금, 주거이전비, 이사비</h4>
+							</div>
+							<!-- 18 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 18}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">19. 구분지상권</h4>
+							</div>
+							<!-- 19 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 19}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">20. 10% 변동 내역</h4>
+							</div>
+							<!-- 20 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 20}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">21. 기타(임료손실,대토보상 등)</h4>
+							</div>
+							<!-- 21 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 21}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							
+							<div class="cs_title">
+							<h4 class="fl title t1 bold cb s1 bullet">22. 소유자 의견 없음</h4>
+							</div>
+							<!-- 22 -->
+							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+							<c:if test="${deliberateOpinionDTO.type eq 22}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                       </td>
+				                                        
+				                         		</tr>   
+				                         		                    
+											</tbody>
+											
+										</table>
+									</div>
+								
+								</c:if>
+							<div class="cs_title">
+                                    <h4 id="index${formatter.applicationDTO.judgSeq}_tit04" class="fl title t1 bold cb s1 bullet">
+                                      	  	 소유자 및 사업시행자 의견
+                                    </h4>
+                               </div>
+                               <div class="c_table c_table--opinion">
+	             	               <table>
+	                                    <thead>
+	                                        <tr>
+	                                            <th class="c_table__th--owner_name">소유자</th>
+	                                            <th>소유자의 의견요지</th>
+	                                            <th>사업시행자 의견</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    
+	                                        <tr>
+	                                        	<td>
+	                                        	   ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+	                                        	</td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                            <td class="c_table__td--para">
+	                                            	<div class="op_list">
+	                                            		<h5 class="op_list__tit">${deliberateOpinionDTO.executorOpinion}</h5>
+	                                            	</div>
+	                                            </td>
+	                                        </tr>
+	                                        <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.title}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.content}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+	                                    	</tbody>
+	                                	</table>
+                               		</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</div>
+									</div>
+								</div>
+								
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
+									</div>
+								</div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">관련 법령 판례</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</div>
+									</div>
+								</div>
+								
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">검토의견</h4>
+								</div>
+								<div class="form">
+									<div class="f_wrap">
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</div>
+									</div>
+								</div>
+								
+							</c:if>
+							</c:forEach>
+							 
 					</div>
 					
 					</c:forEach>
@@ -869,50 +6377,7 @@
 			})
 		});
 		
-		/* function pdfPrint(){
-    // 현재 document.body의 html을 A4 크기에 맞춰 PDF로 변환
-	        html2canvas(document.body, {
-	            onrendered: function (canvas) {
-
-	                // 캔버스를 이미지로 변환
-	                var imgData = canvas.toDataURL('image/png');
-
-	                var imgWidth = 210; // 이미지 가로 길이(mm) A4 기준
-	                var pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
-	                var imgHeight = canvas.height * imgWidth / canvas.width;
-	                var heightLeft = imgHeight;
-	                
-	                window.jsPDF = window.jspdf.jsPDF;
-	                var doc = new jsPDF('p', 'mm');
-	                var position = 0;
-
-	                // 첫 페이지 출력
-	                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-	                heightLeft -= pageHeight;
-
-	                // 한 페이지 이상일 경우 루프 돌면서 출력
-	                while (heightLeft >= 20) {
-	                    position = heightLeft - imgHeight;
-	                    doc.addPage();
-	                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-	                    heightLeft -= pageHeight;
-	                }
-
-	                // 파일 저장
-	                doc.save('sample.pdf');
-
-
-	                //이미지로 표현
-	                //document.write('<img src="'+imgData+'" />');
-	            }
-	            
-	        });
-	        
-	    }
-
-	    window.onload = function(){
-	        pdfPrint();
-	    } */
+		
 	    
 			
 		</script>
