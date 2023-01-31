@@ -5,13 +5,18 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import egovframework.kapa.decision.dto.AnnouncementDTO;
@@ -23,8 +28,8 @@ import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Announcement_File;
 import egovframework.kapa.domain.Decision_Cityplan;
 import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Date;
+import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
@@ -36,6 +41,8 @@ import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.Const.DecisonState;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.mapper.ImplementerMapper;
+import egovframework.kapa.law.domain.DecisionLawVO;
+import egovframework.kapa.law.mapper.DecisionLawMapper;
 
 /**
 * <pre>
@@ -54,6 +61,9 @@ public class DecisionService {
 
 	@Autowired
 	ImplementerMapper implementerMapper;
+
+	@Autowired
+	DecisionLawMapper decisionLawMapper;
 	
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
@@ -525,6 +535,17 @@ public class DecisionService {
 			String relatedLaws = jsonObject.get("relatedLaws").toString();
 			String relatedLaws2 = jsonObject.get("relatedLaws2").toString();
 			String reviewOpinion = jsonObject.get("reviewOpinion").toString();	
+			
+			/* 임시제거
+			 * JSONArray decisionLawArray = (JSONArray) jsonObject.get("relatedLawsCB");
+			 * 
+			 * for (int i=0; i<decisionLawArray.size(); i++) { DecisionLawVO decisionLaw =
+			 * new DecisionLawVO(); int seq_no_law =
+			 * Integer.parseInt(decisionLawArray.get(i).toString());
+			 * decisionLaw.setDecision_id(decisionId);
+			 * decisionLaw.setSeq_no_law(seq_no_law);
+			 * decisionLawMapper.updateStep2(decisionLaw); }
+			 */
 			
 			decisionMapper.updateStep2(content,relatedLaws, relatedLaws2, reviewOpinion,seqNo);
 		
