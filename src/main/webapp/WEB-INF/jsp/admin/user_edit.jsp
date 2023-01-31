@@ -100,7 +100,7 @@
 									</div>
 									<div class="ff_wrap">
 										<input type="password" name="fakepasswordremembered" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
-										<input type="password" id="aua_password" name="password" class="input t1" required placeholder="패스워드를 입력하세요.">
+										<input type="password" id="aua_password" name="password" value="${adminVO.userPassword }" class="input t1" required placeholder="패스워드를 입력하세요.">
 									</div>
 								</div>
 							</div>

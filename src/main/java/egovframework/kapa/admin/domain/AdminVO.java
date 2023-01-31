@@ -17,6 +17,8 @@ public class AdminVO extends Pagination {
 	
 	private String userName;
 	
+	private String userPassword;
+	
 	private String email;
 	
 	private String userAuthority;

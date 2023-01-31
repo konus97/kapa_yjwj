@@ -92,7 +92,7 @@ public class JoinService {
 		User user = new User();
 		user.setUserId(id);
 		user.setUserPassword(pwd);
-		user.setUserType(1);
+		user.setUserType(3);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
 		user.setEmail(completeEmail);

@@ -60,7 +60,7 @@
 	</insert>
 	
 	<select id="getUserBySeqNo" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="Integer">
-        SELECT seqNo, userType, userId, userName, userAuthority, dept, email, mobile
+        SELECT seqNo, userType, userId, userPassword, userName, userAuthority, dept, email, mobile
 		FROM TB_User
 		WHERE delCheck = 0
 		AND seqNo = #{seqNo}
