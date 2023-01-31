@@ -1158,3 +1158,356 @@ alert("첨부된 한글파일이 없습니다.");
 function pdfUpload(getType){
 	triggerFileUploadPDF(1);
 }
+
+function checkType(){
+let decisionId = $('#decisionId').val();
+let csrfToken = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+let contextPath = $('#contextPath').val();
+let url = contextPath+"/api/implementer/opinion/landview";
+$.ajax({
+            			url : url,
+            			type : "POST",
+            			contentType : "application/json; charset=UTF-8",
+            			data : decisionId,
+            			async: false, 
+            			beforeSend : function(xhr){
+            				xhr.setRequestHeader(csrfHeader, csrfToken);
+            			},
+            			success : function(data) {
+							let info = data.list;
+							
+							for(let i=0; i<info.length; i++){
+								console.log(info[i]);
+								let getItem = info[i].type;
+			if(getItem == 1){
+			document.getElementsByClassName('item_result_wr')[0].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 2){
+			document.getElementsByClassName('item_result_wr')[1].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 3){
+			document.getElementsByClassName('item_result_wr')[2].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 4){
+			document.getElementsByClassName('item_result_wr')[3].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 5){
+			document.getElementsByClassName('item_result_wr')[4].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 6){
+			document.getElementsByClassName('item_result_wr')[5].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 7){
+			document.getElementsByClassName('item_result_wr')[6].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 8){
+			document.getElementsByClassName('item_result_wr')[7].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 9){
+			document.getElementsByClassName('item_result_wr')[8].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 10){
+			document.getElementsByClassName('item_result_wr')[9].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 11){
+			document.getElementsByClassName('item_result_wr')[10].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 12){
+			document.getElementsByClassName('item_result_wr')[11].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 13){	
+			document.getElementsByClassName('item_result_wr')[12].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 14){
+			document.getElementsByClassName('item_result_wr')[13].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 15){
+			document.getElementsByClassName('item_result_wr')[14].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 16){
+			document.getElementsByClassName('item_result_wr')[15].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 17){
+			document.getElementsByClassName('item_result_wr')[16].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 18){
+			document.getElementsByClassName('item_result_wr')[17].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 19){
+			document.getElementsByClassName('item_result_wr')[18].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 20){
+			document.getElementsByClassName('item_result_wr')[19].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 21){
+			document.getElementsByClassName('item_result_wr')[20].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 22){
+			document.getElementsByClassName('item_result_wr')[21].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 23){
+			document.getElementsByClassName('item_result_wr')[22].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else if(getItem  == 24){
+			document.getElementsByClassName('item_result_wr')[23].style.display = 'block';
+			getLandownerCheck2(getItem);
+			getGoodsowner2(getItem);
+			}else{
+			alert("잘못된 접근입니다.");
+			return false;
+			}
+								
+							}
+            			},
+            			error : function(xhr, status, error) {
+            				//에러!
+            				//alert("code:"+xhr.status);
+            			}
+            		});
+
+}
+
+/*
+function landOpinionView(){
+
+let decisionId = $('#decisionId').val();
+let csrfToken = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+let contextPath = $('#contextPath').val();
+let url = contextPath+"/api/implementer/opinion/landview";
+$.ajax({
+            			url : url,
+            			type : "POST",
+            			contentType : "application/json; charset=UTF-8",
+            			data : decisionId,
+            			async: false, 
+            			beforeSend : function(xhr){
+            				xhr.setRequestHeader(csrfHeader, csrfToken);
+            			},
+            			success : function(data) {
+							let info = data.list;
+							
+							for(let i=0; i<info.length; i++){
+								console.log(info[i]);
+							makeLandOpinionView(info[i]);
+							}
+            			},
+            			error : function(xhr, status, error) {
+            				//에러!
+            				//alert("code:"+xhr.status);
+            			}
+            		});
+}
+function makeLandOpinionView(info){
+	let landRank = 0;
+	
+	console.log(info);
+	
+	/*seqNo=350, decisionId=292, reptSeq=13408964, reptOwnrSeq=24574507, ownerOpinion=test1, 
+	executorOpinion=test2, opinionText=null, relatedLaws=null, relatedLaws2=null, 
+	reviewOpinion=null, type=16, completionCheck=0, delCheck=0, regdate=2023-01-31T03:33:30.386577, ownrNm=김희라,
+	 fileNameChange=null, fileFolder=null, opinionTitle=null, opinionContent=null, fileNameExtension=null*/
+ 
+	/*필지 정보 */
+	/*
+	let getItem = info.type;
+	let getSeq = info.reptSeq;
+	let reptOwnrSeq = info.reptOwnrSeq;
+	let reptAddr = info.reptAddr;
+	
+	let sidoGunguCd = info.sidoGunguCd;
+	let mainStrtNo = info.mainStrtNo;
+	let subStrtNo = info.subStrtNo;
+	
+	let obstStuc1Nm = info.obstStuc1Nm;
+	let obstStuc2Nm = info.obstStuc2Nm;
+	
+	let areaAmot = info.areaAmot;
+	let areaUnit = info.areaUnit;
+	let befUnitCost = info.befUnitCost;
+    
+	let ownrNnm = info.ownrNm;
+	let landShre = info.landShre;
+	
+	/*소유자, 사업시행자 의견 정보 */
+	/*
+	let decisionId = info.decisionId;
+	let executorOpinion = info.executorOpinion; //사업시행자 의견
+	let fileFolder = info.fileFolder;
+	let fileNameChange = info.fileNameChange;
+	let fileNameExtension = info.fileNameExtension;
+	let opinionContent = info.opinionContent; //의견내용
+	let opinionText = info.opinionText; //의견제목
+	let ownerOpinion = info.ownerOpinion; //소유자 의견
+	let ownrNm = info.ownrNm; //소유자명
+	let relatedLaws = info.relatedLaws; //관련 법령
+	let relatedLaws2 = info.relatedLaws2; //관련 법령 판례
+	let reviewOpinion = info.reviewOpinion; //기타
+	
+	
+    let getId = "opinion"+getSeq+"-"+getItem;
+      
+      let addList = new Array();
+       
+	
+		addList.push("<tr>");
+		addList.push("<td>"+landRank+"</td>");
+		addList.push("<td><strong>소유자</strong>");
+		addList.push("<span>"+ownrNnm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>지분</strong>");
+		addList.push("<span>"+landShre+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>소재지</strong>");
+		addList.push("<span>"+reptAddr+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>지번</strong>");
+		addList.push("<span>"+sidoGunguCd+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>본번</strong>");
+		addList.push("<span>"+mainStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>부번</strong>");
+		addList.push("<span>"+subStrtNo+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>공</strong>");
+		addList.push("<span>"+obstStuc1Nm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>실</strong>");
+		addList.push("<span>"+obstStuc2Nm+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>면적</strong>");
+		addList.push("<span>"+areaAmot+"</span>");
+		addList.push("</td>");
+		addList.push("<td><strong>단가</strong>");
+		addList.push("<span>"+befUnitCost+"</span>");
+		addList.push("</td>");
+		addList.push("</tr>");
+
+        
+			             if(getItem == 1){
+			$("#ownerLandItemList1").append(addList.join(''));
+			document.getElementsByClassName('item_result_wr')[0].style.display = 'block';
+			}else if(getItem  == 2){
+			$("#ownerLandItemList2").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[1].style.display = 'block';
+
+			}else if(getItem  == 3){
+			$("#ownerLandItemList3").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[2].style.display = 'block';
+
+			}else if(getItem  == 4){
+			$("#ownerLandItemList4").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[3].style.display = 'block';
+
+			}else if(getItem  == 5){
+			$("#ownerLandItemList5").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[4].style.display = 'block';
+
+			}else if(getItem  == 6){
+			$("#ownerLandItemList6").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[5].style.display = 'block';
+
+			}else if(getItem  == 7){
+			$("#ownerLandItemList7").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[6].style.display = 'block';
+
+			}else if(getItem  == 8){
+			$("#ownerLandItemList8").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[7].style.display = 'block';
+
+			}else if(getItem  == 9){
+			$("#ownerLandItemList9").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[8].style.display = 'block';
+
+			}else if(getItem  == 10){
+			$("#ownerLandItemList10").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[9].style.display = 'block';
+
+			}else if(getItem  == 11){
+			$("#ownerLandItemList11").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[10].style.display = 'block';
+
+			}else if(getItem  == 12){
+			$("#ownerLandItemList12").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[11].style.display = 'block';
+
+			}else if(getItem  == 13){
+			$("#ownerLandItemList13").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[12].style.display = 'block';
+
+			}else if(getItem  == 14){
+			$("#ownerLandItemList14").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[13].style.display = 'block';
+
+			}else if(getItem  == 15){
+			$("#ownerLandItemList15").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[14].style.display = 'block';
+
+			}else if(getItem  == 16){
+			$("#ownerLandItemList16").append(addList.join(''));
+			document.getElementsByClassName('item_result_wr')[15].style.display = 'block';
+			}else if(getItem  == 17){
+			$("#ownerLandItemList17").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[16].style.display = 'block';
+
+			}else if(getItem  == 18){
+			$("#ownerLandItemList18").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[17].style.display = 'block';
+
+			}else if(getItem  == 19){
+			$("#ownerLandItemList19").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[18].style.display = 'block';
+
+			}else if(getItem  == 20){
+			$("#ownerLandItemList20").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[19].style.display = 'block';
+
+			}else if(getItem  == 21){
+			$("#ownerLandItemList21").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[20].style.display = 'block';
+
+			}else if(getItem  == 22){
+			$("#ownerLandItemList22").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[21].style.display = 'block';
+
+			}else if(getItem  == 23){
+			$("#ownerLandItemList23").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[22].style.display = 'block';
+
+			}else if(getItem  == 24){
+			$("#ownerLandItemList24").append(addList.join(''));
+						document.getElementsByClassName('item_result_wr')[23].style.display = 'block';
+
+			}else{
+			alert("잘못된 접근입니다.");
+			return false;
+			}
+			
+       
+
+}*/

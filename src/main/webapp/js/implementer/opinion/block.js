@@ -55,7 +55,13 @@ function makeOpinionBlock(startNumber,info) {
     addList.push("     </td>");
     addList.push("     <td class=\"left\">");
     addList.push("          <strong>사업명</strong>");
-    addList.push("          <span><a href=\""+contextPath+"/implementer/opinion/write.do?decisionId="+decisionId+"\"");
+if(decisionState == 6){
+	    addList.push("          <span><a href=\""+contextPath+"/implementer/opinion/view.do?decisionId="+decisionId+"\"");
+
+}else{
+	    addList.push("          <span><a href=\""+contextPath+"/implementer/opinion/write.do?decisionId="+decisionId+"\"");
+
+}
     addList.push("          >"+judgBizNm+"</a>");
     addList.push("     </span>");
     addList.push("     </td>");
