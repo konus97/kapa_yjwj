@@ -17,12 +17,14 @@
 			 *
 		FROM TB_User
 		WHERE userId = #{userId}
+		AND delCheck = 0
 	</select>
 	
 	<select id="getUserExist" parameterType="String" resultType="Integer">
 		SELECT COUNT(*)
 		FROM TB_User
 		WHERE userId = #{userId}
+		AND delCheck = 0
 	</select>
 
 </mapper>

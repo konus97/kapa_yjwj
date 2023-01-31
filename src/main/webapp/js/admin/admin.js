@@ -1,11 +1,20 @@
 let rowItem = 10;
 
+function goEditPage(seqNo){
+	let contextPath = $('#contextPath').val();
+	
+	location.href=contextPath+"/admin/edit.do?seqNo="+seqNo;
+}
 
 function getUserList(cpage) {
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath + "/api/admin/list.do";
 
+	let name  = $("#au_name").val();
+	let dept  = $("#au_dept").val();
+	let email = $("#au_email").val();
+		
 	$("#userList").attr("data-cpage", cpage);
 	$("#userList").empty();
 	$("#pageList").empty();
@@ -18,6 +27,10 @@ function getUserList(cpage) {
 		async: false,
 		data: {
 			"cpage": cpage,
+			"name": name,
+			"dept": dept,
+			"email": email,
+			
 		},
 		success: function(data) {
 			let list = data.list;
@@ -50,76 +63,14 @@ function getUserList(cpage) {
 	});
 }
 
-
-function getSearchUserList() {
-
-	let contextPath = $("#contextPath").val();
-	let url = contextPath + "/api/admin/search.do";
-	let searchName = document.getElementById("au_name").value;
-	let cpage = 1;
-	if (searchName==null || searchName=="") {
-		alert("검색어를 입력하세요.");
-		return ;
-	}
-	
-	$("#userList").attr("data-cpage", cpage);
-	$("#userList").empty();
-	$("#pageList").empty();
-	$(".cs_title").empty();
-	
-
-	$.ajax({
-		url: url,
-		type: "GET",
-		dataType: "json",
-		async: false,
-		data: {
-			"cpage": cpage,
-			"searchName" : searchName,
-		},
-		success: function(data) {
-			let list = data.list;
-			console.log(list);
-			let allCount = data.allCount;
-			let totalPage = data.totalPage;
-
-			if (totalPage == "0") totalPage = 1;
-
-			let addList = new Array();
-			addList.push("<h4 class=\'fl title t1 bold cb s1 bullet'>회원( " + allCount + " )명</h4>");
-			$(".cs_title").append(addList.join(''));
-
-			if (list.length == 0){}
-			else {
-				$("#userList").attr("data-tpage", totalPage);
-	
-				for(let i = 1; i<list.length+1; i++) {
-					makeUserBlock(i, list[i - 1]);
-				}	
-				makeUserPageList();
-			}
-		},
-		error: function(xhr, status, error) {
-		
-		
-		}
-	});
-}
-
-function deleteUser(userId) {
+function deleteUser(seqNo) {
+	let csrfToken = $("meta[name='_csrf']").attr("content");
+    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath + "/api/admin/delete.do";
-	console.log(userId);
-	let cpage = 1;
 	
 	if (confirm("삭제 하시겠습니까 ?")) {
-	
-		$("#userList").attr("data-cpage", cpage);
-		$("#userList").empty();
-		$("#pageList").empty();
-		$(".cs_title").empty();
-		
 	
 		$.ajax({
 			url: url,
@@ -127,17 +78,14 @@ function deleteUser(userId) {
 			dataType: "json",
 			async: false,
 			data: {
-				"cpage": cpage,
-				"searchName" : searchName,
+				"seqNo" : seqNo,
 			},
+		    beforeSend : function(xhr){
+		       	xhr.setRequestHeader(csrfHeader, csrfToken);
+		    },
 			success: function(data) {
-				alert("삭제되었습니다.")
-				if (totalPage == "0") totalPage = 1;
-	
-	
-				if (list.length == 0){}
-				else {
-				}
+				alert("삭제되었습니다.");
+				getUserList(1);
 			},
 			error: function(xhr, status, error) {
 			
@@ -150,8 +98,16 @@ function deleteUser(userId) {
 function makeUserBlock(idx, info) {
 	
 	let addList = new Array();
-	let auth = "관리자";
-
+	//let auth = "관리자";
+	let auth_info = info.userAuthority;
+	var auth = "";
+	if (auth_info == "ROLE_ADMIN"){
+		auth = "관리자";
+	}
+	else {
+		auth = "회원";
+	}
+	
 	addList.push("<tr>");
 	addList.push("<th>");
 	addList.push("<strong>" + idx+ "</strong>");
@@ -162,23 +118,23 @@ function makeUserBlock(idx, info) {
 	addList.push("<strong>이름</strong><span>" + info.userName + "</span>");
 	addList.push("</td>");
 	addList.push("<td class=\'left'>");
-	addList.push("<strong>소속</strong><span>" + info.company+ "</span>");
+	addList.push("<strong>소속</strong><span>" + info.dept+ "</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("<strong>이메일</strong><span>" + info.email+ "</span>");
 	addList.push("</td>");
 	addList.push("<td>");
-	addList.push("<strong>연락처</strong><span>"+info.phoneNumber + "</span>");
+	addList.push("<strong>연락처</strong><span>"+info.mobile + "</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("<strong>권한</strong><span>" + auth+"</span>");
 	addList.push("</td>");
 	addList.push("<td>");
-	addList.push("<strong>옵션</strong><span><a href=\'#' class=\'btn tiny'>수정</a>");
+	addList.push("<strong>옵션</strong><span><a href=\'#' class=\'btn tiny' onclick=\"goEditPage('"+info.seqNo+"');return false;\">수정</a>");
 	
 	//addList.push("		<div class=\"cbl_subject\"><a href=\""+contextPath+"/board/"+boardUrl+"/view.do?viewSeq="+seq+"\">"+title+"</a></div>");
 	
-	addList.push("<button type=\'button' class=\'btn tiny t1' onclick=\"deleteUser("+ info.userId+")\">삭제</button></span>")
+	addList.push("<button type=\'button' class=\'btn tiny t1' onclick=\"deleteUser('"+info.seqNo+"');return false;\">삭제</button></span>")
 	//addList.push("<button type=\'button' class=\'btn tiny t1' onclick=\"getUserList("+ info.userId+")\">삭제</button></span>")
 	addList.push("</td>");
 	addList.push("</tr>");

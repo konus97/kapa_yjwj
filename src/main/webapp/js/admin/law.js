@@ -5,7 +5,7 @@ let rowItem = 10;
 function getLawList(cpage) {
 
 	let contextPath = $("#contextPath").val();
-	let url = contextPath + "/api/law/lawList.do";
+	let url = contextPath + "/api/law/lawListAdmin.do";
 
 	$("#lawList").attr("data-cpage", cpage);
 	$("#lawList").empty();

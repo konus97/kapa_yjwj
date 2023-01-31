@@ -306,7 +306,7 @@ public class DecisionController {
 		
         
         //소유자 및 사업시행자 의견
-		List<Decision_Opinion> opinionList = decisionService.getStepOpinionList(decisionId);
+		List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
 		
 		
 		if(decisionId!=0L) {
@@ -400,13 +400,14 @@ public class DecisionController {
       	 String ownerOpinion = insertNew.getOwnerOpinion();
       	 String executorOpinion = insertNew.getExecutorOpinion();
       	 String ownrNm = insertNew.getOwnrNm();
-      	 String opinionTitle = insertNew.getOpinionTitle();
-      	 String opinionContent = insertNew.getOpinionContent();
-      	 String fileFolder = insertNew.getFileFolder();
-      	 String fileNameChange = insertNew.getFileNameChange();
-      	 String fileNameExtension = insertNew.getFileNameExtension();
-      	Long reptSeq = insertNew.getReptSeq();
-     	 Long reptOwnrSeq = insertNew.getReptOwnrSeq(); 
+	      	Long reptSeq =  insertNew.getReptSeq(); 
+	      	Long reptOwnrSeq = insertNew.getReptOwnrSeq();
+			/*
+			 * String opinionTitle = insertNew.getOpinionTitle(); String opinionContent =
+			 * insertNew.getOpinionContent(); String fileFolder = insertNew.getFileFolder();
+			 * String fileNameChange = insertNew.getFileNameChange(); String
+			 * fileNameExtension = insertNew.getFileNameExtension(); 
+			 */
      	 
       	 String getTypeStr = "";
 		 List<Decision_Opinion_Item> opinionFileList = decisionService.getOpinionFileList(decisionId, getType, reptSeq, reptOwnrSeq);
@@ -429,11 +430,6 @@ public class DecisionController {
 		model.addAttribute("seqNo",insertNew.getSeqNo());
 		model.addAttribute("ownerOpinion", ownerOpinion);
 		model.addAttribute("executorOpinion", executorOpinion);
-		model.addAttribute("opinionTitle",opinionTitle);
-		model.addAttribute("opinionContent",opinionContent);
-		model.addAttribute("fileFolder",fileFolder);
-		model.addAttribute("fileNameChange", fileNameChange);
-		model.addAttribute("fileNameExtension", fileNameExtension);
 		
 		
 		}

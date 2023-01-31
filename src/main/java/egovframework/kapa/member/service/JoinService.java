@@ -58,19 +58,53 @@ public class JoinService {
 		
 		JSONObject jsonObject = (JSONObject)parser.parse(param);
 
-		int searchType = Integer.parseInt(jsonObject.get("searchType").toString());
-		if(searchType==0) {System.out.println("시군구"); }
-		else if (searchType==1) {
-			System.out.println("사업시행자");
+		int userType = Integer.parseInt(jsonObject.get("userType").toString());
+		
+		if (userType==1) {
+			System.out.println("사업시행자 회원등록");
 			joinImplementer(param);
 		}
-		else if (searchType==2) {System.out.println("2");}
-		else if (searchType==3) {System.out.println("3");}
-		else if (searchType==4) {System.out.println("4");}
-		else if (searchType==5) {System.out.println("5");}
-		else if (searchType==6) {System.out.println("6");}
+		else if (userType==2) {
+			System.out.println("감정평가사 회원등록");
+			joinAppraiser(param);
+		}
+		else {
+			System.out.println("일반 회원등록");
+			joinUser(param);
+		}
 	}
 
+	public String joinUser(String param) throws ParseException { // 사업시행자, 감정평가사 이외 회원
+		
+		String Message = "";
+		
+		JSONParser parser = new JSONParser();
+		
+		JSONObject jsonObject = (JSONObject)parser.parse(param);
+			
+		String id = jsonObject.get("id").toString();
+		String pwd = jsonObject.get("pwd").toString();
+		String name = jsonObject.get("name").toString();
+		String dept = jsonObject.get("dept").toString();
+		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		String mobile = jsonObject.get("mobile").toString();
+		
+		User user = new User();
+		user.setUserId(id);
+		user.setUserPassword(pwd);
+		user.setUserType(3);
+		user.setUserAuthority("ROLE_USER");
+		user.setUserName(name);
+		user.setEmail(completeEmail);
+		user.setUserEnabled("1");
+		user.setRegdate(LocalDateTime.now());
+		user.setDelCheck(0);
+		user.setDept(dept);
+		user.setMobile(mobile);
+		joinMapper.InsertUser(user);
+		
+		return Message;
+	}
 
 	public String joinImplementer(String param) throws ParseException { // 사업시행자
 		
@@ -84,6 +118,8 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
+		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		String mobile = jsonObject.get("mobile").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -91,18 +127,18 @@ public class JoinService {
 		user.setUserType(1);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
+		user.setEmail(completeEmail);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
 		user.setDept(dept);
+		user.setMobile(mobile);
 		
 		
 		joinMapper.InsertUser(user);
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		TB_Implementer implementer = new TB_Implementer();
 		Long userSeqNo = joinMapper.getUserSeqNo(user);
 		implementer.setUserSeqNo(userSeqNo);
-		implementer.setEmail(completeEmail);
 		implementer.setDocNumber(jsonObject.get("docNumber").toString());
 		implementer.setImplementerResponsibilityName(jsonObject.get("implementerResponsibilityName").toString());
 		implementer.setImplementerNumber(jsonObject.get("implementerNumber").toString());
@@ -123,6 +159,8 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
+		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		String mobile = jsonObject.get("mobile").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -130,21 +168,22 @@ public class JoinService {
 		user.setUserType(2);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
+		user.setEmail(completeEmail);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
 		user.setDept(dept);
+		user.setMobile(mobile);
 		
 		joinMapper.InsertUser(user);
 		
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		TB_Appraiser appraiser = new TB_Appraiser();
 		Long userSeqNo = joinMapper.getUserSeqNo(user);
 		appraiser.setUserSeqNo(userSeqNo);
-		appraiser.setEmail(completeEmail);
 		appraiser.setCompany(jsonObject.get("company").toString());
 		appraiser.setResponsibilityName(jsonObject.get("responsibilityName").toString());
 		appraiser.setPhoneNumber(jsonObject.get("phoneNumber").toString());
+		//appraiser.setPhoneNumber(mobile);
 		
 		joinMapper.InsertAppraiser(appraiser);
 		
@@ -163,6 +202,8 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
+		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		String mobile = jsonObject.get("mobile").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -170,19 +211,21 @@ public class JoinService {
 		user.setUserType(3);
 		//user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
+		user.setEmail(jsonObject.get("email").toString());
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
 		user.setDept(dept);
+		user.setMobile(mobile);
 		
 		joinMapper.InsertUser(user);
 		
 		TB_Cities cities = new TB_Cities();
 		Long userSeqNo = joinMapper.getUserSeqNo(user);
 		cities.setUserSeqNo(userSeqNo);
-		cities.setEmail(jsonObject.get("email").toString());
 		cities.setDepartment(jsonObject.get("department").toString());
 		cities.setRepresentativeName(jsonObject.get("representativeName").toString());
 		cities.setPhoneNumber(jsonObject.get("phoneNumber").toString());
+		//cities.setPhoneNumber(mobile);
 		cities.setCode(jsonObject.get("code").toString());
 		
 		joinMapper.InsertCities(cities);

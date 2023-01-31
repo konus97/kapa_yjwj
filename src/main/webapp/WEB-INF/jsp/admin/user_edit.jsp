@@ -43,6 +43,8 @@
 </head> 
 
 <body>
+	<input type="hidden" id="userType" value="${adminVO.userType}">
+	<input type="hidden" id="seqNo" value="${adminVO.seqNo}">
 	<div id="wrap">
 	<!-- header start -->
 	<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
@@ -60,15 +62,15 @@
 		<div class="wrap">
 			<div class="cs_wrap">
 				<div class="cs_head">
-					<h3 class="title bold cb">회원추가</h3>
+					<h3 class="title bold cb">회원수정</h3>
 				</div>
 				<div class="cs_body">
-					<form name="admin_user_add" class="admin_user_add" method="POST" id="admin_user_add">
+					<form name="admin_user_edit" class="admin_user_add" method="POST" id="admin_user_edit">
 						<input style="display:none" type="text" id="mode" name="mode" value="${mode}" class="input t1" />
 
 						<div class="cs_title cs_title_adduser">
 							<h4 class="fl title t1 bold cb s1 bullet">회원정보</h4>
-							<select class="select t1" id="cbs_select">
+							<select class="select t1 blind" id="cbs_select">
 								<option>시군구</option>
 								<option value="temp_val_implementer">사업시행자</option>
 								<option value="temp_val_appraiser">감정평가사</option>
@@ -85,7 +87,7 @@
 										<label for="aua_id">아이디</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_id" name="userId" class="input t1" placeholder="아이디를 입력하세요."
+										<input type="text" id="aua_id" name="userId" class="input t1" value="${adminVO.userId }" placeholder="아이디를 입력하세요."
 										<c:if test="${not empty adminVO.userId}">
 											readonly
 										</c:if>
@@ -98,7 +100,7 @@
 									</div>
 									<div class="ff_wrap">
 										<input type="password" name="fakepasswordremembered" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
-										<input type="password" id="aua_password" name="password" class="input t1" required placeholder="패스워드를 입력하세요.">
+										<input type="password" id="aua_password" name="password" value="${adminVO.userPassword }" class="input t1" required placeholder="패스워드를 입력하세요.">
 									</div>
 								</div>
 							</div>
@@ -109,7 +111,7 @@
 									</div>
 									<div class="ff_wrap">
 										<input type="text" name="fakepasswordrememberName" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
-										<input type="text" id="aua_name" name="userName" class="input t1" placeholder="이름을 입력하세요." />
+										<input type="text" id="aua_name" name="userName" class="input t1" value="${adminVO.userName }" placeholder="이름을 입력하세요." />
 									</div>
 								</div>
 								<div class="f_field div2">
@@ -117,7 +119,7 @@
 										<label for="aua_org">소속</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_org" name="dept" class="input t1" placeholder="소속을 입력하세요."/>
+										<input type="text" id="aua_org" name="dept" class="input t1" value="${adminVO.dept }"  placeholder="소속을 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -127,7 +129,7 @@
 										<label for="aua_email">이메일</label>
 									</div>
 									<div class="ff_wrap ff_wrap--email">
-										<input type="text" id="aua_email" name="userEmail" class="input t1" placeholder="이메일을 입력하세요."/>
+										<input type="text" id="aua_email" name="userEmail" class="input t1" value="${adminVO.email }"  placeholder="이메일을 입력하세요."/>
 										<span>&#64;</span>
 										<input type="text" id="aua_domain" name="domain" class="input t1" placeholder="메일주소를 입력하세요."/>
 									</div>
@@ -137,7 +139,7 @@
 										<label for="aua_call">연락처</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_call" name="mobile" class="input t1" placeholder="연락처를 입력하세요."/>
+										<input type="text" id="aua_call" name="mobile" class="input t1" value="${adminVO.mobile }"  placeholder="연락처를 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -149,7 +151,7 @@
 										<label for="aua_doc_num">시행문서번호</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_doc_num" name="docNumber" class="input t1" placeholder="시행문서번호를 입력하세요."/>
+										<input type="text" id="aua_doc_num" name="docNumber" class="input t1" value="${adminVO.docNumber}"  placeholder="시행문서번호를 입력하세요."/>
 									</div>
 								</div>
 								<div class="f_field div2">
@@ -157,7 +159,7 @@
 										<label for="aua_implementer_responsibility_name">시행사 담당자명</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_implementer_responsibility_name" name="implementerResponsibilityName" class="input t1" placeholder="시행사 담당자명을 입력하세요."/>
+										<input type="text" id="aua_implementer_responsibility_name" name="implementerResponsibilityName" class="input t1" value="${adminVO.implementerResponsibilityName}"  placeholder="시행사 담당자명을 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -167,7 +169,7 @@
 										<label for="aua_implementer_num">시행사 연락처</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_implementer_num" name="implementerNumber" class="input t1" placeholder="시행사 연락처를 입력하세요."/>
+										<input type="text" id="aua_implementer_num" name="implementerNumber" class="input t1" value="${adminVO.implementerNumber}"  placeholder="시행사 연락처를 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -180,7 +182,7 @@
 										<label for="aua_company">평가법인</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_company" name="company" class="input t1" placeholder="평가법인을 입력하세요."/>
+										<input type="text" id="aua_company" name="company" class="input t1" value="${adminVO.company}"  placeholder="평가법인을 입력하세요."/>
 									</div>
 								</div>
 								<div class="f_field div2">
@@ -188,7 +190,7 @@
 										<label for="aua_reponsibility_name">담당자명</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_reponsibility_name" name="responsibilityName" class="input t1" placeholder="담당자명을 입력하세요."/>
+										<input type="text" id="aua_reponsibility_name" name="responsibilityName" class="input t1" value="${adminVO.responsibilityName}"  placeholder="담당자명을 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -198,7 +200,7 @@
 										<label for="aua_implementer_num">전화</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="text" id="aua_implementer_num" name="phoneNumber" class="input t1" placeholder="연락처를 입력하세요."/>
+										<input type="text" id="aua_implementer_num" name="phoneNumber" class="input t1" value="${adminVO.phoneNumber}"  placeholder="연락처를 입력하세요."/>
 									</div>
 								</div>
 							</div>
@@ -229,7 +231,7 @@
 						<div class="mt30 btn_wrap">
 							<ul class="full">
 								<li class="fl"><a href="<c:url value='/admin/user.do'/>" class="btn ico list t1 nohover">목록</a></li>
-								<li class="fr"><button type="submit" class="btn t2 ico write">등록</button></li>
+								<li class="fr"><button type="submit" class="btn t2 ico write">수정</button></li>
 							</ul>
 						</div>
 					</form>
@@ -258,69 +260,85 @@
 	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 	
 	$(document).ready(function() {
+		
+		var type = document.getElementById('userType').value; // 1: 사업시행자, 2: 감정평가사, 3: 시군구
+		if (type == 1){
+			$('#cbs_select').val("temp_val_implementer");
+		}
+		else if (type == 2){
+			$('#cbs_select').val("temp_val_appraiser");
+		}
+		else {
+			$('#cbs_select').val("");
+		}
+		
+		console.log(type);
+		
 		var url = new URL(window.location.href);
 		var urlParams = url.searchParams;
 		if(urlParams.get('mode')){
 			document.getElementById('mode').value='moduser';
 		}
-		
+				
 		$('.f_wrap_implementer,.f_wrap_appraiser').hide();
-		$('.cs_title_adduser select').change(function(){
-			$('.f_wrap_implementer,.f_wrap_appraiser').hide();
-			var optVal = $('.cs_title_adduser option:selected').val();
-			if ( optVal == 'temp_val_implementer' ) {
-				$('.f_wrap_implementer').show();
-			} else if( optVal == 'temp_val_appraiser' ) {
-				$('.f_wrap_appraiser').show();
-			}
-		});
+		var optVal = $('#cbs_select').val();
+		if ( optVal == 'temp_val_implementer' ) {
+			$('.f_wrap_implementer').show();
+		} else if( optVal == 'temp_val_appraiser' ) {
+			$('.f_wrap_appraiser').show();
+		}
 		
-		$('#admin_user_add').on('submit', function(e){
-			let contextPath = $("#contextPath").val();
-			let url = contextPath + "/api/admin/add.do";
-			var userType = document.getElementById("cbs_select").selectedIndex;
-			console.log(url);
-			e.preventDefault();
-			const data = {
-				"userType" : userType,
-				"id": $("input[name=userId]")[0].value,
-				"pwd": $("input[name=password]")[0].value,
-				"name": $("input[name=userName]")[0].value,
-				"dept" : $("input[name=dept]")[0].value,
-				"email" : $("input[name=userEmail]")[0].value,
-				"domain" : $("input[name=domain]")[0].value,
-				"mobile" : $("input[name=mobile]")[0].value,
-				
-				/* 사업 시행자일때 추가되는 컬럼 */
-				"docNumber" : $("input[name=docNumber]")[0].value,
-				"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
-				"implementerNumber" : $("input[name=implementerNumber]")[0].value,
-				
-				/* 감정 평가사일때 추가되는 컬럼 */
-				"company" : $("input[name=company]")[0].value,
-				"responsibilityName" : $("input[name=responsibilityName]")[0].value,
-				"phoneNumber" : $("input[name=phoneNumber]")[0].value,
-			};
-				
-			$.ajax({
-				url: url,
-				type: "POST",
-	    		contentType : "application/json; charset=UTF-8",
-	    		data : JSON.stringify(data),
-				async: false,
-	        	beforeSend : function(xhr){
-	        		xhr.setRequestHeader(csrfHeader, csrfToken);
-	        	},
-				success: function(data) {
-					alert("회원가입이 완료되었습니다.");
-					location.href=contextPath+"/admin/user.do";
-				},
-				error: function(xhr, status, error) {
+		$('#admin_user_edit').on('submit', function(e){
+			if (confirm ("수정하시겠습니까?")){
+				let contextPath = $("#contextPath").val();
+				let url = contextPath + "/api/admin/edit.do";
+				//var type = document.getElementById("cbs_select").selectedIndex;
+				var type = document.getElementById('userType').value; // 1: 사업시행자, 2: 감정평가사, 3: 시군구
+				var seqNo = document.getElementById('seqNo').value;
+				console.log(url);
+				e.preventDefault();
+				const data = {
+					"type" : type,
+					"seqNo" : seqNo,
+					"id": $("input[name=userId]")[0].value,
+					"pwd": $("input[name=password]")[0].value,
+					"name": $("input[name=userName]")[0].value,
+					"dept" : $("input[name=dept]")[0].value,
+					"email" : $("input[name=userEmail]")[0].value,
+					"domain" : $("input[name=domain]")[0].value,
+					"mobile" : $("input[name=mobile]")[0].value,
 					
-						//에러!
-						//alert("code:"+xhr.status);
+					/* 사업 시행자일때 추가되는 컬럼 */
+					"docNumber" : $("input[name=docNumber]")[0].value,
+					"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
+					"implementerNumber" : $("input[name=implementerNumber]")[0].value,
+					
+					/* 감정 평가사일때 추가되는 컬럼 */
+					"company" : $("input[name=company]")[0].value,
+					"responsibilityName" : $("input[name=responsibilityName]")[0].value,
+					"phoneNumber" : $("input[name=phoneNumber]")[0].value,
+				};
+					
+				$.ajax({
+					url: url,
+					type: "POST",
+		    		contentType : "application/json; charset=UTF-8",
+		    		data : JSON.stringify(data),
+					async: false,
+		        	beforeSend : function(xhr){
+		        		xhr.setRequestHeader(csrfHeader, csrfToken);
+		        	},
+					success: function(data) {
+						alert("수정이 완료되었습니다.");
+						location.href=contextPath+"/admin/user.do";
+					},
+					error: function(xhr, status, error) {
+						
+							//에러!
+							//alert("code:"+xhr.status);
 					}
 				});
+			}
 		});
 	});
 

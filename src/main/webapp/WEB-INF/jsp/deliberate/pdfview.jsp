@@ -96,6 +96,9 @@
 	             	<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_downBtn">PDF 다운로드</a>
 	             	</li>
+	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_decideWr">심사하기</a>
+	             	</li>
             	</ul>
             </div>
     </div>
@@ -395,9 +398,10 @@
 		
 		</c:forEach>
 		<!-- 1. 지연가산금 E -->
-			
+		
 	</div>
 </div>
+
 <!-- pdf 출력 영역 끝  -->
 <div class="btn_wr">
 	<button id="index${formatter.applicationDTO.judgSeq}_downBtn" type="button" class="btn large btn--down" onclick="pdfPrint()">
@@ -405,6 +409,28 @@
 		PDF 다운로드
 	</button>
 </div>
+
+<form class="decide_wr" id="index${formatter.applicationDTO.judgSeq}_decideWr">
+	<h2 class="decide_wr__tit">심사하기</h2>
+	<div class="decide_wr__conwr">
+		<h3 class="decide_wr__contit">심사 내용</h3>
+		<div class="decide_wr__con">
+			<textarea placeholder="심사 내용을 입력해주세요." class="decide_wr__textarea"></textarea>
+		</div>
+	</div>
+	<div class="decide_wr__conwr">
+		<h3 class="decide_wr__contit">심사 결과</h3>
+		<div class="decide_wr__con">
+			<input type="radio" name="decision_radio" value="accept" id="decideAccept" class="decide_wr__radio">
+			<label for="decideAccept" class="decide_wr__label">승인</label>
+			<input type="radio" name="decision_radio" value="decline" id="decideDecline" class="decide_wr__radio">
+			<label for="decideDecline" class="decide_wr__label">반려</label>
+		</div>
+	</div>
+	<div class="decide_wr__btnwr">
+		<button id="decideBtn" type="button" class="decide_wr__btn" onclick="confirm('심사 결과를 제출하시겠습니까?');">심사 결과 제출하기</button>	
+	</div>
+</form>
 		
 <!-- join popup S -->
 <jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">

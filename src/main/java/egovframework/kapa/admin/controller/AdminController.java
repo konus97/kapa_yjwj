@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import egovframework.kapa.admin.domain.AdminVO;
 import egovframework.kapa.admin.service.AdminService;
 
 @Controller
@@ -49,6 +51,31 @@ public class AdminController {
 		model.addAttribute("currentPage", "addLaw");
 		
 		return "admin/law_write";
+	}
+
+	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	public String editUser(Model model, @RequestParam("seqNo") int seqNo) {
+			
+		AdminVO admin = new AdminVO();
+		int type = adminService.getUserTypeBySeqNo(seqNo);
+		
+		if (type == 1) {	// 사업시행자
+			admin = adminService.getImplementerBySeqNo(seqNo);
+		}
+		
+		else if (type == 2) {	// 감정평가사
+			admin = adminService.getAppraiserBySeqNo(seqNo);
+		}
+		else {
+			admin = adminService.getUserBySeqNo(seqNo);	
+		}
+		
+		
+		//current page
+		model.addAttribute("currentPage", "manage");
+		model.addAttribute("adminVO", admin);
+		
+		return "admin/user_edit";
 	}
 
 }

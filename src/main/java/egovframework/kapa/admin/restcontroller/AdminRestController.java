@@ -80,11 +80,15 @@ public class AdminRestController {
 	 * delete
 	 */
 	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
-	public Map<String,Object> deleteContent() {
+	public Map<String,Object> deleteUser(@RequestParam("seqNo") int seqNo) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
 	    try {
+			AdminVO admin = new AdminVO();
+			admin.setSeqNo(seqNo);
+			adminService.deleteUser(admin);
+			
 	         resultFinal.put("msg", "Complete");
         }catch (Exception e){
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());
@@ -102,28 +106,31 @@ public class AdminRestController {
 	 */
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getUserList(@RequestParam("cpage") String cpage) {
+	public Map<String, Object> getUserList(@RequestParam("cpage") String cpage, @RequestParam("name") String name,
+										   @RequestParam("dept") String dept, @RequestParam("email") String email	) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
-		Search search = new Search();
+		AdminVO admin = new AdminVO();
+		admin.setUserName(name);
+		admin.setDept(dept);
+		admin.setEmail(email);
 		
         //page cpage
         int pageNum=1;
         int rowItem=10;
         try {
-
+        	
             pageNum = Integer.parseInt(cpage);
-            int listCnt = adminService.getAllUserCnt();
+            int listCnt = adminService.getUserCnt(admin);
 
-            search.pageInfo(pageNum, rowItem, listCnt);
+            admin.pageInfo(pageNum, rowItem, listCnt);
 
             //값 넣기
-    		List<AdminVO> result = adminService.getAllUser(search);
+    		List<AdminVO> result = adminService.getUserList(admin);
                 		
             resultFinal.put("list", result);
             resultFinal.put("allCount", listCnt);
-            resultFinal.put("totalPage", search.getPageCnt());
+            resultFinal.put("totalPage", admin.getPageCnt());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -132,8 +139,6 @@ public class AdminRestController {
         return resultFinal;
 
 	}
-
-
 
 	// 유저 추가
 	@RequestMapping(value = "/add.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
@@ -152,37 +157,21 @@ public class AdminRestController {
 
 	}	
 
-	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
+	// 유저 추가
+	@RequestMapping(value = "/edit.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
-	public Map<String, Object> getSearchUserList(@RequestParam("cpage") String cpage, @RequestParam("searchName") String searchName) {		
+	public ResponseEntity editUser(@RequestBody String data) throws Exception {
+
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
-		Search search = new Search();
-		search.setKeyword(searchName);
 		
-        //page cpage
-        int pageNum=1;
-        int rowItem=10;
         try {
-
-            pageNum = Integer.parseInt(cpage);
-            int listCnt = adminService.getSearchUserCnt(search);
-
-            search.pageInfo(pageNum, rowItem, listCnt);
-
-            //값 넣기
-    		List<AdminVO> result = adminService.getSearchUser(search);
-                		
-            resultFinal.put("list", result);
-            resultFinal.put("allCount", listCnt);
-            resultFinal.put("totalPage", search.getPageCnt());
-
-        }catch (Exception e){
+    		adminService.editUser_admin(data);    		
+        } catch (Exception e){
             e.printStackTrace();
         }
-        
-        return resultFinal;
 
-	}
+        return ResponseEntity.ok(resultFinal);
+
+	}	
 
 }

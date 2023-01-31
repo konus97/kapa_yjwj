@@ -3,17 +3,24 @@
 <mapper namespace="egovframework.kapa.admin.mapper.AdminMapper">
 
 	<!--사용자 가져오기-->
-	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="egovframework.kapa.domain.Search">
-        SELECT userId, userName, userAuthority, email, company, phoneNumber
+	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="egovframework.kapa.admin.domain.AdminVO">
+        SELECT seqNo, userId, userName, userAuthority, email, dept, phoneNumber, mobile
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
-		AND A.delCheck = 0
+		WHERE A.delCheck = 0
 		
-  		<if test = 'keyword neq null and keyword neq ""'>   
-			<where>
-	         	A.userName LIKE CONCAT('%', #{keyword}, '%')
-	  		</where>
+  		<if test = 'userName neq null and userName neq ""'>     
+	         AND A.userName LIKE CONCAT('%', #{userName}, '%')
+	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
+        </if>
+        
+  		<if test = 'dept neq null and dept neq ""'>  
+	         AND A.dept LIKE CONCAT('%', #{dept}, '%')
+        </if>
+        
+  		<if test = 'email neq null and email neq ""'>   
+  			 AND A.email LIKE CONCAT('%', #{email}, '%')
         </if>
 		
 		ORDER BY seqNo DESC
@@ -23,29 +30,100 @@
 		
     </select>
 	<!--총사용자 수 가져오기-->
-	<select id="getAllUserCnt" resultType="Integer">
+	<select id="getUserCnt" resultType="Integer" parameterType="egovframework.kapa.admin.domain.AdminVO">
         SELECT COUNT(*)
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
-		AND A.delCheck = 0
+		WHERE A.delCheck = 0
+		
+  		<if test = 'userName neq null and userName neq ""'>     
+	         AND A.userName LIKE CONCAT('%', #{userName}, '%')
+	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
+        </if>
+        
+  		<if test = 'dept neq null and dept neq ""'>  
+	         AND A.dept LIKE CONCAT('%', #{dept}, '%')
+        </if>
+        
+  		<if test = 'email neq null and email neq ""'>   
+  			 AND A.email LIKE CONCAT('%', #{email}, '%')
+        </if>
     </select>
     
-	<select id="getSearchUserCnt" resultType="Integer" parameterType="egovframework.kapa.domain.Search">
-        SELECT COUNT(*)
-		FROM TB_User A
+	<insert id="deleteUser" parameterType="egovframework.kapa.admin.domain.AdminVO">
+		UPDATE TB_User
+		   SET 
+		   	   delCheck = 1,
+		       uptdate = #{uptdate}
+		 WHERE seqNo = #{seqNo}
+	</insert>
+	
+	<select id="getUserBySeqNo" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="Integer">
+        SELECT seqNo, userType, userId, userPassword, userName, userAuthority, dept, email, mobile
+		FROM TB_User
+		WHERE delCheck = 0
+		AND seqNo = #{seqNo}
+    </select>
+    
+	<select id="getUserTypeBySeqNo" resultType="Integer"  parameterType="Integer">
+        SELECT userType
+		FROM TB_User
+		WHERE delCheck = 0
+		AND seqNo = #{seqNo}
+    </select>
+    
+	<select id="getImplementerBySeqNo" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="Integer">
+        SELECT *
+        FROM TB_User A
+		LEFT JOIN TB_Implementer B
+		ON A.seqNo = B.userSeqNo
+		WHERE A.delCheck = 0
+		AND A.seqNo = #{seqNo}
+    </select>
+    
+	<select id="getAppraiserBySeqNo" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="Integer">
+        SELECT *
+        FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
-		AND A.delCheck = 0
-  		
-  		<if test = 'keyword neq null and keyword neq ""'>   
-			<where>
-	         	A.userName LIKE CONCAT('%', #{keyword}, '%')
-	  		</where>
-        </if>
-		
+		WHERE A.delCheck = 0
+		AND A.seqNo = #{seqNo} 
     </select>
+    
+    
+	<update id="UpdateUser" parameterType="egovframework.kapa.domain.User">
+		UPDATE TB_User
+		SET
+		userId = #{userId}, 
+		userPassword = #{userPassword},
+		userAuthority = #{userAuthority},
+		userName = #{userName},
+		email = #{email},
+		uptdate = #{uptdate},
+		dept = #{dept},
+		mobile = #{mobile}
+		where seqNo = #{seqNo}
+	</update>
 	
+	<update id="UpdateImplementer" parameterType="egovframework.kapa.member.domain.TB_Implementer">
+		UPDATE TB_Implementer
+		SET
+		docNumber = #{docNumber},
+		implementerResponsibilityName = #{implementerResponsibilityName},
+		implementerNumber = #{implementerNumber}
+		where userSeqNo = #{userSeqNo}
+	</update>
+	
+	<update id="UpdateAppraiser" parameterType="egovframework.kapa.member.domain.TB_Appraiser">
+		UPDATE TB_Appraiser
+		SET
+		company = #{company},
+		responsibilityName = #{responsibilityName},
+		phoneNumber = #{phoneNumber}
+		where userSeqNo = #{userSeqNo}
+	</update>
+    
 	 
 	
 </mapper>
