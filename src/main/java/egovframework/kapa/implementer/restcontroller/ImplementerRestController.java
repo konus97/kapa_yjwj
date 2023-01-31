@@ -261,6 +261,26 @@ public class ImplementerRestController {
 	
 	}
 	
+	//재결의견작성 완료 - 필지
+	@RequestMapping(value = "/opinion/landview", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity opinionLandview(@RequestBody Long decisionId) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+		
+		
+		resultFinal.put("list", decisionService.getDecisionOpinionList(decisionId));
+		System.out.println("===================================================");
+		System.out.println(decisionService.getDecisionOpinionList(decisionId));
+		System.out.println("===================================================");
+		
+		  return ResponseEntity.ok(resultFinal);
+        
+	
+	}
+	
+	
+	
 	@RequestMapping(value = "/target", method = RequestMethod.POST)
 	public void targetSave(Decision_Target target) {
 		implementerService.saveTarget(target);

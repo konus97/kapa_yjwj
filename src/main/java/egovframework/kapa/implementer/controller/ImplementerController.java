@@ -1,13 +1,8 @@
 package egovframework.kapa.implementer.controller;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,29 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_Cityplan;
 import egovframework.kapa.domain.Decision_ConsultationDate;
 import egovframework.kapa.domain.Decision_File;
+import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Target;
-
-//import egovframework.kapa.PageDomain;
-
-import egovframework.kapa.domain.Pagination;
 import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
-import egovframework.kapa.implementer.domain.OwnerInfo;
 import egovframework.kapa.implementer.dto.ApplicationDTO;
-import egovframework.kapa.implementer.dto.ApplicationGoodsDTO;
-import egovframework.kapa.implementer.dto.ApplicationLandDTO;
-import egovframework.kapa.implementer.dto.OwnerInfoDTO;
 import egovframework.kapa.implementer.service.ImplementerService;
 import egovframework.kapa.util.StrUtil;
 
@@ -287,7 +273,7 @@ public class ImplementerController {
 	
 	/* 재결의견작성 */
 	@GetMapping("/opinion/write.do")
-	public String opinionDetail(HttpServletRequest request,Model model) {
+	public String opinionDetailWrite(HttpServletRequest request,Model model) {
 	  	boolean opinionCheck = true;
 	  	System.out.println("============================================");
 	  	System.out.println(request.getParameter("decisionId"));
@@ -386,6 +372,113 @@ public class ImplementerController {
         
 		return "implementer/opinion/write";
 	}
+	
+	
+	/* 재결의견작성 완료*/
+	@GetMapping("/opinion/view.do")
+	public String opinionDetail(HttpServletRequest request,Model model) {
+	  	boolean opinionCheck = true;
+	  	System.out.println("============================================");
+	  	System.out.println(request.getParameter("decisionId"));
+	  	System.out.println("============================================");
+
+		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+	    
+		//current page
+		model.addAttribute("currentPage", "opinion");
+		
+	    Decision decison = decisionService.getDecisionView(decisionId);  //첫번째 로직
+        System.out.println(decison);
+        
+        if(decison.getDecisionState()>=5) {
+        	opinionCheck = false;
+        }
+ 
+        model.addAttribute("opinionCheck", opinionCheck);
+        
+        int masterId = decison.getMasterID();
+        model.addAttribute("masterId", masterId);
+        
+		ApplicationList applicationVo = implementerService.getApplicationView(masterId); //두번째 로직
+		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
+        model.addAttribute("avo", applicationDTO);
+		
+        //필지 수
+        int landCount = implementerService.getApplicationLandCount(masterId);
+        model.addAttribute("landCount", landCount);
+        
+        //면적
+        int totalAreaAmot = 0;
+        
+        //종전금액합계
+        int totalCost = 0;
+        String totalHitsStr = "";
+        
+        if(landCount>0) {
+            //값 넣기
+            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+            
+            for(ApplicationLand applicationLand:landList) {
+              int area_amot = applicationLand.getArea_amot();
+              int bef_unit_cost = applicationLand.getBef_unit_cost();
+              
+              totalAreaAmot+=area_amot;
+              
+              totalCost+=bef_unit_cost;
+            }
+            
+        }
+        model.addAttribute("totalAreaAmot", totalAreaAmot);
+        
+        //필지 소유자 수
+        int landRightCount = implementerService.getApplicationLandRightCount(masterId);
+        model.addAttribute("landRightCount", landRightCount);
+ 
+        //지장물 수
+        int objectCount = implementerService.getApplicationObjectCount(masterId);
+        model.addAttribute("objectCount", objectCount);
+        
+        if(objectCount>0) {
+            //값 넣기
+            List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
+            
+            for(ApplicationLand applicationLand:goodsList) {      
+              int bef_unit_cost = applicationLand.getBef_unit_cost();                       
+              totalCost+=bef_unit_cost;
+            }
+            
+        }
+        
+        //지장물 소유자 수
+        int objectRightCount = implementerService.getApplicationObjectRightCount(masterId);
+        model.addAttribute("objectRightCount", objectRightCount);
+        
+        if(totalCost>0) {
+        	totalHitsStr = Integer.toString(totalCost);
+        	totalHitsStr = StrUtil.convertToDecimalFormat(totalHitsStr);
+        }
+        
+        model.addAttribute("totalCost", totalHitsStr);
+        
+        //공통된 소유자 수 검색
+		/*
+		 * List<OwnerInfo> ownerList = implementerService.getOnwerInfoList(masterId);
+		 * List<OwnerInfoDTO> formatterOwnerList =
+		 * implementerService.getOwnerListFormatter(masterId,ownerList);
+		 * 
+		 * model.addAttribute("ownerList", formatterOwnerList);
+		 */
+        
+        
+       List<Decision_Opinion> decisionOpinionList =  decisionService.getDecisionOpinionList(decisionId);
+       model.addAttribute("decisionOpinionList", decisionOpinionList); 
+      
+        
+		return "implementer/opinion/view";
+	}
+	
 
 	
 }

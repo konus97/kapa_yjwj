@@ -276,6 +276,49 @@ function getLandownerCheck() {
 
 }
 
+function getLandownerCheck2(getItem) {
+
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/land";
+
+	$("#ownerLandItemList"+getItem).empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				
+				let rank = 1;
+				
+				for( let i = 0; i < list.length; i++) {
+					makeLandOwnerCheckBlock2(rank,list[i], getItem);
+					rank++;
+				}
+			}
+
+			$('#ownerLandItemList16').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+}
+
 function getGoodsInfo() {
 
 	let contextPath = $("#contextPath").val();
@@ -320,6 +363,50 @@ function getGoodsInfo() {
 }
 
 
+
+function getGoodsowner2(getItem) {
+
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	
+	let url = contextPath+"/api/implementer/info/goods";
+
+	$("#ownerGoodsItemList"+getItem).empty();
+
+	$.ajax({
+		url : url,
+		type : "GET",
+		dataType : "json",
+		async: false,
+		data : {
+			"masterId":masterId,
+		},
+		success : function(data) {
+
+			let list = data.list;
+			
+			if (list.length != 0) {
+				
+				let rank = 1;
+				
+				for( let i = 0; i < list.length; i++) {
+					makeGoodsownerBlock2(rank,list[i], getItem);
+					rank++;
+				}
+			}
+
+			//$('#popupGoodsowner').addClass("on");
+			
+		},
+		error : function(xhr, status, error) {
+
+			//에러!
+			//alert("code:"+xhr.status);
+		}
+	});
+
+
+}
 
 function getGoodsowner() {
 
