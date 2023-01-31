@@ -63,13 +63,12 @@ function getUserList(cpage) {
 	});
 }
 
-function deleteUser(userId) {
+function deleteUser(seqNo) {
 	let csrfToken = $("meta[name='_csrf']").attr("content");
     let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath + "/api/admin/delete.do";
-	console.log(userId);
 	
 	if (confirm("삭제 하시겠습니까 ?")) {
 	

@@ -98,7 +98,7 @@
 									</div>
 									<div class="ff_wrap">
 										<input type="password" name="fakepasswordremembered" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
-										<input type="password" id="aua_password" name="password" class="input t1" value="" required placeholder="패스워드를 입력하세요.">
+										<input type="password" id="aua_password" name="password" class="input t1" required placeholder="패스워드를 입력하세요.">
 									</div>
 								</div>
 							</div>
@@ -278,11 +278,11 @@
 		$('#admin_user_add').on('submit', function(e){
 			let contextPath = $("#contextPath").val();
 			let url = contextPath + "/api/admin/add.do";
-			var type = document.getElementById("cbs_select").selectedIndex;
+			var userType = document.getElementById("cbs_select").selectedIndex;
 			console.log(url);
 			e.preventDefault();
 			const data = {
-				"searchType" : type,
+				"userType" : userType,
 				"id": $("input[name=userId]")[0].value,
 				"pwd": $("input[name=password]")[0].value,
 				"name": $("input[name=userName]")[0].value,
@@ -313,6 +313,7 @@
 	        	},
 				success: function(data) {
 					alert("회원가입이 완료되었습니다.");
+					location.href=contextPath+"/admin/user.do";
 				},
 				error: function(xhr, status, error) {
 					
