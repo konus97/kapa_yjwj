@@ -8,7 +8,7 @@ public class TB_Appraiser extends Pagination { // 감정평가사
 
     private Long userSeqNo;
     
-    private String email;
+    //private String email;
     
     private String company; //평가법인
     

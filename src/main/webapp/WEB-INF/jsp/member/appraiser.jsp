@@ -96,6 +96,30 @@
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
+                                    <span class="required">연락처</span>
+                                </div>
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="연락처를 입력하세요."
+                                    name="mobile"
+                                    required
+                                />
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
+                                    <span class="required">소속</span>
+                                </div>
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="소속을 입력하세요."
+                                    name="dept"
+                                    required
+                                />
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
                                     <span class="required">이메일</span>
                                 </div>
                                 <div class="input-right">
@@ -827,6 +851,8 @@
 		     			"company" : $("input[name=company]")[0].value,
 		     			"responsibilityName" : $("input[name=responsibilityName]")[0].value,
 		     			"phoneNumber" : $("input[name=phoneNumber]")[0].value,
+			     		"mobile" : $("input[name=mobile]")[0].value,
+			     		"dept" : $("input[name=dept]")[0].value,
 		    		}
 		        	
 		        	            		

@@ -79,12 +79,12 @@
 												<label for="au_name">이름</label>
 											</div>
 											<div class="ff_wrap">
-												<span class="ff_group ff_group--name"> <input type="text"
-													id="au_name" name="userName" class="input t1" placeholder="이름을 입력하세요."
-													value="${adminVO.userName}" required />
+												<span class="ff_group ff_group--name"> 
+													<input type="text" id="au_name" name="userName" class="input t1" placeholder="이름을 입력하세요."
+													 required />
 												</span> <span class="ff_group">
 													<button type="button" id="au_submit" name="au_submit"
-														class="btn t2 small ico search" onclick="getSearchUserList()">검색</button>
+														class="btn t2 small ico search" onclick="getUserList(1)">검색</button>
 												</span>
 											</div>
 										</div>
@@ -95,8 +95,7 @@
 												<label for="au_org">소속</label>
 											</div>
 											<div class="ff_wrap">
-												<input type="text" id="au_org" name="dept" class="input t1" placeholder="소속을 입력하세요."
-													value="${adminVO.dept}" />
+												<input type="text" id="au_dept" name="dept" class="input t1" placeholder="소속을 입력하세요."/>
 											</div>
 										</div>
 										<div class="f_field div3">
@@ -104,8 +103,7 @@
 												<label for="au_email">이메일</label>
 											</div>
 											<div class="ff_wrap">
-												<input type="text" id="au_email" name="userEmail" class="input t1" placeholder="이메일을 입력하세요."
-													value="${adminVO.userEmail}" />
+												<input type="text" id="au_email" name="userEmail" class="input t1" placeholder="이메일을 입력하세요."/>
 											</div>
 										</div>
 										<div class="f_field div3">
@@ -113,8 +111,9 @@
 												<label for="au_level">권한구분</label>
 											</div>
 											<div class="ff_wrap">
-												<select name="groupCode" id="au_level" class="select t1"
-													required>
+												<select name="groupCode" id="au_level" class="select t1" required>
+													<option value=1>관리자</option>
+													<option value=2>회원</option>
 													<c:forEach var="result" items="${authList}"
 														varStatus="status">
 														<option value="${result.groupCode }"
@@ -155,43 +154,6 @@
 								</thead>
 								<tbody id="userList">
 									
-								
-								
-								
-								
-								
-								
-									
-								
-								
-									<!-- loop S -->
-									
-									<%-- 
-									<c:set var="i" value="${(adminVO.pageIndex - 1) * 10}" />
-									<c:forEach var="result" items="${resultList}"
-										varStatus="status">
-										<c:set var="i" value="${i+1}" />
-										<tr id="userList2">
-											<th><strong>${i}</strong></th>
-											<td><strong>아이디</strong> <span>${result.userId }</span>
-											</td>
-											<td><strong>이름</strong> <span>${result.userName }</span>
-											</td>
-											<td class="left"><strong>소속</strong> <span>${result.dept }</span>
-											</td>
-											<td><strong>이메일</strong> <span>${result.userEmail }</span>
-											</td>
-											<td><strong>연락처</strong> <span>${result.mobile }</span>
-											</td>
-											<td><strong>권한</strong> <span>${result.groupName }</span>
-											</td>
-											<td><strong>옵션</strong> <span><a
-													href="<c:url value='/admin/user_add.do'/>?mode=mod&userId=${result.userId}"
-													class="btn tiny">수정</a>
-													<button type="button" class="btn tiny t1"
-														onclick="deluser('${result.userId}')">삭제</button></span></td>
-										</tr>
-									</c:forEach> --%>
 								</tbody>
 							</table>
 						</div>
@@ -229,6 +191,8 @@
 		$(document).ready(function () {
 			getUserList(1);
 		});
+		
+		
 
     </script>
 </body>

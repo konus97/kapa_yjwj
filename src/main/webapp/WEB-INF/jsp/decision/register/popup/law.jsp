@@ -68,7 +68,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		getLawTitle();
+		//getLawTitle();
 	});
 	
 	$("#lawTitleList").change(function(){

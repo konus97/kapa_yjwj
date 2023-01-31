@@ -6,25 +6,25 @@
 
 
     <insert id="InsertAppraiser" parameterType="egovframework.kapa.member.domain.TB_Appraiser">
-    	insert into TB_Appraiser(userSeqNo, email, company, responsibilityName, phoneNumber)
-    	values(#{userSeqNo}, #{email}, #{company}, #{responsibilityName}, #{phoneNumber})
+    	insert into TB_Appraiser(userSeqNo, company, responsibilityName, phoneNumber)
+    	values(#{userSeqNo}, #{company}, #{responsibilityName}, #{phoneNumber})
     </insert>
     
     
      <insert id="InsertImplementer" parameterType="egovframework.kapa.member.domain.TB_Implementer">
-    	insert into TB_Implementer(userSeqNo, email, docNumber, implementerResponsibilityName, implementerNumber)
-    	values(#{userSeqNo}, #{email}, #{docNumber}, #{implementerResponsibilityName}, #{implementerNumber})
+    	insert into TB_Implementer(userSeqNo, docNumber, implementerResponsibilityName, implementerNumber)
+    	values(#{userSeqNo}, #{docNumber}, #{implementerResponsibilityName}, #{implementerNumber})
     </insert>
     
     
     <insert id="InsertCities" parameterType="egovframework.kapa.member.domain.TB_Cities">
-    	insert into TB_Cities(userSeqNo, email, department, representativeName, phoneNumber, code)
-    	values(#{userSeqNo}, #{email}, #{department}, #{representativeName}, #{phoneNumber}, #{code})
+    	insert into TB_Cities(userSeqNo, department, representativeName, phoneNumber, code)
+    	values(#{userSeqNo}, #{department}, #{representativeName}, #{phoneNumber}, #{code})
     </insert>
     
 	<insert id="InsertUser" parameterType="egovframework.kapa.domain.User" useGeneratedKeys="true" keyProperty="seqNo">
-    	insert into TB_User(userType, userId, userPassword, userName, userAuthority, delCheck, regdate, userEnabled, dept)
-    	values(#{userType}, #{userId}, #{userPassword}, #{userName}, #{userAuthority}, #{delCheck}, #{regdate}, #{userEnabled}, #{dept})
+    	insert into TB_User(userType, userId, userPassword, userName, userAuthority, delCheck, regdate, userEnabled, dept, email, mobile)
+    	values(#{userType}, #{userId}, #{userPassword}, #{userName}, #{userAuthority}, #{delCheck}, #{regdate}, #{userEnabled}, #{dept}, #{email}, #{mobile})
     </insert>
     
 	<select id="getUserSeqNo" parameterType="egovframework.kapa.domain.User" resultType="long">

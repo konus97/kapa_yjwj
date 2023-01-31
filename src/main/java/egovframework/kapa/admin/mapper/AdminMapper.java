@@ -18,8 +18,9 @@ package egovframework.kapa.admin.mapper;
 import java.util.List;
 
 import egovframework.kapa.admin.domain.AdminVO;
-import egovframework.kapa.domain.Search;
 import egovframework.kapa.domain.User;
+import egovframework.kapa.member.domain.TB_Appraiser;
+import egovframework.kapa.member.domain.TB_Implementer;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
 //@egovframework.kapa.MsSQLRepository
@@ -29,14 +30,21 @@ public interface AdminMapper {
 	void save();
 	
 	void update();
-
-	void delete();
 		
 	//회원 list 보기
-	List<AdminVO> getMemberList(Search search);
+	List<AdminVO> getMemberList(AdminVO admin);
 
-	int getAllUserCnt();
+	int getUserCnt(AdminVO admin);
+	
+	void deleteUser(AdminVO admin);
 
-	int getSearchUserCnt(Search search);
+	AdminVO getUserBySeqNo(int seqNo);
+	int getUserTypeBySeqNo(int seqNo);
+	AdminVO getImplementerBySeqNo(int seqNo);
+	AdminVO getAppraiserBySeqNo(int seqNo);
+	
+	void UpdateUser (User user);
+	void UpdateImplementer (TB_Implementer implementer);
+	void UpdateAppraiser (TB_Appraiser appraiser);
 
 }

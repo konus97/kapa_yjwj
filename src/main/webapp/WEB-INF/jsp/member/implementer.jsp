@@ -112,6 +112,30 @@
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
+                                    <span class="required">연락처</span>
+                                </div>
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="연락처를 입력하세요."
+                                    name="mobile"
+                                    required
+                                />
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
+                                    <span class="required">소속</span>
+                                </div>
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="소속을 입력하세요."
+                                    name="dept"
+                                    required
+                                />
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
                                     <span>시행문서번호</span>
                                 </div>
                                 <input type="text" class="input-right input40" name="docNumber" />
@@ -127,18 +151,6 @@
                                     required
                                     class="input-right"
                                     name="implementerResponsibilityName"
-                                />
-                            </div>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">시행사 소속</span>
-                                </div>
-                                <input
-                                    type="text"
-                                    class="input-right input40"
-                                    placeholder="소속을 입력하세요"
-                                    required
-                                    name="implementerDept"
                                 />
                             </div>
                             <div class="input-wrap">
@@ -844,7 +856,8 @@
 		     		"name" : $("input[name=implementerResponsibilityName]")[0].value,
 		     		"implementerResponsibilityName" : $("input[name=implementerResponsibilityName]")[0].value,
 		     		"implementerNumber" : $("input[name=implementerNumber]")[0].value,
-		     		"dept" : $("input[name=implementerDept]")[0].value,
+		     		"mobile" : $("input[name=mobile]")[0].value,
+		     		"dept" : $("input[name=dept]")[0].value,
 		    	}
 		        	
         		$.ajax({

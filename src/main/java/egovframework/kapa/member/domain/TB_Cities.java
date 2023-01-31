@@ -8,7 +8,7 @@ public class TB_Cities extends Pagination { // 시군구
 
     private Long userSeqNo;
     
-    private String email; // 이메일
+    //private String email; // 이메일
     
     private String department; // 부서
     

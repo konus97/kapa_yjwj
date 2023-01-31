@@ -8,7 +8,7 @@ public class TB_Implementer extends Pagination { // 사업시행자
 
     private Long userSeqNo;
     
-    private String email; // 이메일
+    //private String email; // 이메일
     
     private String docNumber; // 시행문서번호
     
