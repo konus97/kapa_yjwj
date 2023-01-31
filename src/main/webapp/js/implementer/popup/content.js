@@ -509,11 +509,13 @@ function submitLandOwnr(){
 	getLandownerInfoSunmit(chkValueArr);
 	
 }
-
 function submitLandOwnr2(rank,info){
+	
+
 	
 	var getItem = document.getElementById('selectedItemTit').innerText;
 		getItem = getItem.split('.')[0].split(': ')[1];		
+
 	addLandOpinion(rank,info,getItem);
 	closePopup('landsownercheck');
 }

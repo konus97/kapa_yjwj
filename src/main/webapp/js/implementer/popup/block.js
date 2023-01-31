@@ -170,7 +170,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
 }
 
 function makeLandOwnerCheckBlock(startNumber,info) {
-
+	
 	console.log(info);
 	
 	let addList = new Array();

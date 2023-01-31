@@ -53,9 +53,25 @@ function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
     resetSeq(getSeq);
   
 }
-
+const landCheckArr = new Array();
 function addLandOpinion(rank,info,getItem){
-   
+	
+
+	if(landCheckArr.length != 0){
+		for(let i=0; i<landCheckArr.length; i++){
+			if(JSON.stringify(landCheckArr[i]) === JSON.stringify(info)){
+//				alert(info.ownrNnm+'님의 ' +info.reptAddr+'(은)는 이미 선택된 항목입니다');
+				alert('이미 선택된 항목은 추가 대상에서 제외됩니다');
+
+				return false;
+			}else{
+				
+			}
+		}
+	}
+		landCheckArr.push(info);
+
+
 
 	
 	let getSeq = info.reptSeq;
@@ -194,8 +210,21 @@ function addLandOpinion(rank,info,getItem){
   
 }
 
+   const goodsCheckArr = new Array();
 function addGoodsOpinion(rank,info,getItem){
-   
+
+	if(goodsCheckArr.length != 0){
+		for(let i=0; i<goodsCheckArr.length; i++){
+			if(JSON.stringify(goodsCheckArr[i]) === JSON.stringify(info)){
+				//alert(info.ownrNnm+'님의 '+info.reptAddr +'의 '+info.obstKindNm+'(은)는 이미 선택된 항목입니다');
+				alert('이미 선택된 항목은 추가 대상에서 제외됩니다');
+				return false;
+			}else{
+				
+			}
+		}
+	}
+		goodsCheckArr.push(info);
 
 	
 	let getSeq = info.reptSeq;
