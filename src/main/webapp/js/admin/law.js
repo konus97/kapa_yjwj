@@ -232,3 +232,93 @@ function makeLawPageList() {
 		getLawList(selectedPage);
 	});
 }
+
+
+function deleteLaw(seqNo) {
+	let csrfToken = $("meta[name='_csrf']").attr("content");
+    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + "/api/law/deleteLaw.do";
+	
+	if (confirm("법령을 삭제 하시겠습니까?")){
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType: "json",
+			async: false,
+			data: {
+				"seq_no": seqNo,
+			},
+	        beforeSend : function(xhr){
+	        	xhr.setRequestHeader(csrfHeader, csrfToken);
+	        },
+			success: function(data) {
+				alert("삭제가 완료되었습니다.");
+				var page = contextPath + "/admin/law.do"
+				location.href = page;
+			},
+			error: function(xhr, status, error) {
+		
+			}
+		});
+	}
+}
+
+function editLaw(seqNo) {
+	let csrfToken = $("meta[name='_csrf']").attr("content");
+    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + "/api/law/editLaw.do";
+
+	const data = {
+		"title"     : $("input[name=title]")[0].value,
+		"article"   : $("input[name=article]")[0].value,
+		"paragraph" : $("input[name=paragraph]")[0].value,
+		"content"   : $("textarea[name=content]")[0].value,
+	}
+	
+	if (data.title == null || data.title == "") {
+		alert("법령을 입력해주세요");
+		$('#title').focus();
+		return false;
+	}
+
+	if (data.article == null || data.article == "") {
+		alert("조를 입력해주세요");
+		return false;
+	}
+	
+	if (data.paragraph == null || data.paragraph == "") {
+		alert("항를 입력해주세요");
+		return false;
+	}
+	
+	if (data.content == null || data.content == "") {
+		alert("내용을 입력해주세요");
+		return false;
+	}
+	
+	if (confirm("법령을 수정 하시겠습니까?")){
+		$.ajax({
+			url: url,
+			type: "POST",
+		    contentType : "application/json; charset=UTF-8",
+			async: false,
+			data : JSON.stringify(data),
+	        beforeSend : function(xhr){
+	        	xhr.setRequestHeader(csrfHeader, csrfToken);
+	        },
+			success: function(data) {
+				alert("수정이 완료되었습니다.");
+				var page = contextPath + "/admin/law.do"
+				//location.href = history.back();
+				location.href = page;
+			},
+			error: function(xhr, status, error) {
+		
+			}
+		});
+	}
+}

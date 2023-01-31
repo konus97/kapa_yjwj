@@ -28,8 +28,8 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 public interface LawMapper {
 
 	void save();
-	void update();
-	void delete();
+	void updateLaw(LawVO law);
+	void deleteLaw(int seq_no);
 	
 	int  getLawCnt (LawVO law);
 	List<LawVO> getLawList(LawVO law);

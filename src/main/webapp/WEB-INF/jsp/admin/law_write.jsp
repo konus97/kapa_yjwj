@@ -90,19 +90,19 @@
 	                                <c:when test="${currentPage eq 'viewLaw' }">
 		                                <td>
 		                                    <strong>법령</strong>
-		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}" readonly></span>
+		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}"></span>
 		                                </td>
 		                                <td>
 		                                    <strong>조</strong>
-		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}" readonly></span>
+		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}"></span>
 		                                </td>
 		                                <td>
 		                                    <strong>항</strong>
-		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" readonly></span>
+		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}"></span>
 		                                </td>
 		                                <td>
 		                                    <!-- <strong>내용</strong> -->
-		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content" readonly>${law.content}</textarea></span>
+		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content">${law.content}</textarea></span>
 		                                </td>
 	                                </c:when>
 	                                <c:otherwise>
@@ -143,11 +143,17 @@
 	                            		</button>
 	                            	</li>
 	                            </c:if>
-	                            <c:if test="${currentPage eq 'law'}">
+	                            <c:if test="${currentPage eq 'viewLaw'}">
 	                                <li class="fr">
-	                                	<button type="button" class="btn t2" onclick="deleteLaw('${law.id}')">
+	                                	<button type="button" class="btn t2" onclick="deleteLaw('${law.seq_no}')">
 	                                		<i class="close icon white mr5"></i>
 	                                		삭제
+	                                	</button>
+	                                </li>
+	                                <li class="fr">
+	                                	<button type="button" class="btn t2" onclick="editLaw('${law.seq_no}')">
+	                                		<i class="close icon white mr5"></i>
+	                                		수정
 	                                	</button>
 	                                </li>
 	                            </c:if>

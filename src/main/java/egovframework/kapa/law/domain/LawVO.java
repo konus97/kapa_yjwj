@@ -20,4 +20,6 @@ public class LawVO extends Pagination { // 관련 법령
 
 	private LocalDateTime regdate;	// 등록일
 	
+	private LocalDateTime uptdate;	// 수정일
+	
 }
