@@ -506,31 +506,33 @@
 							<h4 class="fl title t1 bold cb s1 bullet">관련 법령</h4>
 						</div>
 						<div class="form">
-							<a href="#" class="cx"
-								onclick="openPopupLaw();return false;">법령 찾아보기  <i
-								class="icon search"></i>
-							</a>
 
-							<div id="contents" class="c_sub">
-								<div class="c_table t1">
-									<table>
-										<caption>법령</caption>
+							<%-- 관련법령 검색 시작 --%>
+							<div class="lawsearch_wr">
+								<div id="lawSearchWrCon" class="lawsearch_wr__con">
+									<table class="lawsearch_wr__table">
+										<caption>관련 법령 검색 결과</caption>
 										<thead>
 											<tr>
-												<th>법령</th>
-												<th>조</th>
-												<th>항</th>
+												<th style="width: 14em">법령</th>
+												<th style="width: 4em">조</th>
+												<th style="width: 4em">항</th>
 												<th>내용</th>
-												<th>삭제</th>
+												<th style="width: 4em">삭제</th>
 											</tr>
 										</thead>
 										<tbody id="selectLawList">
-		
+
 										</tbody>
 									</table>
 								</div>
+								<a href="#" class="lawsearch_wr__btn lawsearch_wr__btn--search"
+									onclick="openPopupLaw();return false;" title="법령 검색창 열기">
+									관련 법령 찾아보기
+									<i class="icon search"></i>
+								</a>
 							</div>
-							<!--  -->
+							<%-- 관련법령 검색 끝 --%>
 						
 							<div class="f_wrap">
 								<textarea id="relatedLaws" class="textarea mt20"></textarea>
