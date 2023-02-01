@@ -1395,6 +1395,9 @@ div.table table td:last-child {
 .btn.ico.download:before {
     background-position: left 0px;
 }
+.btn.ico.download.white:before {
+    background-position: right 0px;
+}
 .btn.ico.download:hover:before,
 .btn.t1.ico.download:before,
 .btn.t2.ico.download:before {

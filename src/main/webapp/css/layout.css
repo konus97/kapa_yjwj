@@ -3299,6 +3299,9 @@
 	display: inline-block;
 	font-weight: 700;
 }
+.lawsearch_wr__btn:hover {
+    background-color: #f4f4f4;
+}
 .lawsearch_wr__btn--search {
     border: 1px solid #cfd5da;
     color: #005dab;	
@@ -3311,7 +3314,4 @@
 	background-image: url(../images/common/icon_del.svg);
 	background-repeat: no-repeat;
 	background-position: center;
-}
-.lawsearch_wr__btn--del:hover {
-    background-color: #f4f4f4;
 }

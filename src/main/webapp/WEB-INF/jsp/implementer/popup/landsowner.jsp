@@ -27,7 +27,7 @@
                          </div>
                      </div> -->
                      
-				 	 <button type="button" onclick="downloadExcelLandsOwners(); return false;">필지소유자 엑셀 다운로드</button>
+				 	 <button type="button" class="btn t4 ico download white fr mb15" onclick="downloadExcelLandsOwners(); return false;">필지소유자 엑셀 다운로드</button>
                      <div class="c_table t1">
                          <table>
                              <caption>
