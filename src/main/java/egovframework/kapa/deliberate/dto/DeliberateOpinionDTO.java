@@ -44,5 +44,7 @@ public class DeliberateOpinionDTO {
     
     private boolean itemCheck;
     
+    private Decision decision;
+    
     private List<DeliberateOpinionItemDTO> deliberateOpinionItemDTOS;
 }

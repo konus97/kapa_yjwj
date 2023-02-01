@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.kapa.decision.Const.ItemData;
 import egovframework.kapa.decision.service.DecisionService;
+import egovframework.kapa.deliberate.dto.DeliberateOpinionDTO;
 import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
@@ -307,17 +308,15 @@ public class DecisionController {
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
         
-		/*
-		 * DeliberateViewDTO formatter =
-		 * deliberateService.getDeliberateViewInfoFormatter(decisionId);
-		 * System.out.println("TESTSETSETSETET ::::::::" + formatter);
-		 * model.addAttribute("formatter",formatter);
-		 */
+       // List<DeliberateOpinionDTO> formatterList = implementerService.getRegisterStepViewFormatter(decisionId); 
         //소유자 및 사업시행자 의견
+       // model.addAttribute("formatterList", formatterList);
 		List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
 		List<Decision_Opinion> typeList = decisionService.getOpinionTypeList(decisionId);
+		model.addAttribute("typeList", typeList);
+		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
 		
-		
+    	model.addAttribute("formatter", formatter);
 		if(decisionId!=0L) {
 	      	
         	try {
@@ -356,7 +355,7 @@ public class DecisionController {
       		    String amountAstr = dc.format(amountA);
       		    String amountBstr = dc.format(amountB);
       		    String amountCstr = dc.format(amountC);
-      		  String landCntStr = dc.format(landCnt);
+      		    String landCntStr = dc.format(landCnt);
     		    String landAreaStr = dc.format(landArea);
         		String landPriceStr = dc.format(landPrice);
         		String objCntStr = dc.format(objCnt);
@@ -368,13 +367,13 @@ public class DecisionController {
       		    model.addAttribute("amountA", amountAstr);
       		    model.addAttribute("amountB", amountBstr);
       		    model.addAttribute("amountC", amountCstr);
-      		  model.addAttribute("landCnt", landCntStr);
-      		model.addAttribute("landArea", landAreaStr);
-      		model.addAttribute("landPrice", landPriceStr);
-      		model.addAttribute("objCnt", objCntStr);
-      		model.addAttribute("objPrice", objPriceStr);
-      		model.addAttribute("goodwillCnt", goodwillCntStr);
-      		model.addAttribute("goodwillPrice", goodwillPriceStr);
+      		    model.addAttribute("landCnt", landCntStr);
+	      		model.addAttribute("landArea", landAreaStr);
+	      		model.addAttribute("landPrice", landPriceStr);
+	      		model.addAttribute("objCnt", objCntStr);
+	      		model.addAttribute("objPrice", objPriceStr);
+	      		model.addAttribute("goodwillCnt", goodwillCntStr);
+	      		model.addAttribute("goodwillPrice", goodwillPriceStr);
       		    
       		    System.out.println(amountAstr);
       		    System.out.println(amountBstr);
@@ -408,17 +407,8 @@ public class DecisionController {
     		}
 		 //공고 상태
       	 int getType = insertNew.getOpinionType();
-			/*
-			 * String ownerOpinion = insertNew.getOwnerOpinion(); String executorOpinion =
-			 * insertNew.getExecutorOpinion(); String ownrNm = insertNew.getOwnrNm();
-			 */
-	      //	Long reptSeq =  insertNew.getReptSeq(); 
-	      //	Long reptOwnrSeq = insertNew.getReptOwnrSeq();
      	 
       	 String getTypeStr = "";
-		// List<Decision_Opinion_Item> opinionFileList = decisionService.getOpinionFileList(decisionId, getType, reptSeq, reptOwnrSeq);
-		// System.out.println("test 111" + opinionFileList);
-		// model.addAttribute("opinionFileList", opinionFileList);
 		 for(int i=0 ; i<ItemData.values().length ; i++) {
 			 
 	   		 int code = ItemData.values()[i].getCode();
@@ -432,7 +422,6 @@ public class DecisionController {
 		 
 		model.addAttribute("getType",getType);
 		model.addAttribute("getTypeStr",getTypeStr);
-		//model.addAttribute("seqNo",insertNew.getSeqNo());
 		
 		
 		}

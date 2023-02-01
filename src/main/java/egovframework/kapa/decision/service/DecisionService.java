@@ -475,6 +475,11 @@ public class DecisionService {
 	public List<Decision_Opinion> getOpinionList(Long decisionId) {
 		return decisionMapper.getOpinionList(decisionId);
 	}
+	
+	public List<Decision_Opinion> getRegisterStepList(Long decisionId) {
+		return decisionMapper.getRegisterStepList(decisionId);
+	}
+
 
 	public List<Decision_Opinion> getOpinionTypeList(Long decisionId) {
 		return decisionMapper.getOpinionTypeList(decisionId);
@@ -531,9 +536,9 @@ public class DecisionService {
 		try {
 			JSONObject jsonObject = (JSONObject)parser.parse(param);
 			
-			long seqNo = Long.parseLong(jsonObject.get("seqNo").toString());
+			//long seqNo = Long.parseLong(jsonObject.get("seqNo").toString());
 			long decisionId = Long.parseLong(jsonObject.get("decisionId").toString());
-			
+			long type = Long.parseLong(jsonObject.get("type").toString());
 			
 			String content = jsonObject.get("content").toString();
 			String relatedLaws = jsonObject.get("relatedLaws").toString();
@@ -551,8 +556,7 @@ public class DecisionService {
 			 * decisionLawMapper.updateStep2(decisionLaw); }
 			 */
 			
-			decisionMapper.updateStep2(content,relatedLaws, relatedLaws2, reviewOpinion,seqNo);
-		
+			decisionMapper.updateStep2(content,relatedLaws2, reviewOpinion, decisionId, type);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

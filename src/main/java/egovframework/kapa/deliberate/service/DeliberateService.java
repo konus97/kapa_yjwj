@@ -189,7 +189,7 @@ public class DeliberateService {
 
 		return deliberateDTOS;
 	}
-
+//////////////////////////////////////////
 	public List<DeliberateViewDTO> getDeliberateViewFormatter(List<Decision_AgendaDate> pagingResult) {
 
 		List<DeliberateViewDTO> deliberateViewDTOS = new ArrayList<>();
@@ -337,7 +337,7 @@ public class DeliberateService {
 		List<Decision_ConsultationDate> consultationDates = decisionService.getConsultationDate(decisionId);
 
 		// DeliberateOpinion
-		List<Decision_Opinion> opinionList = decisionService.getPdfOpinionList(decisionId);
+		List<Decision_Opinion> opinionList = decisionService.getStepOpinionList(decisionId);
 		List<DeliberateOpinionDTO> deliberateOpinionDTOS = new ArrayList<>();
 
 		for (Decision_Opinion opinion : opinionList) {
@@ -427,7 +427,7 @@ public class DeliberateService {
 				.consultationDates(consultationDates)
 				.decision(decision)
 				.deliberateOpinionDTOS(deliberateOpinionDTOS).build();
-		
+		System.out.println("끼에에에엥:::::::::" + deliberateOpinionDTOS);
 		return deliberateViewDTO;
 	}
 

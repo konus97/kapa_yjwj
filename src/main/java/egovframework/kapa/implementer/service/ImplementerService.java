@@ -20,9 +20,14 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import egovframework.kapa.decision.Const.ItemData;
 import egovframework.kapa.decision.dto.AnnouncementDTO;
 import egovframework.kapa.decision.dto.DecisionStateDTO;
+import egovframework.kapa.decision.mapper.DecisionMapper;
 import egovframework.kapa.decision.service.DecisionService;
+import egovframework.kapa.deliberate.dto.DeliberateOpinionDTO;
+import egovframework.kapa.deliberate.dto.DeliberateOpinionItemDTO;
+import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.mapper.DeliberateMapper;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_Cityplan;
@@ -71,6 +76,9 @@ public class ImplementerService {
 	@Autowired
 	DeliberateMapper deliberateMapper;
 
+	@Autowired
+	DecisionMapper decisionMapper;
+	
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	public int getImplementerCnt(Search search) throws Exception {
@@ -152,7 +160,7 @@ public class ImplementerService {
         return applicationDTOS;
 
     }
-    
+   
     public ApplicationDTO makeImplementerViewFormatter(ApplicationList application) {
         
     	Long decisionId = 0L;
