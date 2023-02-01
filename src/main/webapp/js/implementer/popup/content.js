@@ -655,7 +655,7 @@ function checkResultWrTbody(){
 		if(resultWrTable1.lastElementChild.innerHTML == 0 && resultWrTable2.lastElementChild.innerHTML == 0){
 			target.style.display = "none"
 		} else {
-			target.style.display = "flex"
+			target.style.display = "block"
 		}
 	
 	})

@@ -3157,9 +3157,9 @@
 /* 소유자 의견 및 사업시행자 의견작성 */
 .item_result_wr {
 	display: none;
-    flex-flow: column nowrap;
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	margin-top: 40px;
+	text-align: left;
 }
 .item_result_wr__tit,
 .item_result_wr__con {
@@ -3187,6 +3187,7 @@
 	border-top-left-radius: 0;
 	padding: 20px 16px;
 	width:100%;
+	text-align: center;
 }
 .item_result_wr__table {
 	width:100%;
