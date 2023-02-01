@@ -583,6 +583,8 @@ function checkItem2(){
 
 	selectedItemTxt.innerHTML = '선택된 항목 : '+ selectedItemNum +'.'+ selectedItemTit
 	closePopup('checkbox2');
+	landCheckArr.length = 0;
+	goodsCheckArr.length = 0;
 }
 
 function submitLandOwnr(){
