@@ -505,7 +505,22 @@ notice='';
             			},
             			success : function(data) {
 							let opinionList = data.opinionList;
+							let fileList = data.file;
+							console.log(fileList.length);
+							let pdfArr = new Array();
+							let imgArr = new Array();
+							for(let i=0; i<fileList.length; i++){
+								let  ext = fileList[i].fileNameExtension;
+								console.log(ext);
+								if(ext.toLowerCase() == 'pdf'){
+									pdfArr.push(fileList[i]);
+								}else{
+									imgArr.push(fileList[i]);
+								}
+							}
 							console.log(opinionList);
+							console.log(pdfArr);
+							console.log(imgArr);
 							let opinionTitle = opinionList[0].opinionTitle;
 							let opinionContent = opinionList[0].opinionContent;
 							
@@ -525,20 +540,26 @@ notice='';
 						    addList.push("    </tr>");   
 							
 							/*첨부 파일 (이미지)*/
+							if(imgArr.length != 0){
 							addList.push("   <tr>");   
 						    addList.push("       <th class=\"info_reg_th\">이미지</th>");   
-						    addList.push("       <td>ㅇㅇㅇ</td>");   
+						    addList.push("       <td>");  
+							addList.push("  	<img src=\" "+imgArr[0].fileFolder+imgArr[0].fileNameChange+"\" alt=\"\">");   
+ 							addList.push("       </td>");  
+
 						    addList.push("   </tr>");   
-		
+							}
 							/*PDF 다운로드 */
+							if(pdfArr.length != 0){
 							addList.push("   <tr>");   
 						    addList.push("       <th class=\"info_reg_th\">PDF 다운로드</th>");        
 						    addList.push("      <td>");   
-							addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfUpload('"+decisionId+"');return false;\">");
+							addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfDownload('"+pdfArr[0].seqNo+"');return false;\">");
 							addList.push("             <i class=\"download white icon\"></i> PDF 다운로드");
 							addList.push("           </button>");
 						    addList.push("      </td>");   
-							addList.push("    </tr>");   
+							addList.push("    </tr>");   								
+							}
 
 		
 							
@@ -1313,6 +1334,12 @@ location.href = url;
 alert("첨부된 한글파일이 없습니다.");
 }
 
+}
+
+function pdfDownload(fileSeq){
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + '/file/download';
+	window.location = url + "?seqNo=" + fileSeq;
 }
 
 

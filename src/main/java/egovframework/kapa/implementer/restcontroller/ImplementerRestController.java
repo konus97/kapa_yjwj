@@ -13,7 +13,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +27,9 @@ import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Search;
+import egovframework.kapa.file.domain.FileVO;
+import egovframework.kapa.file.domain.OpinionFileVO;
+import egovframework.kapa.file.service.FileService;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.dto.ApplicationDTO;
@@ -45,6 +47,10 @@ public class ImplementerRestController {
 	
 	@Autowired
 	DecisionService	decisionService;
+	
+
+	@Autowired
+	FileService fileService;
 	
 	/*
 	 * application List
@@ -314,8 +320,21 @@ public class ImplementerRestController {
 			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList2(decision_Opinion_Item));
 			
 			//첨부파일 (이미지)
-			resultFinal.put("opinionFileList", decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item));
-			System.out.println(decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item));
+			List<OpinionFileVO> opinionFileList = decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item);
+			//resultFinal.put("opinionFileList", opinionFileList);
+			
+			List<FileVO> fileList = new ArrayList<FileVO>();
+			for(int i=0; i<opinionFileList.size(); i++) {
+				int opinionFileSeq = opinionFileList.get(i).getFileSeq();
+				FileVO file = 	fileService.getFileInfo(Long.parseLong(String.valueOf(opinionFileSeq)));		
+				
+				fileList.add(file);
+
+				System.out.println("===================================================");
+				System.out.println(fileList);
+				System.out.println("===================================================");
+			}
+			resultFinal.put("file", fileList);
 
 			
 			  return resultFinal;
