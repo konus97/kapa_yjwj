@@ -12,4 +12,6 @@ public class DecisionLawVO extends Pagination { // 관련 법령
 	
 	private long Decision_id; // 
 	
+	private int opinionType;
+	
 }

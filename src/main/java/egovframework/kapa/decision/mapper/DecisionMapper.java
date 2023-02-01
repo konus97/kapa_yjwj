@@ -94,7 +94,9 @@ public interface DecisionMapper {
 	void insertAgendaDate(Decision_AgendaDate insertAgendaDate);
 
 	List<Decision_Opinion> getOpinionList(Long decisionId);
-
+	
+	List<Decision_Opinion> getOpinionTypeList(Long decisionId);
+	
 	List<Decision_Opinion> getPdfOpinionList(Long decisionId);
 	
 	List<Decision_Opinion> getStepOpinionList(Long decisionId);

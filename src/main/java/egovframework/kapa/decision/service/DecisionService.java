@@ -480,6 +480,10 @@ public class DecisionService {
 		return decisionMapper.getOpinionList(decisionId);
 	}
 
+	public List<Decision_Opinion> getOpinionTypeList(Long decisionId) {
+		return decisionMapper.getOpinionTypeList(decisionId);
+	}
+	
 	public List<Decision_Opinion> getPdfOpinionList(Long decisionId) {
 		return decisionMapper.getPdfOpinionList(decisionId);
 	}

@@ -178,7 +178,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("<td>");
 	addList.push("    <strong>심사결과</strong>");
 	addList.push("    <span>");
-	addList.push("         <button class=\"btn large t1\" onclick=\"\">");
+	addList.push("         <button class=\"btn large t1\" onclick=\"openResultPopup(); return false;\">");
 	addList.push("            승인 : 2명, 반려 : 1명");
 	addList.push("         </button>");
 	addList.push(" 	  </span>");

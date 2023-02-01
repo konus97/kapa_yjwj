@@ -73,6 +73,8 @@ public interface ImplementerMapper {
 
 	void insertOpinion(Decision_Opinion opinion);
 	
+	void saveRegister(Decision_Opinion opinion);
+	
 	void insertOpinionItem(Decision_Opinion_Item opinionItem);
 
 	List<ApplicationLandRelation> getLandRelationInfoList(List<Integer> reptSeqList);

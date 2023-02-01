@@ -1,13 +1,19 @@
 package egovframework.kapa.implementer.restcontroller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -248,7 +254,7 @@ public class ImplementerRestController {
 		
 		try {
 			implementerService.completeOpinion(data);
-    		
+			implementerService.insertRegister(data);
             resultFinal.put("msg", "Complete");
         }catch (Exception e){
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());
@@ -385,6 +391,223 @@ public class ImplementerRestController {
 	}
 	
 
+	@RequestMapping(value="/info/downExcelGoods", method=RequestMethod.GET, produces = "text/csv")
+	@ResponseBody
+	public void downExcelGoods(HttpServletResponse response, String encoding, int masterId) {
+		response.setContentType("text/csv");
+		response.addHeader("Content-Disposition","attachment; filename=\"GoodsList.csv\"");
+		if (encoding != null && !"".equals(encoding)) {
+			response.setCharacterEncoding(encoding);
+		} else {
+			response.setCharacterEncoding("EUC-KR");
+		}
+		try {
 
+            List<ApplicationLand> landList = implementerService.getGoodsInfo(masterId);
+            List<ApplicationGoodsDTO> formatterList = implementerService.getGoodsListFormatter(landList);
+			            
+            
+			
+			CSVPrinter csvPrinter = new CSVPrinter(response.getWriter(), CSVFormat.DEFAULT);
+			csvPrinter.printRecord(
+					"연번",
+					"소재지",
+					"본번",
+					"부번",
+					"부번2",
+					"물건종류",
+					"물건구조",
+					"면적/수량",
+					"단가",
+					"소유자",
+					"지분"
+			);
+
+            for (int i=0; i<formatterList.size(); i++) {
+                List<String> result = new ArrayList();
+                result.add(Integer.toString(i+1));
+            	result.add(formatterList.get(i).getReptAddr());
+            	result.add(formatterList.get(i).getMainStrtNo());
+            	result.add(formatterList.get(i).getSubStrtNo());
+            	result.add(formatterList.get(i).getStrtOther());
+            	result.add(formatterList.get(i).getObstStuc1Nm());
+            	result.add(formatterList.get(i).getObstKindNm());
+            	// 면적/수량
+            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
+            	temp += formatterList.get(i).getAreaUnit();
+            	result.add(temp);
+
+            	result.add(formatterList.get(i).getBefUnitCost());
+            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getLandShre());
+            	csvPrinter.printRecord(result);
+            }
+		} catch (IOException e) {
+            e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value="/info/downExcelLands", method=RequestMethod.GET, produces = "text/csv")
+	@ResponseBody
+	public void downExcelLands(HttpServletResponse response, String encoding, int masterId) {
+		response.setContentType("text/csv");
+		response.addHeader("Content-Disposition","attachment; filename=\"LandsList.csv\"");
+		if (encoding != null && !"".equals(encoding)) {
+			response.setCharacterEncoding(encoding);
+		} else {
+			response.setCharacterEncoding("EUC-KR");
+		}
+		try {
+
+            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+            List<ApplicationLandDTO> formatterList = implementerService.getLandListFormatter(landList);
+			            
+			CSVPrinter csvPrinter = new CSVPrinter(response.getWriter(), CSVFormat.DEFAULT);
+			csvPrinter.printRecord(
+					"연번",
+					"소재지",
+					"지번",
+					"본번",
+					"부번",
+					"공",
+					"실",
+					"면적",
+					"단가",
+					"소유자",
+					"지분"
+			);
+
+            for (int i=0; i<formatterList.size(); i++) {
+                List<String> result = new ArrayList();
+                result.add(Integer.toString(i+1));
+            	result.add(formatterList.get(i).getReptAddr());
+            	result.add(formatterList.get(i).getSidoGunguCd());
+            	result.add(formatterList.get(i).getMainStrtNo());
+            	result.add(formatterList.get(i).getSubStrtNo());
+            	result.add(formatterList.get(i).getObstStuc1Nm());
+            	result.add(formatterList.get(i).getObstStuc2Nm());
+            	// 면적
+            	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
+            	areaAmot += formatterList.get(i).getAreaUnit();
+            	result.add(areaAmot);
+            	
+            	result.add(formatterList.get(i).getBefUnitCost());
+            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getLandShre());
+            	csvPrinter.printRecord(result);
+            }
+		} catch (IOException e) {
+            e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value="/info/downExcelGoodsOwners", method=RequestMethod.GET, produces = "text/csv")
+	@ResponseBody
+	public void downExcelGoodsOwners(HttpServletResponse response, String encoding, int masterId) {
+		response.setContentType("text/csv");
+		response.addHeader("Content-Disposition","attachment; filename=\"GoodsOwnersList.csv\"");
+		if (encoding != null && !"".equals(encoding)) {
+			response.setCharacterEncoding(encoding);
+		} else {
+			response.setCharacterEncoding("EUC-KR");
+		}
+		try {
+
+            List<ApplicationLand> landList = implementerService.getGoodsInfo(masterId);
+            List<ApplicationGoodsDTO> formatterList = implementerService.getGoodsListFormatter(landList);
+            
+			CSVPrinter csvPrinter = new CSVPrinter(response.getWriter(), CSVFormat.DEFAULT);
+			csvPrinter.printRecord(
+					"연번",
+					"소유자",
+					"지분",
+					"소재지",
+					"본번",
+					"부번",
+					"부번2",
+					"물건종류",
+					"물건구조",
+					"면적/수량",
+					"단가"
+			);
+
+            for (int i=0; i<formatterList.size(); i++) {
+                List<String> result = new ArrayList();
+                result.add(Integer.toString(i+1));
+            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getLandShre());
+            	result.add(formatterList.get(i).getReptAddr());
+            	result.add(formatterList.get(i).getMainStrtNo());
+            	result.add(formatterList.get(i).getSubStrtNo());
+            	result.add(formatterList.get(i).getStrtOther());
+            	result.add(formatterList.get(i).getObstStuc1Nm());
+            	result.add(formatterList.get(i).getObstKindNm());
+            	// 면적/수량
+            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
+            	temp += formatterList.get(i).getAreaUnit();
+            	result.add(temp);
+            	result.add(formatterList.get(i).getBefUnitCost());
+            	csvPrinter.printRecord(result);
+            }
+            
+		} catch (IOException e) {
+            e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value="/info/downExcelLandsOwners", method=RequestMethod.GET, produces = "text/csv")
+	@ResponseBody
+	public void downExcelLandsOwners(HttpServletResponse response, String encoding, int masterId) {
+		response.setContentType("text/csv");
+		response.addHeader("Content-Disposition","attachment; filename=\"LandsOwnersList.csv\"");
+		if (encoding != null && !"".equals(encoding)) {
+			response.setCharacterEncoding(encoding);
+		} else {
+			response.setCharacterEncoding("EUC-KR");
+		}
+		try {
+
+            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+            List<ApplicationLandDTO> formatterList = implementerService.getLandListFormatter(landList);
+			            
+			CSVPrinter csvPrinter = new CSVPrinter(response.getWriter(), CSVFormat.DEFAULT);
+			csvPrinter.printRecord(
+					"연번",
+					"소유지",
+					"지분",
+					"소재지",
+					"지번",
+					"본번",
+					"부번",
+					"공",
+					"실",
+					"면적",
+					"단가"
+			);
+
+            for (int i=0; i<formatterList.size(); i++) {
+                List<String> result = new ArrayList();
+                result.add(Integer.toString(i+1));
+            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getLandShre());                
+            	result.add(formatterList.get(i).getReptAddr());
+            	result.add(formatterList.get(i).getSidoGunguCd());
+            	result.add(formatterList.get(i).getMainStrtNo());
+            	result.add(formatterList.get(i).getSubStrtNo());
+            	result.add(formatterList.get(i).getObstStuc1Nm());
+            	result.add(formatterList.get(i).getObstStuc2Nm());
+            	// 면적
+            	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
+            	areaAmot += formatterList.get(i).getAreaUnit();
+            	result.add(areaAmot);
+            	
+            	result.add(formatterList.get(i).getBefUnitCost());
+            	csvPrinter.printRecord(result);
+            }
+		} catch (IOException e) {
+            e.printStackTrace();
+		}
+	}
+	
 	
 }

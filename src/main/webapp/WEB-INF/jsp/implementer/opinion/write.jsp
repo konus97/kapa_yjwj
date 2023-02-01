@@ -2561,71 +2561,71 @@
                     let notice = document.getElementById('notice').innerText;
 					let seq = '';
 					switch (notice) {
-					case "1":
-					    notice = '지연가산금(재결신청 청구)';
+					case "지연가산금(재결신청 청구)":
+					    seq = '1';
 					    break;
-					  case "2":
-					    notice = '보상금 증액';
+					case "보상금 증액":
+					    seq = '2';
 					    break;
-					  case "3":
-					    notice = '협의 미이행(불이행,미준수)';
+					case "협의 미이행(불이행,미준수)":
+					    seq = '3';
 					    break;
-					  case "4":
-					    notice = '사업폐지(취소,중단,변경,보류,제외)';
+					case "사업폐지(취소,중단,변경,보류,제외)":
+					    seq = '4';
 					    break;
-					  case "5":
-					    notice = '재결 보류';
+					case "재결 보류":
+					    seq = '5';
 					    break;
-					  case "6":
-					    notice = '무허가건물 부지면적 보상';
+					case "무허가건물 부지면적 보상":
+					    seq = '6';
 					    break;
-					  case "7":
-					    notice = '잔여지/잔여건물 가치 하락';
+					case "잔여지/잔여건물 가치 하락":
+					    seq = '7';
 					    break;
-					  case "8":
-					    notice = '잔여지/잔여건물 매수 청구(확대보상)';
+					case "잔여지/잔여건물 매수 청구(확대보상)":
+					    seq = '8';
 					    break;
-					  case "9":
-					    notice = '사도평가 적정성';
+					case "사도평가 적정성":
+					    seq = '9';
 					    break;
-					  case "10":
-					    notice = '일단지 보상';
+					case "일단지 보상":
+					    seq = '10';
 					    break;
-					  case "11":
-					    notice = '미지급 용지';
+					case "미지급 용지":
+					    seq = '11';
 					    break;
-					  case "12":
-					    notice = '영업보상(이전비) 적정성';
+					case "영업보상(이전비) 적정성":
+					    seq = '12';
 					    break;
-					  case "13":
-					    notice = '누락 물건 반영';
+					case "누락 물건 반영":
+					    seq = '13';
 					    break;
-					  case "14":
-					    notice = '폐업 보상';
+					case "폐업 보상":
+					    seq = '14';
 					    break;
-					  case "15":
-					    notice = '영농손실보상';
+					case "영농손실보상":
+					    seq = '15';
 					    break;
-					  case "16":
-					    notice = '휴직(실직)보상';
+					case "휴직(실직)보상":
+					    seq = '16';
 					    break;
-					  case "17":
-					    notice = '이주대책 수립';
+					case "이주대책 수립":
+					    seq = '17';
 					    break;
-					  case "18":
-					    notice = '이주정착금, 주거이전비, 이사비';
+					case "이주정착금, 주거이전비, 이사비":
+					    seq = '18';
 					    break;
-					  case "19":
-					    notice = '구분지상권';
+					case "10% 변동 내역":
+					    seq = '19';
 					    break;
-					  case "20":
-					    notice = '10% 변동 내역';
+					case "기타(임료손실,대토보상 등)":
+					    seq = '20';
 					    break;
-					  case "21":
-					    notice = '기타(임료손실,대토보상 등)';
+					case "지연가산금(재결신청 청구)":
+					    seq = '21';
 					    break;
-					  case "22":
-					    notice = '10%이상 변동';
+					case "소유자 의견 없음":
+					    seq = '22';
 					    break;
 					  default:
 						  seq='';
