@@ -57,7 +57,7 @@ const landCheckArr = new Array();
 function addLandOpinion(rank,info,getItem){
 	
 
-	if(landCheckArr.length != 0){
+	/*if(landCheckArr.length != 0){
 		for(let i=0; i<landCheckArr.length; i++){
 			if(JSON.stringify(landCheckArr[i]) === JSON.stringify(info)){
 //				alert(info.ownrNnm+'님의 ' +info.reptAddr+'(은)는 이미 선택된 항목입니다');
@@ -69,7 +69,7 @@ function addLandOpinion(rank,info,getItem){
 			}
 		}
 	}
-		landCheckArr.push(info);
+		landCheckArr.push(info);*/
 
 
 
@@ -213,7 +213,7 @@ function addLandOpinion(rank,info,getItem){
    const goodsCheckArr = new Array();
 function addGoodsOpinion(rank,info,getItem){
 
-	if(goodsCheckArr.length != 0){
+	/*if(goodsCheckArr.length != 0){
 		for(let i=0; i<goodsCheckArr.length; i++){
 			if(JSON.stringify(goodsCheckArr[i]) === JSON.stringify(info)){
 				//alert(info.ownrNnm+'님의 '+info.reptAddr +'의 '+info.obstKindNm+'(은)는 이미 선택된 항목입니다');
@@ -224,7 +224,7 @@ function addGoodsOpinion(rank,info,getItem){
 			}
 		}
 	}
-		goodsCheckArr.push(info);
+		goodsCheckArr.push(info);*/
 
 	
 	let getSeq = info.reptSeq;
@@ -464,7 +464,7 @@ function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
     notice = '기타(임료손실,대토보상 등)';
     break;
   case "22":
-    notice = '10%이상 변동';
+    notice = '소유자 의견 없음';
     break;
   default:
 notice='';
@@ -983,7 +983,7 @@ function resetOpinionItem(opinion){
     notice = '기타(임료손실,대토보상 등)';
     break;
   case "22":
-    notice = '10%이상 변동';
+    notice = '소유자 의견 없음';
     break;
   default:
 notice='';
