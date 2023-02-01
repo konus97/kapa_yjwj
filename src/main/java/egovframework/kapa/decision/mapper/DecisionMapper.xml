@@ -155,6 +155,40 @@
 
 	</select> 
 	
+		<select id="getDecisionOpinionItemList2" resultType="egovframework.kapa.domain.Decision_Opinion_Item" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+		SELECT *
+		
+		FROM TB_Decision_Opinion_Item 
+		
+		<where>
+			reptSeq = #{reptSeq}
+			AND reptOwnrSeq = #{reptOwnrSeq}
+			AND delCheck = '0'
+  		</where>
+  		
+
+	</select> 
+	
+		<select id="getDecisionOpinionItemFiles" resultType="egovframework.kapa.file.domain.OpinionFileVO" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+		SELECT *
+		
+		FROM TB_Decision_File_Opinion 
+		
+		<where>
+			reptSeq = #{reptSeq}
+			AND reptOwnrSeq = #{reptOwnrSeq}
+			AND delCheck = '0'
+			AND decisonId = #{decisionId}
+			<!-- 파일 업로드를 다시 할 경우 중복해서 불러오기 때문에 걸러내는 작업 필요 -->
+  		</where>
+  		
+
+	</select> 
+	
+	
+	
+	
+	
 	<select id="getDecisionOpinionTypeItemList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
 		<!-- SELECT *
 		

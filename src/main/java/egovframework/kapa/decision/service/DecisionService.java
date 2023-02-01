@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -37,11 +36,12 @@ import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Notice_File;
 import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
+import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
+import egovframework.kapa.file.domain.OpinionFileVO;
 import egovframework.kapa.implementer.Const.DecisonState;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.mapper.ImplementerMapper;
-import egovframework.kapa.law.domain.DecisionLawVO;
 import egovframework.kapa.law.mapper.DecisionLawMapper;
 
 /**
@@ -368,6 +368,10 @@ public class DecisionService {
 		return decisionMapper.getDecisionOpinionItemList(viewSeq);
 	}
 	
+	public List<Decision_Opinion_Item> getDecisionOpinionItemList2(Decision_Opinion_Item item) {
+		return decisionMapper.getDecisionOpinionItemList2(item);
+	}
+	
 	public List<Decision_Opinion_Item> getDecisionOpinionTypeItemList(Long viewSeq,int type) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -615,6 +619,13 @@ public class DecisionService {
 	public List<Cites_File> getCitesFileList(Long decisionId) {
 		return decisionMapper.getCitesFileList(decisionId);
 	}
+
+	public List<OpinionFileVO> getDecisionOpinionItemFiles(Decision_Opinion_Item decision_Opinion_Item) {
+		return decisionMapper.getDecisionOpinionItemFiles(decision_Opinion_Item);
+
+	}
+
+
 	
 
 

@@ -401,8 +401,10 @@ public class ImplementerService {
 				
 				for(int i=0; i<addOpinionItemArray.size(); i++) {
 					JSONObject JSONTarget = (JSONObject)addOpinionItemArray.get(i);
-								
+					System.out.println("==========================★==========================");			
 					System.out.println(JSONTarget);
+					System.out.println("==========================★==========================");			
+
 					
 					Decision_Opinion opinion = new Decision_Opinion();
 					
@@ -445,7 +447,7 @@ public class ImplementerService {
 							opinionItem.setOpinionContent(JSONTarget2.get("opinionContent").toString());	
 							opinionItem.setOpinionItemFile(opinionItemFile);
 							opinionItem.setDecisionId(decisionId);
-							
+							opinionItem.setReptOwnrSeq(reptOwnrSeq);
 							opinionItem.setReptSeq(reptSeq);
 							opinionItem.setOpinionType(type);
 							opinionItem.setRank(rank);

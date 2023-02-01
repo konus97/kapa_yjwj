@@ -337,7 +337,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 										
 											</tr>
 										</thead>
@@ -361,7 +361,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 											
 											</tr>
 										</thead>
@@ -391,7 +391,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -415,7 +415,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -445,7 +445,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -469,7 +469,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -499,7 +499,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -523,7 +523,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -553,7 +553,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -577,7 +577,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -607,7 +607,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -631,7 +631,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -661,7 +661,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -685,7 +685,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -715,7 +715,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -739,7 +739,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -769,7 +769,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -793,7 +793,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -823,7 +823,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -847,7 +847,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -877,7 +877,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -901,7 +901,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -931,7 +931,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -955,7 +955,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -985,7 +985,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1009,7 +1009,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1039,7 +1039,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1063,7 +1063,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1093,7 +1093,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1117,7 +1117,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1146,7 +1146,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1171,7 +1171,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												 
 												
 											</tr>
@@ -1202,7 +1202,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												 
 						
 											</tr>
@@ -1227,7 +1227,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1257,7 +1257,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1281,7 +1281,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 									
 											</tr>
 										</thead>
@@ -1311,7 +1311,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1335,7 +1335,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1365,7 +1365,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 								
 											</tr>
 										</thead>
@@ -1389,7 +1389,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1419,7 +1419,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1443,7 +1443,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1473,7 +1473,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1497,7 +1497,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1527,7 +1527,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1551,7 +1551,7 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1581,7 +1581,7 @@
 												<th>공</th>
 												<th>실</th>
 												<th>면적</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
 												
 											</tr>
 										</thead>
@@ -1605,7 +1605,8 @@
 												<th>물건종류</th>
 												<th>물건구조</th>
 												<th>면적/수량</th>
-												<th>단가</th>
+												<th>단가</th> <th>의견</th>
+												
 										
 											</tr>
 										</thead>
