@@ -27,6 +27,8 @@
 						<select id="lawParagraphList">
 						</select>
 					</thead>
+					
+					<button type="button" onclick="getLawInfo(1); return false;">검색</button>
 					<button type="button" onclick="reset_law(); return false;">설정 초기화</button>
 					<div class="c_table t1">
                        <table>
@@ -57,7 +59,7 @@
 					</div>
                </div>
                <div class="p_foot">
-                    <button class="btn h50 mr10" onclick="checkItemLaw();return false;" >선택</button>
+                    <button class="btn h50 mr10" onclick="checkItemLaw(); checkLawTbody(); return false;" >선택</button>
                     <a href="#" class="btn t1 h50" onclick="closePopupLaw();return false;">취소</a>
                </div>
            </div>
@@ -73,13 +75,18 @@
 	
 	$("#lawTitleList").change(function(){
 		getLawArticles();
-		getLawInfo(1);
+		//getLawInfo(1);
 	});
 
 	$("#lawArticleList").change(function(){
 		getLawParagraph();
-		getLawInfo(1);
+		//getLawInfo(1);
 	});
+
+	$("#lawParagraphList").change(function(){
+		//getLawInfo(1);
+	});
+	
 	
 	function reset_law(){
 		getLawTitle();

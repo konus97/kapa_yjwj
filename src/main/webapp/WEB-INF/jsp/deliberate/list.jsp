@@ -362,6 +362,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                            
+                            <!-- 심사결과 팝업 S -->
+							<%@ include file="popup/decisionresult.jsp"%>
+							<!-- 심사결과 팝업  E -->
+							
                         </div>
                     </div>
                 </div>

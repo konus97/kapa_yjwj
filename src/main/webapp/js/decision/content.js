@@ -301,9 +301,9 @@ function addSelectLaw(info){
 	let addList = new Array();
 		addList.push("<tr>");
 		
-		addList.push("   <td>");
+		//addList.push("   <td>");
 		addList.push("		 <input type=\"hidden\" value=\""+seq_no+"\" name=\"lawSeqNo\">");
-		addList.push("   </td>");
+		//addList.push("   </td>");
 	
 		addList.push("<td><strong>법령</strong>");
 		addList.push("<span>"+title+"</span>");
@@ -315,11 +315,12 @@ function addSelectLaw(info){
 		addList.push("<span>"+paragraph+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>내용</strong>");
-		addList.push("<span>"+content+"</span>");
+		addList.push("<p>"+content+"</p>");
 		addList.push("</td>");
-		addList.push("<td>"); 
-	    addList.push("          <button class=\"btn nohover t1\" onclick=\"lawRemove(this);return false;\">");
-   	    addList.push("          	삭제</button>");
+		addList.push("<td>");
+	    addList.push("          <button class=\"lawsearch_wr__btn lawsearch_wr__btn--del\" ");
+	    addList.push("          onclick=\"lawRemove(this); checkLawTbody(); return false;\" title=\"삭제하기\">");
+   	    addList.push("          </button>");
         addList.push("</td>") 
 		addList.push("</tr>");
         
@@ -503,4 +504,15 @@ function makeParagraphOption(paragraph){
 		addList.push("</option>");
     
 	$("#lawParagraphList").append(addList.join(''));
+}
+
+function checkLawTbody() {
+	const lawSearchWr = document.getElementById('lawSearchWrCon')
+	const lawSearchTbody = document.getElementById('selectLawList')
+	
+	if(lawSearchTbody.innerHTML == 0){
+		lawSearchWr.style.display = "none"
+	} else {
+		lawSearchWr.style.display = "block"
+	}
 }

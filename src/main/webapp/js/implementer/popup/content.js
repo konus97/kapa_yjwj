@@ -583,6 +583,8 @@ function checkItem2(){
 
 	selectedItemTxt.innerHTML = '선택된 항목 : '+ selectedItemNum +'.'+ selectedItemTit
 	closePopup('checkbox2');
+	landCheckArr.length = 0;
+	goodsCheckArr.length = 0;
 }
 
 function submitLandOwnr(){
@@ -653,10 +655,38 @@ function checkResultWrTbody(){
 		if(resultWrTable1.lastElementChild.innerHTML == 0 && resultWrTable2.lastElementChild.innerHTML == 0){
 			target.style.display = "none"
 		} else {
-			target.style.display = "flex"
+			target.style.display = "block"
 		}
 	
 	})
 
 
+}
+
+function downloadExcelGoods(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelGoods?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelLands(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelLands?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelGoodsOwners(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelGoodsOwners?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelLandsOwners(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelLandsOwners?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
 }

@@ -50,32 +50,34 @@ public class LawRestController {
 	/*
 	 * update
 	 */
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Map<String,Object> updateContent() {
-		
-		Map<String, Object> resultFinal = new HashMap<String, Object>();
+	@RequestMapping(value = "/editLaw.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public ResponseEntity editLaw(Model model, @RequestBody String data) throws Exception {
 
-	    try {
-	         resultFinal.put("msg", "Complete");
-        }catch (Exception e){
-            System.out.println("\n\ne.getMessage()\n"+e.getMessage());
-            System.out.println("\n\ne.toString()\n"+e.toString());
-            System.out.println("\n\ne.printStackTrace()");
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+						
+        try {
+        	lawService.updateLaw(data);
+    		
+        } catch (Exception e){
             e.printStackTrace();
         }
 
-	   return resultFinal;
-	}
+        resultFinal.put("message", "success");
+        return ResponseEntity.ok(resultFinal);
+
+	}	
 	
 	/*
 	 * delete
 	 */
-	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
-	public Map<String,Object> deleteContent() {
+	@RequestMapping(value = "/deleteLaw.do", method = RequestMethod.POST)
+	public Map<String,Object> deleteContent(@RequestParam("seq_no") int seq_no) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
 	    try {
+        	lawService.deleteLaw(seq_no);
 	         resultFinal.put("msg", "Complete");
         }catch (Exception e){
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());

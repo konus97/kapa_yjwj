@@ -25,3 +25,10 @@ function goToDeliberateDetail(decisionId){
 	location.href=contextPath+"/deliberate/agenda/detail.do?decisionId="+decisionId;
 }
 
+function openResultPopup(){
+	$('#popupDecisionResult').addClass("on");
+}
+function closeResultPopup(){
+	$('#popupDecisionResult').removeClass("on");
+	$("#decisionResultList").empty();
+}

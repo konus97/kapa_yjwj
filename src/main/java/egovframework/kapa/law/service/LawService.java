@@ -32,23 +32,34 @@ public class LawService {
     	}
     }
     
-    public void update(BoardVO update) {
+    public void updateLaw(String param) throws ParseException {
 		
-    	try {
-    		
-    	} catch(Exception e) {
-    		e.printStackTrace();
-    	}
-    }
+		JSONParser parser = new JSONParser();
+		
+		JSONObject jsonObject = (JSONObject)parser.parse(param);
+
+		int seq_no   = Integer.parseInt(jsonObject.get("seqNo").toString());
+		String article   = jsonObject.get("article")   .toString();
+		String paragraph = jsonObject.get("paragraph") .toString();
+		String title     = jsonObject.get("title")     .toString();
+		String content   = jsonObject.get("content")   .toString();
+		
+		LawVO law = new LawVO();
+		
+		law.setSeq_no(seq_no);
+		law.setArticle(article);
+		law.setParagraph(paragraph);
+		law.setTitle(title);
+		law.setContent(content);
+		law.setUptdate(LocalDateTime.now());
+		
+		
+		lawMapper.updateLaw(law);
+	}
     
     
-    public void delete(BoardVO update) {
-		
-    	try {
-    		
-    	} catch(Exception e) {
-    		e.printStackTrace();
-    	}
+    public void deleteLaw(int seq_no) {
+		lawMapper.deleteLaw(seq_no);
     }
 
 	public int getLawCnt (LawVO law) {

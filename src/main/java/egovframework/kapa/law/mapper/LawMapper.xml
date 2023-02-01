@@ -2,6 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="egovframework.kapa.law.mapper.LawMapper">
     
+    
+    <!-- update -->
+	<update id="updateLaw" parameterType="egovframework.kapa.law.domain.LawVO">
+		UPDATE TB_Law
+		SET
+		article = #{article},
+		paragraph = #{paragraph},
+		title = #{title},
+		content = #{content},
+		uptdate = #{uptdate}
+		where seq_no = #{seq_no}
+	</update>
+	
+    <!-- delete -->
+	<update id="deleteLaw" parameterType="Integer">
+		UPDATE TB_Law
+		SET
+		del_check = 1
+		where seq_no = #{seq_no}
+	</update>
+    
     <!-- lawCnt -->
 	<select id="getLawCnt" resultType="Integer" parameterType="egovframework.kapa.law.domain.LawVO">
         SELECT COUNT(*)
