@@ -1760,10 +1760,10 @@
 										</div>
 									</div>
 									<div class="p_foot">
-										<button class="btn h50 mr10"
-											onclick="submitOwnerOpinion();return false;">확인</button>
+					<!-- 					<button class="btn h50 mr10"
+											onclick="closeOwnerOpinion();return false;">확인</button> -->
 										<a href="#" class="btn t1 h50"
-											onclick="closeOwnerOpinion();return false;">취소</a>
+											onclick="closeOwnerOpinion();return false;">확인</a>
 									</div>
 								</div>
 							</div>
