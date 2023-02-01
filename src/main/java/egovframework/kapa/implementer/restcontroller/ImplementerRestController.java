@@ -13,7 +13,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 import egovframework.kapa.decision.dto.AnnouncementDTO;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.domain.Decision;
+import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Search;
+import egovframework.kapa.file.domain.FileVO;
+import egovframework.kapa.file.domain.OpinionFileVO;
+import egovframework.kapa.file.service.FileService;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.dto.ApplicationDTO;
@@ -44,6 +47,10 @@ public class ImplementerRestController {
 	
 	@Autowired
 	DecisionService	decisionService;
+	
+
+	@Autowired
+	FileService fileService;
 	
 	/*
 	 * application List
@@ -267,7 +274,7 @@ public class ImplementerRestController {
 	
 	}
 	
-	//재결의견작성 완료 - 필지
+	//재결의견작성 완료 소유자의견 / 사업시행자 의견 리스트 불러오기
 	@RequestMapping(value = "/opinion/landview", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity opinionLandview(@RequestBody Long decisionId) {
@@ -284,6 +291,56 @@ public class ImplementerRestController {
         
 	
 	}
+	
+	//재결의견작성 완료 - 팝업, pdf, 이미지 정보 세팅
+		@RequestMapping(value = "/opinion/item", method = RequestMethod.POST)
+		@ResponseBody
+		public Map<String, Object> opinionItemView(@RequestParam Map<Object, Object> paramMap) {
+			
+			Map<String, Object> resultFinal = new HashMap<String, Object>();
+			
+			
+			
+			
+			
+			Long decisionId =  Long.parseLong(paramMap.get("decisionId").toString());
+			Long reptSeq = Long.parseLong(paramMap.get("reptSeq").toString());
+			Long reptOwnrSeq = Long.parseLong(paramMap.get("reptOwnrSeq").toString());
+			
+			System.out.println("===================================================");
+			System.out.println(decisionId);
+			System.out.println(reptSeq);
+			System.out.println(reptOwnrSeq);
+			System.out.println("===================================================");
+			Decision_Opinion_Item decision_Opinion_Item = new Decision_Opinion_Item();
+			decision_Opinion_Item.setDecisionId(decisionId);
+			decision_Opinion_Item.setReptOwnrSeq(reptOwnrSeq);
+			decision_Opinion_Item.setReptSeq(reptSeq);
+			
+			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList2(decision_Opinion_Item));
+			
+			//첨부파일 (이미지)
+			List<OpinionFileVO> opinionFileList = decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item);
+			//resultFinal.put("opinionFileList", opinionFileList);
+			
+			List<FileVO> fileList = new ArrayList<FileVO>();
+			for(int i=0; i<opinionFileList.size(); i++) {
+				int opinionFileSeq = opinionFileList.get(i).getFileSeq();
+				FileVO file = 	fileService.getFileInfo(Long.parseLong(String.valueOf(opinionFileSeq)));		
+				
+				fileList.add(file);
+
+				System.out.println("===================================================");
+				System.out.println(fileList);
+				System.out.println("===================================================");
+			}
+			resultFinal.put("file", fileList);
+
+			
+			  return resultFinal;
+	        
+		
+		}
 	
 	
 	

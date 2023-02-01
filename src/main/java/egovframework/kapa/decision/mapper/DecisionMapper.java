@@ -21,6 +21,7 @@ import egovframework.kapa.domain.Notice_File;
 import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
+import egovframework.kapa.file.domain.OpinionFileVO;
 import egovframework.kapa.util.MsSQLRepository;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
@@ -74,6 +75,10 @@ public interface DecisionMapper {
 
 	List<Decision_Opinion_Item> getDecisionOpinionItemList(Long viewSeq);
 
+	//reptOwnrSeq까지 받음
+	List<Decision_Opinion_Item> getDecisionOpinionItemList2(Decision_Opinion_Item item);
+
+
 	List<Decision_Opinion> getDecisionOpinionList(Long decisionId);
 
 	List<Decision> getAgendaRegisterList(Search search);
@@ -120,6 +125,8 @@ public interface DecisionMapper {
 	void insertCitesFile(Cites_File citesFile);
 
 	List<Cites_File> getCitesFileList(Long decisionId);
+
+	List<OpinionFileVO> getDecisionOpinionItemFiles(Decision_Opinion_Item decision_Opinion_Item);
 
 	
 

@@ -260,9 +260,9 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 }
 
 
-function makeLandOwnerCheckBlock2(startNumber,info, getItem) {
+function makeLandOwnerCheckBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnrArr) {
 	
-	console.log(info);
+
 	
 	let addList = new Array();
 	
@@ -281,7 +281,15 @@ function makeLandOwnerCheckBlock2(startNumber,info, getItem) {
     
 	let ownrNm = info.ownrNnm;
 	let landShre = info.landShre;
+
+	let getSeq = info.reptSeq;
+	let reptOwnrSeq  = info.reptOwnrSeq;
 	
+	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq)){
+		
+	
+	
+
 	addList.push("<tr>");
 	
 /*	addList.push("   <td>");
@@ -343,10 +351,22 @@ function makeLandOwnerCheckBlock2(startNumber,info, getItem) {
     addList.push("      <span>"+befUnitCost+"</span>");
     addList.push("    </td>");
     
+	addList.push("<td>");     
+	addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup2('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">보기</a>");
+	addList.push("</td>");
+	
 
     addList.push("</tr>");
 
 	$("#ownerLandItemList"+getItem).append(addList.join(''));
+	}
+	else{
+		console.log("makeBlock getSeq :::" + getSeq);
+		console.log("include check reptSeq :::" + reptSeqArr);
+		
+		console.log("makeBlock reptSeqOwnrArr :::" + reptOwnrSeq);
+		console.log("include check reptSeqOwnrArr :::" + reptSeqOwnrArr);
+	}
 }
 
 function makeGoodsInfoBlock(startNumber,info) {
@@ -372,6 +392,10 @@ function makeGoodsInfoBlock(startNumber,info) {
 	
 	let ownrNnm = info.ownrNnm;
 	let landShre = info.landShre;
+	
+	let getSeq = info.reptSeq;
+	let reptOwnrSeq  = info.reptOwnrSeq;
+	
 	
 	addList.push("<tr>");
     addList.push("   <td>");
@@ -427,6 +451,8 @@ function makeGoodsInfoBlock(startNumber,info) {
     addList.push("      <strong>지분</strong>");
     addList.push("      <span>"+landShre+"</span>");
     addList.push("    </td>");
+
+
 
 
     addList.push("</tr>");
@@ -521,7 +547,7 @@ function makeGoodsownerBlock(startNumber,info) {
 	$("#goodsownerList").append(addList.join(''));
 }
 
-function makeGoodsownerBlock2(startNumber,info, getItem) {
+function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnrArr) {
 
 	console.log(info);
 	
@@ -544,6 +570,11 @@ function makeGoodsownerBlock2(startNumber,info, getItem) {
 	
 	let ownrNnm = info.ownrNnm;
 	let landShre = info.landShre;
+	
+	let getSeq = info.reptSeq;
+	let reptOwnrSeq  = info.reptOwnrSeq;
+	
+	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq)){
 	
 	addList.push("<tr>");
     addList.push("   <td>");
@@ -601,11 +632,16 @@ function makeGoodsownerBlock2(startNumber,info, getItem) {
     addList.push("      <span>"+befUnitCost+"</span>");
     addList.push("    </td>");
     
-
+	addList.push("<td>");     
+	addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup2('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">보기</a>");
+	addList.push("</td>");
 
     addList.push("</tr>");
 
 	$("#ownerGoodsItemList"+getItem).append(addList.join(''));
+	}else{
+		console.log('no matching item');
+	}
 }
 
 function makeGoodsownerCheckBlock(startNumber,info) {

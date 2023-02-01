@@ -259,8 +259,8 @@ WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_
 	
 	<!--의견 아이탬 저장 -->
 	<insert id="insertOpinionItem" parameterType="egovframework.kapa.domain.Decision_Opinion_Item">
-		insert into TB_Decision_Opinion_Item( decisionId, reptSeq, opinionType, opinionTitle,opinionContent,opinionItemFile,rank, delCheck, regdate)
-    	values(#{decisionId}, #{reptSeq}, #{opinionType}, #{opinionTitle},#{opinionContent},#{opinionItemFile},#{rank}, #{delCheck}, #{regdate})
+		insert into TB_Decision_Opinion_Item( decisionId, reptSeq,reptOwnrSeq , opinionType, opinionTitle,opinionContent,opinionItemFile,rank, delCheck, regdate)
+    	values(#{decisionId}, #{reptSeq},#{reptOwnrSeq} , #{opinionType}, #{opinionTitle},#{opinionContent},#{opinionItemFile},#{rank}, #{delCheck}, #{regdate})
     </insert>
 
 

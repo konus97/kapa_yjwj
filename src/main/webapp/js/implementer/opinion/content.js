@@ -393,6 +393,200 @@ function resetSeq(getSeq){
    
 }
 
+//소유자의견 읽는 버전
+function openOpinionPopup2(getSeq,getType,reptOwnrSeq,ownrNm){
+   $(".resetPopupVal").val('');
+   $("#popupOpinionItemList").empty();
+   
+	var notice ="";
+	
+	switch (getType) {
+  case "1":
+    notice = '지연가산금(재결신청 청구)';
+    break;
+  case "2":
+    notice = '보상금 증액';
+    break;
+  case "3":
+    notice = '협의 미이행(불이행,미준수)';
+    break;
+  case "4":
+    notice = '사업폐지(취소,중단,변경,보류,제외)';
+    break;
+  case "5":
+    notice = '재결 보류';
+    break;
+  case "6":
+    notice = '무허가건물 부지면적 보상';
+    break;
+  case "7":
+    notice = '잔여지/잔여건물 가치 하락';
+    break;
+  case "8":
+    notice = '잔여지/잔여건물 매수 청구(확대보상)';
+    break;
+  case "9":
+    notice = '사도평가 적정성';
+    break;
+  case "10":
+    notice = '일단지 보상';
+    break;
+  case "11":
+    notice = '미지급 용지';
+    break;
+  case "12":
+    notice = '영업보상(이전비) 적정성';
+    break;
+  case "13":
+    notice = '누락 물건 반영';
+    break;
+  case "14":
+    notice = '폐업 보상';
+    break;
+  case "15":
+    notice = '영농손실보상';
+    break;
+  case "16":
+    notice = '휴직(실직)보상';
+    break;
+  case "17":
+    notice = '이주대책 수립';
+    break;
+  case "18":
+    notice = '이주정착금, 주거이전비, 이사비';
+    break;
+  case "19":
+    notice = '구분지상권';
+    break;
+  case "20":
+    notice = '10% 변동 내역';
+    break;
+  case "21":
+    notice = '기타(임료손실,대토보상 등)';
+    break;
+  case "22":
+    notice = '10%이상 변동';
+    break;
+  default:
+notice='';
+   break;
+}
+	
+	document.getElementById('notice').innerHTML = notice;
+	
+	
+					for(let i=0; i<opinionArr.length; i++){
+						if(opinionArr[i].reptOwnrSeq == reptOwnrSeq && opinionArr[i].reptSeq == getSeq){
+	
+					// 소유자, 사업시행자 의견
+					$("#popupOwnerOpinion").addClass("on");
+					document.getElementById('ownerOpinion').value  = opinionArr[i].ownerOpinion;
+					document.getElementById('executorOpinion').value  = opinionArr[i].executorOpinion;
+	
+					// TB_Decision_Opinion_Item 의견
+					let decisionId = $('#decisionId').val();
+					let csrfToken = $("meta[name='_csrf']").attr("content");
+					let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+					let contextPath = $('#contextPath').val();
+					let url = contextPath+"/api/implementer/opinion/item";
+					$.ajax({
+            			url : url,
+            			type : "POST",
+						dataType : "json",
+            			data :
+						 {
+						"decisionId" : decisionId,
+						"reptSeq": getSeq,
+						"reptOwnrSeq" : reptOwnrSeq
+						},
+            			async: false, 
+            			beforeSend : function(xhr){
+            				xhr.setRequestHeader(csrfHeader, csrfToken);
+            			},
+            			success : function(data) {
+							let opinionList = data.opinionList;
+							let fileList = data.file;
+							console.log(fileList.length);
+							let pdfArr = new Array();
+							let imgArr = new Array();
+							for(let i=0; i<fileList.length; i++){
+								let  ext = fileList[i].fileNameExtension;
+								console.log(ext);
+								if(ext.toLowerCase() == 'pdf'){
+									pdfArr.push(fileList[i]);
+								}else{
+									imgArr.push(fileList[i]);
+								}
+							}
+							console.log(opinionList);
+							console.log(pdfArr);
+							console.log(imgArr);
+							let opinionTitle = opinionList[0].opinionTitle;
+							let opinionContent = opinionList[0].opinionContent;
+							
+							/*TB_Decision_Opinion_Item 의견 테이블 추가*/
+							let addList = new Array();
+		
+						   $("#popupOpinionItemList").empty();
+						
+							addList.push("   <tr>");   
+						    addList.push("       <th class=\"info_reg_th\">제목</th>");   
+						    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\"></td>");   
+						    addList.push("   </tr>");   
+						    addList.push("    <tr>");   
+						    addList.push("       <th class=\"info_reg_th\">내용</th>");   
+						    addList.push("      <td>");   
+						    addList.push("        <textarea class=\"textarea opinionContent\">"+opinionContent+"</textarea></td>");   
+						    addList.push("    </tr>");   
+							
+							/*첨부 파일 (이미지)*/
+							if(imgArr.length != 0){
+							addList.push("   <tr>");   
+						    addList.push("       <th class=\"info_reg_th\">이미지</th>");   
+						    addList.push("       <td>");  
+							addList.push("  	<img src=\" "+imgArr[0].fileFolder+imgArr[0].fileNameChange+"\" alt=\"\">");   
+ 							addList.push("       </td>");  
+
+						    addList.push("   </tr>");   
+							}
+							/*PDF 다운로드 */
+							if(pdfArr.length != 0){
+							addList.push("   <tr>");   
+						    addList.push("       <th class=\"info_reg_th\">PDF 다운로드</th>");        
+						    addList.push("      <td>");   
+							addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfDownload('"+pdfArr[0].seqNo+"');return false;\">");
+							addList.push("             <i class=\"download white icon\"></i> PDF 다운로드");
+							addList.push("           </button>");
+						    addList.push("      </td>");   
+							addList.push("    </tr>");   								
+							}
+
+		
+							
+							$("#popupOpinionItemList").append(addList.join(''));
+							
+							
+							
+						//opinionTitle, opinionContent 가져오고, 이미지정보랑 pdf 정보 가져오기
+            			},
+            			error : function(xhr, status, error) {
+            			}
+            		});
+	
+
+	
+
+	}
+}
+
+
+   
+
+
+   
+}
+
+
 function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
    $(".resetPopupVal").val('');
    $("#popupOpinionItemList").empty();
@@ -1142,6 +1336,12 @@ alert("첨부된 한글파일이 없습니다.");
 
 }
 
+function pdfDownload(fileSeq){
+	let contextPath = $("#contextPath").val();
+	let url = contextPath + '/file/download';
+	window.location = url + "?seqNo=" + fileSeq;
+}
+
 
 function pdfUpload(getType){
 	triggerFileUploadPDF(1);
@@ -1164,104 +1364,106 @@ $.ajax({
             			},
             			success : function(data) {
 							let info = data.list;
-							
-							for(let i=0; i<info.length; i++){
-								console.log(info[i]);
-								let getItem = info[i].type;
+			getOpinionList(); 
+			
+			for(let i=0; i<info.length; i++){
+					//console.log(info[i]);
+					let getItem = info[i].type;
+			
 			if(getItem == 1){
-			document.getElementsByClassName('item_result_wr')[0].style.display = 'block';
+		//	document.getElementsByClassName('item_result_wr')[0].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 2){
-			document.getElementsByClassName('item_result_wr')[1].style.display = 'block';
+		//	document.getElementsByClassName('item_result_wr')[1].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 3){
-			document.getElementsByClassName('item_result_wr')[2].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[2].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 4){
-			document.getElementsByClassName('item_result_wr')[3].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[3].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 5){
-			document.getElementsByClassName('item_result_wr')[4].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[4].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 6){
-			document.getElementsByClassName('item_result_wr')[5].style.display = 'block';
+		//	document.getElementsByClassName('item_result_wr')[5].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 7){
-			document.getElementsByClassName('item_result_wr')[6].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[6].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 8){
-			document.getElementsByClassName('item_result_wr')[7].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[7].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 9){
-			document.getElementsByClassName('item_result_wr')[8].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[8].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 10){
-			document.getElementsByClassName('item_result_wr')[9].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[9].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 11){
-			document.getElementsByClassName('item_result_wr')[10].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[10].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 12){
-			document.getElementsByClassName('item_result_wr')[11].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[11].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 13){	
-			document.getElementsByClassName('item_result_wr')[12].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[12].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 14){
-			document.getElementsByClassName('item_result_wr')[13].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[13].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 15){
-			document.getElementsByClassName('item_result_wr')[14].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[14].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 16){
-			document.getElementsByClassName('item_result_wr')[15].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[15].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 17){
-			document.getElementsByClassName('item_result_wr')[16].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[16].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 18){
-			document.getElementsByClassName('item_result_wr')[17].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[17].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 19){
-			document.getElementsByClassName('item_result_wr')[18].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[18].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 20){
-			document.getElementsByClassName('item_result_wr')[19].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[19].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 21){
-			document.getElementsByClassName('item_result_wr')[20].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[20].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 22){
-			document.getElementsByClassName('item_result_wr')[21].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[21].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 23){
-			document.getElementsByClassName('item_result_wr')[22].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[22].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else if(getItem  == 24){
-			document.getElementsByClassName('item_result_wr')[23].style.display = 'block';
+			//document.getElementsByClassName('item_result_wr')[23].style.display = 'block';
 			getLandownerCheck2(getItem);
 			getGoodsowner2(getItem);
 			}else{
@@ -1269,7 +1471,7 @@ $.ajax({
 			return false;
 			}
 								
-							}
+							}//for문 end
             			},
             			error : function(xhr, status, error) {
             				//에러!
@@ -1279,8 +1481,8 @@ $.ajax({
 
 }
 
-/*
-function landOpinionView(){
+const opinionArr = new Array();
+function getOpinionList(){
 
 let decisionId = $('#decisionId').val();
 let csrfToken = $("meta[name='_csrf']").attr("content");
@@ -1300,8 +1502,9 @@ $.ajax({
 							let info = data.list;
 							
 							for(let i=0; i<info.length; i++){
-								console.log(info[i]);
-							makeLandOpinionView(info[i]);
+								opinionArr.push(info[i]);
+								document.getElementsByClassName('item_result_wr')[info[i].type-1].style.display = 'block';
+								
 							}
             			},
             			error : function(xhr, status, error) {
@@ -1310,192 +1513,4 @@ $.ajax({
             			}
             		});
 }
-function makeLandOpinionView(info){
-	let landRank = 0;
-	
-	console.log(info);
-	
-	/*seqNo=350, decisionId=292, reptSeq=13408964, reptOwnrSeq=24574507, ownerOpinion=test1, 
-	executorOpinion=test2, opinionText=null, relatedLaws=null, relatedLaws2=null, 
-	reviewOpinion=null, type=16, completionCheck=0, delCheck=0, regdate=2023-01-31T03:33:30.386577, ownrNm=김희라,
-	 fileNameChange=null, fileFolder=null, opinionTitle=null, opinionContent=null, fileNameExtension=null*/
- 
-	/*필지 정보 */
-	/*
-	let getItem = info.type;
-	let getSeq = info.reptSeq;
-	let reptOwnrSeq = info.reptOwnrSeq;
-	let reptAddr = info.reptAddr;
-	
-	let sidoGunguCd = info.sidoGunguCd;
-	let mainStrtNo = info.mainStrtNo;
-	let subStrtNo = info.subStrtNo;
-	
-	let obstStuc1Nm = info.obstStuc1Nm;
-	let obstStuc2Nm = info.obstStuc2Nm;
-	
-	let areaAmot = info.areaAmot;
-	let areaUnit = info.areaUnit;
-	let befUnitCost = info.befUnitCost;
-    
-	let ownrNnm = info.ownrNm;
-	let landShre = info.landShre;
-	
-	/*소유자, 사업시행자 의견 정보 */
-	/*
-	let decisionId = info.decisionId;
-	let executorOpinion = info.executorOpinion; //사업시행자 의견
-	let fileFolder = info.fileFolder;
-	let fileNameChange = info.fileNameChange;
-	let fileNameExtension = info.fileNameExtension;
-	let opinionContent = info.opinionContent; //의견내용
-	let opinionText = info.opinionText; //의견제목
-	let ownerOpinion = info.ownerOpinion; //소유자 의견
-	let ownrNm = info.ownrNm; //소유자명
-	let relatedLaws = info.relatedLaws; //관련 법령
-	let relatedLaws2 = info.relatedLaws2; //관련 법령 판례
-	let reviewOpinion = info.reviewOpinion; //기타
-	
-	
-    let getId = "opinion"+getSeq+"-"+getItem;
-      
-      let addList = new Array();
-       
-	
-		addList.push("<tr>");
-		addList.push("<td>"+landRank+"</td>");
-		addList.push("<td><strong>소유자</strong>");
-		addList.push("<span>"+ownrNnm+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>지분</strong>");
-		addList.push("<span>"+landShre+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>소재지</strong>");
-		addList.push("<span>"+reptAddr+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>지번</strong>");
-		addList.push("<span>"+sidoGunguCd+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>본번</strong>");
-		addList.push("<span>"+mainStrtNo+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>부번</strong>");
-		addList.push("<span>"+subStrtNo+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>공</strong>");
-		addList.push("<span>"+obstStuc1Nm+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>실</strong>");
-		addList.push("<span>"+obstStuc2Nm+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>면적</strong>");
-		addList.push("<span>"+areaAmot+"</span>");
-		addList.push("</td>");
-		addList.push("<td><strong>단가</strong>");
-		addList.push("<span>"+befUnitCost+"</span>");
-		addList.push("</td>");
-		addList.push("</tr>");
 
-        
-			             if(getItem == 1){
-			$("#ownerLandItemList1").append(addList.join(''));
-			document.getElementsByClassName('item_result_wr')[0].style.display = 'block';
-			}else if(getItem  == 2){
-			$("#ownerLandItemList2").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[1].style.display = 'block';
-
-			}else if(getItem  == 3){
-			$("#ownerLandItemList3").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[2].style.display = 'block';
-
-			}else if(getItem  == 4){
-			$("#ownerLandItemList4").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[3].style.display = 'block';
-
-			}else if(getItem  == 5){
-			$("#ownerLandItemList5").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[4].style.display = 'block';
-
-			}else if(getItem  == 6){
-			$("#ownerLandItemList6").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[5].style.display = 'block';
-
-			}else if(getItem  == 7){
-			$("#ownerLandItemList7").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[6].style.display = 'block';
-
-			}else if(getItem  == 8){
-			$("#ownerLandItemList8").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[7].style.display = 'block';
-
-			}else if(getItem  == 9){
-			$("#ownerLandItemList9").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[8].style.display = 'block';
-
-			}else if(getItem  == 10){
-			$("#ownerLandItemList10").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[9].style.display = 'block';
-
-			}else if(getItem  == 11){
-			$("#ownerLandItemList11").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[10].style.display = 'block';
-
-			}else if(getItem  == 12){
-			$("#ownerLandItemList12").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[11].style.display = 'block';
-
-			}else if(getItem  == 13){
-			$("#ownerLandItemList13").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[12].style.display = 'block';
-
-			}else if(getItem  == 14){
-			$("#ownerLandItemList14").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[13].style.display = 'block';
-
-			}else if(getItem  == 15){
-			$("#ownerLandItemList15").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[14].style.display = 'block';
-
-			}else if(getItem  == 16){
-			$("#ownerLandItemList16").append(addList.join(''));
-			document.getElementsByClassName('item_result_wr')[15].style.display = 'block';
-			}else if(getItem  == 17){
-			$("#ownerLandItemList17").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[16].style.display = 'block';
-
-			}else if(getItem  == 18){
-			$("#ownerLandItemList18").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[17].style.display = 'block';
-
-			}else if(getItem  == 19){
-			$("#ownerLandItemList19").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[18].style.display = 'block';
-
-			}else if(getItem  == 20){
-			$("#ownerLandItemList20").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[19].style.display = 'block';
-
-			}else if(getItem  == 21){
-			$("#ownerLandItemList21").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[20].style.display = 'block';
-
-			}else if(getItem  == 22){
-			$("#ownerLandItemList22").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[21].style.display = 'block';
-
-			}else if(getItem  == 23){
-			$("#ownerLandItemList23").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[22].style.display = 'block';
-
-			}else if(getItem  == 24){
-			$("#ownerLandItemList24").append(addList.join(''));
-						document.getElementsByClassName('item_result_wr')[23].style.display = 'block';
-
-			}else{
-			alert("잘못된 접근입니다.");
-			return false;
-			}
-			
-       
-
-}*/

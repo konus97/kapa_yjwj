@@ -301,13 +301,26 @@ function getLandownerCheck2(getItem) {
 				
 				let rank = 1;
 				
+				console.log(opinionArr);
+				
+				//의견 작성이 된 토지만 불러오기 위한 데이터 세팅
+				let reptSeqArr = new Array();
+				let reptSeqOwnrArr = new Array();
+				for(let i=0; i<opinionArr.length; i++){
+					reptSeqArr.push(opinionArr[i].reptSeq);
+					reptSeqOwnrArr.push(opinionArr[i].reptOwnrSeq);
+				}
+				
+				
 				for( let i = 0; i < list.length; i++) {
-					makeLandOwnerCheckBlock2(rank,list[i], getItem);
+					
+					
+					makeLandOwnerCheckBlock2(rank,list[i], getItem, reptSeqArr, reptSeqOwnrArr);
 					rank++;
 				}
 			}
 
-			$('#ownerLandItemList16').addClass("on");
+			$('#ownerLandItemList'+getItem).addClass("on");
 			
 		},
 		error : function(xhr, status, error) {
@@ -385,12 +398,21 @@ function getGoodsowner2(getItem) {
 
 			let list = data.list;
 			
+			//의견 작성이 된 지장물만 불러오기 위한 데이터 세팅
+				let reptSeqArr = new Array();
+				let reptSeqOwnrArr = new Array();
+				for(let i=0; i<opinionArr.length; i++){
+					reptSeqArr.push(opinionArr[i].reptSeq);
+					reptSeqOwnrArr.push(opinionArr[i].reptOwnrSeq);
+				}
+				
+			
 			if (list.length != 0) {
 				
 				let rank = 1;
 				
 				for( let i = 0; i < list.length; i++) {
-					makeGoodsownerBlock2(rank,list[i], getItem);
+					makeGoodsownerBlock2(rank,list[i], getItem, reptSeqArr, reptSeqOwnrArr);
 					rank++;
 				}
 			}
