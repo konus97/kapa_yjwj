@@ -37,7 +37,7 @@ public interface DecisionMapper {
 
 	void updateStep1(@Param("agendaState")Integer agendaState, @Param("seqNo")Long seqNo);
 
-	void updateStep2(@Param("content") String content,@Param("relatedLaws") String relatedLaws, @Param("relatedLaws2") String relatedLaws2 ,@Param("reviewOpinion") String reviewOpinion,@Param("seqNo") Long seqNo);
+	void updateStep2(@Param("content") String content, @Param("relatedLaws2") String relatedLaws2 ,@Param("reviewOpinion") String reviewOpinion,@Param("decisionId") Long decisionId, @Param("type") Long type);
 	
 	void updateStep3(@Param("agendaState")Integer agendaState,@Param("decisionId") long decisionId);
 	
@@ -94,6 +94,8 @@ public interface DecisionMapper {
 	void insertAgendaDate(Decision_AgendaDate insertAgendaDate);
 
 	List<Decision_Opinion> getOpinionList(Long decisionId);
+	
+	List<Decision_Opinion> getRegisterStepList(Long decisionId);
 	
 	List<Decision_Opinion> getOpinionTypeList(Long decisionId);
 	

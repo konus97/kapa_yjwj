@@ -35,7 +35,8 @@
 	
 	<update id="updateStep2">
 		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
-		update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws}, relatedLaws2 = #{relatedLaws2} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo}
+		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws}, relatedLaws2 = #{relatedLaws2} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo }-->
+		update TB_REGISTER_STEP2 set completionCheck = '1', opinionText = #{content}, relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where decisionId = #{decisionId} and opinionType = #{type} 
 	</update>
 	
 	<update id="updateStep3">
@@ -495,7 +496,7 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
 	<!-- 게시글 갯수 -->
     <select id="getOpinionCompletionCount" resultType="Integer">
         SELECT count(*) as listCnt
-        FROM TB_Decision_Opinion 
+        FROM TB_REGISTER_STEP2
   		<where>
 			decisionId = #{decisionId}
 			AND completionCheck != '1'

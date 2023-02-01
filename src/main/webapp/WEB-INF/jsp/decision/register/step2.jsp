@@ -48,6 +48,7 @@
         
            	<input type="hidden" name="decisionId" id="decisionId" value="${decisionId}">
 	        <input type="hidden" name="seqNo" id="seqNo" value="${seqNo}">
+	        <input type="hidden" name="type" id="type" value="${getType}">
 
             <!-- header start -->
         	<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
@@ -401,71 +402,18 @@
                                         </div>
                                     </div>
                                 </div>
-                        <div class="cs_title">
+                         <div class="cs_title">
 							<h4 class="fl title t1 bold cb s1 bullet">${getType}.
 								${getTypeStr}</h4>
 						</div>
-						<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
-								
-								
-								<c:if test="${deliberateOpinionDTO.landCheck}">
-									<div class="cs_title">
-							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
-						</div>
 						
-						<div class="c_table c_table--opinion">
-							<table>
-								<thead>
-									<tr>
-										<th class="c_table__th--owner_name">소유자</th>
-										<th>소유자의 의견요지</th>
-										<th>사업시행자 의견</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
-											</div><%-- 
-											<div class="op_list">
-												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-											</div> --%>
-										</td>
-										<td class="c_table__td--para">
-											<div class="op_list">
-												<p class="op_list__con">${deliberateOpinionDTO.executorOpinion}</p>
-											</div>
-										</td>
-									</tr>
-									 <tr>
-														<th class="info_reg_th">소재지</th>
-														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
-													</tr>
-													<tr>
-														<th class="info_reg_th">이전비 평가사유</th>
-														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
-													</tr>
-													<tr>
-														<th class="info_reg_th" colspan="3">관련자료</th>
-													</tr>
-													<tr>
-														<td class=""  colspan="3">
-															<img
-															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
-															alt="">
-														</td>
-													</tr>
-								</tbody>
-							</table>
-						</div>
-									<div class="cs_title">
-										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
-									</div>
-									
-									<div class="c_table t3 land">				
+						<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+								 <c:if test="${getType eq deliberateOpinionDTO.type}">
+								<div class="cs_title">
+									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+								</div>
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+								<div class="c_table t3 land">				
 										<table>
 											<thead>
 												
@@ -534,11 +482,6 @@
 											
 										</table>
 									</div>
-								
-								</c:if>
-								
-								
-								<c:if test="${deliberateOpinionDTO.objectCheck}">
 									<div class="cs_title">
 							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
 						</div>
@@ -559,10 +502,7 @@
 										<td class="c_table__td--para">
 											<div class="op_list">
 												<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
-											</div><%-- 
-											<div class="op_list">
-												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
-											</div> --%>
+											</div>
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
@@ -570,10 +510,35 @@
 											</div>
 										</td>
 									</tr>
+									 <tr>
+														<th class="info_reg_th">소재지</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">이전비 평가사유</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
 								</tbody>
 							</table>
 						</div>
 									<div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div>
+								</c:if>
+								
+								
+								<c:if test="${deliberateOpinionDTO.objectCheck}">
+								<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
 									</div>
 									
@@ -655,12 +620,10 @@
 											
 										</table>
 									</div>
-								
-								</c:if>
-								</c:forEach>
-						<%-- <div class="cs_title">
+									<div class="cs_title">
 							<h4 class="fl title t1 bold cb s1 bullet">소유자 및 사업시행자 의견</h4>
 						</div>
+						
 						<div class="c_table c_table--opinion">
 							<table>
 								<thead>
@@ -672,85 +635,34 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>소유자
+										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
-												<h5 class="op_list__tit">소유자 의견</h5>
-											</div>
+												<h5 class="op_list__tit">${deliberateOpinionDTO.ownerOpinion}</h5>
+											</div><%-- 
 											<div class="op_list">
-												<h5 class="op_list__tit">${ownerOpinion}</h5>
-											</div>
+												<h5 class="op_list__tit">${opinionList.ownerOpinion}</h5>
+											</div> --%>
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
-												<p class="op_list__con">사업시행자 의견</p>
+												<p class="op_list__con">${deliberateOpinionDTO.executorOpinion}</p>
 											</div>
 										</td>
 									</tr>
-									<tr>
-										<th class="info_reg_th" >소재지</th>
-										<td colspan="2"><p class="">test1</p></td>
-									</tr>
-									<tr>
-										<th class="info_reg_th">이전비 평가사유</th>
-										<td colspan="2"><p class="">test2</p></td>
-									</tr>
-									<tr>
-										<th class="info_reg_th" colspan="3">관련자료</th>
-									</tr>
-									 <c:forEach var="opinionFileList" items="${opinionFileList}" varStatus="status">
-									<c:choose>
-									<c:when test="${opinionFileList.fileNameExtension eq 'PNG'}">
-									<tr>
-										<td class=""  colspan="3">
-											<img
-											src="${opinionFileList.fileFolder}${opinionFileList.fileNameChange}"
-											alt="">
-										</td>
-									</tr>
-									</c:when>
-									<c:when test="${opinionFileList.fileNameExtension eq 'png'}">
-									<tr>
-										<td class=""  colspan="2">
-											<img
-											src="${opinionFileList.fileFolder}${opinionFileList.fileNameChange}"
-											alt="">
-										</td>
-									</tr>
-									</c:when>
-									</c:choose>
-									<c:choose>
-									<c:when test="${opinionFileList.fileNameExtension eq 'pdf'}">
-									<tr>
-									<td colspan="3">
-									<div class="file_flex"> 
-								<input class="file_view" value="${opinionFileList.fileDescription}" readonly disabled />	
-                         				<input class="file_view" value="${opinionFileList.fileNameChange}" readonly disabled />
-                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
-                             			<i class="icon-block download"></i>
-                         			</button>
-                         			</div>	
-                         			</td>
-                         			</tr>								
-									</c:when>
-									<c:when test="${opinionFileList.fileNameExtension eq 'PDF'}">
-									<tr>
-									<td colspan="3">
-									<div class="file_flex"> 
-										<input class="file_view" value="${opinionFileList.fileDescription}" readonly disabled />	
-                         				<input class="file_view" value="${opinionFileList.fileNameChange}" readonly disabled />
-                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
-                             			<i class="icon-block download"></i>
-                         			</button>
-                         			</div>		
-                         			</td>
-                         			</tr>							
-									</c:when>
-									</c:choose>
-									</c:forEach> --%>
-								<!-- </tbody>
-							</table> -->
+								</tbody>
+							</table>
+						</div>
+								
+								</c:if>
+							
+							
+								
+							
+							</c:if>
+							</c:forEach>
+						
 						</div>
 						
 						<div class="form">
@@ -948,6 +860,7 @@
 
 	        	let seqNo = $('#seqNo').val();
 	        	let decisionId = $('#decisionId').val();
+	        	let type = $('#type').val();
 	        	
 	        	let content = CKEDITOR.instances.boardContent.getData(); 
 	        	let relatedLaws = CKEDITOR.instances.relatedLaws.getData();
@@ -982,7 +895,7 @@
 	        	}  임시제거*/
 	        	
 	         	const data = {
-	         			"seqNo" : seqNo,
+	        			"type" : type,
 	         			"decisionId" : decisionId,
         				"content" : content,
         				"relatedLaws" : relatedLaws,
