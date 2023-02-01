@@ -163,6 +163,7 @@
 		<where>
 			reptSeq = #{reptSeq}
 			AND reptOwnrSeq = #{reptOwnrSeq}
+			AND opinionType = #{opinionType}
 			AND delCheck = '0'
   		</where>
   		

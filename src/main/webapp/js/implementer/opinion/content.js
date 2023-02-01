@@ -497,7 +497,8 @@ notice='';
 						 {
 						"decisionId" : decisionId,
 						"reptSeq": getSeq,
-						"reptOwnrSeq" : reptOwnrSeq
+						"reptOwnrSeq" : reptOwnrSeq,
+						"type" : getType
 						},
             			async: false, 
             			beforeSend : function(xhr){

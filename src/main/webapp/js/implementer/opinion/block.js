@@ -55,7 +55,7 @@ function makeOpinionBlock(startNumber,info) {
     addList.push("     </td>");
     addList.push("     <td class=\"left\">");
     addList.push("          <strong>사업명</strong>");
-if(decisionState == 6){
+if(decisionState == 6 || decisionState == 5){
 	    addList.push("          <span><a href=\""+contextPath+"/implementer/opinion/view.do?decisionId="+decisionId+"\"");
 
 }else{

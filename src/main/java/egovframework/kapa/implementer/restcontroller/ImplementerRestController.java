@@ -306,7 +306,8 @@ public class ImplementerRestController {
 			Long decisionId =  Long.parseLong(paramMap.get("decisionId").toString());
 			Long reptSeq = Long.parseLong(paramMap.get("reptSeq").toString());
 			Long reptOwnrSeq = Long.parseLong(paramMap.get("reptOwnrSeq").toString());
-			
+			int type = Integer.parseInt(paramMap.get("type").toString());
+
 			System.out.println("===================================================");
 			System.out.println(decisionId);
 			System.out.println(reptSeq);
@@ -316,6 +317,7 @@ public class ImplementerRestController {
 			decision_Opinion_Item.setDecisionId(decisionId);
 			decision_Opinion_Item.setReptOwnrSeq(reptOwnrSeq);
 			decision_Opinion_Item.setReptSeq(reptSeq);
+			decision_Opinion_Item.setOpinionType(type);
 			
 			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList2(decision_Opinion_Item));
 			
