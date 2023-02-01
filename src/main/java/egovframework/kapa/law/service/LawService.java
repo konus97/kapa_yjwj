@@ -38,6 +38,7 @@ public class LawService {
 		
 		JSONObject jsonObject = (JSONObject)parser.parse(param);
 
+		int seq_no   = Integer.parseInt(jsonObject.get("seqNo").toString());
 		String article   = jsonObject.get("article")   .toString();
 		String paragraph = jsonObject.get("paragraph") .toString();
 		String title     = jsonObject.get("title")     .toString();
@@ -45,14 +46,15 @@ public class LawService {
 		
 		LawVO law = new LawVO();
 		
+		law.setSeq_no(seq_no);
 		law.setArticle(article);
 		law.setParagraph(paragraph);
 		law.setTitle(title);
 		law.setContent(content);
-		law.setRegdate(LocalDateTime.now());
+		law.setUptdate(LocalDateTime.now());
 		
 		
-		lawMapper.addLaw(law);
+		lawMapper.updateLaw(law);
 	}
     
     

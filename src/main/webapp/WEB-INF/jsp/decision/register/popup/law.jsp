@@ -27,6 +27,8 @@
 						<select id="lawParagraphList">
 						</select>
 					</thead>
+					
+					<button type="button" onclick="getLawInfo(1); return false;">검색</button>
 					<button type="button" onclick="reset_law(); return false;">설정 초기화</button>
 					<div class="c_table t1">
                        <table>
@@ -73,13 +75,18 @@
 	
 	$("#lawTitleList").change(function(){
 		getLawArticles();
-		getLawInfo(1);
+		//getLawInfo(1);
 	});
 
 	$("#lawArticleList").change(function(){
 		getLawParagraph();
-		getLawInfo(1);
+		//getLawInfo(1);
 	});
+
+	$("#lawParagraphList").change(function(){
+		//getLawInfo(1);
+	});
+	
 	
 	function reset_law(){
 		getLawTitle();

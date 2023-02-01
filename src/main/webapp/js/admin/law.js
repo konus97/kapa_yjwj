@@ -273,6 +273,7 @@ function editLaw(seqNo) {
 	let url = contextPath + "/api/law/editLaw.do";
 
 	const data = {
+		"seqNo"     : seqNo,
 		"title"     : $("input[name=title]")[0].value,
 		"article"   : $("input[name=article]")[0].value,
 		"paragraph" : $("input[name=paragraph]")[0].value,

@@ -301,9 +301,9 @@ function addSelectLaw(info){
 	let addList = new Array();
 		addList.push("<tr>");
 		
-		addList.push("   <td>");
+		//addList.push("   <td>");
 		addList.push("		 <input type=\"hidden\" value=\""+seq_no+"\" name=\"lawSeqNo\">");
-		addList.push("   </td>");
+		//addList.push("   </td>");
 	
 		addList.push("<td><strong>법령</strong>");
 		addList.push("<span>"+title+"</span>");

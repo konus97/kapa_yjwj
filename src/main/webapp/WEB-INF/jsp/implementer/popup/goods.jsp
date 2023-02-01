@@ -26,6 +26,7 @@
                          </div>
                      </div>
                  </div> -->
+				<button type="button" onclick="downloadExcelGoods(); return false;">지장물 엑셀 다운로드</button>
                  <div class="c_table t1">
                      <table>
                          <caption>

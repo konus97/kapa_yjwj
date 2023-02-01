@@ -662,3 +662,31 @@ function checkResultWrTbody(){
 
 
 }
+
+function downloadExcelGoods(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelGoods?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelLands(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelLands?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelGoodsOwners(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelGoodsOwners?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
+
+function downloadExcelLandsOwners(){
+	let contextPath = $("#contextPath").val();
+	let masterId = $("#masterId").val();
+	let url = contextPath+"/api/implementer/info/downExcelLandsOwners?encoding=EUC-KR&masterId="+masterId;
+	window.open(url, '_blank');
+}
