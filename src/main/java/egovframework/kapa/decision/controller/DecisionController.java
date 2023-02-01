@@ -3,6 +3,12 @@ package egovframework.kapa.decision.controller;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,13 +33,10 @@ import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
-import egovframework.kapa.implementer.Const.DecisonState;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.domain.OwnerInfo;
 import egovframework.kapa.implementer.dto.ApplicationDTO;
-import egovframework.kapa.implementer.dto.ApplicationGoodsDTO;
-import egovframework.kapa.implementer.dto.ApplicationLandDTO;
 import egovframework.kapa.implementer.dto.OwnerInfoDTO;
 import egovframework.kapa.implementer.service.ImplementerService;
 import egovframework.kapa.util.StrUtil;
@@ -303,10 +306,16 @@ public class DecisionController {
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
-		
         
+		/*
+		 * DeliberateViewDTO formatter =
+		 * deliberateService.getDeliberateViewInfoFormatter(decisionId);
+		 * System.out.println("TESTSETSETSETET ::::::::" + formatter);
+		 * model.addAttribute("formatter",formatter);
+		 */
         //소유자 및 사업시행자 의견
 		List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
+		List<Decision_Opinion> typeList = decisionService.getOpinionTypeList(decisionId);
 		
 		
 		if(decisionId!=0L) {
@@ -320,6 +329,8 @@ public class DecisionController {
       			List<Decision_ConsultationDate> consultationDates =  decisionService.getConsultationDate(decisionId);
       			List<Decision_Target> targets = decisionService.getTarget(decisionId);
       			Decision decision = decisionService.getDecisionView(decisionId);
+      			
+      			
       			
       			model.addAttribute("groupEstablishedDate", decision.getGroupEstablishedDate());
       		
@@ -388,7 +399,7 @@ public class DecisionController {
         	
         	Decision_Opinion insertNew = new Decision_Opinion();
     		
-    		for(Decision_Opinion opinion : opinionList) {
+    		for(Decision_Opinion opinion : typeList) {
     			
     			if(opinion.getCompletionCheck()==null||opinion.getCompletionCheck()==0) {
     				insertNew=opinion;
@@ -396,23 +407,18 @@ public class DecisionController {
     			
     		}
 		 //공고 상태
-      	 int getType = insertNew.getType();
-      	 String ownerOpinion = insertNew.getOwnerOpinion();
-      	 String executorOpinion = insertNew.getExecutorOpinion();
-      	 String ownrNm = insertNew.getOwnrNm();
-	      	Long reptSeq =  insertNew.getReptSeq(); 
-	      	Long reptOwnrSeq = insertNew.getReptOwnrSeq();
+      	 int getType = insertNew.getOpinionType();
 			/*
-			 * String opinionTitle = insertNew.getOpinionTitle(); String opinionContent =
-			 * insertNew.getOpinionContent(); String fileFolder = insertNew.getFileFolder();
-			 * String fileNameChange = insertNew.getFileNameChange(); String
-			 * fileNameExtension = insertNew.getFileNameExtension(); 
+			 * String ownerOpinion = insertNew.getOwnerOpinion(); String executorOpinion =
+			 * insertNew.getExecutorOpinion(); String ownrNm = insertNew.getOwnrNm();
 			 */
+	      //	Long reptSeq =  insertNew.getReptSeq(); 
+	      //	Long reptOwnrSeq = insertNew.getReptOwnrSeq();
      	 
       	 String getTypeStr = "";
-		 List<Decision_Opinion_Item> opinionFileList = decisionService.getOpinionFileList(decisionId, getType, reptSeq, reptOwnrSeq);
-		 System.out.println("test 111" + opinionFileList);
-		 model.addAttribute("opinionFileList", opinionFileList);
+		// List<Decision_Opinion_Item> opinionFileList = decisionService.getOpinionFileList(decisionId, getType, reptSeq, reptOwnrSeq);
+		// System.out.println("test 111" + opinionFileList);
+		// model.addAttribute("opinionFileList", opinionFileList);
 		 for(int i=0 ; i<ItemData.values().length ; i++) {
 			 
 	   		 int code = ItemData.values()[i].getCode();
@@ -424,12 +430,9 @@ public class DecisionController {
         } 
 		 
 		 
-		model.addAttribute("ownrNm", ownrNm);
 		model.addAttribute("getType",getType);
 		model.addAttribute("getTypeStr",getTypeStr);
-		model.addAttribute("seqNo",insertNew.getSeqNo());
-		model.addAttribute("ownerOpinion", ownerOpinion);
-		model.addAttribute("executorOpinion", executorOpinion);
+		//model.addAttribute("seqNo",insertNew.getSeqNo());
 		
 		
 		}
@@ -671,7 +674,8 @@ public class DecisionController {
 		return "decision/schedule/list";
 	}
 	
-	
+	public static <T> Predicate<T> distinctByKey( Function<? super T, Object> keyExtractor) {Map<Object, Boolean> map = new ConcurrentHashMap<>();return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;  
+	}
 
 	
 	

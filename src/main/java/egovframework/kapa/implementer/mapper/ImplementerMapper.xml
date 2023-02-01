@@ -250,6 +250,11 @@ WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_
 		insert into TB_Decision_Opinion( decisionId, reptSeq,type, ownerOpinion, executorOpinion,completionCheck,delCheck,regdate, reptOwnrSeq, ownrNm)
     	values(#{decisionId}, #{reptSeq},#{type}, #{ownerOpinion}, #{executorOpinion},'0', #{delCheck}, #{regdate}, #{reptOwnrSeq}, #{ownrNm})
     </insert>
+    
+    <insert id="saveRegister" parameterType="egovframework.kapa.domain.Decision_Opinion">
+		insert into TB_REGISTER_STEP2( decisionId, opinionType, completionCheck, delCheck)
+    	values(#{decisionId}, #{type}, '0', '0')
+    </insert>
 	
 	
 	<!--의견 아이탬 저장 -->

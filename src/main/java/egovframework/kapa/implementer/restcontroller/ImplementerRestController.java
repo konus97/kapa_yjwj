@@ -247,7 +247,7 @@ public class ImplementerRestController {
 		
 		try {
 			implementerService.completeOpinion(data);
-    		
+			implementerService.insertRegister(data);
             resultFinal.put("msg", "Complete");
         }catch (Exception e){
             System.out.println("\n\ne.getMessage()\n"+e.getMessage());

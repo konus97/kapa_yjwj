@@ -18,6 +18,7 @@ public class Decision_Opinion {
     private String reviewOpinion;
     
     private Integer type;
+    private Integer opinionType;
     private Integer completionCheck;
     private Integer delCheck;
     private String regdate;

@@ -4,9 +4,14 @@ package egovframework.kapa.implementer.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,10 +25,8 @@ import egovframework.kapa.decision.dto.DecisionStateDTO;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.deliberate.mapper.DeliberateMapper;
 import egovframework.kapa.domain.Decision;
-import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Cityplan;
 import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.domain.Decision_Date;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
@@ -394,7 +397,6 @@ public class ImplementerService {
 			
 			JSONArray opinionList = (JSONArray) jsonObject.get("opinionList");
 			JSONArray addOpinionItemArray = (JSONArray) jsonObject.get("addOpinionItemArray");
-			
 			//Textarea 정보 업데이트
 
 			if(addOpinionItemArray.size()>0) {				
@@ -472,7 +474,58 @@ public class ImplementerService {
 		}
 		
 	}
-	
+	public void insertRegister(String param) {
+		
+		JSONParser parser = new JSONParser();
+		
+		
+		try {
+			
+			JSONObject jsonObject = (JSONObject)parser.parse(param);
+			
+			long decisionId = Long.parseLong(jsonObject.get("decisionId").toString());
+			
+			JSONArray addOpinionItemArray = (JSONArray) jsonObject.get("addOpinionItemArray");
+			List<Integer> typeList = new ArrayList<>();
+			
+			
+			
+			for(int i=0; i<addOpinionItemArray.size(); i++ ) {
+				
+				JSONObject JSONTarget2 = (JSONObject)addOpinionItemArray.get(i);
+				
+				
+				
+				typeList.add(Integer.parseInt(JSONTarget2.get("type").toString()));
+			}
+			
+			
+			Set<Integer> set = new HashSet<Integer>(typeList);
+			List<Integer> newDistinctList =new ArrayList<Integer>(set);
+		
+
+			if(addOpinionItemArray.size()>0) {				
+				
+				for(int i=0; i<newDistinctList.size(); i++) {
+					
+								
+					
+					Decision_Opinion opinion = new Decision_Opinion();
+					
+					//Integer type = Integer.parseInt(JSONTarget.get("type").toString()); 
+					opinion.setType(newDistinctList.get(i));
+					opinion.setDecisionId(decisionId);
+					saveRegister(opinion);
+					
+					
+				}
+			}
+						
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	public ApplicationList getApplicationView(int masterId) {
 		return implementerMapper.getApplicationView(masterId);
@@ -533,6 +586,14 @@ public class ImplementerService {
 		}
 	}
 	
+public void saveRegister(Decision_Opinion opinion) {
+		
+		try {
+			implementerMapper.saveRegister(opinion);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void saveOpinionItem(Decision_Opinion_Item opinionItem) {
 		
 		try {
@@ -975,5 +1036,8 @@ public class ImplementerService {
 	public void saveDecisionFile(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static <T> Predicate<T> distinctByKey( Function<? super T, Object> keyExtractor) {Map<Object, Boolean> map = new ConcurrentHashMap<>();return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;  
 	}
 }
