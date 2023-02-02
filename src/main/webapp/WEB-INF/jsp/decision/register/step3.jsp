@@ -916,7 +916,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${typeList.opinionText}</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${typeList.opinionText}</div>
 									</div>
 								</div>
 								
@@ -926,7 +926,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</div>
 									</div>
 								</div> --%>
 								
@@ -935,7 +935,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${typeList.relatedLaws2 }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${typeList.relatedLaws2 }</div>
 									</div>
 								</div>
 								
@@ -944,7 +944,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd fr_editor_wr">${typeList.reviewOpinion }</p>
+										<div class="textarea_view textarea_bd fr_editor_wr">${typeList.reviewOpinion }</div>
 									</div>
 								</div>
 							</c:forEach>	
