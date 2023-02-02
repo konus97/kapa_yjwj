@@ -140,7 +140,7 @@ function makeLawBlock_popup(idx, info) {
     addList.push("   	<span>"+info.paragraph+"</span>");
 	addList.push("	</td>");
 	
-	addList.push("	<td>");
+	addList.push("	<td style=\"text-align:left\">");
     addList.push("    	<strong>항</strong>");
     addList.push("    	<span>"+info.content+"</span>");
 	addList.push("	</td>");

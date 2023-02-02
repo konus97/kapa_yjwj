@@ -45,14 +45,14 @@
                            
                             <thead>
                                <tr>
-                                   <th>선택</th>
+                                   <th style="width: 2em">선택</th>
                                    <th style="width: 14em">법령</th>
                                    <th style="width: 6em">조</th>
                                    <th style="width: 6em">항</th>
                                    <th>내용</th>
                                </tr>
                            </thead>
-                           <tbody id="lawList">
+                           <tbody id="lawList" style="text-align: center">
                                
                            </tbody>
                            
