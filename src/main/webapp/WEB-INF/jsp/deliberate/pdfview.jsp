@@ -96,9 +96,10 @@
 	             	<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_downBtn">PDF 다운로드</a>
 	             	</li>
-	             	<li>
+	             	
+	             	<!--<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_decideWr">심사하기</a>
-	             	</li>
+	             	</li>-->
             	</ul>
             </div>
     </div>
@@ -403,14 +404,18 @@
 </div>
 
 <!-- pdf 출력 영역 끝  -->
+
+<!-- pdf 다운로드 버튼 시작 -->
 <div class="btn_wr">
 	<button id="index${formatter.applicationDTO.judgSeq}_downBtn" type="button" class="btn large btn--down" onclick="pdfPrint()">
 		<i class="download white icon"></i>
 		PDF 다운로드
 	</button>
 </div>
+<!-- pdf 다운로드 버튼 끝 -->
 
-<form class="decide_wr" id="index${formatter.applicationDTO.judgSeq}_decideWr">
+<!-- 심사하기 시작 -->
+<!--<form class="decide_wr" id="index${formatter.applicationDTO.judgSeq}_decideWr">
 	<h2 class="decide_wr__tit">심사하기</h2>
 	<div class="decide_wr__conwr">
 		<h3 class="decide_wr__contit">심사 내용</h3>
@@ -430,7 +435,8 @@
 	<div class="decide_wr__btnwr">
 		<button id="decideBtn" type="button" class="decide_wr__btn" onclick="confirm('심사 결과를 제출하시겠습니까?');">심사 결과 제출하기</button>	
 	</div>
-</form>
+</form>-->
+<!-- 심사하기 끝 -->
 		
 <!-- join popup S -->
 <jsp:include page="/WEB-INF/jsp/components/join.jsp" flush="false">
