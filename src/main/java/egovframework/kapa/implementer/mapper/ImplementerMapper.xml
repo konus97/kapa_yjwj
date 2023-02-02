@@ -270,12 +270,15 @@ WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_
 		    * 
 		  FROM tb_ltis2kapa_rept_ownr_intr
 		  WHERE 
- 		    ownr_intr_yn = 'O' AND
-			rept_seq IN
+ 		    ownr_intr_yn = 'O' 
+ 		    AND rept_seq IN
+			
+			<!--  이부분 수정 필요 -->
 			
 			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">	
 				#{item}
 			</foreach>
+			
 	</select> 
 	
 	<!-- 소유자 목록 -->

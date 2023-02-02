@@ -471,9 +471,9 @@ function openOpinionPopup2(getSeq,getType,reptOwnrSeq,ownrNm){
 notice='';
    break;
 }
-	
+	if(document.getElementById('notice')  != null){
 	document.getElementById('notice').innerHTML = notice;
-	
+	}
 	
 					for(let i=0; i<opinionArr.length; i++){
 						if(opinionArr[i].reptOwnrSeq == reptOwnrSeq && opinionArr[i].reptSeq == getSeq){
@@ -1365,7 +1365,7 @@ $.ajax({
             			},
             			success : function(data) {
 							let info = data.list;
-			getOpinionList(); 
+							getOpinionList(); //지장물, 필지 보여지게 변경 << 의견이 작성된 리스트만
 			
 			for(let i=0; i<info.length; i++){
 					//console.log(info[i]);
@@ -1505,6 +1505,7 @@ $.ajax({
 							for(let i=0; i<info.length; i++){
 								opinionArr.push(info[i]);
 								document.getElementsByClassName('item_result_wr')[info[i].type-1].style.display = 'block';
+								//만약 필지만 있거나, 지장물만 있을 경우 리스트에 빈 상태로 나오는 문제가 있음
 								
 							}
             			},

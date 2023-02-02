@@ -132,6 +132,8 @@ public interface DecisionMapper {
 
 	List<OpinionFileVO> getDecisionOpinionItemFiles(Decision_Opinion_Item decision_Opinion_Item);
 
+	List<Decision_Opinion_Item> getDecisionOpinionItemList3(Decision_Opinion_Item item);
+
 	
 
 }

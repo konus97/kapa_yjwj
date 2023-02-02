@@ -4,7 +4,7 @@
 
 function makeLandInfoBlock(startNumber,info) {
 
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
@@ -87,7 +87,7 @@ function makeLandInfoBlock(startNumber,info) {
 
 function makeLandOwnerInfoBlock(startNumber,info) {
 
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
@@ -171,7 +171,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
 
 function makeLandOwnerCheckBlock(startNumber,info) {
 	
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
@@ -197,7 +197,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	addList.push("		 <input type=\"checkbox\" name=\"checkbox_land\" value=\""+startNumber+"\" id=\""+startNumber+"\" data-seq=\""+startNumber+"\">");
 	addList.push("   </td>");
 	let test = $('#'+startNumber).data('seq');
-	console.log(test);
+	//console.log(test);
 	addList.push("   <td>");
 	addList.push("		 <strong>연번</strong>");
 	addList.push("		 <span>"+startNumber+"</span>");
@@ -261,11 +261,42 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 
 
 function makeLandOwnerCheckBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnrArr) {
-	
 
-	
-	let addList = new Array();
-	
+let decisionId = $('#decisionId').val();
+let csrfToken = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+let contextPath = $('#contextPath').val();
+let url = contextPath+"/api/implementer/opinion/landview2";
+
+	$.ajax({
+		url : url,
+		type : "POST",
+		dataType : "json",
+		async: false,
+		data : {
+			"type":getItem,
+			"reptSeq":reptSeqArr[0],
+			"reptOwnrSeq":reptSeqOwnrArr[0],
+			"decisionId" : decisionId
+		},
+		beforeSend : function(xhr){
+        xhr.setRequestHeader(csrfHeader, csrfToken);
+        },
+		success : function(data) {
+
+			let list = data.list;
+			//console.log('landview2');
+			
+			
+			if(list.length !=0){
+					for(let j=0; j<list.length; j++){
+	let listReptSeq = list[j].reptSeq;
+	let listReptOwnrSeq = list[j].reptOwnrSeq;
+				
+				
+			
+				
+				let addList = new Array();
 	let reptAddr = info.reptAddr;
 
 	let sidoGunguCd = info.sidoGunguCd;
@@ -285,7 +316,7 @@ function makeLandOwnerCheckBlock2(startNumber,info, getItem, reptSeqArr, reptSeq
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq  = info.reptOwnrSeq;
 	
-	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq)){
+	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq) && listReptSeq == getSeq &&  listReptOwnrSeq ==reptOwnrSeq){
 		
 	
 	
@@ -361,17 +392,28 @@ function makeLandOwnerCheckBlock2(startNumber,info, getItem, reptSeqArr, reptSeq
 	$("#ownerLandItemList"+getItem).append(addList.join(''));
 	}
 	else{
-		console.log("makeBlock getSeq :::" + getSeq);
-		console.log("include check reptSeq :::" + reptSeqArr);
+		//console.log("makeBlock getSeq :::" + getSeq);
+		//console.log("include check reptSeq :::" + reptSeqArr);
 		
-		console.log("makeBlock reptSeqOwnrArr :::" + reptOwnrSeq);
-		console.log("include check reptSeqOwnrArr :::" + reptSeqOwnrArr);
+		//console.log("makeBlock reptSeqOwnrArr :::" + reptOwnrSeq);
+		//console.log("include check reptSeqOwnrArr :::" + reptSeqOwnrArr);
 	}
+				
+			}
+			}
+		},
+		error : function(xhr, status, error) {
+		}
+	});
+	
+
+	
+	
 }
 
 function makeGoodsInfoBlock(startNumber,info) {
 
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
@@ -461,8 +503,9 @@ function makeGoodsInfoBlock(startNumber,info) {
 }
 
 function makeGoodsownerBlock(startNumber,info) {
+	
 
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
@@ -548,8 +591,40 @@ function makeGoodsownerBlock(startNumber,info) {
 }
 
 function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnrArr) {
-
-	console.log(info);
+	let decisionId = $('#decisionId').val();
+	let csrfToken = $("meta[name='_csrf']").attr("content");
+	let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+	let contextPath = $('#contextPath').val();
+	let url = contextPath+"/api/implementer/opinion/landview2";
+	console.log(reptSeqArr);
+	console.log(reptSeqOwnrArr);
+	
+	$.ajax({
+			url : url,
+			type : "POST",
+			dataType : "json",
+			async: false,
+			data : {
+				"type":getItem,
+				"reptSeq":reptSeqArr,
+				"reptOwnrSeq":reptSeqOwnrArr,
+				"decisionId" : decisionId
+			},
+			beforeSend : function(xhr){
+			xhr.setRequestHeader(csrfHeader, csrfToken);
+			},
+			success : function(data) {
+	
+	let list = data.list;
+	
+	console.log(list);
+				
+				
+	if(list.length !=0){
+	for(let j=0; j<list.length; j++){
+	let listReptSeq = list[j].reptSeq;
+	let listReptOwnrSeq = list[j].reptOwnrSeq;
+	
 	
 	let addList = new Array();
 	
@@ -573,9 +648,9 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 	
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq  = info.reptOwnrSeq;
-	
-	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq)){
-	
+	if(reptSeqArr.includes(getSeq) && reptSeqOwnrArr.includes(reptOwnrSeq) && listReptSeq == getSeq &&  listReptOwnrSeq ==reptOwnrSeq){
+					//console.log('goodsview2');
+
 	addList.push("<tr>");
     addList.push("   <td>");
     addList.push("		 <strong>연번</strong>");
@@ -640,13 +715,26 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 
 	$("#ownerGoodsItemList"+getItem).append(addList.join(''));
 	}else{
-		console.log('no matching item');
+		//console.log('no matching item');
 	}
+				}
+				
+	}				
+
+					
+				},
+				error : function(xhr, status, error) {
+			}
+		}); //ajax end
+		
+				
+	
+	
 }
 
 function makeGoodsownerCheckBlock(startNumber,info) {
 
-	console.log(info);
+	//console.log(info);
 	
 	let addList = new Array();
 	
