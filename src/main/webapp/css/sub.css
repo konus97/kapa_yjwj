@@ -419,3 +419,26 @@ sup {
 .inside > li {
     list-style: inside;
 }
+.title--optype {
+	display: inline-block;
+    position: relative;
+    margin: 60px 0 20px;
+    padding: 8px 12px;
+    padding-left: 24px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.4;
+    background: #f7f7f7;
+    color: #164091;
+    letter-spacing: -1px;
+}
+.title--optype::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 100%;
+    background: #164091;
+}

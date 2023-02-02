@@ -3085,9 +3085,14 @@
 	background: #fff;
 }
 .opinion_index_list--sub a {
-	font-size: 14px;
+	font-size: 15px;
     color: #5A7791;
     text-indent:1em;
+}
+.opinion_index_list--sub2 a {
+	font-size: 13px;
+	text-indent: 3em;
+    padding: 6px;
 }
 
 /* fr_editor_wr */

@@ -465,7 +465,7 @@
 						<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 								 <c:if test="${getType eq deliberateOpinionDTO.type}">
 								<div class="cs_title">
-									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
+									<h4 class="title--optype">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
 								</div>
 								<c:if test="${deliberateOpinionDTO.landCheck}">
 								<!-- <div class="cs_title">

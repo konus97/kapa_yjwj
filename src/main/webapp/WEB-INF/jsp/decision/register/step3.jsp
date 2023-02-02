@@ -97,11 +97,36 @@
 	                        	</li>
 	                        	<li>
 		                          <ul class="opinion_index_list--sub">
-		                          <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+		                          <!-- 항목 시작 -->
+		                          <c:forEach var="typeList" items="${typeList}" varStatus="status">
 		                          	<li>
-		                          		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
+		                          		<a href="#index${typeList.decisionId}_${typeList.opinionType}">
+		                          			${typeList.opinionType}. ${typeList.getTypeStr}
+		                          		</a>
+		                          		<!-- 소유자 시작 -->
+		                          		<ul class="opinion_index_list--sub2">
+		                          		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+											<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
+												<c:if test="${deliberateOpinionDTO.landCheck}">
+				                          			<li>
+				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">
+				        	                  				${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+				        	                  			</a>
+				                          			</li>
+		                          				</c:if>
+		                          				<c:if test="${deliberateOpinionDTO.objectCheck}">	                          			<li>
+				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">
+				        	                  				${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+				        	                  			</a>
+				                          			</li>
+		                          				</c:if>
+		                          			</c:if>
+		                          		</c:forEach>
+		                          		</ul>
+		                          		<!-- 소유자 끝 -->
 		                          	</li>
 		                          </c:forEach>
+		                          <!-- 항목 끝 -->
 		                          </ul>
 	                        	</li>
                         	</ul>
@@ -434,19 +459,24 @@
 			                        </table>
 			                    </div>
 			                    <!-- 감정평가정보 끝 -->
-						
+							
+							<div id="index${formatter.applicationDTO.judgSeq}_tit04" class="blind"></div>
 							<!-- 1. 지연가산금 S -->
 							<c:forEach var="typeList" items="${typeList}" varStatus="status">
 							<div class="cs_title">
-									<h4 class="fl title t1 bold cb s1 bullet">${typeList.opinionType}. ${typeList.getTypeStr}</h4>
-								</div>
+								<h4 class="title--optype" id="index${typeList.decisionId}_${typeList.opinionType}">
+									${typeList.opinionType}. ${typeList.getTypeStr}
+								</h4>
+							</div>
 							<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 							<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 								
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
-								<div class="cs_title">
-										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									<div class="cs_title">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">
+											필지
+										</h4>
 									</div>
 									
 									<div class="c_table t3 land">				
@@ -652,8 +682,11 @@
 								
 								
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
-								<div class="cs_title">
-										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
+									
+									<div class="cs_title">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">
+											지장물
+										</h4>
 									</div>
 									
 									<div class="c_table t3 land">				
