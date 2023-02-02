@@ -399,6 +399,18 @@
 		
 		</c:forEach>
 		<!-- 1. 지연가산금 E -->
+		<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+			<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+				 <img src="${jpgFiles}" alt="">
+				<p>${jpgFiles}</p>
+			</c:forEach>
+		</c:forEach>
+		<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+			
+				 <img src="${jpgFileList}" alt="">
+				<p>${jpgFiles}</p>
+			
+		</c:forEach> --%>
 		
 	</div>
 </div>
@@ -558,6 +570,8 @@
 	                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 	                    heightLeft -= pageHeight;
 	                }
+	                
+	                
 	                
 
 	                // 파일 저장

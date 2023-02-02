@@ -671,4 +671,38 @@ public class StrUtil {
 		s = StringUtils.replace(s, ",", "");    // , 처리
 		return Long.parseLong(s);
 	}
+	
+	// for PdfConvert
+	
+	public static String lpad(int target, int maxLen, String padChar) {
+		return lpad(String.valueOf(target), maxLen, padChar);
+	}
+	
+	
+	public static String lpad(String target, int maxLen, String padChar) {
+		if (target == null) {
+			target = "";
+		}
+		
+		if (padChar == null || padChar.length() == 0) {
+			padChar = "0";
+		} else if (padChar.length() > 1) {
+			padChar = padChar.substring(0, 1);
+		}
+		
+		String result = "";
+		if (target.length() < maxLen) {
+			int padCount = maxLen - target.length();
+			for (int i=0; i<padCount; i++) {
+				result += padChar;
+			}
+			
+			result += target;
+			
+		} else {
+			result = target;
+		}
+		
+		return result;
+	}
 }
