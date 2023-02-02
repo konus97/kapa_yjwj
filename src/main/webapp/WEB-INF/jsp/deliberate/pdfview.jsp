@@ -402,7 +402,6 @@
 		<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
 			<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
 				 <img src="${jpgFiles}" alt="">
-				<p>${jpgFiles}</p>
 			</c:forEach>
 		</c:forEach>
 		<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
