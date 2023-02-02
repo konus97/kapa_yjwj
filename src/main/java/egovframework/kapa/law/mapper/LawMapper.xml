@@ -11,7 +11,8 @@
 		paragraph = #{paragraph},
 		title = #{title},
 		content = #{content},
-		uptdate = #{uptdate}
+		uptdate = #{uptdate},
+		department = #{department}
 		where seq_no = #{seq_no}
 	</update>
 	
@@ -28,20 +29,10 @@
         SELECT COUNT(*)
 		FROM TB_Law 
 		WHERE del_check = 0
-		
-  		<if test = 'title neq null and title neq ""'>     
-	         AND title = #{title}
-	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
-        </if>
-        
-  		<if test = 'article neq null and article neq ""'>     
-	         AND article = #{article}
-	         <!-- AND article LIKE CONCAT('%', #{article}, '%') -->
-        </if>
-        
-  		<if test = 'paragraph neq null and paragraph neq ""'>    
-	         AND paragraph = #{paragraph}
-  			<!-- AND paragraph LIKE CONCAT('%', #{paragraph}, '%') -->
+			
+  		<if test = 'search neq null and search neq ""'>
+	         AND title LIKE CONCAT('%', #{search}, '%')
+			 OR department LIKE CONCAT('%', #{search}, '%')
         </if>
         
     </select>
@@ -51,19 +42,9 @@
 		FROM TB_Law
 		WHERE del_check = 0
 				
-  		<if test = 'title neq null and title neq ""'>     
-	         AND title = #{title}
-	         <!-- AND title LIKE CONCAT('%', #{title}, '%') -->
-        </if>
-        
-  		<if test = 'article neq null and article neq ""'>     
-	         AND article = #{article}
-	         <!-- AND article LIKE CONCAT('%', #{article}, '%') -->
-        </if>
-        
-  		<if test = 'paragraph neq null and paragraph neq ""'>    
-	         AND paragraph = #{paragraph}
-  			<!-- AND paragraph LIKE CONCAT('%', #{paragraph}, '%') -->
+  		<if test = 'search neq null and search neq ""'>
+	         AND title LIKE CONCAT('%', #{search}, '%')
+			 OR department LIKE CONCAT('%', #{search}, '%')
         </if>
         
 		ORDER BY seq_no DESC
@@ -75,8 +56,8 @@
     
     <!-- addLaw -->
 	<insert id="addLaw" parameterType="egovframework.kapa.law.domain.LawVO">
-		INSERT INTO TB_Law (article, paragraph, title, content, regdate, del_check)
-		values (#{article}, #{paragraph}, #{title}, #{content}, #{regdate}, 0)
+		INSERT INTO TB_Law (article, paragraph, title, content, regdate, del_check, department)
+		values (#{article}, #{paragraph}, #{title}, #{content}, #{regdate}, 0, #{department})
 	</insert>
 	
 	<select id="getViewLaw" resultType="egovframework.kapa.law.domain.LawVO"  parameterType="integer">

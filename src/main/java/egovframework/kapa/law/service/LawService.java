@@ -43,6 +43,7 @@ public class LawService {
 		String paragraph = jsonObject.get("paragraph") .toString();
 		String title     = jsonObject.get("title")     .toString();
 		String content   = jsonObject.get("content")   .toString();
+		String department= jsonObject.get("department").toString();
 		
 		LawVO law = new LawVO();
 		
@@ -52,6 +53,7 @@ public class LawService {
 		law.setTitle(title);
 		law.setContent(content);
 		law.setUptdate(LocalDateTime.now());
+		law.setDepartment(department);
 		
 		
 		lawMapper.updateLaw(law);
@@ -80,6 +82,7 @@ public class LawService {
 		String paragraph = jsonObject.get("paragraph") .toString();
 		String title     = jsonObject.get("title")     .toString();
 		String content   = jsonObject.get("content")   .toString();
+		String department= jsonObject.get("department").toString();
 		
 		LawVO law = new LawVO();
 		
@@ -88,6 +91,7 @@ public class LawService {
 		law.setTitle(title);
 		law.setContent(content);
 		law.setRegdate(LocalDateTime.now());
+		law.setDepartment(department);
 		
 		
 		lawMapper.addLaw(law);

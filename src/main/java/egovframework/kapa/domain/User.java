@@ -15,12 +15,13 @@ public class User {
 	private String userPassword;
 	private String userAuthority;
 	private String userName;
-	private String email;
+	private String email; 
+	private String domain; // @ 이후 주소
 	private Integer delCheck;
 	private LocalDateTime regdate;
 	private LocalDateTime uptdate;
 	private String userEnabled;
 	private String dept;	// 소속
-	private String mobile;  // 연락처 
+	private String mobile;  // 연락처
 	
 }

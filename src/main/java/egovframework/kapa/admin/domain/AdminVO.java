@@ -21,6 +21,8 @@ public class AdminVO extends Pagination {
 	
 	private String email;
 	
+	private String domain;
+	
 	private String userAuthority;
 	
 	private String dept;

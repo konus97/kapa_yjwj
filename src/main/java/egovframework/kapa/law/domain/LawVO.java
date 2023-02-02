@@ -22,4 +22,8 @@ public class LawVO extends Pagination { // 관련 법령
 	
 	private LocalDateTime uptdate;	// 수정일
 	
+	private String department;		// 담당부서
+	
+	private String search;	// 검색어
+	
 }

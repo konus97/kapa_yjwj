@@ -2,8 +2,7 @@ let rowItem = 10;
 
 // ----------------- 관련 법령 js --------------------
 
-function getLawList(cpage) {
-
+function getLawList2(cpage) {
 	let contextPath = $("#contextPath").val();
 	let url = contextPath + "/api/law/lawList.do";
 
@@ -26,7 +25,7 @@ function getLawList(cpage) {
 			let totalPage = data.totalPage;
 
 			if (totalPage == "0") totalPage = 1;
-
+			
 			let addList = new Array();
 			addList.push("<h4 class=\'fl title t1 bold cb s1 bullet'>검색결과 : " + allCount + "항목 (" +cpage+"/"+totalPage + ") 페이지</h4>");
 			$(".cs_title").append(addList.join(''));
@@ -45,9 +44,9 @@ function getLawList(cpage) {
 				$("#lawList").attr("data-tpage", totalPage);
 	
 				for(let i = 1; i<list.length+1; i++) {
-					makeLawBlock(i, list[i - 1]);
+					makeLawBlock2(i, list[i - 1]);
 				}	
-				makeLawPageList();
+				makeLawPageList2();
 			}
 		},
 		error: function(xhr, status, error) {
@@ -59,107 +58,32 @@ function getLawList(cpage) {
 	});
 }
 
-function addLaw() {
-	let csrfToken = $("meta[name='_csrf']").attr("content");
-    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
-	let contextPath = $("#contextPath").val();
-	let url = contextPath + "/api/law/addLaw.do";
-
-	const data = {
-		"title"     : $("input[name=title]")[0].value,
-		"department": $("input[name=department]")[0].value,
-		"article"   : $("input[name=article]")[0].value,
-		"paragraph" : $("input[name=paragraph]")[0].value,
-		"content"   : $("textarea[name=content]")[0].value,
-	}
-	
-	if (data.title == null || data.title == "") {
-		alert("법령을 입력해주세요");
-		$('#title').focus();
-		return false;
-	}
-
-	if (data.department == null || data.department == "") {
-		alert("담당부서를 입력해주세요");
-		$('#department').focus();
-		return false;
-	}
-	
-	if (data.article == null || data.article == "") {
-		alert("조를 입력해주세요");
-		$('#article').focus();
-		return false;
-	}
-	
-	if (data.paragraph == null || data.paragraph == "") {
-		alert("항를 입력해주세요");
-		$('#paragraph').focus();
-		return false;
-	}
-	
-	if (data.content == null || data.content == "") {
-		alert("내용을 입력해주세요");
-		$('#content').focus();
-		return false;
-	}
-	
-	if (confirm("법령을 등록 하시겠습니까?")){
-		$.ajax({
-			url: url,
-			type: "POST",
-		    contentType : "application/json; charset=UTF-8",
-			async: false,
-			data : JSON.stringify(data),
-	        beforeSend : function(xhr){
-	        	xhr.setRequestHeader(csrfHeader, csrfToken);
-	        },
-			success: function(data) {
-				alert("등록이 완료되었습니다.");
-				var page = contextPath + "/admin/law.do"
-				//location.href = history.back();
-				location.href = page;
-			},
-			error: function(xhr, status, error) {
-		
-			}
-		});
-	}
-}
-
-
-function makeLawBlock(idx, info) {
+function makeLawBlock2(idx, info) {
 	
 	let contextPath = $("#contextPath").val();
 	let addList = new Array();
 	let seq_no = info.seq_no;
+	
 
 	addList.push("<tr>");
 	
 	addList.push("<th>");
 	addList.push("<strong>" + idx+ "</strong>");
 	addList.push("</th>");
-	
+	// 법령명
 	addList.push("<td>");
-	addList.push("<strong>법령</strong><span>"+info.title+"</span>");
+	addList.push("<div class=\"cbl_subject\"><a href=\""+contextPath+"/law/view_board.do?viewSeq="+seq_no+"\">"+
+				"<span>"+info.title+"</span>" +"</a></div>");
 	addList.push("</td>");
-	
+	//------
 	addList.push("<td>");
 	addList.push("<strong>담당부서</strong><span>"+info.department+"</span>");
 	addList.push("</td>");
 	
-	addList.push("<td>");
-	addList.push("<strong>조</strong><span>"+info.article+"</span>");
-	addList.push("</td>");
+	let text = "법 제" + info.article + "조 제" + info.paragraph + "항";
 	
 	addList.push("<td>");
-	addList.push("<strong>항</strong><span>"+info.paragraph+"</span>");
-	addList.push("</td>");
-	
-	addList.push("<td>");
-	addList.push("<div class=\"cbl_subject\"><a href=\""+contextPath+"/law/view.do?viewSeq="+seq_no+"\">"+
-				"<strong>내용</strong><span>"+info.content+"</span>" +"</a></div>");
-	//addList.push("<strong>내용</strong><span>"+info.content+"</span>"+"</a></div>");
+	addList.push("<strong>수용근거</strong><span>"+text+"</span>");
 	addList.push("</td>");
 	
 	addList.push("</tr>");
@@ -168,7 +92,7 @@ function makeLawBlock(idx, info) {
 }
 
 
-function makeLawPageList() {
+function makeLawPageList2() {
 
 	let totalPage = $("#lawList").attr("data-tpage");
 	let currentPage = $("#lawList").attr("data-cpage");
@@ -252,113 +176,11 @@ function makeLawPageList() {
 		if ($id == "allprev") selectedPage = 1;
 		if ($id == "allnext") selectedPage = totalPage;
 
-		getLawList(selectedPage);
+		getLawList2(selectedPage);
 	});
 }
 
-
-function deleteLaw(seqNo) {
-	let csrfToken = $("meta[name='_csrf']").attr("content");
-    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
-	let contextPath = $("#contextPath").val();
-	let url = contextPath + "/api/law/deleteLaw.do";
-	
-	if (confirm("법령을 삭제 하시겠습니까?")){
-		$.ajax({
-			url: url,
-			type: "POST",
-			dataType: "json",
-			async: false,
-			data: {
-				"seq_no": seqNo,
-			},
-	        beforeSend : function(xhr){
-	        	xhr.setRequestHeader(csrfHeader, csrfToken);
-	        },
-			success: function(data) {
-				alert("삭제가 완료되었습니다.");
-				var page = contextPath + "/admin/law.do"
-				location.href = page;
-			},
-			error: function(xhr, status, error) {
-		
-			}
-		});
-	}
-}
-
-function editLaw(seqNo) {
-	let csrfToken = $("meta[name='_csrf']").attr("content");
-    let csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
-	let contextPath = $("#contextPath").val();
-	let url = contextPath + "/api/law/editLaw.do";
-
-	const data = {
-		"seqNo"     : seqNo,
-		"title"     : $("input[name=title]")[0].value,
-		"department": $("input[name=department]")[0].value,
-		"article"   : $("input[name=article]")[0].value,
-		"paragraph" : $("input[name=paragraph]")[0].value,
-		"content"   : $("textarea[name=content]")[0].value,
-	}
-	
-	if (data.title == null || data.title == "") {
-		alert("법령을 입력해주세요");
-		$('#title').focus();
-		return false;
-	}
-	
-	if (data.department == null || data.department == "") {
-		alert("관련부서를 입력해주세요");
-		$('#department').focus();
-		return false;
-	}
-
-	if (data.article == null || data.article == "") {
-		alert("조를 입력해주세요");
-		$('#article').focus();
-		return false;
-	}
-	
-	if (data.paragraph == null || data.paragraph == "") {
-		alert("항를 입력해주세요");
-		$('#paragraph').focus();
-		return false;
-	}
-	
-	if (data.content == null || data.content == "") {
-		alert("내용을 입력해주세요");
-		$('#content').focus();
-		return false;
-	}
-	
-	if (confirm("법령을 수정 하시겠습니까?")){
-		$.ajax({
-			url: url,
-			type: "POST",
-		    contentType : "application/json; charset=UTF-8",
-			async: false,
-			data : JSON.stringify(data),
-	        beforeSend : function(xhr){
-	        	xhr.setRequestHeader(csrfHeader, csrfToken);
-	        },
-			success: function(data) {
-				alert("수정이 완료되었습니다.");
-				var page = contextPath + "/admin/law.do"
-				//location.href = history.back();
-				location.href = page;
-			},
-			error: function(xhr, status, error) {
-		
-			}
-		});
-	}
-}
-
-
-function SearchLaw(cpage) {
+function SearchLaw2(cpage) {
 
 	let contextPath = $("#contextPath").val();
 	let url = contextPath + "/api/law/search.do";
@@ -405,15 +227,15 @@ function SearchLaw(cpage) {
                 addList2.push("   검색결과가 존재하지 않습니다.");
                 addList2.push("</div>");
 
-				$("#lawList").append(addList2.join(''));				
+				$("#lawList").append(addList2.join(''));
 			}
 			else {
 				$("#lawList").attr("data-tpage", totalPage);
 	
 				for(let i = 1; i<list.length+1; i++) {
-					makeLawBlock(i, list[i - 1]);
+					makeLawBlock2(i, list[i - 1]);
 				}	
-				makeLawPageList();
+				makeLawPageList2();
 			}
 		},
 		error: function(xhr, status, error) {

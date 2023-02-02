@@ -4,7 +4,7 @@
 
 	<!--사용자 가져오기-->
 	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="egovframework.kapa.admin.domain.AdminVO">
-        SELECT seqNo, userId, userName, userAuthority, email, dept, phoneNumber, mobile
+        SELECT seqNo, userId, userName, userAuthority, email, dept, phoneNumber, mobile, domain, userType
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
@@ -60,7 +60,7 @@
 	</insert>
 	
 	<select id="getUserBySeqNo" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="Integer">
-        SELECT seqNo, userType, userId, userPassword, userName, userAuthority, dept, email, mobile
+        SELECT seqNo, userType, userId, userPassword, userName, userAuthority, dept, email, mobile, domain
 		FROM TB_User
 		WHERE delCheck = 0
 		AND seqNo = #{seqNo}
@@ -102,7 +102,8 @@
 		email = #{email},
 		uptdate = #{uptdate},
 		dept = #{dept},
-		mobile = #{mobile}
+		mobile = #{mobile},
+		domain = #{domain}
 		where seqNo = #{seqNo}
 	</update>
 	
