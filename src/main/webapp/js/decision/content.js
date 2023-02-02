@@ -66,7 +66,7 @@ function closePopupLaw(){
 function getLawInfo(cpage) {
 
 	let contextPath = $("#contextPath").val();
-	let url = contextPath+"/api/law/lawList.do";
+	let url = contextPath+"/api/law/lawListPopup.do";
 	
 	let title = $("#lawTitleList").val();
 	let article = $("#lawArticleList").val();
@@ -408,8 +408,8 @@ function getLawArticles (){
 		let title = $("#lawTitleList").val();
 		console.log (title);
 
-		$("#lawList").empty();
-		$("#pageList").empty();
+		//$("#lawList").empty();
+		//$("#pageList").empty();
 
 		$.ajax({
 			url : url,
@@ -461,8 +461,8 @@ function getLawParagraph (){
 		let article = $("#lawArticleList").val();
 		console.log (title);
 
-		$("#lawList").empty();
-		$("#pageList").empty();
+		//$("#lawList").empty();
+		//$("#pageList").empty();
 
 		$.ajax({
 			url : url,

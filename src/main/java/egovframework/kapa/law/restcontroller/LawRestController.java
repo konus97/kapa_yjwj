@@ -122,9 +122,48 @@ public class LawRestController {
         }
         
         return resultFinal;
-
 	}
 
+
+	@RequestMapping(value = "/lawListPopup.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getLawListPopup(Model model, @RequestParam("cpage") String cpage, @RequestParam("title") String title, 
+											                @RequestParam("article") String article, @RequestParam("paragraph") String paragraph) {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+
+		LawVO law = new LawVO();
+		law.setTitle(title);
+		law.setArticle(article);
+		law.setParagraph(paragraph);
+		
+        //page cpage
+        int pageNum=1;
+        int rowItem=10;
+        try {
+
+            pageNum = Integer.parseInt(cpage);
+            int listCnt = lawService.getLawCnt(law);
+
+            law.pageInfo(pageNum, rowItem, listCnt);
+
+            //값 넣기
+    		List<LawVO> result = lawService.getLawList(law);
+                		
+    		model.addAttribute("lawList", result);
+    		
+            resultFinal.put("list", result);
+            resultFinal.put("allCount", listCnt);
+            resultFinal.put("totalPage", law.getPageCnt());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return resultFinal;
+	}
+
+	
 	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getSearchLawList(Model model, @RequestParam("cpage") String cpage, @RequestParam("search") String search) {

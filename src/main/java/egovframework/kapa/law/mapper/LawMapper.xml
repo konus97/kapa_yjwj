@@ -30,10 +30,23 @@
 		FROM TB_Law 
 		WHERE del_check = 0
 			
+  		<if test = 'title neq null and title neq ""'>
+	         AND title = #{title}
+        </if>
+        
+  		<if test = 'article neq null and article neq ""'>
+	         AND article = #{article}
+        </if>
+        
+  		<if test = 'paragraph neq null and paragraph neq ""'>
+	         AND paragraph = #{paragraph}
+        </if>
+        
   		<if test = 'search neq null and search neq ""'>
 	         AND title LIKE CONCAT('%', #{search}, '%')
 			 OR department LIKE CONCAT('%', #{search}, '%')
         </if>
+        
         
     </select>
 
@@ -41,7 +54,19 @@
         SELECT *
 		FROM TB_Law
 		WHERE del_check = 0
-				
+			
+  		<if test = 'title neq null and title neq ""'>
+	         AND title = #{title}
+        </if>
+        
+  		<if test = 'article neq null and article neq ""'>
+	         AND article = #{article}
+        </if>
+        
+  		<if test = 'paragraph neq null and paragraph neq ""'>
+	         AND paragraph = #{paragraph}
+        </if>
+        	
   		<if test = 'search neq null and search neq ""'>
 	         AND title LIKE CONCAT('%', #{search}, '%')
 			 OR department LIKE CONCAT('%', #{search}, '%')
