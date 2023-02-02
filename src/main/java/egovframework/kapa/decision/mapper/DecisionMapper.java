@@ -61,6 +61,8 @@ public interface DecisionMapper {
 	
 	List<Decision_ConsultationDate> getConsultationDate(Long decisionId);
 	
+	List<Decision_Opinion> getRegisterStepFile(Long decisionId);
+	
 	List<Decision_Opinion_Item> getOpinionFileList(@Param("decisionId")Long decisionId ,@Param("getType")int getType, @Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
 	
 	int getDecisionCityFileCnt(int decisionId);
@@ -94,6 +96,8 @@ public interface DecisionMapper {
 	void insertAgendaDate(Decision_AgendaDate insertAgendaDate);
 
 	List<Decision_Opinion> getOpinionList(Long decisionId);
+	
+	List<Decision_Opinion> getOpinionStep3List(Long decisionId);
 	
 	List<Decision_Opinion> getRegisterStepList(Long decisionId);
 	

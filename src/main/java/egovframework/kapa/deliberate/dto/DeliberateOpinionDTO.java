@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 public class DeliberateOpinionDTO {
 
     private Integer type;
-    
+    private Long reptOwnrSeq;
+    private Long reptSeq;
     private String typeStr;
     private String ownerOpinion;
     private String executorOpinion;

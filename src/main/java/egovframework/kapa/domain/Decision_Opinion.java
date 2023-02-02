@@ -29,5 +29,7 @@ public class Decision_Opinion {
     private String opinionTitle;
     private String opinionContent;
     private String fileNameExtension;
-    
+    private String getTypeStr;
+    private Integer fileType;
+    private Long fileSeq;
 }

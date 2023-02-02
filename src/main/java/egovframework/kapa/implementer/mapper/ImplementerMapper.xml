@@ -327,7 +327,7 @@ WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_
 			ON A.rept_seq = B.rept_seq
 			WHERE 
 			 	rept_ownr_intr_seq = #{reptSeq}
-				AND A.ownr_intr_yn = 'O'
+				<!-- AND A.ownr_intr_yn = 'O' -->
 	</select> 
 
 	<select id="getDecisionOpinion" parameterType="Integer" resultType="egovframework.kapa.implementer.dto.DecisionOpinionDTO" >
