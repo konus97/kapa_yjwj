@@ -313,9 +313,13 @@ public class DecisionController {
        // model.addAttribute("formatterList", formatterList);
 		List<Decision_Opinion> opinionList = decisionService.getOpinionList(decisionId);
 		List<Decision_Opinion> typeList = decisionService.getOpinionTypeList(decisionId);
+		List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    model.addAttribute("registerFileList", registerFileList);
 		model.addAttribute("typeList", typeList);
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
-		
+		System.out.println("===============================");
+		System.out.println(formatter);
+		System.out.println("===============================");
     	model.addAttribute("formatter", formatter);
 		if(decisionId!=0L) {
 	      	
@@ -435,7 +439,48 @@ public class DecisionController {
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+	    List<Decision_Opinion> typeListOld = decisionService.getOpinionTypeList(decisionId);
+	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    model.addAttribute("registerFileList", registerFileList);
         model.addAttribute("opinionList", opinionList);
+        List<Decision_Opinion> typeList = new ArrayList<>();
+        String getTypeStr = "";
+        
+        for(Decision_Opinion item : typeListOld) {
+        	Decision_Opinion op = new Decision_Opinion();
+        	op.setDecisionId(item.getDecisionId());
+        	op.setOpinionText(item.getOpinionText());
+        	op.setRelatedLaws2(item.getRelatedLaws2());
+        	op.setReviewOpinion(item.getReviewOpinion());
+        	op.setOpinionType(item.getOpinionType());
+        	
+        	
+        	
+        	 int getType = item.getOpinionType();
+         	 
+    		 for(int i=0 ; i<ItemData.values().length ; i++) {
+    			 
+    	   		 int code = ItemData.values()[i].getCode();
+    	   		 
+    	   		 if(code==getType) {
+    	   			getTypeStr = ItemData.values()[i].getKrName();
+    	   			break;
+    	   		 }
+            }
+    		op.setGetTypeStr(getTypeStr);
+    	
+       	
+        	typeList.add(op);
+		 
+        }
+        System.out.println("=======================★=========================");
+        System.out.println(typeList);
+        System.out.println("=================================================");
+
+          
+         
+        
+        model.addAttribute("typeList", typeList);
 	    try {
 	    	Decision decision = decisionService.getDecisionView(decisionId);
 	    	

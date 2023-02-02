@@ -370,11 +370,11 @@
 				<table class="f_wrap__table f_wrap_table--opitem">
 					<tbody>
 						<tr>
-							<th>소재지</th>
+							<th>제목</th>
 							<td><p class="">${deliberateOpinionItemDTO.title }</p></td>
 						</tr>
 						<tr>
-							<th>이전비 평가사유
+							<th>내용
 							</th>
 							<td><p class="">${deliberateOpinionItemDTO.content }</p></td>
 						</tr>

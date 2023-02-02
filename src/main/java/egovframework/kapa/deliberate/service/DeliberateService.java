@@ -337,7 +337,7 @@ public class DeliberateService {
 		List<Decision_ConsultationDate> consultationDates = decisionService.getConsultationDate(decisionId);
 
 		// DeliberateOpinion
-		List<Decision_Opinion> opinionList = decisionService.getStepOpinionList(decisionId);
+		List<Decision_Opinion> opinionList = decisionService.getOpinionStep3List(decisionId);
 		List<DeliberateOpinionDTO> deliberateOpinionDTOS = new ArrayList<>();
 
 		for (Decision_Opinion opinion : opinionList) {
@@ -397,8 +397,11 @@ public class DeliberateService {
 				 System.out.print(opinionItemList);
 			}
 			 
-			DeliberateOpinionDTO deliberateOpinionDTO = DeliberateOpinionDTO.builder().type(getType)
+			DeliberateOpinionDTO deliberateOpinionDTO = DeliberateOpinionDTO.builder()
+					.type(getType)
 					.typeStr(getTypeStr)
+					.reptOwnrSeq(opinion.getReptOwnrSeq())
+					.reptSeq(opinion.getReptSeq())
 					.ownerOpinion(opinion.getOwnerOpinion())
 					.executorOpinion(opinion.getExecutorOpinion())
 					.opinionText(opinion.getOpinionText())
