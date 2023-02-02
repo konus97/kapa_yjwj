@@ -37,4 +37,15 @@ public class LawController {
 		return "admin/law_write";
 	}
 
+	@RequestMapping(value = "/view_board.do", method = RequestMethod.GET)	// 토지수용제도안내 - 관련법령 - 상세보기페이지
+	public String viewBoardLaw(Model model, @RequestParam("viewSeq") int seq_no) {
+		
+		LawVO law = lawService.getViewLaw(seq_no);
+		//current page
+		model.addAttribute("currentPage", "viewLaw");
+		model.addAttribute("law", law);
+		
+		return "land/relevant/viewLaw";
+	}
+
 }

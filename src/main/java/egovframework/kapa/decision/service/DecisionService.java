@@ -480,8 +480,16 @@ public class DecisionService {
 		return decisionMapper.getDateList();
 	}
 	
+	public List<Decision_Opinion> getRegisterStepFile(Long decisionId) {
+		return decisionMapper.getRegisterStepFile(decisionId);
+	}
+	
 	public List<Decision_Opinion> getOpinionList(Long decisionId) {
 		return decisionMapper.getOpinionList(decisionId);
+	}
+	
+	public List<Decision_Opinion> getOpinionStep3List(Long decisionId) {
+		return decisionMapper.getOpinionStep3List(decisionId);
 	}
 	
 	public List<Decision_Opinion> getRegisterStepList(Long decisionId) {

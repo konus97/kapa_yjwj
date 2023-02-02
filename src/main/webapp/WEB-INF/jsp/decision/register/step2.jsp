@@ -343,8 +343,65 @@
 	                                 </div>
                                  
                                 </div>
-               
-               
+               					
+               					<!-- 감정평가정보 시작 -->
+               					<div class="cs_title">
+			                        <h4 class="fl title t1 bold cb s1 bullet">감정평가정보</h4>
+			                    </div>
+			                    <div class="c_table t1">
+			                        <table>
+			                            <caption>감정평가정보 목록</caption>
+			                            <thead>
+			                            <tr>
+			                                <th rowspan="2"></th>
+			                                <th rowspan="2">협의평가</th>
+			                                <th colspan="3">수용재결</th>
+			               					<th colspan="2">평가서</th>
+			                            </tr>
+			                            <tr>
+			                                <th>평균</th>
+			                                <th>A법인</th>
+			                                <th>B법인</th>			         
+			                                <th>A법인</th>
+			                                <th>B법인</th>
+			                            </tr>
+			                            </thead>
+			                            <tbody>
+			                            <tr>
+			                                <th>
+			                                    <span>평가금액(원)</span>
+			                                </th>
+			                                <td>
+			                                    <strong>협의평가</strong>
+			                                    <span>0</span>
+			                                </td>
+			                                <td>
+			                                    <strong>수용재결 - 평균</strong>
+			                                    <span>0</span>
+			                                </td>
+			                                <td>
+			                                    <strong>수용재결 - A법인</strong>
+			                                    <span>0</span>
+			                                </td>
+			                                <td>
+			                                    <strong>수용재결 - B법인</strong>
+			                                    <span>0</span>
+			                                </td>
+			                          
+			                                <td>
+			                                    <strong>평가서 - A법인</strong>
+			                                    <span>-</span>
+			                                </td>
+			                                <td>
+			                                    <strong>평가서 - B법인</strong>
+			                                    <span>-</span>
+			                                </td>
+			                            </tr>
+			                           
+			                            </tbody>
+			                        </table>
+			                    </div>
+			                    <!-- 감정평가정보 끝 -->
                   
 	                                    
                                 <div class="cs_title">
@@ -402,17 +459,18 @@
                                         </div>
                                     </div>
                                 </div>
-                         <div class="cs_title">
-							<h4 class="fl title t1 bold cb s1 bullet">${getType}.
-								${getTypeStr}</h4>
-						</div>
-						
+                         
+						<c:forEach var="typeList" items="${typeList}" varStatus="status">
 						<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+						<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 								 <c:if test="${getType eq deliberateOpinionDTO.type}">
 								<div class="cs_title">
 									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
 								</div>
 								<c:if test="${deliberateOpinionDTO.landCheck}">
+								<!-- <div class="cs_title">
+										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
+									</div> -->
 								<div class="c_table t3 land">				
 										<table>
 											<thead>
@@ -511,36 +569,113 @@
 										</td>
 									</tr>
 									 <tr>
-														<th class="info_reg_th">소재지</th>
+														<th class="info_reg_th">제목</th>
 														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
 													</tr>
 													<tr>
-														<th class="info_reg_th">이전비 평가사유</th>
+														<th class="info_reg_th">내용</th>
 														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
 													</tr>
-													<tr>
+																	<tr>
 														<th class="info_reg_th" colspan="3">관련자료</th>
 													</tr>
+									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
+									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
+													
+													<c:choose>
+													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+													<tr>
+													<div class="file_flex"> 
+													<input class="file_view" value="pdf다운로드" readonly disabled />	
+					                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
+					                             			<i class="icon-block download"></i>
+					                         			</button>
+					                         			</div>
+					                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+													<tr>
+													<div class="file_flex"> 
+								<input class="file_view" value="pdf다운로드" readonly disabled />	
+                         				<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
+                             			<i class="icon-block download"></i>
+                         			</button>
+                         			</div>
+                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'png'}">
 													<tr>
 														<td class=""  colspan="3">
 															<img
-															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
 															alt="">
 														</td>
 													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PNG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpeg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPEG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													
+													</c:choose>
+													</c:if>
+													</c:if>
+								  </c:forEach> 
 								</tbody>
 							</table>
 						</div>
-									<div class="cs_title">
-										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
-									</div>
+									
 								</c:if>
 								
 								
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
-								<div class="cs_title">
+								<!-- <div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
-									</div>
+									</div> -->
 									
 									<div class="c_table t3 land">				
 										<table>
@@ -651,6 +786,103 @@
 											</div>
 										</td>
 									</tr>
+									<tr>
+														<th class="info_reg_th">제목</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">내용</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
+													</tr>
+																	<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
+									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
+													
+													<c:choose>
+													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+													<tr>
+													<div class="file_flex"> 
+													<input class="file_view" value="pdf다운로드" readonly disabled />	
+					                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
+					                             			<i class="icon-block download"></i>
+					                         			</button>
+					                         			</div>
+					                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+													<tr>
+													<div class="file_flex"> 
+								<input class="file_view" value="pdf다운로드" readonly disabled />	
+                         				<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
+                             			<i class="icon-block download"></i>
+                         			</button>
+                         			</div>
+                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'png'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PNG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpeg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPEG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													
+													</c:choose>
+													</c:if>
+													</c:if>
+								  </c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -661,10 +893,14 @@
 								
 							
 							</c:if>
+							</c:if>
 							</c:forEach>
-						
+						</c:forEach>
 						</div>
 						
+						<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">재결관 의견</h4>
+								</div>
 						<div class="form">
 							<div class="ff_wrap" id="boardContent"></div>
 						</div>

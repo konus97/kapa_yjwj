@@ -353,7 +353,7 @@
                                             <th>심의안 보기</th>
                                             <!-- <th>소재지</th>
                                             <th>담당법인</th> -->
-                                            <th>심사결과</th>
+                                            <!--<th>심사결과</th> -->
                                         </tr>
                                     </thead>
                                     <tbody id="agendaDetailList">

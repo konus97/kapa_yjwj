@@ -1181,6 +1181,7 @@ div.table table td:last-child {
     color: #222326;
 }
 .select {
+	cursor: pointer;
     vertical-align: top;
     box-sizing: border-box;
     height: 40px;

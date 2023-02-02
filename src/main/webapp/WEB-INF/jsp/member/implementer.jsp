@@ -871,7 +871,7 @@
         			},
         			success : function(data) {
         				alert("회원가입이 완료됐습니다.");
-        				location.href=contextPath + "/#login"
+        				location.href=contextPath + "/";
         			},
         			error : function(xhr, status, error) {
         				//에러!
@@ -881,7 +881,7 @@
 		        	
         	})
         	$('#cancel').on('click', function(){
-        		location.href=contextPath + "/#login"
+        		location.href=contextPath + "/";
         	})
         	
         	
@@ -890,8 +890,9 @@
 
         $(document).ready(function() {
         	$("#checkPhone").on("click", function(e) {
-        		e.preventDefault();
-        		fn_checkPhone();
+        		alert("준비중입니다");
+        		//e.preventDefault();
+        		//fn_checkPhone();
         	});
         });
 

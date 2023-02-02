@@ -175,7 +175,8 @@ function makeAgendaDetail(num,info) {
 	addList.push("    <strong>담당법인</strong>");
 	addList.push("    <span>-</span>");
 	addList.push("</td>");*/
-	addList.push("<td>");
+	
+	/*addList.push("<td>");
 	addList.push("    <strong>심사결과</strong>");
 	addList.push("    <span>");
 	addList.push("         <button class=\"btn large t1\" onclick=\"openResultPopup(); return false;\">");
@@ -183,7 +184,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("         </button>");
 	addList.push(" 	  </span>");
 	addList.push("</td>");
-	addList.push("</tr>");
+	addList.push("</tr>");*/
 	
 	$("#agendaDetailList").append(addList.join(''));
 

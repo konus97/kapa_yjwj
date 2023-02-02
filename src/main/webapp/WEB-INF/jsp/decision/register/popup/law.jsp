@@ -13,23 +13,29 @@
              </div>
              <div class="p_body1">
                  <div class="wrap">
-					<thead>
-						<select id="lawTitleList">
-						</select>
-					</thead>
-
-					<thead>
-						<select id="lawArticleList">
-						</select>
-					</thead>
-
-					<thead>
-						<select id="lawParagraphList">
-						</select>
-					</thead>
+                 
+                 	<div class="p_filter">
+                 		<div class="p_filter__opt">
+                 			<span class="p_filter__optnm">법령</span>
+							<select id="lawTitleList" class="p_filter__select">
+							</select>                 		
+                 		</div>
+						<div class="p_filter__opt">
+							<span class="p_filter__optnm">조</span>
+							<select id="lawArticleList" class="p_filter__select">
+							</select>                 		
+                 		</div>
+                 		<div class="p_filter__opt">
+                 			<span class="p_filter__optnm">항</span>
+							<select id="lawParagraphList" class="p_filter__select">
+							</select>                 		
+                 		</div>
+                 		<div>
+							<button type="button" onclick="getLawInfo(1); return false;" class="btn small t4 ico search">검색</button>
+							<button type="button" onclick="reset_law(); return false;" class="btn small t2 nohover">설정 초기화</button>
+                 		</div>
+					</div>
 					
-					<button type="button" onclick="getLawInfo(1); return false;">검색</button>
-					<button type="button" onclick="reset_law(); return false;">설정 초기화</button>
 					<div class="c_table t1">
                        <table>
                            <caption>
@@ -39,14 +45,14 @@
                            
                             <thead>
                                <tr>
-                                   <th>선택</th>
-                                   <th>법령</th>
-                                   <th>조</th>
-                                   <th>항</th>
+                                   <th style="width: 2em">선택</th>
+                                   <th style="width: 14em">법령</th>
+                                   <th style="width: 6em">조</th>
+                                   <th style="width: 6em">항</th>
                                    <th>내용</th>
                                </tr>
                            </thead>
-                           <tbody id="lawList">
+                           <tbody id="lawList" style="text-align: center">
                                
                            </tbody>
                            

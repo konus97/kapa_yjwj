@@ -55,6 +55,15 @@
   		</where>
 	</select> 
 	
+	<select id="getRegisterStepFile" resultType="egovframework.kapa.domain.Decision_Opinion" >
+		  SELECT * FROM TB_Decision_File_Opinion DFO
+  LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+		
+		<where>
+			DFO.decisonId = #{decisionId}
+  		</where>
+	</select> 
+	
 	<select id="getDecisionAgendaView" resultType="egovframework.kapa.domain.Decision" >
 		SELECT *
 		
@@ -469,6 +478,15 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 			AND delCheck = '0'
   		</where>
     </select>
+    <select id="getOpinionStep3List" resultType="egovframework.kapa.domain.Decision_Opinion">
+       SELECT * FROM TB_Decision_Opinion DO
+  		left join TB_Decision_Opinion_Item DOI ON DO.decisionId = DOI.decisionId AND DO.type = DOI.opinionType AND DO.reptOwnrSeq = DOI.reptOwnrSeq
+  		<where>
+			DO.decisionId = #{decisionId}
+			AND DO.delCheck = '0'
+  		</where>
+  		ORDER BY opinionType ASC
+    </select>
     <!-- Register Step2 항목 -->
     <select id="getOpinionTypeList" resultType="egovframework.kapa.domain.Decision_Opinion">
         SELECT *
@@ -477,6 +495,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 			decisionId = #{decisionId}
 			AND delCheck = '0'
   		</where>
+			order by decisionId, opinionType
     </select>
     <!-- PDF 의견 갯수 -->
     <select id="getPdfOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">

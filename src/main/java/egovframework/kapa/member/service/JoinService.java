@@ -86,8 +86,10 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -95,7 +97,9 @@ public class JoinService {
 		user.setUserType(3);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(completeEmail);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
@@ -118,8 +122,11 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
+		
 		
 		User user = new User();
 		user.setUserId(id);
@@ -127,7 +134,9 @@ public class JoinService {
 		user.setUserType(1);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(completeEmail);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
@@ -159,8 +168,10 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -168,7 +179,9 @@ public class JoinService {
 		user.setUserType(2);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(completeEmail);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
 		user.setUserEnabled("1");
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
@@ -202,8 +215,10 @@ public class JoinService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -211,7 +226,9 @@ public class JoinService {
 		user.setUserType(3);
 		//user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(jsonObject.get("email").toString());
+		//user.setEmail(jsonObject.get("email").toString());
+		user.setEmail(email);
+		user.setDomain(domain);
 		user.setRegdate(LocalDateTime.now());
 		user.setDelCheck(0);
 		user.setDept(dept);

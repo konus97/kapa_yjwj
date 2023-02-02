@@ -66,7 +66,7 @@ function closePopupLaw(){
 function getLawInfo(cpage) {
 
 	let contextPath = $("#contextPath").val();
-	let url = contextPath+"/api/law/lawList.do";
+	let url = contextPath+"/api/law/lawListPopup.do";
 	
 	let title = $("#lawTitleList").val();
 	let article = $("#lawArticleList").val();
@@ -140,7 +140,7 @@ function makeLawBlock_popup(idx, info) {
     addList.push("   	<span>"+info.paragraph+"</span>");
 	addList.push("	</td>");
 	
-	addList.push("	<td>");
+	addList.push("	<td style=\"text-align:left\">");
     addList.push("    	<strong>항</strong>");
     addList.push("    	<span>"+info.content+"</span>");
 	addList.push("	</td>");
@@ -408,8 +408,8 @@ function getLawArticles (){
 		let title = $("#lawTitleList").val();
 		console.log (title);
 
-		$("#lawList").empty();
-		$("#pageList").empty();
+		//$("#lawList").empty();
+		//$("#pageList").empty();
 
 		$.ajax({
 			url : url,
@@ -461,8 +461,8 @@ function getLawParagraph (){
 		let article = $("#lawArticleList").val();
 		console.log (title);
 
-		$("#lawList").empty();
-		$("#pageList").empty();
+		//$("#lawList").empty();
+		//$("#pageList").empty();
 
 		$.ajax({
 			url : url,

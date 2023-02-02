@@ -74,23 +74,23 @@
 								<li>- 찾고자 하는 부서명이 "국토교통부"일경우, 올바른 검색어는 "국토교통부" 또는 "국토".</li>
 							</ul>
 						</div>
-						<form class="box-search" name="search">
+						<form class="box-search" name="search" id="search" onsubmit="SearchLaw2(1); return false;">
 							<input type="search" class="box-search-input" id="searchContent"
 								name="searchContent" value="" maxlength="40" placeholder="검색어를 입력해주세요." title="검색어를 입력해주세요." />
-							<button id="search" type="button" title="검색" class="btn t4 large ico search">검색</button>
+							<button id="search" type="submit" title="검색" class="btn t4 large ico search">검색</button>
 						</form>
 						
-						<h4 class="fl title t1 bold cb s1 bullet mt60">관련법령 목록</h4>
-						
+		                <div class="cs_title">
+		                </div>
+												
 						<div class="c_table t1">
 							<table title="관련법령" id="table00">
 								<thead>
 									<tr>
-										<th scope="col" style="width: 10em">번호</th>
-										<th scope="col" style="width: 18em">법령명</th>
-										<th scope="col" style="width: 6em">조</th>
-										<th scope="col" style="width: 6em">항</th>
-										<th scope="col">내용</th>
+										<th scope="col" style="width: 3em">번호</th>
+										<th scope="col" style="width: 25em">법령명</th>
+										<th scope="col" style="width: 8em">담당부서</th>
+										<th scope="col" style="width: 8em">수용근거</th>
 									</tr>
 								</thead>
 								<tbody id="lawList">
@@ -133,11 +133,11 @@
 	<!--common start-->
 	<script src="../js/common.js"></script>
 
-	<script src="../js/admin/law.js"></script>
+	<script src="../js/land/relevant/law.js"></script>
 
 	<script>
 	    $( document ).ready( function(){
-	    	getLawList(1);
+	    	getLawList2(1);
 	    });
 	</script>
 
