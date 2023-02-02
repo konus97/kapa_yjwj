@@ -2,6 +2,7 @@ package egovframework.kapa.decision.controller;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -149,11 +150,14 @@ public class DecisionController {
         model.addAttribute("totalCost", totalHitsStr);
         
         //공통된 소유자 수 검색
-        List<OwnerInfo> ownerList = implementerService.getOnwerInfoList(masterId);
-        List<OwnerInfoDTO> formatterOwnerList = implementerService.getOwnerListFormatter(masterId,ownerList);
-        
-        model.addAttribute("ownerList", formatterOwnerList);
-        System.out.println(ownerList);
+		/*
+		 * List<OwnerInfo> ownerList = implementerService.getOnwerInfoList(masterId);
+		 * List<OwnerInfoDTO> formatterOwnerList =
+		 * implementerService.getOwnerListFormatter(masterId,ownerList);
+		 * 
+		 * model.addAttribute("ownerList", formatterOwnerList);
+		 * System.out.println(ownerList);
+		 */
         
 		return "decision/agenda/view";
 	}
@@ -401,7 +405,7 @@ public class DecisionController {
       		}
         	
         	Decision_Opinion insertNew = new Decision_Opinion();
-    		
+        	 Collections.reverse(typeList);
     		for(Decision_Opinion opinion : typeList) {
     			
     			if(opinion.getCompletionCheck()==null||opinion.getCompletionCheck()==0) {
@@ -409,6 +413,8 @@ public class DecisionController {
     			}
     			
     		}
+    		
+    		
 		 //공고 상태
       	 int getType = insertNew.getOpinionType();
      	 
@@ -422,7 +428,8 @@ public class DecisionController {
 	   			break;
 	   		 }
         } 
-		 
+		
+
 		 
 		model.addAttribute("getType",getType);
 		model.addAttribute("getTypeStr",getTypeStr);
