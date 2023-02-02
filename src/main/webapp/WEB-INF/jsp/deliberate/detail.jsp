@@ -599,7 +599,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.ownerOpinion }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.ownerOpinion }</p>
 									</div>
 								</div>
 								
@@ -608,7 +608,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.executorOpinion }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.executorOpinion }</p>
 									</div>
 								</div> --%>
 								
@@ -617,7 +617,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.opinionText}</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.opinionText}</p>
 									</div>
 								</div>
 								
@@ -627,7 +627,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws }</p>
 									</div>
 								</div>
 								
@@ -636,7 +636,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.relatedLaws2 }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.relatedLaws2 }</p>
 									</div>
 								</div>
 								
@@ -645,7 +645,7 @@
 								</div>
 								<div class="form">
 									<div class="f_wrap">
-										<p class="textarea_view textarea_bd">${deliberateOpinionDTO.reviewOpinion }</p>
+										<p class="textarea_view textarea_bd fr_editor_wr">${deliberateOpinionDTO.reviewOpinion }</p>
 									</div>
 								</div>
 								
