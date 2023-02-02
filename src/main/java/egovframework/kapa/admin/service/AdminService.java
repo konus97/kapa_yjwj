@@ -92,6 +92,51 @@ public class AdminService {
 			System.out.println("감정평가사 update");
 			updateImplementer(data);
 		}
+		
+		else {	// 이외
+			System.out.println("회원 update");
+			updateUser(data);
+			
+		}
+	}
+
+	public String updateUser(String param) throws ParseException { // 회원 업데이트
+		
+		String Message = "";
+		
+		JSONParser parser = new JSONParser();
+		
+		JSONObject jsonObject = (JSONObject)parser.parse(param);
+			
+		long seqNo = Long.parseLong(jsonObject.get("seqNo").toString());
+		String id = jsonObject.get("id").toString();
+		String pwd = jsonObject.get("pwd").toString();
+		String name = jsonObject.get("name").toString();
+		String dept = jsonObject.get("dept").toString();
+//		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
+		
+		User user = new User();
+		user.setSeqNo(seqNo);
+		user.setUserId(id);
+		user.setUserPassword(pwd);
+		//user.setUserType(1);
+		user.setUserAuthority("ROLE_USER");
+		user.setUserName(name);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
+		//user.setUserEnabled("1");
+		user.setUptdate(LocalDateTime.now());
+		//user.setDelCheck(0);
+		user.setDept(dept);
+		user.setMobile(mobile);
+		
+		adminMapper.UpdateUser(user);
+		
+		return Message;
 	}
 
 	public String updateImplementer(String param) throws ParseException { // 사업시행자
@@ -107,8 +152,10 @@ public class AdminService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
 		
 		User user = new User();
 		user.setSeqNo(seqNo);
@@ -117,7 +164,9 @@ public class AdminService {
 		//user.setUserType(1);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(completeEmail);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
 		//user.setUserEnabled("1");
 		user.setUptdate(LocalDateTime.now());
 		//user.setDelCheck(0);
@@ -149,8 +198,10 @@ public class AdminService {
 		String pwd = jsonObject.get("pwd").toString();
 		String name = jsonObject.get("name").toString();
 		String dept = jsonObject.get("dept").toString();
-		String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
+		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
+		String email = jsonObject.get("email").toString();
+		String domain = jsonObject.get("domain").toString();
 		
 		User user = new User();
 		user.setUserId(id);
@@ -158,7 +209,9 @@ public class AdminService {
 		//user.setUserType(1);
 		user.setUserAuthority("ROLE_USER");
 		user.setUserName(name);
-		user.setEmail(completeEmail);
+		//user.setEmail(completeEmail);
+		user.setEmail(email);
+		user.setDomain(domain);
 		//user.setUserEnabled("1");
 		user.setUptdate(LocalDateTime.now());
 		//user.setDelCheck(0);

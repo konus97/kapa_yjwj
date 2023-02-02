@@ -78,6 +78,7 @@
 	                            <thead>
 	                            <tr>
 	                                <th class="w200">법령</th>
+	                                <th class="w120">담당부서</th>
 	                                <th class="w80">조</th>
 	                                <th class="w80">항</th>
 	                                <th>내용</th>
@@ -90,37 +91,44 @@
 	                                <c:when test="${currentPage eq 'viewLaw' }">
 		                                <td>
 		                                    <strong>법령</strong>
-		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}"></span>
+		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}" id="title"></span>
+		                                </td>
+		                                <td>
+		                                    <strong>담당부서</strong>
+		                                    <span><input type="text" class="input t1 middle" name="department" value="${law.department}" id="department"></span>
 		                                </td>
 		                                <td>
 		                                    <strong>조</strong>
-		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}"></span>
+		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}" id="article"></span>
 		                                </td>
 		                                <td>
 		                                    <strong>항</strong>
-		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}"></span>
+		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" id="paragraph"></span>
 		                                </td>
 		                                <td>
 		                                    <!-- <strong>내용</strong> -->
-		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content">${law.content}</textarea></span>
+		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content" value="${law.content}">${law.content}</textarea></span>
 		                                </td>
 	                                </c:when>
 	                                <c:otherwise>
 		                                <td>
 		                                    <strong>법령</strong>
-		                                    <span><input type="text" class="input t1 middle" name="title" value="${law.title}" required></span>
+		                                    <span><input type="text" class="input t1 middle" name="title" id="title" required></span>
+		                                </td>
+		                                <td>
+		                                    <strong>담당부서</strong>
+		                                    <span><input type="text" class="input t1 middle" name="department" id="department" required></span>
 		                                </td>
 		                                <td>
 		                                    <strong>조</strong>
-		                                    <span><input type="text" class="input t1 middle" name="article" value="${law.article}" required></span>
+		                                    <span><input type="text" class="input t1 middle" name="article" id="article" placeholder="ex)제1조 : 1 입력" required></span>
 		                                </td>
 		                                <td>
 		                                    <strong>항</strong>
-		                                    <span><input type="text" class="input t1 middle" name="paragraph" value="${law.paragraph}" required></span>
+		                                    <span><input type="text" class="input t1 middle" name="paragraph" id="paragraph" placeholder="ex)제1항 : 1입력" required></span>
 		                                </td>
 		                                <td>
-		                                    <!-- <strong>내용</strong> -->
-		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content">${law.content}</textarea></span>
+		                                    <span><textarea type="text" class="textarea autosize t1 middle" name="content" id="content">${law.content}</textarea></span>
 		                                </td>
 	                                
 	                                </c:otherwise>

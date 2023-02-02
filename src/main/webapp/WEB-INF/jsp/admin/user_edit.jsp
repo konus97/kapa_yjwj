@@ -99,8 +99,8 @@
 										<label for="aua_password">패스워드</label>
 									</div>
 									<div class="ff_wrap">
-										<input type="password" name="fakepasswordremembered" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
-										<input type="password" id="aua_password" name="password" value="${adminVO.userPassword }" class="input t1" required placeholder="패스워드를 입력하세요.">
+										<input type="password" name="fakepasswordremembered" maxlength="20" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;"/> <!-- 크롬 자동완성 방지 -->
+										<input type="password" id="aua_password" name="password" value="${adminVO.userPassword }" class="input t1" maxlength="20" required placeholder="패스워드를 입력하세요.">
 									</div>
 								</div>
 							</div>
@@ -131,7 +131,7 @@
 									<div class="ff_wrap ff_wrap--email">
 										<input type="text" id="aua_email" name="userEmail" class="input t1" value="${adminVO.email }"  placeholder="이메일을 입력하세요."/>
 										<span>&#64;</span>
-										<input type="text" id="aua_domain" name="domain" class="input t1" placeholder="메일주소를 입력하세요."/>
+										<input type="text" id="aua_domain" name="domain" class="input t1" value="${adminVO.domain }" placeholder="메일주소를 입력하세요."/>
 									</div>
 								</div>
 								<div class="f_field div2">

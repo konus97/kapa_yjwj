@@ -99,13 +99,19 @@ function makeUserBlock(idx, info) {
 	
 	let addList = new Array();
 	//let auth = "관리자";
-	let auth_info = info.userAuthority;
+	let auth_info = info.userType;
 	var auth = "";
-	if (auth_info == "ROLE_ADMIN"){
+	if (auth_info == 0){
 		auth = "관리자";
 	}
+	else if (auth_info == 1){
+		auth = "사업시행자";
+	}
+	else if (auth_info == 2){
+		auth = "감정평가사";
+	}
 	else {
-		auth = "회원";
+		auth = "일반회원";
 	}
 	
 	addList.push("<tr>");
@@ -121,7 +127,7 @@ function makeUserBlock(idx, info) {
 	addList.push("<strong>소속</strong><span>" + info.dept+ "</span>");
 	addList.push("</td>");
 	addList.push("<td>");
-	addList.push("<strong>이메일</strong><span>" + info.email+ "</span>");
+	addList.push("<strong>이메일</strong><span>" + info.email + "@" + info.domain + "</span>");
 	addList.push("</td>");
 	addList.push("<td>");
 	addList.push("<strong>연락처</strong><span>"+info.mobile + "</span>");

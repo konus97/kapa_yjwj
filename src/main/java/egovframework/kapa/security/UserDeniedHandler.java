@@ -13,7 +13,8 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 public class UserDeniedHandler implements AccessDeniedHandler {
 
-	private String errorPage = "/WEB-INF/jsp/egovframework/example/sample/errorPage.jsp";
+	//private String errorPage = "/WEB-INF/jsp/egovframework/example/sample/errorPage.jsp";
+	private String errorPage = "/WEB-INF/jsp/error/errorPage.jsp";
 
 	@Override
 	public void handle(HttpServletRequest req, HttpServletResponse res,

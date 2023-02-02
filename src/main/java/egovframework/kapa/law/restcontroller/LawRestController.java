@@ -90,7 +90,7 @@ public class LawRestController {
 	}
 	
 
-	@RequestMapping(value = "/lawListAdmin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/lawList.do", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getLawList(Model model, @RequestParam("cpage") String cpage) {
 		
@@ -124,18 +124,15 @@ public class LawRestController {
         return resultFinal;
 
 	}
-	
-	@RequestMapping(value = "/lawList.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getLawList(Model model, @RequestParam("cpage") String cpage, @RequestParam("title") String title
-			, @RequestParam("article") String article, @RequestParam("paragraph") String paragraph) {
+	public Map<String, Object> getSearchLawList(Model model, @RequestParam("cpage") String cpage, @RequestParam("search") String search) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 
 		LawVO law = new LawVO();
-		law.setTitle(title);
-		law.setArticle(article);
-		law.setParagraph(paragraph);
+		law.setSearch(search);
 		
         //page cpage
         int pageNum=1;
@@ -163,7 +160,6 @@ public class LawRestController {
         return resultFinal;
 
 	}
-
 
 
 	// 법령

@@ -68,15 +68,24 @@
 	                <input type="hidden" id="pageNo" name="pageNo" value="${adminVO.pageIndex}"/>
 	            </form>
 	            <div class="cs_body">
+	                
+					<div class="box-tip">
+						<span class="box-tip-label">TIP</span>
+						<ul class="box-tip-list">
+							<li>- 법령명 또는 담당부서로 검색할 수 있습니다. 검색어를 입력하고 검색버튼을 눌러주세요.</li>
+							<li>- 찾고자 하는 법령명이 "측량·수로조사 및 지적에관한 법률"일경우, 올바른 검색어는 "측량" 또는 "지적".</li>
+							<li>- 찾고자 하는 부서명이 "국토교통부"일경우, 올바른 검색어는 "국토교통부" 또는 "국토".</li>
+						</ul>
+					</div>
+					<form class="box-search" name="search" id="search" onsubmit="SearchLaw(1); return false;">
+						<input type="search" class="box-search-input" id="searchContent"
+							name="searchContent" value="" maxlength="40" placeholder="검색어를 입력해주세요." title="검색어를 입력해주세요." />
+						<button id="search" type="submit" title="검색" class="btn t4 large ico search">검색</button>
+					</form>
+					
 	                <div class="cs_title">
-	                    <h4 class="fl title t1 bold cb s1 bullet">참고 자료</h4>
-	                    <!-- <div class="cs_option w100p">
-	                        <div class="cso_btnwrap">
-	                            <button type="button" class="btn t2 small" onclick="selectExcelFile()">엑셀로 업로드</button>
-	                            <button type="button" class="btn t2 small" onclick="downloadExcelTemplate()">엑셀 템플릿 다운로드</button>
-	                        </div>
-	                    </div> -->
 	                </div>
+	                
 	                <div class="c_table t1">
 	                    <table id="table00">
 	                        <caption>관련법령 목록</caption>
@@ -84,6 +93,7 @@
 	                        <tr>
 	                            <th class="w50">연번</th>
 	                            <th class="w150">법령</th>
+	                            <th class="w120">담당부서</th>
 	                            <th class="w50">조</th>
 	                            <th class="w50">항</th>
 	                            <th>내용</th>
@@ -125,8 +135,9 @@
 	
 	<script>
 	    $( document ).ready( function(){
-	    	getLawList(1);
+	    	getLawList(1);	    	
 	    });
+
 	</script>
 </body>
 
