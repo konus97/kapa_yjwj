@@ -78,6 +78,12 @@
 .sub_title07 {
     background-image: url("../images/common/b7.jpg");
 }
+.sub_title .title {
+	font-weight: 700;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 100px #365978, 3px 3px 23px #365978, 0px 0px 6px #5a7791;
+}
 .btn {
     vertical-align: middle;
 }
@@ -304,7 +310,7 @@ table.basic.alt tr:last-child td {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 526px;
+    height: 520px;
     border-top: 1px solid #ddd;
     margin-bottom: 20px;
 }
