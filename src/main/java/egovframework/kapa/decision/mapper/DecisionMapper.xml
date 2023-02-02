@@ -162,8 +162,23 @@
 		FROM TB_Decision_Opinion_Item 
 		
 		<where>
+			<!-- reptSeq = #{reptSeq}
+			AND reptOwnrSeq = #{reptOwnrSeq} -->
+			AND opinionType = #{opinionType}
+			AND delCheck = '0'
+  		</where>
+  		
+
+	</select> 
+	
+	<select id="getDecisionOpinionItemList3" resultType="egovframework.kapa.domain.Decision_Opinion_Item" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+		SELECT *
+		
+		FROM TB_Decision_Opinion_Item 
+		
+		<where>
 			reptSeq = #{reptSeq}
-			AND reptOwnrSeq = #{reptOwnrSeq}
+			AND reptOwnrSeq = #{reptOwnrSeq} 
 			AND opinionType = #{opinionType}
 			AND delCheck = '0'
   		</where>

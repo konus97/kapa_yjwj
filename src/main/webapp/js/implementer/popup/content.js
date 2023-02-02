@@ -80,7 +80,7 @@ function getCheckBox(ownerInfo){
 	
 	if(getSelect!=""){		
 		const addSelect = getSelect.split(',');
-		console.log(addSelect);
+	/*	console.log(addSelect);*/
 		
 		for(let i = 0; i < addSelect.length; i++) {	
 			$("#check"+addSelect[i]).prop("checked", true).attr("checked", true);
@@ -216,7 +216,8 @@ function getLandownerInfoSunmit(chkValueArr) {
 			if (list.length != 0) {
 				let rank = 1;
 				for( let i = 0; i < chkValueArr.length; i++) {
-					console.log(chkValueArr[i]);
+			/*		console.log(chkValueArr[i]);
+			*/
 					submitLandOwnr2(rank,list[chkValueArr[i]]);
 					rank++;
 				}
@@ -301,14 +302,18 @@ function getLandownerCheck2(getItem) {
 				
 				let rank = 1;
 				
-				console.log(opinionArr);
+			/*	console.log(opinionArr);*/
+				//여기서 받는 type을 통해 설정이 가능하면 좋겠다
+				//for문으로 한줄 한줄 들어가서 걸러줄 수 있다면 참 좋음
 				
 				//의견 작성이 된 토지만 불러오기 위한 데이터 세팅
 				let reptSeqArr = new Array();
 				let reptSeqOwnrArr = new Array();
+				let typeArr = new Array();
 				for(let i=0; i<opinionArr.length; i++){
 					reptSeqArr.push(opinionArr[i].reptSeq);
 					reptSeqOwnrArr.push(opinionArr[i].reptOwnrSeq);
+					typeArr.push(opinionArr[i].type);
 				}
 				
 				
@@ -395,8 +400,10 @@ function getGoodsowner2(getItem) {
 			"masterId":masterId,
 		},
 		success : function(data) {
+		/*	console.log(data);*/
 
 			let list = data.list;
+			
 			
 			//의견 작성이 된 지장물만 불러오기 위한 데이터 세팅
 				let reptSeqArr = new Array();
@@ -405,16 +412,22 @@ function getGoodsowner2(getItem) {
 					reptSeqArr.push(opinionArr[i].reptSeq);
 					reptSeqOwnrArr.push(opinionArr[i].reptOwnrSeq);
 				}
-				
 			
+
+				
 			if (list.length != 0) {
-				
+			//	if(typeof list != "undefined"){
 				let rank = 1;
-				
-				for( let i = 0; i < list.length; i++) {
+				/*console.log(opinionArr);*/
+				//for( let i = 0; i < opinionArr.length; i++) {
+					/*console.log('makeGoodownerBlock2 info param ::: ');
+					console.log(list[i]);
+					*/
+					for(let i=0; i<list.length; i++){
 					makeGoodsownerBlock2(rank,list[i], getItem, reptSeqArr, reptSeqOwnrArr);
 					rank++;
 				}
+			}else{
 			}
 
 			//$('#popupGoodsowner').addClass("on");
@@ -499,7 +512,7 @@ function getGoodsownerInfoSunmit(chkValueArr) {
 				let rank = 1;
 				
 				for( let i = 0; i < chkValueArr.length; i++) {
-					console.log(chkValueArr[i]);
+/*					console.log(chkValueArr[i]);*/
 					submitGoodsOwnr2(rank,list[chkValueArr[i]]);
 					rank++;
 				}
@@ -597,7 +610,7 @@ function checkItem2(){
 	
 	for(i = 0; i < ele.length; i++) {
 		if(ele[i].checked){
-			console.log(ele[i])
+			/*console.log(ele[i])*/
 			selectedItemNum = ele[i].getAttribute('data-type')
 			selectedItemTit = ele[i].getAttribute('data-title')
 		}
@@ -647,7 +660,7 @@ function submitGoodsOwnr2(rank,info){
 	
 	var getItem = document.getElementById('selectedItemTit').innerText;
 		getItem = getItem.split('.')[0].split(': ')[1];		
-		console.log(getItem);
+/*		console.log(getItem);*/
 	addGoodsOpinion(rank,info,getItem);
 	closePopup('goodsownercheck');
 }

@@ -13,7 +13,7 @@ public class OpinionFileVO {
 
 	  private long seqNo;
 	    private Long decisonId;
-	    private Integer reptSeq;
+	    private Long reptSeq;
 	    private Integer opinionType;
 	    private Integer fileType;
 	    private Integer fileSeq;
@@ -22,7 +22,7 @@ public class OpinionFileVO {
 	    private LocalDateTime regdate;
 	    private LocalDateTime uptdate;
 	    private String fileDescription;
-	    private Integer reptOwnrSeq;
+	    private Long reptOwnrSeq;
 
 	
 }

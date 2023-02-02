@@ -346,7 +346,7 @@
 										</tbody>
 									</table>
 	
-									<table class="item_result_wr__table">
+									<table class="item_result_wr__table" id="goodsTable1">
 										<caption>지장물</caption>
 										<thead>
 											<tr>
@@ -562,7 +562,7 @@
 										</tbody>
 									</table>
 	
-									<table class="item_result_wr__table">
+									<table class="item_result_wr__table" id="ownerGoodsItemListTable5">
 										<caption>지장물</caption>
 										<thead>
 											<tr>
@@ -1899,7 +1899,12 @@
             
             $(document).ready(function () {
             	checkType();
-            
+            	//여기서 지장물이나 필지의 데이터가 없을 경우 table만 따로 숨김 처리 로직 추가
+           /* for(let a=1; a<25; a++){ 	
+          if(  document.getElementById('goodsTable' + a).innerText == ''){
+        	  document.getElementById('goodsTable'+a).style.display = "none";
+          }
+           } */
             	const owners = document.querySelectorAll(".owner");
                 owners.forEach((owner) => {
                     owner.addEventListener("click", (e) => {

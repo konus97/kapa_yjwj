@@ -181,13 +181,9 @@
                                                 </div>
                                                 <div class="ff_wrap">
                                                     <span class="ff_group">
-                                                        <span class="w140"><input
-                                                                type="text"
-                                                                id="publicationExpiryDate"
-                                                                class="datepicker input40 t1"
-                                                                value="" /><i></i
-                                                        ></span>
-                                                        
+                                                        <span class="w140">
+                                                        <input type="text" id="publicationExpiryDate" class="datepicker input40 t1" value="" /><i></i></span>
+                                                     <span  style="color:red; font-size:14px; margin-left : 14px;">* 열람공고 만료일은 공고일 기준 30일 이내</span> 
                                                     </span>
                                                 </div>
                                             </div>

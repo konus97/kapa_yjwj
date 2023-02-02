@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import egovframework.kapa.decision.dto.AnnouncementDTO;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.domain.Decision;
+import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Search;
@@ -292,6 +293,49 @@ public class ImplementerRestController {
 	
 	}
 	
+	//재결의견작성 완료 - 의견 작성된 필지 / 지장물 만 불러오기
+		@RequestMapping(value = "/opinion/landview2", method = RequestMethod.POST)
+		@ResponseBody
+		public ResponseEntity opinionLandview2(@RequestParam Map<String, Object> paramMap) {
+			
+			Map<String, Object> resultFinal = new HashMap<String, Object>();
+			
+			System.out.println("=============================★=============================");
+			System.out.println(paramMap);
+			System.out.println("=============================★=============================");
+
+			Long decisionId =  Long.parseLong(paramMap.get("decisionId").toString());
+			int type = Integer.parseInt(paramMap.get("type").toString());
+			
+			/*
+			 * Long reptSeq = Long.parseLong(paramMap.get("reptSeq").toString()); Long
+			 * reptOwnrSeq = Long.parseLong(paramMap.get("reptOwnrSeq").toString());
+			 */
+			
+			
+			Decision_Opinion_Item decision_Opinion_Item = new Decision_Opinion_Item();
+			decision_Opinion_Item.setDecisionId(decisionId);
+			/*
+			 * decision_Opinion_Item.setReptOwnrSeq(reptOwnrSeq);
+			 * decision_Opinion_Item.setReptSeq(reptSeq);
+			 */
+			decision_Opinion_Item.setOpinionType(type);
+			
+			List<Decision_Opinion_Item> dopList = decisionService.getDecisionOpinionItemList2(decision_Opinion_Item);
+			
+			resultFinal.put("list", dopList);
+	//		resultFinal.put("list2", dopList2);
+			System.out.println("=============================★★★★=============================");
+			System.out.println(dopList);
+			System.out.println("=============================★★★★=============================");
+
+			
+			  return ResponseEntity.ok(resultFinal);
+	        
+		
+		}
+	
+	
 	//재결의견작성 완료 - 팝업, pdf, 이미지 정보 세팅
 		@RequestMapping(value = "/opinion/item", method = RequestMethod.POST)
 		@ResponseBody
@@ -304,22 +348,36 @@ public class ImplementerRestController {
 			
 			
 			Long decisionId =  Long.parseLong(paramMap.get("decisionId").toString());
-			Long reptSeq = Long.parseLong(paramMap.get("reptSeq").toString());
-			Long reptOwnrSeq = Long.parseLong(paramMap.get("reptOwnrSeq").toString());
+			
+			
+			 Long reptSeq = Long.parseLong(paramMap.get("reptSeq").toString()); 
+			 Long reptOwnrSeq = Long.parseLong(paramMap.get("reptOwnrSeq").toString());
+			 
+			
 			int type = Integer.parseInt(paramMap.get("type").toString());
 
 			System.out.println("===================================================");
 			System.out.println(decisionId);
-			System.out.println(reptSeq);
-			System.out.println(reptOwnrSeq);
+			/*
+			 * System.out.println(reptSeq); System.out.println(reptOwnrSeq);
+			 */
 			System.out.println("===================================================");
 			Decision_Opinion_Item decision_Opinion_Item = new Decision_Opinion_Item();
 			decision_Opinion_Item.setDecisionId(decisionId);
-			decision_Opinion_Item.setReptOwnrSeq(reptOwnrSeq);
-			decision_Opinion_Item.setReptSeq(reptSeq);
+			
+			 decision_Opinion_Item.setReptOwnrSeq(reptOwnrSeq);
+			  decision_Opinion_Item.setReptSeq(reptSeq);
+			 
 			decision_Opinion_Item.setOpinionType(type);
 			
-			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList2(decision_Opinion_Item));
+			/*
+			 * OpinionFileVO opinionFileVO = new OpinionFileVO();
+			 * opinionFileVO.setDecisonId(decisionId);
+			 * opinionFileVO.setReptOwnrSeq(reptOwnrSeq); opinionFileVO.setReptSeq(reptSeq);
+			 */
+			
+			
+			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
 			
 			//첨부파일 (이미지)
 			List<OpinionFileVO> opinionFileList = decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item);
@@ -395,9 +453,18 @@ public class ImplementerRestController {
         
             //값 넣기
             List<ApplicationLand> landList = implementerService.getGoodsInfo(masterId);
-            List<ApplicationGoodsDTO> formatterList = implementerService.getGoodsListFormatter(landList);
+            System.out.println("=========================♡============================");
+            System.out.println(landList);
+            System.out.println("=========================♡============================");
+            if(landList.size()== 0 || landList == null) {
+            	resultFinal.put("list", "noData");
+            }else {
+            	List<ApplicationGoodsDTO> formatterList = implementerService.getGoodsListFormatter(landList);	
+                resultFinal.put("list", formatterList);
+
+            }
             
-            resultFinal.put("list", formatterList);
+            
   
         }catch (Exception e){
 

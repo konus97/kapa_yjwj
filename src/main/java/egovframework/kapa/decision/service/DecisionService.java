@@ -372,6 +372,10 @@ public class DecisionService {
 		return decisionMapper.getDecisionOpinionItemList2(item);
 	}
 	
+	public List<Decision_Opinion_Item> getDecisionOpinionItemList3(Decision_Opinion_Item item) {
+		return decisionMapper.getDecisionOpinionItemList3(item);
+	}
+	
 	public List<Decision_Opinion_Item> getDecisionOpinionTypeItemList(Long viewSeq,int type) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();

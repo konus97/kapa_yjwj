@@ -21,4 +21,5 @@ public class Decision_Opinion_Item {
     private String fileNameExtension;
     private String fileDescription;
     private Long fileSeq;
+    private int fileType;
 }
