@@ -481,7 +481,9 @@ notice='';
 					// 소유자, 사업시행자 의견
 					$("#popupOwnerOpinion").addClass("on");
 					document.getElementById('ownerOpinion').value  = opinionArr[i].ownerOpinion;
+					document.getElementById('ownerOpinion').setAttribute('readonly','')
 					document.getElementById('executorOpinion').value  = opinionArr[i].executorOpinion;
+					document.getElementById('executorOpinion').setAttribute('readonly','')
 	
 					// TB_Decision_Opinion_Item 의견
 					let decisionId = $('#decisionId').val();
@@ -533,12 +535,12 @@ notice='';
 						    addList.push("   <tbody>");  
 							addList.push("   <tr>");   
 						    addList.push("       <th class=\"info_reg_th\">제목</th>");   
-						    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\"></td>");   
+						    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\" readonly></td>");   
 						    addList.push("   </tr>");   
 						    addList.push("    <tr>");   
 						    addList.push("       <th class=\"info_reg_th\">내용</th>");   
 						    addList.push("      <td>");   
-						    addList.push("        <textarea class=\"textarea opinionContent\">"+opinionContent+"</textarea></td>");   
+						    addList.push("        <textarea class=\"textarea opinionContent\" readonly>"+opinionContent+"</textarea></td>");   
 						    addList.push("    </tr>");   
 							
 							/*첨부 파일 (이미지)*/
@@ -984,12 +986,12 @@ let newSeq = getType + '-0';
                                                   
    addList.push("   <tr>");   
    addList.push("       <th class=\"info_reg_th\">제목</th>");   
-   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\"></td>");   
+   addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" placeholder=\"제목을 입력해주십시오.\"></td>");   
    addList.push("   </tr>");   
    addList.push("    <tr>");   
    addList.push("       <th class=\"info_reg_th\">내용</th>");   
    addList.push("      <td>");   
-   addList.push("        <textarea class=\"textarea opinionContent\"></textarea></td>");   
+   addList.push("        <textarea class=\"textarea opinionContent\" placeholder=\"내용을 입력해주십시오.\"></textarea></td>");   
    addList.push("    </tr>");   
  
 
@@ -999,7 +1001,7 @@ let newSeq = getType + '-0';
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
    addList.push("     <td>");
    addList.push("     	<div class=\"file_flex\">"); 
-   addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
+   addList.push("     <input id=\"description"+"\" class=\"input40 file_name\" placeholder=\"파일 설명을 입력해주십시오.\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
    addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpeg, png 이미지 파일만 첨부해주세요</div>");   

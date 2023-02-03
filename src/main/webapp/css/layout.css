@@ -3428,6 +3428,10 @@
     font-weight: 500;
     text-indent: 0;
 }
+#contents .reg_wrap textarea::placeholder,
+#contents .reg_wrap input::placeholder {
+    color: #999;
+}
 #contents .reg_wrap textarea::-webkit-scrollbar {width: 5px;}
 #contents .reg_wrap textarea::-webkit-scrollbar-track {background: #ddd;}
 #contents .reg_wrap textarea::-webkit-scrollbar-thumb {background: #aaa;}
