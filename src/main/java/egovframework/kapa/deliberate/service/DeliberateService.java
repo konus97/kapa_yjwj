@@ -279,6 +279,7 @@ public class DeliberateService {
 					for(Decision_Opinion_Item opinionItem : opinionItemList) {
 						  
 						  DeliberateOpinionItemDTO deliberateOpinionItemDTO = DeliberateOpinionItemDTO.builder()
+								  						.decisionId(opinionItem.getDecisionId())
 								  						.title(opinionItem.getOpinionTitle())
 								  						.content(opinionItem.getOpinionContent())
 								  						.fileNameChange(opinionItem.getFileNameChange())
@@ -292,6 +293,7 @@ public class DeliberateService {
 				}
 				 
 				DeliberateOpinionDTO deliberateOpinionDTO = DeliberateOpinionDTO.builder().type(getType)
+						.decisionId(opinion.getDecisionId())
 						.typeStr(getTypeStr)
 						.ownerOpinion(opinion.getOwnerOpinion())
 						.executorOpinion(opinion.getExecutorOpinion())
@@ -314,6 +316,7 @@ public class DeliberateService {
 			}
 
 			DeliberateViewDTO deliberateViewDTO = DeliberateViewDTO.builder()
+					.decisionId(decisionAgendaDate.getDecisionId())
 					.consultationDate(consultationDate)
 					.applicationDTO(applicationDTO)
 					.cityPlans(cityPlans)

@@ -42,6 +42,11 @@
 		<link rel="stylesheet" href="../../css/sub.css" />
 		<link rel="stylesheet" href="../../css/owl.carousel.min.css" />
 		<link rel="stylesheet" href="../../css/jquery-ui.css" />
+		<style>
+		.needAttache {
+		margin-right : 999px;
+		}
+		</style>
     </head>
     <body>
         <div id="wrap">
@@ -144,7 +149,12 @@
                                                 <label>위치/규모</label>
                                             </div>
                                              <div class="ff_wrap">
-                                                <p>${avo.reptLoc}</p>                                               
+                                             <c:if test="${avo.reptLoc ne null or avo.reptLoc ne ''}">
+											<p>${avo.reptLoc}</p>
+											</c:if>
+											<c:if test="${avo.reptLoc eq null or avo.reptLoc eq ''}">
+											<p>-</p>
+											</c:if>                                            
                                             </div>
                                         </div>
                                     </div>
@@ -303,7 +313,7 @@
                                     <div class="f_wrap">
                                         <div class="f_field">
                                             <div class="ff_title required">
-                                                <label>추천요청을 하지 않은 이유</label>
+                                                <label>추천요청을 <br>하지 않은 이유</label>
                                             </div>
                                             <div class="ff_wrap">
                                                 <textarea
@@ -814,15 +824,16 @@
                                                 	
                                                 </div>   
                                             </div>
-                                            <div class="ff_wrap">
-                                                <p class="cb bold text">
-                                                    * 필수 첨부 항목입니다.
-                                                </p>
-                                            </div>
+
                                         </div>
                                     </div>
                                     
                                 </div>
+                                                                            <div class="ff_wrap">
+                                                <p class="cb bold text">
+                                                   <span class="needAttache"> * 필수 첨부 항목입니다.</span>
+                                                </p>
+                                            </div>
                                 <div class="mt40 btn_wrap">
                                     <ul class="btns">
                                         <li>
@@ -960,6 +971,47 @@
         		return false;
         	}
          	
+          	 let inputBusinessOperator1 = document.getElementById('inputBusinessOperator').value;
+          	 let inputGovernor1 = document.getElementById('inputGovernor').value;
+          	 let inputLandowner1 = document.getElementById('inputLandowner').value;
+          	 let notReqReason1 =  document.getElementById('notReqReason').value;
+          	 
+          	 if(inputBusinessOperator1 == ''){
+          		 if(notReqReason1 == ''){
+ 		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
+ 		       		
+          			 return false;
+          		 }
+          	 }
+          	 
+          	 if(inputGovernor1 == ''){
+          		 if(notReqReason1 == ''){
+ 		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
+          			 return false;
+          		 }
+          	 }
+          	 
+          	 if(inputLandowner1 == ''){
+          		 if(notReqReason1 == ''){
+ 		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
+          			 return false;
+          		 }
+          	 }
+          	 if(inputBusinessOperator1 != '' && inputGovernor1 != '' && inputLandowner1 && notReqReason1 != ''){
+ 	       		alert("모두 추천하여 추천미사유를 작성이 불가능합니다");
+	                $('#notReqReason1').focus();
+
+     			 return false;
+          	 }
+
+         	
+         	
 			let relation = document.getElementsByClassName('relationItem');        	
 			
            	const relationArr = [];
@@ -1015,6 +1067,12 @@
                 $('#decisionReason').focus();
                 return false;
             }  
+          	
+
+      
+          	
+          	
+          	
         	
 
           	
@@ -1086,13 +1144,13 @@
 	       		needNoReqReason = 1	
 	       	}
 	       	
-	       	if (needNoReqReason == 1){
+	 /*       	if (needNoReqReason == 1){
 		       	if (notReqReason == null || notReqReason == "") {
 		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
 		       		$('#notReqReason').focus();
 		       		return false;
 		       	}
-	       	}
+	       	} */
      	   
 			const data = {
 				"masterID" : masterId,

@@ -61,8 +61,10 @@ public interface DecisionMapper {
 	List<Decision_Target> getTarget(Long decisionId);
 	
 	List<Decision_ConsultationDate> getConsultationDate(Long decisionId);
-	
+
 	List<Decision_Opinion> getRegisterStepFile(Long decisionId);
+	
+	List<Decision_Opinion> getDeliberateRegisterStepFile(List<Long> decisionId);
 	
 	List<Decision_Opinion_Item> getOpinionFileList(@Param("decisionId")Long decisionId ,@Param("getType")int getType, @Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
 	
@@ -84,6 +86,8 @@ public interface DecisionMapper {
 
 	List<Decision_Opinion> getDecisionOpinionList(Long decisionId);
 
+	List<Decision_Opinion> getDeliberateOpinionList(List<Long> decisionIdList);
+	
 	List<Decision> getAgendaRegisterList(Search search);
 
 	int getAgendaRegisterCnt(Search search);
@@ -103,6 +107,8 @@ public interface DecisionMapper {
 	List<Decision_Opinion> getRegisterStepList(Long decisionId);
 	
 	List<Decision_Opinion> getOpinionTypeList(Long decisionId);
+
+	List<Decision_Opinion> getDeliberateOpinionTypeList(List<Long> decisionIdList);
 	
 	List<Decision_Opinion> getPdfOpinionList(Long decisionId);
 	

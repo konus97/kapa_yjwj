@@ -64,6 +64,17 @@
   		</where>
 	</select> 
 	
+	<select id="getDeliberateRegisterStepFile" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+		SELECT * FROM TB_Decision_File_Opinion DFO
+  LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+		
+		where
+			DFO.decisonId IN
+			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+			#{item}
+			</foreach>
+	</select> 
+	
 	<select id="getDecisionAgendaView" resultType="egovframework.kapa.domain.Decision" >
 		SELECT *
 		
@@ -149,6 +160,21 @@
 			decisionId = #{decisionId}
 			AND delCheck = '0'
   		</where>
+
+	</select> 
+	
+	<select id="getDeliberateOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+		SELECT *
+		
+		FROM TB_Decision_Opinion
+		
+		where
+			decisionId IN
+			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+			#{item}
+			</foreach>
+			AND delCheck = '0'
+  		
 
 	</select> 
 	
@@ -498,6 +524,24 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
   		</where>
 			order by decisionId, opinionType
     </select>
+    
+    
+    
+	<select id="getDeliberateOpinionTypeList" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+		SELECT *
+		
+		FROM TB_REGISTER_STEP2
+		
+		where
+			decisionId IN
+			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+			#{item}
+			</foreach>
+			AND delCheck = '0'
+			order by decisionId, opinionType
+  		
+
+	</select> 
     <!-- PDF 의견 갯수 -->
     <select id="getPdfOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
         SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq,TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.* 

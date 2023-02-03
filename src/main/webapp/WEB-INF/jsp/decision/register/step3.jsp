@@ -262,7 +262,7 @@
 								</div>
 				
 							</div>
-				
+							
 							
 							<div class="cs_title">
 								<h4 id="index${formatter.applicationDTO.judgSeq}_tit03" class="fl title t1 bold cb s1 bullet">재결신청 내역</h4>

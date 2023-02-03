@@ -16,11 +16,17 @@ function makeOpinionBlock(startNumber,info) {
 	let judgDivName = info.judgDivName;	
 	let judgBizNm = info.judgBizNm;
     let caseNo = info.caseNo;
-	let bizOprtNm = info.bizOprtNm;					
+	let bizOprtNm = info.bizOprtNm;		
+	if(bizOprtNm == null){
+		bizOprtNm = '-';
+	}			
 	let reptLoc = info.reptLoc;			
 	let decisionState = info.decisionState;
     let decisionStateStr = info.decisionStateStr;
 	let charge = info.charge;
+	if(charge ==null){
+		charge = '-';
+	}
 	let custMan = info.custMan;
 	let custName = info.custName;
     let opinionWrite = "";

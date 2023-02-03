@@ -25,7 +25,7 @@ public class DeliberateOpinionDTO {
     private String typeStr;
     private String ownerOpinion;
     private String executorOpinion;
-    
+    private Long decisionId;
     private String opinionText;
     private String relatedLaws;
     private String relatedLaws2;
