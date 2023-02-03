@@ -86,7 +86,7 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.judgBizNm}</p>
+                                                <p>${avo.title}</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -94,7 +94,7 @@
                                                 <label>위치/규모</label>
                                             </div>
                                             <div class="ff_wrap">
-                                               <p></p>
+                                               <p>-</p>
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@
                                                 <label>사업기간</label>
                                             </div>
                                             <div class="ff_wrap">
-                                              <p>${avo.recmReqStartDate} ~ ${avo.recmReqEndDate}</p>
+                                              <p>-</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -112,7 +112,7 @@
                                                 <label>사업시행자</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                    <p>${avo.bizOprtNm}</p>
+                                                    <p>-</p>
                                             </div>
                                         </div>
                                     </div>
@@ -402,18 +402,18 @@
                                         </div>
                                     </div>
                                 </div>
+								<div class="cs_title">
+									<h4 class="fl title t1 bold cb s1 bullet">${getType}. ${getTypeStr}</h4>
+								</div>
                          
 						<c:forEach var="typeList" items="${typeList}" varStatus="status">
 						<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 						<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
-								 <c:if test="${getType eq deliberateOpinionDTO.type}">
-								<div class="cs_title">
-									<h4 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h4>
-								</div>
+								 <c:if test="${getType eq typeList.opinionType}">
 								<c:if test="${deliberateOpinionDTO.landCheck}">
-								<!-- <div class="cs_title">
+								<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">필지</h4>
-									</div> -->
+									</div>
 								<div class="c_table t3 land">				
 										<table>
 											<thead>
@@ -437,45 +437,45 @@
 			                                       <td>
 			                                           <strong>소유자</strong>
 			                                           <span>
-			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
 			                                           </span>
 			                                       </td>
 	
 			                                       <td>
 			                                           <strong>지분</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
 			                                       </td>
 			                                       <td>
 			                                         <strong>지번</strong>
-			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.reg}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>본번</strong>
-			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>부번</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>공</strong>
-			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.gm1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>실</strong>
-			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.gm2}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>면적</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>단가</strong>
-			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
 			                                       </td>
 				                                        
 				                         		</tr>                       
@@ -498,7 +498,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										<td>${deliberateOpinionDTO.ownerViewInfo.pname} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
@@ -616,9 +616,9 @@
 								
 								
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
-								<!-- <div class="cs_title">
+								<div class="cs_title">
 										<h4 class="fl title t1 bold cb s1 bullet">지장물</h4>
-									</div> -->
+									</div>
 									
 									<div class="c_table t3 land">				
 										<table>
@@ -651,46 +651,46 @@
 			                                       <td>
 			                                           <strong>소유자</strong>
 			                                           <span>
-			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
 			                                           </span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>지분</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
 			                                       </td>
 			                          
 			                                       <td>
 			                                           <strong>본번</strong>
-			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>부번</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
 			                                       </td>
 			                                            <td>
 			                                           <strong>부번2</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun3}</span>
 			                                       </td>
 			                                   
 	                                                 <td>
 	                                                    <strong>물건종류</strong>
-	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.kind}</span>
 	                                                </td>
 				                                     <td>
 	                                                    <strong>물건구조</strong>
-	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.gujo}</span>
 	                                                </td>
 			                                       <td>
 			                                           <strong>면적</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.unit}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>단가</strong>
-			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
 			                                       </td>
 				                                        
 				                         		</tr>                       
@@ -713,7 +713,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										<td>${deliberateOpinionDTO.ownerViewInfo.pname} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">

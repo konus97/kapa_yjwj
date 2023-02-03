@@ -354,6 +354,7 @@ public class DeliberateService {
 
 		// DeliberateOpinion
 		List<Decision_Opinion> opinionList = decisionService.getOpinionStep3List(decisionId);
+		
 		List<DeliberateOpinionDTO> deliberateOpinionDTOS = new ArrayList<>();
 
 		for (Decision_Opinion opinion : opinionList) {

@@ -510,7 +510,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
   		left join TB_Decision_Opinion_Item DOI ON DO.decisionId = DOI.decisionId AND DO.type = DOI.opinionType AND DO.reptOwnrSeq = DOI.reptOwnrSeq
   		<where>
 			DO.decisionId = #{decisionId}
-			AND DO.delCheck = '0'
+			AND DO.delCheck = '0' AND DO.reptSeq = DOI.reptSeq
   		</where>
   		ORDER BY opinionType ASC
     </select>
