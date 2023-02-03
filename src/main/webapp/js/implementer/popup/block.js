@@ -188,7 +188,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNm = info.ownrNnm;
+	let ownrNm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -245,7 +245,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -374,7 +374,7 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -812,7 +812,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>면적/수량</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
 
     addList.push("   <td>");

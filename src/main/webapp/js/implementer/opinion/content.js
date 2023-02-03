@@ -89,7 +89,7 @@ function addLandOpinion(rank,info,getItem){
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 
     let getId = "opinion"+getSeq+"-"+getItem;
@@ -243,7 +243,7 @@ function addGoodsOpinion(rank,info,getItem){
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 
  let getId = "opinion"+getSeq+"-"+getItem;
