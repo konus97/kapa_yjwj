@@ -86,7 +86,13 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
+                                            <!-- 예외처리  -->
+                                            <c:if test="${avo.judgBizNm eq null or avo.judgBizNm eq ''}">
+                                                <p>-</p>
+                                                </c:if>
+                                                 <c:if test="${avo.judgBizNm ne null or avo.judgBizNm ne ''}">
                                                 <p>${avo.judgBizNm}</p>
+                                                </c:if>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -94,7 +100,7 @@
                                                 <label>위치/규모</label>
                                             </div>
                                             <div class="ff_wrap">
-                                               <p></p>
+                                               <p>-</p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,12 +150,14 @@
 	                                                        </tr>
 	                                                    </thead>
 	                                                    <tbody id="relationList">
+	                                                    
 	                                                    <c:forEach var="cityPlan" items="${cityPlans}" varStatus="status">
 	                                                        <tr class="relationItem" id="relationInfo0">
 	                                                            <td>${cityPlan.planTitle}</td>
 	                                                            <td>${cityPlan.planContent}</td>
 	                                                        </tr>
 	                                                    </c:forEach>
+	                                                    
 	                                                    </tbody>
 	                                                </table>
 	                                            </div>

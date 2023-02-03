@@ -78,6 +78,8 @@ public class DecisionController {
 		model.addAttribute("groupEstablishedDate", decison.getGroupEstablishedDate());
   		
         System.out.println(decison);
+        model.addAttribute("agendaState", decison.getAgendaState());
+
         
         int masterId = decison.getMasterID();
         model.addAttribute("masterId", masterId);
@@ -276,6 +278,7 @@ public class DecisionController {
       			model.addAttribute("consultationDates", consultationDates);
       			model.addAttribute("targets", targets);
       			model.addAttribute("decision", decision);
+      			model.addAttribute("agendaState", decision.getAgendaState());
       		}catch (Exception e) {
       			e.printStackTrace();
       		}
