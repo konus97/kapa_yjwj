@@ -401,7 +401,7 @@
 							</div>
 							
 							<!-- 감정평가정보 시작 -->
-               					<div class="cs_title">
+               					<!-- <div class="cs_title">
 			                        <h4 class="fl title t1 bold cb s1 bullet">감정평가정보</h4>
 			                    </div>
 			                    <div class="c_table t1">
@@ -456,7 +456,7 @@
 			                           
 			                            </tbody>
 			                        </table>
-			                    </div>
+			                    </div> -->
 			                    <!-- 감정평가정보 끝 -->
 							
 							<div id="index${formatter.applicationDTO.judgSeq}_tit04" class="blind"></div>
@@ -1065,6 +1065,38 @@
 					$('#totalConfer3').text(totalPrice);
 
 				});
+				
+				//목차 스크롤
+				
+				$('.opinion_index_list a').click(function() {
+					var id = $(this).attr("href");
+					var offset = 200;
+					var target = $(id).offset().top - offset;
+					$('html, body').animate({scrollTop:target}, 500);
+					event.preventDefault();
+				});
+				$('.opinion_index_btn').click(function(){
+					$(this).next('.opinion_index_wr').animate({
+				        width: "toggle"
+				    }, 200, "linear");
+					$(this).toggleClass('on');
+					if($(this).hasClass('on')){
+						$(this).attr('title','목차닫기')
+					}else{
+						$(this).attr('title','목차열기')
+					}
+				})
+				
+	 			window.addEventListener('scroll',function(){
+					$('.opinion_index_container').each(function(i,el){
+						console.log($(this).offset().top)
+	 					if ($(this).offset().top > ($(this).next().offset().top + $(this).next().height() - 200)) {
+	 						$(this).css('opacity','0')
+						} else {
+							$(this).css('opacity','1')
+						}
+					})
+				})
 
 				const downloadButtons = document.querySelectorAll('.downloadButton');
     			let contextPath = $("#contextPath").val();
