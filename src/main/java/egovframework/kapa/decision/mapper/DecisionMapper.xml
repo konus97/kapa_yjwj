@@ -140,7 +140,7 @@
 		FROM TB_Decision 
 		
 		<where>
-			decisionState >= '5'
+			decisionState >= '7'
 			AND delCheck = '0'
   		</where>
 		
@@ -230,6 +230,7 @@
 			reptSeq = #{reptOwnrSeq}
 			AND reptOwnrSeq = #{reptSeq}
 			AND delCheck = '0'
+			and fileType = #{fileType}
 			<!-- AND decisonId = #{decisionId} -->
 			<!-- 파일 업로드를 다시 할 경우 중복해서 불러오기 때문에 걸러내는 작업 필요 -->
 			<!-- decisionId도 고정값으로 들어가서 우선 제외-->
@@ -450,7 +451,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 		FROM TB_Decision 
 		
 		<where>
-			decisionState = '6'
+			decisionState = '7'
 			AND agendaState >= '1'
 			AND delCheck = '0'
   		</where>
@@ -603,6 +604,14 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
   		<where>
 			seqNo = #{viewSeq}
 			AND delCheck = '0'
+  		</where>
+    </select>
+    
+    <select id="getConsultList" resultType="egovframework.kapa.domain.Decision_Consult">
+        SELECT *
+        FROM kapa_consult 
+  		<where>
+			id = #{masterId}
   		</where>
     </select>
 

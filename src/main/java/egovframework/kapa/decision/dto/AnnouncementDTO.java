@@ -1,5 +1,7 @@
 package egovframework.kapa.decision.dto;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 @Data
@@ -49,4 +51,44 @@ public class AnnouncementDTO{
     
     private int fileSeqNo;
     
+private Long seq;
+	
+	//사업명
+	private String title;
+	
+	//재결구분
+	private String Category;
+	
+	//시도구분코드
+	private String region;
+	
+	//시행자의뢰일
+	private LocalDate viewReqDate;
+	
+	//비고
+	private String Bigo;
+	
+	//시행자명
+	private String custName;
+	
+	//담당자명
+	private String custMan;
+	
+	//담당자
+	private String charge;
+	
+	//소재지
+	private String consultAddr;
+	
+	//협의 법인
+	private String consultAppName;
+	
+	// 담당자 폰번호
+	private String chargeHP;
+	
+	private LocalDate consultDate_S;
+	private LocalDate consultDate_E;
+	
+	private LocalDate costDate;
+	
 }

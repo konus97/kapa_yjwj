@@ -80,6 +80,7 @@ public class ImplementerRestController {
            
             //값 넣기
             List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
+            System.out.println("리스트 컨트롤러 첫번째 리스트:::::::::::" + pagingResult);
             List<ApplicationDTO> formatterList = implementerService.getImplementerListFormatter(pagingResult);
             System.out.println("LIST!" + formatterList);
             resultFinal.put("list", formatterList);
@@ -334,6 +335,10 @@ public class ImplementerRestController {
 	        
 		
 		}
+		
+		
+		
+		
 	
 	
 	//재결의견작성 완료 - 팝업, pdf, 이미지 정보 세팅
@@ -356,12 +361,7 @@ public class ImplementerRestController {
 			
 			int type = Integer.parseInt(paramMap.get("type").toString());
 
-			System.out.println("===================================================");
-			System.out.println(decisionId);
-			/*
-			 * System.out.println(reptSeq); System.out.println(reptOwnrSeq);
-			 */
-			System.out.println("===================================================");
+
 			Decision_Opinion_Item decision_Opinion_Item = new Decision_Opinion_Item();
 			decision_Opinion_Item.setDecisionId(decisionId);
 			
@@ -369,15 +369,13 @@ public class ImplementerRestController {
 			  decision_Opinion_Item.setReptSeq(reptSeq);
 			 
 			decision_Opinion_Item.setOpinionType(type);
-			
-			/*
-			 * OpinionFileVO opinionFileVO = new OpinionFileVO();
-			 * opinionFileVO.setDecisonId(decisionId);
-			 * opinionFileVO.setReptOwnrSeq(reptOwnrSeq); opinionFileVO.setReptSeq(reptSeq);
-			 */
-			
+			decision_Opinion_Item.setFileType(type);
+
+	
 			
 			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
+			
+
 			
 			//첨부파일 (이미지)
 			List<OpinionFileVO> opinionFileList = decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item);
@@ -390,10 +388,21 @@ public class ImplementerRestController {
 				
 				fileList.add(file);
 
-				System.out.println("===================================================");
+				System.out.println("======================fileList=============================");
 				System.out.println(fileList);
 				System.out.println("===================================================");
+				
+				
 			}
+			
+			System.out.println("==============================○==============================");
+			System.out.println(decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
+			//Decision_Opinion_Item(seqNo=393, decisionId=342, reptSeq=12439137,
+			//reptOwnrSeq=7567803, opinionType=9, opinionTitle=ㅇㅇㅇ, opinionContent=ㅇㅇㅇㅇ, opinionItemFile=0, rank=1, delCheck=0, 
+			//regdate=2023-02-03T18:59:23.119887500, fileNameChange=null, fileFolder=null, fileNameExtension=null, fileDescription=null, fileSeq=null, fileType=0)]
+			 System.out.println(opinionFileList);
+			 
+			System.out.println("==============================○==============================");
 			resultFinal.put("file", fileList);
 
 			
@@ -423,8 +432,11 @@ public class ImplementerRestController {
         
             //값 넣기
             List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+
             List<ApplicationLandDTO> formatterList = implementerService.getLandListFormatter(landList);
-            
+            System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+            System.out.println(landList);
+            System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             resultFinal.put("list", formatterList);
   
         }catch (Exception e){
@@ -521,12 +533,12 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
-            	temp += formatterList.get(i).getAreaUnit();
+            	String temp = formatterList.get(i).getAreaAmot();
+            	//temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
 
             	result.add(formatterList.get(i).getBefUnitCost());
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	csvPrinter.printRecord(result);
             }
@@ -576,11 +588,11 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc2Nm());
             	// 면적
             	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
-            	areaAmot += formatterList.get(i).getAreaUnit();
+            	//areaAmot += formatterList.get(i).getAreaUnit();
             	result.add(areaAmot);
             	
             	result.add(formatterList.get(i).getBefUnitCost());
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	csvPrinter.printRecord(result);
             }
@@ -622,7 +634,7 @@ public class ImplementerRestController {
             for (int i=0; i<formatterList.size(); i++) {
                 List<String> result = new ArrayList();
                 result.add(Integer.toString(i+1));
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	result.add(formatterList.get(i).getReptAddr());
             	result.add(formatterList.get(i).getMainStrtNo());
@@ -631,8 +643,8 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
-            	temp += formatterList.get(i).getAreaUnit();
+            	String temp = formatterList.get(i).getAreaAmot();
+            	//temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
             	result.add(formatterList.get(i).getBefUnitCost());
             	csvPrinter.printRecord(result);
@@ -676,7 +688,7 @@ public class ImplementerRestController {
             for (int i=0; i<formatterList.size(); i++) {
                 List<String> result = new ArrayList();
                 result.add(Integer.toString(i+1));
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());                
             	result.add(formatterList.get(i).getReptAddr());
             	result.add(formatterList.get(i).getSidoGunguCd());
@@ -686,7 +698,7 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc2Nm());
             	// 면적
             	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
-            	areaAmot += formatterList.get(i).getAreaUnit();
+            	//areaAmot += formatterList.get(i).getAreaUnit();
             	result.add(areaAmot);
             	
             	result.add(formatterList.get(i).getBefUnitCost());

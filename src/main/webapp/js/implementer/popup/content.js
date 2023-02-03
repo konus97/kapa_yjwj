@@ -212,6 +212,9 @@ function getLandownerInfoSunmit(chkValueArr) {
 		success : function(data) {
 
 			let list = data.list;
+			console.log("getLandownerInfoSunmit");
+			console.log(list);
+			
 			
 			if (list.length != 0) {
 				let rank = 1;
@@ -297,7 +300,8 @@ function getLandownerCheck2(getItem) {
 		success : function(data) {
 
 			let list = data.list;
-			
+			console.log(list);
+			if(list != undefined){
 			if (list.length != 0) {
 				
 				let rank = 1;
@@ -323,6 +327,7 @@ function getLandownerCheck2(getItem) {
 					makeLandOwnerCheckBlock2(rank,list[i], getItem, reptSeqArr, reptSeqOwnrArr);
 					rank++;
 				}
+			}
 			}
 
 			$('#ownerLandItemList'+getItem).addClass("on");
@@ -486,8 +491,8 @@ function getGoodsowner() {
 
 
 }
-function getGoodsownerInfoSunmit(chkValueArr) {
-
+function getGoodsownerInfoSunmit(type, chkValueArr) {
+console.log(type);
 	let contextPath = $("#contextPath").val();
 	let masterId = $("#masterId").val();
 	
@@ -618,8 +623,10 @@ function checkItem2(){
 
 	selectedItemTxt.innerHTML = '선택된 항목 : '+ selectedItemNum +'.'+ selectedItemTit
 	closePopup('checkbox2');
+
 	landCheckArr.length = 0;
 	goodsCheckArr.length = 0;
+
 }
 
 function submitLandOwnr(){
@@ -637,14 +644,18 @@ function submitLandOwnr2(rank,info){
 	
 
 	
+
+	
 	var getItem = document.getElementById('selectedItemTit').innerText;
 		getItem = getItem.split('.')[0].split(': ')[1];		
 
 	addLandOpinion(rank,info,getItem);
+	console.log(addLandOpinion);
+	console.log(getItem);
 	closePopup('landsownercheck');
 }
 
-function submitGoodsOwnr(){
+function submitGoodsOwnr(type){
 	var chkValueArr = new Array();
 	var list = $("input[name='checkbox_goods']");
 	for(var i=0; i<list.length; i++){
@@ -652,7 +663,7 @@ function submitGoodsOwnr(){
 		chkValueArr.push(list[i].value-1);
 		}
 	}
-	getGoodsownerInfoSunmit(chkValueArr);
+	getGoodsownerInfoSunmit(type, chkValueArr);
 	
 }
 

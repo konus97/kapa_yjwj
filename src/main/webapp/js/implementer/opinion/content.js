@@ -56,8 +56,10 @@ function addOpinion(getSeq,getItem,getType,getTitle,reptOwnrSeq,ownrNm){
 const landCheckArr = new Array();
 function addLandOpinion(rank,info,getItem){
 	
+	console.log(info);
+	
 
-	/*if(landCheckArr.length != 0){
+	if(landCheckArr.length != 0){
 		for(let i=0; i<landCheckArr.length; i++){
 			if(JSON.stringify(landCheckArr[i]) === JSON.stringify(info)){
 //				alert(info.ownrNnm+'님의 ' +info.reptAddr+'(은)는 이미 선택된 항목입니다');
@@ -69,7 +71,7 @@ function addLandOpinion(rank,info,getItem){
 			}
 		}
 	}
-		landCheckArr.push(info);*/
+		landCheckArr.push(info);
 
 
 
@@ -89,7 +91,7 @@ function addLandOpinion(rank,info,getItem){
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 
     let getId = "opinion"+getSeq+"-"+getItem;
@@ -150,7 +152,7 @@ function addLandOpinion(rank,info,getItem){
        addList.push("</td>");
 		addList.push("</tr>");
         
-			             if(getItem == 1){
+		    if(getItem == 1){
 			$("#ownerLandItemList1").append(addList.join(''));
 			}else if(getItem  == 2){
 			$("#ownerLandItemList2").append(addList.join(''));
@@ -212,10 +214,13 @@ function addLandOpinion(rank,info,getItem){
 
    const goodsCheckArr = new Array();
 function addGoodsOpinion(rank,info,getItem){
+	console.log("addGoodsOpinion");
+		console.log(getItem);
 
-	/*if(goodsCheckArr.length != 0){
+	if(goodsCheckArr.length != 0){
 		for(let i=0; i<goodsCheckArr.length; i++){
 			if(JSON.stringify(goodsCheckArr[i]) === JSON.stringify(info)){
+				//토지 관련된 것만 쫒을게 아니라 
 				//alert(info.ownrNnm+'님의 '+info.reptAddr +'의 '+info.obstKindNm+'(은)는 이미 선택된 항목입니다');
 				alert('이미 선택된 항목은 추가 대상에서 제외됩니다');
 				return false;
@@ -224,7 +229,7 @@ function addGoodsOpinion(rank,info,getItem){
 			}
 		}
 	}
-		goodsCheckArr.push(info);*/
+		goodsCheckArr.push(info);
 
 	
 	let getSeq = info.reptSeq;
@@ -243,7 +248,7 @@ function addGoodsOpinion(rank,info,getItem){
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 
  let getId = "opinion"+getSeq+"-"+getItem;
@@ -281,7 +286,7 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<span>"+obstKindNm+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>면적/수량</strong>");
-		addList.push("<span>"+areaAmot+""+areaUnit+"</span>");
+		addList.push("<span>"+areaAmot+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>단가</strong>");
 		addList.push("<span>"+befUnitCost+"</span>");
@@ -395,200 +400,191 @@ function resetSeq(getSeq){
 
 //소유자의견 읽는 버전
 function openOpinionPopup2(getSeq,getType,reptOwnrSeq,ownrNm){
-   $(".resetPopupVal").val('');
-   $("#popupOpinionItemList").empty();
-   
-	var notice ="";
-	
-	switch (getType) {
-  case "1":
-    notice = '지연가산금(재결신청 청구)';
+ $(".resetPopupVal").val('');
+    $("#popupOpinionItemList").empty();
+    
+     var notice ="";
+     
+     switch (getType) {
+   case "1":
+     notice = '지연가산금(재결신청 청구)';
+     break;
+   case "2":
+     notice = '보상금 증액';
+     break;
+   case "3":
+     notice = '협의 미이행(불이행,미준수)';
+     break;
+   case "4":
+     notice = '사업폐지(취소,중단,변경,보류,제외)';
+     break;
+   case "5":
+     notice = '재결 보류';
+     break;
+   case "6":
+     notice = '무허가건물 부지면적 보상';
+     break;
+   case "7":
+     notice = '잔여지/잔여건물 가치 하락';
+     break;
+   case "8":
+     notice = '잔여지/잔여건물 매수 청구(확대보상)';
+     break;
+   case "9":
+     notice = '사도평가 적정성';
+     break;
+   case "10":
+     notice = '일단지 보상';
+     break;
+   case "11":
+     notice = '미지급 용지';
+     break;
+   case "12":
+     notice = '영업보상(이전비) 적정성';
+     break;
+   case "13":
+     notice = '누락 물건 반영';
+     break;
+   case "14":
+     notice = '폐업 보상';
+     break;
+   case "15":
+     notice = '영농손실보상';
+     break;
+   case "16":
+     notice = '휴직(실직)보상';
+     break;
+   case "17":
+     notice = '이주대책 수립';
+     break;
+   case "18":
+     notice = '이주정착금, 주거이전비, 이사비';
+     break;
+   case "19":
+     notice = '구분지상권';
+     break;
+   case "20":
+     notice = '10% 변동 내역';
+     break;
+   case "21":
+     notice = '기타(임료손실,대토보상 등)';
+     break;
+   case "22":
+     notice = '10%이상 변동';
+     break;
+   default:
+ notice='';
     break;
-  case "2":
-    notice = '보상금 증액';
-    break;
-  case "3":
-    notice = '협의 미이행(불이행,미준수)';
-    break;
-  case "4":
-    notice = '사업폐지(취소,중단,변경,보류,제외)';
-    break;
-  case "5":
-    notice = '재결 보류';
-    break;
-  case "6":
-    notice = '무허가건물 부지면적 보상';
-    break;
-  case "7":
-    notice = '잔여지/잔여건물 가치 하락';
-    break;
-  case "8":
-    notice = '잔여지/잔여건물 매수 청구(확대보상)';
-    break;
-  case "9":
-    notice = '사도평가 적정성';
-    break;
-  case "10":
-    notice = '일단지 보상';
-    break;
-  case "11":
-    notice = '미지급 용지';
-    break;
-  case "12":
-    notice = '영업보상(이전비) 적정성';
-    break;
-  case "13":
-    notice = '누락 물건 반영';
-    break;
-  case "14":
-    notice = '폐업 보상';
-    break;
-  case "15":
-    notice = '영농손실보상';
-    break;
-  case "16":
-    notice = '휴직(실직)보상';
-    break;
-  case "17":
-    notice = '이주대책 수립';
-    break;
-  case "18":
-    notice = '이주정착금, 주거이전비, 이사비';
-    break;
-  case "19":
-    notice = '구분지상권';
-    break;
-  case "20":
-    notice = '10% 변동 내역';
-    break;
-  case "21":
-    notice = '기타(임료손실,대토보상 등)';
-    break;
-  case "22":
-    notice = '10%이상 변동';
-    break;
-  default:
-notice='';
-   break;
-}
-	if(document.getElementById('notice')  != null){
-	document.getElementById('notice').innerHTML = notice;
-	}
-	
-					for(let i=0; i<opinionArr.length; i++){
-						if(opinionArr[i].reptOwnrSeq == reptOwnrSeq && opinionArr[i].reptSeq == getSeq){
-	
+ }
+     if(document.getElementById('notice')  != null){
+     document.getElementById('notice').innerHTML = notice;
+     }
+
+                     $("#popupOwnerOpinion").addClass("on");
 					// 소유자, 사업시행자 의견
-					$("#popupOwnerOpinion").addClass("on");
-					document.getElementById('ownerOpinion').value  = opinionArr[i].ownerOpinion;
-					document.getElementById('ownerOpinion').setAttribute('readonly','')
-					document.getElementById('executorOpinion').value  = opinionArr[i].executorOpinion;
-					document.getElementById('executorOpinion').setAttribute('readonly','')
-	
-					// TB_Decision_Opinion_Item 의견
-					let decisionId = $('#decisionId').val();
-					let csrfToken = $("meta[name='_csrf']").attr("content");
-					let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
-					let contextPath = $('#contextPath').val();
-					let url = contextPath+"/api/implementer/opinion/item";
-					$.ajax({
-            			url : url,
-            			type : "POST",
-						dataType : "json",
-            			data :
-						 {
-						"decisionId" : decisionId,
-						"reptSeq": getSeq,
-						"reptOwnrSeq" : reptOwnrSeq,
-						"type" : getType
-						},
-            			async: false, 
-            			beforeSend : function(xhr){
-            				xhr.setRequestHeader(csrfHeader, csrfToken);
-            			},
-            			success : function(data) {
-							let opinionList = data.opinionList;
-							let fileList = data.file;
-							console.log(fileList.length);
-							let pdfArr = new Array();
-							let imgArr = new Array();
-							for(let i=0; i<fileList.length; i++){
-								let  ext = fileList[i].fileNameExtension;
-								console.log(ext);
-								if(ext.toLowerCase() == 'pdf'){
-									pdfArr.push(fileList[i]);
-								}else{
-									imgArr.push(fileList[i]);
-								}
+					for(let i=0; i<opinionArr.length; i++){
+						if(opinionArr[i].type ==getType ){
+						//두개 다 받아와서 
+                     	document.getElementById('ownerOpinion').value  = opinionArr[i].ownerOpinion;
+                     	document.getElementById('executorOpinion').value  = opinionArr[i].executorOpinion;
+						}
+					}
+					
+						console.log(opinionArr);
+                     document.getElementById('ownerOpinion').setAttribute('readonly','')
+                     document.getElementById('executorOpinion').setAttribute('readonly','')
+                     // TB_Decision_Opinion_Item 의견
+                     let decisionId = $('#decisionId').val();
+                     let csrfToken = $("meta[name='_csrf']").attr("content");
+                     let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
+                     let contextPath = $('#contextPath').val();
+                     let url = contextPath+"/api/implementer/opinion/item";
+
+let pdfArr = new Array();
+let imgArr = new Array();
+let addList = new Array();
+let opinionTitle ="";
+let opinionContent="";
+ $("#popupOpinionItemList").empty();
+
+$.ajax({
+                         url : url,
+                         type : "POST",
+                         dataType : "json",
+                         data :
+                          {
+                         "decisionId" : decisionId,
+                         "reptSeq": getSeq,
+                         "reptOwnrSeq" : reptOwnrSeq,
+                         "type" : getType
+                         },
+                         async: false, 
+                         beforeSend : function(xhr){
+                             xhr.setRequestHeader(csrfHeader, csrfToken);
+                         },
+                         success : function(data) {
+                             let opinionList = data.opinionList;
+
+                             let fileList = data.file;
+
+							opinionTitle = opinionList[0].opinionTitle;
+							opinionContent = opinionList[0].opinionContent;
+							
+                             let pdfArr = new Array();
+                             let imgArr = new Array();
+                             for(let i=0; i<fileList.length; i++){
+                                 let  ext = fileList[i].fileNameExtension;
+                                 console.log(ext);
+                                 if(ext.toLowerCase() == 'pdf'){
+                                     pdfArr.push(fileList[i]);
+                                 }else{
+                                     imgArr.push(fileList[i]);
+                                 }
+                             }
+
+addList.push("   <tbody>");  
+                             addList.push("   <tr>");   
+                             addList.push("       <th class=\"info_reg_th\">제목</th>");   
+                             addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\" readonly></td>");   
+                             addList.push("   </tr>");   
+                             addList.push("    <tr>");   
+                             addList.push("       <th class=\"info_reg_th\">내용</th>");   
+                             addList.push("      <td>");   
+                             addList.push("        <textarea class=\"textarea opinionContent\" readonly>"+opinionContent+"</textarea></td>");   
+                             addList.push("    </tr>");   
+                             
+                             /*첨부 파일 (이미지)*/
+                             if(imgArr.length != 0){
+                             addList.push("   <tr>");   
+                             addList.push("       <th class=\"info_reg_th\">이미지</th>");   
+                             addList.push("       <td>");  
+                             addList.push("  	<img src=\" "+imgArr[0].fileFolder+imgArr[0].fileNameChange+"\" alt=\"\">");   
+                              addList.push("       </td>");  let url = contextPath+"/api/implementer/info/land";
+ 
+                             addList.push("   </tr>");   
+                             }
+                             /*PDF 다운로드 */
+                             if(pdfArr.length != 0){
+                             addList.push("   <tr>");   
+                             addList.push("       <th class=\"info_reg_th\">PDF 다운로드</th>");        
+                             addList.push("      <td>");   
+                             addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfDownload('"+pdfArr[0].seqNo+"');return false;\">");
+                             addList.push("             <i class=\"download white icon\"></i> PDF 다운로드");
+                             addList.push("           </button>");
+                             addList.push("      </td>");   
+                             addList.push("    </tr>");  
+                             addList.push("   </tbody>");  
 							}
-							console.log(opinionList);
-							console.log(pdfArr);
-							console.log(imgArr);
-							let opinionTitle = opinionList[0].opinionTitle;
-							let opinionContent = opinionList[0].opinionContent;
+
+$("#popupOpinionItemList").append(addList.join(''));
+    
+                         },
+                         error : function(xhr, status, error) {
+                         }
+                     });
+
 							
-							/*TB_Decision_Opinion_Item 의견 테이블 추가*/
-							let addList = new Array();
-		
-						   $("#popupOpinionItemList").empty();
-						   
-						    addList.push("   <tbody>");  
-							addList.push("   <tr>");   
-						    addList.push("       <th class=\"info_reg_th\">제목</th>");   
-						    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\" readonly></td>");   
-						    addList.push("   </tr>");   
-						    addList.push("    <tr>");   
-						    addList.push("       <th class=\"info_reg_th\">내용</th>");   
-						    addList.push("      <td>");   
-						    addList.push("        <textarea class=\"textarea opinionContent\" readonly>"+opinionContent+"</textarea></td>");   
-						    addList.push("    </tr>");   
-							
-							/*첨부 파일 (이미지)*/
-							if(imgArr.length != 0){
-							addList.push("   <tr>");   
-						    addList.push("       <th class=\"info_reg_th\">이미지</th>");   
-						    addList.push("       <td>");  
-							addList.push("  	<img src=\" "+imgArr[0].fileFolder+imgArr[0].fileNameChange+"\" alt=\"\">");   
- 							addList.push("       </td>");  
 
-						    addList.push("   </tr>");   
-							}
-							/*PDF 다운로드 */
-							if(pdfArr.length != 0){
-							addList.push("   <tr>");   
-						    addList.push("       <th class=\"info_reg_th\">PDF 다운로드</th>");        
-						    addList.push("      <td>");   
-							addList.push("          <button type=\"button\" class=\"btn nohover\"  onclick=\"pdfDownload('"+pdfArr[0].seqNo+"');return false;\">");
-							addList.push("             <i class=\"download white icon\"></i> PDF 다운로드");
-							addList.push("           </button>");
-						    addList.push("      </td>");   
-							addList.push("    </tr>");  
-							addList.push("   </tbody>");  
-							}
-
-		
-							
-							$("#popupOpinionItemList").append(addList.join(''));
-							
-							
-							
-						//opinionTitle, opinionContent 가져오고, 이미지정보랑 pdf 정보 가져오기
-            			},
-            			error : function(xhr, status, error) {
-            			}
-            		});
-	
-
-	
-
-	}
-}
-
-
-   
-
-
-   
 }
 
 

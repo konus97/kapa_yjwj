@@ -346,7 +346,6 @@ public class DeliberateService {
 		for (Decision_Opinion opinion : opinionList) {
 
 			Long reptSeq = opinion.getReptOwnrSeq();
-			System.out.print(reptSeq);
 			// 공고 상태
 			int getType = opinion.getType();
 			System.out.print(getType);
@@ -354,14 +353,12 @@ public class DeliberateService {
 			OwnerViewInfo ownerViewInfo = implementerService.getOwnerInfo(reptSeq);
 			System.out.println(ownerViewInfo);
 			
-			String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd();
-			boolean landCheck = false; 
-			boolean objectCheck = false; 
-			if("L".equals(land_obst_kind_cd)) {
-				landCheck=true;
-			}else {
-				objectCheck=true;
-			}
+			/*
+			 * String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd(); boolean
+			 * landCheck = false; boolean objectCheck = false;
+			 * if("L".equals(land_obst_kind_cd)) { landCheck=true; }else { objectCheck=true;
+			 * }
+			 */
 			
 			String getTypeStr = "";
 
@@ -416,8 +413,8 @@ public class DeliberateService {
 					.fileFolder(opinion.getFileFolder())
 					.fileNameChange(opinion.getFileNameChange())
 					.itemCheck(itemCheck)
-					.landCheck(landCheck)
-					.objectCheck(objectCheck)
+					//.landCheck(landCheck)
+					//.objectCheck(objectCheck)
 					.ownerViewInfo(ownerViewInfo)
 					.deliberateOpinionItemDTOS(deliberateOpinionItemDTOS)
 					.build();

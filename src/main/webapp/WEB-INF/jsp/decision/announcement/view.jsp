@@ -99,7 +99,7 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.judgBizNm}</p>
+                                                <p>${avo.title}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                                 <label>위치/규모</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.reptLoc} / ${avo.rwrdPrce}</p>         
+                                                <p>${avo.reptLoc}</p>         
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,8 @@
                                                 <label>사업기간</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.recmReqStartDate} ~ ${avo.recmReqEndDate}</p>
+                                                <%-- <p>${avo.recmReqStartDate} ~ ${avo.recmReqEndDate}</p> --%>
+                                                <p>-</p>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +132,7 @@
                                             
                                             <div class="ff_wrap ff_wrap_inner">  
                                             
-                                            	<p>${groupEstablishedDate }</p>
+                                            	<p>${groupEstablishedDate}</p>
                                     
                                             </div>
                                                            

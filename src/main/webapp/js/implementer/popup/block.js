@@ -4,7 +4,7 @@
 
 function makeLandInfoBlock(startNumber,info) {
 
-	//console.log(info);
+	console.log(info);
 	
 	let addList = new Array();
 	
@@ -18,10 +18,10 @@ function makeLandInfoBlock(startNumber,info) {
 	let obstStuc2Nm = info.obstStuc2Nm;
 	
 	let areaAmot = info.areaAmot;
-	let areaUnit = info.areaUnit;
+	//let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -61,7 +61,7 @@ function makeLandInfoBlock(startNumber,info) {
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -87,7 +87,7 @@ function makeLandInfoBlock(startNumber,info) {
 
 function makeLandOwnerInfoBlock(startNumber,info) {
 
-	//console.log(info);
+	console.log(info);
 	
 	let addList = new Array();
 	
@@ -104,7 +104,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -155,7 +155,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -188,7 +188,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNm = info.ownrNnm;
+	let ownrNm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -245,7 +245,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -288,15 +288,15 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 			//console.log('landview2');
 			
 			
-			if(list.length !=0){
-					for(let j=0; j<list.length; j++){
+if(list.length !=0){
+	for(let j=0; j<list.length; j++){
 	let listReptSeq = list[j].reptSeq;
 	let listReptOwnrSeq = list[j].reptOwnrSeq;
 				
 				
 			
 				
-				let addList = new Array();
+	let addList = new Array();
 	let reptAddr = info.reptAddr;
 
 	let sidoGunguCd = info.sidoGunguCd;
@@ -310,7 +310,7 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNm = info.ownrNnm;
+	let ownrNm = info.ownrNm;
 	let landShre = info.landShre;
 
 	let getSeq = info.reptSeq;
@@ -374,7 +374,7 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
     
     addList.push("   <td>");
@@ -424,15 +424,15 @@ function makeGoodsInfoBlock(startNumber,info) {
 	
 	let strtOther = info.strtOther;
 	
-	let obstKindNm = info.obstKindNm;
+	let obstKindNm = info.obstKindNm; //물건종류
 	let obstStuc1Nm = info.obstStuc1Nm;
-	let obstStuc2Nm = info.obstStuc2Nm;
+	let obstStuc2Nm = info.obstStuc2Nm; //지장물에서는 안쓰임
 	
 	let areaAmot = info.areaAmot;
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	let getSeq = info.reptSeq;
@@ -476,7 +476,7 @@ function makeGoodsInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>면적/수량</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
 
     addList.push("   <td>");
@@ -515,6 +515,9 @@ function makeGoodsownerBlock(startNumber,info) {
 	let subStrtNo = info.subStrtNo;
 	
 	let strtOther = info.strtOther;
+	if(strtOther == null){
+		strtOther = "";
+	}
 	
 	let obstKindNm = info.obstKindNm;
 	let obstStuc1Nm = info.obstStuc1Nm;
@@ -524,7 +527,7 @@ function makeGoodsownerBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -575,7 +578,7 @@ function makeGoodsownerBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>면적/수량</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
 
     addList.push("   <td>");
@@ -643,7 +646,7 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	let getSeq = info.reptSeq;
@@ -699,7 +702,7 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
     
     addList.push("   <td>");
     addList.push("      <strong>면적/수량</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
 
     addList.push("   <td>");
@@ -753,7 +756,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
@@ -809,7 +812,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>면적/수량</strong>");
-    addList.push("      <span>"+areaAmot+""+areaUnit+"</span>");
+    addList.push("      <span>"+areaAmot+"</span>");
     addList.push("   </td>");
 
     addList.push("   <td>");

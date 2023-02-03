@@ -60,10 +60,22 @@
                    </div>
                </div>
                <div class="p_foot">
-                    <button class="btn h50 mr10" onclick="submitGoodsOwnr(); checkResultWrTbody(); return false;" >선택</button>
+                    <button class="btn h50 mr10" onclick="submitGoodsOwnrNew(); checkResultWrTbody(); return false;" >선택</button>
                     <a href="#" class="btn t1 h50" onclick="closePopup('goodsownercheck');return false;">취소</a>
                </div>
            </div>
        </div>
    </div>
+   <script>
+  function submitGoodsOwnrNew(){
+	  document.getElementById('selectedItemTit').innerText
+	  let text = document.getElementById('selectedItemTit').innerText;
+	  let type = Number(text.substring(9,10));
+	  if(type != ''){
+	  submitGoodsOwnr(type);
+	  }else{
+		  return false;
+	  }
+  }
+   </script>
 

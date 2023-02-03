@@ -115,7 +115,8 @@ public class ImplementerService {
 	
 
     public List<ApplicationDTO> getImplementerListFormatter(List<ApplicationList> applicationList) {
-
+    	
+    	System.out.println("사업정보 list :::::" + applicationList);
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
 
         int rank = 1;
@@ -133,22 +134,25 @@ public class ImplementerService {
         	}else if(acpt_judg_inst_cd==AgencyData.Central.getCode()) {
         		judgDivName = AgencyData.Central.getKrName();
         	}
+        	System.out.println("데이트 ::::::" + application.getViewReqDate());
+        	String recvDt = application.getViewReqDate().format(formatter);
         	
-        	String recvDt = application.getRecv_dt().format(formatter);
-        	
-        	DecisionStateDTO decisionStateDTO = decisionService.getDecisionState(application.getJudg_seq());
+        	DecisionStateDTO decisionStateDTO = decisionService.getDecisionState(application.getSeq());
         	String decisionStateStr = decisionStateDTO.getDecisionStateStr();
 
          	
             ApplicationDTO applicationDTO =
             		ApplicationDTO.builder()
-                            .judgSeq(application.getJudg_seq())
+                            .judgSeq(application.getSeq())
                             .recvDt(recvDt)
-                            .judgBizNm(application.getJudg_biz_nm())
+                            .judgBizNm(application.getTitle())
                             .judgDivName(judgDivName)
-                            .rept_loc(application.getRept_loc())
+                            .rept_loc(application.getConsultAddr())
                             .caseNo(application.getCase_no())
-                            .ichr_id(application.getIchr_id())
+                            .charge(application.getCharge())
+                            .custName(application.getCustName())
+                            .custMan(application.getCustMan())
+                            //.ichr_id(application.getIchr_id())
                             .decisionStateStr(decisionStateStr)
                             .decisionState(decisionStateDTO.getDecisionState())
                             .build();
@@ -188,18 +192,23 @@ public class ImplementerService {
     	
     	String recvDt = new String();
     	String priceDt = new String();
-    	if(application.getRecv_dt() != null) {
-    		recvDt = application.getRecv_dt().format(formatter);
+    	if(application.getViewReqDate() != null) {
+    		recvDt = application.getViewReqDate().format(formatter);
     	}
-    	if (application.getPrce_dt() != null) {
-    		priceDt = application.getPrce_dt().format(formatter);
+    	if (application.getCostDate() != null) {
+    		priceDt = application.getCostDate().format(formatter);
     	}
-	 	String recmReqStartDate = application.getRecm_req_strt_dt().format(formatter);
-    	String recmReqEndDate = application.getRecm_req_ed_dt().format(formatter);
+	// 	String recmReqStartDate = application.getConsultDate_S().format(formatter);
+    //	String recmReqEndDate = application.getConsultDate_E().format(formatter);
     	
     	//사업코드
     	int bizTpCd = application.getBiz_tp_cd();
     	String bizTpCdTitle = "";
+    	
+    	String reptLoc = application.getRept_loc();
+    	if(reptLoc == "" || reptLoc == null ) {
+    		reptLoc = "-";
+    	}
     	
     	 for(int i=0 ; i<BusinessCode.values().length ; i++) {
  
@@ -212,7 +221,7 @@ public class ImplementerService {
 
         }
     	 
-    	DecisionStateDTO decisionStateDTO = decisionService.getDecisionState(application.getJudg_seq());
+    	DecisionStateDTO decisionStateDTO = decisionService.getDecisionState(application.getSeq());
      	boolean nextStepCheck = false;
      	
      	String decisionStateStr = decisionStateDTO.getDecisionStateStr();
@@ -228,24 +237,29 @@ public class ImplementerService {
         ApplicationDTO applicationDTO =
         		ApplicationDTO.builder()
         				.decisionId(decisionId)
-                        .judgSeq(application.getJudg_seq())
+                        .judgSeq(application.getSeq())
                         .recvDt(recvDt)
                         .priceDt(priceDt)
+                        .charge(application.getCharge())
+                        .consultAppName(application.getConsultAppName())
+                        .title(application.getTitle())
                         .judgBizNm(application.getJudg_biz_nm())
                         .judgDivName(judgDivName)
                         .rept_loc(application.getRept_loc())
                         .caseNo(application.getCase_no())
-                        .ichr_id(application.getIchr_id())
-                        .csltApprInstNm(application.getCslt_appr_inst_nm())
+                        .consultAppName(application.getConsultAppName())
+                       // .ichr_id(application.getIchr_id())
+                       // .csltApprInstNm(application.getCslt_appr_inst_nm())
                         .judeDivCdName(judeDivCdName)
                         .bizTpCd(bizTpCdTitle)
-                        .reptLoc(application.getRept_loc())
-                        .bizOprtNm(application.getBiz_oprt_nm())
+                        .reptLoc(reptLoc)
+                      //  .bizOprtNm(application.getBiz_oprt_nm())
                         .bizOprtIchrNm(application.getBiz_oprt_ichr_nm())
-                        .bizOprtPhoneNo(application.getBiz_oprt_phone_no())
-                        .recmReqStartDate(recmReqStartDate)
-                        .recmReqEndDate(recmReqEndDate)
-                        .rwrdPrce(application.getRwrd_prce())
+                        .bizOprtPhoneNo(application.getChargeHP())
+                    //    .recmReqStartDate(recmReqStartDate)
+                   //     .recmReqEndDate(recmReqEndDate)
+                        .custName(application.getCustName())
+                  //      .rwrdPrce(application.getRwrd_prce())
                         .decisionStateStr(decisionStateStr)
                         .decisionState(decisionStateDTO.getDecisionState())
                         .nextStepCheck(nextStepCheck)
@@ -673,14 +687,15 @@ public void saveRegister(Decision_Opinion opinion) {
             //재결 정보
             ApplicationList applicationList = implementerMapper.getApplicationView(masterId);
       
-           	String recvDt = applicationList.getRecv_dt().format(formatter);
-            String judgBizNm = applicationList.getJudg_biz_nm();
+           	String recvDt = applicationList.getViewReqDate().format(formatter);
+            String judgBizNm = applicationList.getTitle();
             String caseNo =  applicationList.getCase_no();
-            String bizOprtNm = applicationList.getBiz_oprt_nm();          
+            String bizOprtNm = applicationList.getCustName();          
             String reptLoc = applicationList.getRept_loc();
-            
+            System.out.println("TEst:::::::" + reptLoc);
+            String charge = applicationList.getCharge();
             int acpt_judg_inst_cd = applicationList.getAcpt_judg_inst_cd();
-            
+            System.out.println("tsetestset:" + acpt_judg_inst_cd);
             String judgDivName = "";
         	
         	//acpt_judg_inst_cd
@@ -698,6 +713,7 @@ public void saveRegister(Decision_Opinion opinion) {
             announcementDTO.setRegdate(regdate);
             announcementDTO.setJudgBizNm(judgBizNm);
             announcementDTO.setCaseNo(caseNo);
+            announcementDTO.setCharge(charge);
             announcementDTO.setDocNumber(docNumber);
             announcementDTO.setDocTitle(docTitle);
             announcementDTO.setReceiver(receiver);
@@ -742,31 +758,31 @@ public void saveRegister(Decision_Opinion opinion) {
         
         for (ApplicationLand land : ApplicationLand) {
 
-        	int rept_seq = land.getRept_seq();
+        	int rept_seq = land.getId();
         	reptSeqList.add(rept_seq);
         	       
         
         	String befUnitCost = "0";
         	
-        	if(land.getBef_unit_cost()>0) {
-        		befUnitCost = Integer.toString(land.getBef_unit_cost());
+        	if(land.getPriceK()>0) {
+        		befUnitCost = Long.toString(land.getPriceK());
         		befUnitCost = StrUtil.convertToDecimalFormat(befUnitCost);
         	}
       	
         	ApplicationLandDTO applicationLandDTO =
         			ApplicationLandDTO.builder()
         					.reptSeq(rept_seq)
-        					.reptOwnrSeq(land.getRept_ownr_intr_seq())
-        				//	.ownrNm(land.getOwnrNm())
-		                    .reptAddr(land.getRept_addr())
-		                    .sidoGunguCd(land.getSido_gungu_cd())
-		                    .mainStrtNo(land.getMain_strt_no())
-		                    .subStrtNo(land.getSub_strt_no())
-		                    .obstStuc1Nm(land.getObst_stuc1_nm())
-		                    .obstStuc2Nm(land.getObst_stuc2_nm())
-		                    .areaAmot(land.getArea_amot())
+        					.reptOwnrSeq(land.getPid())
+        					.ownrNm(land.getPname())
+		                    .reptAddr(land.getAddr())
+		                    .sidoGunguCd(land.getReg())
+		                    .mainStrtNo(land.getBun1())
+		                    .subStrtNo(land.getBun2())
+		                    .obstStuc1Nm(land.getGm1())
+		                    .obstStuc2Nm(land.getGm2())
+		                    .areaAmot(land.getArea())
 		                    .befUnitCost(befUnitCost)
-		                    .areaUnit(land.getArea_unit())
+		                  //  .areaUnit(land.getUnit())
                             .build();
 
             applicationLandDTOS.add(applicationLandDTO);
@@ -801,32 +817,38 @@ public void saveRegister(Decision_Opinion opinion) {
         
         for (ApplicationLand land : ApplicationLand) {
 
-        	int rept_seq = land.getRept_seq();
+        	int rept_seq = land.getId();
         	reptSeqList.add(rept_seq);
         	
         	//ApplicationLandRelation applicationLandowner = implementerMapper.getLandRelationInfo(rept_seq);
         	
         	String befUnitCost = "0";
         	
-        	if(land.getBef_unit_cost()>0) {
-        		befUnitCost = Integer.toString(land.getBef_unit_cost());
+        	if(land.getPriceK()>0) {
+        		befUnitCost = Long.toString(land.getPriceK());
         		befUnitCost = StrUtil.convertToDecimalFormat(befUnitCost);
+        	}
+        	String bun3 = land.getBun3();
+        	if(bun3 == null) {
+        		bun3 = "";
         	}
         	
         	ApplicationGoodsDTO applicationGoodsDTO =
         			ApplicationGoodsDTO.builder()
         					.reptSeq(rept_seq)
-		                    .reptAddr(land.getRept_addr())
-		                    .reptOwnrSeq(land.getRept_ownr_intr_seq())
-		                    .mainStrtNo(land.getMain_strt_no())
-		                    .subStrtNo(land.getSub_strt_no())
-		                    .strtOther(land.getStrt_other())
-		                    .obstKindNm(land.getObst_kind_nm())
-		                    .obstStuc1Nm(land.getObst_stuc1_nm())
-		                    .obstStuc2Nm(land.getObst_stuc2_nm())
-		                    .areaAmot(land.getArea_amot())
+		                    .reptAddr(land.getAddr())
+        					.ownrNm(land.getPname())
+        					
+		                    .reptOwnrSeq(land.getPid())
+		                    .mainStrtNo(land.getBun1())
+		                    .subStrtNo(land.getBun2())
+		                    .strtOther(bun3)
+		                    .obstKindNm(land.getKind())
+		                    .obstStuc1Nm(land.getGujo())
+		              //      .obstStuc2Nm(land.getObst_stuc2_nm())
+		                    .areaAmot(land.getArea1())
 		                    .befUnitCost(befUnitCost)
-		                    .areaUnit(land.getArea_unit())
+		                //    .areaUnit(land.getUnit())
                             .build();
 
         	applicationGoodsDTOS.add(applicationGoodsDTO);
@@ -945,7 +967,7 @@ public void saveRegister(Decision_Opinion opinion) {
 	    			                    .obstKindNm(goods.getObst_kind_nm())
 	    			                    .obstStuc1Nm(goods.getObst_stuc1_nm())
 	    			                    .obstStuc2Nm(goods.getObst_stuc2_nm())
-	    			                    .areaAmot(goods.getArea_amot())
+	    			                 //   .areaAmot(goods.getArea_amot())
 	    			                    .befUnitCost(befUnitCost)
 	    			                    .areaUnit(goods.getArea_unit())
 	    			                    .ownrNnm(goods.getOwnr_nm())

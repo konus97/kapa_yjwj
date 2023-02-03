@@ -15,6 +15,8 @@ public class ApplicationGoodsDTO {
 
 	private int rank;
 	
+	private String ownrNm;
+	
     private Long judgSeq;
     
     private int reptSeq;
@@ -35,7 +37,8 @@ public class ApplicationGoodsDTO {
 
     private String obstStuc2Nm;
 
-    private int areaAmot;
+    //int -> String 변경
+    private String areaAmot;
 
     private String befUnitCost;
     

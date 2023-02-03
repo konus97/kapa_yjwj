@@ -26,6 +26,7 @@ import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Announcement_File;
 import egovframework.kapa.domain.Decision_Cityplan;
+import egovframework.kapa.domain.Decision_Consult;
 import egovframework.kapa.domain.Decision_ConsultationDate;
 import egovframework.kapa.domain.Decision_Date;
 import egovframework.kapa.domain.Decision_File;
@@ -660,7 +661,9 @@ public class DecisionService {
 
 	}
 
-
+	public List<Decision_Consult> getConsultList(int masterId){
+		return decisionMapper.getConsultList(masterId);
+	}
 	
 
 
