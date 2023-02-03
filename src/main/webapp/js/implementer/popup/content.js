@@ -212,6 +212,9 @@ function getLandownerInfoSunmit(chkValueArr) {
 		success : function(data) {
 
 			let list = data.list;
+			console.log("getLandownerInfoSunmit");
+			console.log(list);
+			
 			
 			if (list.length != 0) {
 				let rank = 1;
@@ -297,7 +300,8 @@ function getLandownerCheck2(getItem) {
 		success : function(data) {
 
 			let list = data.list;
-			
+			console.log(list);
+			if(list != undefined){
 			if (list.length != 0) {
 				
 				let rank = 1;
@@ -323,6 +327,7 @@ function getLandownerCheck2(getItem) {
 					makeLandOwnerCheckBlock2(rank,list[i], getItem, reptSeqArr, reptSeqOwnrArr);
 					rank++;
 				}
+			}
 			}
 
 			$('#ownerLandItemList'+getItem).addClass("on");
@@ -634,6 +639,8 @@ function submitLandOwnr(){
 	
 }
 function submitLandOwnr2(rank,info){
+	
+
 	
 
 	

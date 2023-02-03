@@ -288,15 +288,15 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 			//console.log('landview2');
 			
 			
-			if(list.length !=0){
-					for(let j=0; j<list.length; j++){
+if(list.length !=0){
+	for(let j=0; j<list.length; j++){
 	let listReptSeq = list[j].reptSeq;
 	let listReptOwnrSeq = list[j].reptOwnrSeq;
 				
 				
 			
 				
-				let addList = new Array();
+	let addList = new Array();
 	let reptAddr = info.reptAddr;
 
 	let sidoGunguCd = info.sidoGunguCd;
@@ -310,7 +310,7 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 	let areaUnit = info.areaUnit;
 	let befUnitCost = info.befUnitCost;
     
-	let ownrNm = info.ownrNnm;
+	let ownrNm = info.ownrNm;
 	let landShre = info.landShre;
 
 	let getSeq = info.reptSeq;
@@ -646,7 +646,7 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	let getSeq = info.reptSeq;
@@ -756,7 +756,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
 	let areaUnit = info.areaUnit;
 	
-	let ownrNnm = info.ownrNnm;
+	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
 	
 	addList.push("<tr>");
