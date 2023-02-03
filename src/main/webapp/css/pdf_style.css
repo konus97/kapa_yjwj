@@ -57,6 +57,14 @@ body {
 	height: 141.4vw;
 	padding: 16em 12em;
 }
+.pdf__page--img {
+	padding: 0;
+}
+.pdf__page--img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .pdf__tit {
 	font-family:'Noto Sans KR',san-serif;
 	font-size: 2.5rem;

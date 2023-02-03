@@ -199,7 +199,7 @@
                                                 <label>의뢰일</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>2022.08.01</p>
+                                                <p>${startDate}</p>
                                             </div>
                                         </div>
                                         
@@ -211,7 +211,7 @@
                                                 <label>열람공고만료일</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>-</p>
+                                                <p>${endDate}</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">

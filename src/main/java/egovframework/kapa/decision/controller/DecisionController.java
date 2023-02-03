@@ -559,7 +559,7 @@ public class DecisionController {
         model.addAttribute("decisionId", decisionId);
         
         Decision decison = decisionService.getDecisionView(decisionId);
-        
+		model.addAttribute("groupEstablishedDate", decison.getGroupEstablishedDate());
         //버튼 활성화 체크 start
         boolean docCheck = false;
         

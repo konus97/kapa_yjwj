@@ -58,4 +58,6 @@ public class Decision {
 	private String consultationDate;
 	Decision_Target Decision_Target;
 	
+	private String notReqReason;	// 추천요청을 하지 않은 이유
+	
 }

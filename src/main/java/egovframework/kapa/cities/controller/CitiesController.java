@@ -1,5 +1,7 @@
 package egovframework.kapa.cities.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,6 +142,11 @@ public class CitiesController {
         Decision_Notice decisionNotice = decisionService.getDecisionNoticeView(decisionId);
         model.addAttribute("decisionNotice", decisionNotice);
         		
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String startDate = decisionNotice.getRequestStartDate().format(format);
+        String EndDate = decisionNotice.getRequestEndDate().format(format);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", EndDate);
         
         List<Notice_File> noticeFiles = decisionService.getNoticeFileList(Long.valueOf(a));
         System.out.println(noticeFiles);

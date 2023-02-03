@@ -113,7 +113,7 @@
 											<label>사건명</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${avo.judgBizNm}</p>
+											<p>${avo.title}</p>
 										</div>
 									</div>
 								</div>
@@ -159,7 +159,7 @@
 											<label>수용재결법인</label>
 										</div>
 										<div class="ff_wrap">
-											<p></p>
+											<p>-</p>
 										</div>
 									</div>
 									<div class="f_field div2">
@@ -167,7 +167,7 @@
 											<label>협의법인</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${avo.csltApprInstNm}</p>
+											<p>${avo.consultAppName}</p>
 										</div>
 									</div>
 								</div>
@@ -2242,14 +2242,14 @@
 														<tbody>
 															<tr>
 																<th class="info_reg_th">소유자 의견</th>
-																<td><textarea id="ownerOpinion"
+																<td><textarea id="ownerOpinion" placeholder="소유자 의견을 작성해주십시오."
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.ownerOpinion}</textarea></td>
 															</tr>
 
 															<tr>
 																<th class="info_reg_th">사업시행자<br />의견
 																</th>
-																<td><textarea id="executorOpinion"
+																<td><textarea id="executorOpinion" placeholder="사업시행자 의견을 작성해주십시오."
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.executorOpinion}</textarea></td>
 															</tr>
 

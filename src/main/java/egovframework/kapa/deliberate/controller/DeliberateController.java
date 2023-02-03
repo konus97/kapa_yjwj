@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import egovframework.kapa.decision.Const.ItemData;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
@@ -129,13 +130,61 @@ public class DeliberateController {
 	
 	@GetMapping("/agenda/detail.do")
 	public String deliberateAgendaDetail(HttpServletRequest request,Model model) {
+
 		
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
-		Decision decision = decisionService.getDecisionView(decisionId);
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+	    List<Decision_Opinion> typeListOld = decisionService.getOpinionTypeList(decisionId);
+	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    model.addAttribute("registerFileList", registerFileList);
         model.addAttribute("opinionList", opinionList);
+        List<Decision_Opinion> typeList = new ArrayList<>();
+        String getTypeStr = "";
+        
+        for(Decision_Opinion item : typeListOld) {
+        	Decision_Opinion op = new Decision_Opinion();
+        	op.setDecisionId(item.getDecisionId());
+        	op.setOpinionText(item.getOpinionText());
+        	op.setRelatedLaws2(item.getRelatedLaws2());
+        	op.setReviewOpinion(item.getReviewOpinion());
+        	op.setOpinionType(item.getOpinionType());
+        	
+        	
+        	
+        	 int getType = item.getOpinionType();
+         	 
+    		 for(int i=0 ; i<ItemData.values().length ; i++) {
+    			 
+    	   		 int code = ItemData.values()[i].getCode();
+    	   		 
+    	   		 if(code==getType) {
+    	   			getTypeStr = ItemData.values()[i].getKrName();
+    	   			break;
+    	   		 }
+            }
+    		op.setGetTypeStr(getTypeStr);
+    	
+       	
+        	typeList.add(op);
+		 
+        }
+        System.out.println("=======================★=========================");
+        System.out.println(typeList);
+        System.out.println("=================================================");
+
+          
+         
+        
+        model.addAttribute("typeList", typeList);
+		
+//		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		Decision decision = decisionService.getDecisionView(decisionId);
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+//	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+//        model.addAttribute("opinionList", opinionList);
 		//current page
 		model.addAttribute("currentPage", "agenda");
 		
@@ -229,6 +278,11 @@ public class DeliberateController {
   			PDFConverter pdfconvert = new PDFConverter();
   			//jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
   			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//  			String downloadFilePath =  serverPath + fname;
+//  			File file = new File(downloadFilePath);
+//			if (file.exists()) {
+//	  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//			}
   			//jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId);
   		}
   		 

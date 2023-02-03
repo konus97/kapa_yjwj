@@ -134,7 +134,7 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.judgBizNm}</p>
+                                                <p>${avo.title}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                                 <label>위치/규모</label>
                                             </div>
                                              <div class="ff_wrap">
-                                                <p>${avo.reptLoc} / ${avo.rwrdPrce}</p>                                               
+                                                <p>${avo.reptLoc}</p>                                               
                                             </div>
                                         </div>
                                     </div>
@@ -300,6 +300,20 @@
                                         </div>
                                     </div>
                                     
+                                    <div class="f_wrap">
+                                        <div class="f_field">
+                                            <div class="ff_title required">
+                                                <label>추천요청을 하지 않은 이유</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <textarea
+                                                    type="text"
+                                                    class="textarea"
+                                                    id="notReqReason"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="f_wrap">
                                         <div class="f_field">
                                             <div class="ff_title">
@@ -914,21 +928,19 @@
         	for(let i=1; i<allTextLength+1; i++){	
         		if($('.fileLabel'+i).val()){ // 1-1, 1-2. 1-3. 2 총 4개를 넣었다?
             	let len =	document.getElementsByClassName('fileLabel'+i).length; // 1일 때  3, 2일 때 1
-            	for(j=1; j<len+1; j++){
-            	    var fileContent = {};
-                    fileContent.key = '';
-                    fileContent.value = '';
-                    
-            		fileContent.key = i;
-            		fileContent.value = $('.fileLabel'+i).val();
-            		fileArr.push(fileContent);
-        			//alert(i+"-"+j+"번째 값 ::"+$('.fileLabel'+i).val()); //value 여기서 key, value값 생성하기
-            	}
+	            	for(j=1; j<len+1; j++){
+	            	    var fileContent = {};
+	                    fileContent.key = '';
+	                    fileContent.value = '';
+	                    
+	            		fileContent.key = i;
+	            		fileContent.value = $('.fileLabel'+i).val();
+	            		fileArr.push(fileContent);
+	        			//alert(i+"-"+j+"번째 값 ::"+$('.fileLabel'+i).val()); //value 여기서 key, value값 생성하기
+	            	}
         		}
         	}//file 
         		
-        	
-            
         	let contextPath = $("#contextPath").val();
         	let url = contextPath+"/api/implementer/decision";
         	console.log(url);
@@ -1004,6 +1016,9 @@
                 return false;
             }  
         	
+
+          	
+          	
           	//대상(건축물)
         	let targetCount = $('.targetItem').length;
         	
@@ -1063,6 +1078,21 @@
      	goodwillCnt=uncomma(goodwillCnt);
      	goodwillPrice=uncomma(goodwillPrice);
      	   console.log("goodwillPrice" + goodwillPrice);
+
+	       	const notReqReason = $('#notReqReason').val();
+	       	
+	       	var needNoReqReason = "";		// 추천여부 확인하여 사유 입력 활성 or 비활성
+	       	if (inputBusinessOperator || inputGovernor || inputLandowner) {
+	       		needNoReqReason = 1	
+	       	}
+	       	
+	       	if (needNoReqReason == 1){
+		       	if (notReqReason == null || notReqReason == "") {
+		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+		       		$('#notReqReason').focus();
+		       		return false;
+		       	}
+	       	}
      	   
 			const data = {
 				"masterID" : masterId,
@@ -1083,7 +1113,8 @@
 				"objCnt" : objCnt,
 				"objPrice" : objPrice,
 				"goodwillCnt" : goodwillCnt,
-				"goodwillPrice" : goodwillPrice
+				"goodwillPrice" : goodwillPrice,
+				"notReqReason" : notReqReason
 			}
 			var csrfToken = $("meta[name='_csrf']").attr("content");
 	        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
@@ -1326,7 +1357,8 @@
                 console.log(fileText);
                 fileText.innerText=fileName;
                 
-            })
+            });
+            
             
         });
         </script>

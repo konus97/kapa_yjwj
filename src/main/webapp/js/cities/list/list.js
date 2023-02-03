@@ -29,7 +29,7 @@ function getCitiesAnnouncementList(cpage) {
 		dataType : "json",
 		async: false,
 		data : {
-			"cpage" : 1,
+			"cpage" : cpage,
 			"numOrname" : numOrname,
 			"startDate" : startDate,
 			"endDate" : endDate
@@ -59,7 +59,7 @@ function getCitiesAnnouncementList(cpage) {
 				
 				addList.push("<tr>");
                 addList.push("  <td colspan=\"100%\">");
-                addList.push("      열림공고가 없습니다.");
+                addList.push("      열람공고가 없습니다.");
                 addList.push(" </td>");
                 addList.push("</tr>");
 
@@ -184,7 +184,8 @@ function makePageList(){
 		if ($id == "allprev")selectedPage=1;
 		if ($id == "allnext")selectedPage=totalPage;
 
-		getDecisionAnnouncementList(selectedPage);
+		//getDecisionAnnouncementList(selectedPage);
+		getCitiesAnnouncementList(selectedPage);
 	});
 
 

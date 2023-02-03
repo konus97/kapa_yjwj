@@ -345,7 +345,7 @@
                                 </div>
                					
                					<!-- 감정평가정보 시작 -->
-               					<div class="cs_title">
+               					<!--<div class="cs_title">
 			                        <h4 class="fl title t1 bold cb s1 bullet">감정평가정보</h4>
 			                    </div>
 			                    <div class="c_table t1">
@@ -400,7 +400,7 @@
 			                           
 			                            </tbody>
 			                        </table>
-			                    </div>
+			                    </div>-->
 			                    <!-- 감정평가정보 끝 -->
                   
 	                                    
