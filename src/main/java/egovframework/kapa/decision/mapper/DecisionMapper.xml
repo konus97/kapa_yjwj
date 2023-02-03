@@ -275,7 +275,7 @@
 		<where> 
 			
 			DI.reptSeq = #{viewSeq}
-
+			AND DI.reptOwnrSeq = #{reptOwnrSeq}
 			AND DI.opinionType = #{type}
 			AND DI.delCheck = '0'
 			</where>
@@ -313,6 +313,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 		
 		<where>
 			reptSeq = #{viewSeq}
+			AND reptOwnrSeq = #{reptOwnrSeq}
 			AND opinionType = #{type}
 			AND delCheck = '0'
   		</where>

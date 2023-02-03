@@ -1004,7 +1004,7 @@
           		 }
           	 }
           	 if(inputBusinessOperator1 != '' && inputGovernor1 != '' && inputLandowner1 && notReqReason1 != ''){
- 	       		alert("모두 추천하여 추천미사유를 작성이 불가능합니다");
+ 	       		alert("모두 추천하여 추천미사유 작성이 불가능합니다");
 	                $('#notReqReason1').focus();
 
      			 return false;

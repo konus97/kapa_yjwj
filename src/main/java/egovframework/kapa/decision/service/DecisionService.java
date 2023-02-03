@@ -380,19 +380,21 @@ public class DecisionService {
 		return decisionMapper.getDecisionOpinionItemList3(item);
 	}
 	
-	public List<Decision_Opinion_Item> getDecisionOpinionTypeItemList(Long viewSeq,int type) {
+	public List<Decision_Opinion_Item> getDecisionOpinionTypeItemList(Long viewSeq,Long reptOwnrSeq,int type) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("viewSeq", viewSeq);
+		param.put("reptOwnrSeq", reptOwnrSeq);
 		param.put("type", type);
 		
 		return decisionMapper.getDecisionOpinionTypeItemList(param);
 	}
 	
-	public int getDecisionOpinionTypeItemCount(Long viewSeq,int type) {
+	public int getDecisionOpinionTypeItemCount(Long viewSeq,Long reptOwnrSeq,int type) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("viewSeq", viewSeq);
+		param.put("reptOwnrSeq", reptOwnrSeq);
 		param.put("type", type);
 		
 		return decisionMapper.getDecisionOpinionTypeItemCount(param);

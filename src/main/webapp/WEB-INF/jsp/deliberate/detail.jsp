@@ -497,49 +497,50 @@
 									
 											</thead>
 											<tbody>
-												<tr>				                                   
+												<tr>
+	
 			                                       <td>
 			                                           <strong>소유자</strong>
 			                                           <span>
-			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
 			                                           </span>
 			                                       </td>
 	
 			                                       <td>
 			                                           <strong>지분</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
 			                                       </td>
 			                                       <td>
 			                                         <strong>지번</strong>
-			                                         <span>${deliberateOpinionDTO.ownerViewInfo.sido_gungu_cd}</span>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.reg}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>본번</strong>
-			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>부번</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>공</strong>
-			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.gm1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>실</strong>
-			                          					<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc2_nm}</span>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.gm2}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>면적</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>단가</strong>
-			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
 			                                       </td>
 				                                        
 				                         		</tr>                       
@@ -562,7 +563,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										<td>${deliberateOpinionDTO.ownerViewInfo.pname} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
@@ -719,46 +720,46 @@
 			                                       <td>
 			                                           <strong>소유자</strong>
 			                                           <span>
-			                                             ${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
 			                                           </span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>지분</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.land_shre}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
 			                                       </td>
 			                          
 			                                       <td>
 			                                           <strong>본번</strong>
-			                                          <span>${deliberateOpinionDTO.ownerViewInfo.main_strt_no}</span>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>부번</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.sub_strt_no}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
 			                                       </td>
 			                                            <td>
 			                                           <strong>부번2</strong>
-			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.strt_other}</span>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun3}</span>
 			                                       </td>
 			                                   
 	                                                 <td>
 	                                                    <strong>물건종류</strong>
-	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.obst_stuc1_nm}</span>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.kind}</span>
 	                                                </td>
 				                                     <td>
 	                                                    <strong>물건구조</strong>
-	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.obst_kind_nm}</span>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.gujo}</span>
 	                                                </td>
 			                                       <td>
 			                                           <strong>면적</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area_amot}${deliberateOpinionDTO.ownerViewInfo.area_unit}</span>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.unit}</span>
 			                                       </td>
 			                                       <td>
 			                                           <strong>단가</strong>
-			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.bef_unit_cost}</span>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
 			                                       </td>
 				                                        
 				                         		</tr>                       
@@ -781,7 +782,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										<td>${deliberateOpinionDTO.ownerViewInfo.pname} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">

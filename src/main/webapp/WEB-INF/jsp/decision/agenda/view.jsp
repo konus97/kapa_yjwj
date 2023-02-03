@@ -2069,15 +2069,18 @@
 	                                <ul class="input-wrap" style="justify-content: center">
 	                                    <li>
 	                                        <button type="button" class="btn big h50" onclick="goToAgendaList();return false;">
-	                                           	 닫기
+	                                           확인
 	                                        </button>
 	                                    </li>
+	                                <c:if test="${agendaState != 3}">
+	                                    
 	                                    <li>
 	                                       <a href="#" class="btn t3 big h50">보류</a>
 	                                    </li>
 	                                    <li>
 	                                        <a href="#" class="btn t3 big h50" onclick="submitAgenda();return false;" >승인</a>
 	                                    </li>
+	                                 </c:if>
 	                                </ul>
                                 </div>
 

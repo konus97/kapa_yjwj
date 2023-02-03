@@ -86,7 +86,13 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
+                                            <!-- 예외처리  -->
+                                            <c:if test="${avo.title eq null or avo.title eq ''}">
+                                                <p>-</p>
+                                                </c:if>
+                                                 <c:if test="${avo.title ne null or avo.title ne ''}">
                                                 <p>${avo.title}</p>
+                                                </c:if>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -144,12 +150,14 @@
 	                                                        </tr>
 	                                                    </thead>
 	                                                    <tbody id="relationList">
+	                                                    
 	                                                    <c:forEach var="cityPlan" items="${cityPlans}" varStatus="status">
 	                                                        <tr class="relationItem" id="relationInfo0">
 	                                                            <td>${cityPlan.planTitle}</td>
 	                                                            <td>${cityPlan.planContent}</td>
 	                                                        </tr>
 	                                                    </c:forEach>
+	                                                    
 	                                                    </tbody>
 	                                                </table>
 	                                            </div>

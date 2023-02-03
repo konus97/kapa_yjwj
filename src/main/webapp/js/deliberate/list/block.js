@@ -12,6 +12,9 @@ function makeDeliberateBlock(num,info) {
 	let consultationDate = info.consultationDate;
 	consultationDateFormat = consultationDate.replaceAll('-', '');
 	let title = info.title;	
+	if(title == null){
+		title = '-';
+	}
 		
 	let addList = new Array();
 	  

@@ -266,14 +266,14 @@ public class DeliberateService {
 				}
 				boolean itemCheck = false;
 			
-				int itemCount = decisionService.getDecisionOpinionTypeItemCount(reptSeq,getType);
+				int itemCount = decisionService.getDecisionOpinionTypeItemCount(reptSeq,reptOwnrSeq,getType);
 				System.out.print(itemCount);
 				
 				List<DeliberateOpinionItemDTO> deliberateOpinionItemDTOS = new ArrayList<>();
 				 
 				if(itemCount>0) {
 					 itemCheck = true;
-					List<Decision_Opinion_Item> opinionItemList = decisionService.getDecisionOpinionTypeItemList(reptSeq,getType);
+					List<Decision_Opinion_Item> opinionItemList = decisionService.getDecisionOpinionTypeItemList(reptSeq,reptOwnrSeq,getType);
 					System.out.print(opinionItemList.size());
 						
 					for(Decision_Opinion_Item opinionItem : opinionItemList) {
@@ -402,14 +402,14 @@ public class DeliberateService {
 			}
 			boolean itemCheck = false;
 		
-			int itemCount = decisionService.getDecisionOpinionTypeItemCount(reptSeq,getType);
+			int itemCount = decisionService.getDecisionOpinionTypeItemCount(reptSeq,reptOwnrSeq,getType);
 			System.out.print(itemCount);
 			
 			List<DeliberateOpinionItemDTO> deliberateOpinionItemDTOS = new ArrayList<>();
 			 
 			if(itemCount>0) {
 				 itemCheck = true;
-				List<Decision_Opinion_Item> opinionItemList = decisionService.getDecisionOpinionTypeItemList(reptSeq,getType);
+				List<Decision_Opinion_Item> opinionItemList = decisionService.getDecisionOpinionTypeItemList(reptSeq,reptOwnrSeq,getType);
 				System.out.print(opinionItemList.size());
 					
 				for(Decision_Opinion_Item opinionItem : opinionItemList) {

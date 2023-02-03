@@ -13,7 +13,10 @@ function makeDecisionAgendaBlock(num,info) {
 	let judgDivName = info.judgDivName;	
 	let judgBizNm = info.judgBizNm;
     let caseNo = info.caseNo;
-	let bizOprtNm = info.bizOprtNm;					
+	let bizOprtNm = info.bizOprtNm;	
+	if(bizOprtNm == null){
+		bizOprtNm = '-';
+	}				
 	let reptLoc = info.reptLoc;		
 	let charge = info.charge;
 	if(charge == null){
