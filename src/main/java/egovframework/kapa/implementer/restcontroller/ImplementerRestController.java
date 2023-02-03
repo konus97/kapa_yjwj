@@ -525,12 +525,12 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = formatterList.get(i).getAreaAmot() +"/";
-            	temp += formatterList.get(i).getAreaUnit();
+            	String temp = formatterList.get(i).getAreaAmot();
+            	//temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
 
             	result.add(formatterList.get(i).getBefUnitCost());
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	csvPrinter.printRecord(result);
             }
@@ -580,11 +580,11 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc2Nm());
             	// 면적
             	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
-            	areaAmot += formatterList.get(i).getAreaUnit();
+            	//areaAmot += formatterList.get(i).getAreaUnit();
             	result.add(areaAmot);
             	
             	result.add(formatterList.get(i).getBefUnitCost());
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	csvPrinter.printRecord(result);
             }
@@ -626,7 +626,7 @@ public class ImplementerRestController {
             for (int i=0; i<formatterList.size(); i++) {
                 List<String> result = new ArrayList();
                 result.add(Integer.toString(i+1));
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());
             	result.add(formatterList.get(i).getReptAddr());
             	result.add(formatterList.get(i).getMainStrtNo());
@@ -635,8 +635,8 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = formatterList.get(i).getAreaAmot() +"/";
-            	temp += formatterList.get(i).getAreaUnit();
+            	String temp = formatterList.get(i).getAreaAmot();
+            	//temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
             	result.add(formatterList.get(i).getBefUnitCost());
             	csvPrinter.printRecord(result);
@@ -680,7 +680,7 @@ public class ImplementerRestController {
             for (int i=0; i<formatterList.size(); i++) {
                 List<String> result = new ArrayList();
                 result.add(Integer.toString(i+1));
-            	result.add(formatterList.get(i).getOwnrNnm());
+            	result.add(formatterList.get(i).getOwnrNm());
             	result.add(formatterList.get(i).getLandShre());                
             	result.add(formatterList.get(i).getReptAddr());
             	result.add(formatterList.get(i).getSidoGunguCd());
@@ -690,7 +690,7 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc2Nm());
             	// 면적
             	String areaAmot = Integer.toString(formatterList.get(i).getAreaAmot());
-            	areaAmot += formatterList.get(i).getAreaUnit();
+            	//areaAmot += formatterList.get(i).getAreaUnit();
             	result.add(areaAmot);
             	
             	result.add(formatterList.get(i).getBefUnitCost());
