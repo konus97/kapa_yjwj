@@ -303,10 +303,13 @@ public class DecisionService {
                 if(decisionNotice.getNewsletterDay()!=null) {
                 	newsletterDay=decisionNotice.getNewsletterDay();
                 }
-				/*
-				 * if(decisionNotice.getRequestEndDate()!=null) {
-				 * requestEndDate=decisionNotice.getRequestEndDate(); }
-				 */
+				
+				if(decisionNotice.getRequestEndDate()!=null) {
+				    //requestEndDate=decisionNotice.getRequestEndDate();
+			        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			        requestEndDate = decisionNotice.getRequestEndDate().format(format);
+				}
+				 
                 if(decisionNotice.getPublicationExpiryDate()!=null) {    
                 	
                 	checkExpriryDate=today.isAfter(decisionNotice.getPublicationExpiryDate());
