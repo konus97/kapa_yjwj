@@ -106,7 +106,7 @@
 		FROM TB_Decision 
 		
 		<where>
-			DecisionState >= '7'
+			DecisionState >= '4'
 			AND delCheck = '0'
   		</where>
 		

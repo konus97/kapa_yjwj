@@ -10,6 +10,7 @@ import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Announcement_File;
 import egovframework.kapa.domain.Decision_Cityplan;
+import egovframework.kapa.domain.Decision_Consult;
 import egovframework.kapa.domain.Decision_ConsultationDate;
 import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Date;
@@ -133,6 +134,8 @@ public interface DecisionMapper {
 	List<OpinionFileVO> getDecisionOpinionItemFiles(Decision_Opinion_Item decision_Opinion_Item);
 
 	List<Decision_Opinion_Item> getDecisionOpinionItemList3(Decision_Opinion_Item item);
+	
+	public List<Decision_Consult> getConsultList(int masterId);
 
 	
 

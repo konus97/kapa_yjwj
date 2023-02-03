@@ -105,7 +105,7 @@
                                             </div>
                                             <div class="ff_wrap">
                                                <p>
-                                            	 ${avo.judgBizNm}
+                                            	 ${avo.title}
                                                 </p>
                                             </div>
                                         </div>
@@ -154,7 +154,7 @@
                                                 <label>수용재결법인</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p></p>
+                                                <p>-</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -162,7 +162,7 @@
                                                 <label>협의법인</label>
                                             </div>
                                             <div class="ff_wrap">
-                                     		  <p>${avo.csltApprInstNm}</p>
+                                     		  <p>${avo.consultAppName}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -344,18 +344,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+                                        <c:forEach var="consultList" items="${consultList}" varStatus="status">
 											<tr>
                                                 <th>
-                                                    <strong>A</strong>
+                                                    <strong>${consultList.gubun}</strong>
                                                 </th>
                                                  <td>
                                                     <strong>법인명</strong>
-                                                    <span>대한</span>
+                                                    <span>${consultList.appName}</span>
                                                 </td>
                                                   <td>
                                                     <strong>지사명</strong>
-                                                    <span>부산지사</span>
+                                                    <span>-</span>
                                                 </td>
                                                 
                                                 <td>
@@ -369,7 +369,7 @@
                                                 </td>
                                                 <td>
                                                     <strong>감정서번호</strong>
-                                                    <span></span>
+                                                    <span>-</span>
                                                 </td>
                                                 <td class="left">
                                                     <strong>평가금액(원)</strong>
@@ -377,79 +377,28 @@
                                                 </td>
                                                 <td>
                                                     <strong>평가수수료</strong>
-                                                    <span>853,328</span>
+                                                    <span>0</span>
                                                 </td>
                                         		<td>
                                                     <strong>진행상태</strong>
-                                                    <span></span>
+                                                    <span>-</span>
                                                 </td>
                                                 <td>
                                                     <strong>경력</strong>
-                                                    <span></span>
+                                                    <span>-</span>
                                                 </td>
                                                 <td>
                                                     <strong>교육이수여부</strong>
-                                                    <span></span>
+                                                    <span>-</span>
                                                 </td>
                                                 <td>
                                                     <strong>심사여부</strong>
-                                                    <span>N</span>
+                                                    <span>-</span>
                                                 </td>
                                           
                                             </tr>
+                                            </c:forEach>
                                             
-                                            <tr>
-                                                <th>
-                                                    <strong>B</strong>
-                                                </th>
-                                                 <td>
-                                                    <strong>법인명</strong>
-                                                    <span>나라</span>
-                                                </td>
-                                                  <td>
-                                                    <strong>지사명</strong>
-                                                    <span>부산지사</span>
-                                                </td>
-                                                
-                                                <td>
-                                                    <strong>평가사</strong>
-                                                    <span>
-                                                        <a
-                                                            href="#!"
-                                                            class="cx owner"
-                                                            ></a>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <strong>감정서번호</strong>
-                                                    <span></span>
-                                                </td>
-                                                <td class="left">
-                                                    <strong>평가금액(원)</strong>
-                                                    <span>0</span>
-                                                </td>
-                                                <td>
-                                                    <strong>평가수수료</strong>
-                                                    <span>853,328</span>
-                                                </td>
-                                      			<td>
-                                                    <strong>진행상태</strong>
-                                                    <span></span>
-                                                </td>
-                                                <td>
-                                                    <strong>경력</strong>
-                                                    <span></span>
-                                                </td>
-                                                <td>
-                                                    <strong>교육이수여부</strong>
-                                                    <span></span>
-                                                </td>
-                                                <td>
-                                                    <strong>심사여부</strong>
-                                                    <span>N</span>
-                                                </td>
-                                          
-                                            </tr>
                                             
                                          </tbody>
                                      </table>

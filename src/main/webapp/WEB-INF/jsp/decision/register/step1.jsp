@@ -130,7 +130,7 @@
                                                 <label>사업명</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${avo.judgBizNm}</p>
+                                                <p>${avo.title}</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -148,7 +148,7 @@
                                                 <label>사업기간</label>
                                             </div>
                                             <div class="ff_wrap">
-                                              <p>${avo.recmReqStartDate} ~ ${avo.recmReqEndDate}</p>
+                                              <p>-</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
@@ -156,7 +156,7 @@
                                                 <label>사업시행자</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                    <p>${avo.bizOprtNm}</p>
+                                                    <p>${avo.charge}</p>
                                             </div>
                                         </div>
                                     </div>

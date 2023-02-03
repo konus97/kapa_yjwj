@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,25 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.kapa.decision.Const.ItemData;
 import egovframework.kapa.decision.service.DecisionService;
-import egovframework.kapa.deliberate.dto.DeliberateOpinionDTO;
 import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_Cityplan;
+import egovframework.kapa.domain.Decision_Consult;
 import egovframework.kapa.domain.Decision_ConsultationDate;
 import egovframework.kapa.domain.Decision_Date;
 import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
-import egovframework.kapa.domain.Decision_Opinion_Item;
 import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
-import egovframework.kapa.implementer.domain.OwnerInfo;
 import egovframework.kapa.implementer.dto.ApplicationDTO;
-import egovframework.kapa.implementer.dto.OwnerInfoDTO;
 import egovframework.kapa.implementer.service.ImplementerService;
 import egovframework.kapa.util.StrUtil;
 
@@ -87,6 +82,9 @@ public class DecisionController {
         int masterId = decison.getMasterID();
         model.addAttribute("masterId", masterId);
         
+        List<Decision_Consult> consultList = decisionService.getConsultList(masterId);
+        System.out.println("testasdfsadf:::" + consultList);
+        model.addAttribute("consultList", consultList);
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);

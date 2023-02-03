@@ -129,7 +129,7 @@
 		FROM TB_Decision 
 		
 		<where>
-			decisionState >= '5'
+			decisionState >= '7'
 			AND delCheck = '0'
   		</where>
 		
@@ -424,7 +424,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 		FROM TB_Decision 
 		
 		<where>
-			decisionState = '6'
+			decisionState = '7'
 			AND agendaState >= '1'
 			AND delCheck = '0'
   		</where>
@@ -559,6 +559,14 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
   		<where>
 			seqNo = #{viewSeq}
 			AND delCheck = '0'
+  		</where>
+    </select>
+    
+    <select id="getConsultList" resultType="egovframework.kapa.domain.Decision_Consult">
+        SELECT *
+        FROM kapa_consult 
+  		<where>
+			id = #{masterId}
   		</where>
     </select>
 
