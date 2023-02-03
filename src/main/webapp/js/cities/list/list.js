@@ -59,7 +59,7 @@ function getCitiesAnnouncementList(cpage) {
 				
 				addList.push("<tr>");
                 addList.push("  <td colspan=\"100%\">");
-                addList.push("      열림공고가 없습니다.");
+                addList.push("      열람공고가 없습니다.");
                 addList.push(" </td>");
                 addList.push("</tr>");
 
