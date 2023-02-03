@@ -20,7 +20,9 @@ function makeOpinionBlock(startNumber,info) {
 	let reptLoc = info.reptLoc;			
 	let decisionState = info.decisionState;
     let decisionStateStr = info.decisionStateStr;
-    
+	let charge = info.charge;
+	let custMan = info.custMan;
+	let custName = info.custName;
     let opinionWrite = "";
     
     if(decisionState==4){
@@ -43,7 +45,7 @@ function makeOpinionBlock(startNumber,info) {
     addList.push("    </td>");
     addList.push("    <td>");
     addList.push("       <strong>담당자</strong>");
-    addList.push("       <span></span>");
+    addList.push("       <span>"+charge+"</span>");
     addList.push("     </td>");
     addList.push("     <td>");
     addList.push("        <strong>사업시행자</strong>");

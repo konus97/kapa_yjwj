@@ -98,7 +98,7 @@
 											<label>사건명</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${avo.judgBizNm}</p>
+											<p>${avo.title}</p>
 										</div>
 									</div>
 								</div>
@@ -152,7 +152,7 @@
 											<label>협의법인</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${avo.csltApprInstNm}</p>
+											<p>${avo.consultAppName}</p>
 										</div>
 									</div>
 								</div>
@@ -165,7 +165,8 @@
 												<label>사업기간</label>
 											</div>
 											<div class="ff_wrap">
-												<p>${avo.recmReqStartDate}~ ${avo.recmReqEndDate}</p>
+												<%-- <p>${avo.recmReqStartDate}~ ${avo.recmReqEndDate}</p> --%>
+												<p>-</p>
 											</div>
 										</div>
 									</div>
@@ -904,7 +905,7 @@
 											<label>시행자명</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${avo.bizOprtNm}</p>
+											<p>${avo.custName}</p>
 										</div>
 									</div>
 
