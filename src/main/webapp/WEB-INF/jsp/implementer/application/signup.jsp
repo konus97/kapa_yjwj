@@ -979,6 +979,9 @@
           	 if(inputBusinessOperator1 == ''){
           		 if(notReqReason1 == ''){
  		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
+ 		       		
           			 return false;
           		 }
           	 }
@@ -986,6 +989,8 @@
           	 if(inputGovernor1 == ''){
           		 if(notReqReason1 == ''){
  		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
           			 return false;
           		 }
           	 }
@@ -993,8 +998,16 @@
           	 if(inputLandowner1 == ''){
           		 if(notReqReason1 == ''){
  		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
+ 	                $('#notReqReason1').focus();
+
           			 return false;
           		 }
+          	 }
+          	 if(inputBusinessOperator1 != '' && inputGovernor1 != '' && inputLandowner1 && notReqReason1 != ''){
+ 	       		alert("모두 추천하여 추천미사유를 작성이 불가능합니다");
+	                $('#notReqReason1').focus();
+
+     			 return false;
           	 }
 
          	
@@ -1131,13 +1144,13 @@
 	       		needNoReqReason = 1	
 	       	}
 	       	
-	       	if (needNoReqReason == 1){
+	 /*       	if (needNoReqReason == 1){
 		       	if (notReqReason == null || notReqReason == "") {
 		       		alert("추천요청을 하지 않은 이유를 입력해주세요");
 		       		$('#notReqReason').focus();
 		       		return false;
 		       	}
-	       	}
+	       	} */
      	   
 			const data = {
 				"masterID" : masterId,
