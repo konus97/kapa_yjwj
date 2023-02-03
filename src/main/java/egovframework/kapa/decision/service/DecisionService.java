@@ -271,8 +271,8 @@ public class DecisionService {
       
             
             if(applicationList!=null) {
-        	  if(applicationList.getJudg_biz_nm()!=null) {
-        		  judgBizNm=applicationList.getJudg_biz_nm();
+        	  if(applicationList.getTitle()!=null) {
+        		  judgBizNm=applicationList.getTitle();
               }
               
               if(applicationList.getCase_no()!=null) {
@@ -505,6 +505,7 @@ public class DecisionService {
 		return decisionMapper.getOpinionTypeList(decisionId);
 	}
 	
+	
 	public List<Decision_Opinion> getPdfOpinionList(Long decisionId) {
 		return decisionMapper.getPdfOpinionList(decisionId);
 	}
@@ -653,8 +654,13 @@ public class DecisionService {
 		return decisionMapper.getConsultList(masterId);
 	}
 	
-
-
+	public int getLandCheck(Long reptSeq, Long reptOwnrSeq) {
+		return decisionMapper.getLandCheck(reptSeq, reptOwnrSeq);
+	}
+	
+	public int getObjectsCheck(Long reptSeq, Long reptOwnrSeq) {
+		return decisionMapper.getObjectsCheck(reptSeq, reptOwnrSeq);
+	}
 
 
 }

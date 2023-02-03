@@ -190,7 +190,7 @@
 											<label>사업명</label>
 										</div>
 										<div class="ff_wrap">
-											<p>${formatter.applicationDTO.judgBizNm}</p>
+											<p>${formatter.applicationDTO.title}</p>
 										</div>
 									</div>
 							         <div class="f_field div2">
@@ -198,7 +198,7 @@
                                                <label>위치/규모</label>
                                            </div>
                                            <div class="ff_wrap">
-                                              <p></p>
+                                              <p>-</p>
                                            </div>
                                        </div>
 								</div>
@@ -208,7 +208,7 @@
                                                 <label>사업기간</label>
                                             </div>
                                             <div class="ff_wrap">
-                                              <p>${formatter.applicationDTO.recmReqStartDate} ~ ${formatter.applicationDTO.recmReqEndDate}</p>
+                                              <p>-</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">

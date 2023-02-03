@@ -29,7 +29,7 @@ public class ApplicationLand {
 	private String thrd_comp_calc_cd;
 	private String comp_avrg_calc_cd;
 	private String judg_calc_cd;
-	private int bef_unit_cost;
+	private Long bef_unit_cost;
 	private String frst_comp_unit_cost;
 	private String secd_comp_unit_cost;
 	private String thrd_comp_unit_cost;

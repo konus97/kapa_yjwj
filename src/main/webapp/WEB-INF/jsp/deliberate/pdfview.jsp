@@ -122,19 +122,20 @@
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>사업명 : </span>
-						<span>${formatter.applicationDTO.judgBizNm}</span>
+						<span>${formatter.applicationDTO.title}</span>
 					</li>
 					<li class="f_wrap__item">
 						<span>위치/규모 : </span>
-						<span></span>
+						<span>-</span>
 					</li>
 					<li class="f_wrap__item">
 						<span>사업기간 : </span>
-						<span>${formatter.applicationDTO.recmReqStartDate} ~ ${formatter.applicationDTO.recmReqEndDate}</span>
+						<span>-</span>
 					</li>
 					<li class="f_wrap__item">
 						<span>사업시행자 : </span>
-						<span>${formatter.applicationDTO.bizOprtNm}</span>
+						<%-- <span>${formatter.applicationDTO.bizOprtNm}</span> --%>
+						<span>-</span>
 					</li>
 				</ul>
 			</div>

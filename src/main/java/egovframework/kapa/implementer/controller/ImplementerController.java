@@ -214,8 +214,8 @@ public class ImplementerController {
             List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
             
             for(ApplicationLand applicationLand:landList) {
-              int area_amot = applicationLand.getArea_amot();
-              int bef_unit_cost = applicationLand.getBef_unit_cost();
+              int area_amot = applicationLand.getArea();
+              Long bef_unit_cost = applicationLand.getPriceK();
               
               totalAreaAmot+=area_amot;
               
@@ -238,7 +238,7 @@ public class ImplementerController {
             List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
             
             for(ApplicationLand applicationLand:goodsList) {      
-              int bef_unit_cost = applicationLand.getBef_unit_cost();                       
+              Long bef_unit_cost = applicationLand.getPriceK();                       
               totalCost+=bef_unit_cost;
             }
             
@@ -320,7 +320,7 @@ public class ImplementerController {
             
             for(ApplicationLand applicationLand:landList) {
               int area_amot = applicationLand.getArea_amot();
-              int bef_unit_cost = applicationLand.getBef_unit_cost();
+              Long bef_unit_cost = applicationLand.getPriceK();
               
               totalAreaAmot+=area_amot;
               
@@ -343,7 +343,7 @@ public class ImplementerController {
             List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
             
             for(ApplicationLand applicationLand:goodsList) {      
-              int bef_unit_cost = applicationLand.getBef_unit_cost();                       
+              Long bef_unit_cost = applicationLand.getPriceK();                       
               totalCost+=bef_unit_cost;
             }
             
@@ -423,7 +423,7 @@ public class ImplementerController {
             
             for(ApplicationLand applicationLand:landList) {
               int area_amot = applicationLand.getArea_amot();
-              int bef_unit_cost = applicationLand.getBef_unit_cost();
+              Long bef_unit_cost = applicationLand.getPriceK();
               
               totalAreaAmot+=area_amot;
               
@@ -446,7 +446,7 @@ public class ImplementerController {
             List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
             
             for(ApplicationLand applicationLand:goodsList) {      
-              int bef_unit_cost = applicationLand.getBef_unit_cost();                       
+              Long bef_unit_cost = applicationLand.getPriceK();                       
               totalCost+=bef_unit_cost;
             }
             

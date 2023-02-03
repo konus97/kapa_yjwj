@@ -129,7 +129,7 @@
 		FROM TB_Decision 
 		
 		<where>
-			decisionState >= '7'
+			decisionState >= '5'
 			AND delCheck = '0'
   		</where>
 		
@@ -425,7 +425,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 		FROM TB_Decision 
 		
 		<where>
-			decisionState = '7'
+			decisionState = '6'
 			AND agendaState >= '1'
 			AND delCheck = '0'
   		</where>
@@ -568,6 +568,20 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
         FROM kapa_consult 
   		<where>
 			id = #{masterId}
+  		</where>
+    </select>
+    
+    <select id="getLandCheck" resultType="int">
+        select count(*) from  Kapa_LandRights
+  		<where>
+			LandID = #{reptSeq} and PID = #{reptOwnrSeq}
+  		</where>
+    </select>
+    
+    <select id="getObjectsCheck" resultType="int">
+        select count(*) from  Kapa_ObjectsRights
+  		<where>
+			ObjectsID = #{reptSeq} and PID = #{reptOwnrSeq}
   		</where>
     </select>
 

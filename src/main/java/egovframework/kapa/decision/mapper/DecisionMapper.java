@@ -136,6 +136,10 @@ public interface DecisionMapper {
 	List<Decision_Opinion_Item> getDecisionOpinionItemList3(Decision_Opinion_Item item);
 	
 	public List<Decision_Consult> getConsultList(int masterId);
+	
+	public int getLandCheck(@Param("reptSeq")Long reptSeq,@Param("reptOwnrSeq") Long reptOwnrSeq);
+	
+	public int getObjectsCheck(@Param("reptSeq")Long reptSeq,@Param("reptOwnrSeq") Long reptOwnrSeq);
 
 	
 

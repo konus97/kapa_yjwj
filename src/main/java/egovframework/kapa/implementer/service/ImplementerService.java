@@ -109,8 +109,11 @@ public class ImplementerService {
 		return implementerMapper.getGoodsOwnerInfoList(onwerSeq);
 	}
 	
-	public OwnerViewInfo getOwnerInfo(Long reptSeq) {
-		return implementerMapper.getOwnerInfo(reptSeq);
+	public OwnerViewInfo getOwnerLandInfo(Long reptSeq, Long reptOwnrSeq) {
+		return implementerMapper.getOwnerLandInfo(reptSeq, reptOwnrSeq);
+	}
+	public OwnerViewInfo getOwnerObjectsInfo(Long reptSeq, Long reptOwnrSeq) {
+		return implementerMapper.getOwnerObjectsInfo(reptSeq, reptOwnrSeq);
 	}
 	
 

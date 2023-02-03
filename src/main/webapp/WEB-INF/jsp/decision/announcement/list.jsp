@@ -230,7 +230,7 @@
                                             <th rowspan="2">회보일</th>
                                             <th rowspan="2">회보첨부파일</th>
                                             <th rowspan="2">재결 진행 상황</th>
-                                            <th rowspan="2">담당법인</th>
+                                            <!-- <th rowspan="2">담당법인</th> -->
                                             <th rowspan="2">열람공고</th>
                                         </tr>                   
                                     </thead>

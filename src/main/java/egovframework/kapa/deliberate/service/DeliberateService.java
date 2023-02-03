@@ -115,7 +115,7 @@ public class DeliberateService {
 					if(decision != null) {
 					if (rank == 0) {
 						ApplicationList applicationList = implementerService.getApplicationView(decision.getMasterID());
-						title = applicationList.getJudg_biz_nm();
+						title = applicationList.getTitle();
 					}
 
 					rank++;
@@ -160,7 +160,7 @@ public class DeliberateService {
 			
 			ApplicationList applicationList = implementerService.getApplicationView(decision.getMasterID());
 			
-			String title = applicationList.getJudg_biz_nm();
+			String title = applicationList.getTitle();
 
 			int acpt_judg_inst_cd = applicationList.getAcpt_judg_inst_cd();
 			String judgDivName = "";
@@ -174,11 +174,17 @@ public class DeliberateService {
 				judgDivName = AgencyData.Central.getKrName();
 			}
 
-			String recvDt = applicationList.getRecv_dt().format(formatter);
+			String recvDt = applicationList.getViewReqDate().format(formatter);
 
-			DeliberateDetailDTO deliberateDetailDTO = DeliberateDetailDTO.builder().seqNo(decision.getSeqNo())
-					.title(title).consultationDate(consultationDate).selectDate(selectDate).caseNo(applicationList.getCase_no()).judgDivName(judgDivName)
-					.reptLoc(applicationList.getRept_loc()).recvDt(recvDt).build();
+			DeliberateDetailDTO deliberateDetailDTO = DeliberateDetailDTO.builder()
+					.seqNo(decision.getSeqNo())
+					.title(title)
+					.consultationDate(consultationDate)
+					.selectDate(selectDate)
+					.caseNo(applicationList.getCase_no())
+					.judgDivName(judgDivName)
+					.reptLoc(applicationList.getRept_loc())
+					.recvDt(recvDt).build();
 
 			deliberateDTOS.add(deliberateDetailDTO);
 			}catch(Exception e){
@@ -226,18 +232,25 @@ public class DeliberateService {
 				// 공고 상태
 				int getType = opinion.getType();
 				System.out.print(getType);
+				int getLandCheck = decisionService.getLandCheck(reptSeq, reptOwnrSeq);
+				int getObjectsCheck = decisionService.getObjectsCheck(reptSeq, reptOwnrSeq);
+				OwnerViewInfo ownerViewInfo = new OwnerViewInfo();
 				
-				OwnerViewInfo ownerViewInfo = implementerService.getOwnerInfo(reptOwnrSeq);
-				System.out.println(ownerViewInfo);
+				if(getLandCheck == 1) {
+					ownerViewInfo = implementerService.getOwnerLandInfo(reptSeq, reptOwnrSeq);
+				}else if(getObjectsCheck == 1) {
+					ownerViewInfo = implementerService.getOwnerObjectsInfo(reptSeq, reptOwnrSeq);
+				}
 				
 				System.out.println("여긴가?");
-				String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd();
-				boolean landCheck = false; 
-				boolean objectCheck = false; 
-				if("L".equals(land_obst_kind_cd)) {
-					landCheck=true;
-				}else {
-					objectCheck=true;
+				//String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd();
+				boolean landCheck = false;
+				boolean objectCheck = false;
+				
+				if(getLandCheck == 1) {
+					landCheck = true;
+				}else if(getObjectsCheck == 1) {
+					objectCheck = true;
 				}
 				
 				String getTypeStr = "";
@@ -342,20 +355,35 @@ public class DeliberateService {
 
 		for (Decision_Opinion opinion : opinionList) {
 
-			Long reptSeq = opinion.getReptOwnrSeq();
+			Long reptSeq = opinion.getReptSeq();
+			Long reptOwnrSeq = opinion.getReptOwnrSeq();
 			// 공고 상태
 			int getType = opinion.getType();
 			System.out.print(getType);
 			
-			OwnerViewInfo ownerViewInfo = implementerService.getOwnerInfo(reptSeq);
-			System.out.println(ownerViewInfo);
 			
-			/*
-			 * String land_obst_kind_cd= ownerViewInfo.getLand_obst_kind_cd(); boolean
-			 * landCheck = false; boolean objectCheck = false;
-			 * if("L".equals(land_obst_kind_cd)) { landCheck=true; }else { objectCheck=true;
-			 * }
-			 */
+			int getLandCheck = decisionService.getLandCheck(reptSeq, reptOwnrSeq);
+			int getObjectsCheck = decisionService.getObjectsCheck(reptSeq, reptOwnrSeq);
+			
+			OwnerViewInfo ownerViewInfo = new OwnerViewInfo();
+			
+			if(getLandCheck == 1) {
+				ownerViewInfo = implementerService.getOwnerLandInfo(reptSeq, reptOwnrSeq);
+			}else if(getObjectsCheck == 1) {
+				ownerViewInfo = implementerService.getOwnerObjectsInfo(reptSeq, reptOwnrSeq);
+			}
+			
+			//String land_obst_kind_cd = ownerViewInfo.getLand_obst_kind_cd();
+			boolean landCheck = false;
+			boolean objectCheck = false;
+			
+			if(getLandCheck == 1) {
+				landCheck = true;
+			}else if(getObjectsCheck == 1) {
+				objectCheck = true;
+			}
+			 
+			 
 			
 			String getTypeStr = "";
 
@@ -410,8 +438,8 @@ public class DeliberateService {
 					.fileFolder(opinion.getFileFolder())
 					.fileNameChange(opinion.getFileNameChange())
 					.itemCheck(itemCheck)
-					//.landCheck(landCheck)
-					//.objectCheck(objectCheck)
+					.landCheck(landCheck)
+					.objectCheck(objectCheck)
 					.ownerViewInfo(ownerViewInfo)
 					.deliberateOpinionItemDTOS(deliberateOpinionItemDTOS)
 					.build();

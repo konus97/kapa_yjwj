@@ -87,10 +87,10 @@ if(decisionState ==2 || cityFileCount==0){
     addList.push("      <span>"+decisionStateStr+"</span>");
     addList.push("   </td>");
 
-    addList.push("   <td>");
+  /*  addList.push("   <td>");
     addList.push("       <strong>담당법인</strong>");
     addList.push("       <span>-</span>");
-    addList.push("   </td>");
+    addList.push("   </td>");*/
 
     addList.push("   <td>");
     addList.push("       <strong>열람공고</strong>");

@@ -322,14 +322,18 @@
 	
 
 	<!-- 소유자 정보 -->
-	<select id="getOwnerInfo" parameterType="long" resultType="egovframework.kapa.implementer.domain.OwnerViewInfo" >
+	<select id="getOwnerObjectsInfo" parameterType="long" resultType="egovframework.kapa.implementer.domain.OwnerViewInfo" >
 		SELECT 
-			A.rept_seq,B.rept_addr,B.sido_gungu_cd,B.main_strt_no,B.sub_strt_no,B.strt_other,B.obst_kind_nm,B.obst_stuc1_nm,B.obst_stuc2_nm,b.area_amot,B.bef_unit_cost,B.area_unit,A.ownr_nm,A.land_shre,B.land_obst_kind_cd
-			FROM tb_ltis2kapa_rept_ownr_intr AS A
-			LEFT JOIN tb_ltis2kapa_rept_info AS B
-			ON A.rept_seq = B.rept_seq
-			WHERE 
-			 	rept_ownr_intr_seq = #{reptSeq}
+		  ROI.id,ROI.pname, ROI.interests, ROI.pid, RI.* 
+		  FROM dbo.Kapa_Objects RI
+		  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+		  WHERE ROI.objectsID = #{reptSeq} and ROI.PID = #{reptOwnrSeq}
+				<!-- AND A.ownr_intr_yn = 'O' -->
+	</select> 
+	<select id="getOwnerLandInfo" parameterType="long" resultType="egovframework.kapa.implementer.domain.OwnerViewInfo" >
+		SELECT ROI.id,ROI.pname, ROI.interests,ROI.pid,ROI.pid,RI.* FROM dbo.Kapa_Land RI
+		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+		  WHERE ROI.LandID = #{reptSeq} and ROI.PID = #{reptOwnrSeq}
 				<!-- AND A.ownr_intr_yn = 'O' -->
 	</select> 
 

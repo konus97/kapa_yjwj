@@ -15,6 +15,10 @@ function makeDecisionAgendaBlock(num,info) {
     let caseNo = info.caseNo;
 	let bizOprtNm = info.bizOprtNm;					
 	let reptLoc = info.reptLoc;		
+	let charge = info.charge;
+	if(charge == null){
+		charge = "-";
+	}
 	
 	let decisionStateStr = info.decisionStateStr;
 		
@@ -34,7 +38,7 @@ function makeDecisionAgendaBlock(num,info) {
 	addList.push(" </td>");
 	addList.push(" <td>");
 	addList.push("    <strong>담당자</strong>");
-	addList.push("    <span></span>");
+	addList.push("    <span>"+charge+"</span>");
 	addList.push(" </td>");
 	addList.push("<td>");
 	addList.push("    <strong>사업시행자</strong>");
@@ -57,7 +61,7 @@ function makeDecisionAgendaBlock(num,info) {
  
 	addList.push("<td class=\"left\">");
 	addList.push("    <strong>담당법인</strong>");
-	addList.push("	  <span></span>");
+	addList.push("	  <span>-</span>");
 	addList.push("</td>");
 	
 	addList.push("<td class=\"left\">");

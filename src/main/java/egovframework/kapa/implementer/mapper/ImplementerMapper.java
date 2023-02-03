@@ -85,7 +85,8 @@ public interface ImplementerMapper {
 
 	List<GoodsownerInfo> getGoodsOwnerInfoList(int onwerSeq);
 
-	OwnerViewInfo getOwnerInfo(Long reptSeq);
+	OwnerViewInfo getOwnerLandInfo(@Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
+	OwnerViewInfo getOwnerObjectsInfo(@Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
 	
 	List<DecisionOpinionDTO> getDecisionOpinion(int ownrSeq);
 	
