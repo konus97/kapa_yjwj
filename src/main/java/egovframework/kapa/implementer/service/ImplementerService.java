@@ -205,6 +205,11 @@ public class ImplementerService {
     	int bizTpCd = application.getBiz_tp_cd();
     	String bizTpCdTitle = "";
     	
+    	String reptLoc = application.getRept_loc();
+    	if(reptLoc == "" || reptLoc == null ) {
+    		reptLoc = "-";
+    	}
+    	
     	 for(int i=0 ; i<BusinessCode.values().length ; i++) {
  
     		 int code = BusinessCode.values()[i].getCode();
@@ -247,7 +252,7 @@ public class ImplementerService {
                        // .csltApprInstNm(application.getCslt_appr_inst_nm())
                         .judeDivCdName(judeDivCdName)
                         .bizTpCd(bizTpCdTitle)
-                        .reptLoc(application.getRept_loc())
+                        .reptLoc(reptLoc)
                       //  .bizOprtNm(application.getBiz_oprt_nm())
                         .bizOprtIchrNm(application.getBiz_oprt_ichr_nm())
                         .bizOprtPhoneNo(application.getChargeHP())
