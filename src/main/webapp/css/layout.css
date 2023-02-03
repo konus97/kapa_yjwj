@@ -3452,3 +3452,8 @@
 #contents .c_table .reg_wrap table tbody > tr > td {
     text-align: left;
 }
+#contents .c_table .reg_wrap .file_btn_wrap > div {
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+}

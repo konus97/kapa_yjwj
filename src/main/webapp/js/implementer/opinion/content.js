@@ -962,7 +962,8 @@ let newSeq = getType + '-0';
    addList.push("   </tr>");   
 
  addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
-   addList.push("     <td class=\"file_flex\">");   
+   addList.push("     <td>");
+   addList.push("     	<div class=\"file_flex\">"); 
    // addList.push("                  <div style=\"display: none\">");   
    addList.push("     <input id=\"description1"+"\" class=\"input40 file_name\" value=\"PDF\" readonly\>");   
    addList.push("         <div class=\"file_btn_wrap\">");   
@@ -976,7 +977,8 @@ let newSeq = getType + '-0';
    addList.push("                      </button>");   */
    addList.push("                </div>");   
    addList.push("               </div>");  
-   addList.push("               </div>");  
+   addList.push("               </div>"); 
+   addList.push("             </div>"); 
    addList.push("          </td>");   
 
                                                   
@@ -995,11 +997,12 @@ let newSeq = getType + '-0';
 
    addList.push("      <tr>");   
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
-   addList.push("     <td class=\"file_flex\">");   
+   addList.push("     <td>");
+   addList.push("     	<div class=\"file_flex\">"); 
    addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpge, png 이미지 파일만 첨부해주세요</div>");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpeg, png 이미지 파일만 첨부해주세요</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>삭제");   
    addList.push("                      </button>");   
@@ -1009,6 +1012,7 @@ let newSeq = getType + '-0';
    addList.push("                      </button>");   */
    addList.push("                </div>");   
    addList.push("               </div>");   
+   addList.push("             </div>");
    addList.push("          </td>");   
    addList.push("   </tr>   ");         
 
@@ -1021,13 +1025,13 @@ let newSeq = getType + '-0';
 }
 function addOpinionItemOnlyFile(getType){
 	
-	if(document.getElementById('popupOpinionItemFile'+getType+'-0').innerText == 'jpge, png 이미지 파일만 첨부해주세요'){
+	if(document.getElementById('popupOpinionItemFile'+getType+'-0').innerText == 'jpeg, png 이미지 파일만 첨부해주세요'){
 		alert('파일 첨부 후 추가해주세요');
 		return false;
 	}
 	
 	if(document.getElementById('popupOpinionItemFile'+getType+'-1') != null){
-		if(document.getElementById('popupOpinionItemFile'+getType+'-1').innerText == 'jpge, png 이미지 파일만 첨부해주세요'){
+		if(document.getElementById('popupOpinionItemFile'+getType+'-1').innerText == 'jpeg, png 이미지 파일만 첨부해주세요'){
 			alert('파일 첨부 후 추가해주세요');
 		return false;
 		}
@@ -1035,7 +1039,7 @@ function addOpinionItemOnlyFile(getType){
 	}
 	
 		if(document.getElementById('popupOpinionItemFile'+getType+'-2') != null){
-		if(document.getElementById('popupOpinionItemFile'+getType+'-2').innerText == 'jpge, png 이미지 파일만 첨부해주세요'){
+		if(document.getElementById('popupOpinionItemFile'+getType+'-2').innerText == 'jpeg, png 이미지 파일만 첨부해주세요'){
 			alert('파일 첨부 후 추가해주세요');
 		return false;
 		}
@@ -1043,7 +1047,7 @@ function addOpinionItemOnlyFile(getType){
 	}
 	
 		if(document.getElementById('popupOpinionItemFile'+getType+'-3') != null){
-		if(document.getElementById('popupOpinionItemFile'+getType+'-3').innerText == 'jpge, png 이미지 파일만 첨부해주세요'){
+		if(document.getElementById('popupOpinionItemFile'+getType+'-3').innerText == 'jpeg, png 이미지 파일만 첨부해주세요'){
 			alert('파일 첨부 후 추가해주세요');
 		return false;
 		}
@@ -1075,12 +1079,13 @@ function addOpinionItemOnlyFile(getType){
 
                                         
    addList.push("        <div class=\"txt-r\">");
-   addList.push("    <th class=\"info_reg_th\">파일</th>");   
-   addList.push("     <td class=\"file_flex\">");   
+   addList.push("    <th class=\"info_reg_th\">파일</th>");
+   addList.push("     <td>");   
+   addList.push("     <div class=\"file_flex\">");   
    addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpge, png 이미지 파일만 첨부해주세요</div>");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpeg, png 이미지 파일만 첨부해주세요</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>삭제");   
    addList.push("                      </button>");   
@@ -1090,6 +1095,7 @@ function addOpinionItemOnlyFile(getType){
    addList.push("                      </button>");   */
    addList.push("                </div>");   
    addList.push("               </div>");   
+   addList.push("             </div>");
    addList.push("          </td>");   
    addList.push("   </tr>   ");         
    addList.push("</tbody>");   
@@ -1225,9 +1231,10 @@ notice='';
    addList.push("        </td>");
    addList.push("   </tr>");          
 
-addList.push("      <tr>");   
-addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
-   addList.push("     <td class=\"file_flex\">");   
+	addList.push("      <tr>");   
+	addList.push("    <th class=\"info_reg_th\">PDF파일</th>");   
+	addList.push("     <td>");   
+	addList.push("       <div class=\"file_flex\">");   
    // addList.push("                  <div style=\"display: none\">");   
    addList.push("     <input id=\"description1"+"\" class=\"input40 file_name\" value=\"PDF\" readonly\>");   
    addList.push("         <div class=\"file_btn_wrap\">");   
@@ -1238,7 +1245,8 @@ addList.push("    <th class=\"info_reg_th\">PDF파일</th>");
    addList.push("                      </button>");   
    addList.push("                </div>");   
    addList.push("               </div>");  
-   addList.push("               </div>");  
+   addList.push("               </div>"); 
+   addList.push("     		</div>");
    addList.push("          </td>");   
    addList.push("   </tr>   ");  
 
@@ -1259,16 +1267,18 @@ addList.push("    <th class=\"info_reg_th\">PDF파일</th>");
 
 addList.push("      <tr>");   
    addList.push("    <th class=\"info_reg_th\">파일</th>");   
-   addList.push("     <td class=\"file_flex\">");   
+   addList.push("     <td>");   
+   addList.push("     	<div class=\"file_flex\">");     
    addList.push("     <input id=\"description"+"\" class=\"input40 file_name\">");   
    addList.push("         <div class=\"file_btn_wrap\">");   
    addList.push("                  <div style=\"display: flex\">");   
-   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\""+opinionItemFile+"\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpge, png 이미지 파일만 첨부해주세요</div>");   
+   addList.push("                      <div class=\"input40 file_btn popupOpinionItemFile\" id=\"popupOpinionItemFile"+newSeq+"\" data-seq=\""+opinionItemFile+"\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpeg, png 이미지 파일만 첨부해주세요</div>");   
    addList.push("                      <button class=\"btn nohover t4 small\" onclick=\"removeFileTarget('1');return false;\">");   
    addList.push("                        <i class=\"close icon white\"></i>파일삭제");   
    addList.push("                      </button>");   
    addList.push("                </div>");   
-   addList.push("               </div>");   
+   addList.push("               </div>");
+   addList.push("             </div>"); 
 
    addList.push("          </td>");   
    addList.push("   </tr>   ");      
