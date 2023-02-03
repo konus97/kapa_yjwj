@@ -318,7 +318,9 @@ public class ImplementerService {
 			decision.setObjPrice(Long.parseLong(jsonObject.get("objPrice").toString().isEmpty() ? "0" : jsonObject.get("objPrice").toString()));
 			decision.setGoodwillCnt(Long.parseLong(jsonObject.get("goodwillCnt").toString().isEmpty() ? "0" : jsonObject.get("goodwillCnt").toString()));
 			decision.setGoodwillPrice(Long.parseLong(jsonObject.get("goodwillPrice").toString().isEmpty() ? "0" : jsonObject.get("goodwillPrice").toString()));
-	
+			// 추천요청을 하지않은 이유 추가 23.02.23
+			String notReqReason = jsonObject.get("notReqReason").toString();
+			decision.setNotReqReason(notReqReason);
 			/**
 			 * 임시 userSeq 하드코딩
 			 */

@@ -229,6 +229,11 @@ public class DeliberateController {
   			PDFConverter pdfconvert = new PDFConverter();
   			//jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
   			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//  			String downloadFilePath =  serverPath + fname;
+//  			File file = new File(downloadFilePath);
+//			if (file.exists()) {
+//	  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//			}
   			//jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId);
   		}
   		 
