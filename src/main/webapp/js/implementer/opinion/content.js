@@ -59,7 +59,7 @@ function addLandOpinion(rank,info,getItem){
 	console.log(info);
 	
 
-	/*if(landCheckArr.length != 0){
+	if(landCheckArr.length != 0){
 		for(let i=0; i<landCheckArr.length; i++){
 			if(JSON.stringify(landCheckArr[i]) === JSON.stringify(info)){
 //				alert(info.ownrNnm+'님의 ' +info.reptAddr+'(은)는 이미 선택된 항목입니다');
@@ -71,7 +71,7 @@ function addLandOpinion(rank,info,getItem){
 			}
 		}
 	}
-		landCheckArr.push(info);*/
+		landCheckArr.push(info);
 
 
 
@@ -214,10 +214,13 @@ function addLandOpinion(rank,info,getItem){
 
    const goodsCheckArr = new Array();
 function addGoodsOpinion(rank,info,getItem){
+	console.log("addGoodsOpinion");
+		console.log(getItem);
 
-	/*if(goodsCheckArr.length != 0){
+	if(goodsCheckArr.length != 0){
 		for(let i=0; i<goodsCheckArr.length; i++){
 			if(JSON.stringify(goodsCheckArr[i]) === JSON.stringify(info)){
+				//토지 관련된 것만 쫒을게 아니라 
 				//alert(info.ownrNnm+'님의 '+info.reptAddr +'의 '+info.obstKindNm+'(은)는 이미 선택된 항목입니다');
 				alert('이미 선택된 항목은 추가 대상에서 제외됩니다');
 				return false;
@@ -226,7 +229,7 @@ function addGoodsOpinion(rank,info,getItem){
 			}
 		}
 	}
-		goodsCheckArr.push(info);*/
+		goodsCheckArr.push(info);
 
 	
 	let getSeq = info.reptSeq;
@@ -283,7 +286,7 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<span>"+obstKindNm+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>면적/수량</strong>");
-		addList.push("<span>"+areaAmot+""+areaUnit+"</span>");
+		addList.push("<span>"+areaAmot+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>단가</strong>");
 		addList.push("<span>"+befUnitCost+"</span>");
