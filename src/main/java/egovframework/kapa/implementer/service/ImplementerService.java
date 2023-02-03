@@ -767,7 +767,7 @@ public void saveRegister(Decision_Opinion opinion) {
         	ApplicationLandDTO applicationLandDTO =
         			ApplicationLandDTO.builder()
         					.reptSeq(rept_seq)
-        				//	.reptOwnrSeq(land.getRept_ownr_intr_seq())
+        					.reptOwnrSeq(land.getPid())
         					.ownrNm(land.getPname())
 		                    .reptAddr(land.getAddr())
 		                    .sidoGunguCd(land.getReg())
@@ -833,8 +833,8 @@ public void saveRegister(Decision_Opinion opinion) {
         					.reptSeq(rept_seq)
 		                    .reptAddr(land.getAddr())
         					.ownrNm(land.getPname())
-
-		           //         .reptOwnrSeq(land.getPname())
+        					
+		                    .reptOwnrSeq(land.getPid())
 		                    .mainStrtNo(land.getBun1())
 		                    .subStrtNo(land.getBun2())
 		                    .strtOther(bun3)

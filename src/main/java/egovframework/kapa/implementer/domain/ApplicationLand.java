@@ -67,6 +67,7 @@ public class ApplicationLand {
 	private String bun3;//strt_other
 	private String addr; //rept_addr
 	private String pname;
+	private Long pid;
 	
 	// land table 시작
 	private String gm1; //obst_stuc1_cd

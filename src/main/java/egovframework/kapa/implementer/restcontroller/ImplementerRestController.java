@@ -335,6 +335,10 @@ public class ImplementerRestController {
 	        
 		
 		}
+		
+		
+		
+		
 	
 	
 	//재결의견작성 완료 - 팝업, pdf, 이미지 정보 세팅
@@ -357,12 +361,7 @@ public class ImplementerRestController {
 			
 			int type = Integer.parseInt(paramMap.get("type").toString());
 
-			System.out.println("===================================================");
-			System.out.println(decisionId);
-			/*
-			 * System.out.println(reptSeq); System.out.println(reptOwnrSeq);
-			 */
-			System.out.println("===================================================");
+
 			Decision_Opinion_Item decision_Opinion_Item = new Decision_Opinion_Item();
 			decision_Opinion_Item.setDecisionId(decisionId);
 			
@@ -370,15 +369,13 @@ public class ImplementerRestController {
 			  decision_Opinion_Item.setReptSeq(reptSeq);
 			 
 			decision_Opinion_Item.setOpinionType(type);
-			
-			/*
-			 * OpinionFileVO opinionFileVO = new OpinionFileVO();
-			 * opinionFileVO.setDecisonId(decisionId);
-			 * opinionFileVO.setReptOwnrSeq(reptOwnrSeq); opinionFileVO.setReptSeq(reptSeq);
-			 */
-			
+			decision_Opinion_Item.setFileType(type);
+
+	
 			
 			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
+			
+
 			
 			//첨부파일 (이미지)
 			List<OpinionFileVO> opinionFileList = decisionService.getDecisionOpinionItemFiles(decision_Opinion_Item);
@@ -391,10 +388,21 @@ public class ImplementerRestController {
 				
 				fileList.add(file);
 
-				System.out.println("===================================================");
+				System.out.println("======================fileList=============================");
 				System.out.println(fileList);
 				System.out.println("===================================================");
+				
+				
 			}
+			
+			System.out.println("==============================○==============================");
+			System.out.println(decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
+			//Decision_Opinion_Item(seqNo=393, decisionId=342, reptSeq=12439137,
+			//reptOwnrSeq=7567803, opinionType=9, opinionTitle=ㅇㅇㅇ, opinionContent=ㅇㅇㅇㅇ, opinionItemFile=0, rank=1, delCheck=0, 
+			//regdate=2023-02-03T18:59:23.119887500, fileNameChange=null, fileFolder=null, fileNameExtension=null, fileDescription=null, fileSeq=null, fileType=0)]
+			 System.out.println(opinionFileList);
+			 
+			System.out.println("==============================○==============================");
 			resultFinal.put("file", fileList);
 
 			

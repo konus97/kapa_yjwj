@@ -209,7 +209,7 @@
 		
 
 		<!-- new 필지 -->
-		SELECT ROI.id,ROI.pname,RI.* FROM dbo.Kapa_Land RI
+		SELECT ROI.id,ROI.pname, ROI.pid,ROI.pid,RI.* FROM dbo.Kapa_Land RI
 		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
 		WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O'
 
@@ -239,7 +239,7 @@
 		
 		 <!-- new 지장물 목록 -->
 		  SELECT 
-		  ROI.id,ROI.pname, RI.* 
+		  ROI.id,ROI.pname, ROI.pid, RI.* 
 		  FROM dbo.Kapa_Objects RI
 		  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
 		  WHERE RI.masterId = #{masterId}
