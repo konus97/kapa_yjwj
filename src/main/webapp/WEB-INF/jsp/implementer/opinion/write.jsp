@@ -2242,14 +2242,14 @@
 														<tbody>
 															<tr>
 																<th class="info_reg_th">소유자 의견</th>
-																<td><textarea id="ownerOpinion"
+																<td><textarea id="ownerOpinion" placeholder="소유자 의견을 작성해주십시오."
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.ownerOpinion}</textarea></td>
 															</tr>
 
 															<tr>
 																<th class="info_reg_th">사업시행자<br />의견
 																</th>
-																<td><textarea id="executorOpinion"
+																<td><textarea id="executorOpinion" placeholder="사업시행자 의견을 작성해주십시오."
 																		class="textarea resetPopupVal">${deliberateOpinionDTO.executorOpinion}</textarea></td>
 															</tr>
 

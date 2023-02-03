@@ -130,8 +130,8 @@
     <insert id="insertDecision" parameterType="egovframework.kapa.domain.Decision">
     <!-- 	insert into TB_Decision(decisionState, userSeq,agendaState, groupEstablishedDate,  decisionReason, masterID, delCheck, regdate, uptdate, businessOperator, governor, landowner, amountA, amountB, amountC, landCnt, landArea ,landPrice ,objCnt, objPrice ,goodwillCnt ,goodwillPrice)
     	values(#{decisionState}, #{userSeq},#{agendaState}, #{groupEstablishedDate}, #{decisionReason}, #{masterID}, #{delCheck}, #{regdate}, #{uptdate}, #{businessOperator}, #{governor}, #{landowner}, #{amountA}, #{amountB}, #{amountC}, #{landCnt}, #{landArea}, #{landPrice}, #{objCnt}, #{objPrice}, #{goodwillCnt}, #{goodwillPrice}) -->
-    	insert into TB_Decision(decisionState, userSeq,agendaState, groupEstablishedDate,  decisionReason, masterID, delCheck, regdate, uptdate, businessOperator, governor, landowner, amountA, amountB, amountC, landCnt, landArea ,landPrice ,objCnt, objPrice ,goodwillCnt ,goodwillPrice)
-    	values(#{decisionState}, #{userSeq},#{agendaState}, #{groupEstablishedDate}, #{decisionReason}, #{masterID}, #{delCheck}, #{regdate}, #{uptdate}, #{businessOperator}, #{governor}, #{landowner}, #{amountA}, #{amountB}, #{amountC}, #{landCnt}, #{landArea}, #{landPrice}, #{objCnt}, #{objPrice}, #{goodwillCnt}, #{goodwillPrice})
+    	insert into TB_Decision(decisionState, userSeq,agendaState, groupEstablishedDate,  decisionReason, masterID, delCheck, regdate, uptdate, businessOperator, governor, landowner, amountA, amountB, amountC, landCnt, landArea ,landPrice ,objCnt, objPrice ,goodwillCnt ,goodwillPrice, notReqReason)
+    	values(#{decisionState}, #{userSeq},#{agendaState}, #{groupEstablishedDate}, #{decisionReason}, #{masterID}, #{delCheck}, #{regdate}, #{uptdate}, #{businessOperator}, #{governor}, #{landowner}, #{amountA}, #{amountB}, #{amountC}, #{landCnt}, #{landArea}, #{landPrice}, #{objCnt}, #{objPrice}, #{goodwillCnt}, #{goodwillPrice}, #{notReqReason})
     </insert>
     
 	<select id="getLtisCslt" parameterType="Integer" resultType="egovframework.kapa.domain.Decision">

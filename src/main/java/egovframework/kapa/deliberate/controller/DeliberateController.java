@@ -1,11 +1,9 @@
 package egovframework.kapa.deliberate.controller;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import egovframework.kapa.decision.Const.ItemData;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
+import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Opinion;
+import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.service.ImplementerService;
+import egovframework.kapa.util.PDFConverter;
 
 @Controller
 @RequestMapping("/deliberate")
@@ -128,13 +130,61 @@ public class DeliberateController {
 	
 	@GetMapping("/agenda/detail.do")
 	public String deliberateAgendaDetail(HttpServletRequest request,Model model) {
+
 		
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
-		Decision decision = decisionService.getDecisionView(decisionId);
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+	    List<Decision_Opinion> typeListOld = decisionService.getOpinionTypeList(decisionId);
+	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    model.addAttribute("registerFileList", registerFileList);
         model.addAttribute("opinionList", opinionList);
+        List<Decision_Opinion> typeList = new ArrayList<>();
+        String getTypeStr = "";
+        
+        for(Decision_Opinion item : typeListOld) {
+        	Decision_Opinion op = new Decision_Opinion();
+        	op.setDecisionId(item.getDecisionId());
+        	op.setOpinionText(item.getOpinionText());
+        	op.setRelatedLaws2(item.getRelatedLaws2());
+        	op.setReviewOpinion(item.getReviewOpinion());
+        	op.setOpinionType(item.getOpinionType());
+        	
+        	
+        	
+        	 int getType = item.getOpinionType();
+         	 
+    		 for(int i=0 ; i<ItemData.values().length ; i++) {
+    			 
+    	   		 int code = ItemData.values()[i].getCode();
+    	   		 
+    	   		 if(code==getType) {
+    	   			getTypeStr = ItemData.values()[i].getKrName();
+    	   			break;
+    	   		 }
+            }
+    		op.setGetTypeStr(getTypeStr);
+    	
+       	
+        	typeList.add(op);
+		 
+        }
+        System.out.println("=======================★=========================");
+        System.out.println(typeList);
+        System.out.println("=================================================");
+
+          
+         
+        
+        model.addAttribute("typeList", typeList);
+		
+//		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		Decision decision = decisionService.getDecisionView(decisionId);
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+//	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+//        model.addAttribute("opinionList", opinionList);
 		//current page
 		model.addAttribute("currentPage", "agenda");
 		
@@ -176,7 +226,7 @@ public class DeliberateController {
 	}
 	
 	@GetMapping("/agenda/pdfview.do")
-	public String deliberatePdfView(HttpServletRequest request,Model model) {
+	public String deliberatePdfView(HttpServletRequest request,Model model) throws Exception {
 	
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
 		Decision decision = decisionService.getDecisionView(decisionId);
@@ -211,15 +261,40 @@ public class DeliberateController {
   		String objPriceStr = dc.format(objPrice);
   		String goodwillCntStr = dc.format(goodwillCnt);
   		String goodwillPriceStr = dc.format(goodwillPrice);
-
+  		
+  		List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
+  		List<FileVO> decisionFile = new ArrayList();
+  		//List<String> jpgFiles = new ArrayList();
+  		List<List<String>> jpgFiles = new ArrayList<List<String>>();
+  		
+  		for (int i=0; i<decision_File.size(); i++) {
+  			decisionFile.add(decisionService.getFileByDeicisionFileSeq(decision_File.get(i).getFileSeq()));
+  	  		// pdf -> jpg 변환작업
+  			String fname = decisionFile.get(i).getFileNameChange();
+  			// 로컬		
+  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+  			// 서버
+  			String serverPath = decisionFile.get(i).getFileFolder();
+  			PDFConverter pdfconvert = new PDFConverter();
+  			//jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
+  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//  			String downloadFilePath =  serverPath + fname;
+//  			File file = new File(downloadFilePath);
+//			if (file.exists()) {
+//	  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
+//			}
+  			//jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId);
+  		}
+  		 
   		 model.addAttribute("landCnt", landCntStr);
- 		model.addAttribute("landArea", landAreaStr);
- 		model.addAttribute("landPrice", landPriceStr);
- 		model.addAttribute("objCnt", objCntStr);
- 		model.addAttribute("objPrice", objPriceStr);
- 		model.addAttribute("goodwillCnt", goodwillCntStr);
- 		model.addAttribute("goodwillPrice", goodwillPriceStr);
- 		
+ 		 model.addAttribute("landArea", landAreaStr);
+ 		 model.addAttribute("landPrice", landPriceStr);
+ 		 model.addAttribute("objCnt", objCntStr);
+ 		 model.addAttribute("objPrice", objPriceStr);
+ 		 model.addAttribute("goodwillCnt", goodwillCntStr);
+ 		 model.addAttribute("goodwillPrice", goodwillPriceStr);
+ 		 model.addAttribute("jpgFiles", jpgFiles);
+ 		 
 		return "deliberate/pdfview";
 	}
 	

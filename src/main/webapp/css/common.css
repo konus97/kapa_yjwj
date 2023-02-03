@@ -2817,14 +2817,8 @@ div.table table td:last-child {
     border-radius: 5px;
     margin-top: 5px;
 }
-.file_img_wrap > img {
+.file_img_wrap > img { 
     vertical-align: top;
-}
-#contents .reg_wrap {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    margin-bottom: 20px;
 }
 .popup_table {
     display: flex;

@@ -94,6 +94,9 @@
 		                </ul>
 	             	</li>
 	             	<li>
+	             		<a href="#index${formatter.applicationDTO.judgSeq}_fileWr">첨부파일</a>
+	             	</li>
+	             	<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_downBtn">PDF 다운로드</a>
 	             	</li>
 	             	
@@ -399,8 +402,26 @@
 		
 		</c:forEach>
 		<!-- 1. 지연가산금 E -->
+
+		</div>
+	
+	<!-- 첨부파일 S -->
+	<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
+	<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+		<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+			<div class="pdf__page pdf__page--img">
+				 <img src="${jpgFiles}" alt="">
+			 </div>
+		</c:forEach>
+	</c:forEach>
+	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
 		
-	</div>
+			 <img src="${jpgFileList}" alt="">
+			<p>${jpgFiles}</p>
+		
+	</c:forEach> --%>
+	<!-- 첨부파일 E -->
+		
 </div>
 
 <!-- pdf 출력 영역 끝  -->
@@ -558,6 +579,8 @@
 	                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 	                    heightLeft -= pageHeight;
 	                }
+	                
+	                
 	                
 
 	                // 파일 저장

@@ -317,6 +317,18 @@
 								</h4>
 							</div>
 							
+						    <div id="loaderSection" class="loader_wr loader_wr--section">
+						        <svg class="loader__svg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						            x="0px" y="0px" viewBox="-25 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+						            <circle fill="#365978" stroke="none" cx="6" cy="50" r="6"></circle>
+						            <circle fill="#365978" stroke="none" cx="26" cy="50" r="6"></circle>
+						            <circle fill="#365978" stroke="none" cx="46" cy="50" r="6"></circle>
+						        </svg>
+						        <p class="loader__txt">
+							        데이터를 불러오는 중입니다.<br>
+							        잠시만 기다려주세요.
+						        </p>
+						    </div>
 						
 					
 							<div class="item_result_wr">
@@ -1669,7 +1681,7 @@
 							<div id="popupOwnerOpinion" class="popup info_reg" >
 								<div class="p_box">
 									<div class="p_head">
-										<h3 class="p_title">의견입력</h3>
+										<h3 class="p_title">의견 보기</h3>
 										<a href="#" class="p_close"
 											onclick="closeOwnerOpinion();return false;"> <span
 											class="blind">닫기</span></a>
@@ -1898,8 +1910,14 @@
             }
             
             $(document).ready(function () {
+            	
+            	$('#loaderSection').hide()
+            	
             	checkType();
+            	
             	//여기서 지장물이나 필지의 데이터가 없을 경우 table만 따로 숨김 처리 로직 추가
+            	checkResultWrTbody();
+            	
            /* for(let a=1; a<25; a++){ 	
           if(  document.getElementById('goodsTable' + a).innerText == ''){
         	  document.getElementById('goodsTable'+a).style.display = "none";
