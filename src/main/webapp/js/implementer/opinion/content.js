@@ -529,7 +529,8 @@ notice='';
 							let addList = new Array();
 		
 						   $("#popupOpinionItemList").empty();
-						
+						   
+						    addList.push("   <tbody>");  
 							addList.push("   <tr>");   
 						    addList.push("       <th class=\"info_reg_th\">제목</th>");   
 						    addList.push("       <td><input type=\"text\" class=\"input40 opinionTitle\" value=\""+opinionTitle+"\"></td>");   
@@ -559,7 +560,8 @@ notice='';
 							addList.push("             <i class=\"download white icon\"></i> PDF 다운로드");
 							addList.push("           </button>");
 						    addList.push("      </td>");   
-							addList.push("    </tr>");   								
+							addList.push("    </tr>");  
+							addList.push("   </tbody>");  
 							}
 
 		

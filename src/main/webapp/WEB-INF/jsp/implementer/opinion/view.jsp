@@ -1681,7 +1681,7 @@
 							<div id="popupOwnerOpinion" class="popup info_reg" >
 								<div class="p_box">
 									<div class="p_head">
-										<h3 class="p_title">의견입력</h3>
+										<h3 class="p_title">의견 보기</h3>
 										<a href="#" class="p_close"
 											onclick="closeOwnerOpinion();return false;"> <span
 											class="blind">닫기</span></a>

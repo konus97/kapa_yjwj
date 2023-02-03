@@ -3383,7 +3383,7 @@
 .loader__txt {
 	font-size: 18px;
     font-weight: 500;
-    color: #365978;
+	color: #365978;
     line-height: 1.4;
     letter-spacing: -1px;
 }
@@ -3395,4 +3395,60 @@
 	100% {
 		opacity:1;
 	}
+}
+
+
+/* 소유자 의견 작성 팝업 */
+#contents .reg_wrap {
+   margin: 20px 0;
+   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+#contents .reg_wrap h2 {
+	font-size: 22px;
+	font-weight:700 ;
+	letter-spacing: -1px;
+	color: #274ba9;
+	text-align: left;
+}
+#contents .reg_wrap table {
+	border-top: 0;
+	border: 1px solid #ddd;
+	margin-top: 20px;
+}
+#contents .reg_wrap textarea,
+#contents .reg_wrap input {
+    border: 0;
+    resize: none;
+    outline: 0;
+    padding: 0;
+    border-radius: 0;
+    color: #616161;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 500;
+    text-indent: 0;
+}
+#contents .reg_wrap textarea::-webkit-scrollbar {width: 5px;}
+#contents .reg_wrap textarea::-webkit-scrollbar-track {background: #ddd;}
+#contents .reg_wrap textarea::-webkit-scrollbar-thumb {background: #aaa;}
+#contents .c_table .reg_wrap table tbody > tr > th,
+#contents .c_table .reg_wrap table tbody > tr > td {
+	padding: 15px;
+	border: 1px solid #ddd;
+}
+#contents .c_table .reg_wrap table tbody > tr > th:last-child,
+#contents .c_table .reg_wrap table tbody > tr > td:last-child {
+	border-right:0;
+}
+#contents .c_table .reg_wrap table tbody > tr:last-child > th
+#contents .c_table .reg_wrap table tbody > tr:last-child > td {
+	border-bottom:0;
+}
+#contents .c_table .reg_wrap table tbody > tr > th.info_reg_th {
+	background: #f7f7f7;
+	font-size: 17px;
+	color: #414141;
+}
+#contents .c_table .reg_wrap table tbody > tr > td {
+    text-align: left;
 }
