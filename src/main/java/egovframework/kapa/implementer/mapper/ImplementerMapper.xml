@@ -4,7 +4,7 @@
 
 	 <!-- 게시글 목록 -->
 	<select id="getImplementerList" resultType="egovframework.kapa.implementer.domain.ApplicationList" parameterType="egovframework.kapa.domain.Search">
-		select ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
+		select distinct ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
 		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
 		
 		<where>
@@ -169,81 +169,49 @@
 
 
 	<select id="getApplicationLandCount" parameterType="Integer" resultType="Integer">
-       <!--  SELECT
-		      count(*)  
-		  FROM tb_ltis2kapa_rept_info
-		  WHERE judg_seq = #{masterId}
-		  AND land_obst_kind_cd = 'L'
-		   -->
-		  <!-- new 필지 개수-->
-SELECT count(*) FROM dbo.Kapa_Land RI
-LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
-WHERE RI.masterId = #{masterId} 
+     
+			<!-- new 필지 개수-->
+			SELECT count(*) FROM dbo.Kapa_Land RI
+			LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+			WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O'
     </select>
 
 	<select id="getApplicationLandRightCount" parameterType="Integer" resultType="Integer">
-<!--         select count(*) from 
-		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
-		  WHERE judg_seq = #{masterId} AND land_obst_kind_cd = 'L') as a -->
-		  
-		  
-<!-- new 필지 소유자 개수-->
 
-select count(*) from
-  (SELECT distinct  ROI.pid FROM dbo.Kapa_Land RI LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandId WHERE RI.masterId = #{masterId}) a
+		<!-- new 필지 소유자 개수-->
+		
+		select count(*) from
+		  (SELECT distinct  ROI.pid FROM dbo.Kapa_Land RI 
+		  LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandId 
+		  WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O') a
     </select>
 
 
 	<select id="getApplicationObjectCount" parameterType="Integer" resultType="Integer">
-      <!--   SELECT
-		      count(*)  
-		  FROM tb_ltis2kapa_rept_info
-		  WHERE judg_seq = #{masterId}
-		  AND NOT land_obst_kind_cd = 'L' -->
-		  
+ 
 		   <!-- new 지장물 개수 -->
-  SELECT 
-count(*)
-  FROM dbo.Kapa_Objects RI
-  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
-  WHERE RI.masterId = #{masterId}
+			  SELECT 
+			count(*)
+			  FROM dbo.Kapa_Objects RI
+			  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+			  WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O'
     </select>
 
 	<select id="getApplicationObjectRightCount" parameterType="Integer" resultType="Integer">
-         <!-- SELECT
-		      ownr_nm 
-		  FROM tb_ltis2kapa_rept_ownr_intr
-		  WHERE judg_seq = #{masterId}
-		  AND NOT land_obst_kind_cd = 'L' -->
-		  
-<!--
- 		  select count(*) from 
-		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
-		  WHERE judg_seq = #{masterId}  AND NOT land_obst_kind_cd = 'L') as a -->
-		  <!-- new 지장물 소유자 개수 -->
+        
   select count(*) from
-  (SELECT distinct  ROI.pid FROM dbo.Kapa_Objects RI LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID WHERE RI.masterId = #{masterId}) a
+  (SELECT distinct  ROI.pid FROM dbo.Kapa_Objects RI LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O') a
     </select>
    
 
 	<!-- 필지 목록 -->
 	<select id="getLandInfo" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.ApplicationLand" >
-		 <!-- SELECT
-		    * 
-		  FROM tb_ltis2kapa_rept_info
-		  WHERE judg_seq = #{masterId}
- 		  AND land_obst_kind_cd = 'L' -->
- 		  
-<!--
-old 필지
-SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info RI
-LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
-WHERE RI.judg_seq = #{masterId} AND RI.land_obst_kind_cd = 'L'  -->
+		
 
-<!-- new 필지 -->
-SELECT ROI.id,ROI.pname,RI.* FROM dbo.Kapa_Land RI
-LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
-WHERE RI.masterId = #{masterId} 
+		<!-- new 필지 -->
+		SELECT ROI.id,ROI.pname,RI.* FROM dbo.Kapa_Land RI
+		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+		WHERE RI.masterId = #{masterId} and ROI.Gubun = 'O'
 
 	</select> 
 	
@@ -262,29 +230,19 @@ WHERE RI.masterId = #{masterId}
 		 SELECT
 		    * 
 		  FROM tb_ltis2kapa_ownr_intr
-		  WHERE ownr_intr_seq = #{ownrIntrSeq}
+		  WHERE ownr_intr_seq = #{ownrIntrSeq} 
 	</select> 
 	
 	
 	 <!-- 지장물 목록 -->
 	<select id="getGoodsInfo" parameterType="Integer" resultType="egovframework.kapa.implementer.domain.ApplicationLand" >
-		 <!-- SELECT
-		    * 
-		  FROM tb_ltis2kapa_rept_info
-		  WHERE judg_seq = #{masterId}
-		  AND NOT land_obst_kind_cd = 'L' -->
-<!--
-old 지장물 목록
-SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info  RI
-LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
-WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_intr_yn = 'O'
- -->
- <!-- new 지장물 목록 -->
-  SELECT 
-  ROI.id,ROI.pname, RI.* 
-  FROM dbo.Kapa_Objects RI
-  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
-  WHERE RI.masterId = #{masterId}
+		
+		 <!-- new 지장물 목록 -->
+		  SELECT 
+		  ROI.id,ROI.pname, RI.* 
+		  FROM dbo.Kapa_Objects RI
+		  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+		  WHERE RI.masterId = #{masterId}
 	</select> 
 	
 	<!--의견 저장 -->
