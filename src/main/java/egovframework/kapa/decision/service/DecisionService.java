@@ -401,6 +401,10 @@ public class DecisionService {
 		return decisionMapper.getDecisionOpinionList(decisionId);
 	}
 
+	public List<Decision_Opinion> getDeliberateOpinionList(List<Long> decisionIdList) {
+		return decisionMapper.getDeliberateOpinionList(decisionIdList);
+	}
+	
 	public Decision_Opinion getDecisionOpinionInfo(Long viewSeq) {
 		return decisionMapper.getDecisionOpinionInfo(viewSeq);
 	}
@@ -482,9 +486,13 @@ public class DecisionService {
 	public List<Decision_Date> getDateList() {
 		return decisionMapper.getDateList();
 	}
-	
+
 	public List<Decision_Opinion> getRegisterStepFile(Long decisionId) {
 		return decisionMapper.getRegisterStepFile(decisionId);
+	}
+
+	public List<Decision_Opinion> getDeliberateRegisterStepFile(List<Long> decisionId) {
+		return decisionMapper.getDeliberateRegisterStepFile(decisionId);
 	}
 	
 	public List<Decision_Opinion> getOpinionList(Long decisionId) {
@@ -502,6 +510,10 @@ public class DecisionService {
 
 	public List<Decision_Opinion> getOpinionTypeList(Long decisionId) {
 		return decisionMapper.getOpinionTypeList(decisionId);
+	}
+
+	public List<Decision_Opinion> getDeliberateOpinionTypeList(List<Long> decisionIdList) {
+		return decisionMapper.getDeliberateOpinionTypeList(decisionIdList);
 	}
 	
 	public List<Decision_Opinion> getPdfOpinionList(Long decisionId) {

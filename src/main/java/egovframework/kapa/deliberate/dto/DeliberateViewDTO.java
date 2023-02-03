@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeliberateViewDTO {
 
+	private Long decisionId;
+	
 	private String consultationDate;
 	
     private ApplicationDTO applicationDTO;

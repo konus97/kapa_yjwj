@@ -3,8 +3,9 @@ package egovframework.kapa.deliberate.controller;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -69,13 +70,65 @@ public class DeliberateController {
         List<Decision_AgendaDate> pagingResult = deliberateService.getDeliberateDecisionList(selectDate); //심의날짜에 따른 심의안건 친구들
        
     	List<DeliberateViewDTO> formatterList = deliberateService.getDeliberateViewFormatter(pagingResult); 
+    	
+    	List<Long> decisionIdList = new ArrayList<>();
+    	
+    	
+    	for(int i=0; i<pagingResult.size(); i++) {
+    		decisionIdList.add(i, pagingResult.get(i).getDecisionId());
+    	}
+        
+	    List<Decision_Opinion> opinionList = decisionService.getDeliberateOpinionList(decisionIdList);
+	    List<Decision_Opinion> typeListOld = decisionService.getDeliberateOpinionTypeList(decisionIdList);
+	    List<Decision_Opinion> registerFileList = decisionService.getDeliberateRegisterStepFile(decisionIdList);
+	    model.addAttribute("registerFileList", registerFileList);
+        model.addAttribute("opinionList", opinionList);
+        List<Decision_Opinion> typeList = new ArrayList<>();
+        String getTypeStr = "";
+        
+        for(Decision_Opinion item : typeListOld) {
+        	Decision_Opinion op = new Decision_Opinion();
+        	op.setDecisionId(item.getDecisionId());
+        	op.setOpinionText(item.getOpinionText());
+        	op.setRelatedLaws2(item.getRelatedLaws2());
+        	op.setReviewOpinion(item.getReviewOpinion());
+        	op.setOpinionType(item.getOpinionType());
+        	
+        	 int getType = item.getOpinionType();
+         	 
+    		 for(int i=0 ; i<ItemData.values().length ; i++) {
+    			 
+    	   		 int code = ItemData.values()[i].getCode();
+    	   		 
+    	   		 if(code==getType) {
+    	   			getTypeStr = ItemData.values()[i].getKrName();
+    	   			break;
+    	   		 }
+            }
+    		op.setGetTypeStr(getTypeStr);
+    	
+       	
+        	typeList.add(op);
+		 
+        }
+        System.out.println("=======================★=========================");
+        System.out.println(typeList);
+        System.out.println("=================================================");
+        
+        model.addAttribute("typeList", typeList);
+    	
 
-        
-        
     	Long decisionId = pagingResult.get(0).getDecisionId();
-    	Decision decision = decisionService.getDecisionView(decisionId);
-    	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
-    	model.addAttribute("opinionList", opinionList);
+
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+	    
+    	Decision decision = decisionService.getDecisionView(pagingResult.get(0).getDecisionId());
+    	
+    	
+    	
+    	//List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+    	//model.addAttribute("opinionList", opinionList);
     	Long landCnt = decision.getLandCnt();
 			Long landArea = decision.getLandArea();
 			Long landPrice = decision.getLandPrice();
@@ -105,7 +158,6 @@ public class DeliberateController {
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
 		model.addAttribute("csltList", csltList);
 		
-		model.addAttribute("csltList", csltList);
 		
     	model.addAttribute("formatterList", formatterList);
         
