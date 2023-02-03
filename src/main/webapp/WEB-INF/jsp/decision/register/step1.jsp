@@ -607,7 +607,7 @@
         		
 	        	let contextPath = $('#contextPath').val();
 	        	let url = contextPath+"/api/decision/register/step1";
-	        	let msg="심의안건 등록완료하시겠습니까?";
+	        	let msg="심의안건을 계속 진행하시겠습니까?";
 	
 	        	//BASE START
 	        	let decisionId = $('#decisionId').val();

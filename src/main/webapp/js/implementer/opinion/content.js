@@ -75,7 +75,7 @@ function addLandOpinion(rank,info,getItem){
 
 
 
-	
+	let landObjectCheck = 'L';
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq = info.reptOwnrSeq;
 	let reptAddr = info.reptAddr;
@@ -93,6 +93,9 @@ function addLandOpinion(rank,info,getItem){
     
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+	if(landShre == null){
+		landShre = '-';
+	}
 
     let getId = "opinion"+getSeq+"-"+getItem;
       
@@ -231,7 +234,7 @@ function addGoodsOpinion(rank,info,getItem){
 	}
 		goodsCheckArr.push(info);
 
-	
+	let landObjectCheck = 'O';
 	let getSeq = info.reptSeq;
 	let reptAddr = info.reptAddr;
 	let reptOwnrSeq = info.reptOwnrSeq;
@@ -250,6 +253,9 @@ function addGoodsOpinion(rank,info,getItem){
 	
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+		if(landShre == null){
+		landShre = '-';
+	}
 
  let getId = "opinion"+getSeq+"-"+getItem;
       //console.log($(getId).length);
@@ -591,7 +597,7 @@ $("#popupOpinionItemList").append(addList.join(''));
 function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
    $(".resetPopupVal").val('');
    $("#popupOpinionItemList").empty();
-   
+
 	var notice ="";
 	
 	switch (getType) {
@@ -746,6 +752,8 @@ function submitOwnerOpinion(){
 
    let ownerOpinion = $("#ownerOpinion").val();
    let executorOpinion = $("#executorOpinion").val();
+
+let landObjectCheck = "";
    
    if (ownerOpinion == null || ownerOpinion == "") {
       alert("소유자 의견을 입력해주세요");
@@ -766,6 +774,7 @@ function submitOwnerOpinion(){
    sub['executorOpinion'] = executorOpinion;
    sub['reptOwnrSeq'] = reptOwnrSeq;
    sub['ownrNm'] = ownrNm;
+	sub['landObjectCheck'] = landObjectCheck;
 
    let opCount = $(".popupOpinionItem").length;
       let opinionItemList = new Array(); // json의 전체를 가리키는 배열
@@ -792,6 +801,7 @@ function submitOwnerOpinion(){
 	  sub2['desc'] = desc;
 	  sub2['fileName'] = fileName;
 	  sub2['filePdfName'] = filePdfName;
+	sub2['landObjectCheck'] = landObjectCheck;
 	  
       opinionItemList[i]=sub2;
    }

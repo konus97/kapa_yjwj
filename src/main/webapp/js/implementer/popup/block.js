@@ -3,7 +3,7 @@
 // ************************************************
 
 function makeLandInfoBlock(startNumber,info) {
-
+	console.log('끼에에에에에에');
 	console.log(info);
 	
 	let addList = new Array();
@@ -23,6 +23,9 @@ function makeLandInfoBlock(startNumber,info) {
     
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+	if(landShre == null){
+		landShre = '-';
+	}
 	
 	addList.push("<tr>");
     addList.push("   <td>");
@@ -106,6 +109,9 @@ function makeLandOwnerInfoBlock(startNumber,info) {
     
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+		if(landShre == null){
+		landShre = '-';
+	}
 	
 	addList.push("<tr>");
     addList.push("   <td>");
@@ -189,7 +195,10 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
     
 	let ownrNm = info.ownrNm;
-	let landShre = info.landShre;
+	let landShre = info.landShre;	
+	if(landShre == null){
+		landShre = '-';
+	}
 	
 	addList.push("<tr>");
 	
@@ -290,6 +299,8 @@ let url = contextPath+"/api/implementer/opinion/landview2";
 			
 if(list.length !=0){
 	for(let j=0; j<list.length; j++){
+		console.log("asdasdasdasd");
+		console.log(list);
 	let listReptSeq = list[j].reptSeq;
 	let listReptOwnrSeq = list[j].reptOwnrSeq;
 				
@@ -312,6 +323,9 @@ if(list.length !=0){
     
 	let ownrNm = info.ownrNm;
 	let landShre = info.landShre;
+	if(landShre == null){
+		landShre = "-";
+	}
 
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq  = info.reptOwnrSeq;
@@ -434,6 +448,9 @@ function makeGoodsInfoBlock(startNumber,info) {
 	
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+	if(landShre == null){
+		landShre = "-";
+	}
 	
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq  = info.reptOwnrSeq;
@@ -529,6 +546,9 @@ function makeGoodsownerBlock(startNumber,info) {
 	
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+		if(landShre == null){
+		landShre = '-';
+	}
 	
 	addList.push("<tr>");
     addList.push("   <td>");
@@ -648,6 +668,9 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 	
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+		if(landShre == null){
+		landShre = '-';
+	}
 	
 	let getSeq = info.reptSeq;
 	let reptOwnrSeq  = info.reptOwnrSeq;
@@ -758,6 +781,9 @@ function makeGoodsownerCheckBlock(startNumber,info) {
 	
 	let ownrNnm = info.ownrNm;
 	let landShre = info.landShre;
+		if(landShre == null){
+		landShre = '-';
+	}
 	
 	addList.push("<tr>");
 	

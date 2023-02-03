@@ -360,7 +360,7 @@
 								<h5 class="item_result_wr__tit">1. 지연가산금(재결신청 청구)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -422,7 +422,7 @@
 								<h5 class="item_result_wr__tit">2. 보상금 증액</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -484,7 +484,7 @@
 								<h5 class="item_result_wr__tit">3. 협의 미이행(불이행,미준수)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -546,7 +546,7 @@
 								<h5 class="item_result_wr__tit">4. 사업폐지(취소,중단,변경,보류,제외)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -608,7 +608,7 @@
 								<h5 class="item_result_wr__tit">5. 재결 보류</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -670,7 +670,7 @@
 								<h5 class="item_result_wr__tit">6. 무허가건물 부지면적 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -732,7 +732,7 @@
 								<h5 class="item_result_wr__tit">7. 잔여지/잔여건물 가치 하락</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -794,7 +794,7 @@
 								<h5 class="item_result_wr__tit">8. 잔여지/잔여건물 매수 청구(확대보상)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -856,7 +856,7 @@
 								<h5 class="item_result_wr__tit">9. 사도평가 적정성</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -918,7 +918,7 @@
 								<h5 class="item_result_wr__tit">10. 일단지 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -980,7 +980,7 @@
 								<h5 class="item_result_wr__tit">11. 미지급 용지</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1042,7 +1042,7 @@
 								<h5 class="item_result_wr__tit">12. 영업보상(이전비) 적정성</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1104,7 +1104,7 @@
 								<h5 class="item_result_wr__tit">13. 누락 물건 반영</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1166,7 +1166,7 @@
 								<h5 class="item_result_wr__tit">14. 폐업 보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1228,7 +1228,7 @@
 								<h5 class="item_result_wr__tit">15. 영농손실보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1290,7 +1290,7 @@
 								<h5 class="item_result_wr__tit">16. 휴직(실직)보상</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1352,7 +1352,7 @@
 								<h5 class="item_result_wr__tit">17. 이주대책 수립</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1414,7 +1414,7 @@
 								<h5 class="item_result_wr__tit">18. 이주정착금, 주거이전비, 이사비</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1476,7 +1476,7 @@
 								<h5 class="item_result_wr__tit">19. 구분지상권</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1538,7 +1538,7 @@
 								<h5 class="item_result_wr__tit">20. 10% 변동 내역</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1600,7 +1600,7 @@
 								<h5 class="item_result_wr__tit">21. 기타(임료손실,대토보상 등)</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1662,7 +1662,7 @@
 								<h5 class="item_result_wr__tit">22. 소유자 의견 없음</h5>
 								<div class="item_result_wr__con">
 									<table class="item_result_wr__table">
-										<caption>필지</caption>
+										<caption class="land">필지</caption>
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -1725,7 +1725,7 @@
 														<div class="inner_table_div">
 															<p class="title t3 s1 bullet">필지</p>
 															<table>
-																<caption>필지</caption>
+																<caption class="land">필지</caption>
 																<thead>
 																	<tr>
 																		<th>연번</th>
@@ -1967,7 +1967,7 @@
 														<div class="inner_table_div">
 															<p class="title t3 s1 bullet">필지</p>
 															<table>
-																<caption>필지</caption>
+																<caption class="land">필지</caption>
 																<thead>
 																	<tr>
 																		<th>연번</th>
