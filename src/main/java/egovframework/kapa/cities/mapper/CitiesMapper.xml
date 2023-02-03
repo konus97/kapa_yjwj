@@ -7,7 +7,7 @@
         SELECT count(*) as listCnt
         FROM TB_Decision AS M
         <where>
-			decisionState >= '2'
+			decisionState >= '3'
 			AND delCheck = '0'
         </where>
         
@@ -35,7 +35,7 @@
 		ORDER BY seqNo DESC
 		
 		OFFSET (#{page}-1)*#{listSize} ROW
-		FETCH NEXT #{listSize} ROW ONLY
+		FETCH NEXT 10 ROW ONLY
 	</select> 
 	
 </mapper>

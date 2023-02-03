@@ -29,7 +29,7 @@ function getCitiesAnnouncementList(cpage) {
 		dataType : "json",
 		async: false,
 		data : {
-			"cpage" : 1,
+			"cpage" : cpage,
 			"numOrname" : numOrname,
 			"startDate" : startDate,
 			"endDate" : endDate
@@ -184,7 +184,8 @@ function makePageList(){
 		if ($id == "allprev")selectedPage=1;
 		if ($id == "allnext")selectedPage=totalPage;
 
-		getDecisionAnnouncementList(selectedPage);
+		//getDecisionAnnouncementList(selectedPage);
+		getCitiesAnnouncementList(selectedPage);
 	});
 
 

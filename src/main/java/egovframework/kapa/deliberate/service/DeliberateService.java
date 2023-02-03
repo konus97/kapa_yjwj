@@ -321,7 +321,7 @@ public class DeliberateService {
 	}
 
 	public DeliberateViewDTO getDeliberateViewInfoFormatter(Long decisionId) {
-		
+		//여기
 		Decision_AgendaDate decisionAgendaDate = deliberateMapper.getDeliberateDecisionDate(decisionId);
 		
 		Decision_Date decisionDate = deliberateMapper.getDeliberateDate(decisionAgendaDate.getSelectDate());
