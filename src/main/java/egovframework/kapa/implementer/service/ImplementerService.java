@@ -740,31 +740,31 @@ public void saveRegister(Decision_Opinion opinion) {
         
         for (ApplicationLand land : ApplicationLand) {
 
-        	int rept_seq = land.getRept_seq();
+        	int rept_seq = land.getId();
         	reptSeqList.add(rept_seq);
         	       
         
         	String befUnitCost = "0";
         	
-        	if(land.getBef_unit_cost()>0) {
-        		befUnitCost = Integer.toString(land.getBef_unit_cost());
+        	if(land.getPriceK()>0) {
+        		befUnitCost = Long.toString(land.getPriceK());
         		befUnitCost = StrUtil.convertToDecimalFormat(befUnitCost);
         	}
       	
         	ApplicationLandDTO applicationLandDTO =
         			ApplicationLandDTO.builder()
         					.reptSeq(rept_seq)
-        					.reptOwnrSeq(land.getRept_ownr_intr_seq())
-        				//	.ownrNm(land.getOwnrNm())
-		                    .reptAddr(land.getRept_addr())
-		                    .sidoGunguCd(land.getSido_gungu_cd())
-		                    .mainStrtNo(land.getMain_strt_no())
-		                    .subStrtNo(land.getSub_strt_no())
-		                    .obstStuc1Nm(land.getObst_stuc1_nm())
-		                    .obstStuc2Nm(land.getObst_stuc2_nm())
-		                    .areaAmot(land.getArea_amot())
+        				//	.reptOwnrSeq(land.getRept_ownr_intr_seq())
+        					.ownrNm(land.getPname())
+		                    .reptAddr(land.getAddr())
+		                    .sidoGunguCd(land.getReg())
+		                    .mainStrtNo(land.getBun1())
+		                    .subStrtNo(land.getBun2())
+		                    .obstStuc1Nm(land.getGm1())
+		                    .obstStuc2Nm(land.getGm2())
+		                    .areaAmot(land.getArea())
 		                    .befUnitCost(befUnitCost)
-		                    .areaUnit(land.getArea_unit())
+		                  //  .areaUnit(land.getUnit())
                             .build();
 
             applicationLandDTOS.add(applicationLandDTO);
@@ -799,32 +799,38 @@ public void saveRegister(Decision_Opinion opinion) {
         
         for (ApplicationLand land : ApplicationLand) {
 
-        	int rept_seq = land.getRept_seq();
+        	int rept_seq = land.getId();
         	reptSeqList.add(rept_seq);
         	
         	//ApplicationLandRelation applicationLandowner = implementerMapper.getLandRelationInfo(rept_seq);
         	
         	String befUnitCost = "0";
         	
-        	if(land.getBef_unit_cost()>0) {
-        		befUnitCost = Integer.toString(land.getBef_unit_cost());
+        	if(land.getPriceK()>0) {
+        		befUnitCost = Long.toString(land.getPriceK());
         		befUnitCost = StrUtil.convertToDecimalFormat(befUnitCost);
+        	}
+        	String bun3 = land.getBun3();
+        	if(bun3 == null) {
+        		bun3 = "";
         	}
         	
         	ApplicationGoodsDTO applicationGoodsDTO =
         			ApplicationGoodsDTO.builder()
         					.reptSeq(rept_seq)
-		                    .reptAddr(land.getRept_addr())
-		                    .reptOwnrSeq(land.getRept_ownr_intr_seq())
-		                    .mainStrtNo(land.getMain_strt_no())
-		                    .subStrtNo(land.getSub_strt_no())
-		                    .strtOther(land.getStrt_other())
-		                    .obstKindNm(land.getObst_kind_nm())
-		                    .obstStuc1Nm(land.getObst_stuc1_nm())
-		                    .obstStuc2Nm(land.getObst_stuc2_nm())
-		                    .areaAmot(land.getArea_amot())
+		                    .reptAddr(land.getAddr())
+        					.ownrNm(land.getPname())
+
+		           //         .reptOwnrSeq(land.getPname())
+		                    .mainStrtNo(land.getBun1())
+		                    .subStrtNo(land.getBun2())
+		                    .strtOther(bun3)
+		                    .obstKindNm(land.getKind())
+		                    .obstStuc1Nm(land.getGujo())
+		              //      .obstStuc2Nm(land.getObst_stuc2_nm())
+		                    .areaAmot(land.getArea1())
 		                    .befUnitCost(befUnitCost)
-		                    .areaUnit(land.getArea_unit())
+		                //    .areaUnit(land.getUnit())
                             .build();
 
         	applicationGoodsDTOS.add(applicationGoodsDTO);
@@ -943,7 +949,7 @@ public void saveRegister(Decision_Opinion opinion) {
 	    			                    .obstKindNm(goods.getObst_kind_nm())
 	    			                    .obstStuc1Nm(goods.getObst_stuc1_nm())
 	    			                    .obstStuc2Nm(goods.getObst_stuc2_nm())
-	    			                    .areaAmot(goods.getArea_amot())
+	    			                 //   .areaAmot(goods.getArea_amot())
 	    			                    .befUnitCost(befUnitCost)
 	    			                    .areaUnit(goods.getArea_unit())
 	    			                    .ownrNnm(goods.getOwnr_nm())

@@ -423,8 +423,11 @@ public class ImplementerRestController {
         
             //값 넣기
             List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+
             List<ApplicationLandDTO> formatterList = implementerService.getLandListFormatter(landList);
-            
+            System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+            System.out.println(landList);
+            System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             resultFinal.put("list", formatterList);
   
         }catch (Exception e){
@@ -521,7 +524,7 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
+            	String temp = formatterList.get(i).getAreaAmot() +"/";
             	temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
 
@@ -631,7 +634,7 @@ public class ImplementerRestController {
             	result.add(formatterList.get(i).getObstStuc1Nm());
             	result.add(formatterList.get(i).getObstKindNm());
             	// 면적/수량
-            	String temp = Integer.toString(formatterList.get(i).getAreaAmot()) +"/";
+            	String temp = formatterList.get(i).getAreaAmot() +"/";
             	temp += formatterList.get(i).getAreaUnit();
             	result.add(temp);
             	result.add(formatterList.get(i).getBefUnitCost());

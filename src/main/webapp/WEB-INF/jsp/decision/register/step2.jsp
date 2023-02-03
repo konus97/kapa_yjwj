@@ -1172,6 +1172,9 @@
 
             $(document).ready(function () {
             	
+            	
+            	
+            	
             	$(".reg_table").each(function() {
     				let landCnt = $('#landCnt').text();
     				let landArea = $('#landArea').text();
@@ -1226,6 +1229,8 @@
     				})
     			}
             	
+    			
+    			
             	
             });
         </script>

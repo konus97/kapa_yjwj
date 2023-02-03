@@ -166,26 +166,44 @@
 
 
 	<select id="getApplicationLandCount" parameterType="Integer" resultType="Integer">
-        SELECT
+       <!--  SELECT
 		      count(*)  
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
 		  AND land_obst_kind_cd = 'L'
+		   -->
+		  <!-- new 필지 개수-->
+SELECT count(*) FROM dbo.Kapa_Land RI
+LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+WHERE RI.masterId = #{masterId} 
     </select>
 
 	<select id="getApplicationLandRightCount" parameterType="Integer" resultType="Integer">
-        select count(*) from 
+<!--         select count(*) from 
 		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
-		  WHERE judg_seq = #{masterId} AND land_obst_kind_cd = 'L') as a
+		  WHERE judg_seq = #{masterId} AND land_obst_kind_cd = 'L') as a -->
+		  
+		  
+<!-- new 필지 소유자 개수-->
+
+select count(*) from
+  (SELECT distinct  ROI.pid FROM dbo.Kapa_Land RI LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandId WHERE RI.masterId = #{masterId}) a
     </select>
 
 
 	<select id="getApplicationObjectCount" parameterType="Integer" resultType="Integer">
-        SELECT
+      <!--   SELECT
 		      count(*)  
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
-		  AND NOT land_obst_kind_cd = 'L'
+		  AND NOT land_obst_kind_cd = 'L' -->
+		  
+		   <!-- new 지장물 개수 -->
+  SELECT 
+count(*)
+  FROM dbo.Kapa_Objects RI
+  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+  WHERE RI.masterId = #{masterId}
     </select>
 
 	<select id="getApplicationObjectRightCount" parameterType="Integer" resultType="Integer">
@@ -195,9 +213,13 @@
 		  WHERE judg_seq = #{masterId}
 		  AND NOT land_obst_kind_cd = 'L' -->
 		  
-		  select count(*) from 
+<!--
+ 		  select count(*) from 
 		  (SELECT distinct ownr_seq FROM tb_ltis2kapa_rept_ownr_intr 
-		  WHERE judg_seq = #{masterId}  AND NOT land_obst_kind_cd = 'L') as a
+		  WHERE judg_seq = #{masterId}  AND NOT land_obst_kind_cd = 'L') as a -->
+		  <!-- new 지장물 소유자 개수 -->
+  select count(*) from
+  (SELECT distinct  ROI.pid FROM dbo.Kapa_Objects RI LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID WHERE RI.masterId = #{masterId}) a
     </select>
    
 
@@ -209,9 +231,17 @@
 		  WHERE judg_seq = #{masterId}
  		  AND land_obst_kind_cd = 'L' -->
  		  
- 		 SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info RI
+<!--
+old 필지
+SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info RI
 LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
-WHERE RI.judg_seq = #{masterId} AND RI.land_obst_kind_cd = 'L' 
+WHERE RI.judg_seq = #{masterId} AND RI.land_obst_kind_cd = 'L'  -->
+
+<!-- new 필지 -->
+SELECT ROI.id,ROI.pname,RI.* FROM dbo.Kapa_Land RI
+LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+WHERE RI.masterId = #{masterId} 
+
 	</select> 
 	
 	<!-- 필지 관계  -->
@@ -240,9 +270,18 @@ WHERE RI.judg_seq = #{masterId} AND RI.land_obst_kind_cd = 'L'
 		  FROM tb_ltis2kapa_rept_info
 		  WHERE judg_seq = #{masterId}
 		  AND NOT land_obst_kind_cd = 'L' -->
-		  SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info  RI
+<!--
+old 지장물 목록
+SELECT ROI.rept_ownr_intr_seq,ROI.ownr_nm,RI.* FROM tb_ltis2kapa_rept_info  RI
 LEFT JOIN tb_ltis2kapa_rept_ownr_intr ROI ON RI.rept_seq = ROI.rept_seq 
 WHERE RI.judg_seq = #{masterId} AND NOT RI.land_obst_kind_cd = 'L' AND ROI.ownr_intr_yn = 'O'
+ -->
+ <!-- new 지장물 목록 -->
+  SELECT 
+  ROI.id,ROI.pname, RI.* 
+  FROM dbo.Kapa_Objects RI
+  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+  WHERE RI.masterId = #{masterId}
 	</select> 
 	
 	<!--의견 저장 -->
