@@ -285,7 +285,7 @@ public class ImplementerRestController {
 		
 		
 		resultFinal.put("list", decisionService.getDecisionOpinionList(decisionId));
-		System.out.println("===================================================");
+		System.out.println("=================landView======================");
 		System.out.println(decisionService.getDecisionOpinionList(decisionId));
 		System.out.println("===================================================");
 		
@@ -372,6 +372,7 @@ public class ImplementerRestController {
 			decision_Opinion_Item.setFileType(type);
 
 	
+			//resultFinal.put("opinionListF", decisionService.getDecisionOpinionList3(decision_Opinion_Item));
 			
 			resultFinal.put("opinionList", decisionService.getDecisionOpinionItemList3(decision_Opinion_Item));
 			

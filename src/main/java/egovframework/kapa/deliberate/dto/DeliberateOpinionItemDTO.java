@@ -23,5 +23,6 @@ public class DeliberateOpinionItemDTO {
     private String fileNameChange;
     private String fileFolder;
     private Long decisionId;
+    private int type;
     
 }

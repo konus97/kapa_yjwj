@@ -322,9 +322,10 @@ public class DecisionController {
 	    model.addAttribute("registerFileList", registerFileList);
 		model.addAttribute("typeList", typeList);
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
-		System.out.println("===============================");
+		
+		System.out.println("=============formatter=====formatter=============");
 		System.out.println(formatter);
-		System.out.println("===============================");
+		System.out.println("=============formatter=========formatter=========");
     	model.addAttribute("formatter", formatter);
 		if(decisionId!=0L) {
 	      	
@@ -533,7 +534,11 @@ public class DecisionController {
 		
 		
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
+		System.out.println("=====================formatter plz========================");
+		System.out.println(formatter);
+		System.out.println("=====================formatter plz========================");
 
+		
     	model.addAttribute("formatter", formatter);
 		return "decision/register/step3";
 	}

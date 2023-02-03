@@ -198,7 +198,12 @@
                                             </div>
                                             <div class="ff_wrap">
                                                 <p>
+                                                <c:if test="${avo.reptLoc ne ''}">
                                                   ${avo.reptLoc}	
+                                                  </c:if>
+                                                <c:if test="${avo.reptLoc eq ''}">
+                                                  -	
+                                                  </c:if>
                                                 </p>
                                             </div>
                                         </div>

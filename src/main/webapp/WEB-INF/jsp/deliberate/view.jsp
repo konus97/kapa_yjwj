@@ -462,7 +462,14 @@
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
+			                                           	<c:if test="${deliberateOpinionDTO.ownerViewInfo.rept_addr ne ''}">
 			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           </c:if>
+			                                           
+			                                           	<c:if test="${deliberateOpinionDTO.ownerViewInfo.rept_addr eq ''}">
+			                                           <span>-</span>
+			                                           </c:if>
+			                                           
 			                                       </td>
 			                                       <td>
 			                                         <strong>지번</strong>
@@ -679,7 +686,13 @@
 			                                       </td>
 			                                       <td class="left">
 			                                           <strong>소재지</strong>
-			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
+        												<c:if test="${deliberateOpinionDTO.ownerViewInfo.rept_addr ne ''}">
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.rept_addr}</span>
+			                                           </c:if>
+			                                           
+			                                           	<c:if test="${deliberateOpinionDTO.ownerViewInfo.rept_addr eq ''}">
+			                                           <span>-</span>
+			                                           </c:if>
 			                                       </td>
 			                          
 			                                       <td>
