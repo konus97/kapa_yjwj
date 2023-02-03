@@ -59,7 +59,7 @@ function addLandOpinion(rank,info,getItem){
 	console.log(info);
 	
 
-	/*if(landCheckArr.length != 0){
+	if(landCheckArr.length != 0){
 		for(let i=0; i<landCheckArr.length; i++){
 			if(JSON.stringify(landCheckArr[i]) === JSON.stringify(info)){
 //				alert(info.ownrNnm+'님의 ' +info.reptAddr+'(은)는 이미 선택된 항목입니다');
@@ -71,7 +71,7 @@ function addLandOpinion(rank,info,getItem){
 			}
 		}
 	}
-		landCheckArr.push(info);*/
+		landCheckArr.push(info);
 
 
 
@@ -215,7 +215,7 @@ function addLandOpinion(rank,info,getItem){
    const goodsCheckArr = new Array();
 function addGoodsOpinion(rank,info,getItem){
 
-	/*if(goodsCheckArr.length != 0){
+	if(goodsCheckArr.length != 0){
 		for(let i=0; i<goodsCheckArr.length; i++){
 			if(JSON.stringify(goodsCheckArr[i]) === JSON.stringify(info)){
 				//alert(info.ownrNnm+'님의 '+info.reptAddr +'의 '+info.obstKindNm+'(은)는 이미 선택된 항목입니다');
@@ -226,7 +226,7 @@ function addGoodsOpinion(rank,info,getItem){
 			}
 		}
 	}
-		goodsCheckArr.push(info);*/
+		goodsCheckArr.push(info);
 
 	
 	let getSeq = info.reptSeq;
