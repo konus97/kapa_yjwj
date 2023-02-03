@@ -17,9 +17,11 @@ function makeImplementerBlock(startNumber,info) {
 	let judgDivName = info.judgDivName;	
 	let rept_loc = info.rept_loc;
     let caseNo = info.caseNo;
-
+	let charge = info.charge;
   	let decisionStateStr = info.decisionStateStr;
-
+	let custMan = info.custMan;
+	let custName = info.custName;
+	
 	addList.push("<tr>");
     addList.push("   <th>");
     addList.push("       <strong>"+startNumber+"</strong>");
@@ -34,11 +36,11 @@ function makeImplementerBlock(startNumber,info) {
     addList.push("   </td>");
     addList.push("   <td>");
     addList.push("       <strong>담당자</strong>");
-    addList.push("       <span></span>");
+    addList.push("       <span>"+charge+"</span>");
     addList.push("    </td>");
     addList.push("    <td>");
     addList.push("        <strong>사업시행자</strong>");
-    addList.push("        <span></span>");
+    addList.push("        <span>"+custName+"</span>");
     addList.push("    </td>");
     addList.push("    <td>");
     addList.push("         <strong>사건번호</strong>");

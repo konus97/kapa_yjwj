@@ -65,5 +65,51 @@ public class ApplicationDTO {
 	private boolean nextStepCheck;
 	
 	private String ownrNm;
+	
+	//masterId
+	private Long seq;
+	
+	//사업명
+	private String title;
+	
+	//재결구분
+	private String Category;
+	
+	//시도구분코드
+	private String region;
+	
+	//시행자의뢰일
+	private LocalDate viewReqDate;
+	
+	//비고
+	private String Bigo;
+	
+	//시행자명
+	private String custName;
+	
+	//담당자명
+	private String custMan;
+	
+	//담당자
+	private String charge;
+	
+	//소재지
+	private String consultAddr;
+	
+	//협의 법인
+	private String consultAppName;
+	
+	// 담당자 폰번호
+	private String chargeHP;
+	
+	private LocalDate recm_req_ed_dt;
+	
+	private LocalDate recm_req_strt_dt;
+	
+	private LocalDate prce_dt;
+	
+	private LocalDate consultDate_S;
+	private LocalDate consultDate_E;
+	
     
 }

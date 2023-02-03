@@ -80,6 +80,7 @@ public class ImplementerRestController {
            
             //값 넣기
             List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
+            System.out.println("리스트 컨트롤러 첫번째 리스트:::::::::::" + pagingResult);
             List<ApplicationDTO> formatterList = implementerService.getImplementerListFormatter(pagingResult);
             System.out.println("LIST!" + formatterList);
             resultFinal.put("list", formatterList);
