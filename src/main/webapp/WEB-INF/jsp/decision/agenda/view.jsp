@@ -366,10 +366,8 @@
                                                 <td>
                                                     <strong>평가사</strong>
                                                     <span>
-                                                        <a
-                                                            href="#!"
-                                                            class="cx owner"
-                                                            ></a>
+                                                        <a href="#!" class="cx owner"
+                                                        onclick="openPopup('appraiser');return false;"></a>
                                                     </span>
                                                 </td>
                                                 <td>
@@ -2112,6 +2110,10 @@
                                 <!-- 팝업, 평가사 정보 S -->
                               
                                 <!-- 팝업, 평가사 정보 E -->
+                                
+                                <!-- 팝업, 필지 소유자 검색 S -->
+                                <%@ include file="../../decision/agenda/popup/appraiser.jsp"%> 
+                                <!-- 팝업, 필지 소유자 검색 E -->
                                 
 								<!-- 소유자의견 팝업 S -->     
 						        <div  id="popupOwnerOpinion" class="popup info_reg">

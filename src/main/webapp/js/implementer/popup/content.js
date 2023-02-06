@@ -39,6 +39,8 @@ function openPopup(mode,count){
 			getCheckBox(count);
 		}else if(mode=="checkbox2"){			
 			getCheckBox2();
+		}else if(mode=="appraiser"){			
+			getAppraiserInfo();
 		}
 	}
 	
@@ -68,6 +70,9 @@ function closePopup(mode){
 		$('#popupCheck').removeClass("on");
 	}else if(mode=="checkbox2"){
 		$('#popupCheck2').removeClass("on");
+	}else if(mode=="appraiser"){
+		$("#appraiserList").empty();
+		$('#popupAppraiser').removeClass("on");
 	}
 
 }
@@ -707,6 +712,11 @@ function checkResultWrTbody(){
 	})
 
 
+}
+
+//평가사 팝업
+function getAppraiserInfo(){
+	$('#popupAppraiser').addClass("on");
 }
 
 function downloadExcelGoods(){
