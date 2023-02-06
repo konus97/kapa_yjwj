@@ -94,7 +94,11 @@ public interface DecisionMapper {
 
 	void insertMeetings(Decision_Date decision_Date);
 
+	int checkMeetingsEnable(String meetingDate);	// 해당날짜에 이미 회의가 존재하는지 여부 Check
+
 	List<Decision_Date> selectCaseMeeting(Map<String, Object> param);
+	int getSeqNoByConsultDate(String date);
+	int getCountSamedaysMeetings(int seqNo);
 
 	List<Decision_Date> getDateList();
 

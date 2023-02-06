@@ -361,29 +361,18 @@ public class DeliberateController {
   		String goodwillCntStr = dc.format(goodwillCnt);
   		String goodwillPriceStr = dc.format(goodwillPrice);
   		
-
-  		//List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
-  		//List<FileVO> decisionFile = new ArrayList();
-  		//List<String> jpgFiles = new ArrayList();
   		List<List<String>> jpgFiles = new ArrayList<List<String>>();
   		
   		for (int i=0; i<registerFileList.size(); i++) {
-  			//decisionFile.add(decisionService.getFileByDeicisionFileSeq(decision_File.get(i).getFileSeq()));
   	  		// pdf -> jpg 변환작업
-  			//String fname = decisionFile.get(i).getFileNameChange();
-  			String fname = registerFileList.get(i).getFileNameChange();
+  			PDFConverter pdfconvert = new PDFConverter();
+  			String fname = registerFileList.get(i).getFileNameChange();	// 파일명
   			// 로컬		
 //  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+//			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
   			// 서버
-  			//String serverPath = decisionFile.get(i).getFileFolder();
   			String serverPath = registerFileList.get(i).getFileFolder();
-  			PDFConverter pdfconvert = new PDFConverter();
-//  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
   			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
-//  			String downloadFilePath =  serverPath + fname;
-//  			File file = new File(downloadFilePath);
-//	  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
-  			//jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId);
   		}
   		 
   		 model.addAttribute("landCnt", landCntStr);

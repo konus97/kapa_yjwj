@@ -126,7 +126,8 @@ public class DecisionRestController {
 		JSONObject json = new JSONObject(data);
 		
 		try {
-			decisionService.meetingsInsert(data);	
+			int check = decisionService.meetingsInsert(data);
+			resultFinal.put("check", check);
 			resultFinal.put("msg", "Complete");
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -371,6 +372,7 @@ public class DecisionRestController {
 
         	System.out.println(form);
         	
+        	
     		List<Decision_Date> meetingList = decisionService.selectCaseMeetings(form.getStart(), form.getEnd());
     		Map<String, Integer> allMeetingCounts = new HashMap<>();
     		Map<String, Integer> myMeetingCounts = new HashMap<>();
@@ -388,9 +390,15 @@ public class DecisionRestController {
     		}
     		List<FormMeetingEvent> meetingCountEventList = new ArrayList<>();
     		
+    		for (int i=0; i<meetingList.size(); i++) {
+    			
+    		}
+    		
     		allMeetingCounts.forEach((k, v) -> {
     			FormMeetingEvent event = new FormMeetingEvent();
-    			event.setTitle("전문검증단(" + v + "건)");
+    			int count = decisionService.getCountSamedaysMeetings(k);
+    			//event.setTitle("전문검증단(" + v + "건)");
+    			event.setTitle("전문검증단(" + count + "건)");
     			event.setDate(k);
     			event.setType("count");
     			meetingCountEventList.add(event);

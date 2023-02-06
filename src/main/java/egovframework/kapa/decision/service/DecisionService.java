@@ -455,7 +455,7 @@ public class DecisionService {
 		return decisionStateDTO;
 	}
 
-	public void meetingsInsert(String param) {
+	public int meetingsInsert(String param) {
 		// TODO Auto-generated method stub
 		
 		JSONParser parser = new JSONParser();
@@ -468,6 +468,11 @@ public class DecisionService {
 			Decision_Date insertDate = new Decision_Date();
 		
 		    LocalDate consultationDate = LocalDate.parse(meetingDate, inputFormatter);
+		    
+		    int checkEnable = decisionMapper.checkMeetingsEnable(meetingDate);
+		    if (checkEnable>0) {
+		    	return 0;	// 이미 등록된 회의가 존재. Occur Error.
+		    }
 
 	        insertDate.setConsultationDate(consultationDate);
 	        insertDate.setRegdate(LocalDateTime.now());
@@ -481,6 +486,8 @@ public class DecisionService {
 			e.printStackTrace();
 		}
 
+		return 1;	// 정상동작
+
 		
 	}
 
@@ -489,6 +496,11 @@ public class DecisionService {
 		param.put("start", start);
 		param.put("end", end);
 		return decisionMapper.selectCaseMeeting(param);
+	}
+
+	public int getCountSamedaysMeetings(String date) {
+		int seqNo = decisionMapper.getSeqNoByConsultDate(date);	
+		return decisionMapper.getCountSamedaysMeetings(seqNo);
 	}
 
 	public List<Decision_Date> getDateList() {
