@@ -331,7 +331,7 @@
 			
 			<div class="f_wrap">
 				<h2 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
-				<table class="f_wrap__table">
+				<table class="f_wrap__table f_wrap__table--owner_opinion">
 					<thead>
 						<tr>
 							<th class="f_wrap__th--owner_name">소유자</th>

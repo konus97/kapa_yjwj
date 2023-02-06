@@ -131,6 +131,9 @@ body {
 	border: 2px solid #000;
 	margin: 0.6em 0 1.2em;
 }
+.f_wrap__table--owner_opinion {
+	table-layout: fixed;
+}
 .f_wrap__table th,
 .f_wrap__table td {
 	border: 1px solid #000;
@@ -180,7 +183,7 @@ body {
 	width:2.5em;
 }
 .f_wrap__th--owner_name {
-	width:6em;
+	width:7em;
 }
 
 /* 심사하기 */
@@ -414,4 +417,9 @@ body {
     /* color: #5A7791; */
     color: #555;
     text-indent:1em;
+}
+.opinion_index_list--sub2 a {
+	font-size: 13px;
+	text-indent: 3em;
+    padding: 6px;
 }
