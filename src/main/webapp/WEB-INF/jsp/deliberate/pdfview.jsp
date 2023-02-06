@@ -420,6 +420,7 @@
 			 </div>
 		</c:forEach>
 	</c:forEach>
+	
 	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
 		
 			 <img src="${jpgFileList}" alt="">

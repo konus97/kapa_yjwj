@@ -92,7 +92,7 @@ public class AppraiserController {
             
             for(ApplicationLand applicationLand:landList) {
               int area_amot = applicationLand.getArea_amot();
-              int bef_unit_cost = applicationLand.getBef_unit_cost();
+              long bef_unit_cost = applicationLand.getBef_unit_cost();
               
               totalAreaAmot+=area_amot;
               
@@ -115,7 +115,7 @@ public class AppraiserController {
             List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
             
             for(ApplicationLand applicationLand:goodsList) {      
-              int bef_unit_cost = applicationLand.getBef_unit_cost();                       
+              long bef_unit_cost = applicationLand.getBef_unit_cost();                       
               totalCost+=bef_unit_cost;
             }
             
