@@ -324,11 +324,11 @@ public class DeliberateController {
   	  		// pdf -> jpg 변환작업
   			String fname = decisionFile.get(i).getFileNameChange();
   			// 로컬		
-  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+//  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
   			// 서버
   			String serverPath = decisionFile.get(i).getFileFolder();
   			PDFConverter pdfconvert = new PDFConverter();
-  			//jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
+//  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
   			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
 //  			String downloadFilePath =  serverPath + fname;
 //  			File file = new File(downloadFilePath);
