@@ -85,7 +85,6 @@ public class DecisionController {
         model.addAttribute("masterId", masterId);
         
         List<Decision_Consult> consultList = decisionService.getConsultList(masterId);
-        System.out.println("testasdfsadf:::" + consultList);
         model.addAttribute("consultList", consultList);
 		ApplicationList applicationVo = implementerService.getApplicationView(masterId);
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
@@ -721,8 +720,6 @@ public class DecisionController {
 		return "decision/schedule/list";
 	}
 	
-	public static <T> Predicate<T> distinctByKey( Function<? super T, Object> keyExtractor) {Map<Object, Boolean> map = new ConcurrentHashMap<>();return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;  
-	}
 
 	
 	

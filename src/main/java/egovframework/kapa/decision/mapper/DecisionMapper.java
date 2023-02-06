@@ -153,6 +153,8 @@ public interface DecisionMapper {
 	public int getLandCheck(@Param("reptSeq")Long reptSeq,@Param("reptOwnrSeq") Long reptOwnrSeq);
 	
 	public int getObjectsCheck(@Param("reptSeq")Long reptSeq,@Param("reptOwnrSeq") Long reptOwnrSeq);
+	
+	public List<String> getLandObjOwnerCount(int masterId);
 
 
 	

@@ -109,7 +109,17 @@
                                                 <label>위치/규모</label>
                                             </div>
                                             <div class="ff_wrap">
+                                            <c:choose>
+                                            	<c:when test="${avo.reptLoc ne ''}">
                                                 <p>${avo.reptLoc}</p>         
+                                                </c:when>
+                                                <c:when test="${avo.reptLoc ne null}">
+                                                <p>${avo.reptLoc}</p>         
+                                                </c:when>
+                                                <c:otherwise>
+                                                <p>-</p>
+                                                </c:otherwise>
+                                               </c:choose>
                                             </div>
                                         </div>
                                     </div>

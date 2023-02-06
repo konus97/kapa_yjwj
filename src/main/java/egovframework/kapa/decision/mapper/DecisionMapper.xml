@@ -660,7 +660,11 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
   		</where>
     </select>
 
-
+	<select id ="getLandObjOwnerCount" parameterType="int" resultType="java.lang.String">
+	select DISTINCT KLR.PName from Kapa_LandRights KLR
+    left join Kapa_ObjectsRights KOR on KLR.MasterID = KOR.MasterID 
+	where KLR.masterid = #{masterId}
+	</select>
 
 	
 </mapper>

@@ -367,7 +367,7 @@ public class DecisionRestController {
 	public Map<String, Object> getMeetingsDateList(@RequestBody FormMeetingSearch form) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
+				System.out.println("심의일정 start");
         try {
 
         	System.out.println(form);
@@ -376,7 +376,7 @@ public class DecisionRestController {
     		List<Decision_Date> meetingList = decisionService.selectCaseMeetings(form.getStart(), form.getEnd());
     		Map<String, Integer> allMeetingCounts = new HashMap<>();
     		Map<String, Integer> myMeetingCounts = new HashMap<>();
-
+    		System.out.println("test:" + meetingList);
     		for (Decision_Date meeting : meetingList) {
     		
     		    LocalDate getDate = meeting.getConsultationDate();
@@ -385,9 +385,11 @@ public class DecisionRestController {
     			
     			String key = formattedString;
     			int count = 0;
+    			
     			allMeetingCounts.put(key, count);
     		
     		}
+    		System.out.println("test2 :::::" + allMeetingCounts);
     		List<FormMeetingEvent> meetingCountEventList = new ArrayList<>();
     		
     		for (int i=0; i<meetingList.size(); i++) {

@@ -265,19 +265,31 @@
 					</li>
 					<li class="f_wrap__item">
 						<span>수용할 토지 및 물건의 소유자 등 : </span>
-						<span>-</span>
+						<span>${ownerName} 등 ${ownerCount}명</span>
 						<ul class="f_wrap__list f_wrap__list--sub">
 							<li class="f_wrap__item f_wrap__item--sub">
 								<span>재결신청의 청구 : </span>
-								<span></span>							
+								<span>${ownerName} 등 ${ownerCount}명</span>						
 							</li>
 						</ul>
 					</li>
 					<li class="f_wrap__item">
 						<span>협의내역횟수, 다수 협의 날짜 : </span>
-						<c:forEach var="consultationDate" items="${formatter.consultationDates}" varStatus="status">
-							<span>${consultationDate.consultationDate}</span>
+						<span> ${consultationDatesSize} 회 
+						<c:forEach var="consultationDates" items="${consultationDates}" varStatus="status">
+							<c:choose>
+							<c:when test="${status.first}">
+							( ${consultationDates.consultationDate},
+							 	</c:when>
+								<c:when test="${!status.last}">
+							 ${consultationDates.consultationDate},
+							 	</c:when>
+							 	<c:otherwise>
+							 ${consultationDates.consultationDate} )
+							 	</c:otherwise>
+							</c:choose>
 						</c:forEach>
+						</span>
 					</li>
 					<li class="f_wrap__item">
 						<span>재결신청사유 : </span>
@@ -295,23 +307,33 @@
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>열람공고 : </span>
-						<span></span>
+						<span>${EndDate}</span>
 					</li>
-					<li class="f_wrap__item">
+					<!-- <li class="f_wrap__item">
 						<span>토지 등 소유자 의견 : </span>
 						<span></span>
-					</li>
+					</li> -->
 			        <li class="f_wrap__item">
-			            <span>감정평가 : </span>
-			            <span></span>
+			            <span>감정평가 : 평가의견서 참조</span>
 			            <ul class="f_wrap__list f_wrap__list--sub">
 			                <li class="f_wrap__item f_wrap__item--sub">
 			                    <span>사업시행자 평가기관 : </span>
-			                    <span></span>
+			                    <span>${businessOperator}, ${governor}, ${landowner}평가법인</span>
 			                </li>
 			                <li class="f_wrap__item f_wrap__item--sub">
 			                    <span>우리위원회 평가기관 : </span>
-			                    <span></span>
+			                    <span>
+			                    <c:forEach var="consultList" items="${consultList}" varStatus="status">
+			                    <c:choose>
+			                    	<c:when test="${!status.last}">
+					              ${consultList.appName},
+					            	</c:when>
+					            	<c:otherwise>
+					           	  ${consultList.appName}평가법인
+					            	</c:otherwise>
+					            </c:choose>
+					            </c:forEach>
+			                    </span>
 			                </li>
 			            </ul>
 					</li>
@@ -357,6 +379,70 @@
 							<td class="f_wrap__th--opinion">내용</td>
 							<td class="f_wrap__textarea" colspan="2">${deliberateOpinionDTO.opinionContent}</td>
 						</tr>
+						<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
+									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
+													<c:choose>
+													<c:when test="${fileList.fileNameExtension eq 'png'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when><c:when test="${fileList.fileNameExtension eq 'PNG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpeg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPEG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													</c:choose>
+													</c:if>
+													</c:if>
+								  </c:forEach> 
 						</tbody>
 				</table>
 			</div>
