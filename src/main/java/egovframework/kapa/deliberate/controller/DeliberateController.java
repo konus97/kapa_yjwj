@@ -2,6 +2,7 @@ package egovframework.kapa.deliberate.controller;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,10 @@ import egovframework.kapa.deliberate.dto.DeliberateViewDTO;
 import egovframework.kapa.deliberate.service.DeliberateService;
 import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
+import egovframework.kapa.domain.Decision_Consult;
+import egovframework.kapa.domain.Decision_ConsultationDate;
 import egovframework.kapa.domain.Decision_File;
+import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.service.ImplementerService;
@@ -288,6 +292,7 @@ public class DeliberateController {
 	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
 	    model.addAttribute("registerFileList", registerFileList);
         model.addAttribute("opinionList", opinionList);
+        
         List<Decision_Opinion> typeList = new ArrayList<>();
         String getTypeStr = "";
         
@@ -337,13 +342,22 @@ public class DeliberateController {
 		model.addAttribute("currentPage", "agenda");
 		
 		DeliberateViewDTO formatter = deliberateService.getDeliberateViewInfoFormatter(decisionId); 
-		
+		Decision_Notice decisionNotice = decisionService.getDecisionNoticeView(decisionId);
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String EndDate = decisionNotice.getRequestEndDate().format(format);
     	model.addAttribute("formatter", formatter);
 		
     	int masterId = decision.getMasterID();
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
+        List<Decision_Consult> consultList = decisionService.getConsultList(masterId);
+        List<Decision_ConsultationDate> consultationDates =  decisionService.getConsultationDate(decisionId);
+        List<String> ownerCount = decisionService.getLandObjOwnerCount(masterId);
+        
 		model.addAttribute("csltList", csltList);
-		
+        model.addAttribute("consultList", consultList);
+        model.addAttribute("consultationDates", consultationDates);
+        model.addAttribute("ownerCount", ownerCount.size());
+        model.addAttribute("ownerName", ownerCount.get(0));
 		Long landCnt = decision.getLandCnt();
 		Long landArea = decision.getLandArea();
 		Long landPrice = decision.getLandPrice();
@@ -354,14 +368,26 @@ public class DeliberateController {
 
 		DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
 	    String landCntStr = dc.format(landCnt);
-		    String landAreaStr = dc.format(landArea);
+		String landAreaStr = dc.format(landArea);
   		String landPriceStr = dc.format(landPrice);
   		String objCntStr = dc.format(objCnt);
   		String objPriceStr = dc.format(objPrice);
   		String goodwillCntStr = dc.format(goodwillCnt);
   		String goodwillPriceStr = dc.format(goodwillPrice);
   		
-
+  		String businessOperator = "";
+  		String governor = "";
+  		String landowner = "";
+  		if(decision.getBusinessOperator() != null) {
+  		businessOperator = decision.getBusinessOperator();
+  		}
+  		if(decision.getGovernor() != null) {
+  		governor = decision.getGovernor();
+  		}
+  		if(decision.getLandowner() != null) {
+  		landowner = decision.getLandowner();
+  		}
+  		
   		//List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
   		//List<FileVO> decisionFile = new ArrayList();
   		//List<String> jpgFiles = new ArrayList();
@@ -393,8 +419,12 @@ public class DeliberateController {
  		 model.addAttribute("objPrice", objPriceStr);
  		 model.addAttribute("goodwillCnt", goodwillCntStr);
  		 model.addAttribute("goodwillPrice", goodwillPriceStr);
+ 		model.addAttribute("businessOperator", businessOperator);
+ 		model.addAttribute("landowner", landowner);
+ 		model.addAttribute("governor", governor);
  		 model.addAttribute("jpgFiles", jpgFiles);
- 		 
+ 		 model.addAttribute("EndDate", EndDate);
+ 		 model.addAttribute("consultationDatesSize", consultationDates.size());
 		return "deliberate/pdfview";
 	}
 	
