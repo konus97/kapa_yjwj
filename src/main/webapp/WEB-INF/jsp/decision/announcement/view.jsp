@@ -231,7 +231,7 @@
                                     <div class="f_wrap">
                                         <div class="f_field">
                                             <div class="ff_title">
-                                                <label>추천요청을 하지 않은 이유</label>
+                                                <label class="lineOver">추천요청을 하지<br> 않은 이유</label>
                                             </div>
                                             <div class="ff_wrap">
                                                 <p class="p_view">${decision.notReqReason}</p>
