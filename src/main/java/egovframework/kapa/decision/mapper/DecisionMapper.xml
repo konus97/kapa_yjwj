@@ -619,14 +619,14 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
     <select id="getLandCheck" resultType="int">
         select count(*) from  Kapa_LandRights
   		<where>
-			LandID = #{reptSeq} and PID = #{reptOwnrSeq}
+			LandID = #{reptSeq} and PID = #{reptOwnrSeq} and gubun = 'O'
   		</where>
     </select>
     
     <select id="getObjectsCheck" resultType="int">
         select count(*) from  Kapa_ObjectsRights
   		<where>
-			ObjectsID = #{reptSeq} and PID = #{reptOwnrSeq}
+			ObjectsID = #{reptSeq} and PID = #{reptOwnrSeq} and gubun = 'O'
   		</where>
     </select>
 

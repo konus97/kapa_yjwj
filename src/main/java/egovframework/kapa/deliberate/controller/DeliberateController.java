@@ -281,11 +281,58 @@ public class DeliberateController {
 	public String deliberatePdfView(HttpServletRequest request,Model model) throws Exception {
 	
 		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
-		Decision decision = decisionService.getDecisionView(decisionId);
 		System.out.println(decisionId); 
 	    model.addAttribute("decisionId", decisionId);
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+	    List<Decision_Opinion> typeListOld = decisionService.getOpinionTypeList(decisionId);
+	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    model.addAttribute("registerFileList", registerFileList);
         model.addAttribute("opinionList", opinionList);
+        List<Decision_Opinion> typeList = new ArrayList<>();
+        String getTypeStr = "";
+        
+        for(Decision_Opinion item : typeListOld) {
+        	Decision_Opinion op = new Decision_Opinion();
+        	op.setDecisionId(item.getDecisionId());
+        	op.setOpinionText(item.getOpinionText());
+        	op.setRelatedLaws2(item.getRelatedLaws2());
+        	op.setReviewOpinion(item.getReviewOpinion());
+        	op.setOpinionType(item.getOpinionType());
+        	System.out.println("test:::::"+item.getOpinionType());
+        	
+        	
+        	 int getType = item.getOpinionType();
+         	 
+    		 for(int i=0 ; i<ItemData.values().length ; i++) {
+    			 
+    	   		 int code = ItemData.values()[i].getCode();
+    	   		 
+    	   		 if(code==getType) {
+    	   			getTypeStr = ItemData.values()[i].getKrName();
+    	   			break;
+    	   		 }
+            }
+    		op.setGetTypeStr(getTypeStr);
+    	
+       	
+        	typeList.add(op);
+		 
+        }
+        System.out.println("=======================★=========================");
+        System.out.println(typeList);
+        System.out.println("=================================================");
+
+          
+         
+        
+        model.addAttribute("typeList", typeList);
+		
+//		Long decisionId = Long.parseLong(request.getParameter("decisionId"));
+		Decision decision = decisionService.getDecisionView(decisionId);
+		System.out.println(decisionId); 
+	    model.addAttribute("decisionId", decisionId);
+//	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
+//        model.addAttribute("opinionList", opinionList);
 		//current page
 		model.addAttribute("currentPage", "agenda");
 		
@@ -314,29 +361,27 @@ public class DeliberateController {
   		String goodwillCntStr = dc.format(goodwillCnt);
   		String goodwillPriceStr = dc.format(goodwillPrice);
   		
-  		List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
-  		List<FileVO> decisionFile = new ArrayList();
-  		//List<String> jpgFiles = new ArrayList();
-  		List<List<String>> jpgFiles = new ArrayList<List<String>>();
-  		
-  		for (int i=0; i<decision_File.size(); i++) {
-  			decisionFile.add(decisionService.getFileByDeicisionFileSeq(decision_File.get(i).getFileSeq()));
-  	  		// pdf -> jpg 변환작업
-  			String fname = decisionFile.get(i).getFileNameChange();
-  			// 로컬		
-  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
-  			// 서버
-  			String serverPath = decisionFile.get(i).getFileFolder();
-  			PDFConverter pdfconvert = new PDFConverter();
-  			//jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
-  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
-//  			String downloadFilePath =  serverPath + fname;
-//  			File file = new File(downloadFilePath);
-//			if (file.exists()) {
-//	  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
-//			}
-  			//jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId);
-  		}
+
+		/*
+		 * List<Decision_File> decision_File =
+		 * decisionService.getDecisionFileList(Long.valueOf(masterId)); List<FileVO>
+		 * decisionFile = new ArrayList(); //List<String> jpgFiles = new ArrayList();
+		 * List<List<String>> jpgFiles = new ArrayList<List<String>>();
+		 * 
+		 * for (int i=0; i<decision_File.size(); i++) {
+		 * decisionFile.add(decisionService.getFileByDeicisionFileSeq(decision_File.get(
+		 * i).getFileSeq())); // pdf -> jpg 변환작업 String fname =
+		 * decisionFile.get(i).getFileNameChange(); // 로컬 String localPath =
+		 * request.getServletContext().getRealPath(File.separator)+ "file" +
+		 * File.separator + "download"+"\\"; // 서버 String serverPath =
+		 * decisionFile.get(i).getFileFolder(); PDFConverter pdfconvert = new
+		 * PDFConverter(); //jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname,
+		 * masterId, i)); jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname,
+		 * masterId, i)); String downloadFilePath = serverPath + fname; File file = new
+		 * File(downloadFilePath); if (file.exists()) {
+		 * jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i)); }
+		 * //jpgFiles = pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId); }
+		 */
   		 
   		 model.addAttribute("landCnt", landCntStr);
  		 model.addAttribute("landArea", landAreaStr);
@@ -345,7 +390,7 @@ public class DeliberateController {
  		 model.addAttribute("objPrice", objPriceStr);
  		 model.addAttribute("goodwillCnt", goodwillCntStr);
  		 model.addAttribute("goodwillPrice", goodwillPriceStr);
- 		 model.addAttribute("jpgFiles", jpgFiles);
+ 		// model.addAttribute("jpgFiles", jpgFiles);
  		 
 		return "deliberate/pdfview";
 	}

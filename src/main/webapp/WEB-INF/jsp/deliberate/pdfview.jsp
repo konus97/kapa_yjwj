@@ -113,12 +113,12 @@
 	<div id="pdfWr" class="pdf_wr">
 	
 		<div class="pdf__page pdf__page--cover">
-			<h1 class="pdf__tit">${formatter.applicationDTO.judgBizNm}</h1>
+			<h1 class="pdf__tit">${formatter.applicationDTO.title}</h1>
 		</div>
 		
 		<div class="pdf__page">
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit01" class="f_wrap__tit">사업개요</h2>
+				<h2 id="index${formatter.applicationDTO.title}_tit01" class="f_wrap__tit">사업개요</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>사업명 : </span>
@@ -304,10 +304,11 @@
 		
 		
 		<!-- 1. 지연가산금 S -->
+		<c:forEach var="typeList" items="${typeList}" varStatus="status">
+			<h2 id="index${typeList.opinionType}_${typeList.getTypeStr}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="pdf__tit pdf__tit--sub">${typeList.opinionType}. ${typeList.getTypeStr}</h2>
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
-								
+								<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 			
-			<h2 id="index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="pdf__tit pdf__tit--sub">${deliberateOpinionDTO.type }. ${deliberateOpinionDTO.typeStr }</h2>
 			<div class="f_wrap">
 				<h2 id="index${formatter.applicationDTO.judgSeq}_tit05" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
 				<table class="f_wrap__table">
@@ -320,7 +321,7 @@
 					</thead>
 						<tbody>
 							<tr>
-								<td class="f_wrap__td--cen">${deliberateOpinionDTO.ownerViewInfo.ownr_nm}</td>
+								<td class="f_wrap__td--cen">${deliberateOpinionDTO.ownerViewInfo.pname}</td>
 								<td class="f_wrap__td--para">
 									<p>${deliberateOpinionDTO.ownerOpinion}</p>
 								</td>
@@ -328,47 +329,32 @@
 									<p>${deliberateOpinionDTO.executorOpinion}</p>
 								</td>
 							</tr>
+							<tr>
+							<td class="f_wrap__th--owner_name">제목</td>
+							<td class="f_wrap__textarea" colspan="2">${deliberateOpinionDTO.opinionTitle}</td>
+						</tr>
+						<tr>
+							<td class="f_wrap__th--opinion">내용</td>
+							<td class="f_wrap__textarea" colspan="2">${deliberateOpinionDTO.opinionContent}</td>
+						</tr>
 						</tbody>
 				</table>
 			</div>
-			<div class="f_wrap">
-				<!-- 재결관 의견 에디터 내용  -->
-				<div class="f_wrap__textarea">${deliberateOpinionDTO.opinionText}</div>
-			</div>
-			<div class="f_wrap">
-				<h2 class="f_wrap__tit">관련 법령</h2>
-				<div class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws }</div>
-			</div>
-		
-			<div class="f_wrap">
-				<h2 class="f_wrap__tit">관련 법령 판례</h2>
-				<div class="f_wrap__textarea">${deliberateOpinionDTO.relatedLaws2 }</div>
-			</div>
-			<div class="f_wrap">
-				<h2 class="f_wrap__tit">검토 의견</h2>
-				<div class="f_wrap__textarea">${deliberateOpinionDTO.reviewOpinion }</div>
-			</div>
+			
 			<table class="f_wrap__table">
-						<tr>
-							<td class="f_wrap__th--owner_name">소재지</td>
-							<td class="f_wrap__textarea">${deliberateOpinionDTO.opinionTitle}</td>
-						</tr>
-						<tr>
-							<td class="f_wrap__th--opinion">이전비 평가사유</td>
-							<td class="f_wrap__textarea">${deliberateOpinionDTO.opinionContent}</td>
-						</tr>
-						<tr>
+						
+						<%-- <tr>
 							<th colspan="2">관련자료</th>
 						 </tr>
 						 <tr>
 							<th colspan="2"><img
 															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
 															alt=""></th>
-						 </tr>
+						 </tr> --%>
 			</table>
 			
 			<!--  소재지, 사유, 관련자료 S -->
-			<c:if test="${deliberateOpinionDTO.itemCheck}">
+			<%-- <c:if test="${deliberateOpinionDTO.itemCheck}">
 			<c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
 			 
 			<div class="f_wrap">		
@@ -383,7 +369,7 @@
 							</th>
 							<td><p class="">${deliberateOpinionItemDTO.content }</p></td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<th colspan="2">관련자료</th>
 						</tr>
 						<tr>
@@ -392,15 +378,34 @@
 								src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
 								alt="">
 							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 			</div>	
 			
 			</c:forEach>
-			</c:if>
+			</c:if> --%>
 			<!--  소재지, 사유, 관련자료 E -->	
+		</c:if>
+		</c:forEach>
+		<div class="f_wrap">
+				<!-- 재결관 의견 에디터 내용  -->
+				<h2 class="f_wrap__tit">재결관 의견</h2>
+				<div class="f_wrap__textarea">${typeList.opinionText}</div>
+			</div>
+			<%-- <div class="f_wrap">
+				<h2 class="f_wrap__tit">관련 법령</h2>
+				<div class="f_wrap__textarea">${typeList.relatedLaws2 }</div>
+			</div> --%>
 		
+			<div class="f_wrap">
+				<h2 class="f_wrap__tit">관련 법령 판례</h2>
+				<div class="f_wrap__textarea">${typeList.relatedLaws2 }</div>
+			</div>
+			<div class="f_wrap">
+				<h2 class="f_wrap__tit">검토 의견</h2>
+				<div class="f_wrap__textarea">${typeList.reviewOpinion }</div>
+			</div>
 		</c:forEach>
 		<!-- 1. 지연가산금 E -->
 

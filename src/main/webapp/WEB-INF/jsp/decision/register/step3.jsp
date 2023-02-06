@@ -563,7 +563,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${deliberateOpinionDTO.ownerViewInfo.ownr_nm} 
+										<td>${deliberateOpinionDTO.ownerViewInfo.pname} 
 										</td>
 										<td class="c_table__td--para">
 											<div class="op_list">
@@ -798,6 +798,14 @@
 											</div>
 										</td>
 									</tr>
+									<tr>
+														<th class="info_reg_th">제목</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">내용</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
+													</tr>
 									<tr>
 														<th class="info_reg_th" colspan="3">관련자료</th>
 													</tr>

@@ -799,12 +799,19 @@
 										</td>
 									</tr>
 									<tr>
+														<th class="info_reg_th">제목</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionTitle}</p></td>
+													</tr>
+													<tr>
+														<th class="info_reg_th">내용</th>
+														<td colspan="2"><p class="">${deliberateOpinionDTO.opinionContent}</p></td>
+													</tr>
+									<tr>
 														<th class="info_reg_th" colspan="3">관련자료</th>
 													</tr>
 									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
 									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
 									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
-													
 													<c:choose>
 													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
 													<tr>

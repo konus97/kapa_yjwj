@@ -50,10 +50,10 @@ function makeDeliberateBlock(num,info) {
 	addList.push(" <td>");
 	addList.push("     <strong>심사진행</strong>");
 	addList.push("     <span>");
-	addList.push("         <a");
+	/*addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberateView('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >보기</a >");
+	addList.push("             >보기</a >");*/
 	/*addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
 	addList.push("         </button>");*/
@@ -166,7 +166,7 @@ function makeAgendaDetail(num,info) {
 	addList.push("         <a");
 	addList.push("           href=\"#\" onclick=\"goToDeliberatePdf('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >심사하기</a >");
+	addList.push("             >보기</a >");
 	addList.push("    </span>");
 	addList.push("</td>");
 	/*addList.push("<td>");
