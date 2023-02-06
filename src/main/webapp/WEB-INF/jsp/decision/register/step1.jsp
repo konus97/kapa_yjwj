@@ -163,7 +163,7 @@
                                     <div class="f_wrap">                           
                                         <div class="f_field div2">
                                             <div class="ff_title">
-                                                <label>협회설립</label>
+                                                <label>조합설립일</label>
                                             </div>
                                             <div class="ff_wrap">
                                                <p>${groupEstablishedDate}</p>

@@ -108,14 +108,15 @@
 											<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 												<c:if test="${deliberateOpinionDTO.landCheck}">
 				                          			<li>
-				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">
-				        	                  				${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}">
+				        	                  				${deliberateOpinionDTO.ownerViewInfo.pname}
 				        	                  			</a>
 				                          			</li>
 		                          				</c:if>
-		                          				<c:if test="${deliberateOpinionDTO.objectCheck}">	                          			<li>
-				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">
-				        	                  				${deliberateOpinionDTO.ownerViewInfo.ownr_nm}
+		                          				<c:if test="${deliberateOpinionDTO.objectCheck}">
+		                          					<li>
+				        	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}">
+				        	                  				${deliberateOpinionDTO.ownerViewInfo.pname}
 				        	                  			</a>
 				                          			</li>
 		                          				</c:if>
@@ -234,7 +235,7 @@
 									</div>
 									<div class="f_field div2">
 										<div class="ff_title">
-											<label>협회설립</label>
+											<label>조합설립일</label>
 										</div>
 										<div class="ff_wrap">
 											<p>${formatter.groupEstablishedDate}</p>
@@ -473,7 +474,7 @@
 								
 								<c:if test="${deliberateOpinionDTO.landCheck}">
 									<div class="cs_title">
-										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="fl title t1 bold cb s1 bullet">
 											필지
 										</h4>
 									</div>
@@ -684,7 +685,7 @@
 								<c:if test="${deliberateOpinionDTO.objectCheck}">
 									
 									<div class="cs_title">
-										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="fl title t1 bold cb s1 bullet">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="fl title t1 bold cb s1 bullet">
 											지장물
 										</h4>
 									</div>

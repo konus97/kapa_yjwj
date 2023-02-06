@@ -1988,6 +1988,11 @@
         				xhr.setRequestHeader(csrfHeader, csrfToken);
         			},
 	                success: function (result) {
+	                	var check = result.check;
+	                	if (check==0){
+	                		alert("이미 등록된 회의일정이 존재합니다.");
+	                	}
+	                	console.log(check);
 	                    location.reload();
 	                },
 	                error: function (response, status, error) {

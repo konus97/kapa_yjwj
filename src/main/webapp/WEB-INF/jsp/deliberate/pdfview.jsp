@@ -70,29 +70,47 @@
                	</h4>
             	<ul class="opinion_index_list">
 	             	<li>
-	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit01">사업개요</a>
+	             		<a href="#index_tit01">사업개요</a>
 	             	</li>
 	             	<li>
-	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit02">사업인정관계</a>
+	             		<a href="#index_tit02">사업인정관계</a>
 	             	</li>
 	             	<li>
-	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit03">재결신청내역</a>
+	             		<a href="#index_tit03">재결신청내역</a>
 	             	</li>
 	             	<li>
-	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit04">재결심리준비</a>
+	             		<a href="#index_tit04">재결심리준비</a>
 	             	</li>
 	             	<li>
-	             		<a href="#index${formatter.applicationDTO.judgSeq}_tit05">소유자 및 사업시행자 의견</a>
+	             		<a href="#index_tit05">소유자 및 사업시행자 의견</a>
 	             	</li>
-	             	<li>
-		                <ul class="opinion_index_list--sub">
-		                <c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
-		                	<li>
-		                		<a href="#index${formatter.applicationDTO.judgSeq}_${deliberateOpinionDTO.type}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}">${deliberateOpinionDTO.type}. ${deliberateOpinionDTO.typeStr}</a>
-		                	</li>
-		                </c:forEach>
-		                </ul>
-	             	</li>
+					<li>
+	                    <ul class="opinion_index_list--sub">
+	                    <!-- 항목 시작 -->
+	                    <c:forEach var="typeList" items="${typeList}" varStatus="status">
+	                    	<li>
+	                    		<a href="#index${typeList.decisionId}_${typeList.opinionType}">
+	                    			<!-- 쟁점 항목 이름 -->
+	                    			${typeList.opinionType}. ${typeList.getTypeStr} 
+	                    		</a>
+	                    		<!-- 소유자 시작 -->
+	                    		<ul class="opinion_index_list--sub2">
+	                    		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
+									<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
+		                    			<li>
+		    	                  			<a href="#index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}">
+		    	                  				${deliberateOpinionDTO.ownerViewInfo.pname}
+		    	                  			</a>
+		                      			</li>
+	                    			</c:if>
+	                    		</c:forEach>
+	                    		</ul>
+	                    		<!-- 소유자 끝 -->
+	                    	</li>
+	                    </c:forEach>
+	                    <!-- 항목 끝 -->
+	                    </ul>
+                 	</li>
 	             	<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_fileWr">첨부파일</a>
 	             	</li>
@@ -118,7 +136,7 @@
 		
 		<div class="pdf__page">
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.title}_tit01" class="f_wrap__tit">사업개요</h2>
+				<h2 id="index_tit01" class="f_wrap__tit">사업개요</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>사업명 : </span>
@@ -140,7 +158,7 @@
 				</ul>
 			</div>
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit02" class="f_wrap__tit">사업인정관계</h2>
+				<h2 id="index_tit02" class="f_wrap__tit">사업인정관계</h2>
 				<ul class="f_wrap__list">
 					<c:forEach var="cityPlan" items="${formatter.cityPlans}" varStatus="status">
 					<li class="f_wrap__item">
@@ -150,7 +168,7 @@
 				</ul>
 			</div>
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit03" class="f_wrap__tit">재결신청내역</h2>
+				<h2 id="index_tit03" class="f_wrap__tit">재결신청내역</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>총물량조서</span>
@@ -285,7 +303,7 @@
 			</div>
 		
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit04" class="f_wrap__tit">재결심리준비</h2>
+				<h2 id="index_tit04" class="f_wrap__tit">재결심리준비</h2>
 				<ul class="f_wrap__list">
 					<li class="f_wrap__item">
 						<span>열람공고 : </span>
@@ -324,16 +342,18 @@
 			
 			
 		
-		
+		<div id="index_tit05" class="blind"></div>
 		<!-- 1. 지연가산금 S -->
 		<c:forEach var="typeList" items="${typeList}" varStatus="status">
-			<h2 id="index${typeList.opinionType}_${typeList.getTypeStr}_${deliberateOpinionDTO.ownerViewInfo.rept_seq}" class="pdf__tit pdf__tit--sub">${typeList.opinionType}. ${typeList.getTypeStr}</h2>
+			<h2 id="index${typeList.decisionId}_${typeList.opinionType}" class="pdf__tit pdf__tit--sub">
+				${typeList.opinionType}. ${typeList.getTypeStr}
+			</h2>
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
 			
 			<div class="f_wrap">
-				<h2 id="index${formatter.applicationDTO.judgSeq}_tit05" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
-				<table class="f_wrap__table">
+				<h2 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
+				<table class="f_wrap__table f_wrap__table--owner_opinion">
 					<thead>
 						<tr>
 							<th class="f_wrap__th--owner_name">소유자</th>
