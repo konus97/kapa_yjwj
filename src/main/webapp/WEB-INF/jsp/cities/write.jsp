@@ -211,7 +211,7 @@
                                                 <label>열람공고만료일</label>
                                             </div>
                                             <div class="ff_wrap">
-                                                <p>${endDate}</p>
+                                                <p>${publication}</p>
                                             </div>
                                         </div>
                                         <div class="f_field div2">
