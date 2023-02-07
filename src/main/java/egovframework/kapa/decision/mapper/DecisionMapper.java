@@ -103,6 +103,8 @@ public interface DecisionMapper {
 	List<Decision_Date> getDateList();
 
 	void insertAgendaDate(Decision_AgendaDate insertAgendaDate);
+	
+	void updateAgendaDate(Decision_AgendaDate updateAgendaDate);
 
 	List<Decision_Opinion> getOpinionList(Long decisionId);
 	

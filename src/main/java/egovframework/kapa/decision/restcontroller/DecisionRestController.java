@@ -119,6 +119,23 @@ public class DecisionRestController {
 	   return resultFinal;
 	}
 	
+	@RequestMapping(value = "/register/step3",  method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public Map<String, Object> registerStep3(@RequestBody String data) throws Exception {
+		
+		Map<String, Object> resultFinal = new HashMap<String, Object>();
+		JSONObject json = new JSONObject(data);
+		
+		try {
+			decisionService.updateStep3(data);	
+			resultFinal.put("msg", "Complete");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultFinal;
+		
+	}
+	
 	@RequestMapping(value = "/meetings/insert",  method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public Map<String, Object> meetingsInsert(@RequestBody String data) throws Exception {
 		

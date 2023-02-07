@@ -18,6 +18,10 @@
     	values(#{decisionId},#{selectDate}, #{delCheck}, #{regdate}, #{uptdate})
     </insert>
 
+	<update id="updateAgendaDate" parameterType="egovframework.kapa.domain.Decision_AgendaDate">
+    	update TB_Decision_AgendaDate set selectDate = #{selectDate}, uptdate = #{uptdate}
+    	where decisionId = #{decisionId}
+    </update>
 		
 	<update id="updateState">
 		update TB_Decision set decisionState = #{decisionState} where seqNo = #{seqNo}

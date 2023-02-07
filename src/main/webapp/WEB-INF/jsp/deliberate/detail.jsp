@@ -991,7 +991,10 @@
 								</div>
 							</c:forEach>	
 							<!-- 1. 지연가산금 E -->
-							
+							<div class="btn_wrap mt60 mb60">
+								<a href="#" class="btn t1 h50 big"
+										onclick="goToDeliberateList();return false;">확인</a>
+							</div>
 					</div>
 					
 				
@@ -1028,6 +1031,7 @@
 	<script src="../../lib/lib.js"></script>
 		<script src="../../lib/charts.js"></script>
 		<script src="../../js/common.js"></script>
+		<script src="../../js/deliberate/content.js"></script>
 		<script type="text/javascript">
 
 
