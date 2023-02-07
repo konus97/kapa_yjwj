@@ -203,8 +203,7 @@ body {
 	padding: 0.2em 1.6em;
 }
 .f_wrap__file_wr input {
-	width: auto;
-	text-align: center;
+	width: 100%;
 }
 .f_wrap__btn {
 	background:#eee;
