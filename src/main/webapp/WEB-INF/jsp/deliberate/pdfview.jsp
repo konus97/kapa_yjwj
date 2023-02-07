@@ -113,9 +113,9 @@
 	                    <!-- 항목 끝 -->
 	                    </ul>
                  	</li>
-	             	<li>
+	             	<!--<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_fileWr">첨부파일</a>
-	             	</li>
+	             	</li>-->
 	             	<li>
 	             		<a href="#index${formatter.applicationDTO.judgSeq}_downBtn">PDF 다운로드</a>
 	             	</li>
@@ -468,16 +468,18 @@
 													<c:choose>
 													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
 													<tr>
-													<div class="file_flex"> 
-													<input class="file_view" value="pdf다운로드" readonly disabled />	
-					                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
-					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
-					                             			<i class="icon-block download"></i>
-					                         			</button>
-					                         			</div>
-					                         			</tr>
-													</c:when>
-													<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+														<td colspan="3">
+															<div class="file_flex"> 
+															<input class="file_view" value="pdf다운로드" readonly disabled />	
+							                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+							                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
+							                             			<i class="icon-block download"></i>
+							                         			</button>
+							                         			</div>
+							                         			</tr>
+															</c:when>
+															<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+														</td>
 													<tr>
 													<div class="file_flex"> 
 								<input class="file_view" value="pdf다운로드" readonly disabled />	
