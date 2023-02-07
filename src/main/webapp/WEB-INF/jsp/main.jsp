@@ -323,11 +323,13 @@
 	        				//alert("code:"+xhr.status);
 	        			}
 	        		});		    		
-		    	    })
-	
-		    	
-
+		    	})
 		    });
+		    
+		    function readyAlert () {
+		    	alert("준비중입니다.")
+		    	return ;
+		    }
 	    	
 		</script>
 </body>

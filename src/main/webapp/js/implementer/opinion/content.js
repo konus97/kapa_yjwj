@@ -134,10 +134,10 @@ function addLandOpinion(rank,info,getItem){
 		addList.push("<span>"+befUnitCost+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>소유자 의견</strong>");
-		addList.push("<span id=\"owner"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("<span id=\"owner"+getSeq+"-"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>사업시행자 의견</strong>");
-		addList.push("<span id=\"operator"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("<span id=\"operator"+getSeq+"-"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td>");     
 	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
@@ -289,10 +289,10 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<span>"+befUnitCost+"</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>소유자 의견</strong>");
-		addList.push("<span id=\"owner"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("<span id=\"owner"+getSeq+"-"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td><strong>사업시행자 의견</strong>");
-		addList.push("<span id=\"operator"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
+		addList.push("<span id=\"operator"+getSeq+"-"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td>");     
 	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
@@ -824,8 +824,8 @@ function submitOwnerOpinion(){
    console.log(addOpinionItemArray);
 
 	// 미작성 -> 작성
-	document.getElementById('owner'+reptOwnrSeq+'-'+getType).innerText = '작성';
-	document.getElementById('operator'+reptOwnrSeq+'-'+getType).innerText = '작성';
+	document.getElementById('owner'+getSeq+'-'+reptOwnrSeq+'-'+getType).innerText = '작성';
+	document.getElementById('operator'+getSeq+'-'+reptOwnrSeq+'-'+getType).innerText = '작성';
    
    closeOwnerOpinion();
    
@@ -835,39 +835,37 @@ function checkSelectedValue(getSeq,getItem, reptOwnrSeq){
 	var valueArr = new Array();
 	var list = $("input[name='chk_list']");
 	console.log("list.lenght" + list.length);
+	var idx = 0;
 	for(var i = 0; i < list.length; i++){
 		if(list[i].checked){
 		valueArr.push(list[i].value);
-		console.log(valueArr[i]);  //opinion13384623-22
+		//console.log(valueArr[i]);  //opinion13384623-22
+		console.log(valueArr[idx]);  //opinion13384623-22
+		idx = idx + 1;
 		}
 	}
-	var ownerOpinionCheck = document.getElementById('owner'+reptOwnrSeq+'-'+getItem).innerText;
-	var executorOpinionCheck = document.getElementById('operator'+reptOwnrSeq+'-'+getItem).innerText;
+	var ownerOpinionCheck = document.getElementById('owner'+getSeq+'-'+reptOwnrSeq+'-'+getItem).innerText;
+	var executorOpinionCheck = document.getElementById('operator'+getSeq+'-'+reptOwnrSeq+'-'+getItem).innerText;
 	
 	if(ownerOpinionCheck == '작성'){
-				
-            var content1 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).ownerOpinion;
-			}else if(ownerOpinionCheck == '미작성'){
-				alert("작성된 내용이 없습니다.");
-				return false;
-			}else{
-				alert("부적절한 대상입니다.");
-				return false;
-				
-			}
+        var content1 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).ownerOpinion;
+	}else if(ownerOpinionCheck == '미작성'){
+		alert("작성된 내용이 없습니다.");
+		return false;
+	}else{
+		alert("부적절한 대상입니다.");
+		return false;			
+	}
 			
-			if(executorOpinionCheck == '작성'){
-				
-            var content2 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).executorOpinion;
-            
-			}else if(executorOpinionCheck == '미작성'){
-				alert("작성된 내용이 없습니다.");
-				return false;
-			}else{
-				alert("부적절한 대상입니다.");
-				return false;
-				
-			}
+	if(executorOpinionCheck == '작성'){
+        var content2 = addOpinionItemArray.find(v => v.reptSeq === getSeq && v.type === getItem).executorOpinion;
+	}else if(executorOpinionCheck == '미작성'){
+		alert("작성된 내용이 없습니다.");
+		return false;
+	}else{
+		alert("부적절한 대상입니다.");
+		return false;
+	}
 	
 	
 	console.log(content1);
@@ -876,48 +874,47 @@ function checkSelectedValue(getSeq,getItem, reptOwnrSeq){
 	
 	// 복사 로직 시작
 	for(var i = 0; i < valueArr.length; i++){
-	console.log(valueArr[i]);
-	let getCopySeq = $('#'+valueArr[i]).attr("data-seq");
-    let getCopyType = $('#'+valueArr[i]).attr("data-type");
-    let reptOwnrSeqCopy = $('#'+valueArr[i]).attr("reptOwnrSeq");
-    let ownrNm = $('#'+valueArr[i]).attr("ownrNm");
-	console.log(getCopySeq);
-	console.log(getCopyType);
-	console.log(reptOwnrSeq);
-	console.log(ownrNm);
-	
-	let ownerOpinion = content1
-    let executorOpinion = content2
-	
-	let sub = new Object();
-    sub['reptSeq'] = getCopySeq;
-    sub['type'] = getCopyType;
-    sub['ownerOpinion'] = content1;
-    sub['executorOpinion'] = content2;
-    sub['reptOwnrSeq'] = reptOwnrSeqCopy;
-    sub['ownrNm'] = ownrNm;
+		console.log(valueArr[i]);
+		let getCopySeq = $('#'+valueArr[i]).attr("data-seq");
+	    let getCopyType = $('#'+valueArr[i]).attr("data-type");
+	    let reptOwnrSeqCopy = $('#'+valueArr[i]).attr("reptOwnrSeq");
+	    let ownrNm = $('#'+valueArr[i]).attr("ownrNm");
+		console.log(getCopySeq);
+		console.log(getCopyType);
+		console.log(reptOwnrSeq);
+		console.log(ownrNm);
+		
+		let ownerOpinion = content1
+	    let executorOpinion = content2
+		
+		let sub = new Object();
+	    sub['reptSeq'] = getCopySeq;
+	    sub['type'] = getCopyType;
+	    sub['ownerOpinion'] = content1;
+	    sub['executorOpinion'] = content2;
+	    sub['reptOwnrSeq'] = reptOwnrSeqCopy;
+	    sub['ownrNm'] = ownrNm;
 
-if(addOpinionItemArray.length>0){
-      for ( let i = 0; i < addOpinionItemArray.length; i++) {
-         
-         let reptSeq = addOpinionItemArray[i].reptSeq;
-         let type = addOpinionItemArray[i].type;
-         let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeqCopy;
-		 let ownrNm = addOpinionItemArray[i].ownrNm;
-         if(getCopySeq==reptSeq&&getCopyType==type){            
-            addOpinionItemArray.splice(i, 1);
-         }
-         
-      }
-   }
-   
-   addOpinionItemArray.push(sub);
-   
-   console.log(addOpinionItemArray);
-
-	// 미작성 -> 작성
-	document.getElementById('owner'+reptOwnrSeqCopy+'-'+getCopyType).innerText = '작성';
-	document.getElementById('operator'+reptOwnrSeqCopy+'-'+getCopyType).innerText = '작성';
+		if(addOpinionItemArray.length>0){
+			for ( let i = 0; i < addOpinionItemArray.length; i++) {
+			         
+			let reptSeq = addOpinionItemArray[i].reptSeq;
+			let type = addOpinionItemArray[i].type;
+			//let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeqCopy;
+			let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq;
+			let ownrNm = addOpinionItemArray[i].ownrNm;
+			if(getCopySeq==reptSeq&&getCopyType==type){            
+				addOpinionItemArray.splice(i, 1);
+			}
+			}
+		}
+		addOpinionItemArray.push(sub);
+		   
+		console.log(addOpinionItemArray);
+		
+		// 미작성 -> 작성
+		document.getElementById('owner'+getCopySeq+'-'+reptOwnrSeqCopy+'-'+getCopyType).innerText = '작성';
+		document.getElementById('operator'+getCopySeq+'-'+reptOwnrSeqCopy+'-'+getCopyType).innerText = '작성';
 	}
 }
 function closeOwnerOpinion(){
