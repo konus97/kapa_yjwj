@@ -67,8 +67,11 @@ public class CitiesController {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String startDate = decisionNotice.getRequestStartDate().format(format);
         String EndDate = decisionNotice.getRequestEndDate().format(format);
+        String publication = decisionNotice.getPublicationExpiryDate().format(format);
+        model.addAttribute("publication", publication);
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", EndDate);
+        
         
         //찐 마스터 아이디
         int a = Integer.parseInt(String.valueOf(decisionService.getMasterId(decisionId)));
@@ -153,6 +156,8 @@ public class CitiesController {
         String EndDate = decisionNotice.getRequestEndDate().format(format);
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", EndDate);
+        String publication = decisionNotice.getPublicationExpiryDate().format(format);
+        model.addAttribute("publication", publication);
         
         List<Notice_File> noticeFiles = decisionService.getNoticeFileList(Long.valueOf(a));
         System.out.println(noticeFiles);
