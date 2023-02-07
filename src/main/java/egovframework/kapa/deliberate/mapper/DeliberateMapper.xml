@@ -18,6 +18,21 @@
 		FETCH NEXT #{listSize} ROW ONLY
 	</select> 
 	
+	<select id="getDeliberateDateListNew" resultType="egovframework.kapa.domain.Decision_Date" >
+		SELECT  
+			*
+		FROM TB_Decision_AgendaDate 
+		
+		<where>
+			 delCheck = '0'
+  		</where>
+		
+		ORDER BY seqNo DESC
+		
+		OFFSET (#{page}-1)*#{listSize} ROW
+		FETCH NEXT #{listSize} ROW ONLY
+	</select> 
+	
 	<select id="getDeliberateList" resultType="egovframework.kapa.domain.Decision" >
 		SELECT  
 			*
@@ -77,6 +92,15 @@
     <select id="getDeliberateDateCnt" resultType="Integer">
         SELECT count(*) as listCnt
         FROM TB_Decision_Date AS M
+        <where>
+			delCheck = '0'
+        </where>
+    </select>
+    
+    <!-- 게시글 갯수 -->
+    <select id="getDeliberateListCnt" resultType="Integer">
+        SELECT count(*) as listCnt
+        FROM TB_Decision_AgendaDate AS M
         <where>
 			delCheck = '0'
         </where>

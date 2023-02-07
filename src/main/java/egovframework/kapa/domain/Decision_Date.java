@@ -14,5 +14,7 @@ public class Decision_Date {
     private LocalDateTime regdate;
     private LocalDateTime uptdate;
 
+    private Long decisionId;
+    private Long selectDate;
 }
 

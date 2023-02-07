@@ -81,9 +81,16 @@ public class DeliberateService {
 	public int getDeliberateDateCnt(Search search) throws Exception {
 		return deliberateMapper.getDeliberateDateCnt(search);
 	}
-
+	
+	public int getDeliberateListCnt(Search search) throws Exception {
+		return deliberateMapper.getDeliberateListCnt(search);
+	}
+	
 	public List<Decision_Date> getDeliberateDateList(Search search) {
 		return deliberateMapper.getDeliberateDateList(search);
+	}
+	public List<Decision_Date> getDeliberateDateListNew(Search search) {
+		return deliberateMapper.getDeliberateDateListNew(search);
 	}
 
 	public List<Decision_AgendaDate> getDeliberateDecisionList(Long seqNo) {
@@ -463,7 +470,6 @@ public class DeliberateService {
 				.consultationDates(consultationDates)
 				.decision(decision)
 				.deliberateOpinionDTOS(deliberateOpinionDTOS).build();
-		System.out.println("끼에에에엥:::::::::" + deliberateOpinionDTOS);
 		return deliberateViewDTO;
 	}
 

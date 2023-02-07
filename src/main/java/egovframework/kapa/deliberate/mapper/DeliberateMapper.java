@@ -29,6 +29,8 @@ public interface DeliberateMapper {
 	List<Decision> getDeliberateList(Search search);
 
 	List<Decision_Date> getDeliberateDateList(Search search);
+	
+	List<Decision_Date> getDeliberateDateListNew(Search search);
 
 	List<Decision_AgendaDate> getDeliberateDecisionList(Long selectDate);
 
@@ -39,5 +41,7 @@ public interface DeliberateMapper {
 	int getDeliberateCnt(Search search);
 	
 	int getDeliberateDateCnt(Search search);
+	
+	int getDeliberateListCnt(Search search);
 	
 }

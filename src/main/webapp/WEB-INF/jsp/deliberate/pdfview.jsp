@@ -40,6 +40,8 @@
 <link rel="stylesheet" href="../../css/pdf_style.css" /> 
 </head>
 <body>
+
+<input type="hidden" name="contextPath" id="contextPath" value="${pageContext.request.contextPath}">
     <!--<div class="pdf__loader">
         <svg class="pdf__loader__svg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="-25 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
@@ -382,11 +384,33 @@
 						<tr>
 														<th class="info_reg_th" colspan="3">관련자료</th>
 													</tr>
-									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
+									 <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
 									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
-									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq && deliberateOpinionDTO.reptSeq eq fileList.reptOwnrSeq}">
+													
 													<c:choose>
-													<c:when test="${fileList.fileNameExtension eq 'png'}">
+													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+													<tr>
+													<div class="file_flex"> 
+													<input class="file_view" value="pdf다운로드" readonly disabled />	
+					                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
+					                             			<i class="icon-block download"></i>
+					                         			</button>
+					                         			</div>
+					                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+													<tr>
+													<div class="file_flex"> 
+								<input class="file_view" value="pdf다운로드" readonly disabled />	
+                         				<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
+                             			<i class="icon-block download"></i>
+                         			</button>
+                         			</div>
+                         			</tr>
+													</c:when><c:when test="${fileList.fileNameExtension eq 'png'}">
 													<tr>
 														<td class=""  colspan="3">
 															<img
@@ -443,10 +467,18 @@
 													</c:if>
 													</c:if>
 								  </c:forEach> 
+								  
 						</tbody>
 				</table>
 			</div>
-			
+			<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
+	<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+		<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+			<div class="pdf__page pdf__page--img">
+				 <img src="${jpgFiles}" alt="">
+			 </div>
+		</c:forEach>
+	</c:forEach>
 			<table class="f_wrap__table">
 						
 						<%-- <tr>
@@ -518,14 +550,7 @@
 		</div>
 	
 	<!-- 첨부파일 S -->
-	<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
-	<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
-		<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
-			<div class="pdf__page pdf__page--img">
-				 <img src="${jpgFiles}" alt="">
-			 </div>
-		</c:forEach>
-	</c:forEach>
+	
 	
 	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
 		
@@ -660,6 +685,16 @@
 				}
 			})
 
+			const downloadButtons = document.querySelectorAll('.downloadButton');
+			let contextPath = $("#contextPath").val();
+			const url = contextPath+'/file/download';
+			for (let i=0; i<downloadButtons.length; i++){
+				downloadButtons[i].addEventListener("click", function(e) {
+				    let seqNo = e.currentTarget.id;
+				    window.location = url + "?seqNo=" + seqNo;
+				})
+			}
+		
 });
 		
 		 function pdfPrint(){

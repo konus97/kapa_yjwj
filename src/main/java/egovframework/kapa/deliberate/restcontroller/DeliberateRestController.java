@@ -52,6 +52,7 @@ public class DeliberateRestController {
  
             //페이징 계산
             int listCnt = deliberateService.getDeliberateDateCnt(search);
+           // int listCnt = deliberateService.getDeliberateListCnt(search);
             search.pageInfo(pageNum, rowItem, listCnt);
             
             //값 넣기

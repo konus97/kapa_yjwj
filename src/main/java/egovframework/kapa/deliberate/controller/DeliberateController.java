@@ -391,19 +391,18 @@ public class DeliberateController {
   		//List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
   		//List<FileVO> decisionFile = new ArrayList();
   		//List<String> jpgFiles = new ArrayList();
-  		List<List<String>> jpgFiles = new ArrayList<List<String>>();
+  		//List<List<String>> jpgFiles = new ArrayList<List<String>>();
   		
-  		for (int i=0; i<registerFileList.size(); i++) {
-  	  		// pdf -> jpg 변환작업
-  			PDFConverter pdfconvert = new PDFConverter();
-  			String fname = registerFileList.get(i).getFileNameChange();	// 파일명
-  			// 로컬		
-//  			String localPath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
-//			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i));
-  			// 서버
-  			String serverPath = registerFileList.get(i).getFileFolder();
-  			jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i));
-  		}
+		/*
+		 * for (int i=0; i<registerFileList.size(); i++) { // pdf -> jpg 변환작업
+		 * PDFConverter pdfconvert = new PDFConverter(); String fname =
+		 * registerFileList.get(i).getFileNameChange(); // 파일명 // 로컬 // String localPath
+		 * = request.getServletContext().getRealPath(File.separator)+ "file" +
+		 * File.separator + "download"+"\\"; //
+		 * jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i)); // 서버
+		 * String serverPath = registerFileList.get(i).getFileFolder();
+		 * jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i)); }
+		 */
   		 
   		 model.addAttribute("landCnt", landCntStr);
  		 model.addAttribute("landArea", landAreaStr);
@@ -412,10 +411,10 @@ public class DeliberateController {
  		 model.addAttribute("objPrice", objPriceStr);
  		 model.addAttribute("goodwillCnt", goodwillCntStr);
  		 model.addAttribute("goodwillPrice", goodwillPriceStr);
- 		model.addAttribute("businessOperator", businessOperator);
- 		model.addAttribute("landowner", landowner);
- 		model.addAttribute("governor", governor);
- 		 model.addAttribute("jpgFiles", jpgFiles);
+ 		 model.addAttribute("businessOperator", businessOperator);
+ 		 model.addAttribute("landowner", landowner);
+ 		 model.addAttribute("governor", governor);
+ 		// model.addAttribute("jpgFiles", jpgFiles);
  		 model.addAttribute("EndDate", EndDate);
  		 model.addAttribute("consultationDatesSize", consultationDates.size());
 		return "deliberate/pdfview";

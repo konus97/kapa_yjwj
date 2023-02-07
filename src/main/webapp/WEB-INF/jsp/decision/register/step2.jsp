@@ -750,7 +750,7 @@
 													</tr>
 									  <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
 									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
-									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq && deliberateOpinionDTO.reptSeq eq fileList.reptOwnrSeq}">
 													
 													<c:choose>
 													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
