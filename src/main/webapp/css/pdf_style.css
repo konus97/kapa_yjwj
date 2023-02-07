@@ -49,6 +49,9 @@ body {
 	line-height:1.5;
 	background:#fff;
 }
+.pdf_wr * {
+	color:#000 !important;
+}
 .pdf__page {
 	width: 100vw;
     padding: 8em 4em;
@@ -134,6 +137,11 @@ body {
 .f_wrap__table--owner_opinion {
 	table-layout: fixed;
 }
+.f_wrap__table--land,
+.f_wrap__table--object {
+	font-size: 0.875rem;
+	text-align: center;
+}
 .f_wrap__table th,
 .f_wrap__table td {
 	border: 1px solid #000;
@@ -153,6 +161,9 @@ body {
 }
 .f_wrap__table td.f_wrap__td--para {
 	padding: 0.4em 0.8em;
+}
+.f_wrap__table strong {
+	display: none;
 }
 .f_wrap__table p {
 	word-break: break-all;	

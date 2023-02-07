@@ -33,25 +33,3 @@ textarea {resize:none; border:0;}
 input, button, label {background:none; border:0;}
 caption,legend{display:none}
 .skip {display:none;}
-
-/*임시*/
-.c_table table {
-	width:100%;
-}
-.cs_title {
-	color: #000;
-}
-.c_table table strong {display: none;}
-.c_table table * {color: #000 !important;}
-.c_table table,
-.c_table table th,
-.c_table table td {
-	border-collapse :collapse;
-	border: 1px solid #000;
-}
-.f_wrap * {
-	color: #000 !important;
-}
-.cb {
-	color:#000;
-}
