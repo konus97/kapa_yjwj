@@ -536,13 +536,13 @@
 											<c:when test="${fileList.fileNameExtension eq 'pdf'}">
 											<tr>
 												<td colspan="3">
-													<div class="file_flex"> 
-														<input class="file_view" value="pdf다운로드" readonly disabled />	
-						                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
-					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
-					                             			<i class="icon-block download"></i>
+				                         			<div class="f_wrap__file_wr"> 
+														<!-- <input class="file_view" value="pdf다운로드" readonly disabled />	 -->
+					                         			<input value="${fileList.fileNameChange}" readonly disabled />
+				                         				<button type="button" class="f_wrap__btn" id="${fileList.fileSeq}">다운로드
+					                             			<!-- <i class="icon-block download"></i> -->
 					                         			</button>
-				                         			</div>
+			                         				</div>
 			                         			</td>
 					                        </tr>
 											</c:when>
@@ -550,13 +550,13 @@
 											<c:when test="${fileList.fileNameExtension eq 'PDF'}">
 											<tr>
 												<td colspan="3">
-													<div class="file_flex"> 
-														<input class="file_view" value="pdf다운로드" readonly disabled />	
-					                         				<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
-					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
-					                             			<i class="icon-block download"></i>
+				                         			<div class="f_wrap__file_wr"> 
+														<!-- <input class="file_view" value="pdf다운로드" readonly disabled />	 -->
+					                         			<input value="${fileList.fileNameChange}" readonly disabled />
+				                         				<button type="button" class="f_wrap__btn" id="${fileList.fileSeq}">다운로드
+					                             			<!-- <i class="icon-block download"></i> -->
 					                         			</button>
-				                         			</div>
+			                         				</div>
                        								</td>
                        							</tr>
 											</c:when>
@@ -771,11 +771,11 @@
 										<c:when test="${fileList.fileNameExtension eq 'pdf'}">
 										<tr>
 											<td colspan="3">
-												<div class="file_flex"> 
-													<input class="file_view" value="pdf다운로드" readonly disabled />	
-				                         			<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
-			                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
-				                             			<i class="icon-block download"></i>
+												<div class="f_wrap__file_wr"> 
+													<!-- <input class="file_view" value="pdf다운로드" readonly disabled />	 -->
+				                         			<input value="${fileList.fileNameChange}" readonly disabled />
+			                         				<button type="button" class="f_wrap__btn" id="${fileList.fileSeq}">다운로드
+				                             			<!-- <i class="icon-block download"></i> -->
 				                         			</button>
 			                         			</div>
 											</td>
@@ -785,12 +785,12 @@
 										<c:when test="${fileList.fileNameExtension eq 'PDF'}">
 										<tr>
 											<td colspan="3">
-												<div class="file_flex"> 
-													<input class="file_view" value="pdf다운로드" readonly disabled />	
-                      										<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
-			                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
-			                        	     			<i class="icon-block download"></i>
-			                  		       			</button>
+												<div class="f_wrap__file_wr"> 
+													<!-- <input class="file_view" value="pdf다운로드" readonly disabled />	 -->
+				                         			<input value="${fileList.fileNameChange}" readonly disabled />
+			                         				<button type="button" class="f_wrap__btn" id="${fileList.fileSeq}">다운로드
+				                             			<!-- <i class="icon-block download"></i> -->
+				                         			</button>
 			                         			</div>
 		                         			</td>
 	                         			</tr>
