@@ -643,6 +643,40 @@ public class DecisionService {
 		return msg;
 	}
 
+	public void updateStep3(String param) {
+		JSONParser parser = new JSONParser();
+		
+		try {
+			JSONObject jsonObject = (JSONObject)parser.parse(param);
+			
+			long decisionId = Long.parseLong(jsonObject.get("decisionId").toString());
+			long selectDate = Long.parseLong(jsonObject.get("selectDate").toString());
+			
+			
+			Decision_AgendaDate updateAgendaDate = new Decision_AgendaDate();
+			
+			updateAgendaDate.setDecisionId(decisionId);
+			updateAgendaDate.setSelectDate(selectDate);
+			updateAgendaDate.setRegdate(LocalDateTime.now());
+			updateAgendaDate.setUptdate(LocalDateTime.now());
+			updateAgendaDate.setDelCheck(0);	
+			
+			/*
+			 * String relatedLaws = jsonObject.get("relatedLaws").toString(); String
+			 * relatedLaws2 = jsonObject.get("relatedLaws2").toString(); String
+			 * reviewOpinion = jsonObject.get("reviewOpinion").toString();
+			 */
+		
+		
+			decisionMapper.updateAgendaDate(updateAgendaDate);
+			/*decisionMapper.updateStep1(2,relatedLaws,relatedLaws2,reviewOpinion,decisionId*/
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	public void insertDecisionAnnouncementFile(Decision_Announcement_File file) {

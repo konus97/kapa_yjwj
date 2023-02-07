@@ -481,17 +481,13 @@ public class DecisionController {
         	typeList.add(op);
 		 
         }
-        System.out.println("=======================★=========================");
-        System.out.println(typeList);
-        System.out.println("=================================================");
-
-          
-         
-        
         model.addAttribute("typeList", typeList);
 	    try {
 	    	Decision decision = decisionService.getDecisionView(decisionId);
 	    	
+	    	List<Decision_Date> dateList = decisionService.getDateList();
+    		model.addAttribute("dateList", dateList);
+    		
 	    	int masterId = decision.getMasterID();
 	    	List<Decision> csltList = implementerService.getLtisCslt(masterId);
 			model.addAttribute("csltList", csltList);

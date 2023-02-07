@@ -17,6 +17,9 @@
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+	
 	<title>재결정보지원센터</title>
 	
 	<meta name="description" content="재결정보지원센터" />
@@ -44,8 +47,10 @@
 </head>
 
 <body>
+	<input type="hidden" name="decisionId" id="decisionId" value="${decisionId}">
+	<input type="hidden" name="masterId" id="masterId" value="${masterId}">
 	<div id="wrap">
-
+	
 
 		<!-- header start -->
 		<jsp:include page="/WEB-INF/jsp/components/header.jsp" flush="false">
@@ -152,13 +157,20 @@
 							<div class="form t1">
 								<div class="f_wrap">
 									<div class="f_field div2">
-										<div class="ff_title">
-											<label>심의일자</label>
-										</div>
-										<div class="ff_wrap">
-											<p>${formatter.consultationDate}</p>
-										</div>
-									</div>
+                                            <div class="ff_title">
+                                                <label>심의일자</label>
+                                            </div>
+                                            <div class="ff_wrap">                                         
+                                           		 <p>
+	                                             	<select id="selectDate">
+	                                             	   <option value="" selected >선택</option>	
+	                                             	   <c:forEach var="date" items="${dateList}" varStatus="status">
+	                                             	      <option value="${date.seqNo}" >${date.consultationDate }</option>	
+	                                             	   </c:forEach>		                                                                                                      
+		                                            </select>
+	                                              </p>                 	
+                                            </div>
+                                        </div>
 									<div class="f_field div2">
 										<div class="ff_title">
 											<label>심의차수</label>
@@ -994,7 +1006,9 @@
 							<!-- 1. 지연가산금 E -->
 							<div class="btn_wrap mt60 mb60">
 								<a href="#" class="btn t1 h50 big"
-										onclick="goToDecisionRegisterList();return false;">확인</a>
+										onclick="saveStep3();return false;">확인</a>
+								<a href="#" class="btn t1 h50 big"
+										onclick="goToDecisionRegisterList();return false;">취소</a>
 							</div>
 							
 					</div>
@@ -1123,6 +1137,56 @@
 			    			}
 							
 			});
+			
+			function saveStep3(){
+				
+	        	let csrfToken = $("meta[name='_csrf']").attr("content");
+        		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        		
+	        	let contextPath = $('#contextPath').val();
+	        	let url = contextPath+"/api/decision/register/step3";
+	        	let msg="심의일자를 변경하시겠습니까??";
+	
+	        	//BASE START
+	        	let decisionId = $('#decisionId').val();
+	        	
+	        	let selectDate = $('#selectDate option:selected').val();
+	     	
+	        	if (selectDate == null || selectDate == "") {
+	        		alert("심의날짜를 선택해주세요");
+	        		return false;
+	        	}
+	        	
+	        	
+	        	const data = {
+	    			"decisionId" : decisionId,
+	     			"selectDate" : selectDate,
+	    		}
+	        	
+	        	console.log(data);
+	        	
+	        	if(confirm(msg)) {            		
+	        		$.ajax({
+	        			url : url,
+	        			type : "POST",
+	        			contentType : "application/json; charset=UTF-8",
+	        			data : JSON.stringify(data),
+	        			async: false, 
+	        			beforeSend : function(xhr){
+            				xhr.setRequestHeader(csrfHeader, csrfToken);
+            			},
+	        			success : function(data) {
+	        				alert("완료됐습니다.");
+	        				goToDecisionRegisterList();
+	        			},
+	        			error : function(xhr, status, error) {
+	        				//에러!
+	        				//alert("code:"+xhr.status);
+	        			}
+	        		});
+	        	}
+	
+	        }
 			
 		</script>
 </body>
