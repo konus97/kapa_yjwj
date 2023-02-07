@@ -5,8 +5,10 @@ import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -351,13 +353,24 @@ public class DeliberateController {
         List<Decision> csltList = implementerService.getLtisCslt(masterId);
         List<Decision_Consult> consultList = decisionService.getConsultList(masterId);
         List<Decision_ConsultationDate> consultationDates =  decisionService.getConsultationDate(decisionId);
-        List<String> ownerCount = decisionService.getLandObjOwnerCount(masterId);
+        List<String> landOwnerCount = decisionService.getLandOwnerCount(masterId);
+        List<String> objectsOwnerCount = decisionService.getObjectsOwnerCount(masterId);
+        
+        List<String> ownerList = new ArrayList<>();
+        ownerList.addAll(landOwnerCount);
+        ownerList.addAll(objectsOwnerCount);
+        
+        Set<String> set = new HashSet<String>(ownerList);
+		List<String> ownerDistinctList =new ArrayList<String>(set);
+        int opinionCount = decisionService.getOpinionCount(decisionId);
+        
         
 		model.addAttribute("csltList", csltList);
         model.addAttribute("consultList", consultList);
         model.addAttribute("consultationDates", consultationDates);
-        model.addAttribute("ownerCount", ownerCount.size());
-        model.addAttribute("ownerName", ownerCount.get(0));
+        model.addAttribute("ownerCount", ownerDistinctList.size());
+        model.addAttribute("ownerName", landOwnerCount.get(0));
+        model.addAttribute("opinionCount", opinionCount);
 		Long landCnt = decision.getLandCnt();
 		Long landArea = decision.getLandArea();
 		Long landPrice = decision.getLandPrice();

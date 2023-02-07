@@ -663,11 +663,20 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
 			ObjectsID = #{reptSeq} and PID = #{reptOwnrSeq} and gubun = 'O'
   		</where>
     </select>
+    
 
-	<select id ="getLandObjOwnerCount" parameterType="int" resultType="java.lang.String">
-	select DISTINCT KLR.PName from Kapa_LandRights KLR
-    left join Kapa_ObjectsRights KOR on KLR.MasterID = KOR.MasterID 
-	where KLR.masterid = #{masterId}
+	<select id ="getLandOwnerCount" resultType="java.lang.String">
+	select DISTINCT PName from Kapa_LandRights
+	where MasterID = #{masterId}
+	</select>
+	
+	<select id ="getObjectsOwnerCount" resultType="java.lang.String">
+	select DISTINCT PName from Kapa_ObjectsRights
+	where MasterID = #{masterId}
+	</select>
+	
+		<select id ="getOpinionCount" resultType="int">
+	select count(*) from (select distinct reptOwnrSeq from TB_Decision_Opinion where decisionId = #{decisionId}) a
 	</select>
 
 	

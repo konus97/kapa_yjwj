@@ -727,9 +727,16 @@ public class DecisionService {
 		return decisionMapper.getObjectsCheck(reptSeq, reptOwnrSeq);
 	}
 
-	public List<String> getLandObjOwnerCount (int masterId) {
-		return decisionMapper.getLandObjOwnerCount(masterId);
+	public List<String> getLandOwnerCount (int masterId) {
+		return decisionMapper.getLandOwnerCount(masterId);
+	}
+	
+	public List<String> getObjectsOwnerCount (int masterId) {
+		return decisionMapper.getObjectsOwnerCount(masterId);
 	}
 
+	public int getOpinionCount(Long decisionId) {
+		return decisionMapper.getOpinionCount(decisionId);
+	}
 
 }

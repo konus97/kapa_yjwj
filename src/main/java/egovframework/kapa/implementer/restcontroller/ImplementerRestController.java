@@ -336,6 +336,47 @@ public class ImplementerRestController {
 		
 		}
 		
+		//재결의견작성 완료 소유자의견 / 사업시행자 의견 리스트 불러오기
+		@RequestMapping(value = "/opinion/landviewNew", method = RequestMethod.POST)
+		@ResponseBody
+		public ResponseEntity opinionLandviewNew(@RequestBody Long decisionId) {
+			
+			Map<String, Object> resultFinal = new HashMap<String, Object>();
+			System.out.println("=================landView======================");
+			System.out.println(decisionService.getDecisionOpinionList(decisionId));
+			System.out.println("===================================================");
+			//resultFinal.put("list", decisionService.getDecisionOpinionList(decisionId));
+			
+			
+			List<Decision_Opinion> resultList = new ArrayList<>();
+			
+			List<Decision_Opinion> getDecisionOpinionList = decisionService.getDecisionOpinionList(decisionId);
+			
+			
+			
+			
+			
+			  for(int i=0; i<getDecisionOpinionList.size();i++) {
+				  
+				  Long reptSeq = getDecisionOpinionList.get(i).getReptSeq(); 
+				  Long reptOwnrSeq = getDecisionOpinionList.get(i).getReptOwnrSeq();
+			  
+				  int landCheck = decisionService.getLandCheck(reptSeq, reptOwnrSeq); 
+				  int objCheck = decisionService.getObjectsCheck(reptSeq, reptOwnrSeq);
+			  
+			  if(landCheck == 1) {
+				 // Decision_Opinion result = 
+			  }else if(objCheck == 1) {
+			  
+			  }
+			  
+			  }
+			 
+			
+			  return ResponseEntity.ok(resultFinal);
+	        
+		
+		}
 		
 		
 		

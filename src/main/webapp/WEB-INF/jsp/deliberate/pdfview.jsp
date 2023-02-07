@@ -276,7 +276,7 @@
 						<ul class="f_wrap__list f_wrap__list--sub">
 							<li class="f_wrap__item f_wrap__item--sub">
 								<span>재결신청의 청구 : </span>
-								<span>${ownerName} 등 ${ownerCount}명</span>						
+								<span>${ownerName} 등 ${opinionCount}명</span>						
 							</li>
 						</ul>
 					</li>
@@ -981,7 +981,7 @@
 				}
 			})
 
-			const downloadButtons = document.querySelectorAll('.downloadButton');
+			const downloadButtons = document.querySelectorAll('.f_wrap__btn');
 			let contextPath = $("#contextPath").val();
 			const url = contextPath+'/file/download';
 			for (let i=0; i<downloadButtons.length; i++){
