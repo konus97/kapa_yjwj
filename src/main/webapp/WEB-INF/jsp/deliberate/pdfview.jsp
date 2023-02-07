@@ -352,7 +352,84 @@
 			</h2>
 		<c:forEach var="deliberateOpinionDTO" items="${formatter.deliberateOpinionDTOS}" varStatus="status">
 								<c:if test="${typeList.opinionType eq deliberateOpinionDTO.type}">
-			
+								
+								<c:if test="${deliberateOpinionDTO.landCheck}">
+			<div class="cs_title">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="fl title t1 bold cb s1 bullet">
+											필지
+										</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												 <tr>                                      
+		                                              <th>소유자</th>
+		                                              <th>지분</th>
+		                                              <th>소재지</th>
+		                                              <th>지번</th>
+		                                              <th>본번</th>
+		                                              <th>부번</th>
+		                                              <th>공</th>
+		                                              <th>실</th>
+		                                              <th>면적</th>
+		                                              <th>단가</th>                                          
+		                                          </tr>
+									
+											</thead>
+											<tbody>
+												<tr>
+	
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
+			                                           </span>
+			                                       </td>
+	
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
+			                                       </td>
+			                                       <td>
+			                                         <strong>지번</strong>
+			                                         <span>${deliberateOpinionDTO.ownerViewInfo.reg}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>공</strong>
+			                            	 			<span>${deliberateOpinionDTO.ownerViewInfo.gm1}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>실</strong>
+			                          					<span>${deliberateOpinionDTO.ownerViewInfo.gm2}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.area}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div>
 			<div class="f_wrap">
 				<h2 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
 				<table class="f_wrap__table f_wrap__table--owner_opinion">
@@ -472,58 +549,242 @@
 				</table>
 			</div>
 			<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
-	<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+			
+			
+			
+	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
 		<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
 			<div class="pdf__page pdf__page--img">
 				 <img src="${jpgFiles}" alt="">
 			 </div>
 		</c:forEach>
-	</c:forEach>
+	</c:forEach> --%>
 			<table class="f_wrap__table">
-						
-						<%-- <tr>
-							<th colspan="2">관련자료</th>
-						 </tr>
-						 <tr>
-							<th colspan="2"><img
-															src="${deliberateOpinionDTO.fileFolder}${deliberateOpinionDTO.fileNameChange}"
-															alt=""></th>
-						 </tr> --%>
 			</table>
 			
-			<!--  소재지, 사유, 관련자료 S -->
-			<%-- <c:if test="${deliberateOpinionDTO.itemCheck}">
-			<c:forEach var="deliberateOpinionItemDTO" items="${deliberateOpinionDTO.deliberateOpinionItemDTOS}" varStatus="status">
-			 
-			<div class="f_wrap">		
-				<table class="f_wrap__table f_wrap_table--opitem">
-					<tbody>
-						<tr>
-							<th>제목</th>
-							<td><p class="">${deliberateOpinionItemDTO.title }</p></td>
-						</tr>
-						<tr>
-							<th>내용
-							</th>
-							<td><p class="">${deliberateOpinionItemDTO.content }</p></td>
-						</tr>
-						<!-- <tr>
-							<th colspan="2">관련자료</th>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<img
-								src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
-								alt="">
-							</td>
-						</tr> -->
-					</tbody>
-				</table>
-			</div>	
-			
-			</c:forEach>
-			</c:if> --%>
 			<!--  소재지, 사유, 관련자료 E -->	
+		</c:if>
+			<c:if test="${deliberateOpinionDTO.objectCheck}">
+			<div class="cs_title">
+										<div class="cs_title">
+										<h4 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="fl title t1 bold cb s1 bullet">
+											지장물
+										</h4>
+									</div>
+									
+									<div class="c_table t3 land">				
+										<table>
+											<thead>
+												
+												  <tr>
+	                                                         
+					                                   <th>소유자</th>
+					                                   <th>지분</th>
+					                                   <th>소재지</th>
+					                                   <th>본번</th>
+					                                   <th>부번</th>
+					                                   <th>부번2</th>
+					                                   <th>
+					                                  	     물건종류
+					                                   </th>
+					                                   <th>
+					                                   	    물건구조
+					                                   </th>
+					                                   <th>
+					                                      	 면적/수량
+					                                   </th>
+					                                   <th>단가</th>
+                                  
+                                                 </tr>
+									
+											</thead>
+											<tbody>
+												<tr>				                                   
+			                                       <td>
+			                                           <strong>소유자</strong>
+			                                           <span>
+			                                             ${deliberateOpinionDTO.ownerViewInfo.pname}
+			                                           </span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>지분</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.interests}</span>
+			                                       </td>
+			                                       <td class="left">
+			                                           <strong>소재지</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.addr}</span>
+			                                       </td>
+			                          
+			                                       <td>
+			                                           <strong>본번</strong>
+			                                          <span>${deliberateOpinionDTO.ownerViewInfo.bun1}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>부번</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun2}</span>
+			                                       </td>
+			                                            <td>
+			                                           <strong>부번2</strong>
+			                                    	 <span>${deliberateOpinionDTO.ownerViewInfo.bun3}</span>
+			                                       </td>
+			                                   
+	                                                 <td>
+	                                                    <strong>물건종류</strong>
+	                                        	 		<span>${deliberateOpinionDTO.ownerViewInfo.kind}</span>
+	                                                </td>
+				                                     <td>
+	                                                    <strong>물건구조</strong>
+	                                                  	<span>${deliberateOpinionDTO.ownerViewInfo.gujo}</span>
+	                                                </td>
+			                                       <td>
+			                                           <strong>면적</strong>
+			                                           <span>${deliberateOpinionDTO.ownerViewInfo.unit}</span>
+			                                       </td>
+			                                       <td>
+			                                           <strong>단가</strong>
+			                                   		   <span>${deliberateOpinionDTO.ownerViewInfo.priceK}</span>
+			                                       </td>
+				                                        
+				                         		</tr>                       
+											</tbody>
+											
+										</table>
+									</div> 
+									<div class="cs_title">
+			<div class="f_wrap">
+				<h2 id="index${typeList.decisionId}_${typeList.opinionType}_${deliberateOpinionDTO.ownerViewInfo.id}" class="f_wrap__tit">소유자 및 사업시행자 의견</h2>
+				<table class="f_wrap__table f_wrap__table--owner_opinion">
+					<thead>
+						<tr>
+							<th class="f_wrap__th--owner_name">소유자</th>
+							<th class="f_wrap__th--opinion">소유자의 의견요지</th>
+							<th class="f_wrap__th--opinion">사업시행자 의견</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td class="f_wrap__td--cen">${deliberateOpinionDTO.ownerViewInfo.pname}</td>
+								<td class="f_wrap__td--para">
+									<p>${deliberateOpinionDTO.ownerOpinion}</p>
+								</td>
+								<td class="f_wrap__td--para">
+									<p>${deliberateOpinionDTO.executorOpinion}</p>
+								</td>
+							</tr>
+							<tr>
+							<td class="f_wrap__th--owner_name">제목</td>
+							<td class="f_wrap__textarea" colspan="2">${deliberateOpinionDTO.opinionTitle}</td>
+		 				</tr>
+						<tr>
+							<td class="f_wrap__th--opinion">내용</td>
+							<td class="f_wrap__textarea" colspan="2">${deliberateOpinionDTO.opinionContent}</td>
+		  				</tr>
+		 				<tr>
+														<th class="info_reg_th" colspan="3">관련자료</th>
+													</tr>
+									 <c:forEach var="fileList" items="${registerFileList}" varStatus = "status">
+									 	<c:if test="${deliberateOpinionDTO.type eq fileList.fileType }">
+									 	<c:if test="${deliberateOpinionDTO.reptOwnrSeq eq fileList.reptSeq && deliberateOpinionDTO.reptSeq eq fileList.reptOwnrSeq}">
+													
+													<c:choose>
+													<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+													<tr>
+													<div class="file_flex"> 
+													<input class="file_view" value="pdf다운로드" readonly disabled />	
+					                         		<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+					                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${fileList.fileSeq}">
+					                             			<i class="icon-block download"></i>
+					                         			</button>
+					                         			</div>
+					                         			</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+													<tr>
+													<div class="file_flex"> 
+								<input class="file_view" value="pdf다운로드" readonly disabled />	
+                         				<input class="file_view" value="${fileList.fileNameChange}" readonly disabled />
+                         				<button type="button" class="btn small02 t1 nohover downloadButton" id="${opinionFileList.fileSeq}">
+                             			<i class="icon-block download"></i>
+                         			</button>
+                         			</div>
+                         			</tr>
+													</c:when><c:when test="${fileList.fileNameExtension eq 'png'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when><c:when test="${fileList.fileNameExtension eq 'PNG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpeg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPEG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'jpg'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													<c:when test="${fileList.fileNameExtension eq 'JPG'}">
+													<tr>
+														<td class=""  colspan="3">
+															<img
+															src="${fileList.fileFolder}${fileList.fileNameChange}"
+															alt="">
+														</td>
+													</tr>
+													</c:when>
+													</c:choose>
+													</c:if>
+													</c:if>
+								  </c:forEach> 
+								  
+						</tbody>
+				</table>
+			</div>
+			<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
+			
+			
+			
+	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+		<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+			<div class="pdf__page pdf__page--img">
+				 <img src="${jpgFiles}" alt="">
+			 </div>
+		</c:forEach>
+	</c:forEach> --%>
+			<table class="f_wrap__table">
+			</table>
+	 		
+			<!--  소재지, 사유, 관련자료 E -->	
+		</c:if>
 		</c:if>
 		</c:forEach>
 		<div class="f_wrap">
@@ -549,7 +810,7 @@
 
 		</div>
 	
-	<!-- 첨부파일 S -->
+ 	<!-- 첨부파일 S -->
 	
 	
 	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
