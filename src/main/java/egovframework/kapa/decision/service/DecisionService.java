@@ -37,10 +37,10 @@ import egovframework.kapa.domain.Decision_Target;
 import egovframework.kapa.domain.Notice_File;
 import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
-import egovframework.kapa.file.domain.DecisionFileVO;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.file.domain.OpinionFileVO;
 import egovframework.kapa.implementer.Const.DecisonState;
+import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.kapa.implementer.domain.ApplicationList;
 import egovframework.kapa.implementer.mapper.ImplementerMapper;
 import egovframework.kapa.law.mapper.DecisionLawMapper;
@@ -739,4 +739,11 @@ public class DecisionService {
 		return decisionMapper.getOpinionCount(decisionId);
 	}
 
+	public ApplicationLand getLandOpinionInfo(Long reptSeq, Long reptOwnrSeq) {
+		return decisionMapper.getLandOpinionInfo(reptSeq, reptOwnrSeq);
+	}
+	
+	public ApplicationLand getGoodsOpinionInfo(Long reptSeq, Long reptOwnrSeq) {
+		return decisionMapper.getGoodsOpinionInfo(reptSeq, reptOwnrSeq);
+	}
 }

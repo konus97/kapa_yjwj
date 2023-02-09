@@ -679,5 +679,20 @@ LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
 	select count(*) from (select distinct reptOwnrSeq from TB_Decision_Opinion where decisionId = #{decisionId}) a
 	</select>
 
+	<select id ="getLandOpinionInfo" resultType="egovframework.kapa.implementer.domain.ApplicationLand">
+		SELECT ROI.id,ROI.pname, ROI.pid,ROI.pid,RI.* FROM dbo.Kapa_Land RI
+		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
+		WHERE ROI.LandId = #{reptSeq} and ROI.PID = #{reptOwnrSeq} and ROI.Gubun = 'O'
+		ORDER BY RI.ID
+	</select>
+	
+	<select id ="getGoodsOpinionInfo" resultType="egovframework.kapa.implementer.domain.ApplicationLand">
+		SELECT 
+		  ROI.id,ROI.pname, ROI.pid, RI.* 
+		  FROM dbo.Kapa_Objects RI
+		  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
+		  WHERE ROI.ObjectsID = #{reptSeq} and ROI.PID = #{reptOwnrSeq}
+		  ORDER BY RI.ID
+	</select>
 	
 </mapper>

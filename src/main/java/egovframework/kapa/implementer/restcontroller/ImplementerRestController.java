@@ -345,34 +345,39 @@ public class ImplementerRestController {
 			System.out.println("=================landView======================");
 			System.out.println(decisionService.getDecisionOpinionList(decisionId));
 			System.out.println("===================================================");
-			//resultFinal.put("list", decisionService.getDecisionOpinionList(decisionId));
 			
 			
 			List<Decision_Opinion> resultList = new ArrayList<>();
 			
 			List<Decision_Opinion> getDecisionOpinionList = decisionService.getDecisionOpinionList(decisionId);
+			System.out.println("굿?" + getDecisionOpinionList);
+			
+			ApplicationLand result = new ApplicationLand();
 			
 			
-			
-			
-			
-			  for(int i=0; i<getDecisionOpinionList.size();i++) {
+			  for(Decision_Opinion item : getDecisionOpinionList) {
 				  
-				  Long reptSeq = getDecisionOpinionList.get(i).getReptSeq(); 
-				  Long reptOwnrSeq = getDecisionOpinionList.get(i).getReptOwnrSeq();
-			  
+				  Long reptSeq = item.getReptSeq();
+				  Long reptOwnrSeq = item.getReptOwnrSeq();
 				  int landCheck = decisionService.getLandCheck(reptSeq, reptOwnrSeq); 
 				  int objCheck = decisionService.getObjectsCheck(reptSeq, reptOwnrSeq);
 			  
 			  if(landCheck == 1) {
-				 // Decision_Opinion result = 
+				   result = decisionService.getLandOpinionInfo(reptSeq, reptOwnrSeq);
+				   System.out.println("result :::::::굿1? " + result);
 			  }else if(objCheck == 1) {
-			  
+				   result = decisionService.getGoodsOpinionInfo(reptSeq, reptOwnrSeq);
+				   System.out.println("result :::::::굿2? " + result);
+
 			  }
-			  
+			  	item.setApplicationLand(result);
+			  	
+			  	resultList.add(item);
 			  }
 			 
-			
+			  resultFinal.put("list", resultList);
+			  System.out.println("굿?" + resultList);
+			  
 			  return ResponseEntity.ok(resultFinal);
 	        
 		

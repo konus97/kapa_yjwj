@@ -1,5 +1,6 @@
 package egovframework.kapa.domain;
 
+import egovframework.kapa.implementer.domain.ApplicationLand;
 import lombok.Data;
 
 @Data
@@ -32,4 +33,8 @@ public class Decision_Opinion {
     private String getTypeStr;
     private Integer fileType;
     private Long fileSeq;
+    
+    private Decision_Opinion Decision_Opinion;
+    
+    private ApplicationLand ApplicationLand;
 }

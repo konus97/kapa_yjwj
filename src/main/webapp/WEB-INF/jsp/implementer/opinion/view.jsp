@@ -200,7 +200,12 @@
 											<label>소재지</label>
 										</div>
 										<div class="ff_wrap">
+											<c:if test="${avo.reptLoc ne ''}">
 											<p>${avo.reptLoc}</p>
+											</c:if>
+											<c:if test="${avo.reptLoc eq ''}">
+											<p>-</p>
+											</c:if>
 										</div>
 									</div>
 								</div>

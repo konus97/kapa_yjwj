@@ -1276,12 +1276,52 @@
         	   
         	});
         	
+        	$("#amountA").click(function(){
+        		if(document.getElementById('inputBusinessOperator').value == ""){
+        			alert("사업시행자를 입력해주세요.");
+         			$('#inputBusinessOperator').focus();
+        			return false;
+        		}
+        	});
+        	$("#amountB").click(function(){
+        		if(document.getElementById('inputGovernor').value == ""){
+        			alert("시도지사 추천을 입력해주세요.");
+         			$('#inputGovernor').focus();
+        			return false;
+        		}
+        	});
+        	$("#amountC").click(function(){
+        		if(document.getElementById('inputLandowner').value == ""){
+         			alert("토지소유자 추천을 입력해주세요.");
+         			$('#inputLandowner').focus(); 
+        			return false;
+        		}
+        	});
+        	
+        	
         	$(".amountInput").on("propertychange change paste input", function() {
        		 
-         	   let amountA = $('#amountA').val();
-         	   let amountB = $('#amountB').val();
-         	   let amountC = $('#amountC').val();
-         	   
+        		var count = 0;
+        		
+
+             	let inputBusinessOperator1 = document.getElementById('inputBusinessOperator').value;
+             	let inputGovernor1 = document.getElementById('inputGovernor').value;
+             	let inputLandowner1 = document.getElementById('inputLandowner').value;
+
+    			if (inputBusinessOperator1 != "") count ++;
+    	  		if (inputGovernor1 != "") count ++;
+    	  		if (inputLandowner1 != "") count ++;
+    	  		
+    	  		if (count==0) return;
+    	  		
+         	    let amountA = $('#amountA').val();
+         	    console.log(amountA);
+         	    let amountB = $('#amountB').val();
+         	    console.log(amountB);
+         	    let amountC = $('#amountC').val();
+         	    console.log(amountC);
+
+      			
          	   amountA=uncomma(amountA);
          	   amountB=uncomma(amountB);
          	   amountC=uncomma(amountC);
@@ -1291,8 +1331,9 @@
          	   amountC = Number(amountC);
       	  
    			   let totalAmount = amountA+amountB+amountC;
-   			   
-   			   let amountAverage = totalAmount/3; 			   
+				
+   			   //let amountAverage = totalAmount/3; 
+   			   let amountAverage = totalAmount/count; 			   
    			   amountAverage =amountAverage.toFixed(0);  
    			   console.log(amountAverage);
    			   

@@ -12,8 +12,8 @@ import egovframework.kapa.domain.Decision_Announcement_File;
 import egovframework.kapa.domain.Decision_Cityplan;
 import egovframework.kapa.domain.Decision_Consult;
 import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Date;
+import egovframework.kapa.domain.Decision_File;
 import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
 import egovframework.kapa.domain.Decision_Opinion_Item;
@@ -23,7 +23,7 @@ import egovframework.kapa.domain.Opinion_File;
 import egovframework.kapa.domain.Search;
 import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.file.domain.OpinionFileVO;
-import egovframework.kapa.util.MsSQLRepository;
+import egovframework.kapa.implementer.domain.ApplicationLand;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
 //@MsSQLRepository
@@ -161,6 +161,10 @@ public interface DecisionMapper {
 	public List<String> getObjectsOwnerCount(int masterId);
 	
 	public int getOpinionCount(Long decisionId);
+	
+	public ApplicationLand getLandOpinionInfo(@Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
+	
+	public ApplicationLand getGoodsOpinionInfo(@Param("reptSeq")Long reptSeq, @Param("reptOwnrSeq")Long reptOwnrSeq);
 	
 
 }

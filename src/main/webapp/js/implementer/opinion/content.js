@@ -1530,12 +1530,12 @@ $.ajax({
             		});
 }
 
-/*function checkType2(){
+function checkType2(){
 let decisionId = $('#decisionId').val();
 let csrfToken = $("meta[name='_csrf']").attr("content");
 let csrfHeader = $("meta[name='_csrf_header']").attr("content");    	        
 let contextPath = $('#contextPath').val();
-let url = contextPath+"/api/implementer/opinion/landview";
+let url = contextPath+"/api/implementer/opinion/landviewNew";
 $.ajax({
             			url : url,
             			type : "POST",
@@ -1547,15 +1547,15 @@ $.ajax({
             			},
             			success : function(data) {
 							let info = data.list;
-							getOpinionList(); //지장물, 필지 보여지게 변경 << 의견이 작성된 리스트만
+							//getOpinionList(); //지장물, 필지 보여지게 변경 << 의견이 작성된 리스트만
 			
             			},
             			error : function(xhr, status, error) {
             				//에러!
-            				//alert("code:"+xhr.status);
+            				alert("code:"+xhr.status);
             			}
             		});
 
-}*/
+}
 
 
