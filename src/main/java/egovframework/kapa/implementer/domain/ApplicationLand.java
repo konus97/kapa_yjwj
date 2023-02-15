@@ -126,6 +126,7 @@ public class ApplicationLand {
 	//rept_ownr_intr_seq 얘는 id인듯
 	//지장물 나머지 잘 모르겠어서 우선 보류
 	
+	private int landObjCheck;
 	
 	
 	
