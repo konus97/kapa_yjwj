@@ -1918,7 +1918,7 @@
             	
             	$('#loaderSection').hide()
             	
-            	checkType();
+            	checkType2();
             	
             	//여기서 지장물이나 필지의 데이터가 없을 경우 table만 따로 숨김 처리 로직 추가
             	checkResultWrTbody();

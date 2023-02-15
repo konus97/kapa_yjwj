@@ -397,6 +397,7 @@ function resetSeq(getSeq){
 
 //소유자의견 읽는 버전
 function openOpinionPopup2(getSeq,getType,reptOwnrSeq,ownrNm){
+	console.log("start?");
    $(".resetPopupVal").val('');
    $("#popupOpinionItemList").empty();
    
@@ -1546,8 +1547,29 @@ $.ajax({
             				xhr.setRequestHeader(csrfHeader, csrfToken);
             			},
             			success : function(data) {
-							let info = data.list;
-							//getOpinionList(); //지장물, 필지 보여지게 변경 << 의견이 작성된 리스트만
+	
+						let list = data.list;
+						console.log(list);
+						
+						if (list.length != 0) {
+							
+							let rank = 1;
+							let check = 0;
+						
+							for(let i=0; i<list.length; i++){
+								
+							check = list[i].landObjCheck;
+									if(check == 1){
+									addLandList(rank,list[i]);
+									opinionArr.push(list[i])
+									rank++;
+									}else if(check == 2){
+									addGoodsList(rank,list[i]);
+									opinionArr.push(list[i])
+									rank++;
+									}
+								}
+						}
 			
             			},
             			error : function(xhr, status, error) {

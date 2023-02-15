@@ -14,22 +14,22 @@ function addNewTarget(position) {
 
 	addList.push("<tr class=\"targetItem\" id=\"targetInfo"+targetCount+"\"  >");
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 targetInfo\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 targetInfo\" id=\"targetAddr"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 bun1\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 bun1\" id=\"targetMainBun"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 bun2\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 bun2\" id=\"targetSubBun"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 areaBeforeTranster\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 areaBeforeTranster\" id=\"targetBefore"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");				 
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 areaAfterTranster\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 areaAfterTranster\"  id=\"targetAfter"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");		
     addList.push("   <td>");
-    addList.push("        <input  type=\"text\" class=\"input40 etc\" maxlength=\"25\" />");
+    addList.push("        <input  type=\"text\" class=\"input40 etc\" id=\"targetBigo"+targetCount+"\" maxlength=\"25\" />");
     addList.push("   </td>");                                                                                                          
     addList.push("  <td>"); 
     addList.push("      <a href=\"#!\" class=\"btn small03 t4 nohover h30\" onclick=\"addNewTarget();return false;\" >추가</a>"); 
@@ -77,10 +77,10 @@ function addNewRelation(){
 
 	addList.push("<tr class=\"relationItem\" id=\"relationInfo"+targetCount2+"\"  >");
     addList.push("   <td>");
-    addList.push("        <input type=\"text\" class=\"input40 relationTitle\" maxlength=\"50\" />");
+    addList.push("        <input type=\"text\" class=\"input40 relationTitle\" id=\"relationTitle"+targetCount2+"\" maxlength=\"50\" />");
     addList.push("   </td>");
     addList.push("   <td>");
-    addList.push("        <input type=\"text\" class=\"input40 relationContent\" maxlength=\"50\" />");
+    addList.push("        <input type=\"text\" class=\"input40 relationContent\" id=\"relationContent"+targetCount2+"\" maxlength=\"50\" />");
     addList.push("   </td>");                                                                                                       
     addList.push("  <td>"); 
     addList.push("      <a href=\"#!\" class=\"btn small03 t4 nohover h30\" onclick=\"addNewRelation();return false;\" >추가</a>"); 

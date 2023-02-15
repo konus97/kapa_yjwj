@@ -845,6 +845,14 @@
                                             </button>
                                         </li>
                                         <li>
+                                            <button
+                                            type="button"
+                                                class="btn t1 h50 big"
+                                                onClick="storage2();return false;"
+                                            >임시저장
+                                            </button>
+                                        </li>
+                                        <li>
                                             <a href="${pageContext.request.contextPath}/implementer/application.do"
                                                 class="btn t1 h50 big"
                                             >취소</a>
@@ -891,10 +899,12 @@
 
     	<script src="../../js/implementer/application/signup/file.js"></script>
     	<script src="../../js/implementer/application/signup/content.js"></script>
-    
+    	<script src="../../js/implementer/storage.js"></script>
         <script type="text/javascript">
 
-
+			function storage2(){
+				storage();
+			}
         
             function triggerFileUpload(position, arg) {
         	console.log("triggerFileUpload 실행");
@@ -1045,10 +1055,8 @@
         		
        		for (let i=2; i<dateItem.length+2; i++) {
        	    	const ConsultationDateItem = {};
-       	    	let consultationDate = $("#il_date"+i).val();  	
-       	    	console.log("test ::" + consultationDate);
+       	    	let consultationDate = $("#il_date"+i).val();
        	    	let consultationDateText = $("#il_date"+i+"_text").val();
-       	    	console.log("test2 ::" + consultationDateText);
        	    	if(consultationDate == null || consultationDate == "") {
        	    		alert("협의 날짜를 입력해주세요");
        	    		return false;
@@ -1153,6 +1161,7 @@
 	       	} */
      	   
 			const data = {
+	       			
 				"masterID" : masterId,
 				"groupEstablishedDate" : groupEstablishedDate,
 				"CityPlan" : relationArr,
@@ -1176,6 +1185,8 @@
 			}
 			var csrfToken = $("meta[name='_csrf']").attr("content");
 	        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	        
+	        if(confirm("제출하시면 내용 수정이 불가합니다. 제출하시겠습니까?")){
     		$.ajax({
     			url : url,
     			type : "POST",
@@ -1195,7 +1206,9 @@
     				//alert("code:"+xhr.status);
     			}
     		});
-        	
+	        }else{
+	        	return false;
+	        }
        
 			 let fileNameInputs = document.getElementsByClassName('file_name');
 			
@@ -1236,10 +1249,90 @@
 	    		}); */
         }
 
-
+		
 
         $(document).ready(function () {
-
+        			let masterId = document.getElementById('masterId').value;
+			
+        	if(window.localStorage.getItem('dataList'+masterId) != null){
+        		if(confirm("임시저장된 내용이 있습니다. 불러오시겠습니까?")){
+        			
+        			const dataString1 = window.localStorage.getItem('dataList'+masterId);
+                	const dataObj1 = JSON.parse(dataString1);
+                	
+                	let values = Object.values(dataObj1);
+                	console.log(values[17].length);
+                	console.log(values[17][0]);
+                	console.log(values);
+                	document.getElementById("il_date1").value = values[1];
+                	document.getElementById("decisionReason").value = values[2];
+                	document.getElementById("inputBusinessOperator").value = values[3];
+                	document.getElementById("inputGovernor").value = values[4];
+                	document.getElementById("inputLandowner").value = values[5];
+                	document.getElementById("amountA").value = values[6];
+                	document.getElementById("amountB").value = values[7];
+                	document.getElementById("amountC").value = values[8];
+                	document.getElementById("landCnt").value = values[9];
+                	document.getElementById("landArea").value = values[10];
+                	document.getElementById("landPrice").value = values[11];
+                	document.getElementById("objCnt").value = values[12];
+                	document.getElementById("objPrice").value = values[13];
+                	document.getElementById("goodwillCnt").value = values[14];
+                	document.getElementById("goodwillPrice").value = values[15];
+                	document.getElementById("notReqReason").value = values[16];
+                	
+                	if(values[17].length>1){
+                		for(var i=0; i<values[17].length; i++){
+                		addNewRelation()
+                		//title
+                		document.getElementById("relationTitle"+i).value = values[17][i].relationTitle;
+                		//content
+                		document.getElementById("relationContent"+i).value = values[17][i].relationContent;
+                		}
+                	}else{
+                		addNewRelation()
+            			//li태그 추가 기능 필요
+            			document.getElementById("relationTitle"+0).value = values[17][0].relationTitle;
+                		//content
+                		document.getElementById("relationContent"+0).value = values[17][0].relationContent;
+            		}
+                	
+                	if(values[18].length>1){
+                		for(var i=0; i<values[18].length; i++){
+                			var j = i+2;
+                			
+                			addNewDate();
+                			
+                			document.getElementById("il_date"+j).value = values[18][i].consultationDate;
+                			document.getElementById("il_date"+j+"_text").value = values[18][i].consultationDateText;
+                		}
+                	}else{
+                		addNewDate();
+            			
+            			document.getElementById("il_date2").value = values[18][0].consultationDate;
+            			document.getElementById("il_date2_text").value = values[18][0].consultationDateText;
+            		}
+                	
+                	if(values[19].length>1){
+                		for(var i=0; i<values[19].length; i++){
+                			addNewTarget();
+                			
+                			document.getElementById("targetAddr"+i).value = values[19][i].TargetInfo;
+                			document.getElementById("targetMainBun"+i).value = values[19][i].BUN1
+                			document.getElementById("targetSubBun"+i).value = values[19][i].BUN2;
+                			document.getElementById("targetBefore"+i).value = values[19][i].Area_Before_Transfer;
+                			document.getElementById("targetAfter"+i).value = values[19][i].Area_After_Transfer;
+                			document.getElementById("targetBigo"+i).value = values[19][i].Etc;
+                		}
+                	}
+                	
+                	
+        		}else{
+        			return false;
+        		}
+        		
+        	}
+        	
         	for (let i=1; i<12; i++){
         		let fileInput = document.getElementById('fileInput'+i+'-0');
         		fileInput.dataset.inputPosition = i;
@@ -1376,17 +1469,17 @@
 	          	objPrice = Number(objPrice);
 	          	goodwillPrice = Number(goodwillPrice);
        	  
-    			   let totalCnt = landCnt+objCnt+goodwillCnt;
-    			   let totalPrice = landPrice+objPrice+goodwillPrice;
-    			   
-    			   
-    			   totalCnt=numberWithCommas(totalCnt);
-    			   landArea=numberWithCommas(landArea);
-    			   totalPrice=numberWithCommas(totalPrice);
-    			   
-    			   $('#totalConfer1').text(totalCnt);
-    			   $('#totalConfer2').text(landArea);
-    			   $('#totalConfer3').text(totalPrice);
+   			    let totalCnt = landCnt+objCnt+goodwillCnt;
+   			    let totalPrice = landPrice+objPrice+goodwillPrice;
+   			   
+   			   
+   			    totalCnt=numberWithCommas(totalCnt);
+   			    landArea=numberWithCommas(landArea);
+   			    totalPrice=numberWithCommas(totalPrice);
+   			   
+   			    $('#totalConfer1').text(totalCnt);
+   			    $('#totalConfer2').text(landArea);
+   			    $('#totalConfer3').text(totalPrice);
     			   
         	
          	});

@@ -148,7 +148,7 @@ public class ImplementerController {
       			Long goodwillPrice = decision.getGoodwillPrice();
       			
       			
-      			double average = (amountA+amountB+amountC)/3;
+      			double average = (amountA+amountB+amountC);
       			
       			DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
       		    String amountAstr = dc.format(amountA);
@@ -176,7 +176,7 @@ public class ImplementerController {
       		    
       		    
       			    
-      			model.addAttribute("averageAmount", dc.format(average));
+      			model.addAttribute("averageAmount", average);
       						
       			
       			model.addAttribute("avo", applicationDTO);

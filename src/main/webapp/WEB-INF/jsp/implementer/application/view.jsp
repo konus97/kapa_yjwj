@@ -1273,7 +1273,27 @@
 								})
 					}
 					;
-
+					
+					var businessOperator = "${decision.businessOperator}";
+					var governor = "${decision.governor}";
+					var landowner = "${decision.landowner}";
+					var totalAmount = "${averageAmount}";
+					console.log(businessOperator);
+					console.log(governor);
+					console.log(landowner);
+					console.log(totalAmount);
+					var average = 0;
+					var count = 0;
+					
+					if(businessOperator != "") count++;
+					if(governor != "") count++;
+					if(landowner != "") count++;
+					
+					average = totalAmount/count;
+					average =average.toFixed(0);
+					average = numberWithCommas(average); 
+					document.getElementById("amountAverage").innerText = average;
+					
 				});
 		
 		

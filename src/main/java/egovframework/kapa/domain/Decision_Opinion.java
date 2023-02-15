@@ -37,4 +37,6 @@ public class Decision_Opinion {
     private Decision_Opinion Decision_Opinion;
     
     private ApplicationLand ApplicationLand;
+    
+    private int landObjCheck ; 
 }

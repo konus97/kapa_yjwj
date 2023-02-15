@@ -364,9 +364,11 @@ public class ImplementerRestController {
 			  
 			  if(landCheck == 1) {
 				   result = decisionService.getLandOpinionInfo(reptSeq, reptOwnrSeq);
+				   item.setLandObjCheck(1);
 				   System.out.println("result :::::::굿1? " + result);
 			  }else if(objCheck == 1) {
 				   result = decisionService.getGoodsOpinionInfo(reptSeq, reptOwnrSeq);
+				   item.setLandObjCheck(2);
 				   System.out.println("result :::::::굿2? " + result);
 
 			  }
@@ -374,9 +376,8 @@ public class ImplementerRestController {
 			  	
 			  	resultList.add(item);
 			  }
-			 
+			  System.out.println("hi :: " + resultList);
 			  resultFinal.put("list", resultList);
-			  System.out.println("굿?" + resultList);
 			  
 			  return ResponseEntity.ok(resultFinal);
 	        

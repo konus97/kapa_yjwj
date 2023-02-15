@@ -167,7 +167,7 @@ function makePageList(){
 		if ($id == "allprev")selectedPage=1;
 		if ($id == "allnext")selectedPage=totalPage;
 
-		getDecisionAgendaList(selectedPage);
+		getAgendaRegisterList(selectedPage);
 	});
 
 
