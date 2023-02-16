@@ -128,10 +128,29 @@
              
 	<!-- pdf 출력 영역 시작  -->
 	<div id="pdfWr" class="pdf_wr">
-	
-		<div class="pdf__page pdf__page--cover">
-			<h1 class="pdf__tit">${formatter.applicationDTO.title}</h1>
+		
+		<div class="pdf__page pdf__page--cover main_cover">
+			<div>
+				<div class="main_cover__top">
+					<p class="main_cover__caution">이 자료는 대외비로서 취급자는 이에 유의하여 주시기 바랍니다.</p>
+					<h2 class="main_cover__order">2022년 제4차</h2>
+				</div>
+				<div class="main_cover__cen">
+					<h1 class="main_cover__tit">재결심의서</h1>
+					<p class="main_cover__date">(2022.4.29)</p>
+					<div class="main_cover__logo">
+						<img src="../../images/common/logo_seoul_combined.png">
+					</div>
+				</div>
+			</div>
+			<div class="main_cover__btm">
+				<h3 class="main_cover__inst">서울특별시 지방토지수용위원회</h3>
+			</div>
 		</div>
+		
+		<!--<div class="pdf__page pdf__page--cover">
+			<h1 class="pdf__tit">${formatter.applicationDTO.title}</h1>
+		</div>-->
 		
 		<div class="pdf__page">
 		
