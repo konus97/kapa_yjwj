@@ -26,8 +26,8 @@
 		<intercept-url pattern="/**/*.ico" access="permitAll"/>
 		<intercept-url pattern="/**/*.png" access="permitAll"/>
 		<intercept-url pattern="/**/*.js" access="permitAll"/>
-		<intercept-url pattern="/**" access="permitAll"/>
-		<!-- <access-denied-handler ref="userDeniedHandler" /> -->
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<access-denied-handler ref="userDeniedHandler" />
 
 
 		<form-login
