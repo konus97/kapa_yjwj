@@ -447,7 +447,7 @@ public class DeliberateController {
  		 model.addAttribute("businessOperator", businessOperator);
  		 model.addAttribute("landowner", landowner);
  		 model.addAttribute("governor", governor);
- 		// model.addAttribute("jpgFiles", jpgFiles);
+ 		 model.addAttribute("jpgFiles", jpgFiles);
  		 model.addAttribute("EndDate", EndDate);
  		 model.addAttribute("consultationDatesSize", consultationDates.size());
  		 //model.addAttribute("pdfWriter", pdfWriter);
