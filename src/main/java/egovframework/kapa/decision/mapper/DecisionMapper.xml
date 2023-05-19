@@ -1,700 +1,802 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="egovframework.kapa.decision.mapper.DecisionMapper">
+<mapper
+	namespace="egovframework.kapa.decision.mapper.DecisionMapper">
 
-    
-    <insert id="insertDecisionNotice" parameterType="egovframework.kapa.domain.Decision_Notice">
-    	insert into TB_Decision_Notice(decisionId, docNumber, docTitle, receiver, requestStartDate, requestEndDate, newsletterDay, delCheck, regdate, uptdate, publicationExpiryDate)
-    	values(#{decisionId}, #{docNumber}, #{docTitle}, #{receiver}, #{requestStartDate}, #{requestEndDate}, #{newsletterDay}, #{delCheck}, #{regdate},#{uptdate}, #{publicationExpiryDate})
-    </insert>
-    
-  	<insert id="insertMeetings" parameterType="egovframework.kapa.domain.Decision_Date">
-    	insert into TB_Decision_Date(consultationDate, delCheck, regdate, uptdate)
-    	values(#{consultationDate}, #{delCheck}, #{regdate}, #{uptdate})
-    </insert>
-    
-	<insert id="insertAgendaDate" parameterType="egovframework.kapa.domain.Decision_AgendaDate">
-    	insert into TB_Decision_AgendaDate(decisionId,selectDate, delCheck, regdate, uptdate)
-    	values(#{decisionId},#{selectDate}, #{delCheck}, #{regdate}, #{uptdate})
-    </insert>
 
-	<update id="updateAgendaDate" parameterType="egovframework.kapa.domain.Decision_AgendaDate">
-    	update TB_Decision_AgendaDate set selectDate = #{selectDate}, uptdate = #{uptdate}
-    	where decisionId = #{decisionId}
-    </update>
-		
+	<insert id="insertDecisionNotice"
+		parameterType="egovframework.kapa.domain.Decision_Notice">
+		insert into TB_Decision_Notice(decisionId, docNumber, docTitle, receiver,
+		requestStartDate, requestEndDate, newsletterDay, delCheck, regdate,
+		uptdate, publicationExpiryDate)
+		values(#{decisionId}, #{docNumber}, #{docTitle}, #{receiver}, #{requestStartDate},
+		#{requestEndDate}, #{newsletterDay}, #{delCheck},
+		#{regdate},#{uptdate}, #{publicationExpiryDate})
+	</insert>
+
+	<insert id="insertMeetings"
+		parameterType="egovframework.kapa.domain.Decision_Date">
+		insert into TB_Decision_Date(consultationDate, delCheck, regdate, uptdate)
+		values(#{consultationDate}, #{delCheck}, #{regdate}, #{uptdate})
+	</insert>
+
+	<insert id="insertAgendaDate"
+		parameterType="egovframework.kapa.domain.Decision_AgendaDate">
+		insert into TB_Decision_AgendaDate(decisionId,selectDate, delCheck, regdate,
+		uptdate)
+		values(#{decisionId},#{selectDate}, #{delCheck}, #{regdate}, #{uptdate})
+	</insert>
+
+	<update id="updateAgendaDate"
+		parameterType="egovframework.kapa.domain.Decision_AgendaDate">
+		update TB_Decision_AgendaDate set selectDate = #{selectDate}, uptdate =
+		#{uptdate}
+		where decisionId = #{decisionId}
+	</update>
+
 	<update id="updateState">
-		update TB_Decision set decisionState = #{decisionState} where seqNo = #{seqNo}
+		update TB_Decision set decisionState =
+		#{decisionState} where seqNo = #{seqNo}
 	</update>
-	
+
 	<update id="updateStateFinal">
-		update TB_Decision set decisionState = #{decisionState} , agendaState = '1' where seqNo = #{seqNo}
+		update TB_Decision set decisionState =
+		#{decisionState} , agendaState = '1' where seqNo = #{seqNo}
 	</update>
-	
+
 	<update id="updateStep1">
-		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
-		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws = #{relatedLaws} , relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
-		update TB_Decision set agendaState = #{agendaState} where seqNo = #{seqNo}
+		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws 
+			= #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
+		<!-- update TB_Decision set agendaState = #{agendaState} , relatedLaws 
+			= #{relatedLaws} , relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} 
+			where seqNo = #{seqNo} -->
+		update TB_Decision set agendaState = #{agendaState} where seqNo =
+		#{seqNo}
 	</update>
-	
+
 	<update id="updateStep2">
-		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo} -->
-		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText = #{content} , relatedLaws = #{relatedLaws}, relatedLaws2 = #{relatedLaws2} , reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo }-->
-		update TB_REGISTER_STEP2 set completionCheck = '1', opinionText = #{content}, relatedLaws2 = #{relatedLaws2}, reviewOpinion = #{reviewOpinion} where decisionId = #{decisionId} and opinionType = #{type} 
+		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText 
+			= #{content} , relatedLaws = #{relatedLaws} , reviewOpinion = #{reviewOpinion} 
+			where seqNo = #{seqNo} -->
+		<!-- update TB_Decision_Opinion set completionCheck = '1', opinionText 
+			= #{content} , relatedLaws = #{relatedLaws}, relatedLaws2 = #{relatedLaws2} 
+			, reviewOpinion = #{reviewOpinion} where seqNo = #{seqNo } -->
+		update TB_REGISTER_STEP2 set completionCheck = '1', opinionText =
+		#{content}, relatedLaws2 = #{relatedLaws2}, reviewOpinion =
+		#{reviewOpinion} where decisionId = #{decisionId} and opinionType =
+		#{type}
 	</update>
-	
+
 	<update id="updateStep3">
-		update TB_Decision set agendaState = #{agendaState} where seqNo = #{decisionId}
+		update TB_Decision set agendaState = #{agendaState}
+		where seqNo = #{decisionId}
 	</update>
-	
-	
-	<select id="getDecisionView" resultType="egovframework.kapa.domain.Decision" >
+
+
+	<select id="getDecisionView"
+		resultType="egovframework.kapa.domain.Decision">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		<where>
 			seqNo = #{decisionId}
 			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-	<select id="getRegisterStepFile" resultType="egovframework.kapa.domain.Decision_Opinion" >
-		  SELECT DFO.*,TF.*,DOI.ownrNm FROM TB_Decision_File_Opinion DFO 
-		LEFT JOIN TB_FILE TF 
+		</where>
+	</select>
+
+	<select id="getRegisterStepFile"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT DFO.*,TF.*,DOI.ownrNm FROM TB_Decision_File_Opinion DFO
+		LEFT JOIN TB_FILE TF
 		ON DFO.fileSeq = TF.seqNo
-		LEFT JOIN TB_Decision_Opinion DOI ON DFO.reptOwnrSeq = DOI.reptSeq AND DFO.reptSeq = DOI.reptOwnrSeq
-		
+		LEFT JOIN TB_Decision_Opinion DOI ON
+		DFO.reptOwnrSeq = DOI.reptSeq AND DFO.reptSeq = DOI.reptOwnrSeq
+
 		<where>
 			DFO.decisonId = #{decisionId}
-  		</where>
-	</select> 
-	
-	<select id="getDeliberateRegisterStepFile" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+		</where>
+	</select>
+
+	<select id="getDeliberateRegisterStepFile"
+		resultType="egovframework.kapa.domain.Decision_Opinion"
+		parameterType="java.util.List">
 		SELECT * FROM TB_Decision_File_Opinion DFO
-  LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
-		
+		LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+
 		where
-			DFO.decisonId IN
-			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+		DFO.decisonId IN
+		<foreach collection="list" item="item" index="index"
+			separator="," open="(" close=")">
 			#{item}
-			</foreach>
-	</select> 
-	
-	<select id="getDecisionAgendaView" resultType="egovframework.kapa.domain.Decision" >
+		</foreach>
+	</select>
+
+	<select id="getDecisionAgendaView"
+		resultType="egovframework.kapa.domain.Decision">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		<where>
 			seqNo = #{decisionId}
 			AND delCheck = '0'
 			AND agendaState = '3'
-  		</where>
-	</select> 
-	
+		</where>
+	</select>
+
 	<select id="getMasterId" resultType="Long">
 		SELECT masterID
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		where seqNo = #{decisionId}
 	</select>
-	
-	
-   <select id="getDecisionViewMasterID" resultType="egovframework.kapa.domain.Decision" >
+
+
+	<select id="getDecisionViewMasterID"
+		resultType="egovframework.kapa.domain.Decision">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		<where>
 			masterID = #{masterID}
 			AND delCheck = '0'
-  		</where>
-	</select> 
-	<select id="getDecisionNoticeView" resultType="egovframework.kapa.domain.Decision_Notice" >
+		</where>
+	</select>
+	<select id="getDecisionNoticeView"
+		resultType="egovframework.kapa.domain.Decision_Notice">
 		SELECT TOP 1 *
-		
-		FROM TB_Decision_Notice 
-		
+
+		FROM TB_Decision_Notice
+
 		<where>
 			decisionId = #{decisionId}
 			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-	<select id="getDecisionAnnouncementList" resultType="egovframework.kapa.domain.Decision" >
+		</where>
+	</select>
+
+	<select id="getDecisionAnnouncementList"
+		resultType="egovframework.kapa.domain.Decision">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		<where>
 			decisionState >= '1'
 			AND delCheck = '0'
-  		</where>
-		
+		</where>
+
 		ORDER BY seqNo DESC
-		
+
 		OFFSET (#{page}-1)*#{listSize} ROW
 		FETCH NEXT #{listSize} ROW ONLY
-	</select> 
-	
-	
-	<select id="getDecisionAgendaList" resultType="egovframework.kapa.domain.Decision" >
+	</select>
+
+
+	<select id="getDecisionAgendaList"
+		resultType="egovframework.kapa.domain.Decision">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+
+		FROM TB_Decision
+
 		<where>
 			decisionState >= '5'
 			AND delCheck = '0'
-  		</where>
-		
+		</where>
+
 		ORDER BY seqNo DESC
-		
+
 		OFFSET (#{page}-1)*#{listSize} ROW
 		FETCH NEXT #{listSize} ROW ONLY
-	</select> 
-	
-	
-	<select id="getDecisionOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion" >
+	</select>
+
+
+	<select id="getDecisionOpinionList"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
 		SELECT *
-		
+
 		FROM TB_Decision_Opinion
-		
+
 		<where>
 			decisionId = #{decisionId}
 			AND delCheck = '0'
-  		</where>
+		</where>
 
-	</select> 
-	
-	<select id="getDeliberateOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+	</select>
+
+	<select id="getDeliberateOpinionList"
+		resultType="egovframework.kapa.domain.Decision_Opinion"
+		parameterType="java.util.List">
 		SELECT *
-		
+
 		FROM TB_Decision_Opinion
-		
-		where
-			decisionId IN
-			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-			</foreach>
-			AND delCheck = '0'
-  		
 
-	</select> 
-	
-	
-	<select id="getDecisionOpinionItemList" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
+		where
+		decisionId IN
+		<foreach collection="list" item="item" index="index"
+			separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		AND delCheck = '0'
+
+
+	</select>
+
+
+	<select id="getDecisionOpinionItemList"
+		resultType="egovframework.kapa.domain.Decision_Opinion_Item">
 		SELECT *
-		
-		FROM TB_Decision_Opinion_Item 
-		
+
+		FROM TB_Decision_Opinion_Item
+
 		<where>
 			reptSeq = #{viewSeq}
 			AND delCheck = '0'
-  		</where>
+		</where>
 
-	</select> 
-	
-		<select id="getDecisionOpinionItemList2" resultType="egovframework.kapa.domain.Decision_Opinion_Item" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+	</select>
+
+	<select id="getDecisionOpinionItemList2"
+		resultType="egovframework.kapa.domain.Decision_Opinion_Item"
+		parameterType="egovframework.kapa.domain.Decision_Opinion_Item">
 		SELECT *
-		
-		FROM TB_Decision_Opinion_Item 
-		
+
+		FROM TB_Decision_Opinion_Item
+
 		<where>
-			<!-- reptSeq = #{reptSeq}
-			AND reptOwnrSeq = #{reptOwnrSeq} -->
+			<!-- reptSeq = #{reptSeq} AND reptOwnrSeq = #{reptOwnrSeq} -->
 			AND opinionType = #{opinionType}
 			AND delCheck = '0'
-  		</where>
-  		
+		</where>
 
-	</select> 
-	
-	<select id="getDecisionOpinionItemList3" resultType="egovframework.kapa.domain.Decision_Opinion_Item" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+
+	</select>
+
+	<select id="getDecisionOpinionItemList3"
+		resultType="egovframework.kapa.domain.Decision_Opinion_Item"
+		parameterType="egovframework.kapa.domain.Decision_Opinion_Item">
 		SELECT *
-		
-		FROM TB_Decision_Opinion_Item 
-		
+
+		FROM TB_Decision_Opinion_Item
+
 		<where>
 			reptSeq = #{reptSeq}
-			AND reptOwnrSeq = #{reptOwnrSeq} 
+			AND reptOwnrSeq = #{reptOwnrSeq}
 			AND opinionType = #{opinionType}
 			AND delCheck = '0'
-  		</where>
-  		
+		</where>
 
-	</select> 
-	
-		<select id="getDecisionOpinionItemFiles" resultType="egovframework.kapa.file.domain.OpinionFileVO" parameterType ="egovframework.kapa.domain.Decision_Opinion_Item">
+
+	</select>
+
+	<select id="getDecisionOpinionItemFiles"
+		resultType="egovframework.kapa.file.domain.OpinionFileVO"
+		parameterType="egovframework.kapa.domain.Decision_Opinion_Item">
 		SELECT *
-		
-		FROM TB_Decision_File_Opinion 
-		
+
+		FROM TB_Decision_File_Opinion
+
 		<where>
 			reptSeq = #{reptOwnrSeq}
 			AND reptOwnrSeq = #{reptSeq}
-			AND delCheck = '0'
+			AND delCheck =
+			'0'
 			and fileType = #{fileType}
 			<!-- AND decisonId = #{decisionId} -->
 			<!-- 파일 업로드를 다시 할 경우 중복해서 불러오기 때문에 걸러내는 작업 필요 -->
-			<!-- decisionId도 고정값으로 들어가서 우선 제외-->
-  		</where>
-  		
-
-	</select> 
-	
-	
-	
-	
-	
-	<select id="getDecisionOpinionTypeItemList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
-		<!-- SELECT *
-		
-		FROM TB_Decision_Opinion_Item 
-		
-		<where>
-			reptSeq = #{viewSeq}
-			AND opinionType = #{type}
-			AND delCheck = '0'
-  		</where> -->
+			<!-- decisionId도 고정값으로 들어가서 우선 제외 -->
+		</where>
 
 
-	SELECT DI.seqNo
-  ,DI.decisionId
-  ,DI.reptSeq
-  ,DI.opinionType
-  ,DI.opinionTitle
-  ,DI.opinionContent
-  ,DI.opinionItemFile
-  ,DI.rank
-  ,DI.delCheck
-  ,DI.regdate
-  ,TF.fileNameChange
-  ,TF.fileFolder
+	</select>
+
+
+
+
+
+	<select id="getDecisionOpinionTypeItemList" parameterType="Map"
+		resultType="egovframework.kapa.domain.Decision_Opinion_Item">
+		<!-- SELECT * FROM TB_Decision_Opinion_Item <where> reptSeq = #{viewSeq} 
+			AND opinionType = #{type} AND delCheck = '0' </where> -->
+
+
+		SELECT DI.seqNo
+		,DI.decisionId
+		,DI.reptSeq
+		,DI.opinionType
+		,DI.opinionTitle
+		,DI.opinionContent
+		,DI.opinionItemFile
+		,DI.rank
+		,DI.delCheck
+		,DI.regdate
+		,TF.fileNameChange
+		,TF.fileFolder
 		FROM TB_Decision_Opinion_Item DI
-		LEFT JOIN TB_Decision_File_Opinion DFO 
+		LEFT JOIN TB_Decision_File_Opinion DFO
 		ON DI.decisionId = DFO.decisonId AND DI.opinionType = DFO.fileType
 		LEFT JOIN TB_File TF
 		ON DFO.fileSeq = TF.seqNo
-		<where> 
-			
+		<where>
+
 			DI.reptSeq = #{viewSeq}
 			AND DI.reptOwnrSeq = #{reptOwnrSeq}
-			AND DI.opinionType = #{type}
+			AND DI.opinionType =
+			#{type}
 			AND DI.delCheck = '0'
-			</where>
-	</select> 
-	
-	
-	<select id="getOpinionFileList" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Opinion_Item" >
-		
+		</where>
+	</select>
 
-<!-- 	select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange ,DOI.opinionTitle, DOI.opinionContent
-FROM TB_Decision_File_Opinion DFO 
-LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo 
-LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO.fileType = DOI.opinionType
-		<where> 
-			
-			DFO.decisonId = ${decisionId} AND fileType = ${getType}
-			</where> -->
-			
- SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq, TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.* 
- FROM TB_Decision_Opinion DO 
- LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq 
- LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType and do.reptSeq = DFO.reptOwnrSeq and do.reptOwnrSeq = dfo.reptSeq
- LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
-  		<where>
+
+	<select id="getOpinionFileList" parameterType="Map"
+		resultType="egovframework.kapa.domain.Decision_Opinion_Item">
+
+
+		<!-- select DFO.*, TF.fileNameExtension, TF.fileFolder, TF.fileNameChange 
+			,DOI.opinionTitle, DOI.opinionContent FROM TB_Decision_File_Opinion DFO LEFT 
+			JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo LEFT JOIN TB_Decision_Opinion_Item 
+			DOI ON DOI.decisionId = DFO.decisonId AND DFO.fileType = DOI.opinionType 
+			<where> DFO.decisonId = ${decisionId} AND fileType = ${getType} </where> -->
+
+		SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq,
+		TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.*
+		FROM TB_Decision_Opinion DO
+		LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId
+		AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
+		LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId
+		AND DO.type = DFO.fileType and do.reptSeq = DFO.reptOwnrSeq and
+		do.reptOwnrSeq = dfo.reptSeq
+		LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
+		<where>
 			DO.decisionId = #{decisionId} AND type= #{getType}
-			AND DO.delCheck = '0' and do.reptOwnrSeq = dfo.reptSeq
-			 and dfo.reptOwnrSeq = #{reptOwnrSeq} and dfo.reptSeq = #{reptSeq}
-  		</where>
-	</select> 
-	
-	<select id="getDecisionOpinionTypeItemCount" parameterType="Map" resultType="Integer" >
+			AND
+			DO.delCheck = '0' and do.reptOwnrSeq = dfo.reptSeq
+			and dfo.reptOwnrSeq = #{reptOwnrSeq} and dfo.reptSeq = #{reptSeq}
+		</where>
+	</select>
+
+	<select id="getDecisionOpinionTypeItemCount" parameterType="Map"
+		resultType="Integer">
 		SELECT count(*) as listCnt
-		
-		FROM TB_Decision_Opinion_Item 
-		
+
+		FROM TB_Decision_Opinion_Item
+
 		<where>
 			reptSeq = #{viewSeq}
 			AND reptOwnrSeq = #{reptOwnrSeq}
-			AND opinionType = #{type}
+			AND
+			opinionType = #{type}
 			AND delCheck = '0'
-  		</where>
+		</where>
 
-	</select> 
-	
+	</select>
 
-	 <!-- 게시글 갯수 -->
-    <select id="getDecisionAnnouncementCnt" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_Decision AS M
-  		<where>
+
+	<!-- 게시글 갯수 -->
+	<select id="getDecisionAnnouncementCnt" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_Decision AS M
+		<where>
 			decisionState >= '1'
 			AND delCheck = '0'
-  		</where>
-    </select>
+		</where>
+	</select>
 
-	 <!-- 게시글 갯수 -->
-    <select id="getDecisionAgendaCnt" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_Decision AS M
-  		<where>
+	<!-- 게시글 갯수 -->
+	<select id="getDecisionAgendaCnt" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_Decision AS M
+		<where>
 			decisionState >= '5'
 			AND delCheck = '0'
-  		</where>
-    </select>
+		</where>
+	</select>
 
 
-	 <!-- Notice 파일 갯수 -->
-    <select id="getDecisionFileCnt" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_Decision_File_Notice AS M
-  		<where>
+	<!-- Notice 파일 갯수 -->
+	<select id="getDecisionFileCnt" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_Decision_File_Notice AS M
+		<where>
 			M.decisionId = #{decisionId}
 			AND M.delCheck = '0'
-  		</where>
-    </select>
+		</where>
+	</select>
 
-	 <!-- City 파일 갯수 -->
-    <select id="getDecisionCityFileCnt" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_Decision_File_Cites AS M
-  		<where>
+	<!-- City 파일 갯수 -->
+	<select id="getDecisionCityFileCnt" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_Decision_File_Cites AS M
+		<where>
 			M.decisionId = #{decisionId}
 			AND M.delCheck = '0'
-  		</where>
-    </select>
+		</where>
+	</select>
 
-    
-   	<select id="getCityPlan" resultType="egovframework.kapa.domain.Decision_Cityplan" >
+
+	<select id="getCityPlan"
+		resultType="egovframework.kapa.domain.Decision_Cityplan">
 		SELECT *
-		
-		FROM TB_Decision_CityPlan 
-		
+
+		FROM TB_Decision_CityPlan
+
 		<where>
 			decisionId = #{decisionId}
 			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-	<select id="getTarget" resultType="egovframework.kapa.domain.Decision_Target" >
+		</where>
+	</select>
+
+	<select id="getTarget"
+		resultType="egovframework.kapa.domain.Decision_Target">
 		SELECT *
-		
-		FROM TB_Decision_Target 
-		
+
+		FROM TB_Decision_Target
+
 		<where>
 			DecisionId = #{decisionId}
 			AND del_check = '0'
-  		</where>
-	</select> 
-	
-	<select id="getConsultationDate" resultType="egovframework.kapa.domain.Decision_ConsultationDate" >
+		</where>
+	</select>
+
+	<select id="getConsultationDate"
+		resultType="egovframework.kapa.domain.Decision_ConsultationDate">
 		SELECT *
-		
-		FROM TB_Decision_ConsultationDate 
-		
+
+		FROM TB_Decision_ConsultationDate
+
 		<where>
 			decisionId = #{decisionId}
 			AND delCheck = '0'
-  		</where>
-	</select> 
+		</where>
+	</select>
 
-	
-	<insert id="insertDecisionFile" parameterType="egovframework.kapa.domain.Decision_File">
-    	insert into TB_Decision_File(decisionId, fileType, fileSeq, delCheck, rank, regdate, uptdate, fileDescription)
-    	values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate}, #{uptdate}, #{fileDescription})
-    </insert>
-    
-    <insert id="insertOpinionFile" parameterType="egovframework.kapa.domain.Opinion_File">
-    	insert into TB_Decision_File_Opinion(decisonId, reptSeq, opinionType ,fileType, fileSeq, delCheck, rank, regdate, uptdate, fileDescription, reptOwnrSeq)
-    	values(#{decisonId}, #{reptSeq} ,#{opinionType} , #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate}, #{uptdate}, #{fileDescription}, #{reptOwnrSeq})
-    </insert>
-    
-    <insert id="insertNoticeFile" parameterType="egovframework.kapa.domain.Notice_File">
-    insert into TB_Decision_File_Notice(decisionId, fileType, fileSeq, delCheck, regdate, uptdate, fileDescription) values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription})
-    </insert>
-    
-        <insert id="insertCitesFile" parameterType="egovframework.kapa.domain.Cites_File">
-    insert into TB_Decision_File_Cites(decisionId, fileType, fileSeq, delCheck, regdate, uptdate, fileDescription, rank) values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription}, #{rank})
-    </insert>
-        
-    	
-	<select id="getDecisionFileList" resultType="egovframework.kapa.domain.Decision_File" >
-		SELECT *
-		FROM TB_Decision_File 
-		<where>
-			decisionId  = #{decisionId}
-			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-		<select id="getNoticeFileList" resultType="egovframework.kapa.domain.Notice_File" >
-		SELECT *
-		FROM TB_Decision_File_Notice 
-		<where>
-			decisionId  = #{decisionId}
-			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-	
-			<select id="getCitesFileList" resultType="egovframework.kapa.domain.Cites_File" >
-		SELECT *
-		FROM TB_Decision_File_Cites 
-		<where>
-			decisionId  = #{decisionId}
-			AND delCheck = '0'
-  		</where>
-	</select> 
-	
-	
 
-	<select id="getAgendaRegisterList" resultType="egovframework.kapa.domain.Decision" >
+	<insert id="insertDecisionFile"
+		parameterType="egovframework.kapa.domain.Decision_File">
+		insert into TB_Decision_File(decisionId, fileType, fileSeq, delCheck, rank,
+		regdate, uptdate, fileDescription)
+		values(#{decisionId}, #{fileType}, #{fileSeq}, #{delCheck}, #{rank}, #{regdate},
+		#{uptdate}, #{fileDescription})
+	</insert>
+
+	<insert id="insertOpinionFile"
+		parameterType="egovframework.kapa.domain.Opinion_File">
+		insert into TB_Decision_File_Opinion(decisonId, reptSeq, opinionType
+		,fileType, fileSeq, delCheck, rank, regdate, uptdate, fileDescription,
+		reptOwnrSeq)
+		values(#{decisonId}, #{reptSeq} ,#{opinionType} , #{fileType}, #{fileSeq}, #{delCheck},
+		#{rank}, #{regdate}, #{uptdate}, #{fileDescription}, #{reptOwnrSeq})
+	</insert>
+
+	<insert id="insertNoticeFile"
+		parameterType="egovframework.kapa.domain.Notice_File">
+		insert into TB_Decision_File_Notice(decisionId, fileType, fileSeq, delCheck,
+		regdate, uptdate, fileDescription) values(#{decisionId}, #{fileType},
+		#{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription})
+	</insert>
+
+	<insert id="insertCitesFile"
+		parameterType="egovframework.kapa.domain.Cites_File">
+		insert into TB_Decision_File_Cites(decisionId, fileType, fileSeq, delCheck,
+		regdate, uptdate, fileDescription, rank) values(#{decisionId},
+		#{fileType}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate},
+		#{fileDescription}, #{rank})
+	</insert>
+
+
+	<select id="getDecisionFileList"
+		resultType="egovframework.kapa.domain.Decision_File">
 		SELECT *
-		
-		FROM TB_Decision 
-		
+		FROM TB_Decision_File
+		<where>
+			decisionId = #{decisionId}
+			AND delCheck = '0'
+		</where>
+	</select>
+
+	<select id="getNoticeFileList"
+		resultType="egovframework.kapa.domain.Notice_File">
+		SELECT *
+		FROM TB_Decision_File_Notice
+		<where>
+			decisionId = #{decisionId}
+			AND delCheck = '0'
+		</where>
+	</select>
+
+
+	<select id="getCitesFileList"
+		resultType="egovframework.kapa.domain.Cites_File">
+		SELECT *
+		FROM TB_Decision_File_Cites
+		<where>
+			decisionId = #{decisionId}
+			AND delCheck = '0'
+		</where>
+	</select>
+
+
+
+	<select id="getAgendaRegisterList"
+		resultType="egovframework.kapa.domain.Decision">
+		SELECT *
+
+		FROM TB_Decision
+
 		<where>
 			decisionState = '6'
 			AND agendaState >= '1'
 			AND delCheck = '0'
-  		</where>
-		
+		</where>
+
 		ORDER BY seqNo DESC
-		
+
 		OFFSET (#{page}-1)*#{listSize} ROW
 		FETCH NEXT #{listSize} ROW ONLY
-	</select> 
-	
+	</select>
+
 	<!-- 게시글 갯수 -->
-    <select id="getAgendaRegisterCnt" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_Decision AS M
-  		<where>
+	<select id="getAgendaRegisterCnt" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_Decision AS M
+		<where>
 			decisionState = '6'
 			AND agendaState >= '1'
 			AND delCheck = '0'
-  		</where>
-    </select>
+		</where>
+	</select>
 
-    <select id="selectCaseMeeting" parameterType="Map" resultType="egovframework.kapa.domain.Decision_Date">
+	<select id="selectCaseMeeting" parameterType="Map"
+		resultType="egovframework.kapa.domain.Decision_Date">
 
 		SELECT [seqNo]
-		      ,[consultationDate]
-		      ,[delCheck]
-		      ,[regdate]
-		      ,[uptdate]
-		  FROM [land_seoul].[dbo].[TB_Decision_Date]
-		
-		  WHERE consultationDate BETWEEN #{start} AND #{end}
-		  ORDER BY consultationDate
+		,[consultationDate]
+		,[delCheck]
+		,[regdate]
+		,[uptdate]
+		FROM [dbo].[TB_Decision_Date]
 
-    </select>
-    
-    <select id="getSeqNoByConsultDate" parameterType="String" resultType="Integer">
+		WHERE consultationDate BETWEEN #{start} AND #{end}
+		ORDER BY consultationDate
+
+	</select>
+
+	<select id="getSeqNoByConsultDate" parameterType="String"
+		resultType="Integer">
 
 		SELECT seqNo
-		  FROM [land_seoul].[dbo].[TB_Decision_Date]
-		
-		  WHERE consultationDate = #{consultationDate}
+		FROM [dbo].[TB_Decision_Date]
 
-    </select>
-    
-    <select id="getCountSamedaysMeetings" parameterType="Integer" resultType="Integer">
+		WHERE consultationDate = #{consultationDate}
 
-		SELECT COUNT(*)
-		  FROM [land_seoul].[dbo].[TB_Decision_Date] A
-		  LEFT JOIN [land_seoul].[dbo].[TB_Decision_AgendaDate] B
-		  ON A.seqNo = B.selectDate
-		  WHERE A.seqNo = #{seqNo}
-		  AND A.delCheck = 0
-		  AND B.decisionId is not null
+	</select>
 
-    </select>
-    
-    <select id="checkMeetingsEnable" parameterType="String" resultType="Integer">
+	<select id="getCountSamedaysMeetings" parameterType="Integer"
+		resultType="Integer">
 
 		SELECT COUNT(*)
-		  FROM [land_seoul].[dbo].[TB_Decision_Date] 
-		  WHERE consultationDate = #{meetingDate}
-		  AND delCheck = 0
+		FROM [dbo].[TB_Decision_Date] A
+		LEFT JOIN [dbo].[TB_Decision_AgendaDate] B
+		ON A.seqNo = B.selectDate
+		WHERE A.seqNo = #{seqNo}
+		AND A.delCheck = 0
+		AND B.decisionId is not null
 
-    </select>
+	</select>
+
+	<select id="checkMeetingsEnable" parameterType="String"
+		resultType="Integer">
+
+		SELECT COUNT(*)
+		FROM [dbo].[TB_Decision_Date]
+		WHERE consultationDate = #{meetingDate}
+		AND delCheck = 0
+
+	</select>
 
 	<!-- 게시글 갯수 -->
-    <select id="getDateList" resultType="egovframework.kapa.domain.Decision_Date">
-        SELECT *
-        FROM TB_Decision_Date 
-  		<where>
-			 delCheck = '0'
-  		</where>
-    </select>
+	<select id="getDateList"
+		resultType="egovframework.kapa.domain.Decision_Date">
+		SELECT *
+		FROM TB_Decision_Date
+		<where>
+			delCheck = '0'
+		</where>
+	</select>
 
 	<!-- 의견 갯수 -->
-    <select id="getOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
-        SELECT *
-        FROM TB_Decision_Opinion 
-  		<where>
-			decisionId = #{decisionId}
-			AND delCheck = '0'
-  		</where>
-    </select>
-    <select id="getOpinionStep3List" resultType="egovframework.kapa.domain.Decision_Opinion">
-       SELECT * FROM TB_Decision_Opinion DO
-  		left join TB_Decision_Opinion_Item DOI ON DO.decisionId = DOI.decisionId AND DO.type = DOI.opinionType AND DO.reptOwnrSeq = DOI.reptOwnrSeq
-  		<where>
-			DO.decisionId = #{decisionId}
-			AND DO.delCheck = '0' AND DO.reptSeq = DOI.reptSeq
-  		</where>
-  		ORDER BY opinionType ASC
-    </select>
-    <!-- Register Step2 항목 -->
-    <select id="getOpinionTypeList" resultType="egovframework.kapa.domain.Decision_Opinion">
-        SELECT *
-        FROM TB_REGISTER_STEP2 
-  		<where>
-			decisionId = #{decisionId}
-			AND delCheck = '0'
-  		</where>
-			order by decisionId, opinionType
-    </select>
-    
-    
-    
-	<select id="getDeliberateOpinionTypeList" resultType="egovframework.kapa.domain.Decision_Opinion" parameterType="java.util.List" >
+	<select id="getOpinionList"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
 		SELECT *
-		
-		FROM TB_REGISTER_STEP2
-		
-		where
-			decisionId IN
-			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-			</foreach>
+		FROM TB_Decision_Opinion
+		<where>
+			decisionId = #{decisionId}
 			AND delCheck = '0'
-			order by decisionId, opinionType
-  		
+		</where>
+	</select>
+	<select id="getOpinionStep3List"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT * FROM TB_Decision_Opinion DO
+		left join TB_Decision_Opinion_Item DOI ON DO.decisionId = DOI.decisionId
+		AND DO.type = DOI.opinionType AND DO.reptOwnrSeq = DOI.reptOwnrSeq
+		<where>
+			DO.decisionId = #{decisionId}
+			AND DO.delCheck = '0' AND
+			DO.reptSeq = DOI.reptSeq
+		</where>
+		ORDER BY opinionType ASC
+	</select>
+	<!-- Register Step2 항목 -->
+	<select id="getOpinionTypeList"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT *
+		FROM TB_REGISTER_STEP2
+		<where>
+			decisionId = #{decisionId}
+			AND delCheck = '0'
+		</where>
+		order by decisionId, opinionType
+	</select>
 
-	</select> 
-    <!-- PDF 의견 갯수 -->
-    <select id="getPdfOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
-        SELECT DOI.opinionTitle, DOI.opinionContent, DFO.fileSeq,TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.* 
-FROM TB_Decision_Opinion DO 
-LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
-LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType 
-LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq  
-  		<where>
-			DO.decisionId = #{decisionId} AND DO.delCheck = '0' 
+
+
+	<select id="getDeliberateOpinionTypeList"
+		resultType="egovframework.kapa.domain.Decision_Opinion"
+		parameterType="java.util.List">
+		SELECT *
+
+		FROM TB_REGISTER_STEP2
+
+		where
+		decisionId IN
+		<foreach collection="list" item="item" index="index"
+			separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		AND delCheck = '0'
+		order by decisionId, opinionType
+
+
+	</select>
+	<!-- PDF 의견 갯수 -->
+	<select id="getPdfOpinionList"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT DOI.opinionTitle, DOI.opinionContent,
+		DFO.fileSeq,TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, DO.*
+		FROM TB_Decision_Opinion DO
+		LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId
+		AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
+		LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId
+		AND DO.type = DFO.fileType
+		LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
+		<where>
+			DO.decisionId = #{decisionId} AND DO.delCheck = '0'
 			and do.reptOwnrSeq = dfo.reptSeq
-			AND (TF.fileNameExtension = 'png' OR TF.fileNameExtension = 'PNG')
-  		</where>
-    </select>
+			AND (TF.fileNameExtension = 'png' OR
+			TF.fileNameExtension = 'PNG')
+		</where>
+	</select>
 
-	<select id="getStepOpinionList" resultType="egovframework.kapa.domain.Decision_Opinion">
-         SELECT
- DOI.opinionTitle,
- DOI.opinionContent,
- DFO.fileSeq,
- TF.fileNameExtension,TF.fileNameChange,TF.fileFolder, 
- DO.* 
- FROM TB_Decision_Opinion DO 
- LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
- LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId AND DO.type = DFO.fileType 
- LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq 
-  		<where>
-			DO.decisionId = #{decisionId} AND DO.delCheck = '0' and do.reptOwnrSeq = dfo.reptSeq
-  		</where>
-    </select>
-	
+	<select id="getStepOpinionList"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT
+		DOI.opinionTitle,
+		DOI.opinionContent,
+		DFO.fileSeq,
+		TF.fileNameExtension,TF.fileNameChange,TF.fileFolder,
+		DO.*
+		FROM TB_Decision_Opinion DO
+		LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DO.decisionId
+		AND DO.type = DOI.opinionType and do.reptSeq = doi.reptSeq
+		LEFT JOIN TB_Decision_File_Opinion DFO ON DFO.decisonId = DO.decisionId
+		AND DO.type = DFO.fileType
+		LEFT JOIN TB_FILE TF ON TF.seqNo = DFO.fileSeq
+		<where>
+			DO.decisionId = #{decisionId} AND DO.delCheck = '0' and
+			do.reptOwnrSeq = dfo.reptSeq
+		</where>
+	</select>
+
 	<!-- 게시글 갯수 -->
-    <select id="getOpinionCompletionCount" resultType="Integer">
-        SELECT count(*) as listCnt
-        FROM TB_REGISTER_STEP2
-  		<where>
+	<select id="getOpinionCompletionCount" resultType="Integer">
+		SELECT count(*) as listCnt
+		FROM TB_REGISTER_STEP2
+		<where>
 			decisionId = #{decisionId}
 			AND completionCheck != '1'
-			AND delCheck = '0'
-  		</where>
-    </select>
-    
-    <select id="getFileByDeicisionFileSeq" resultType="egovframework.kapa.file.domain.FileVO">
-        SELECT * 
-        FROM TB_FILE 
-  		<where>
+			AND
+			delCheck = '0'
+		</where>
+	</select>
+
+	<select id="getFileByDeicisionFileSeq"
+		resultType="egovframework.kapa.file.domain.FileVO">
+		SELECT *
+		FROM TB_FILE
+		<where>
 			seqNo = #{seqNo}
-  		</where>
-    </select>
-	
-	<insert id="insertDecisionAnnoucementFile" parameterType="egovframework.kapa.domain.Decision_Announcement_File">
-    	insert into TB_Announcement_File(decisionId, fileSeq, delCheck, regdate, uptdate, fileDescription)
-    	values(#{decisionId}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription})
-    </insert>
+		</where>
+	</select>
+
+	<insert id="insertDecisionAnnoucementFile"
+		parameterType="egovframework.kapa.domain.Decision_Announcement_File">
+		insert into TB_Announcement_File(decisionId, fileSeq, delCheck, regdate,
+		uptdate, fileDescription)
+		values(#{decisionId}, #{fileSeq}, #{delCheck}, #{regdate}, #{uptdate}, #{fileDescription})
+	</insert>
 
 
 	<!-- 의견 갯수 -->
-    <select id="getDecisionOpinionInfo" resultType="egovframework.kapa.domain.Decision_Opinion">
-        SELECT *
-        FROM TB_Decision_Opinion 
-  		<where>
+	<select id="getDecisionOpinionInfo"
+		resultType="egovframework.kapa.domain.Decision_Opinion">
+		SELECT *
+		FROM TB_Decision_Opinion
+		<where>
 			seqNo = #{viewSeq}
 			AND delCheck = '0'
-  		</where>
-    </select>
-    
-    <select id="getConsultList" resultType="egovframework.kapa.domain.Decision_Consult">
-        SELECT *
-        FROM kapa_consult 
-  		<where>
+		</where>
+	</select>
+
+	<select id="getConsultList"
+		resultType="egovframework.kapa.domain.Decision_Consult">
+		SELECT *
+		FROM kapa_consult
+		<where>
 			id = #{masterId}
-  		</where>
-    </select>
-    
-    <select id="getLandCheck" resultType="int">
-        select count(*) from  Kapa_LandRights
-  		<where>
+		</where>
+	</select>
+
+	<select id="getLandCheck" resultType="int">
+		select count(*) from Kapa_LandRights
+		<where>
 			LandID = #{reptSeq} and PID = #{reptOwnrSeq} and gubun = 'O'
-  		</where>
-    </select>
-    
-    <select id="getObjectsCheck" resultType="int">
-        select count(*) from  Kapa_ObjectsRights
-  		<where>
+		</where>
+	</select>
+
+	<select id="getObjectsCheck" resultType="int">
+		select count(*) from Kapa_ObjectsRights
+		<where>
 			ObjectsID = #{reptSeq} and PID = #{reptOwnrSeq} and gubun = 'O'
-  		</where>
-    </select>
-    
-
-	<select id ="getLandOwnerCount" resultType="java.lang.String">
-	select DISTINCT PName from Kapa_LandRights
-	where MasterID = #{masterId}
-	</select>
-	
-	<select id ="getObjectsOwnerCount" resultType="java.lang.String">
-	select DISTINCT PName from Kapa_ObjectsRights
-	where MasterID = #{masterId}
-	</select>
-	
-		<select id ="getOpinionCount" resultType="int">
-	select count(*) from (select distinct reptOwnrSeq from TB_Decision_Opinion where decisionId = #{decisionId}) a
+		</where>
 	</select>
 
-	<select id ="getLandOpinionInfo" resultType="egovframework.kapa.implementer.domain.ApplicationLand">
-		SELECT ROI.id,ROI.pname, ROI.pid,ROI.pid,RI.* FROM dbo.Kapa_Land RI
-		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id = ROI.LandID 
-		WHERE ROI.LandId = #{reptSeq} and ROI.PID = #{reptOwnrSeq} and ROI.Gubun = 'O'
+
+	<select id="getLandOwnerCount" resultType="java.lang.String">
+		select DISTINCT PName from Kapa_LandRights
+		where MasterID = #{masterId}
+	</select>
+
+	<select id="getObjectsOwnerCount" resultType="java.lang.String">
+		select DISTINCT PName from Kapa_ObjectsRights
+		where MasterID = #{masterId}
+	</select>
+
+	<select id="getOpinionCount" resultType="int">
+		select count(*) from (select distinct reptOwnrSeq from TB_Decision_Opinion
+		where decisionId = #{decisionId}) a
+	</select>
+
+	<select id="getLandOpinionInfo"
+		resultType="egovframework.kapa.implementer.domain.ApplicationLand">
+		SELECT ROI.id,ROI.pname, ROI.pid,ROI.pid,RI.* FROM
+		dbo.Kapa_Land RI
+		LEFT JOIN dbo.Kapa_LandRights ROI ON RI.id =
+		ROI.LandID
+		WHERE ROI.LandId = #{reptSeq} and ROI.PID = #{reptOwnrSeq} and ROI.Gubun =
+		'O'
 		ORDER BY RI.ID
 	</select>
-	
-	<select id ="getGoodsOpinionInfo" resultType="egovframework.kapa.implementer.domain.ApplicationLand">
-		SELECT 
-		  ROI.id,ROI.pname, ROI.pid, RI.* 
-		  FROM dbo.Kapa_Objects RI
-		  LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID 
-		  WHERE ROI.ObjectsID = #{reptSeq} and ROI.PID = #{reptOwnrSeq}
-		  ORDER BY RI.ID
+
+	<select id="getGoodsOpinionInfo"
+		resultType="egovframework.kapa.implementer.domain.ApplicationLand">
+		SELECT
+		ROI.id,ROI.pname, ROI.pid, RI.*
+		FROM dbo.Kapa_Objects RI
+		LEFT JOIN dbo.Kapa_ObjectsRights ROI ON RI.id = ROI.ObjectsID
+		WHERE ROI.ObjectsID = #{reptSeq} and ROI.PID = #{reptOwnrSeq}
+		ORDER BY RI.ID
 	</select>
-	
+
 </mapper>
