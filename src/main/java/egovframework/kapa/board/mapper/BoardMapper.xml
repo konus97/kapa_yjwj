@@ -4,8 +4,8 @@
 
 	
 	<insert id="save" parameterType="egovframework.kapa.board.domain.BoardVO">
-		insert into TB_Board_Content(seq_no, board_seq, title, content,search_title,search_content, secret_check, link, regdate,uptdate,del_check, board_hits)
-		 values(#{seqNo}, #{boardSeq}, #{title}, #{content},#{searchTitle}, #{searchContent}, #{secretCheck}, #{link}, #{regdate},#{uptdate},#{delCheck}, #{boardHits})
+		insert into TB_Board_Content(board_seq, title, content,search_title,search_content, secret_check, link, regdate,uptdate,del_check, board_hits)
+		 values(#{boardSeq}, #{title}, #{content},#{searchTitle}, #{searchContent}, #{secretCheck}, #{link}, #{regdate},#{uptdate},#{delCheck}, #{boardHits})
 	</insert>
 	
 	<insert id="update" parameterType="egovframework.kapa.board.domain.BoardVO">
