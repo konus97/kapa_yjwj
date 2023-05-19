@@ -97,6 +97,10 @@ public class DeliberateService {
 		return deliberateMapper.getDeliberateDecisionList(seqNo);
 	}
 
+	public Decision_Date getDeliberateSelectDate(Long decisionId){
+		return deliberateMapper.getDeliberateSelectDate(decisionId);
+	}
+	
 	public List<DeliberateDTO> getDeliberateListFormatter(List<Decision_Date> pagingResult) {
 
 		List<DeliberateDTO> deliberateDTOS = new ArrayList<>();
@@ -367,7 +371,8 @@ public class DeliberateService {
 		List<Decision_Opinion> opinionList = decisionService.getOpinionStep3List(decisionId);
 		
 		List<DeliberateOpinionDTO> deliberateOpinionDTOS = new ArrayList<>();
-
+		
+		
 		for (Decision_Opinion opinion : opinionList) {
 
 			Long reptSeq = opinion.getReptSeq();

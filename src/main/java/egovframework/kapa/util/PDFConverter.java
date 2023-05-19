@@ -131,7 +131,10 @@ public class PDFConverter {
 			    String imageFileName = "temp_" + StrUtil.lpad(String.valueOf(pageNum), pageCountLength, "0") + ".jpg";
 //			    File outputfile = new File(destFolderPath + "/" + fileNameOnly + "/" + imageFileName);
 			    File outputfile = new File(destFolderPath + "/" + fileNameOnly + "/" + imageFileName);
-			    ImageIO.write(imageObj, "jpg", outputfile);
+			    if (!outputfile.exists()) {
+			    	ImageIO.write(imageObj, "jpg", outputfile);
+			    }
+			    
 			    jpgFiles.add(destFolderPath + "/" + fileNameOnly + "/" + imageFileName);
 			    System.out.println("output " + pageNum + "/" + pageCount + " : " + outputfile.getAbsolutePath());
 			}

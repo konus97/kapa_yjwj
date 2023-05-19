@@ -295,14 +295,15 @@ public class FileController {
 		//재결의견작성 첨부파일 업로드
 		@RequestMapping(value = "/uploadContentFile/opinion", method = RequestMethod.POST)
 		@ResponseBody
-		public  Map<String,Object> uploadOpinionFile(MultipartHttpServletRequest req) throws Exception {
+		public  Map<String,Object> uploadOpinionFile(MultipartHttpServletRequest req, @RequestParam String decisionId) throws Exception {
 			 System.out.println("===============재결의견작성 첨부파일 업로드===============");
 			req.setCharacterEncoding("UTF-8");
 			HashMap<String, Object> resultFinal = new HashMap<String, Object>();
 			Map<String, String> map = new HashMap();
 			boolean isLocal = false;
 			String requestUrl = new String(req.getRequestURL());
-			Long masterId = 6050133L;
+			Long masterId = Long.parseLong(decisionId);
+			System.out.println("asdasdasasasdas" + masterId);
 			if (requestUrl.contains("localhost") || requestUrl.contains("127.0.0.1")) {
 				isLocal = true;
 			}
@@ -321,9 +322,10 @@ public class FileController {
 						map.put(nextElement.substring(5), req.getParameter(nextElement));
 					}
 					if(nextElement.equals("masterId")){
-						masterId = Long.parseLong(req.getParameter("masterId"));
+						masterId = Long.parseLong(decisionId);
 					}
 				}
+				System.out.println("asfasdfsafsdf :::" + decisionId);
 				System.out.println("재결의견작성 ::: " + masterId);
 				//masterId 지금 디시전아이디 195번 기준으로 다시 가지고 와야해요~
 				while (fileNames.hasNext()) {
@@ -403,10 +405,10 @@ public class FileController {
 		 * "C:\\Users\\pc\\Desktop\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kapa_seoulfiles\\download\\";
 		 */
 		// for local
-		String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
+		//String filePath = request.getServletContext().getRealPath(File.separator)+ "file" + File.separator + "download"+"\\";
 		
 		// for server
-		//String filePath = "/usr/local/tomcat/webapps/download/";
+		String filePath = "/usr/local/tomcat/webapps/download/";
 
 		System.out.println("======================================================");
 		System.out.println(filePath);

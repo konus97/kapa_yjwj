@@ -60,8 +60,10 @@
 	</select> 
 	
 	<select id="getRegisterStepFile" resultType="egovframework.kapa.domain.Decision_Opinion" >
-		  SELECT * FROM TB_Decision_File_Opinion DFO
-  LEFT JOIN TB_FILE TF ON DFO.fileSeq = TF.seqNo
+		  SELECT DFO.*,TF.*,DOI.ownrNm FROM TB_Decision_File_Opinion DFO 
+		LEFT JOIN TB_FILE TF 
+		ON DFO.fileSeq = TF.seqNo
+		LEFT JOIN TB_Decision_Opinion DOI ON DFO.reptOwnrSeq = DOI.reptSeq AND DFO.reptSeq = DOI.reptOwnrSeq
 		
 		<where>
 			DFO.decisonId = #{decisionId}
@@ -485,7 +487,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
 		      ,[delCheck]
 		      ,[regdate]
 		      ,[uptdate]
-		  FROM [land-seoul3].[dbo].[TB_Decision_Date]
+		  FROM [land_seoul].[dbo].[TB_Decision_Date]
 		
 		  WHERE consultationDate BETWEEN #{start} AND #{end}
 		  ORDER BY consultationDate
@@ -495,7 +497,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
     <select id="getSeqNoByConsultDate" parameterType="String" resultType="Integer">
 
 		SELECT seqNo
-		  FROM [land-seoul3].[dbo].[TB_Decision_Date]
+		  FROM [land_seoul].[dbo].[TB_Decision_Date]
 		
 		  WHERE consultationDate = #{consultationDate}
 
@@ -504,8 +506,8 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
     <select id="getCountSamedaysMeetings" parameterType="Integer" resultType="Integer">
 
 		SELECT COUNT(*)
-		  FROM [land-seoul3].[dbo].[TB_Decision_Date] A
-		  LEFT JOIN [land-seoul3].[dbo].[TB_Decision_AgendaDate] B
+		  FROM [land_seoul].[dbo].[TB_Decision_Date] A
+		  LEFT JOIN [land_seoul].[dbo].[TB_Decision_AgendaDate] B
 		  ON A.seqNo = B.selectDate
 		  WHERE A.seqNo = #{seqNo}
 		  AND A.delCheck = 0
@@ -516,7 +518,7 @@ LEFT JOIN TB_Decision_Opinion_Item DOI ON DOI.decisionId = DFO.decisonId AND DFO
     <select id="checkMeetingsEnable" parameterType="String" resultType="Integer">
 
 		SELECT COUNT(*)
-		  FROM [land-seoul3].[dbo].[TB_Decision_Date] 
+		  FROM [land_seoul].[dbo].[TB_Decision_Date] 
 		  WHERE consultationDate = #{meetingDate}
 		  AND delCheck = 0
 

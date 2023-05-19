@@ -34,6 +34,8 @@ public interface DeliberateMapper {
 
 	List<Decision_AgendaDate> getDeliberateDecisionList(Long selectDate);
 
+	Decision_Date getDeliberateSelectDate(Long decisionId);	
+	
 	Decision_AgendaDate getDeliberateDecisionDate(Long decisionId);
 	
 	Decision_Date getDeliberateDate(Long viewSeq);

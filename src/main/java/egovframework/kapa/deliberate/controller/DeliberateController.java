@@ -1,13 +1,12 @@
 package egovframework.kapa.deliberate.controller;
 
-import java.io.File;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +25,9 @@ import egovframework.kapa.domain.Decision;
 import egovframework.kapa.domain.Decision_AgendaDate;
 import egovframework.kapa.domain.Decision_Consult;
 import egovframework.kapa.domain.Decision_ConsultationDate;
-import egovframework.kapa.domain.Decision_File;
+import egovframework.kapa.domain.Decision_Date;
 import egovframework.kapa.domain.Decision_Notice;
 import egovframework.kapa.domain.Decision_Opinion;
-import egovframework.kapa.file.domain.FileVO;
 import egovframework.kapa.implementer.service.ImplementerService;
 import egovframework.kapa.util.PDFConverter;
 
@@ -292,8 +290,18 @@ public class DeliberateController {
 	    List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
 	    List<Decision_Opinion> typeListOld = decisionService.getOpinionTypeList(decisionId);
 	    List<Decision_Opinion> registerFileList = decisionService.getRegisterStepFile(decisionId);
+	    Decision_Date deliberateDate = deliberateService.getDeliberateSelectDate(decisionId);
 	    model.addAttribute("registerFileList", registerFileList);
-        model.addAttribute("opinionList", opinionList);
+	    model.addAttribute("opinionList", opinionList);
+	    
+	    String consultationDate = deliberateDate.getConsultationDate().toString();
+	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date consulDate = simpleDateFormat.parse(consultationDate);
+	    simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+	    String consultDateFormat = simpleDateFormat.format(consulDate);
+	    model.addAttribute("consultDateFormat", consultDateFormat);
+	    
+	    
         
         List<Decision_Opinion> typeList = new ArrayList<>();
         String getTypeStr = "";
@@ -305,7 +313,6 @@ public class DeliberateController {
         	op.setRelatedLaws2(item.getRelatedLaws2());
         	op.setReviewOpinion(item.getReviewOpinion());
         	op.setOpinionType(item.getOpinionType());
-        	System.out.println("test:::::"+item.getOpinionType());
         	
         	
         	 int getType = item.getOpinionType();
@@ -359,7 +366,12 @@ public class DeliberateController {
         List<String> ownerList = new ArrayList<>();
         ownerList.addAll(landOwnerCount);
         ownerList.addAll(objectsOwnerCount);
-        
+        String landOwnerCountOne = "";
+        		if(!landOwnerCount.isEmpty()) {
+        			landOwnerCountOne = landOwnerCount.get(0);
+        		}else {
+        			landOwnerCountOne = "";
+        		}
         Set<String> set = new HashSet<String>(ownerList);
 		List<String> ownerDistinctList =new ArrayList<String>(set);
         int opinionCount = decisionService.getOpinionCount(decisionId);
@@ -369,7 +381,7 @@ public class DeliberateController {
         model.addAttribute("consultList", consultList);
         model.addAttribute("consultationDates", consultationDates);
         model.addAttribute("ownerCount", ownerDistinctList.size());
-        model.addAttribute("ownerName", landOwnerCount.get(0));
+        model.addAttribute("ownerName", landOwnerCountOne);
         model.addAttribute("opinionCount", opinionCount);
 		Long landCnt = decision.getLandCnt();
 		Long landArea = decision.getLandArea();
@@ -400,22 +412,30 @@ public class DeliberateController {
   		if(decision.getLandowner() != null) {
   		landowner = decision.getLandowner();
   		}
-  		
-  		//List<Decision_File> decision_File = decisionService.getDecisionFileList(Long.valueOf(masterId));
-  		//List<FileVO> decisionFile = new ArrayList();
-  		//List<String> jpgFiles = new ArrayList();
-  		//List<List<String>> jpgFiles = new ArrayList<List<String>>();
-  		
-		/*
-		 * for (int i=0; i<registerFileList.size(); i++) { // pdf -> jpg 변환작업
-		 * PDFConverter pdfconvert = new PDFConverter(); String fname =
-		 * registerFileList.get(i).getFileNameChange(); // 파일명 // 로컬 // String localPath
-		 * = request.getServletContext().getRealPath(File.separator)+ "file" +
-		 * File.separator + "download"+"\\"; //
-		 * jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i)); // 서버
-		 * String serverPath = registerFileList.get(i).getFileFolder();
-		 * jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i)); }
-		 */
+  				
+  		//List<String> pdfWriter = new ArrayList<String>();
+		  List<List<String>> jpgFiles = new ArrayList<List<String>>();
+		  
+		  for (int i=0; i<registerFileList.size(); i++) {
+		  if(registerFileList.get(i).getFileNameExtension().equalsIgnoreCase("pdf"))
+		  {
+			  // pdf -> jpg 변환작업 
+		  PDFConverter pdfconvert = new PDFConverter(); 
+		  String fname = registerFileList.get(i).getFileNameChange();
+		  //String pdf_writer = registerFileList.get(i).getOwnrNm();
+		 // pdfWriter.add(pdf_writer);
+		  
+		  // 파일명 // 로컬
+		  //String localPath =request.getServletContext().getRealPath(File.separator)+ "file"+File.separator + "download"+"\\";
+		  //jpgFiles.add(pdfconvert.ConvertPdf2Jpg(localPath, fname, masterId, i)); 
+		  //서버 
+		  String serverPath = registerFileList.get(i).getFileFolder();
+		  jpgFiles.add(pdfconvert.ConvertPdf2Jpg(serverPath, fname, masterId, i)); 
+		  } 
+		  }
+		 
+			  
+		 
   		 
   		 model.addAttribute("landCnt", landCntStr);
  		 model.addAttribute("landArea", landAreaStr);
@@ -430,6 +450,7 @@ public class DeliberateController {
  		// model.addAttribute("jpgFiles", jpgFiles);
  		 model.addAttribute("EndDate", EndDate);
  		 model.addAttribute("consultationDatesSize", consultationDates.size());
+ 		 //model.addAttribute("pdfWriter", pdfWriter);
 		return "deliberate/pdfview";
 	}
 	
@@ -439,62 +460,7 @@ public class DeliberateController {
 		return "deliberate/ebookPopup";
 	}
 	
-	@GetMapping("/agenda/ebookView.do")
-	public String ebookView(HttpServletRequest request,Model model) {
-		Long selectDate =  Long.parseLong(request.getParameter("selectDate"));   
-		
-        //값 넣기
-        List<Decision_AgendaDate> pagingResult = deliberateService.getDeliberateDecisionList(selectDate); //심의날짜에 따른 심의안건 친구들
-       
-    	List<DeliberateViewDTO> formatterList = deliberateService.getDeliberateViewFormatter(pagingResult); 
-
-        
-        
-    	Long decisionId = pagingResult.get(0).getDecisionId();
-    	Decision decision = decisionService.getDecisionView(decisionId);
-    	List<Decision_Opinion> opinionList = decisionService.getDecisionOpinionList(decisionId);
-    	model.addAttribute("opinionList", opinionList);
-    	Long landCnt = decision.getLandCnt();
-		Long landArea = decision.getLandArea();
-		Long landPrice = decision.getLandPrice();
-		Long objCnt = decision.getObjCnt();
-		Long objPrice = decision.getObjPrice();
-		Long goodwillCnt = decision.getGoodwillCnt();
-		Long goodwillPrice = decision.getGoodwillPrice();
-
-		DecimalFormat dc = new DecimalFormat("###,###,###,###.##");
-	    String landCntStr = dc.format(landCnt);
-	    String landAreaStr = dc.format(landArea);
-  		String landPriceStr = dc.format(landPrice);
-  		String objCntStr = dc.format(objCnt);
-  		String objPriceStr = dc.format(objPrice);
-  		String goodwillCntStr = dc.format(goodwillCnt);
-  		String goodwillPriceStr = dc.format(goodwillPrice);
-
-  		model.addAttribute("landCnt", landCntStr);
- 		model.addAttribute("landArea", landAreaStr);
- 		model.addAttribute("landPrice", landPriceStr);
- 		model.addAttribute("objCnt", objCntStr);
- 		model.addAttribute("objPrice", objPriceStr);
- 		model.addAttribute("goodwillCnt", goodwillCntStr);
- 		model.addAttribute("goodwillPrice", goodwillPriceStr);
-
-    	int masterId = decision.getMasterID();
-        List<Decision> csltList = implementerService.getLtisCslt(masterId);
-		model.addAttribute("csltList", csltList);
-		
-		model.addAttribute("csltList", csltList);
-		
-    	model.addAttribute("formatterList", formatterList);
-        
-        //current page
-		model.addAttribute("currentPage", "agenda");
-		// 입력 HTML 문서 로드
-		
-		
-		
-		return "deliberate/ebookview";
-	}
+	
 	
 	
 	

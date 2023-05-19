@@ -60,6 +60,16 @@
 		
 	</select> 
 	
+	<select id="getDeliberateSelectDate" parameterType="long" resultType="egovframework.kapa.domain.Decision_Date">
+		
+  		SELECT * from TB_Decision_Date A
+			
+		LEFT JOIN TB_Decision_AgendaDate B ON A.seqNo = B.selectDate
+		where
+			B.decisionId = #{decisionId}
+	
+	</select>
+	
 	<select id="getDeliberateDecisionDate" parameterType="long" resultType="egovframework.kapa.domain.Decision_AgendaDate" >
 		SELECT  
 			*

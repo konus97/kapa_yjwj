@@ -137,7 +137,7 @@
 				</div>
 				<div class="main_cover__cen">
 					<h1 class="main_cover__tit">재결심의서</h1>
-					<p class="main_cover__date">(2022.4.29)</p>
+					<p class="main_cover__date">(${consultDateFormat})</p>
 					<div class="main_cover__logo">
 						<img src="../../images/common/logo_seoul_combined.png">
 					</div>
@@ -552,7 +552,7 @@
 											</tr>
 											</c:when>
 											
-											<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+											<%-- <c:when test="${fileList.fileNameExtension eq 'pdf'}">
 											<tr>
 												<td colspan="3">
 				                         			<div class="f_wrap__file_wr"> 
@@ -564,9 +564,9 @@
 			                         				</div>
 			                         			</td>
 					                        </tr>
-											</c:when>
+											</c:when> --%>
 											
-											<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+											<%-- <c:when test="${fileList.fileNameExtension eq 'PDF'}">
 											<tr>
 												<td colspan="3">
 				                         			<div class="f_wrap__file_wr"> 
@@ -578,7 +578,7 @@
 			                         				</div>
                        								</td>
                        							</tr>
-											</c:when>
+											</c:when> --%>
 											
 										</c:choose>
 										</c:if>
@@ -592,13 +592,13 @@
 				<!-- 필지 의견 끝 -->
 				
 				<%-- pdf to jpg 첨부파일 --%>
-				<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
-					<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
-						<div class="pdf__page pdf__page--img">
-							 <img src="${jpgFiles}" alt="">
-						 </div>
-					</c:forEach>
-				</c:forEach> --%>
+<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+	<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+		<div class="pdf__page pdf__page--img">
+			 <img src="${jpgFiles}" alt="">
+		 </div>
+	</c:forEach>
+</c:forEach> --%>
 			
 			</c:if> <%-- e: landcheck --%>
 			
@@ -787,7 +787,7 @@
 										</tr>
 										</c:when>
 										
-										<c:when test="${fileList.fileNameExtension eq 'pdf'}">
+										<%-- <c:when test="${fileList.fileNameExtension eq 'pdf'}">
 										<tr>
 											<td colspan="3">
 												<div class="f_wrap__file_wr"> 
@@ -799,9 +799,9 @@
 			                         			</div>
 											</td>
 		                         		</tr>
-										</c:when>
+										</c:when> --%>
 										
-										<c:when test="${fileList.fileNameExtension eq 'PDF'}">
+										<%-- <c:when test="${fileList.fileNameExtension eq 'PDF'}">
 										<tr>
 											<td colspan="3">
 												<div class="f_wrap__file_wr"> 
@@ -813,7 +813,7 @@
 			                         			</div>
 		                         			</td>
 	                         			</tr>
-										</c:when>
+										</c:when> --%>
 										
 										</c:choose>
 										</c:if>
@@ -864,14 +864,20 @@
 	
 	
 	<%-- 첨부파일 목차 --%>
-	<%--<br id="index${formatter.applicationDTO.judgSeq}_fileWr">--%>
+	<br id="index${formatter.applicationDTO.judgSeq}_fileWr">
  	<!-- 첨부파일 S -->
-	<%-- <c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
-		
-			 <img src="${jpgFileList}" alt="">
-			<p>${jpgFiles}</p>
-		
-	</c:forEach> --%>
+	<%-- pdf to jpg 첨부파일 --%>
+		<c:forEach var="jpgFileList" items="${jpgFiles}" varStatus = "status">
+			<c:set var="ownrNm" value="${registerFileList[status.index].ownrNm}"></c:set>	 	
+			<h2 class="f_wrap__tit">
+			${ownrNm}님의 PDF자료
+			</h2>
+			<c:forEach var="jpgFiles" items="${jpgFileList}" varStatus = "status">
+				<div class="pdf__page pdf__page--img">
+					 <img src="${jpgFiles}" alt="">
+				 </div>
+			</c:forEach>
+		</c:forEach>
 	<!-- 첨부파일 E -->
 		
 </div><!-- e: pdf_wr -->
