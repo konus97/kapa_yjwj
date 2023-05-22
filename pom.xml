@@ -16,11 +16,15 @@
         </license>
     </licenses>
 
-	<properties>
-	    <spring.maven.artifact.version>4.3.25.RELEASE</spring.maven.artifact.version>
+	<!-- <properties>
+		<spring.maven.artifact.version>4.3.25.RELEASE</spring.maven.artifact.version>
 		<egovframework.rte.version>3.10.0</egovframework.rte.version>
+	</properties> -->
+	<properties>
+        <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
 		<security.version>4.2.13.RELEASE</security.version>
-	</properties>
+    	</properties>
 
 	<repositories>
         <repository>
