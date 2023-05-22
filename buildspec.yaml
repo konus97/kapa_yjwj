@@ -4,12 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-  build:
-    commands:
-      - echo "Building the project..."
-      - mvn clean install
-      - echo "Deploying the WAR file..."
-      - cp target/kapa-seoul-1.0.0.war /home/ubuntu/tomcat9/webapps/
+  
 artifacts:
   files:
     - target/kapa-seoul-1.0.0.war
