@@ -4,7 +4,10 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-  
+  build:
+    commands:
+      - echo "Building the project..."
+      - mvn clean install
 artifacts:
   files:
     - target/kapa-seoul-1.0.0.war
