@@ -303,62 +303,52 @@ public class ImplementerController {
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
 		
-        //필지 수
-        int landCount = implementerService.getApplicationLandCount(masterId);
-        model.addAttribute("landCount", landCount);
-        
-        //면적
-        int totalAreaAmot = 0;
-        
-        //종전금액합계
-        int totalCost = 0;
-        String totalHitsStr = "";
-        
-        if(landCount>0) {
-            //값 넣기
-            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
-            
-            for(ApplicationLand applicationLand:landList) {
-              int area_amot = applicationLand.getArea_amot();
-              Long bef_unit_cost = applicationLand.getPriceK();
-              
-              totalAreaAmot+=area_amot;
-              
-              totalCost+=bef_unit_cost;
-            }
-            
-        }
-        model.addAttribute("totalAreaAmot", totalAreaAmot);
-        
-        //필지 소유자 수
-        int landRightCount = implementerService.getApplicationLandRightCount(masterId);
-        model.addAttribute("landRightCount", landRightCount);
- 
-        //지장물 수
-        int objectCount = implementerService.getApplicationObjectCount(masterId);
-        model.addAttribute("objectCount", objectCount);
-        
-        if(objectCount>0) {
-            //값 넣기
-            List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
-            
-            for(ApplicationLand applicationLand:goodsList) {      
-              Long bef_unit_cost = applicationLand.getPriceK();                       
-              totalCost+=bef_unit_cost;
-            }
-            
-        }
-        
-        //지장물 소유자 수
-        int objectRightCount = implementerService.getApplicationObjectRightCount(masterId);
-        model.addAttribute("objectRightCount", objectRightCount);
-        
-        if(totalCost>0) {
-        	totalHitsStr = Integer.toString(totalCost);
-        	totalHitsStr = StrUtil.convertToDecimalFormat(totalHitsStr);
-        }
-        
-        model.addAttribute("totalCost", totalHitsStr);
+		/*
+		 * //필지 수 int landCount = implementerService.getApplicationLandCount(masterId);
+		 * model.addAttribute("landCount", landCount);
+		 * 
+		 * //면적 int totalAreaAmot = 0;
+		 * 
+		 * //종전금액합계 int totalCost = 0; String totalHitsStr = "";
+		 * 
+		 * if(landCount>0) { //값 넣기 List<ApplicationLand> landList =
+		 * implementerService.getLandInfo(masterId);
+		 * 
+		 * for(ApplicationLand applicationLand:landList) { int area_amot =
+		 * applicationLand.getArea_amot(); Long bef_unit_cost =
+		 * applicationLand.getPriceK();
+		 * 
+		 * totalAreaAmot+=area_amot;
+		 * 
+		 * totalCost+=bef_unit_cost; }
+		 * 
+		 * } model.addAttribute("totalAreaAmot", totalAreaAmot);
+		 * 
+		 * //필지 소유자 수 int landRightCount =
+		 * implementerService.getApplicationLandRightCount(masterId);
+		 * model.addAttribute("landRightCount", landRightCount);
+		 * 
+		 * //지장물 수 int objectCount =
+		 * implementerService.getApplicationObjectCount(masterId);
+		 * model.addAttribute("objectCount", objectCount);
+		 * 
+		 * if(objectCount>0) { //값 넣기 List<ApplicationLand> goodsList =
+		 * implementerService.getGoodsInfo(masterId);
+		 * 
+		 * for(ApplicationLand applicationLand:goodsList) { Long bef_unit_cost =
+		 * applicationLand.getPriceK(); totalCost+=bef_unit_cost; }
+		 * 
+		 * }
+		 * 
+		 * //지장물 소유자 수 int objectRightCount =
+		 * implementerService.getApplicationObjectRightCount(masterId);
+		 * model.addAttribute("objectRightCount", objectRightCount);
+		 * 
+		 * if(totalCost>0) { totalHitsStr = Integer.toString(totalCost); totalHitsStr =
+		 * StrUtil.convertToDecimalFormat(totalHitsStr); }
+		 * 
+		 * model.addAttribute("totalCost", totalHitsStr);
+		 */
         
         //공통된 소유자 수 검색
 		/*
@@ -406,62 +396,52 @@ public class ImplementerController {
 		ApplicationDTO applicationDTO = implementerService.makeImplementerViewFormatter(applicationVo);
         model.addAttribute("avo", applicationDTO);
 		
-        //필지 수
-        int landCount = implementerService.getApplicationLandCount(masterId);
-        model.addAttribute("landCount", landCount);
-        
-        //면적
-        int totalAreaAmot = 0;
-        
-        //종전금액합계
-        int totalCost = 0;
-        String totalHitsStr = "";
-        
-        if(landCount>0) {
-            //값 넣기
-            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
-            
-            for(ApplicationLand applicationLand:landList) {
-              int area_amot = applicationLand.getArea_amot();
-              Long bef_unit_cost = applicationLand.getPriceK();
-              
-              totalAreaAmot+=area_amot;
-              
-              totalCost+=bef_unit_cost;
-            }
-            
-        }
-        model.addAttribute("totalAreaAmot", totalAreaAmot);
-        
-        //필지 소유자 수
-        int landRightCount = implementerService.getApplicationLandRightCount(masterId);
-        model.addAttribute("landRightCount", landRightCount);
- 
-        //지장물 수
-        int objectCount = implementerService.getApplicationObjectCount(masterId);
-        model.addAttribute("objectCount", objectCount);
-        
-        if(objectCount>0) {
-            //값 넣기
-            List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
-            
-            for(ApplicationLand applicationLand:goodsList) {      
-              Long bef_unit_cost = applicationLand.getPriceK();                       
-              totalCost+=bef_unit_cost;
-            }
-            
-        }
-        
-        //지장물 소유자 수
-        int objectRightCount = implementerService.getApplicationObjectRightCount(masterId);
-        model.addAttribute("objectRightCount", objectRightCount);
-        
-        if(totalCost>0) {
-        	totalHitsStr = Integer.toString(totalCost);
-        	totalHitsStr = StrUtil.convertToDecimalFormat(totalHitsStr);
-        }
-        
-        model.addAttribute("totalCost", totalHitsStr);
+		/*
+		 * //필지 수 int landCount = implementerService.getApplicationLandCount(masterId);
+		 * model.addAttribute("landCount", landCount);
+		 * 
+		 * //면적 int totalAreaAmot = 0;
+		 * 
+		 * //종전금액합계 int totalCost = 0; String totalHitsStr = "";
+		 * 
+		 * if(landCount>0) { //값 넣기 List<ApplicationLand> landList =
+		 * implementerService.getLandInfo(masterId);
+		 * 
+		 * for(ApplicationLand applicationLand:landList) { int area_amot =
+		 * applicationLand.getArea_amot(); Long bef_unit_cost =
+		 * applicationLand.getPriceK();
+		 * 
+		 * totalAreaAmot+=area_amot;
+		 * 
+		 * totalCost+=bef_unit_cost; }
+		 * 
+		 * } model.addAttribute("totalAreaAmot", totalAreaAmot);
+		 * 
+		 * //필지 소유자 수 int landRightCount =
+		 * implementerService.getApplicationLandRightCount(masterId);
+		 * model.addAttribute("landRightCount", landRightCount);
+		 * 
+		 * //지장물 수 int objectCount =
+		 * implementerService.getApplicationObjectCount(masterId);
+		 * model.addAttribute("objectCount", objectCount);
+		 * 
+		 * if(objectCount>0) { //값 넣기 List<ApplicationLand> goodsList =
+		 * implementerService.getGoodsInfo(masterId);
+		 * 
+		 * for(ApplicationLand applicationLand:goodsList) { Long bef_unit_cost =
+		 * applicationLand.getPriceK(); totalCost+=bef_unit_cost; }
+		 * 
+		 * }
+		 * 
+		 * //지장물 소유자 수 int objectRightCount =
+		 * implementerService.getApplicationObjectRightCount(masterId);
+		 * model.addAttribute("objectRightCount", objectRightCount);
+		 * 
+		 * if(totalCost>0) { totalHitsStr = Integer.toString(totalCost); totalHitsStr =
+		 * StrUtil.convertToDecimalFormat(totalHitsStr); }
+		 * 
+		 * model.addAttribute("totalCost", totalHitsStr);
+		 */
         
         //공통된 소유자 수 검색
 		/*
