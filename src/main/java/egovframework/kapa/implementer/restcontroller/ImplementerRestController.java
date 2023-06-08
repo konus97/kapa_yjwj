@@ -37,6 +37,7 @@ import egovframework.kapa.implementer.dto.ApplicationDTO;
 import egovframework.kapa.implementer.dto.ApplicationGoodsDTO;
 import egovframework.kapa.implementer.dto.ApplicationLandDTO;
 import egovframework.kapa.implementer.service.ImplementerService;
+import egovframework.kapa.util.StrUtil;
 
 @RestController
 @RequestMapping("/api/implementer")
@@ -756,6 +757,60 @@ public class ImplementerRestController {
             e.printStackTrace();
 		}
 	}
+
+	@RequestMapping(value = "/landData", method = RequestMethod.GET)
+    public Map<String, Object> getLandData(@RequestParam("masterId") int masterId) {
+        Map<String, Object> data = new HashMap<>();
+        
+        int landCount = implementerService.getApplicationLandCount(masterId);
+        data.put("landCount", landCount);
+        
+        int totalAreaAmot = 0;
+        int totalCost = 0;
+        
+        if (landCount > 0) {
+            List<ApplicationLand> landList = implementerService.getLandInfo(masterId);
+            
+            for (ApplicationLand applicationLand : landList) {
+                int area_amot = applicationLand.getArea();
+                Long bef_unit_cost = applicationLand.getPriceK();
+                
+                totalAreaAmot += area_amot;
+                totalCost += bef_unit_cost;
+            }
+        }
+        
+        data.put("totalAreaAmot", totalAreaAmot);
+        
+        int landRightCount = implementerService.getApplicationLandRightCount(masterId);
+        data.put("landRightCount", landRightCount);
+        
+        int objectCount = implementerService.getApplicationObjectCount(masterId);
+        data.put("objectCount", objectCount);
+        
+        if (objectCount > 0) {
+            List<ApplicationLand> goodsList = implementerService.getGoodsInfo(masterId);
+            
+            for (ApplicationLand applicationLand : goodsList) {
+                Long bef_unit_cost = applicationLand.getPriceK();
+                totalCost += bef_unit_cost;
+            }
+        }
+        
+        int objectRightCount = implementerService.getApplicationObjectRightCount(masterId);
+        data.put("objectRightCount", objectRightCount);
+        
+        String totalHitsStr = "";
+        
+        if (totalCost > 0) {
+            totalHitsStr = Integer.toString(totalCost);
+            totalHitsStr = StrUtil.convertToDecimalFormat(totalHitsStr);
+        }
+        
+        data.put("totalCost", totalHitsStr);
+        
+        return data;
+    }
 	
 	
 }

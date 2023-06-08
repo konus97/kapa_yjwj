@@ -205,46 +205,48 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">조서 정보</h4>
+								<br/>
+								<button onClick="getJosuList('${masterId}'); return false;">&nbsp;&nbsp; 조회하기&nbsp;<i class="icon search"></i></button>
 							</div>
 							<div class="form t1">
 								<div class="f_wrap">
+
+
 									<div class="f_field div2">
 										<div class="ff_title">
 											<label>지장물수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>
-												<a href="#" class="cx"
-													onclick="openPopup('goods','${objectCount}');return false;">${objectCount}건<i
-													class="icon search"></i></a>
+											<p id="josu1">
+												건
 											</p>
 										</div>
 									</div>
+
 									<div class="f_field div2">
 										<div class="ff_title">
 											<label>필지수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>
-												<a href="#" class="cx"
-													onclick="openPopup('land','${landCount}');return false;">${landCount}건<i
-													class="icon search"></i></a>
+											<p id="josu2">
+												건
 											</p>
 										</div>
 									</div>
 								</div>
+
+
 								<div class="f_wrap">
 									<div class="f_field div2">
 										<div class="ff_title">
 											<label>지장물소유자수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>
-												<a href="#" class="cx"
-													onclick="openPopup('goodsowner','${objectRightCount}');return false;">${objectRightCount}명<i
-													class="icon search"></i></a>
+											<p id="josu3">
+												명
 											</p>
 										</div>
 									</div>
@@ -253,10 +255,8 @@
 											<label>필지소유자수</label>
 										</div>
 										<div class="ff_wrap">
-											<p>
-												<a href="#" class="cx"
-													onclick="openPopup('landsowner','${landRightCount}');return false;">${landRightCount}명<i
-													class="icon search"></i></a>
+											<p id="josu4">
+												명
 											</p>
 										</div>
 									</div>
@@ -266,16 +266,16 @@
 										<div class="ff_title">
 											<label>면적</label>
 										</div>
-										<div class="ff_wrap">
-											<p>${totalAreaAmot}㎡</p>
+										<div class="ff_wrap" id="josu5">
+											<p>㎡</p>
 										</div>
 									</div>
 									<div class="f_field div2">
 										<div class="ff_title">
 											<label>종전금액합계(원)</label>
 										</div>
-										<div class="ff_wrap">
-											<p>${totalCost}</p>
+										<div class="ff_wrap" id="josu6">
+											<p>원</p>
 										</div>
 									</div>
 								</div>
@@ -2378,6 +2378,95 @@
 	
 	
 	<script type="text/javascript">
+
+	function getJosuList(masterId){
+		console.log(masterId);
+
+		let contextPath = $("#contextPath").val();
+		let url = contextPath + "/api/implementer/landData";
+
+		$.ajax({
+			url: url,
+			type: "GET",
+			dataType: "json",
+			data: {
+				"masterId": masterId,
+			},
+			success: function(data) {
+
+			    $("#josu1").empty();
+			    $("#josu2").empty();
+			    $("#josu3").empty();
+			    $("#josu4").empty();
+			    $("#josu5").empty();
+			    $("#josu6").empty();
+			      
+	            let objectCount = String(data.objectCount);
+	            let landCount = String(data.landCount);
+	            let objectRightCount = String(data.objectRightCount);
+	            let landRightCount = String(data.landRightCount);
+	            let totalAreaAmot = String(data.totalAreaAmot);
+	            let totalCost = String(data.totalCost);
+
+	            let addList1 = new Array();
+	            addList1.push("<a class=\"cx\" onclick=\"openPopup('goods', "+objectCount+")\">"+
+						""+objectCount+"건" +" <i class=\"icon search\"></i> </a>");
+
+	            let addList2 = new Array();
+	            addList2.push("<a class=\"cx\" onclick=\"openPopup('land', "+landCount+")\">"+
+						""+landCount+"건" +" <i class=\"icon search\"></i> </a>");
+
+	            let addList3 = new Array();
+	            addList3.push("<a class=\"cx\" onclick=\"openPopup('goodsowner', "+objectRightCount+")\">"+
+						""+objectRightCount+"명" +" <i class=\"icon search\"></i> </a>");
+
+	            let addList4 = new Array();
+	            addList4.push("<a class=\"cx\" onclick=\"openPopup('landsowner', "+landRightCount+")\">"+
+						""+landRightCount+"명" +" <i class=\"icon search\"></i> </a>");
+
+	            let addList5 = new Array();
+	            addList5.push("<p>" + totalAreaAmot+ "㎡</p>");
+	            let addList6 = new Array();
+	            addList6.push("<p>" + totalCost+ "원</p>");
+	            /* 
+	            let row1 = `<a href="#" class="cx"
+	                onclick="openPopup('goods', '${objectCount}'); return false;">${objectCount}건<i
+	                class="icon search"></i></a>
+	            `;
+	            let row2 = `<a href="#" class="cx"
+	                onclick="openPopup('land', '${landCount}'); return false;">${landCount}건<i
+	                class="icon search"></i></a>
+	            `;
+	            let row3 = `<a href="#" class="cx"
+	                onclick="openPopup('goodsowner', '${objectRightCount}'); return false;">${objectRightCount}명<i
+	                class="icon search"></i></a>
+	            `;
+	            let row4 = `<a href="#" class="cx"
+	                onclick="openPopup('landsowner', '${landRightCount}'); return false;">${landRightCount}명<i
+	                class="icon search"></i></a>
+	            `;
+	            let row5 = `<p>${totalAreaAmot}㎡</p>`;
+	            let row6 = `<p>${totalCost}</p>`; */
+
+	            $("#josu1").append(addList1.join(''));
+	            $("#josu2").append(addList2.join(''));
+	            $("#josu3").append(addList3.join(''));
+	            $("#josu4").append(addList4.join(''));
+	            $("#josu5").append(addList5.join(''));
+	            $("#josu6").append(addList6.join(''));
+	            /* $josu1.empty().append($(row1));
+	            $josu2.empty().append($(row2));
+	            $josu3.empty().append($(row3));
+	            $josu4.empty().append($(row4));
+	            $josu5.empty().append($(row5));
+	            $josu6.empty().append($(row6)); */
+			  },
+			  error: function(xhr, status, error) {
+			    // Handle errors
+			    console.error(error);
+			  }
+		});
+	}
         	let opinionItemList = new Array();
         
 	        function triggerFileUpload(){

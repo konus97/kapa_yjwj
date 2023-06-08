@@ -948,7 +948,8 @@
 							</div>
 							<div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">조서 정보</h4>
-								<button  onClick="getJosuList('${masterId}'); return false;">조서 정보 가져오기</button>
+								<br/>
+								<button onClick="getJosuList('${masterId}'); return false;">&nbsp;&nbsp; 조회하기&nbsp;<i class="icon search"></i></button>
 							</div>
 							<div class="form t1">
 								<div class="f_wrap">
@@ -1243,15 +1244,15 @@
 							""+objectCount+"건" +" <i class=\"icon search\"></i> </a>");
 
 		            let addList2 = new Array();
-		            addList2.push("<a class=\"cx\" onclick=\"openPopup('goods', "+landCount+")\">"+
+		            addList2.push("<a class=\"cx\" onclick=\"openPopup('land', "+landCount+")\">"+
 							""+landCount+"건" +" <i class=\"icon search\"></i> </a>");
 
 		            let addList3 = new Array();
-		            addList3.push("<a class=\"cx\" onclick=\"openPopup('goods', "+objectRightCount+")\">"+
+		            addList3.push("<a class=\"cx\" onclick=\"openPopup('goodsowner', "+objectRightCount+")\">"+
 							""+objectRightCount+"명" +" <i class=\"icon search\"></i> </a>");
 
 		            let addList4 = new Array();
-		            addList4.push("<a class=\"cx\" onclick=\"openPopup('goods', "+landRightCount+")\">"+
+		            addList4.push("<a class=\"cx\" onclick=\"openPopup('landsowner', "+landRightCount+")\">"+
 							""+landRightCount+"명" +" <i class=\"icon search\"></i> </a>");
 
 		            let addList5 = new Array();
