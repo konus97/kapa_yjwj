@@ -74,7 +74,7 @@ function makeLandInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -121,7 +121,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -214,7 +214,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -503,7 +503,7 @@ function makeGoodsInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -558,7 +558,7 @@ function makeGoodsownerBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -798,7 +798,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+ownrNnm+"</span>");
+    addList.push("      <span>"+'test'+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
