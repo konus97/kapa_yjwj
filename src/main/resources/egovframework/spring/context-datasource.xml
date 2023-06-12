@@ -6,7 +6,7 @@
 	
 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-    <property name="url" value="jdbc:sqlserver://kapa-seoul2.clhsmmu5692l.ap-northeast-2.rds.amazonaws.com;databaseName=kapa_seoul;" />
+    <property name="url" value="jdbc:sqlserver://kapa-seoul2.clhsmmu5692l.ap-northeast-2.rds.amazonaws.com;databaseName=kapa_seoul2;" />
     <property name="username" value="admin"/>
     <property name="password" value="12345678"/>
 </bean>
