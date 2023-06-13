@@ -1,6 +1,5 @@
 package egovframework.kapa.security;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -17,7 +16,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-
+    
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		// TODO Auto-generated method stub
@@ -27,6 +26,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		String loginPassword = String.valueOf(authentication.getCredentials());
 		System.out.println("loginUserName : " + loginUserName);
 		System.out.println("loginPassword : " + loginPassword);
+		
 		
 		UserVO user = (UserVO) userDetailsService.loadUserByUsername(loginUserName);
 		System.out.println(user);
@@ -47,10 +47,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		System.out.println("권한문제인가?");
 		System.out.println(user.getAuthorities());
+        
 //		return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, user.getAuthorities());
 		return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, user.getAuthorities());
-	}
-
+    }
+   
+	
 	@Override
 	public boolean supports(Class<?> authentication) {
 		// TODO Auto-generated method stub
@@ -62,6 +64,5 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		return loginPassword.equals(password);
 
 	}
-
-
+	
 }

@@ -20,6 +20,11 @@ public class MainController {
 	UserMapper userMapper;
 
 	@GetMapping("/")
+	public String mainLogin() {
+		return "index";
+	}
+	
+	@GetMapping("/main")
 	public String indexPage(HttpServletRequest req, HttpSession session) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
 		String id = auth.getName();
@@ -33,14 +38,14 @@ public class MainController {
 		return "main";
 	}
 	
-	@GetMapping("/main.do")
-	public String mainPage() {
-		return "main";
-	}
-	@GetMapping("/main")
-	
-	public String mainPage2() {
-		return "main";
-	}
+//	@GetMapping("/main.do")
+//	public String mainPage() {
+//		return "main";
+//	}
+//	@GetMapping("/main")
+//	
+//	public String mainPage2() {
+//		return "main";
+//	}
 	
 }
