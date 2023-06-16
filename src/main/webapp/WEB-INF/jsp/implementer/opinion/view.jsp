@@ -211,80 +211,75 @@
 								</div>
 							</div>
 							
-							<div class="cs_title">
-								<h4 class="fl title t1 bold cb s1 bullet">조서 정보</h4>
-								<br/>
-								<button onClick="getJosuList('${masterId}'); return false;">&nbsp;&nbsp; 조회하기&nbsp;<i class="icon search"></i></button>
-							</div>
-							<div class="form t1">
-								<div class="f_wrap">
-
-
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>지장물수</label>
-										</div>
-										<div class="ff_wrap">
-											<p id="josu1">
-												건
-											</p>
-										</div>
-									</div>
-
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>필지수</label>
-										</div>
-										<div class="ff_wrap">
-											<p id="josu2">
-												건
-											</p>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="f_wrap">
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>지장물소유자수</label>
-										</div>
-										<div class="ff_wrap">
-											<p id="josu3">
-												명
-											</p>
-										</div>
-									</div>
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>필지소유자수</label>
-										</div>
-										<div class="ff_wrap">
-											<p id="josu4">
-												명
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="f_wrap">
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>면적</label>
-										</div>
-										<div class="ff_wrap" id="josu5">
-											<p>㎡</p>
-										</div>
-									</div>
-									<div class="f_field div2">
-										<div class="ff_title">
-											<label>종전금액합계(원)</label>
-										</div>
-										<div class="ff_wrap" id="josu6">
-											<p>원</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							                                <div class="cs_title">
+                                    <h4 class="fl title t1 bold cb s1 bullet">
+                                       	 조서 정보
+                                    </h4>
+                                </div>
+                                                     <div class="form t1">
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>지장물수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx"  onclick="openPopup('goods','${objectCount}');return false;" >${objectCount}건<i class="icon search"></i ></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                  		<div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>필지수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx" onclick="openPopup('land','${landCount}');return false;">${landCount}건<i class="icon search" ></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                       <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>지장물소유자수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx"  onclick="openPopup('goodsowner','${objectRightCount}');return false;" >${objectRightCount}명<i class="icon search"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>필지소유자수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx"  onclick="openPopup('landsowner','${landRightCount}');return false;" >${landRightCount}명<i class="icon search"></i ></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>면적</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>${totalAreaAmot}㎡</p>
+                                            </div>
+                                        </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>종전금액합계(원)</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                 <p>${totalCost}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 							<div class="cs_title">
 								<h4 class="fl title t1 bold cb s1 bullet">비고</h4>
 							</div>
