@@ -183,7 +183,7 @@
                           </div>
                         </div>
                           <div class="f_btn">
-                               <button class="btn" type="submit">
+                               <button id="loginBtn" class="btn" type="button">
                                   	 로그인
                                </button>
                            </div>
@@ -199,6 +199,7 @@
       </div>
     </nav>
     <div></div>
+
     <!-- join popup S -->
 	<jsp:include page="./components/join.jsp" flush="false">
 		<jsp:param name="login" value="login" />
@@ -218,9 +219,29 @@
 
 	<!--common start-->
 	<script src="./js/common.js"></script>
-
-	<script type="text/javascript">
+	    <script>
+	document.addEventListener("DOMContentLoaded", function () {
+		var userIdField = document.getElementById("lu_id");
+	
+	    // 로그인 버튼
+	    var loginBtn = document.querySelector("#loginBtn");
+	
+	    // 로그인 버튼 클릭 이벤트 처리
+	    loginBtn.addEventListener("click", function () {
+	      var userId = userIdField.value;
+	      if (userId === "s_kapa_master") {
+	        // 아이디가 "s_kapa_master"일 경우 로그인 API 호출
+	        document.getElementById("login_user").submit();
+	      } else {
+	        // 아이디가 "s_kapa_master"가 아닐 경우 알림창 표시
+	        alert("올바른 아이디를 입력해주세요.");
+	      }
+	    });
+	});
+	</script>
+	
   </body>
+
   
 </html>
 

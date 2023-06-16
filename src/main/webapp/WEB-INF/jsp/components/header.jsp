@@ -110,14 +110,23 @@
                 <h2 class="blind">TOPMENU</h2>
                 <ul>
 					<li>
-					    <c:choose>
-					        <c:when test="${sessionScope.userId ne null}">
+					    <c:set var="sessionValue" value="${sessionScope.userId}"/>
+					    <c:set var="stringValue" value="s_kapa_master"/>
+					    <c:if test="${!fn:contains(sessionValue, stringValue)}">
+			            <span>${sessionScope.userId}님 </span>
+			            </c:if>
+					</li>
+					<li>
+					    <!--<c:choose>
+					       <c:when test="${sessionScope.userId ne null}">
 					            <span>${userName }님</span>
 					        </c:when>
 					        <c:otherwise>
 					            <a href="#login"><span>로그인</span></a>
 					        </c:otherwise>
-					    </c:choose>
+					    </c:choose> -->
+			            
+			            <a href="#login"><span class="testbar"> 로그인</span></a>
 					</li>
 					
 				    <c:if test="${userName ne null}">
