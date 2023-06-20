@@ -8,7 +8,7 @@
 		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
 		
 		<where>
-			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10
+			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10 
   		</where>
   		
   		 <if test = 'startDate neq null and startDate neq "" and endDate neq null and startDate neq "" '>

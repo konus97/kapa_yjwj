@@ -72,9 +72,9 @@ public class LoginService {
 				
 				HttpSession session = req.getSession();
 				session.setAttribute("SS_MEM_ID", getLogin.getUserId());
-
+				session.setAttribute("Auth", getLogin.getUserAuthority());
 				Message = "Complete.";	
-
+				System.out.println("이게 세션임 : "+ (String)getLogin.getUserId());
 			}	
 		}catch (Exception e) {
 			e.printStackTrace();
