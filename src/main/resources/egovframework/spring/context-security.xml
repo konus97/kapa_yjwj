@@ -43,12 +43,7 @@
 			username-parameter="loginId"
 			password-parameter="loginPwd"
 			login-processing-url="/api/login"
-<<<<<<< HEAD
-			default-target-url="/main"
-		/>
-=======
 			default-target-url="/main"/>
->>>>>>> 05f11673e358ba661de74d9502110f98d00d25e0
 
 		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->
 		<logout logout-success-url="/logout" delete-cookies="remember-me" invalidate-session="true"/>
