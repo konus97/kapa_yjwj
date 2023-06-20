@@ -3,7 +3,6 @@
 // ************************************************
 
 function makeLandInfoBlock(startNumber,info) {
-	console.log('끼에에에에에에');
 	console.log(info);
 	
 	let addList = new Array();
@@ -22,6 +21,10 @@ function makeLandInfoBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
     
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
+	
 	let landShre = info.landShre;
 	if(landShre == null){
 		landShre = '-';
@@ -74,7 +77,7 @@ function makeLandInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNnm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -108,6 +111,9 @@ function makeLandOwnerInfoBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
     
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
 	let landShre = info.landShre;
 		if(landShre == null){
 		landShre = '-';
@@ -121,7 +127,7 @@ function makeLandOwnerInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNnm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -195,6 +201,9 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	let befUnitCost = info.befUnitCost;
     
 	let ownrNm = info.ownrNm;
+	if(ownrNm != ''){
+		ownrNm = ownrNm[0] + "*".repeat(ownrNm.length - 1);
+	}
 	let landShre = info.landShre;	
 	if(landShre == null){
 		landShre = '-';
@@ -214,7 +223,7 @@ function makeLandOwnerCheckBlock(startNumber,info) {
 	
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -322,6 +331,9 @@ if(list.length !=0){
 	let befUnitCost = info.befUnitCost;
     
 	let ownrNm = info.ownrNm;
+	if(ownrNm != ''){
+		ownrNm = ownrNm[0] + "*".repeat(ownrNm.length - 1);
+	}
 	let landShre = info.landShre;
 	if(landShre == null){
 		landShre = "-";
@@ -447,6 +459,9 @@ function makeGoodsInfoBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
 	let landShre = info.landShre;
 	if(landShre == null){
 		landShre = "-";
@@ -503,7 +518,7 @@ function makeGoodsInfoBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNnm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -545,6 +560,9 @@ function makeGoodsownerBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
 	let landShre = info.landShre;
 		if(landShre == null){
 		landShre = '-';
@@ -558,7 +576,7 @@ function makeGoodsownerBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNnm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -667,6 +685,9 @@ function makeGoodsownerBlock2(startNumber,info, getItem, reptSeqArr, reptSeqOwnr
 	let areaUnit = info.areaUnit;
 	
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
 	let landShre = info.landShre;
 		if(landShre == null){
 		landShre = '-';
@@ -780,6 +801,9 @@ function makeGoodsownerCheckBlock(startNumber,info) {
 	let areaUnit = info.areaUnit;
 	
 	let ownrNnm = info.ownrNm;
+	if(ownrNnm != ''){
+		ownrNnm = ownrNnm[0] + "*".repeat(ownrNnm.length - 1);
+	}
 	let landShre = info.landShre;
 		if(landShre == null){
 		landShre = '-';
@@ -798,7 +822,7 @@ function makeGoodsownerCheckBlock(startNumber,info) {
     
     addList.push("   <td>");
     addList.push("      <strong>소유자</strong>");
-    addList.push("      <span>"+'test'+"</span>");
+    addList.push("      <span>"+ownrNnm+"</span>");
     addList.push("    </td>");
     
     addList.push("   <td>");
@@ -875,6 +899,9 @@ function addLandList(rank, list){
 
 
 	let ownrNm = list.ownrNm;
+	if(ownrNm != ''){
+		ownrNm = ownrNm[0] + "*".repeat(ownrNm.length - 1);
+	}
 	let landShre = landInfo.landShre;
 	if(landShre == null){
 		landShre = "-";
@@ -986,6 +1013,9 @@ function addGoodsList(rank, list){
 	let areaUnit = objInfo.areaUnit;
 	
 	let ownrNm = list.ownrNm;
+	if(ownrNm != ''){
+		ownrNm = ownrNm[0] + "*".repeat(ownrNm.length - 1);
+	}
 	let landShre = objInfo.landShre;
 		if(landShre == null){
 		landShre = '-';
