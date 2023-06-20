@@ -46,7 +46,7 @@ public class ImplementerController {
 		
 		//current page
 		model.addAttribute("currentPage", "application");
-			
+
 		return "implementer/application/list";
 	}
 	

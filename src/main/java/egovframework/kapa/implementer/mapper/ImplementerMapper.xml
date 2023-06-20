@@ -4,8 +4,9 @@
 
 	 <!-- 게시글 목록 -->
 	<select id="getImplementerList" resultType="egovframework.kapa.implementer.domain.ApplicationList" parameterType="egovframework.kapa.domain.Search">
-		select distinct ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
-		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
+		   select distinct ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
+		     from kapa_master km left join tb_ltis2kapa_judg_info ji 
+		       on km.seq = ji.judg_seq 
 		
 		<where>
 			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10

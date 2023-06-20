@@ -138,7 +138,7 @@
                                 <div class="input-left">
                                     <span>시행문서번호</span>
                                 </div>
-                                <input type="text" class="input-right input40" name="docNumber" />
+                                <input type="text" class="input-right input40" name="docNumber" value="${caseNo}" readonly />
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">

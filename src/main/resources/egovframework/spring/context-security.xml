@@ -35,7 +35,7 @@
 			username-parameter="loginId"
 			password-parameter="loginPwd"
 			login-processing-url="/api/login"
-			default-target-url="/main"
+			default-target-url="/"
 		/>
 
 		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->
