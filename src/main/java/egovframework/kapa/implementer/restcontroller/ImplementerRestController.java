@@ -6,13 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,12 +59,13 @@ public class ImplementerRestController {
 	 */
 	@RequestMapping(value = "/application/list", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getApplicationList(@RequestParam("cpage") String cpage) {
+	public Map<String, Object> getApplicationList(@RequestParam("cpage") String cpage, Authentication auth) {
 
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 		
 		Search search = new Search();
-
+		String userId = auth.getName();
+		System.out.println("userId : " + userId);
 		// page cpage
 		int pageNum = 1;
 		int rowItem = 10;
@@ -73,6 +77,8 @@ public class ImplementerRestController {
 			// 페이징 계산
 			int listCnt = implementerService.getImplementerCnt(search);
 			search.pageInfo(pageNum, rowItem, listCnt);
+			search.setUserAuthority("ROLE_IMPLEMENTER");
+			search.setUserId(userId);
 			System.out.println("초기 search : " + search);
 			// 값 넣기
 			List<ApplicationList> pagingResult = implementerService.getImplementerList(search);

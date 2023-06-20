@@ -163,7 +163,7 @@ public class ImplementerService {
             applicationDTOS.add(applicationDTO);
             rank++;
         }
-
+        System.out.println("applicationDTOS : " + applicationDTOS);
         return applicationDTOS;
 
     }

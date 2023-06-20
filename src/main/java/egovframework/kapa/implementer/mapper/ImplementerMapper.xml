@@ -8,7 +8,11 @@
 		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
 		
 		<where>
-			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10 
+			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10 and  ji.case_no = (select tbi.docNumber
+							 																		   from TB_Implementer tbi left join TB_User tbu 
+							 																		     on tbu.userId = #{userId}
+							 																		   where tbu.seqNo = tbi.userSeqNo
+			 																							 )
   		</where>
   		
   		 <if test = 'startDate neq null and startDate neq "" and endDate neq null and startDate neq "" '>
@@ -38,20 +42,6 @@
         <if test = 'name neq null and name neq ""'>	
 		and km.Bigo LIKE CONCAT('%', #{name}, '%')
         </if>
-        
-        <if test="userAuthority == 'ROLE_IMPLEMENTER'">
-		    AND EXISTS (
-		        SELECT 1
-		        FROM TB_Implementer i
-		        INNER JOIN tb_ltis2kapa_judg_info ji ON i.docNumber = ji.case_no
-		        WHERE i.docNumber = km.DocID
-		          AND EXISTS (
-		              SELECT userId
-		              FROM TB_User
-		              WHERE userId = #{userId}
-		          )
-		    )
-		</if>
    	     
 		ORDER BY ViewReqDate DESC
 			
