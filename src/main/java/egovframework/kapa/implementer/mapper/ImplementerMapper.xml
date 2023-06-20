@@ -4,9 +4,8 @@
 
 	 <!-- 게시글 목록 -->
 	<select id="getImplementerList" resultType="egovframework.kapa.implementer.domain.ApplicationList" parameterType="egovframework.kapa.domain.Search">
-		   select distinct ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
-		     from kapa_master km left join tb_ltis2kapa_judg_info ji 
-		       on km.seq = ji.judg_seq 
+		select distinct ji.rept_loc,ji.acpt_judg_inst_cd,ji.biz_tp_cd, biz_oprt_dt,ji.judg_div_cd, ji.rwrd_prce,ji.case_no, km.* 
+		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
 		
 		<where>
 			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10
@@ -40,6 +39,15 @@
 		and km.Bigo LIKE CONCAT('%', #{name}, '%')
         </if>
         
+        <if test = ' userAuthority eq "ROLE_IMPLEMENTER" '>
+		    and EXISTS (
+		        SELECT 1
+		          FROM TB_Implementer i
+		         INNER JOIN tb_ltis2kapa_judg_info ji 
+		            ON i.docNumber = ji.case_no
+		    )
+		</if>
+   	     
 		ORDER BY ViewReqDate DESC
 			
 		OFFSET (#{page}-1)*#{listSize} ROW

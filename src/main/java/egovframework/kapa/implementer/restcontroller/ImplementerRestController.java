@@ -62,7 +62,7 @@ public class ImplementerRestController {
 	public Map<String, Object> getApplicationList(@RequestParam("cpage") String cpage) {
 		
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
+		
 		Search search = new Search();
 		
         //page cpage
@@ -76,6 +76,7 @@ public class ImplementerRestController {
             //페이징 계산
             int listCnt = implementerService.getImplementerCnt(search);
             
+            search.setUserAuthority("ROLE_IMPLEMENTER");
             search.pageInfo(pageNum, rowItem, listCnt);
             
            

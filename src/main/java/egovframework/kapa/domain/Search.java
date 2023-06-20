@@ -17,5 +17,5 @@ public class Search extends Pagination {
     private String part;
     private String name;
     private String checkvalue;
-
+    private String userAuthority; // 유저 권한
 }
