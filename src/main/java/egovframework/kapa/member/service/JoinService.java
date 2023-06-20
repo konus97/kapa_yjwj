@@ -52,7 +52,7 @@ public class JoinService {
 	
 	@Autowired
 	JoinMapper joinMapper;
-	
+	//미사용
 	public void addUser_admin(String param) throws ParseException {
 		JSONParser parser = new JSONParser();
 		
@@ -73,7 +73,7 @@ public class JoinService {
 			joinUser(param);
 		}
 	}
-
+	//미사용
 	public String joinUser(String param) throws ParseException { // 사업시행자, 감정평가사 이외 회원
 		
 		String Message = "";
@@ -132,7 +132,7 @@ public class JoinService {
 		user.setUserId(id);
 		user.setUserPassword(pwd);
 		user.setUserType(1);
-		user.setUserAuthority("ROLE_USER");
+		user.setUserAuthority("ROLE_IMPLEMENTER");
 		user.setUserName(name);
 		//user.setEmail(completeEmail);
 		user.setEmail(email);

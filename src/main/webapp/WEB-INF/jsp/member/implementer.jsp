@@ -306,7 +306,7 @@
                                                         >
                                                     </span>
                                                 </li>
-                                                <li>
+                                               <li>
                                                     <span class="radio">
                                                         <input
                                                             type="radio"
@@ -320,7 +320,7 @@
                                                             ></label
                                                         >
                                                     </span>
-                                                </li>
+                                                </li> 
                                             </ul>
                                         </div>
                                     </div>

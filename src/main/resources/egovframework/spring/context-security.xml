@@ -17,6 +17,7 @@
 		<!-- <intercept-url pattern="/userPage/**" access="hasRole('ROLE_USER')"/> -->
 		<intercept-url pattern="/" access="permitAll"/>
 		<intercept-url pattern="/member/**" access="permitAll"/>
+		<intercept-url pattern="/logout" access="permitAll"/>
 		<intercept-url pattern="/api/login" access="permitAll"/>
 		<intercept-url pattern="/api/login" access="permitAll"/>
 		<intercept-url pattern="/api/join/**" access="permitAll"/>
@@ -26,7 +27,13 @@
 		<intercept-url pattern="/**/*.ico" access="permitAll"/>
 		<intercept-url pattern="/**/*.png" access="permitAll"/>
 		<intercept-url pattern="/**/*.js" access="permitAll"/>
-		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<intercept-url pattern="/deliberate/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/decision/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/appraiser/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/cities/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/implementer/**" access="hasAnyRole('ROLE_IMPLEMENTER','ROLE_USER', 'ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_IMPLEMENTER')" />
+		
 		<access-denied-handler ref="userDeniedHandler" />
 
 
@@ -35,7 +42,7 @@
 			username-parameter="loginId"
 			password-parameter="loginPwd"
 			login-processing-url="/api/login"
-			default-target-url="/main"
+			default-target-url="/"
 		/>
 
 		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->

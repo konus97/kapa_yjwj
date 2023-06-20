@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript">
 		alert("권한이 없습니다");
-		location.href="/kapa-seoul/";
+		location.href="/";
 	</script>
 </body>
 </html>

@@ -14,7 +14,7 @@ public class MemberController {
 	 * member
 	 */
 	
-	
+	//미사용
 	@GetMapping("/appraiser/join.do")
 	public String appraiserJoin(Model model) {
 		
@@ -33,7 +33,7 @@ public class MemberController {
 		
 		return "member/implementer";
 	}
-	
+	//미사용
 	@GetMapping("/cities/join.do")
 	public String citiesJoin(Model model) {
 		

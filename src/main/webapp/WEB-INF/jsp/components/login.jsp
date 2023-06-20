@@ -292,7 +292,7 @@
     let url = '${pageContext.request.contextPath}/api/login';
     var csrfToken = $("meta[name='_csrf']").attr("content");
     var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-	    function submitLogin() {
+	    function submitLogin() { // 미사용
 	    	
 	        let loginId = $('#lu_id').val();
 	        let loginPwd = $('#lu_password').val();
