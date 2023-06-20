@@ -308,14 +308,14 @@
 	        			//data : JSON.stringify(data),
 	        			async: false, 
 	        			success : function(data) {
-	        				if(data==="success"){
-	        					if(document.getElementById('lu_radio1_1').checked){
-	        						location.href = contextPath + "/member/implementer/join.do"
+	        				if(data.message==="success"){
+	        					if(document.getElementById('lu_radio1_1').checked){      						
+	        						location.href = contextPath + "/member/implementer/join.do?caseNo=" + data.caseNo; 
 	        					} else if (document.getElementById('lu_radio1_3').checked){
-	        						location.href = contextPath + "/member/appraiser/join.do"
+	        						location.href = contextPath + "/member/appraiser/join.do?caseNo=" + data.caseNo;
 	        					}
 	        				} else {
-	        					alert(data);
+	        					alert(data.message);
 	        				}	        				
 	        			},
 	        			error : function(xhr, status, error) {

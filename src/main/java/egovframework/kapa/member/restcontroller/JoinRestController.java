@@ -79,9 +79,11 @@ public class JoinRestController {
 	
 	@RequestMapping(value = "/judge", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity countJudgeInfo(@RequestParam String caseNo) {
+	public ResponseEntity<Map<String, Object>> countJudgeInfo(@RequestParam String caseNo) {
 		
 		Long count = 0L;
+		Map<String, Object> res = new HashMap<>();
+		
 		try {
 			count = joinService.countJudgeInfo(caseNo);		
 			System.out.println("count" + count);
@@ -89,9 +91,12 @@ public class JoinRestController {
 			e.printStackTrace();
 		}
 		if (count>0) {
-			return ResponseEntity.ok("success");
+			res.put("caseNo", caseNo);
+			res.put("message", "success");
+			return ResponseEntity.ok(res);
 		} else {
-			return ResponseEntity.ok("사건번호가 없습니다.");
+			res.put("message", "사건번호가 없습니다.");
+			return ResponseEntity.ok(res);
 		}
 		
 	}

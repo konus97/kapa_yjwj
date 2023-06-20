@@ -28,8 +28,7 @@ public class UserDeniedHandler implements AccessDeniedHandler {
 
 		String ajaxHeader = req.getHeader("X-Ajax-call");
 		String result = "";
-		
-		
+
 		res.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		res.setCharacterEncoding("UTF-8");
 
@@ -44,7 +43,7 @@ public class UserDeniedHandler implements AccessDeniedHandler {
 			req.setAttribute("username", principal);
 			req.setAttribute(("errormsg"), ade);
 			req.getRequestDispatcher(errorPage).forward(req, res);
-
+			
 
 			result = "{\"result\" : \"fail\", \"message\" : \"" + ade.getMessage() + "\"}";
 			System.out.println("result :::: " + result);
