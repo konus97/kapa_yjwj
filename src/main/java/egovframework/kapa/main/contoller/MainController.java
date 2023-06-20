@@ -19,12 +19,12 @@ public class MainController {
 	@Autowired
 	UserMapper userMapper;
 
-	@GetMapping("/")
-	public String mainLogin() {
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String mainLogin() {
+//		return "index";
+//	}
 	
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String indexPage(HttpServletRequest req, HttpSession session) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
 		String id = auth.getName();

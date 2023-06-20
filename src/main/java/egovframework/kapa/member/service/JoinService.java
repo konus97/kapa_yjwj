@@ -151,7 +151,7 @@ public class JoinService {
 		implementer.setDocNumber(jsonObject.get("docNumber").toString());
 		implementer.setImplementerResponsibilityName(jsonObject.get("implementerResponsibilityName").toString());
 		implementer.setImplementerNumber(jsonObject.get("implementerNumber").toString());
-		
+		System.out.println("사업시행자  서비스 : " + implementer);
 		joinMapper.InsertImplementer(implementer);
 		
 		return Message;

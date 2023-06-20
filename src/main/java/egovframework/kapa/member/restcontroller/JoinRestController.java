@@ -51,6 +51,7 @@ public class JoinRestController {
 	@RequestMapping(value = "/implementer", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public ResponseEntity JoinImplementer(@RequestBody String data) {
+		System.out.println("컨트롤러 data : " + data);
 		try {
 			joinService.joinImplementer(data);	
 		}catch (Exception e) {
