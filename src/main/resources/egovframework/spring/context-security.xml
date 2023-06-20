@@ -27,12 +27,13 @@
 		<intercept-url pattern="/**/*.ico" access="permitAll"/>
 		<intercept-url pattern="/**/*.png" access="permitAll"/>
 		<intercept-url pattern="/**/*.js" access="permitAll"/>
-		<intercept-url pattern="/deliberate/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
-		<intercept-url pattern="/decision/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
-		<intercept-url pattern="/appraiser/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
-		<intercept-url pattern="/cities/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+		<intercept-url pattern="/deliberate/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_DELIBERATE')"/>
+		<intercept-url pattern="/decision/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER','ROLE_DECISION')"/>
+		<intercept-url pattern="/appraiser/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_APPRAISER')"/>
+		<intercept-url pattern="/cities/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_CITIES')"/>
 		<intercept-url pattern="/implementer/**" access="hasAnyRole('ROLE_IMPLEMENTER','ROLE_USER', 'ROLE_ADMIN')"/>
-		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_IMPLEMENTER')" />
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN',
+		'ROLE_IMPLEMENTER','ROLE_CITIES','ROLE_DECISION','ROLE_APPRAISER','ROLE_DELIBERATE')" />
 		
 		<access-denied-handler ref="userDeniedHandler" />
 
@@ -42,8 +43,12 @@
 			username-parameter="loginId"
 			password-parameter="loginPwd"
 			login-processing-url="/api/login"
+<<<<<<< HEAD
 			default-target-url="/main"
 		/>
+=======
+			default-target-url="/main"/>
+>>>>>>> 05f11673e358ba661de74d9502110f98d00d25e0
 
 		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->
 		<logout logout-success-url="/logout" delete-cookies="remember-me" invalidate-session="true"/>

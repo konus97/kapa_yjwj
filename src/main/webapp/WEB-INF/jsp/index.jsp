@@ -232,7 +232,10 @@
 	      if (userId === "s_kapa_master") {
 	        // 아이디가 "s_kapa_master"일 경우 로그인 API 호출
 	        document.getElementById("login_user").submit();
-	      } else {
+	      }else if(userId === "admin"){
+		        document.getElementById("login_user").submit();
+	      }
+	      else {
 	        // 아이디가 "s_kapa_master"가 아닐 경우 알림창 표시
 	        alert("올바른 아이디를 입력해주세요.");
 	      }

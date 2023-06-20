@@ -72,9 +72,8 @@ public class ImplementerRestController {
 
 			// 페이징 계산
 			int listCnt = implementerService.getImplementerCnt(search);
-
 			search.pageInfo(pageNum, rowItem, listCnt);
-
+			System.out.println("초기 search : " + search);
 			// 값 넣기
 			List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
 			System.out.println("리스트 컨트롤러 첫번째 리스트:::::::::::" + pagingResult);
