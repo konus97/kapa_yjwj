@@ -50,10 +50,10 @@ function makeDeliberateBlock(num,info) {
 	addList.push(" <td>");
 	addList.push("     <strong>심사진행</strong>");
 	addList.push("     <span>");
-	/*addList.push("         <a");
-	addList.push("           href=\"#\" onclick=\"goToDeliberateView('"+seqNo+"');return false;\" ");
+	addList.push("         <a");
+	addList.push("           href=\"#\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\" ");
 	addList.push("             class=\"btn small\"");
-	addList.push("             >보기</a >");*/
+	addList.push("             >보기</a >");
 	/*addList.push("         <button class=\"btn small\" onclick=\"newEbookOpen()\" >");
 	addList.push("             E-Book");
 	addList.push("         </button>");*/
@@ -68,7 +68,7 @@ function makeDeliberateBlock(num,info) {
 /*	addList.push("       <button class=\"btn small\">");
 	addList.push("           다운로드");
 	addList.push("        </button>");*/
-	addList.push("      <button class=\"btn small t4\" onclick=\"getAgendaDetail('"+seqNo+"');return false;\">");
+	addList.push("      <button class=\"btn small t4\">");
 	addList.push("          심사하기");
 	addList.push("     </button>");
 	addList.push("    </span>");
