@@ -8,11 +8,16 @@
 		from kapa_master km left join tb_ltis2kapa_judg_info ji on km.seq = ji.judg_seq 
 		
 		<where>
-			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10 and  ji.case_no = (select tbi.docNumber
-							 																		   from TB_Implementer tbi left join TB_User tbu 
-							 																		     on tbu.userId = #{userId}
-							 																		   where tbu.seqNo = tbi.userSeqNo
-			 																							 )
+			ji.sido_cd = 11 and ji.judg_div_cd = 10 and ji.acpt_judg_inst_cd = 10
+		 <if test="userId != null and userId != '' and userAuthority == 'ROLE_IMPLEMENTER'">
+			and ji.case_no = (
+				select tbi.docNumber
+				from TB_Implementer tbi
+				left join TB_User tbu 
+				  on tbu.userId = #{userId}
+				where tbu.seqNo = tbi.userSeqNo
+				)
+		 </if>
   		</where>
   		
   		 <if test = 'startDate neq null and startDate neq "" and endDate neq null and startDate neq "" '>

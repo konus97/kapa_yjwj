@@ -64,8 +64,10 @@ public class ImplementerRestController {
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 		
 		Search search = new Search();
-		String userId = auth.getName();
-		System.out.println("userId : " + userId);
+		String userId = auth.getName(); // 유저 ID
+		String userAuth = auth.getAuthorities().toString(); // 유저 권한
+		userAuth = userAuth.replace("[","").replace("]",""); 
+
 		// page cpage
 		int pageNum = 1;
 		int rowItem = 10;
@@ -76,8 +78,9 @@ public class ImplementerRestController {
 
 			// 페이징 계산
 			int listCnt = implementerService.getImplementerCnt(search);
+			System.out.println("listCnt : " + listCnt);
 			search.pageInfo(pageNum, rowItem, listCnt);
-			search.setUserAuthority("ROLE_IMPLEMENTER");
+			search.setUserAuthority(userAuth);
 			search.setUserId(userId);
 			System.out.println("초기 search : " + search);
 			// 값 넣기
