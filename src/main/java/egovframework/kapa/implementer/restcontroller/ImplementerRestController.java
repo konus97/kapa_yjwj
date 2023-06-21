@@ -64,8 +64,8 @@ public class ImplementerRestController {
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
 		
 		Search search = new Search();
-		String userId = auth.getName(); // 유저 ID
-		String userAuth = auth.getAuthorities().toString();
+		String userId = auth.getName(); // 유저 아이디
+		String userAuth = auth.getAuthorities().toString(); // 유저 권한
 		userAuth = userAuth.replace("[","").replace("]",""); 
 
 		// page cpage
@@ -75,13 +75,13 @@ public class ImplementerRestController {
 		try {
 			pageNum = Integer.parseInt(cpage);
 			System.out.println("getApplicationList::::::" + pageNum);
-
+			search.setUserAuthority(userAuth);
+			search.setUserId(userId);
+			
 			// 페이징 계산
 			int listCnt = implementerService.getImplementerCnt(search);
 			System.out.println("listCnt : " + listCnt);
 			search.pageInfo(pageNum, rowItem, listCnt);
-			search.setUserAuthority(userAuth);
-			search.setUserId(userId);
 			System.out.println("초기 search : " + search);
 			// 값 넣기
 			List<ApplicationList> pagingResult = implementerService.getImplementerList(search);
