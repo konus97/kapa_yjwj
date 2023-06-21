@@ -65,7 +65,7 @@ public class ImplementerRestController {
 		
 		Search search = new Search();
 		String userId = auth.getName(); // 유저 ID
-		String userAuth = auth.getAuthorities().toString(); // 유저 권한
+		String userAuth = auth.getAuthorities().toString();
 		userAuth = userAuth.replace("[","").replace("]",""); 
 
 		// page cpage
