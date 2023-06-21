@@ -27,8 +27,8 @@
         
 		<if test = 'numOrname neq null and numOrname neq ""'>
   		and
-  		<!-- ji.case_no LIKE CONCAT('%', #{numOrname}, '%')
-  		or -->
+  		ji.case_no LIKE CONCAT('%', #{numOrname}, '%')
+  		or 
   		km.title LIKE CONCAT('%', #{numOrname}, '%')
 		</if>
 		
@@ -82,8 +82,8 @@
         
 		<if test = 'numOrname neq null and numOrname neq ""'>
   		and
-  		<!-- ji.case_no LIKE CONCAT('%', #{numOrname}, '%')
-  		or -->
+  		ji.case_no LIKE CONCAT('%', #{numOrname}, '%')
+  		or
   		km.title LIKE CONCAT('%', #{numOrname}, '%')
 		</if>
 		
