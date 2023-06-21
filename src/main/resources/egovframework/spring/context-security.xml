@@ -22,6 +22,7 @@
 		<intercept-url pattern="/api/login" access="permitAll"/>
 		<intercept-url pattern="/api/join/**" access="permitAll"/>
 		<intercept-url pattern="/api/**" access="permitAll"/>
+		<intercept-url pattern="/admin/**"  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<intercept-url pattern="/**/*.css" access="permitAll"/>
 		<intercept-url pattern="/**/*.svg" access="permitAll"/>
 		<intercept-url pattern="/**/*.ico" access="permitAll"/>
