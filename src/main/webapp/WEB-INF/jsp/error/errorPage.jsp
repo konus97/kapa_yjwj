@@ -13,7 +13,7 @@
 		<!--location.href="/main";-->
 	
 		<!-- 배포용-->
-		location.href="/test/main";
+		location.href="/main";
 
 	</script>
 </body>
