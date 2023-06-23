@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibatis.sqlmap.engine.mapping.result.AutoResultMap;
+
 import egovframework.kapa.decision.dto.AnnouncementDTO;
 import egovframework.kapa.decision.service.DecisionService;
 import egovframework.kapa.domain.Decision;
@@ -190,12 +192,17 @@ public class ImplementerRestController {
 	 */
 	@RequestMapping(value = "/opinion/list", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getOpinionList(@RequestParam("cpage") String cpage) {
+	public Map<String, Object> getOpinionList(@RequestParam("cpage") String cpage, Authentication auth) {
 
 		Map<String, Object> resultFinal = new HashMap<String, Object>();
-
+		String userId = auth.getName(); // 유저 아이디
+		String userAuth = auth.getAuthorities().toString(); // 유저 권한
+		userAuth = userAuth.replace("[","").replace("]","");
 		Search search = new Search();
-
+		
+		search.setUserAuthority(userAuth);
+		search.setUserId(userId);
+		
 		// page cpage
 		int pageNum = 1;
 		int rowItem = 10;
@@ -211,7 +218,8 @@ public class ImplementerRestController {
 			// 값 넣기
 			List<Decision> pagingResult = implementerService.getOpinionList(search);
 			List<AnnouncementDTO> formatterList = implementerService.getOpinionFormatter(pagingResult);
-
+			System.out.println("formatterList : " + formatterList);
+			
 			resultFinal.put("list", formatterList);
 			resultFinal.put("totalPage", search.getPageCnt());
 			resultFinal.put("allCount", listCnt);

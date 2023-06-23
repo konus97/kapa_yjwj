@@ -34,7 +34,7 @@
 		<intercept-url pattern="/cities/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_CITIES')"/>
 		<intercept-url pattern="/implementer/**" access="hasAnyRole('ROLE_IMPLEMENTER','ROLE_USER', 'ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN',
-		'ROLE_IMPLEMENTER','ROLE_CITIES','ROLE_DECISION','ROLE_APPRAISER','ROLE_DELIBERATE', 'ROLE_LOGIN')" />
+		'ROLE_IMPLEMENTER','ROLE_CITIES','ROLE_DECISION','ROLE_APPRAISER','ROLE_DELIBERATE')" />
 		
 		<access-denied-handler ref="userDeniedHandler" />
 

@@ -13,7 +13,7 @@
 	<div class="wrap center">
 		<div class="h_logo">
 			<h1>
-				<a href="${pageContext.request.contextPath}/" title="재결정보지원센터"><span
+				<a href="${pageContext.request.contextPath}/main" title="재결정보지원센터"><span
 					class="blind">재결정보지원센터</span></a>
 			</h1>
 		</div>
@@ -128,13 +128,12 @@
 						<li><a href="#login"><span class="testbar">로그인</span></a></li>
 					</c:if>
 
-					<c:if test="${userName ne null}">
-						<c:if test="${!fn:contains(sessionValue, stringValue)}">
-							<li><a href="#" onclick="logout();return false;"><span>로그아웃</span></a>
-							</li>
-						</c:if>
+					<c:if test="${!(fn:contains(sessionValue, stringValue) or fn:contains(sessionValue, stringValue2))}">
+						<li><a href="#" onclick="logout();return false;"><span>로그아웃</span></a>
+						</li>
 					</c:if>
-					<c:if test="${fn:contains(sessionValue, stringValue)}">
+					<c:if
+						test="${fn:contains(sessionValue, stringValue) or fn:contains(sessionValue, stringValue2)}">
 						<li><a href="#" onclick="openUserReg();return false;"><span>회원가입</span></a>
 						</li>
 					</c:if>
@@ -205,7 +204,7 @@
 			</div>
 		</nav>
 	</div>
-	
+
 	<c:if
 		test="${fn:contains(sessionValue, stringValue) or fn:contains(sessionValue, stringValue2)}">
 		<div class="h_admin">
