@@ -2355,7 +2355,7 @@
             	
             	$('#loaderSection').hide()
             	
-            	checkType();
+            	checkType2();
             	
             	checkResultWrTbody();
             	

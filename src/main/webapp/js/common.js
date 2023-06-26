@@ -115,12 +115,12 @@ function fileCheck_ext(obj) {
 	else return filetype;
 }
 
-// 확장자 검사
+// 확장자 검사 
 function fileCheck_doc(obj) {
 	pathpoint = obj.lastIndexOf('.'); 
 	filepoint = obj.substring(pathpoint+1,obj.length); 
 	filetype = filepoint.toLowerCase(); 
-	if (filetype == 'pdf'|| filetype == 'jpg' || filetype == 'jpeg' || filetype == 'png' || filetype == "hwp" || filetype == "csv" || filetype == "xlsx" || filetype == "xls" || filetype == "zip") return "ok";
+	if (filetype == 'pdf'|| filetype == 'jpg' || filetype == 'jpeg' || filetype == 'png' || filetype == "hwp" || filetype == "hwpx" || filetype == "csv" || filetype == "xlsx" || filetype == "xls" || filetype == "zip") return "ok";
 	else return filetype;
 }
 
