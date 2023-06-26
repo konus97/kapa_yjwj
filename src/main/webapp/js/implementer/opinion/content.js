@@ -383,15 +383,13 @@ function addGoodsOpinion(rank,info,getItem){
        addList.push("</table>");
        addList.push("<div class=\"closeAcc2\">");
        addList.push("<button class=\"small3\">등록</button>");
-       addList.push("<button class=\"small3 small4\" onclick=\"closeOpinionAccordion();\">취소</button>");
-       addList.push("<button class=\"small3\" onclick=\"closeOpinionAccordion();\"><i class=\"close icon white\"></i>닫기</button>");
+       addList.push("<button class=\"small3 small4\" onclick=\"closeOpinionAccordion3();\">취소</button>");
+       addList.push("<button class=\"small3\" onclick=\"closeOpinionAccordion3();\"><i class=\"close icon white\"></i>닫기</button>");
        addList.push("</div>");
        addList.push("</div>");
        addList.push("</div>");
        addList.push("</td>");
        addList.push("</tr>");
-       
-       
        /*이 위로 추가*/
        
         
@@ -1801,12 +1799,12 @@ function openOpinionAccordion(getSeq,getType,reptOwnrSeq,ownrNm){
 	      addOpinionItem(getType);
 	   }
 	   
-//	   $("#popupOwnerOpinion").attr("data-seq",getSeq);
-//	   $("#popupOwnerOpinion").attr("data-type",getType);
-//	   $("#popupOwnerOpinion").attr("reptOwnrSeq",reptOwnrSeq);
-//	   $("#popupOwnerOpinion").attr("ownrNm",ownrNm);
-//
-//	   $("#popupOwnerOpinion").addClass("on");
+	   $("#acc_all2").attr("data-seq",getSeq);
+	   $("#acc_all2").attr("data-type",getType);
+	   $("#acc_all2").attr("reptOwnrSeq",reptOwnrSeq);
+	   $("#acc_all2").attr("ownrNm",ownrNm);
+
+	   /*$("#popupOwnerOpinion").addClass("on");*/
 	   
 	   $(".acc_all2").show();
 	   
@@ -1814,6 +1812,10 @@ function openOpinionAccordion(getSeq,getType,reptOwnrSeq,ownrNm){
 	document.getElementById('reptSeq').value = getSeq;
 	document.getElementById('reptOwnerSeq').value = reptOwnrSeq; 
 }
-function closeOpinionAccordion() {
-    $(".acc_all2").css("display", "none");
-}
+/*숨기기*/
+	var accCloseButton = document.querySelector(".small4");
+	accCloseButton.addEventListener("click", closeOpinionAccordion3);
+	function closeOpinionAccordion3() {
+		var accElement = document.querySelector(".acc_all2");
+		  accElement.style.display = "none";
+	}
