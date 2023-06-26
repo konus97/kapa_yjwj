@@ -412,6 +412,99 @@
 							</div>
 							<%-- 항목 결과 끝 01 --%>
 							
+							<%-- 이 아래로 수정중 --%>
+							<div>
+								<div class="accd_body2">
+									<!-- 등록 폼 -->
+										<div class="acc_table2">
+											<div class="acc_wrap2">
+												<div class="acc_wrap3">
+													<h2><span id="acc_notice">지연가산금(재결신청 청구)</span></h2>
+													<!-- <button id="acc_close2"><i class="close icon"></i>닫기</button> -->
+												</div>
+												<table class="acc_table_editor">
+													<tbody>
+														<tr>
+															<th class="info_reg_th accrdtit">소유자 의견</th>
+															<td><textarea id="ownerOpinion"  placeholder="소유자 의견을 작성해주십시오." class="textarea resetPopupVal"></textarea></td>
+														</tr>
+
+														<tr>
+															<th class="info_reg_th accrdtit">사업시행자<br>의견
+															</th>
+															<td><textarea id="executorOpinion" placeholder="사업시행자 의견을 작성해주십시오." class="textarea resetPopupVal"></textarea></td>
+														</tr>
+
+													</tbody>
+												</table>
+												<table id="popupOpinionItemList2">
+													<tbody id="popupOpinionItem2" class="popupOpinionItem">
+														<tr>
+															<th class="info_reg_th accrdtit">설정</th>
+															<td>
+																<div class="txt-r2">
+																	<span style="color:red;">*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 &nbsp</span>
+																	<button type="button" class="btn nohover" onclick="pdfUpload('1');return false;">
+																		<i class="download white icon"></i> PDF 업로드
+																	</button>
+																	<button class="btn nohover" onclick="hwpDownload('1');return false;">
+																		<i class="download white icon"></i> 한글파일 다운로드
+																	</button>
+																</div>
+															</td>
+														</tr>
+														 <tr>
+														 	<th class="info_reg_th accrdtit accrdfile">PDF파일</th>
+															<td>
+																<div class="file_flex">
+																	<input id="description1" class="input40 file_name" value="PDF" readonly="">
+																		<div class="file_btn_wrap">
+																		<div class="diflex">
+																		<div class="input4040 file_btn2 popupOpinionItemFile" id="popupOpinionItemFilePDF1" data-seq="0" style="cursor: pointer" onclick="triggerFileUploadPDF('1');return false;">pdf 파일만 첨부해주세요</div>
+																		<button class="btn nohover t4 small2" onclick="removeFileTarget('1');return false;">
+																			<i class="close icon white"></i>
+																		</button>
+																		</div>
+																	</div>
+																</div>
+															</td>
+															<th class="info_reg_th accrdtit accrdfile">파일</th>
+															<td>
+																<div class="file_flex">
+																	<input id="description" class="input40 file_name" placeholder="파일 설명을 입력해주십시오.">
+																<div class="file_btn_wrap">
+																	<div class="diflex">
+																		<div class="input4040 file_btn2 popupOpinionItemFile" id="popupOpinionItemFile1-0" data-seq="0" style="cursor: pointer" onclick="triggerFileUpload('1');return false;">jpeg, png 이미지 파일만 첨부해주세요</div>
+																			<button class="btn nohover t4 small2" onclick="removeFileTarget('1');return false;">
+																				<i class="close icon white"> </i>
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<th class="info_reg_th accrdtit">제목</th>
+															<td><input type="text" class="input40 opinionTitle" placeholder="제목을 입력해주십시오."></td>
+															<th class="info_reg_th accrdtit">내용</th>
+															<td><textarea class="textarea opinionContent" placeholder="내용을 입력해주십시오."></textarea></td>
+														</tr>
+													</tbody>
+												</table>
+														<div class="closeAcc2">														
+															<button class="small3">
+																<i class="close icon white"></i>닫기
+															</button>
+														</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								
+
+							<%-- 이 위로 수정중 --%> 
+								
 							<%-- 항목 결과 시작 02 --%>
 							<div class="item_result_wr">
 								<h5 class="item_result_wr__tit">2. 보상금 증액</h5>
@@ -2787,6 +2880,10 @@
 
                 });
             });
+            
+            
+            
+            
         </script>
 </body>
 </html>

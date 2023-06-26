@@ -1024,8 +1024,10 @@ let newSeq = getType + '-0';
    addList.push("</tbody>");   
 
    popupOpinion++;
+   //jini 여기 수정하기
    $("#popupOpinionItemList").append(addList.join(''));
 }
+
 function addOpinionItemOnlyFile(getType){
 	
 	if(document.getElementById('popupOpinionItemFile'+getType+'-0').innerText == 'jpeg, png 이미지 파일만 첨부해주세요'){

@@ -12,17 +12,23 @@
              </div>
              <div class="p_body">
                  <div class="wrap">
-             <!--         <div class="cs_title">
+                 <!-- 검색버튼 추가 
+                 	<div class="pop_search">                                       
+		                <span class="ff_group w290">
+		                    <input type="text" id="il_input2" name="il_input2" class="input40 t1" placeholder="소유자 혹은 소재지 입력" required="">
+		                </span>
+		                <span class="ff_group">
+		                    <button type="button" id="il_submit2" name="il_submit2" class="btn small ico search" onclick="getApplicationListSearch();return false;">
+		                        	검색
+		                    </button>
+		                </span>
+		            </div>
+		            -->
+		             <!--   
+		             <div class="cs_title">
                        <div class="cs_option">
-                           <div
-                               class="cso_btnwrap"
-                           >
-                               <a
-                                   href="#"
-                                   download=""
-                                   class="btn t2 small ico download"
-                                   >다운로드</a
-                               >
+                           <div class="cso_btnwrap">
+                               <a href="#" download="" class="btn t2 small ico download">다운로드</a>
                            </div>
                        </div>
                    </div> -->

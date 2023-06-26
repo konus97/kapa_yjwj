@@ -1929,6 +1929,12 @@ div.table table td:last-child {
     max-width: 1200px;
     margin: 0 auto;
 }
+/* 팝업 서치*/
+.popup .p_body .pop_search {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
 .popup .p_foot {
     display: flex;
     justify-content: center;
@@ -1938,7 +1944,6 @@ div.table table td:last-child {
     padding: 10px 0 20px;
     background-color: #fff;
 }
-
 .popup.login .p_box,
 .popup.reg .p_box,
 .popup.find .p_box,
@@ -2964,4 +2969,6 @@ div.table table td:last-child {
         margin: 0 15px;
         font-size: 15px;
     }
+    
+    
 }
