@@ -3462,9 +3462,13 @@
 	justify-content: flex-end;
 }
 /*수정중*/
+.acc_all2{
+	display:none;
+}
 .accd_body2{
 	height: calc(100% - 140px);
 	/*display:none;*/
+	padding-bottom: 20px;
 }
 #acc_notice{
 	font-size: 16px;
@@ -3489,9 +3493,9 @@
 }
 .acc_table2{
 	padding: 20px;
-	border: 3px solid #e0eaef;
+	/*border: 3px solid #e0eaef;
 	border: 10px solid #f6f8fC;
-	margin: 20px 0px;
+	margin: 20px 0px;*/
 }
 .acc_table_editor{
 	display:flex;
@@ -3598,7 +3602,8 @@
 	margin-rignt: 10px;
 }
 .closeAcc2{
-	margin-top: 10px;
+	margin-top: 15px;
+	margin-bottom: 20px;
 }
 .small3{
     box-sizing: border-box;

@@ -295,7 +295,7 @@ function addGoodsOpinion(rank,info,getItem){
 		addList.push("<span id=\"operator"+getSeq+"-"+reptOwnrSeq+"-"+getItem+"\">미작성</span>");
 		addList.push("</td>");
 		addList.push("<td>");     
-	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionPopup('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
+	   addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getItem+"\" onclick=\"openOpinionAccordion('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"','"+ownrNnm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">작성</a>");
 		addList.push("</td>");
 		addList.push("<td>"); 
 	   addList.push("          <button class=\"item_result_wr__btn item_result_wr__btn--copy\" onclick=\"checkSelectedValue('"+getSeq+"','"+getItem+"','"+reptOwnrSeq+"');return false;\">");
@@ -306,6 +306,94 @@ function addGoodsOpinion(rank,info,getItem){
    	   addList.push("          	삭제</button>");
        addList.push("</td>") 
 		addList.push("</tr>");
+       
+       /*지연가산금 재결신청청구 추가*/
+       addList.push("<tr class=\"acc_all2\">");
+       addList.push("<td colspan=\"17\" class=\"accd_body2\">");
+       addList.push("<div class=\"acc_table2\">");
+       addList.push("<div class=\"acc_wrap2\">");
+       addList.push("<div class=\"acc_wrap3\">");
+       addList.push("<h2><span id=\"acc_notice\">지연가산금(재결신청 청구)</span></h2>");
+       addList.push("</div>");
+       addList.push("<table class=\"acc_table_editor\">");
+       addList.push("<tbody>");
+       addList.push("<tr>");
+       addList.push("<th class=\"info_reg_th accrdtit\">소유자 의견</th>");
+       addList.push("<td><textarea id=\"ownerOpinion\"  placeholder=\"소유자 의견을 작성해주십시오.\" class=\"textarea resetPopupVal\"></textarea></td>");
+       addList.push("</tr>");
+       addList.push("<tr>");
+       addList.push("<th class=\"info_reg_th accrdtit\">사업시행자<br>의견");
+       addList.push("</th>");
+       addList.push("<td><textarea id=\"executorOpinion\" placeholder=\"사업시행자 의견을 작성해주십시오.\" class=\"textarea resetPopupVal\"></textarea></td>");
+       addList.push("</tr>");
+       addList.push("</tbody>");
+       addList.push("</table>");
+       addList.push("<table id=\"popupOpinionItemList2\">");
+       addList.push("<tbody id=\"popupOpinionItem2\" class=\"popupOpinionItem\">");
+       addList.push("<tr>");
+       addList.push("<th class=\"info_reg_th accrdtit\">설정</th>");
+       addList.push("<td>");
+       addList.push("<div class=\"txt-r2\">");
+       addList.push("<span style=\"color:red;\">*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 &nbsp</span>");
+       addList.push("<button type=\"button\" class=\"btn nohover\" onclick=\"pdfUpload('1');return false;\">");
+       addList.push("<i class=\"download white icon\"></i> PDF 업로드");
+       addList.push("</button>");
+       addList.push("<button class=\"btn nohover\" onclick=\"hwpDownload('1');return false;\">");
+       addList.push("<i class=\"download white icon\"></i> 한글파일 다운로드");
+       addList.push("</button>");
+       addList.push("</div>");
+       addList.push("</td>");
+       addList.push("</tr>");
+       addList.push("<tr>");
+       addList.push("<th class=\"info_reg_th accrdtit accrdfile\">PDF파일</th>");
+       addList.push("<td>");
+       addList.push("<div class=\"file_flex\">");
+       addList.push("<input id=\"description1\" class=\"input40 file_name\" value=\"PDF\" readonly=\"\">");
+       addList.push("<div class=\"file_btn_wrap\">");
+       addList.push("<div class=\"diflex\">");
+       addList.push("<div class=\"input4040 file_btn2 popupOpinionItemFile\" id=\"popupOpinionItemFilePDF1\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUploadPDF('1');return false;\">pdf 파일만 첨부해주세요</div>");
+       addList.push("<button class=\"btn nohover t4 small2\" onclick=\"removeFileTarget('1');return false;\">");
+       addList.push("<i class=\"close icon white\"></i>");
+       addList.push("</button>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</td>");
+       addList.push("<th class=\"info_reg_th accrdtit accrdfile\">파일</th>");
+       addList.push("<td>");
+       addList.push("<div class=\"file_flex\">");
+       addList.push("<input id=\"description\" class=\"input40 file_name\" placeholder=\"파일 설명을 입력해주십시오.\">");
+       addList.push("<div class=\"file_btn_wrap\">");
+       addList.push("<div class=\"diflex\">");
+       addList.push("<div class=\"input4040 file_btn2 popupOpinionItemFile\" id=\"popupOpinionItemFile1-0\" data-seq=\"0\" style=\"cursor: pointer\" onclick=\"triggerFileUpload('1');return false;\">jpeg, png 이미지 파일만 첨부해주세요</div>");
+       addList.push("<button class=\"btn nohover t4 small2\" onclick=\"removeFileTarget('1');return false;\">");
+       addList.push("<i class=\"close icon white\"></i>");
+       addList.push("</button>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</td>");
+       addList.push("</tr>");
+       addList.push("<tr>");
+       addList.push("<th class=\"info_reg_th accrdtit\">제목</th>");
+       addList.push("<td><input type=\"text\" class=\"input40 opinionTitle\" placeholder=\"제목을 입력해주십시오.\"></td>");
+       addList.push("<th class=\"info_reg_th accrdtit\">내용</th>");
+       addList.push("<td><textarea class=\"textarea opinionContent\" placeholder=\"내용을 입력해주십시오.\"></textarea></td>");
+       addList.push("</tbody>");
+       addList.push("</table>");
+       addList.push("<div class=\"closeAcc2\">");
+       addList.push("<button class=\"small3\">등록</button>");
+       addList.push("<button class=\"small3 small4\" onclick=\"closeOpinionAccordion();\">취소</button>");
+       addList.push("<button class=\"small3\" onclick=\"closeOpinionAccordion();\"><i class=\"close icon white\"></i>닫기</button>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</div>");
+       addList.push("</td>");
+       addList.push("</tr>");
+       
+       
+       /*이 위로 추가*/
+       
         
           // $("#ownerGoodsItemList2").append(addList.join(''));
 
@@ -404,76 +492,76 @@ function openOpinionPopup2(getSeq,getType,reptOwnrSeq,ownrNm){
 	var notice ="";
 	
 	switch (getType) {
-  case "1":
-    notice = '지연가산금(재결신청 청구)';
-    break;
-  case "2":
-    notice = '보상금 증액';
-    break;
-  case "3":
-    notice = '협의 미이행(불이행,미준수)';
-    break;
-  case "4":
-    notice = '사업폐지(취소,중단,변경,보류,제외)';
-    break;
-  case "5":
-    notice = '재결 보류';
-    break;
-  case "6":
-    notice = '무허가건물 부지면적 보상';
-    break;
-  case "7":
-    notice = '잔여지/잔여건물 가치 하락';
-    break;
-  case "8":
-    notice = '잔여지/잔여건물 매수 청구(확대보상)';
-    break;
-  case "9":
-    notice = '사도평가 적정성';
-    break;
-  case "10":
-    notice = '일단지 보상';
-    break;
-  case "11":
-    notice = '미지급 용지';
-    break;
-  case "12":
-    notice = '영업보상(이전비) 적정성';
-    break;
-  case "13":
-    notice = '누락 물건 반영';
-    break;
-  case "14":
-    notice = '폐업 보상';
-    break;
-  case "15":
-    notice = '영농손실보상';
-    break;
-  case "16":
-    notice = '휴직(실직)보상';
-    break;
-  case "17":
-    notice = '이주대책 수립';
-    break;
-  case "18":
-    notice = '이주정착금, 주거이전비, 이사비';
-    break;
-  case "19":
-    notice = '구분지상권';
-    break;
-  case "20":
-    notice = '10% 변동 내역';
-    break;
-  case "21":
-    notice = '기타(임료손실,대토보상 등)';
-    break;
-  case "22":
-    notice = '10%이상 변동';
-    break;
-  default:
-notice='';
-   break;
-}
+	  case "1":
+	    notice = '지연가산금(재결신청 청구)';
+	    break;
+	  case "2":
+	    notice = '보상금 증액';
+	    break;
+	  case "3":
+	    notice = '협의 미이행(불이행,미준수)';
+	    break;
+	  case "4":
+	    notice = '사업폐지(취소,중단,변경,보류,제외)';
+	    break;
+	  case "5":
+	    notice = '재결 보류';
+	    break;
+	  case "6":
+	    notice = '무허가건물 부지면적 보상';
+	    break;
+	  case "7":
+	    notice = '잔여지/잔여건물 가치 하락';
+	    break;
+	  case "8":
+	    notice = '잔여지/잔여건물 매수 청구(확대보상)';
+	    break;
+	  case "9":
+	    notice = '사도평가 적정성';
+	    break;
+	  case "10":
+	    notice = '일단지 보상';
+	    break;
+	  case "11":
+	    notice = '미지급 용지';
+	    break;
+	  case "12":
+	    notice = '영업보상(이전비) 적정성';
+	    break;
+	  case "13":
+	    notice = '누락 물건 반영';
+	    break;
+	  case "14":
+	    notice = '폐업 보상';
+	    break;
+	  case "15":
+	    notice = '영농손실보상';
+	    break;
+	  case "16":
+	    notice = '휴직(실직)보상';
+	    break;
+	  case "17":
+	    notice = '이주대책 수립';
+	    break;
+	  case "18":
+	    notice = '이주정착금, 주거이전비, 이사비';
+	    break;
+	  case "19":
+	    notice = '구분지상권';
+	    break;
+	  case "20":
+	    notice = '10% 변동 내역';
+	    break;
+	  case "21":
+	    notice = '기타(임료손실,대토보상 등)';
+	    break;
+	  case "22":
+	    notice = '10%이상 변동';
+	    break;
+	  default:
+		notice='';
+		   break;
+		}
 	if(document.getElementById('notice')  != null){
 	document.getElementById('notice').innerHTML = notice;
 	}
@@ -582,9 +670,6 @@ notice='';
             			}
             		});
 	
-
-	
-
 	}
 }
 
@@ -603,76 +688,76 @@ function openOpinionPopup(getSeq,getType,reptOwnrSeq,ownrNm){
 	var notice ="";
 	
 	switch (getType) {
-  case "1":
-    notice = '지연가산금(재결신청 청구)';
-    break;
-  case "2":
-    notice = '보상금 증액';
-    break;
-  case "3":
-    notice = '협의 미이행(불이행,미준수)';
-    break;
-  case "4":
-    notice = '사업폐지(취소,중단,변경,보류,제외)';
-    break;
-  case "5":
-    notice = '재결 보류';
-    break;
-  case "6":
-    notice = '무허가건물 부지면적 보상';
-    break;
-  case "7":
-    notice = '잔여지/잔여건물 가치 하락';
-    break;
-  case "8":
-    notice = '잔여지/잔여건물 매수 청구(확대보상)';
-    break;
-  case "9":
-    notice = '사도평가 적정성';
-    break;
-  case "10":
-    notice = '일단지 보상';
-    break;
-  case "11":
-    notice = '미지급 용지';
-    break;
-  case "12":
-    notice = '영업보상(이전비) 적정성';
-    break;
-  case "13":
-    notice = '누락 물건 반영';
-    break;
-  case "14":
-    notice = '폐업 보상';
-    break;
-  case "15":
-    notice = '영농손실보상';
-    break;
-  case "16":
-    notice = '휴직(실직)보상';
-    break;
-  case "17":
-    notice = '이주대책 수립';
-    break;
-  case "18":
-    notice = '이주정착금, 주거이전비, 이사비';
-    break;
-  case "19":
-    notice = '구분지상권';
-    break;
-  case "20":
-    notice = '10% 변동 내역';
-    break;
-  case "21":
-    notice = '기타(임료손실,대토보상 등)';
-    break;
-  case "22":
-    notice = '소유자 의견 없음';
-    break;
-  default:
-notice='';
-   break;
-}
+	  case "1":
+	    notice = '지연가산금(재결신청 청구)';
+	    break;
+	  case "2":
+	    notice = '보상금 증액';
+	    break;
+	  case "3":
+	    notice = '협의 미이행(불이행,미준수)';
+	    break;
+	  case "4":
+	    notice = '사업폐지(취소,중단,변경,보류,제외)';
+	    break;
+	  case "5":
+	    notice = '재결 보류';
+	    break;
+	  case "6":
+	    notice = '무허가건물 부지면적 보상';
+	    break;
+	  case "7":
+	    notice = '잔여지/잔여건물 가치 하락';
+	    break;
+	  case "8":
+	    notice = '잔여지/잔여건물 매수 청구(확대보상)';
+	    break;
+	  case "9":
+	    notice = '사도평가 적정성';
+	    break;
+	  case "10":
+	    notice = '일단지 보상';
+	    break;
+	  case "11":
+	    notice = '미지급 용지';
+	    break;
+	  case "12":
+	    notice = '영업보상(이전비) 적정성';
+	    break;
+	  case "13":
+	    notice = '누락 물건 반영';
+	    break;
+	  case "14":
+	    notice = '폐업 보상';
+	    break;
+	  case "15":
+	    notice = '영농손실보상';
+	    break;
+	  case "16":
+	    notice = '휴직(실직)보상';
+	    break;
+	  case "17":
+	    notice = '이주대책 수립';
+	    break;
+	  case "18":
+	    notice = '이주정착금, 주거이전비, 이사비';
+	    break;
+	  case "19":
+	    notice = '구분지상권';
+	    break;
+	  case "20":
+	    notice = '10% 변동 내역';
+	    break;
+	  case "21":
+	    notice = '기타(임료손실,대토보상 등)';
+	    break;
+	  case "22":
+	    notice = '소유자 의견 없음';
+	    break;
+	  default:
+		notice='';
+		   break;
+		}
 	
 	document.getElementById('notice').innerHTML = notice;
    
@@ -1024,7 +1109,6 @@ let newSeq = getType + '-0';
    addList.push("</tbody>");   
 
    popupOpinion++;
-   //jini 여기 수정하기
    $("#popupOpinionItemList").append(addList.join(''));
 }
 
@@ -1583,3 +1667,153 @@ $.ajax({
 }
 
 
+
+
+/*이 아래로 팝업을 슬라이드로 변경하려고 함*/
+function openOpinionAccordion(getSeq,getType,reptOwnrSeq,ownrNm){
+	   $(".resetPopupVal").val('');
+	   $("#popupOpinionItemList").empty();
+	   
+		var notice ="";
+		
+		switch (getType) {
+		  case "1":
+		    notice = '지연가산금(재결신청 청구)';
+		    break;
+		  case "2":
+		    notice = '보상금 증액';
+		    break;
+		  case "3":
+		    notice = '협의 미이행(불이행,미준수)';
+		    break;
+		  case "4":
+		    notice = '사업폐지(취소,중단,변경,보류,제외)';
+		    break;
+		  case "5":
+		    notice = '재결 보류';
+		    break;
+		  case "6":
+		    notice = '무허가건물 부지면적 보상';
+		    break;
+		  case "7":
+		    notice = '잔여지/잔여건물 가치 하락';
+		    break;
+		  case "8":
+		    notice = '잔여지/잔여건물 매수 청구(확대보상)';
+		    break;
+		  case "9":
+		    notice = '사도평가 적정성';
+		    break;
+		  case "10":
+		    notice = '일단지 보상';
+		    break;
+		  case "11":
+		    notice = '미지급 용지';
+		    break;
+		  case "12":
+		    notice = '영업보상(이전비) 적정성';
+		    break;
+		  case "13":
+		    notice = '누락 물건 반영';
+		    break;
+		  case "14":
+		    notice = '폐업 보상';
+		    break;
+		  case "15":
+		    notice = '영농손실보상';
+		    break;
+		  case "16":
+		    notice = '휴직(실직)보상';
+		    break;
+		  case "17":
+		    notice = '이주대책 수립';
+		    break;
+		  case "18":
+		    notice = '이주정착금, 주거이전비, 이사비';
+		    break;
+		  case "19":
+		    notice = '구분지상권';
+		    break;
+		  case "20":
+		    notice = '10% 변동 내역';
+		    break;
+		  case "21":
+		    notice = '기타(임료손실,대토보상 등)';
+		    break;
+		  case "22":
+		    notice = '소유자 의견 없음';
+		    break;
+		  default:
+			notice='';
+			   break;
+			}
+		
+		document.getElementById('notice').innerHTML = notice;
+	   
+
+	   if(addOpinionItemArray.length>0){
+	      console.log('array!');
+	      console.log(addOpinionItemArray);
+	      let checkOpinionItem = false;
+	      
+	      for ( let i = 0; i < addOpinionItemArray.length; i++) {
+	         
+	         let reptSeq = addOpinionItemArray[i].reptSeq;
+	         let type = addOpinionItemArray[i].type;
+			 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq; 
+			 let ownrNm  = addOpinionItemArray[i].ownrNm;
+	         if(getSeq==reptSeq&&getType==type){
+	            
+				
+	            let ownerOpinion = addOpinionItemArray[i].ownerOpinion;	
+	            let executorOpinion = addOpinionItemArray[i].executorOpinion;
+	            
+
+	            ownerOpinion = $("#ownerOpinion").val(ownerOpinion);
+	            executorOpinion = $("#executorOpinion").val(executorOpinion);
+				
+				console.log(addOpinionItemArray[i].opinionItemList);
+				
+				if(addOpinionItemArray[i].opinionItemList != undefined){
+	            let opinionItemList = addOpinionItemArray[i].opinionItemList;      
+	           // console.log(opinionItemList.length);
+	            
+	            $("#popupOpinionItemList").empty();
+	            
+	            for ( let j = 0; j < opinionItemList.length; j++) {
+	               let opinion = opinionItemList[j];
+	               
+	               resetOpinionItem(opinion);
+	               checkOpinionItem=true;
+	            }
+	            
+	}
+	         }
+	      }
+	      
+	      if(checkOpinionItem==false){
+	         addOpinionItem(getType);
+	      }
+
+	console.log(addOpinionItemArray);    
+	  
+	   }else{            
+	      addOpinionItem(getType);
+	   }
+	   
+//	   $("#popupOwnerOpinion").attr("data-seq",getSeq);
+//	   $("#popupOwnerOpinion").attr("data-type",getType);
+//	   $("#popupOwnerOpinion").attr("reptOwnrSeq",reptOwnrSeq);
+//	   $("#popupOwnerOpinion").attr("ownrNm",ownrNm);
+//
+//	   $("#popupOwnerOpinion").addClass("on");
+	   
+	   $(".acc_all2").show();
+	   
+
+	document.getElementById('reptSeq').value = getSeq;
+	document.getElementById('reptOwnerSeq').value = reptOwnrSeq; 
+}
+function closeOpinionAccordion() {
+    $(".acc_all2").css("display", "none");
+}
