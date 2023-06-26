@@ -143,7 +143,6 @@ public class JoinService {
 		user.setDept(dept);
 		user.setMobile(mobile);
 		
-		
 		joinMapper.InsertUser(user);
 		TB_Implementer implementer = new TB_Implementer();
 		Long userSeqNo = joinMapper.getUserSeqNo(user);
