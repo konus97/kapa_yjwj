@@ -492,6 +492,8 @@
 													</tbody>
 												</table>
 														<div class="closeAcc2">														
+															<button class="small3">등록</button>
+															<button class="small3 small4">취소</button>
 															<button class="small3">
 																<i class="close icon white"></i>닫기
 															</button>

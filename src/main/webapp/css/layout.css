@@ -3602,7 +3602,7 @@
 }
 .small3{
     box-sizing: border-box;
-    min-width: 200px;
+    min-width: 120px;
     height: 40px;
     padding: 0px 15px;
     border-radius: 3px;
@@ -3617,5 +3617,10 @@
     text-overflow: ellipsis;
     word-break: break-all;
     margin: 0 3px;
+}
+.small4{
+    background-color: #fff;
+    color:#4261ac !important;
+    border: 1px solid #4261ac !important;
 }
 /*수정중*/
