@@ -568,7 +568,7 @@
 												<th>작성</th>
 												<th>복사</th>
 												<th>삭제</th>
-											</tr>
+											</tr> 
 										</thead>
 										<tbody id="ownerLandItemList4">
 	
