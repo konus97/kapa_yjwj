@@ -383,8 +383,8 @@ function addGoodsOpinion(rank,info,getItem){
        addList.push("</table>");
        addList.push("<div class=\"closeAcc2\">");
        addList.push("<button class=\"small3\">등록</button>");
-       addList.push("<button class=\"small3 small4\" onclick=\"closeOpinionAccordion3();\">취소</button>");
-       addList.push("<button class=\"small3\" onclick=\"closeOpinionAccordion3();\"><i class=\"close icon white\"></i>닫기</button>");
+       addList.push("<button class=\"small3 small4\" onclick=\"opinionRemove44(this); return false;\">취소</button>");
+       addList.push("<button class=\"small3\" onclick=\"opinionRemove44(this); return false;\"><i class=\"close icon white\"></i>닫기</button>");
        addList.push("</div>");
        addList.push("</div>");
        addList.push("</div>");
@@ -1668,154 +1668,18 @@ $.ajax({
 
 
 /*이 아래로 팝업을 슬라이드로 변경하려고 함*/
-function openOpinionAccordion(getSeq,getType,reptOwnrSeq,ownrNm){
-	   $(".resetPopupVal").val('');
-	   $("#popupOpinionItemList").empty();
-	   
-		var notice ="";
-		
-		switch (getType) {
-		  case "1":
-		    notice = '지연가산금(재결신청 청구)';
-		    break;
-		  case "2":
-		    notice = '보상금 증액';
-		    break;
-		  case "3":
-		    notice = '협의 미이행(불이행,미준수)';
-		    break;
-		  case "4":
-		    notice = '사업폐지(취소,중단,변경,보류,제외)';
-		    break;
-		  case "5":
-		    notice = '재결 보류';
-		    break;
-		  case "6":
-		    notice = '무허가건물 부지면적 보상';
-		    break;
-		  case "7":
-		    notice = '잔여지/잔여건물 가치 하락';
-		    break;
-		  case "8":
-		    notice = '잔여지/잔여건물 매수 청구(확대보상)';
-		    break;
-		  case "9":
-		    notice = '사도평가 적정성';
-		    break;
-		  case "10":
-		    notice = '일단지 보상';
-		    break;
-		  case "11":
-		    notice = '미지급 용지';
-		    break;
-		  case "12":
-		    notice = '영업보상(이전비) 적정성';
-		    break;
-		  case "13":
-		    notice = '누락 물건 반영';
-		    break;
-		  case "14":
-		    notice = '폐업 보상';
-		    break;
-		  case "15":
-		    notice = '영농손실보상';
-		    break;
-		  case "16":
-		    notice = '휴직(실직)보상';
-		    break;
-		  case "17":
-		    notice = '이주대책 수립';
-		    break;
-		  case "18":
-		    notice = '이주정착금, 주거이전비, 이사비';
-		    break;
-		  case "19":
-		    notice = '구분지상권';
-		    break;
-		  case "20":
-		    notice = '10% 변동 내역';
-		    break;
-		  case "21":
-		    notice = '기타(임료손실,대토보상 등)';
-		    break;
-		  case "22":
-		    notice = '소유자 의견 없음';
-		    break;
-		  default:
-			notice='';
-			   break;
-			}
-		
-		document.getElementById('notice').innerHTML = notice;
-	   
-
-	   if(addOpinionItemArray.length>0){
-	      console.log('array!');
-	      console.log(addOpinionItemArray);
-	      let checkOpinionItem = false;
-	      
-	      for ( let i = 0; i < addOpinionItemArray.length; i++) {
-	         
-	         let reptSeq = addOpinionItemArray[i].reptSeq;
-	         let type = addOpinionItemArray[i].type;
-			 let reptOwnrSeq = addOpinionItemArray[i].reptOwnrSeq; 
-			 let ownrNm  = addOpinionItemArray[i].ownrNm;
-	         if(getSeq==reptSeq&&getType==type){
-	            
-				
-	            let ownerOpinion = addOpinionItemArray[i].ownerOpinion;	
-	            let executorOpinion = addOpinionItemArray[i].executorOpinion;
-	            
-
-	            ownerOpinion = $("#ownerOpinion").val(ownerOpinion);
-	            executorOpinion = $("#executorOpinion").val(executorOpinion);
-				
-				console.log(addOpinionItemArray[i].opinionItemList);
-				
-				if(addOpinionItemArray[i].opinionItemList != undefined){
-	            let opinionItemList = addOpinionItemArray[i].opinionItemList;      
-	           // console.log(opinionItemList.length);
-	            
-	            $("#popupOpinionItemList").empty();
-	            
-	            for ( let j = 0; j < opinionItemList.length; j++) {
-	               let opinion = opinionItemList[j];
-	               
-	               resetOpinionItem(opinion);
-	               checkOpinionItem=true;
-	            }
-	            
-	}
-	         }
-	      }
-	      
-	      if(checkOpinionItem==false){
-	         addOpinionItem(getType);
-	      }
-
-	console.log(addOpinionItemArray);    
-	  
-	   }else{            
-	      addOpinionItem(getType);
-	   }
-	   
-	   $("#acc_all2").attr("data-seq",getSeq);
-	   $("#acc_all2").attr("data-type",getType);
-	   $("#acc_all2").attr("reptOwnrSeq",reptOwnrSeq);
-	   $("#acc_all2").attr("ownrNm",ownrNm);
-
-	   /*$("#popupOwnerOpinion").addClass("on");*/
-	   
-	   $(".acc_all2").show();
-	   
-
-	document.getElementById('reptSeq').value = getSeq;
-	document.getElementById('reptOwnerSeq').value = reptOwnrSeq; 
+function openOpinionAccordion(){
+	/*$(".acc_all2").slideDown();*/
+    $(".item_result_wr__btn.item_result_wr__btn--write").click(function() {
+  	  $(this).closest("tr").next(".acc_all2").show();
+  	});
 }
-/*숨기기*/
-	var accCloseButton = document.querySelector(".small4");
-	accCloseButton.addEventListener("click", closeOpinionAccordion3);
-	function closeOpinionAccordion3() {
-		var accElement = document.querySelector(".acc_all2");
-		  accElement.style.display = "none";
-	}
+function opinionRemove44() {
+    let elementsAcc = document.getElementsByClassName("acc_all2");
+    for (let i = 0; i < elementsAcc.length; i++) {
+        let element = elementsAcc[i];
+        element.addEventListener("click", function() {
+            element.style.display = "none";
+        });
+    }
+}
