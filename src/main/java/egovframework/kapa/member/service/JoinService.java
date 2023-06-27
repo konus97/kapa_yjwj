@@ -89,7 +89,7 @@ public class JoinService {
 		//String completeEmail = jsonObject.get("email").toString() + "@" + jsonObject.get("domain").toString();
 		String mobile = jsonObject.get("mobile").toString();
 		String email = jsonObject.get("email").toString();
-		String domain = jsonObject.get("domain").toString();
+		String domain = jsonObject.get("domain").toString(); 
 		
 		User user = new User();
 		user.setUserId(id);
@@ -142,7 +142,6 @@ public class JoinService {
 		user.setDelCheck(0);
 		user.setDept(dept);
 		user.setMobile(mobile);
-		
 		
 		joinMapper.InsertUser(user);
 		TB_Implementer implementer = new TB_Implementer();

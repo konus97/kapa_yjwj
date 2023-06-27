@@ -23,7 +23,7 @@
             <level value="info" /> 
             <appender-ref ref="console-log4jdbc" />
         </Logger>
-        <Root level="INFO">
+        <Root level="INFO"> <!--TRACE > DEBUG > INFO > WARN > ERROR > FATAL  -->
             <AppenderRef ref="console" />
         </Root>
     </Loggers>

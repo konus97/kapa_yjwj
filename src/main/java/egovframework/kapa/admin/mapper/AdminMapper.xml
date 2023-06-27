@@ -4,7 +4,7 @@
 
 	<!--사용자 가져오기-->
 	<select id="getMemberList" resultType="egovframework.kapa.admin.domain.AdminVO"  parameterType="egovframework.kapa.admin.domain.AdminVO">
-        SELECT A.seqNo, A.userId, A.userName, A.userAuthority, A.email, A.dept, A.mobile, A.mobile, A.domain, A.userType
+        SELECT A.seqNo, A.userId, A.userName, A.userAuthority, A.email, A.dept, B.phoneNumber, A.mobile, A.domain, A.userType
 		FROM TB_User A
 		LEFT JOIN TB_Appraiser B
 		ON A.seqNo = B.userSeqNo
