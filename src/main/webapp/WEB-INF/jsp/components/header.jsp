@@ -120,7 +120,7 @@
 						<li><span>${sessionScope.userId}님 </span></li>
 					</c:if>
 					
-					<li><a href="${pageContext.request.contextPath}/member/mypage/join.do"><span>마이페이지</span></a></li>
+					<li><a href="${pageContext.request.contextPath}/member/mypage"><span>마이페이지</span></a></li>
 
 					<!--<c:choose>
 					       <c:when test="${sessionScope.userId ne null}">
