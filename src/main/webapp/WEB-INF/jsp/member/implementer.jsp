@@ -153,7 +153,7 @@
                                     <span>사건번호</span>
                                 </div>
                                 <input type="text" class="input-right input40" 
-                                	   placeholder="이름 또는 사건번호를 입력하세요." name="docNumber" value="${caseNo}" readonly />
+                                	   name="docNumber" value="${caseNo}" readonly />
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
