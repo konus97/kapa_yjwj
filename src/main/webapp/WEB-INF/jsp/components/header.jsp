@@ -61,12 +61,13 @@
 						href="${pageContext.request.contextPath}/appraiser/application.do">감정평가사</a>
 						<ul class="lnb">
 							<li><a
-								href="${pageContext.request.contextPath}/appraiser/application.do">재결신청</a>
+								href="${pageContext.request.contextPath}/appraiser/application.do">감정평가사 의견조회</a>
 							</li>
-							<li><a
-								href="${pageContext.request.contextPath}/appraiser/agenda.do">심의안건
-									정보</a></li>
-						</ul></li>
+							<li>
+								<a href="${pageContext.request.contextPath}/appraiser/agenda.do">심의서작성</a>
+							</li>
+						</ul>
+					</li>
 					<li><a
 						href="${pageContext.request.contextPath}/decision/agenda.do">재결관</a>
 						<ul class="lnb">
@@ -77,11 +78,15 @@
 								href="${pageContext.request.contextPath}/decision/schedule.do">심의
 									일정</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/decision/agenda.do">심의안건
-									정보</a></li>
+								href="${pageContext.request.contextPath}/decision/agenda.do">심의 안건 내용 검토</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/decision/register.do">심의안건
-									등록</a></li>
+								href="${pageContext.request.contextPath}/decision/register.do">심의서 작성</a></li>
+							<li>
+								<a href="#">템플릿</a>
+							</li>
+							<li>
+								<a href="#">재결서 열람</a>
+							</li>
 						</ul></li>
 					<li><a
 						href="${pageContext.request.contextPath}/deliberate/agenda.do">심의위원</a>
@@ -114,6 +119,8 @@
 					<c:if test="${!fn:contains(sessionValue, stringValue)}">
 						<li><span>${sessionScope.userId}님 </span></li>
 					</c:if>
+					
+					<li><a href="#login"><span class="testbar">마이페이지</span></a></li>
 
 					<!--<c:choose>
 					       <c:when test="${sessionScope.userId ne null}">

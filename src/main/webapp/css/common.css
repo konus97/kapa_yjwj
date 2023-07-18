@@ -1762,6 +1762,7 @@ div.table table td:last-child {
     font-weight: 600;
     color: #222326;
     line-height: 30px;
+    margin-right: 20px;
 }
 
 /* 팝업 */
@@ -2094,7 +2095,7 @@ div.table table td:last-child {
 }
 #header .h_logo a {
     display:inline-block;
-    width:300px;
+    width:330px;
     height:100px;
     background-image: url("../images/common/h_logo.svg");
     background-repeat: no-repeat;
@@ -2971,4 +2972,8 @@ div.table table td:last-child {
     }
     
     
+}
+.f_wrap2{
+	display:none;
+	padding-bottom: 30px;
 }

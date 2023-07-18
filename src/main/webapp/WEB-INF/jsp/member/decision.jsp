@@ -15,7 +15,8 @@
         <meta http-equiv="Cache-Control" content="no-cache" />
 
         <title>재결정보지원센터 || 회원가입</title>
-
+		<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+		<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
         <meta name="description" content="재결정보지원센터" />
         <meta name="keywords" content="재결정보지원센터" />
         <meta name="author" content="재결정보지원센터" />
@@ -50,25 +51,13 @@
             <div id="contents" class="c_sub join">
                 <div class="wrap">
                     <div class="cs_join">
-                        <h2 class="title ck medium">시군구 회원 정보 입력</h2>
+                        <h2 class="title ck medium">
+                            감정평가사 회원 정보 입력
+                        </h2>
                     </div>
-                    <form class="form">
+                    <form class="form" method="POST" id="registerForm">
                         <fieldset>
                             <legend>회원가입</legend>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">아이디</span>
-                                </div>
-                                <div class="input-right">
-                                    <input
-                                        type="text"
-                                        class="with-btn-input input40"
-                                        placeholder="6~20 영문, 숫자"
-                                        required
-                                    />
-                                    <button class="btn">중복확인</button>
-                                </div>
-                            </div>
                             <div class="input-wrap">
                                 <div class="input-left">
                                     <span class="required">핸드폰 번호</span>
@@ -76,25 +65,10 @@
                                 <div class="input-right">
                                     <input
                                         type="text"
+                                        name="id"
                                         class="with-btn-input input40"
-                                        required
                                     />
                                     <button class="btn">인증</button>
-                                </div>
-                            </div>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">이메일</span>
-                                </div>
-                                <div class="input-right">
-                                    <input type="text" class="wid25 input40" required />
-                                    @
-                                    <input type="text" class="wid25 input40" required />
-                                    <select class="select">
-                                        <option>직접 입력</option>
-                                        <option>naver.com</option>
-                                        <option>naver.com</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="input-wrap">
@@ -114,18 +88,23 @@
                                 </div>
                                 <input
                                     type="text"
-                                    class="input-right"
+                                    name="pwd"
+                                    class="input-right input40"
                                     placeholder="8~12자 영문, 숫자, 특수문자"
                                     required
                                 />
                             </div>
-                            
                             <div class="input-wrap">
                                 <div class="input-left">
-                                	<span class="required">연락처</span>
+                                    <span class="required">연락처</span>
                                 </div>
-                                <input type="text"
-									   class="input-right input40" />
+                                <input
+                                    type="text"
+                                    class="input-right input40"
+                                    placeholder="연락처를 입력하세요."
+                                    name="mobile"
+                                    required
+                                />
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
@@ -133,24 +112,32 @@
                                 </div>
                                 <input
                                     type="text"
-                                    required
                                     class="input-right input40"
+                                    placeholder="소속을 입력하세요."
+                                    name="dept"
+                                    required
                                 />
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
-                                    <span>사건번호</span>
+                                    <span class="required">이메일</span>
                                 </div>
-                                <input
-                                    type="text"
-                                    class="input-right input40"
-                                />
+                                <div class="input-right">
+                                    <input type="text" class="wid25 input40" required name="email"/>
+                                    @
+                                    <input type="text" class="wid25 input40" required name="domain"/>
+                                    <select class="select">
+                                        <option>직접 입력</option>
+                                        <option>naver.com</option>
+                                        <option>naver.com</option>
+                                    </select>
+                                </div>
                             </div>
-                            
-                            
-                            <!--  <div class="input-wrap">
-                                <div class="input-left"><span>부서</span></div>
-                                <input type="text" class="input-right input40" />
+                            <div class="input-wrap">
+                                <div class="input-left">
+                                    <span class="required">평가법인</span>
+                                </div>
+                                <input type="text" class="input-right input40" name="company" required/>
                             </div>
                             <div class="input-wrap">
                                 <div class="input-left">
@@ -160,30 +147,18 @@
                                     type="text"
                                     required
                                     class="input-right input40"
+                                    name="responsibilityName"
                                 />
-                            </div> -->
-                            
+                            </div>
                             <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">지역 코드</span>
-                                </div>
-                                <select class="select input-right">
-                                    <option value="">11000 | 서울특별시</option>
-                                    <option value="">11000 | 종로구</option>
-                                </select>
+                                <div class="input-left"><span>전화</span></div>
+                                <input type="text" class="input-right input40" name="phoneNumber"/>
+                            </div>
+                            <div class="btn_wrap">
+                                <button class="btn middle" id="submit">확인</button>
+                                <button class="btn middle t1" id="cancel">취소</button>
                             </div>
                         </fieldset>
-                        
-                        <div class="input-wrap termsCheckboxArea">
-							    <input type="checkbox" id="termsCheckbox" name="termsCheckbox">
-							    <span>약관 동의</span> 
-							    <a href="#" id="modalTermsOpen">(약관확인)</a>
-							</div>
-                        
-                        <div class="btn_wrap">
-                            <button class="btn middle" ">확인</button>
-                            <button class="btn middle t1">취소</button>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -860,36 +835,54 @@
 		
         <script type="text/javascript">
   
-
-            $(document).ready(function () {});
-        </script>
-        
-        <script>
-        //수정필요
-        $(document).ready(function(e) {        	
-        	// 약관 동의 체크박스 상태 확인
-        	  $('#termsCheckbox').on('change', function() {
-				  let isTermsChecked = $(this).is(':checked');
-				  $('#registerButton').prop('disabled', !isTermsChecked);
-				});
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        $(document).ready(function () {
+        	let contextPath = $('#contextPath').val();
+        	let url = contextPath + "/api/join/appraiser"
         	
         	$('#registerForm').on('submit', function(e){
         		e.preventDefault();
-        		
-        		//약관 동의 체크 여부 확인
-        		if (!$('#termsCheckbox').is(':checked')) {
-			      alert('약관에 동의해주세요.');
-			      return;
-    			}
+	        	const data = {
+		    			"id" : $("input[name=id]")[0].value,
+		    			"pwd" : $("input[name=pwd]")[0].value,
+		    			"email" : $("input[name=email]")[0].value,
+		    			"domain" : $("input[name=domain]")[0].value,
+		     			"company" : $("input[name=company]")[0].value,
+		     			"responsibilityName" : $("input[name=responsibilityName]")[0].value,
+		     			"phoneNumber" : $("input[name=phoneNumber]")[0].value,
+			     		"mobile" : $("input[name=mobile]")[0].value,
+			     		"dept" : $("input[name=dept]")[0].value,
+		    		}
+		        	
+		        	            		
+		        		$.ajax({
+		        			url : url,
+		        			type : "POST",
+		        			contentType : "application/json; charset=UTF-8",
+		        			data : JSON.stringify(data),
+		        			async: false, 
+		        			beforeSend : function(xhr){
+		        				xhr.setRequestHeader(csrfHeader, csrfToken);
+		        			},
+		        			success : function(data) {
+		        				alert("회원가입이 완료됐습니다.");
+		        				location.href=contextPath + "/#login"
+		        			},
+		        			error : function(xhr, status, error) {
+		        				//에러!
+		        				alert("code:"+xhr.status);
+		        			}
+		        		});
         	})
-        });
-
-        </script>
-        <script>
-        $(document).ready(function() {
-        	$("#modalTermsOpen").on("click", function() {
-        		alert("준비중입니다");
-        	});
+        	$('#cancel').on('click', function(){
+        		location.href=contextPath + "/#login"
+        	})
+        	
+        	
+        	
+        	
+        	
         });
         </script>
     </body>

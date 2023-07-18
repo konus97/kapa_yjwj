@@ -151,6 +151,7 @@ function addLandOpinion(rank,info,getItem){
    	   addList.push("          	삭제</button>");
        addList.push("</td>");
 		addList.push("</tr>");
+		
         
 		    if(getItem == 1){
 			$("#ownerLandItemList1").append(addList.join(''));

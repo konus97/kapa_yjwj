@@ -42,3 +42,19 @@ input {
   border: solid 1px #c2c4c9;
   padding: 0 1rem;
 }
+input#termsCheckbox{
+	margin-right: 7px;
+}
+.termsCheckboxArea{
+	margin-top: 5rem;
+	display: flex;
+	justify-content: center;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+.termsCheckboxArea a{
+	margin-left: 5px;
+	color: #3262b9;
+	font-size: 14px;
+}
+
