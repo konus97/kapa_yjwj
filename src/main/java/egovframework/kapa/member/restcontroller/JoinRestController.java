@@ -123,6 +123,11 @@ public class JoinRestController {
 		return ResponseEntity.ok(result);
 	}
 	
+//	@RequestMapping(value="/checkUserId", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+//	@ResponseBody
+//	public ResponseEntity checkUserId(@RequestBody String data) {
+//		
+//	}
 	
 	
 	

@@ -372,6 +372,7 @@ pageEncoding="utf-8"%>
         console.log("url", url);
         const join = $("#join");
         const caseNo = $("#caseNo");
+        
         join.on("click", function () {
           console.log("data", caseNo.val());
           $.ajax({
@@ -381,22 +382,27 @@ pageEncoding="utf-8"%>
             //data : JSON.stringify(data),
             async: false,
             success: function (data) {
-              if (data.message === "success") {
-                if (document.getElementById("lu_radio1_1").checked) {
-                  location.href =
-                    contextPath +
-                    "/member/implementer/join.do?caseNo=" +
-                    data.caseNo;
-                } else if (document.getElementById("lu_radio1_3").checked) {
-                  location.href =
-                    contextPath +
-                    "/member/appraiser/join.do?caseNo=" +
-                    data.caseNo;
-                }
-              } else {
-                alert(data.message);
-              }
-            },
+                if (data.message === "success") {
+                    if ($("#lu_radio11_1").is(":checked")) {
+                      location.href =
+                        contextPath +
+                        "/member/implementer/join.do?caseNo=" +
+                        data.caseNo;
+                    } else if ($("#lu_radio22_2").is(":checked")) {
+                      location.href =
+                        contextPath +
+                        "/member/cities/join.do?caseNo=" +
+                        data.caseNo;
+                    } else if ($("#lu_radio33_3").is(":checked")) {
+                      location.href =
+                        contextPath +
+                        "/member/decision/join.do?caseNo=" +
+                        data.caseNo;
+                    }
+                  } else {
+                    alert(data.message);
+                  }
+                },
             error: function (xhr, status, error) {
               //에러!
               //alert("code:"+xhr.status);

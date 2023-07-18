@@ -67,6 +67,8 @@
                                         type="text"
                                         class="with-btn-input input40"
                                         placeholder="6~20 영문, 숫자"
+                                        name="id"
+                                        id="id"
                                         required
                                     />
                                     <button class="btn">중복확인</button>
@@ -80,8 +82,7 @@
                                     <input
                                         type="text"
                                         class="with-btn-input input40"
-                                        name="id"
-                                        id="id"
+                                        name="mobile"
                                     />
                                     <button type="button" class="btn" id="checkPhone">인증</button>
                                 </div>
@@ -124,7 +125,7 @@
                                     required
                                 />
                             </div>
-                            <div class="input-wrap">
+                           <!--<div class="input-wrap">
                                 <div class="input-left">
                                     <span class="required">연락처</span>
                                 </div>
@@ -135,7 +136,7 @@
                                     name="mobile"
                                     required
                                 />
-                            </div>
+                            </div> --> 
                             <div class="input-wrap">
                                 <div class="input-left">
                                     <span class="required">소속</span>
@@ -982,6 +983,31 @@
         		}
         	});
         }
+        // Id 중복체크 
+        $(document).ready(function () {
+        	  $(".checkUsersId-btn").on("click", function () {
+        	    var userId = $("#id").val(); 
+        	    var url = contextPath + "/api/join/checkUserId";
+        	    $.ajax({
+        	      url: url,
+        	      type: "POST",
+        	      data: { id: userId },
+        	      success: function (data) {
+        	        if (data.isDuplicate) {
+        	          // ID is duplicated
+        	          alert("이미 사용 중인 아이디입니다.");
+        	        } else {
+        	          // ID is available
+        	          alert("사용 가능한 아이디입니다.");
+        	        }
+        	      },
+        	      error: function (xhr, status, error) {
+        	        // Error handling
+        	        console.log(xhr.responseText);
+        	      }
+        	    });
+        	  });
+        	});
         </script>
         <script>
         $(document).ready(function() {
