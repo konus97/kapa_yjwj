@@ -15,7 +15,7 @@ public class MemberController {
 	 * member
 	 */
 	
-	//미사용
+	//감정평가사
 	@GetMapping("/appraiser/join.do")
 	public String appraiserJoin(Model model) {
 		
@@ -25,7 +25,7 @@ public class MemberController {
 		return "member/appraiser";
 	}
 	
-
+	// 사업시행자 
 	@GetMapping("/implementer/join.do")
 	public String implementerJoin(Model model, @RequestParam(required=false) String caseNo) {
 		
@@ -38,7 +38,7 @@ public class MemberController {
 		
 		return "member/implementer";
 	}
-	//미사용
+	//시군구
 	@GetMapping("/cities/join.do")
 	public String citiesJoin(Model model) {
 		
@@ -46,6 +46,16 @@ public class MemberController {
 //		model.addAttribute("currentPage", "acceptance");
 		
 		return "member/cities";
+	}
+	
+	//재결관
+	@GetMapping("/decision/join.do")
+	public String decisionJoin(Model model, @RequestParam(required=false) String caseNo) {
+		
+		if(caseNo != null) {
+			model.addAttribute("caseNo",caseNo);
+		}
+		return "member/decision";
 	}
 	
 	

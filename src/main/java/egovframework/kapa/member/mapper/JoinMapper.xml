@@ -38,6 +38,12 @@
 		FROM tb_ltis2kapa_judg_info
 		WHERE case_no = #{case_no}
     </select>
+    
+    <select id="checkUserCaseNo" parameterType="string" resultType="long">
+    	select *
+    	  from TB_Implementer
+    	 where docNumber = #{case_no}
+    </select>
 	
     
     <!-- SELECT count(*) from tb_ltis2kapa_judg_info tlkji where tlkji .case_no ='19이지0601' -->

@@ -117,38 +117,56 @@ function removeRelation(viewSeq){
 	
 }
 
+function addNewDate() {
+    let trCount = $('.dateItem').length;
 
-function addNewDate(){
-	
-	let trCount = $('.dateItem').length;
-
-    if(trCount==0){
+    if (trCount == 0) {
         $("#dateList").empty();
     }
 
-	let addList = new Array();
+    let addList = [];
 
-	addList.push("<tr class=\"dateItem\" id=\"dateInfo"+targetCount3+"\"  >");
+    addList.push("<tr class=\"dateItem\" id=\"dateInfo" + targetCount3 + "\"  >");
     addList.push("   <td>");
-    
-    addList.push("		<span class=\"w320\">");   
-    addList.push("			<span class=\"consultationDate\"><label for=\"il_date"+targetCount3+"\" class=\"blind\"></label><input type=\"text\" name=\"il_date"+targetCount3+"\" id=\"il_date"+targetCount3+"\" class=\"datepicker input40 t1 consultationDate\" placeholder=\"협의일\" required /><input type=\"text\" name=\"il_date"+targetCount3+"_text\" id=\"il_date"+targetCount3+"_text\" class=\"input40 t1 consultationDateText\" placeholder=\"내용\" required /></span>  ");              
+
+    addList.push("		<span class=\"w320\">");
+    addList.push("			<span class=\"consultationDate\"><label for=\"il_date" + targetCount3 + 
+							 "\" class=\"blind\"></label><input type=\"text\" name=\"il_date" + 
+						     targetCount3 + "\" id=\"il_date" + targetCount3 + 
+		  				     "\" class=\"datepicker input40 t1 consultationDate\" placeholder=\"협의일\" required /><input type=\"text\" name=\"il_date" + 
+							 targetCount3 + "_text\" id=\"il_date" + targetCount3 + "_text\" class=\"input40 t1 consultationDateText\" placeholder=\"내용\" required /></span>  ");
     addList.push("		</span>");
-    
-    addList.push("   </td>");                                                                                                   
-    addList.push("  <td>"); 
-    addList.push("      <a href=\"#!\" class=\"btn small03 t4 nohover h30\" onclick=\"addNewDate();return false;\" >추가</a>"); 
-    addList.push("      <a href=\"#!\" class=\"btn small03 nohover t1 h30\" onclick=\"removeDate('"+targetCount3+"');return false;\" >삭제</a>"); 
+
+    addList.push("   </td>");
+    addList.push("  <td>");
+    addList.push("      <a href=\"#!\" class=\"btn small03 t4 nohover h30\" onclick=\"addNewDate();return false;\" >추가</a>");
+    addList.push("      <a href=\"#!\" class=\"btn small03 nohover t1 h30\" onclick=\"removeDate('" + targetCount3 + "');return false;\" >삭제</a>");
     addList.push("  </td>");
     addList.push("</tr>");
 
-	$("#dateList").append(addList.join(''));
-	targetCount3++;
+    $("#dateList").append(addList.join(''));
+    targetCount3++;
 
-	$(".datepicker").datepicker({
-	    ignoreReadonly: true,
-	});
+    $(".datepicker").datepicker({
+        ignoreReadonly: true,
+        format: 'yyyy-mm-dd', // 날짜 형식을 연도-월-일로 설정
+        todayHighlight: true, // 오늘 날짜에 하이라이트 효과 부여
+		changeYear: true, // 년도 선택 가능하도록 설정
+		yearRange: '1960:' + new Date().getFullYear(), // 선택 가능한 년도 범위 설정
+        autoclose: true, // 날짜 선택 후 자동으로 닫힘
+        beforeShow: function (input, inst) {
+            let value = $(input).val();
+            if (value === '') {
+                let currentDate = new Date();
+                let year = currentDate.getFullYear(); // 현재 년도 가져오기
+                let month = currentDate.getMonth(); // 현재 월 가져오기
+                $(this).datepicker('setDate', new Date(year, month, currentDate.getDate())); // 년도와 월을 설정하여 날짜 선택창에 표시
+            }
+        }
+    });
 }
+
+
 
 function removeDate(viewSeq){
 	

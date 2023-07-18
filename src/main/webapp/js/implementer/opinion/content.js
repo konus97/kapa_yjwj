@@ -383,7 +383,7 @@ function addGoodsOpinion(rank,info,getItem){
        addList.push("</tbody>");
        addList.push("</table>");
        addList.push("<div class=\"closeAcc2\">");
-       addList.push("<button class=\"small3\">등록</button>");
+       addList.push("<button class=\"small3\" onclick=\"submitOwnerOpinion(); return false;\">등록</button>");
        addList.push("<button class=\"small3 small4\" onclick=\"opinionRemove44(this); return false;\">취소</button>");
        addList.push("<button class=\"small3\" onclick=\"opinionRemove44(this); return false;\"><i class=\"close icon white\"></i>닫기</button>");
        addList.push("</div>");
@@ -1664,7 +1664,6 @@ $.ajax({
             		});
 
 }
-
 
 
 

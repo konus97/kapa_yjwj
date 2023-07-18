@@ -73,7 +73,7 @@ public class JoinService {
 			joinUser(param);
 		}
 	}
-	//미사용
+	
 	public String joinUser(String param) throws ParseException { // 사업시행자, 감정평가사 이외 회원
 		
 		String Message = "";
@@ -252,5 +252,15 @@ public class JoinService {
 	
 	public Long countJudgeInfo(String caseNo) {
 		return joinMapper.countJudgeInfo(caseNo);
+	}
+	
+	public Boolean checkUserCaseNo(String caseNo) {
+		long test = joinMapper.checkUserCaseNo(caseNo);
+		if(test==1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
