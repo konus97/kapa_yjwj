@@ -120,7 +120,7 @@
 						<li><span>${sessionScope.userId}님 </span></li>
 					</c:if>
 					
-					<li><a href="#login"><span class="testbar">마이페이지</span></a></li>
+					<li><a href="#login"><span>마이페이지</span></a></li>
 
 					<!--<c:choose>
 					       <c:when test="${sessionScope.userId ne null}">
