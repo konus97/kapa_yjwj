@@ -38,6 +38,7 @@ public class MemberController {
 		
 		return "member/implementer";
 	}
+	
 	//시군구
 	@GetMapping("/cities/join.do")
 	public String citiesJoin(Model model) {
@@ -58,6 +59,12 @@ public class MemberController {
 		return "member/decision";
 	}
 	
+	//마이페이지
+	@GetMapping("/mypage.do")
+	public String implementerMypage(Model model) {
+		
+		return "member/mypage";
+	}
 	
 
 	
