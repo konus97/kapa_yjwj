@@ -18,6 +18,8 @@ public interface JoinMapper {
 	
 	void InsertCities(TB_Cities cities);
 	
+	Long checkUserCaseNo(String caseNo);
+	
 	Long InsertUser(User user);
 	
 	Long countJudgeInfo(String caseNo);

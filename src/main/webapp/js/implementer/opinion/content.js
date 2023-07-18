@@ -1666,7 +1666,6 @@ $.ajax({
 
 
 
-
 /*이 아래로 팝업을 슬라이드로 변경하려고 함*/
 function openOpinionAccordion(){
 	/*$(".acc_all2").slideDown();*/

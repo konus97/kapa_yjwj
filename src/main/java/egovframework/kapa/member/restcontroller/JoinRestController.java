@@ -82,19 +82,25 @@ public class JoinRestController {
 	public ResponseEntity<Map<String, Object>> countJudgeInfo(@RequestParam String caseNo) {
 		
 		Long count = 0L;
+		boolean torF = false; 
 		Map<String, Object> res = new HashMap<>();
 		
 		try {
-			count = joinService.countJudgeInfo(caseNo);		
+			count = joinService.countJudgeInfo(caseNo); // 사건번호 존재 유무 테이블 조회
+			torF=joinService.checkUserCaseNo(caseNo); // 회원가입 이력 조회. true : id 존재, false : id 미존재
 			System.out.println("count" + count);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (count>0) {
+		if (count>0 && torF==false) {
 			res.put("caseNo", caseNo);
 			res.put("message", "success");
 			return ResponseEntity.ok(res);
-		} else {
+		}else if(count>0 && torF==true) {
+			res.put("message", "이미 가입된 회원번호 입니다.");
+			return ResponseEntity.ok(res);
+		}
+		else {
 			res.put("message", "사건번호가 없습니다.");
 			return ResponseEntity.ok(res);
 		}

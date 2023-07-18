@@ -1058,6 +1058,9 @@
 										href="${pageContext.request.contextPath}/implementer/application.do"
 										class="btn t1 h50 big">확인</a>
 									</li>
+									<li><button
+										class="btn t1 h50 big" id="pdfDownloadButton">PDF 다운로드</button>
+									</li>
 								</ul>
 							</div>
 
@@ -1202,7 +1205,10 @@
 
 	<script src="../../js/implementer/popup/block.js"></script>
 	<script src="../../js/implementer/popup/content.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+	<script src="../../js/html2canvas.js"></script>
+	<script src="../../js/jspdf.js"></script>
+	
 	<script type="text/javascript">
 	
 		function getJosuList(masterId){
@@ -1374,12 +1380,19 @@
 					document.getElementById("amountAverage").innerText = average;
 					
 				});
+					
+			document.getElementById("pdfDownloadButton").addEventListener("click", function() {
+			  const doc = new jsPDF();
+			  const pageElement = "hello world"); // 페이지의 내용이 들어있는 요소의 ID를 지정합니다.
 
-			
-		
-		
-		
-		
+			  // 페이지의 내용을 PDF로 추가합니다.
+			  doc.fromHTML(pageElement, 15, 15, {
+			    'width': 170
+			  });
+
+			  // PDF 다운로드
+			  doc.save("download.pdf");
+			});
 	</script>
 </body>
 </html>
