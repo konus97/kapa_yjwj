@@ -66,6 +66,12 @@ public class MemberController {
 		return "member/mypage";
 	}
 	
+	//마이페이지-내사건보기
+	@GetMapping("/mypage/mycase.do")
+	public String myCase(Model model) {
+		
+		return "member/mycase";
+	}
 
 	
 }

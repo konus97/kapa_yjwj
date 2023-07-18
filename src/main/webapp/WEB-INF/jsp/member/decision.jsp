@@ -52,7 +52,7 @@
                 <div class="wrap">
                     <div class="cs_join">
                         <h2 class="title ck medium">
-                            감정평가사 회원 정보 입력
+                            재결관 회원 정보 입력
                         </h2>
                     </div>
                     <form class="form" method="POST" id="registerForm">
