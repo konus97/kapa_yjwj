@@ -53,7 +53,7 @@
             <div id="contents" class="c_sub">
                 <div class="wrap">
                     <div class="sub_title sub_title04">
-                        <h2 class="title bold center">심의안건 정보</h2>
+                        <h2 class="title bold center">심의서작성</h2>
                     </div>
                     
                     
@@ -67,7 +67,7 @@
                     
                     <div class="cs_wrap">
                         <div class="cs_head">
-                            <h3 class="title bold cb">심의안건 조회</h3>
+                            <h3 class="title bold cb">심의서작성</h3>
                         </div>
                         <div class="cs_body">
                             <div class="cs_search">

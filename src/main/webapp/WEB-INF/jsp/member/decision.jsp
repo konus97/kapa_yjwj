@@ -60,6 +60,20 @@
                             <legend>회원가입</legend>
                             <div class="input-wrap">
                                 <div class="input-left">
+                                    <span>아이디</span>
+                                </div>
+                                <div class="input-right">
+                                    <input
+                                        type="text"
+                                        class="with-btn-input input40"
+                                        placeholder="6~20 영문, 숫자"
+                                        required
+                                    />
+                                    <button class="btn">중복확인</button>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
                                     <span class="required">핸드폰 번호</span>
                                 </div>
                                 <div class="input-right">
@@ -69,6 +83,21 @@
                                         class="with-btn-input input40"
                                     />
                                     <button class="btn">인증</button>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <div class="input-left">
+                                    <span class="required">이메일</span>
+                                </div>
+                                <div class="input-right">
+                                    <input type="text" class="wid25 input40" required name="email"/>
+                                    @
+                                    <input type="text" class="wid25 input40" required name="domain"/>
+                                    <select class="select">
+                                        <option>직접 입력</option>
+                                        <option>naver.com</option>
+                                        <option>naver.com</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="input-wrap">
@@ -118,42 +147,21 @@
                                     required
                                 />
                             </div>
+                            
                             <div class="input-wrap">
                                 <div class="input-left">
-                                    <span class="required">이메일</span>
+                                    <span>사건번호</span>
                                 </div>
-                                <div class="input-right">
-                                    <input type="text" class="wid25 input40" required name="email"/>
-                                    @
-                                    <input type="text" class="wid25 input40" required name="domain"/>
-                                    <select class="select">
-                                        <option>직접 입력</option>
-                                        <option>naver.com</option>
-                                        <option>naver.com</option>
-                                    </select>
-                                </div>
+                                <input type="text" class="input-right input40" 
+                                	   name="docNumber" value="${caseNo}" readonly />
                             </div>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">평가법인</span>
-                                </div>
-                                <input type="text" class="input-right input40" name="company" required/>
-                            </div>
-                            <div class="input-wrap">
-                                <div class="input-left">
-                                    <span class="required">담당자명</span>
-                                </div>
-                                <input
-                                    type="text"
-                                    required
-                                    class="input-right input40"
-                                    name="responsibilityName"
-                                />
-                            </div>
-                            <div class="input-wrap">
-                                <div class="input-left"><span>전화</span></div>
-                                <input type="text" class="input-right input40" name="phoneNumber"/>
-                            </div>
+                            
+                            <div class="input-wrap termsCheckboxArea">
+							    <input type="checkbox" id="termsCheckbox" name="termsCheckbox">
+							    <span>약관 동의</span> 
+							    <a href="#" id="modalTermsOpen">(약관확인)</a>
+							</div>
+                            
                             <div class="btn_wrap">
                                 <button class="btn middle" id="submit">확인</button>
                                 <button class="btn middle t1" id="cancel">취소</button>

@@ -53,7 +53,7 @@
             <div id="contents" class="c_sub">
                 <div class="wrap">
                     <div class="sub_title sub_title04">
-                        <h2 class="title bold center">심의안건 정보</h2>
+                        <h2 class="title bold center">심의안건 내용검토</h2>
                     </div>
                    
          			<!-- appraiser submenu start -->

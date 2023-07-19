@@ -54,7 +54,7 @@
             <div id="contents" class="c_sub">
                 <div class="wrap">
                     <div class="sub_title sub_title04">
-                        <h2 class="title bold center">재결신청</h2>
+                        <h2 class="title bold center">감정평가사 의견조회</h2>
                     </div>
                     
        				<!-- appraiser submenu start -->
@@ -65,7 +65,7 @@
 					
                     <div class="cs_wrap">
                         <div class="cs_head">
-                            <h3 class="title bold cb">재결신청 조회</h3>
+                            <h3 class="title bold cb">감정평가사 의견조회</h3>
                         </div>
                         <div class="cs_body">
                             <div class="cs_search">
