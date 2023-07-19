@@ -23,10 +23,10 @@ String currentPage = request.getParameter("currentPage");
                  <div class="csnm_wrap">
                      <ul>
                          <li>
-                             <a href="${pageContext.request.contextPath}/appraiser/application.do" id="subMenuApplication" >재결신청</a>
+                             <a href="${pageContext.request.contextPath}/appraiser/application.do" id="subMenuApplication" >감정평가사 의견조회</a>
                          </li>
                          <li>
-                             <a href="${pageContext.request.contextPath}/appraiser/agenda.do" id="subMenuAgenda" >심의안건 정보</a >
+                             <a href="${pageContext.request.contextPath}/appraiser/agenda.do" id="subMenuAgenda" >심의서작성</a >
                          </li>
                      </ul>
                  </div>

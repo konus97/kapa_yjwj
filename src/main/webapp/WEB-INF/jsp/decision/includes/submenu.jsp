@@ -29,10 +29,16 @@ String currentPage = request.getParameter("currentPage");
                              <a href="${pageContext.request.contextPath}/decision/schedule.do" id="subMenuSchedule">심의 일정 관리</a>
                          </li>
                          <li>
-                             <a href="${pageContext.request.contextPath}/decision/agenda.do" id="subMenuAgenda">심의안건 정보</a>
+                             <a href="${pageContext.request.contextPath}/decision/agenda.do" id="subMenuAgenda">심의안건 내용검토</a>
                          </li>
                           <li>
-                             <a href="${pageContext.request.contextPath}/decision/register.do" id="subMenuRegister">심의안건 등록</a>
+                             <a href="${pageContext.request.contextPath}/decision/register.do" id="subMenuRegister">심의서 작성</a>
+                         </li>
+                         <li>
+                             <a href="#" id="subMenuAgenda">템플릿</a>
+                         </li>
+                          <li>
+                             <a href="#" id="subMenuRegister">재결서 열람</a>
                          </li>
                      </ul>
                  </div>

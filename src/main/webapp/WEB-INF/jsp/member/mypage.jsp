@@ -200,6 +200,7 @@
 		                            
 		                        
 	                        	<!-- 감정평가사 시작 -->
+	                        	<!-- 
 	                        	<div class="myinform2">
 		                            <div class="f_wrap">
 		                                <div class="f_field div2">
@@ -284,10 +285,12 @@
 		                                </div>
 		                            </div>
 	                            </div>
+	                            -->
 	                            <!-- 감정평가사 끝 -->
 		                            
 		                            
 	                            <!-- 관리자, 시군구, 재결관, 심의위원 시작 -->
+	                            <!--
 	                            <div class="myinform3">
 		                            <div class="f_wrap">
 		                                <div class="f_field div2">
@@ -344,7 +347,8 @@
 		                                </div>
 		                            </div>
 	                            </div>
-	                            <!-- 감정평가사 끝 -->
+	                            -->
+	                            <!-- 관리자, 시군구, 재결관, 심의위원  끝 -->
 	                            
 	                            
 	                        </div>
