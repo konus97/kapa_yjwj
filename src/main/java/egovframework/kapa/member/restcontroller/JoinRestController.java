@@ -123,11 +123,14 @@ public class JoinRestController {
 		return ResponseEntity.ok(result);
 	}
 	
-//	@RequestMapping(value="/checkUserId", method = RequestMethod.POST, produces = "application/json; charset=utf8")
-//	@ResponseBody
-//	public ResponseEntity checkUserId(@RequestBody String data) {
-//		
-//	}
+	@RequestMapping(value="/checkuserid", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public ResponseEntity checkUserId(@RequestBody String data) {
+		System.out.println("체크아이디 : " + data);
+		Map<String, String> result = new HashMap();
+		result.put("massage", "가입 가능한 아이디입니다.");
+		return ResponseEntity.ok(result);
+	}
 	
 	
 	

@@ -71,7 +71,7 @@
                                         id="id"
                                         required
                                     />
-                                    <button class="btn">중복확인</button>
+                                    <button id="checkUserId" class="btn">중복확인</button>
                                 </div>
                             </div>
                             <div class="input-wrap">
@@ -885,7 +885,47 @@
         <script type="text/javascript">
         var csrfToken = $("meta[name='_csrf']").attr("content");
         var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-                
+        
+        
+     // Id 중복체크 
+        $(document).ready(function () {
+        	  $("#checkUserId").on("click", function () {
+        	    var userId = $("#id").val(); 
+        	    var url = contextPath + "/api/join/checkuserid";
+        	    const data = {"id" : userId};
+        	    alert(userId)
+        	    $.ajax({
+        	      url: url,
+        	      type: "POST",
+        	      data: JSON.stringify(data),
+        	      contentType: "application/json; charset=utf-8",
+        	      success: function (data) {
+        	        if (data.isDuplicate) {
+        	          // ID is duplicated
+        	          alert("이미 사용 중인 아이디입니다.");
+        	        } else {
+        	          // ID is available
+        	          alert("사용 가능한 아이디입니다.");
+        	        }
+        	      },
+        	      error: function (xhr, status, error) {
+        	        // Error handling
+        	        console.log(xhr.responseText);
+        	      }
+        	    });
+        	  });
+        	});
+        </script>
+        <script>
+        $(document).ready(function() {
+        	$("#modalTermsOpen").on("click", function(e) {
+        		alert("준비중입니다");
+        		//e.preventDefault();
+        		//fn_checkPhone();
+        	});
+        });
+        
+        //회원가입
         $(document).ready(function (e) {
         	let contextPath = $('#contextPath').val();
         	let url = contextPath + "/api/join/implementer";
@@ -983,40 +1023,7 @@
         		}
         	});
         }
-        // Id 중복체크 
-        $(document).ready(function () {
-        	  $(".checkUsersId-btn").on("click", function () {
-        	    var userId = $("#id").val(); 
-        	    var url = contextPath + "/api/join/checkUserId";
-        	    $.ajax({
-        	      url: url,
-        	      type: "POST",
-        	      data: { id: userId },
-        	      success: function (data) {
-        	        if (data.isDuplicate) {
-        	          // ID is duplicated
-        	          alert("이미 사용 중인 아이디입니다.");
-        	        } else {
-        	          // ID is available
-        	          alert("사용 가능한 아이디입니다.");
-        	        }
-        	      },
-        	      error: function (xhr, status, error) {
-        	        // Error handling
-        	        console.log(xhr.responseText);
-        	      }
-        	    });
-        	  });
-        	});
-        </script>
-        <script>
-        $(document).ready(function() {
-        	$("#modalTermsOpen").on("click", function(e) {
-        		alert("준비중입니다");
-        		//e.preventDefault();
-        		//fn_checkPhone();
-        	});
-        });
+        
         </script>
     </body>
 </html>
