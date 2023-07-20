@@ -26,7 +26,16 @@ String currentPage = request.getParameter("currentPage");
                              <a href="${pageContext.request.contextPath}/admin/user.do" id="subMenuManage" >회원관리</a>
                          </li>
                          <li>
+                             <a href="#" id="" >심의위원 관리</a >
+                         </li>
+                         <li>
                              <a href="${pageContext.request.contextPath}/admin/law.do" id="subMenuLaw" >관련 법령</a >
+                         </li>
+                         <li>
+                             <a href="#" id="" >재결관 의견</a >
+                         </li>
+                         <li>
+                             <a href="#" id="" >관련 법령 판례</a >
                          </li>
                      </ul>
                  </div>

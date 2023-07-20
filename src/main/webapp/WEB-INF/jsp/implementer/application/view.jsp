@@ -955,16 +955,6 @@
                                     <div class="f_wrap">
                                         <div class="f_field div2">
                                             <div class="ff_title">
-                                                <label>지장물수</label>
-                                            </div>
-                                            <div class="ff_wrap">
-                                                <p>
-                                                    <a href="#" class="cx"  onclick="openPopup('goods','${objectCount}');return false;" >${objectCount}건<i class="icon search"></i ></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                  		<div class="f_field div2">
-                                            <div class="ff_title">
                                                 <label>필지수</label>
                                             </div>
                                             <div class="ff_wrap">
@@ -973,8 +963,28 @@
                                                 </p>
                                             </div>
                                         </div>
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>지장물수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx"  onclick="openPopup('goods','${objectCount}');return false;" >${objectCount}건<i class="icon search"></i ></a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="f_wrap">
+                                    <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>필지소유자수</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                <p>
+                                                    <a href="#" class="cx"  onclick="openPopup('landsowner','${landRightCount}');return false;" >${landRightCount}명<i class="icon search"></i ></a>
+                                                </p>
+                                            </div>
+                                        </div>
                                        <div class="f_field div2">
                                             <div class="ff_title">
                                                 <label>지장물소유자수</label>
@@ -985,32 +995,22 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="f_field div2">
-                                            <div class="ff_title">
-                                                <label>필지소유자수</label>
-                                            </div>
-                                            <div class="ff_wrap">
-                                                <p>
-                                                    <a href="#" class="cx"  onclick="openPopup('landsowner','${landRightCount}');return false;" >${landRightCount}명<i class="icon search"></i ></a>
-                                                </p>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="f_wrap">
+                                    	<div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>종전금액합계(원)</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                 <p>${totalCost}</p>
+                                            </div>
+                                        </div>
                                         <div class="f_field div2">
                                             <div class="ff_title">
                                                 <label>면적</label>
                                             </div>
                                             <div class="ff_wrap">
                                                 <p>${totalAreaAmot}㎡</p>
-                                            </div>
-                                        </div>
-                                        <div class="f_field div2">
-                                            <div class="ff_title">
-                                                <label>종전금액합계(원)</label>
-                                            </div>
-                                            <div class="ff_wrap">
-                                                 <p>${totalCost}</p>
                                             </div>
                                         </div>
                                     </div>
