@@ -181,8 +181,8 @@
 								href="/appraiser/application.do"><span class="blind">바로가기</span></a>
 						</strong>
 							<ul>
-								<li><a href="/appraiser/application.do">재결신청</a></li>
-								<li><a href="/appraiser/agenda.do">심의안건 정보</a></li>
+								<li><a href="/appraiser/application.do">감정평가사 의견조회</a></li>
+								<li><a href="/appraiser/agenda.do">심의서 작성</a></li>
 							</ul></li>
 						<li><strong> <span>재결관</span> <a
 								href="/decision/agenda.do"><span class="blind">바로가기</span></a>
@@ -190,7 +190,10 @@
 							<ul>
 								<li><a href="/decision/announcement.do">열람공고</a></li>
 								<li><a href="/decision/schedule.do">심의 일정</a></li>
-								<li><a href="/decision/agenda.do">심의안건 정보</a></li>
+								<li><a href="/decision/agenda.do">심의안건 내용검토</a></li>
+								<li><a href="#">심의서 작성</a></li>
+								<li><a href="#">템플릿</a></li>
+								<li><a href="#">재결서 열람</a></li>
 							</ul></li>
 						<li><strong> <span>심의 위원</span> <a
 								href="/deliberate/agenda.do"><span class="blind">바로가기</span></a>

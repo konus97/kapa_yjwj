@@ -45,9 +45,12 @@
 				padding: 50px 0px;
 				width: 1200px;
 			}
+			.mypageWrap{
+				width: 1200px;
+				margin : 0 auto;
+			}
 			.mypage_head{
 				margin-top: 60px;
-			
 			}
 			.mypageGrd{
 				display: grid;
@@ -58,17 +61,15 @@
 				margin-top: 80px;
 			}
 			.mypageBody2{
-				display: inline-block;
+				display: block;
 	    		vertical-align: middle;
 				width: 100%;
-			    max-width: 1200px;
 			    margin-top: 100px;
 			}
 			.mypageBody{
-				display: inline-block;
+				display: block;
 	    		vertical-align: middle;
 				width: 100%;
-			    max-width: 1200px;
 			    margin-bottom: 40px;
 			}
 			#contents{
@@ -89,9 +90,6 @@
             
             <!-- contents start -->
             <div id="contents" class="c_sub mypage">
-                <div class="wrap mypageWrap">
-                
-                
                 <!-- cs_navi start -->
 		            <div class="cs_navi">
 						<ul class="center">
@@ -118,6 +116,7 @@
 					</div>
 					<!-- cs_navi end -->
 					
+                <div class="wrap mypageWrap">
                     <div class="mypage_head">
 						<h3 class="title bold cb">내 사건보기</h3>
 					</div>

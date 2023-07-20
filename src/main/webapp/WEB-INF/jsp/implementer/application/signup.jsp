@@ -837,25 +837,31 @@
                                 <div class="mt40 btn_wrap">
                                     <ul class="btns">
                                         <li>
+                                            <a href="${pageContext.request.contextPath}/implementer/application.do"
+                                                class="btn t1 h50 big"
+                                            >취소</a>
+                                        </li>
+                                        <li>
+                                            <button type="button"
+                                                class="btn t1 h50 big" id="temporarySaveBtn"
+                                                onClick="storage2();return false;">임시저장
+                                            </button>
+                                            <button type="button" id="saveBtn"
+                                                class="btn t1 h50 big" style="display: none;">저장
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="#" download="pdf_sample"
+                                                class="btn t1 h50 big"
+                                            >22수용0128 재결접수내용(PDF)</a>
+                                        </li>
+                                        <li>
                                             <button
                                             type="button"
                                                 class="btn h50 big"
                                                 onClick="saveDecision();return false;"
                                             >재결접수
                                             </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                            type="button"
-                                                class="btn t1 h50 big"
-                                                onClick="storage2();return false;"
-                                            >임시저장
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/implementer/application.do"
-                                                class="btn t1 h50 big"
-                                            >취소</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -904,6 +910,8 @@
 
 			function storage2(){
 				storage();
+				document.getElementById("temporarySaveBtn").style.display = "none";
+				document.getElementById("saveBtn").style.display = "block";
 			}
         
             function triggerFileUpload(position, arg) {

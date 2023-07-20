@@ -57,6 +57,9 @@
 			.mypageSub{
 				margin-bottom: 70px;
 			}
+			#contents{
+				min-height: calc(100vh - 263px);
+			}
 		</style>
         
     </head>
