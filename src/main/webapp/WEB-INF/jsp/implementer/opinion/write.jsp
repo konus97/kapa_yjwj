@@ -43,7 +43,17 @@
 <link rel="stylesheet" href="../../css/sub.css" />
 <link rel="stylesheet" href="../../css/owl.carousel.min.css" />
 <link rel="stylesheet" href="../../css/jquery-ui.css" />
+	<style>
+		#opinionSubmit{
+			display: flex;
+    		justify-content: center;
+    		margin: 10px 0 10px;
 
+		}
+		.opinionSubmitArea{
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 <body>
 
@@ -312,7 +322,21 @@
 								</h4>
 							</div>
 							
-							<%-- 항목 소유자 검색 필터 시작 --%>
+							<div class="form t2 opinionSubmitArea">
+								<div class="f_wrap">
+									<div class="f_field">
+										<div class="ff_title2">
+											<button id="opinionSubmit" class="btn big t4">
+												<a href="#" class="btn_check btn big t4" onclick="openPopup('checkbox2','${landRightCount+objectRightCount}');return false;">작성하기</a>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							
+							<%-- 항목 소유자 검색 필터 예전 버전 --%>
+							
 							<div class="c_table t1">
 								<table>
 									<thead>
@@ -323,12 +347,11 @@
 										</tr>
 									</thead>
 									<tbody>
-
-
+									 
 										<%--<c:forEach var="ownerInfo" items="${ownerList}"
 											varStatus="status">--%>
 										<%--<c:set var="i" value="${i+1}" /> --%>
-
+										
 										<tr>
 											<td>
 												<button>
@@ -348,6 +371,7 @@
 									</tbody>
 								</table>
 							</div>
+							
 							<%-- 항목 소유자 검색 필터 끝 --%>
 							
 							<%-- 항목 결과 시작 01 --%>
@@ -2180,6 +2204,10 @@
 												onclick="saveOpinion();return false;">완료</button>
 										</li>
 									</c:if>
+									
+									<li><a href="#" class="btn t1 h50 big"
+										onclick="">저장</a>
+									</li>
 
 									<li><a href="#" class="btn t1 h50 big"
 										onclick="goToImplementerOpinionList();return false;">취소</a>

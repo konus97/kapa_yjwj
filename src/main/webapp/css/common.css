@@ -2977,3 +2977,22 @@ div.table table td:last-child {
 	display:none;
 	padding-bottom: 30px;
 }
+
+.search_Area{
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.dwldArea{
+	display: flex;
+	flex-direction: column;
+	margin-left: 100px;
+	justify-content: flex-end
+}
+.dwldArea span, .dwldArea a{
+	font-size: 14px;
+}
+.dwldBtnArea{
+	display: flex;
+	padding: 10px;
+}

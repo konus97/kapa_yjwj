@@ -1054,12 +1054,13 @@
 										</li>
 									</c:if>
 
-									<li><a
-										href="${pageContext.request.contextPath}/implementer/application.do"
-										class="btn t1 h50 big">확인</a>
+									<li>
+										<button
+										class="btn t1 h50 big" id="pdfDownloadButton">${avo.caseNo} 재결접수내용(PDF)</button>
 									</li>
-									<li><button
-										class="btn t1 h50 big" id="pdfDownloadButton">PDF 다운로드</button>
+									<li>
+										<a href="${pageContext.request.contextPath}/implementer/application.do"
+										class="btn t1 h50 big">확인</a>
 									</li>
 								</ul>
 							</div>

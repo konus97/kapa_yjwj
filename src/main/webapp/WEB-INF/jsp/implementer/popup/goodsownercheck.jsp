@@ -10,12 +10,15 @@
                  </h3>
                  <a href="#" class="p_close" onclick="closePopup('goodsownercheck');return false;"><span class="blind" >닫기</span></a>
              </div>
+             
              <div class="p_body">
                  <div class="wrap">
-                 <!-- 검색버튼 추가 
+                 
+                 <!-- 검색버튼 추가 -->
+                 <div class="search_Area">
                  	<div class="pop_search">                                       
 		                <span class="ff_group w290">
-		                    <input type="text" id="il_input2" name="il_input2" class="input40 t1" placeholder="소유자 혹은 소재지 입력" required="">
+		                    <input type="text" id="il_input2" name="il_input2" class="input40 t1" placeholder="소유자 혹은 주소 검색" required="">
 		                </span>
 		                <span class="ff_group">
 		                    <button type="button" id="il_submit2" name="il_submit2" class="btn small ico search" onclick="getApplicationListSearch();return false;">
@@ -23,15 +26,30 @@
 		                    </button>
 		                </span>
 		            </div>
-		            -->
-		             <!--   
+		            
+		            <div class="dwldArea">
+			            <span>*엑셀파일 다운로드 후 업로드 해주시기 바랍니다</span>
+			            <div class="dwldBtnArea">		            
+			            	<div type="button" class="cso_btnwrap">
+	                               <a href="#" download="" class="btn download">엑셀폼 파일 다운로드</a>
+	                        </div>
+	                        <div type="button" class="cso_btnwrap">
+	                               <a href="#" download="" class="btn download">엑셀파일 업로드</a>
+	                        </div>
+			            </div>
+		            </div>
+	            </div>
+	            
+		        	<!--   
 		             <div class="cs_title">
                        <div class="cs_option">
                            <div class="cso_btnwrap">
                                <a href="#" download="" class="btn t2 small ico download">다운로드</a>
                            </div>
                        </div>
-                   </div> -->
+                   </div> 
+                   -->
+                   
                    <div class="c_table t1">
                        <table>
                            <caption>
