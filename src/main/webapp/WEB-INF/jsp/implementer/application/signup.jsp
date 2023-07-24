@@ -846,6 +846,7 @@
                                                 class="btn t1 h50 big" id="temporarySaveBtn"
                                                 onClick="storage2();return false;">임시저장
                                             </button>
+                                            
                                             <button type="button" id="saveBtn"
                                                 class="btn t1 h50 big" style="display: none;">저장
                                             </button>
@@ -853,7 +854,7 @@
                                         <li>
                                             <a href="#" download="pdf_sample"
                                                 class="btn t1 h50 big"
-                                            >22수용0128 재결접수내용(PDF)</a>
+                                            >${avo.caseNo} 재결접수내용(PDF)</a>
                                         </li>
                                         <li>
                                             <button
@@ -911,7 +912,7 @@
 			function storage2(){
 				storage();
 				document.getElementById("temporarySaveBtn").style.display = "none";
-				document.getElementById("saveBtn").style.display = "block";
+				document.getElementById("saveBtn").style.display = "inline-block";
 			}
         
             function triggerFileUpload(position, arg) {

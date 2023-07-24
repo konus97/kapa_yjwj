@@ -221,7 +221,7 @@
                     </div>
                 </div>
                 <div class="p_foot">
-                    <button class="btn h50 mr10" onclick="checkItem2();return false;" >확인</button>
+                    <button class="btn h50 mr10" onclick="checkItem2();return false;" >다음</button>
                     <a href="#" class="btn t1 h50" onclick="closePopup('checkbox2');return false;">취소</a>
                 </div>
             </div>
