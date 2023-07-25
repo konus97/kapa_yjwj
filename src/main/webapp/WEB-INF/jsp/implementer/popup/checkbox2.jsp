@@ -203,7 +203,7 @@
                               </div>
                               <div class="check_input">
                                   <input type="radio" class="opinion_radio" data-type="21" data-title="기타(임료손실,대토보상 등)" id="opinion_radio21" name="opinion_radio">
-                                  <label for="opinion_radio21">기타(임료손실,대토보상 등)</label>
+                                  <label for="opinion_radio21">기타</label>
                               </div>
                           </div>
                           <div class="checkbox div2">

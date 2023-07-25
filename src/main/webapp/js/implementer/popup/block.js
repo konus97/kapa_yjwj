@@ -870,6 +870,16 @@ function makeGoodsownerCheckBlock(startNumber,info) {
     addList.push("      <span>"+befUnitCost+"</span>");
     addList.push("    </td>");
     
+    addList.push("   <td>");
+    addList.push("       <strong>단가</strong>");
+    addList.push("      <span></span>");
+    addList.push("    </td>");
+    
+    addList.push("   <td>");
+    addList.push("       <strong>단가</strong>");
+    addList.push("      <span></span>");
+    addList.push("    </td>");
+    
 
 
     addList.push("</tr>");
@@ -931,6 +941,7 @@ function addLandList(rank, list){
     addList.push("      <strong>지분</strong>");
     addList.push("      <span>"+landShre+"</span>");
     addList.push("    </td>");
+
     
     addList.push("   <td>");
     addList.push("      <strong>소재지</strong>");
@@ -957,11 +968,7 @@ function addLandList(rank, list){
     addList.push("      <span>"+obstStuc1Nm+"</span>");
     addList.push("   </td>");
     
-    addList.push("   <td>");
-    addList.push("      <strong>잡</strong>");
-    addList.push("      <span>"+obstStuc2Nm+"</span>");
-    addList.push("   </td>");
-
+    
     addList.push("   <td>");
     addList.push("      <strong>면적</strong>");
     addList.push("      <span>"+areaAmot+"</span>");
@@ -972,6 +979,7 @@ function addLandList(rank, list){
     addList.push("      <span>"+befUnitCost+"</span>");
     addList.push("    </td>");
     
+   
 	addList.push("<td>");     
 	addList.push("          <a href=\"#\" id=\"opinionTitle"+getSeq+"-"+getType+"\" onclick=\"openOpinionPopup2('"+getSeq+"','"+getType+"','"+reptOwnrSeq+"','"+ownrNm+"');return false;\" class=\"item_result_wr__btn item_result_wr__btn--write\">보기</a>");
 	addList.push("</td>");

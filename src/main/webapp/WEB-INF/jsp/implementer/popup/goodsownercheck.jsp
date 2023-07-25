@@ -49,8 +49,33 @@
                        </div>
                    </div> 
                    -->
+                   <div class="c_table">
+                       <table>
+                           <caption>
+                              	 필지
+                           </caption>
+                           <thead>
+                               <tr>
+                                   <th><input type="checkbox" id="all" name="all" ></th>
+                                   <th>소유자</th>
+                                   <th>필지</th>
+                                   <th>지장물</th>
+                                   <th>세부정보</th>
+                              </tr>
+                           </thead>
+	                           <tr>
+	                           <td><input type="checkbox" name="checkBox"></td>
+	                           <td></td>
+	                           <td></td>
+	                           <td></td>
+	                           <td><a href="#" class="btn_check"></a></td>
+	                           </tr>
+                       </table>
+                   </div>
                    
-                   <div class="c_table t1">
+                   <h3 class="p_t1_title">- 필지 지장물 목록</h3>
+                   
+                   <div class="c_table t1" id="goodsownerCheckList2">
                        <table>
                            <caption>
                               	 지장물
@@ -61,20 +86,16 @@
                                    <th>연번</th>
                                    <th>소유자</th>
                                    <th>지분</th>
+                                   <th>구분<a href="#" class="btn_check"></a></th>
                                    <th>소재지</th>
+                                   <th>지번</th>
                                    <th>본번</th>
-                                   <th>부번</th>
-                                   <th>부번2</th>
-                                   <th>
-                                  	     물건종류
-                                   </th>
-                                   <th>
-                                   	    물건구조
-                                   </th>
-                                   <th>
-                                      	 면적/수량
-                                   </th>
+								   <th>부번</th>
+                                   <th>공</th>
+                                   <th>실</th>
+                                   <th>면적</th>
                                    <th>단가</th>
+                                   <th>총전가액</th>
                                </tr>
                            </thead>
                            <tbody id="goodsownerCheckList">
@@ -83,6 +104,8 @@
                        </table>
                    </div>
                </div>
+               
+               
                <div class="p_foot">
                     <button class="btn h50 mr10" onclick="submitGoodsOwnrNew(); checkResultWrTbody(); return false;" >선택</button>
                     <a href="#" class="btn t1 h50" onclick="closePopup('goodsownercheck');return false;">취소</a>

@@ -2996,3 +2996,16 @@ div.table table td:last-child {
 	display: flex;
 	padding: 10px;
 }
+.p_t1_title{
+	text-align:left;
+	margin:35px 0px 20px;
+	font-size:17px;
+	font-weight:600;
+	color:#0663b2;
+	
+}
+#goodsownerCheckList2{
+	height: 243px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}

@@ -335,12 +335,9 @@ function addGoodsOpinion(rank,info,getItem){
        addList.push("<th class=\"info_reg_th accrdtit\">설정</th>");
        addList.push("<td>");
        addList.push("<div class=\"txt-r2\">");
-       addList.push("<span style=\"color:red;\">*한글파일다운로드 후 pdf로 변환 후 업로드 해 주시기 바랍니다 &nbsp</span>");
+       addList.push("<span style=\"color:red;\">*pdf로 업로드 해 주시기 바랍니다 &nbsp</span>");
        addList.push("<button type=\"button\" class=\"btn nohover\" onclick=\"pdfUpload('1');return false;\">");
        addList.push("<i class=\"download white icon\"></i> PDF 업로드");
-       addList.push("</button>");
-       addList.push("<button class=\"btn nohover\" onclick=\"hwpDownload('1');return false;\">");
-       addList.push("<i class=\"download white icon\"></i> 한글파일 다운로드");
        addList.push("</button>");
        addList.push("</div>");
        addList.push("</td>");
