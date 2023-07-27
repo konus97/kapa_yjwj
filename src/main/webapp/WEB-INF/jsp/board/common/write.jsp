@@ -176,10 +176,10 @@
 	<!-- <script src="../../lib/ckeditor5/build/upload.js"></script> -->
 
 	<!--board start-->
-	<script src="../../js/common.js"></script>
-		
-	<script src="../../js/board/content.js"></script>
-	<script src="../../js/board/write.js"></script>
+    	<script src="../../js/common.js"></script>
+    		
+    	<script src="../../js/board/content.js"></script>
+    	<script src="../../js/board/write.js"></script>
 	
 	
 	<script>

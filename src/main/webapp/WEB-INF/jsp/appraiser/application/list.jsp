@@ -40,7 +40,10 @@
         <link rel="stylesheet" href="../css/sub.css" />
         <link rel="stylesheet" href="../css/owl.carousel.min.css" />
         <link rel="stylesheet" href="../css/jquery-ui.css" />
+        
     </head>
+    
+        
     <body>
         <div id="wrap">
         
@@ -343,6 +346,7 @@
 										</div>
                              		</div>
                            </div>
+                        </div>
                            
                            <div class="cs_title">
                             	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 전문검증단 심의대상</mark></h4>
@@ -429,10 +433,10 @@
                                             <th>격차액(원)(증감율)<br>F=C-E</th>
                                         </tr>
                                     </thead>
-                                  <tbody id="">
-                                  		<tr>
-                                  			<td>1</td>
-                                  			<td>최종윤</td>
+                                  <tbody id="" >
+                                  		<tr class="c_tr2">
+                                  			<td class="c_info">1</td>
+                                  			<td class="c_info">최종운</td>
                                   			<td>68,401,060</td>
                                   			<td>68,401,060</td>
                                   			<td>0(0%)</td>
@@ -445,10 +449,86 @@
                                   </tbody>
                                 </table>
                             </div>
+                            
+                            <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 감정평가사 의견</mark></h4>
+                            </div>
+                            
+                           	<div class="ff_wrap" >
+								<div id="boardContent">
+								</div>
+							</div>
+                          
+							<div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 검토 사항</mark></h4>
+                            </div>
+                            <div class="f_review"></div>
+                            
+                            <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 관련 법령</mark></h4>
+                            </div>
+                           <div class="c_table t1">
+                                <table>
+                                    <caption>
+                                        	관련법령
+                                    </caption>
+                                    <thead>
+                                        <tr class="t_review">
+                                            <th>법령</th>
+                                            <th>조</th>
+                                            <th>항</th>
+                                            <th >내용</th>
+                                        </tr>
+                                    </thead>
+                                  <tbody id="" >                                      
+                                  </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 부가요청자료</mark></h4>
+                            </div>
+                           	<div class="rd_under">
+                          		<a href="#" class="c_plus" onclick="">기타 (기타)</a>
                            
+	                            <ul class="c_btn">
+	                            	<li>
+	                            		<button class="btn small t4">추가</button>
+	                            	</li>
+	                            	<li>
+	                            		<button class="btn small">삭제</button>
+	                            	</li>
+	                            </ul>
+                        
+                           	</div>
+                           	<div class="c_table t1">
+                                <table>
+                                    <caption>
+                                         부가요청자료
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>선택</th>
+                                            <th>파일</th>
+                                            <th>설명</th>
+                                            <th>미리보기</th>
+                                        </tr>
+                                    </thead>
+                                  <tbody id="" >                                      
+                                  </tbody>
+                                </table>
+                            </div>
+                            <div class="rd_end">
+	                             <ul>
+	                            	<li>
+	                            		<button class="rd_btn">취소</button>
+	                            	</li>
+	                            	<li>
+	                            		<button class="rd_btn">확인</button>
+	                            	</li>
+	                            </ul>
+                            </div>
                            
-                           
-                        </div>
                           
                        
                        
@@ -498,6 +578,16 @@
         <script src="../js/appraiser/application/block.js"></script>
         <script src="../js/appraiser/application/list.js"></script>
 		
+        
+	<!--ckeditor5 start-->
+	<script src="../../lib/ckeditor/ckeditor.js"></script>
+	<!-- <script src="../../lib/ckeditor5/build/upload.js"></script> -->
+
+	<!--board start-->
+    	<script src="../../js/common.js"></script>
+    		
+    	<script src="../../js/board/content.js"></script>
+    	<script src="../../js/board/write.js"></script>
         <script type="text/javascript">
 	
 		    $(document).ready(function () {
@@ -508,7 +598,17 @@
 		    });
 	    	
 		</script>
-		
+		<script>
+	
+	    $(document).ready(function () {
+	    	$('#board_write').on('submit', function(e){
+	    		e.preventDefault();
+	    		saveBoardContent();	
+	    	})
+	    });
+	    
+	
+	</script>
        
     </body>
 </html>

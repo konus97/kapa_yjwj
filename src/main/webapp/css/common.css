@@ -216,6 +216,92 @@
 	margin-top:8px;
 	color:#47A363;
 }
+.c_table .c_info{
+	text-align:center;
+}
+.c_table .c_tr2{
+	text-align:right;
+}
+.f_review{
+	flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    min-height:70px;
+    background-color: #F8F8F8;
+    padding: 20px 50px;
+    border-radius: 20px;
+}
+#contents .c_table table thead .t_review th:nth-of-type(1){
+	width:200px;
+	}
+#contents .c_table table thead .t_review th:nth-of-type(2),#contents .c_table table thead .t_review th:nth-of-type(3){
+	width:100px;
+}
+.c_plus{
+	color:#636363;
+	float:left;
+	
+	}
+	
+
+.c_plus:before{content: "";
+    display: inline-block;
+    vertical-align: -4px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/common/icon_btn.svg);
+    background-repeat: no-repeat;
+    background-position: left -100px;
+    background-size: 300% auto;
+   
+    }
+.rd_under{
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+	margin:15px 0px;
+	
+}    
+.c_btn{
+	width:180px;
+	display:flex;
+	justify-content:space-between;
+	
+}    
+.rd_end{
+	margin:60px 0px;
+	
+}
+.rd_end ul{
+	display:flex;
+	justify-content:center;
+	
+}
+.rd_end ul .rd_btn{
+	display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    min-width: 160px;
+    height: 38px;
+    padding: 0px 15px;
+    border: #252a3c solid 1px;
+    border-radius: 3px;
+    box-sizing:border-box;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff !important;
+    line-height: 50px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    margin: 0 3px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+	
+}
+
 
 /* 서식 */
 .template {

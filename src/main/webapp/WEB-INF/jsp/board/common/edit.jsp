@@ -112,7 +112,7 @@
 												<label for="bw_contents">내용<i class="cm">*</i><mark class="blind">필수입력</mark></label>
 											</div>
 											<div class="ff_wrap" >
-												<div id="boardContent">
+												<div id="boardcontent">
 													${bvo.content}
 												</div>
 											</div>
@@ -202,7 +202,7 @@
 	    $(document).ready(function () {
 	    	$('#board_write').on('submit', function(e){
 	    		e.preventDefault();
-	    		updateBoardContent();	
+	    		update스타일();	
 	    	})
 	    });
 	    
