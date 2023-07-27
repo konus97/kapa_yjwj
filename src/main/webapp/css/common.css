@@ -197,6 +197,26 @@
     display: block;
 }
 
+/*감정평가사 의견조회 추가 팝업 타이틀 글씨체 */
+.cs_wrap_ad .cs_title .cs{
+	
+    vertical-align: middle;
+    margin-left: 3px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #222326;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    
+
+}
+.cs_wrap_ad .cs_ad{
+	font-size:14px;
+	font-weight:500;
+	margin-top:8px;
+	color:#47A363;
+}
+
 /* 서식 */
 .template {
     display: inline-block;

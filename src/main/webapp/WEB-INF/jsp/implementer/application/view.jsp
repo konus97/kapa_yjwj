@@ -946,12 +946,14 @@
 									</div>
 								</div>
 							</div>
-							                                <div class="cs_title">
+							
+							
+							<div class="cs_title">
                                     <h4 class="fl title t1 bold cb s1 bullet">
                                        	 조서 정보
                                     </h4>
                                 </div>
-                                                     <div class="form t1">
+                         	<div class="form t1">
                                     <div class="f_wrap">
                                         <div class="f_field div2">
                                             <div class="ff_title">

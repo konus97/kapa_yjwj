@@ -228,6 +228,7 @@
                                     </div>
                                 </form>
                             </div>
+                           
                             <div class="cs_title">
                                 <h4 class="fl title t1 bold cb s1 bullet">
                                     	신청조회 목록
@@ -271,6 +272,189 @@
                                   </tbody>
                                 </table>
                             </div>
+                             <!-- 감정평가사 재결(의견조회) 추가 사항 1 -->
+                       <div class="cs_wrap_ad">
+                            <div class="cs_title">
+								<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 안건 정보</mark></h4>
+							</div>
+							<div class="form t1">
+								<div class="f_wrap">
+									<div class="f_field div2">
+										<div class="ff_title">
+											<label>안건번호</label>
+										</div>
+										<div class="ff_wrap">
+											<p>${avo.custName}테스트</p>
+										</div>
+									</div>
+
+									<div class="f_field div2">
+										<div class="ff_title">
+											<label>회의일자</label>
+										</div>
+										<div class="ff_wrap">
+											<p>${avo.bizTpCd}테스트</p>
+										</div>
+									</div>
+								</div>
+								<div class="f_wrap">
+									<div class="f_field div2">
+										<div class="ff_title">
+											<label>사건번호</label>
+										</div>
+										<div class="ff_wrap">
+											<p>${avo.custName}22수용0436-1</p>
+										</div>
+									</div>
+
+									<div class="f_field div2">
+										<div class="ff_title">
+											<label>담당자</label>
+										</div>
+										<div class="ff_wrap">
+											<p>${avo.bizTpCd}테스트</p>
+										</div>
+									</div>
+								</div>
+								<div class="f_wrap">
+									<div class="f_field">
+										<div class="ff_title">
+											<label>사 업 명</label>
+										</div>
+										<div class="ff_wrap">
+											<p>${avo.bizTpCd}주소</p>
+										</div>
+									</div>
+								</div>
+								<h5 class="cs_ad">- 본 자료가 대외유출되지 않도록 협조하여 주시기 바랍니다.</h5>
+							</div>
+							
+							<div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 전문검증단 심의대상</mark></h4>
+                            <div class="form t1">
+                                    <div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_title">
+												<label>제 1항</label>
+											</div>
+											<div class="ff_wrap">
+												<p>${avo.bizTpCd}개인별 감정평가액 증액비율이 20% 이상이고, 3천만 원 이상 증액 평가된 경우</p>
+											</div>
+										</div>
+                             		</div>
+                           </div>
+                           
+                           <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 전문검증단 심의대상</mark></h4>
+                            </div>
+                            <div class="form t1">
+                                    <div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_title">
+												<label>제 1항</label>
+											</div>
+											<div class="ff_wrap">
+												<p>${avo.bizTpCd}개인별 감정평가액 증액비율이 20% 이상이고, 3천만 원 이상 증액 평가된 경우</p>
+											</div>
+										</div>
+                             		</div>
+                           </div>
+                           
+                           <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 전문검증단 회의 검토사유</mark></h4>
+                            </div>
+                            <div class="form t2">
+                                    <div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_wrap">
+												<p><a href="tel:" class="cx"></a></p>
+											</div>
+										</div>
+                             		</div>
+                           </div>
+                           
+                           <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 사업개요</mark></h4>
+                            </div>
+                            <div class="form t1">
+                                    <div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_title">
+												<label>사업 시행자</label>
+											</div>
+											<div class="ff_wrap">
+												<p>${avo.bizTpCd}경기도지사</p>
+											</div>
+										</div>
+                             		</div>
+                             		<div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_title">
+												<label>사업 인정일</label>
+											</div>
+											<div class="ff_wrap">
+												<p>${avo.bizTpCd}2018-12-20</p>
+											</div>
+										</div>
+                             		</div>
+                             		<div class="f_wrap">
+                                    	<div class="f_field">
+											<div class="ff_title">
+												<label>사업 기간</label>
+											</div>
+											<div class="ff_wrap">
+												<p>${avo.bizTpCd}-</p>
+											</div>
+										</div>
+                             		</div>
+                           </div>
+                           
+                           <div class="cs_title">
+                            	<h4 class="fl title t1 bold cb s1 bullet">-<mark class="cs"> 심의 대상 소유자 정보</mark></h4>
+                            </div>
+                            <div class="c_table t1">
+                                <table>
+                                    <caption>
+                                        	사건조회 목록
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>연번</th>
+                                            <th>소유자</th>
+                                            <th>협의 평균 평가금액(원)<br>A</th>
+                                            <th>수용재결 평균 평가금액(원)<br>B</th>
+                                            <th>증감액(원)증감율<br>C=B-A</th>
+                                            <th>지가변동률(%)<br>D=E/A</th>
+                                            <th>자가상승금액(원)<br>E</th>
+                                            <th>격차액(원)(증감율)<br>F=C-E</th>
+                                        </tr>
+                                    </thead>
+                                  <tbody id="">
+                                  		<tr>
+                                  			<td>1</td>
+                                  			<td>최종윤</td>
+                                  			<td>68,401,060</td>
+                                  			<td>68,401,060</td>
+                                  			<td>0(0%)</td>
+                                  			<td>0.00000</td>
+                                  			<td>0</td>
+                                  			<td>0(0%)</td>
+                                  		</tr>
+                                       
+                                       
+                                  </tbody>
+                                </table>
+                            </div>
+                           
+                           
+                           
+                        </div>
+                          
+                       
+                       
+                       
+                       <!------------------------------ 여기까지 ---------------------------->
+                            
                             <div class="paging">
                                 <div class="p_wrap" id="pageList">
                                     

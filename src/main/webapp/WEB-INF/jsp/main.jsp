@@ -282,6 +282,99 @@ pageEncoding="utf-8"%>
               </div>
             </div>
           </div>
+          
+       
+       
+          
+          
+          
+          
+          <div class="cm_wrap2">
+          	<h3><span>재결관</span> 적용</h3>
+            
+	        <div class="cm_wrap2_1">
+	            <div class="cmv_list t2">
+		              <ul>
+		                <li>
+		                  <span>처리중<br>사건</span> <span><mark>2</mark></span>
+		                </li>
+		                <li>
+		                  <span>경과일수</span> <span><mark>2</mark></span>
+		                </li>
+		              </ul>
+		        </div>
+				<div class="cm_quick2">
+					<h3>진행경과</h3>
+					
+	                <ul>
+	                  <li>
+	                    <a href="#" onclick="readyAlert();return false;"
+	                      > <span>재결접수</span> <span><mark>2</mark></span></a
+	                    >
+	                  </li>
+	                  <li>
+	                    <a href="#" onclick="readyAlert();return false;"
+	                      ><span>열람공고</span> <span><mark>2</mark></span></a
+	                    >
+	                  </li>
+	                  <li>
+	                    <a href="#" onclick="readyAlert();return false;"
+	                      ><span>심의안건</span> <span><mark>2</mark></span></a
+	                    >
+	                  </li>
+	                  <li>
+	                    <a href="#" onclick="readyAlert();return false;"
+	                      ><span>심사완료</span> <span><mark>2</mark></span></a
+	                    >
+	                  </li>
+	                </ul>
+	            </div> 		
+			</div>  
+      	</div>
+      	<div class="cm_poplist">
+      		<div class="c_table t1">
+	      		<h4 class="fl title t1 bold cb s1 bullet">
+	      		재결목록
+	      		</h4>
+	      		<table>
+	      			<caption>재결목록</caption>
+	      			<thead>
+		      			<tr>
+		      				<th>연번</th>
+		      				<th>사업자</th>
+		      				<th>재결접수일</th>
+		      				<th>경과일수</th>
+		      				<th>담당자</th>
+		      				<th>재결상태</th>
+		      			</tr>
+		      		</thead>
+		      		<!-- 팝업리스트 내용 넣어주시면 됩니다 -->
+		      		<tbody id="" data-cpage="" data-tpage="">
+		      			<tr>
+		      				<td>1</td>
+		      				<td>홍**</td>
+		      				<td>2022.01.01</td>
+		      				<td>2일</td>
+		      				<td>김**</td>
+		      				<td>재결접수</td>
+		      			</tr>
+		      			<tr>
+		      				<td>2</td>
+		      				<td>김**</td>
+		      				<td>2023.01.01</td>
+		      				<td>3일</td>
+		      				<td>홍**</td>
+		      				<td>심사완료</td>
+		      			</tr>
+		      		</tbody>
+	      		</table>
+      		</div>
+      		<button class="btn middle" id="submit">확인</button>
+      	</div>
+      	
+	         
+	        
+      
           <div class="cm_wrap">
             <div class="cm_quick">
               <div class="cmq_title">
@@ -333,8 +426,10 @@ pageEncoding="utf-8"%>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
+     
       <hr />
 
       <!-- footer start -->

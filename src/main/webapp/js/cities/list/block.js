@@ -71,6 +71,31 @@ if(decisionState == 4){
 	}
 	
     addList.push("  </td>");
+    /*소유자의견 추가건 (다운로드 파일 내용 확인 후 변경필요)*/
+    addList.push("  <td>");
+    addList.push("      <strong>소유자의견</strong>");
+   /*	if(cityFileCount>0){
+		addList.push("<span>");
+	    addList.push("      <button class=\"btn small02 t1 nohover\">");
+   	 	addList.push("             <i class=\"icon download\"></i>");
+    	addList.push("      </button>");
+	    addList.push("      <button class=\"btn small02 t1 nohover\">");
+	    addList.push("</span>");
+	}else{
+	  
+	}*/
+	if(cityFileCount ==0){
+	  addList.push("      <span>-</span>");
+   }else{
+	addList.push("<span>");
+ 	addList.push("    	<button class=\"btn small02 t1 nohover\" onclick=\"goCites('"+decisionId+"');return false;\">");
+   	 	addList.push("             <i class=\"icon download\"></i>");
+    	addList.push("      </button>");
+	    addList.push("</span>");
+}
+    addList.push("  </td>");
+    
+    
     addList.push("  <td>");
     addList.push("      <strong>의뢰마감일</strong>");
     addList.push("      <span>"+requestEndDate+"</span>");

@@ -214,16 +214,53 @@
                                                 <p>${publication}</p>
                                             </div>
                                         </div>
+                                        
                                         <div class="f_field div2">
                                             <div class="ff_title">
                                                 <label>회보일</label>
                                             </div>
                                             <div class="ff_wrap">
-                                              <p>${decisionNotice.newsletterDay}</p>
+                                              <span class="ff_group">
+                                                        <span class="w140"
+                                                            ><label
+                                                                for="il_date1"
+                                                                class="blind"
+                                                                >회보일</label
+                                                            ><input
+                                                                type="text"
+                                                                name="il_date1"
+                                                                id="il_date1"
+                                                                placeholder="회보일 선택"
+                                                                class="datepicker input40 t1"
+                                                                /><i></i
+                                                        ></span></span>
                                             </div>
                                         </div>
                                         
                                     </div>
+                                    
+                                    <div class="f_wrap">
+                                        <div class="f_field div2">
+                                            <div class="ff_title">
+                                                <label>열람공고기간</label>
+                                            </div>
+                                            <div class="ff_wrap">
+                                                    <span class="ff_group w290">
+                                                        <input
+                                                            type="text"
+                                                            id="il_input"
+                                                            name="il_input"
+                                                            class="input40 t1"
+                                                            required
+                                                        />
+                                                    </span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                 
+                                    <!-- 여기 임시 -->
                       
                                     <div class="f_wrap">
                                           <div class="f_field">
@@ -294,6 +331,27 @@
 														  </div>
 														</div>
 														
+                                                    </div>
+                                                </div>
+                                                <div class="ff_wrap ff_wrap_inner ff_wrap_inner02" >
+                                                    <label>소유자 의견</label>
+                                                    <div style="width: 100%" id="fileList3">
+                                                                                                    
+                                                       <div id="fileInfo3-1" class="ff_wrap fileInfo3">
+														  <div class="file_flex">
+														    <input class="input40 file_name fileLabel3" id="description3-1" maxlength="50">
+														    <div class="file_btn_wrap">
+														      <div style="display: flex">
+														        <div id="fileText3-1" class="input40 file_btn" style="cursor: pointer" onclick="triggerFileUpload('3','1');return false;">파일 없음</div>
+														        <button class="btn nohover t4 small" onclick="removeFileTarget('3','1');return false;">
+														          <i class="close icon white"></i> 삭제 </button>
+														        <button class="btn nohover t4 small" onclick="addNewFileTarget('3');return false;">
+														          <i class="pluse icon white"></i>추가 </button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
